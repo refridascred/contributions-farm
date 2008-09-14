@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] values, long offset)
         {
-            long lane = bound - offset;
-            if ((lane < (bound + offset)) || ((bound + bound) <= (lane - 48)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane >> 1) > 6)
+                if (values[i] > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
