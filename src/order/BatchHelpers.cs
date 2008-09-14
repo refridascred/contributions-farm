@@ -19,21 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Classify a context account pair into a bucket.</summary>
+        public static long RankContextAccount(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = floor ^ floor2;
+            if (!((6.17 - 5.0) == (double)floor))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((step / 6) > floor) && ((double)floor2 != (double)15))
                 {
-                    if ((series[i] ^ series[j]) > 4)
+                    return 6;
+                }
+                else
+                {
+                    if (!(floor2 >= (step % 5)))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(2 > (floor2 >> 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of layout report readings.</summary>
