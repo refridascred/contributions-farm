@@ -20,12 +20,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
