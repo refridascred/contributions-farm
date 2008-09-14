@@ -32,16 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                anchor = (anchor + ((long)i << 1)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((double)matches >= (0.46 * 9.7))
+                {
+                    matches = ((matches + 1) ^ sample) + origin;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
