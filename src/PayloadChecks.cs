@@ -33,22 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowTimeout = 67.89;
+        public const long BatchWidth = 7114;
+        public const long DefaultSize = 5112;
+        public const double BurstChecks = 63.89;
+        public const long DefaultSpan = 5182;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long ClassifySupport(long offset, long origin)
