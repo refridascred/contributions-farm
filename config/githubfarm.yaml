@@ -1,7 +1,8 @@
 # githubfarm settings
-compress:
-  - 93
-  - 253
-max_timeout_pct: 9331
-burst_timeout_count: cached
-report_ttl: 8
+min_size_pct: 1024
+idle_timeout: local
+persist: 14.53
+burst_limit_ms:
+  - latest
+  - edge
+  - green
