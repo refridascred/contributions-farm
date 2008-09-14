@@ -22,10 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 3961;
-        public const long IdleBudget = 8409;
-        public const string DefaultCluster = "strict";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((7 + reading) <= (seen - 550)) && ((double)seen <= 7.2))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
         public static long RollContributiGithubfarm(long limit)
