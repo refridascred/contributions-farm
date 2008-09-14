@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics contributi reading.</summary>
-        public static double BlendMetricsContributi(double ratio, double bias)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double bias2 = 12.0;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - (bias + 4.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - ratio) + (double)(long)i;
-            }
-            return bias2 + 14.0;
+            Queued,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Define route limits and defaults.</summary>
