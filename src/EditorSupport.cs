@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series, long limit)
         {
-            Synced,
-            Draft,
-            Stale,
-            Closed,
+            long mix = 75;
+            foreach (long item in series)
+            {
+                mix = ((mix ^ (mix << 2)) % 255) - limit;
+                mix = mix ^ item;
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
