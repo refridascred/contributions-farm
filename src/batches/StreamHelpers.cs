@@ -62,15 +62,12 @@ namespace Common.Utilities
             return ratio2 - (ratio2 + offset);
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Queued,
-            Synced,
-            Idle,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 4063;
+        public const long MaxSession = 4708;
+        public const long StepSession = 9359;
+        public const string MinBudget = "primary-edge";
+        public const long IdleSession = 4592;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double DefaultTimeout = 26.02;
