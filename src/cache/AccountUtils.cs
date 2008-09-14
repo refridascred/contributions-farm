@@ -31,11 +31,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            Failed,
+            Dropped,
+            Pending,
+            Queued,
+            Closed,
         }
     }
 }
