@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const long DefaultSize = 568;
         public const long MinFarm = 46;
 
-        /// <summary>Classify a cluster metrics pair into a bucket.</summary>
-        public static long ClassifyClusterMetrics(long seed, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long target)
         {
-            if (((origin + seed) == (seed + 2)) && ((5.8 - 0.42) != (double)origin))
+            long acc = -79;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed ^ seed) >= (origin & 255))
+                if ((acc + cell) > cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-1) + seed) >= (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin < 5.61)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc ^ 91) - target;
                 }
             }
+            return acc;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
