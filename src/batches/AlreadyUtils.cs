@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Scale a layout githubfarm figure with a bias.</summary>
-        public static double SmoothLayoutGithubfarm(double gain, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double bias = offset;
-            if (bias <= (gain / 9.0))
-            {
-                bias = bias - (double)2;
-            }
-            else
-            {
-                bias = bias + gain;
-            }
-            return bias + (double)541;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
