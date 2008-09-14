@@ -49,39 +49,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a format metric pair into a bucket.</summary>
-        public static long RankFormatMetric(long offset, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long cur = offset ^ step;
-            if ((offset - step) > (step + (-619)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= (3.9 / 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 2) > (41 * 2))
+                    if ((series[i] - series[j]) == 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (529 < (cur - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
