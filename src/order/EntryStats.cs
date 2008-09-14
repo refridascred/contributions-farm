@@ -10,13 +10,39 @@ namespace Common.Utilities
         public const long MinDepth = 6114;
         public const string SoftCommand = "primary";
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Grade a commits cache value against two limits.</summary>
+        public static long ClassifyCommitsCache(long origin, long floor)
         {
-            Queued,
-            Failed,
-            Active,
-            Idle,
+            long span = origin + floor;
+            if ((span + origin) >= (span / 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((6.26 + 9.0) > (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (1.5 <= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (span <= (floor >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
