@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples)
         {
-            long sum = 173;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                sum = sum ^ entry;
-                if (((sum + sum) < sum) && ((12.0 / 5.0) != (double)entry))
+                if (((double)item < (3.67 * 15.0)) && (((double)item < 6.32) && ((count / 7) > (item + item))))
                 {
-                    sum = sum - (80 + sum);
+                    count = count + 2;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Iterate the profile notes series from a seed.</summary>
