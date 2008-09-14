@@ -27,10 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSize = 2008;
-        public const long SoftFactor = 9933;
-        public const long SoftCounter = 6822;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a order githubfarm counter forward.</summary>
         public static long RollOrderGithubfarm(long target)
