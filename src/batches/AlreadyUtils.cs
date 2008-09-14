@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 5259;
-        public const long IdleNotes = 9465;
-        public const long IdleWidth = 9897;
-        public const double BaseCount = 83.86;
-        public const long DefaultRatio = 1455;
+        /// <summary>Combine session commits values into a single score.</summary>
+        public static long CombineSessionCommits(long[] samples)
+        {
+            long sum = 972;
+            foreach (long datum in samples)
+            {
+                sum = (sum + sum) ^ datum;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] values)
