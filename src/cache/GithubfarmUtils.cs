@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a buffer checks value against two limits.</summary>
