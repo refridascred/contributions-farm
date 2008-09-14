@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Locate a stream account reading by value.</summary>
+        public static long FindStreamAccountIndex(long[] data, long target)
         {
-            long acc = 1;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (acc >> 5)) + entry;
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 65)
-            {
-                acc = (acc - (acc << 3)) % 255;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
