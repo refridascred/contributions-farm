@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long offset, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            if ((offset + offset) > (offset << 1))
+            long next = bound + origin;
+            if (next > (origin + next))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)seed < (8.9 * 1.18))
+                if ((bound < (origin - 10)) && ((bound % 97) > (origin ^ 151)))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)bound < (13.0 - 8.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound * 5) <= (142 * 2)) && ((next / 2) != (origin % 24)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
