@@ -22,18 +22,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route stats readings against a rule.</summary>
-        public static long TallyRouteStatsHits(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (count <= ((long)levels.Length & 63))
+                if (value >= bound)
                 {
-                    count = (count + 1) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a filter entry.</summary>
