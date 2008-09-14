@@ -23,12 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long target2)
         {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            if ((target2 + target2) != (target2 / 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target > (target2 - 68))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0.23 * 3.3) <= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target2 >= (target2 << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
