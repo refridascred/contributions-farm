@@ -1,16 +1,13 @@
 {
-  "batch_depth_ms": {
-    "default_depth": {
-      "persist": [412, 486],
-      "soft_depth_ms": "fallback",
-      "idle_capacity": 5272,
-      "warm_ratio": true,
-      "batch_window": false,
-      "burst_interval_ms": 52.07
-    },
-    "hard_retries_count": "edge",
-    "counter_size": "latest"
+  "base_timeout": ["open", "latest", "latest", "staging"],
+  "already_ttl": [414, 137, 244],
+  "compress": {
+    "idle_capacity": false,
+    "default_delay_count": 31,
+    "dry_run": 4874,
+    "layout_limit": 3663
   },
-  "max_interval_s": false,
-  "verbose": ["strict", "open"]
+  "poll_depth_pct": 60,
+  "readonly": "eu-west",
+  "max_ratio": "fallback"
 }
