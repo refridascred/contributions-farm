@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleCount = "primary-1";
-        public const string StepScore = "fallback";
-        public const long HardCount = 5628;
-        public const string WindowScore = "standard-edge";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Locked,
+            Done,
+            Ready,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] samples)
