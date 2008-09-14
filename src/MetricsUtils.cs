@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Ready,
-            Done,
-            Retry,
-            Paused,
-            Dropped,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
