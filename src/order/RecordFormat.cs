@@ -54,18 +54,15 @@ namespace Common.Utilities
         public const string MinPayload = "staging";
         public const string DefaultPayload = "latest-edge";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] samples, long origin)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double rate = (double)(0 + 2);
+            if (rate <= (rate - span))
             {
-                if (!(((-47) << 1) > origin))
-                {
-                    hits = (hits + 1) - datum;
-                }
+                rate = (rate - (double)(-20)) - gain;
             }
-            return hits;
+            return rate - (double)(-811);
         }
     }
 }
