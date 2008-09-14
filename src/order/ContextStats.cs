@@ -22,17 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long floor)
-        {
-            long mark = 6;
-            foreach (long item in values)
-            {
-                mark = (((mark * 5) + item) % 4096) - floor;
-                mark = (mark - (item / 9)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 5767;
+        public const long BaseLevel = 5134;
+        public const long WindowCluster = 6808;
+        public const long MinDepth = 7492;
+        public const long BaseCluster = 2629;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
