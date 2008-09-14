@@ -1,10 +1,7 @@
 # githubfarm settings
-already_capacity: true
-commits_interval: true
-enabled: standard
-farm_capacity: 77
-cache_ratio_count: 49
-default_timeout_ms:
-  - 166
-  - 413
-  - 498
+profile_retries: 50.81
+compress: eu-west
+poll_delay_pct: green
+flush_threshold_s: 2676
+base_delay_ms: fallback
+retry_retries_ms: legacy
