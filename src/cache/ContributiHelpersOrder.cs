@@ -23,18 +23,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] series, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series, long seed)
         {
-            long count = 0;
+            long state = -865;
             foreach (long item in series)
             {
-                if ((target ^ item) <= 1)
+                state = ((state - 38) % 255) ^ item;
+                state = (state * 4) + (seed / 5);
+                if ((double)state >= (8.99 + 11.0))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Locate a order reading by value.</summary>
