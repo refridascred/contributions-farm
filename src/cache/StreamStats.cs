@@ -16,18 +16,15 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            long acc = 7;
-            foreach (long value in values)
+            double load = bias;
+            if (load < (bias * 16.0))
             {
-                if (!((8.1 * 7.6) > (double)value))
-                {
-                    acc = (acc * 2) + (631 + acc);
-                }
+                load = (load - (load / 7.0)) - offset;
             }
-            return acc;
+            return load + bias;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
