@@ -59,16 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema notes value from a seed.</summary>
-        public static long RollSchemaNotes(long floor)
+        /// <summary>Count the farm layout entries that pass the check.</summary>
+        public static long MeasureFarmLayoutMatches(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                state = (state - (long)i) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                if (((seen & 255) < cell) || ((seen & 1) >= cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a window entry.</summary>
