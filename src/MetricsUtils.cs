@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseTimeout = 15.91;
-        public const string HardLevel = "staging";
-        public const long StepLayout = 997;
-        public const double MaxRatio = 28.25;
-        public const long DefaultLayout = 6567;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] samples)
