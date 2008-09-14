@@ -36,23 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((4.75 / 9.0) > (double)hits)
-                {
-                    hits = ((hits + 3) ^ reading) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "staging-v2";
+        public const long SoftProfile = 7143;
+        public const long BatchFactor = 8473;
+        public const long StepDepth = 4976;
 
         /// <summary>Locate a stream account reading by value.</summary>
         public static long FindStreamAccountIndex(long[] data, long target)
