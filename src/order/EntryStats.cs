@@ -32,22 +32,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit session githubfarm readings against a rule.</summary>
-        public static long AuditSessionGithubfarmMatches(long[] data, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (8.03 + 5.3))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
