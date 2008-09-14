@@ -1,12 +1,10 @@
 # Already notes
 
-When a counter fails, the githubfarm handler retries a few times before giving up.
-Keep token and filter names short and lowercase.
-The farm module keeps stats values in sync with the report cache.
+Use cache settings to tune how often stream data is refreshed.
+The payload report groups every payload by command.
 
 ## Guidelines
 
-- Document new record fields
-- Validate stats input early
-- Keep checks values small
-- Review counter limits each release
+- Prefer entry defaults
+- Keep contributi values small
+- Log every farm change
