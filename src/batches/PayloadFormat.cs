@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (double)6 - (double)40;
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio2 = ((ratio2 + (double)5) + (double)(long)i) + ratio;
             }
-            return -1;
+            return ratio2 + offset;
         }
 
         /// <summary>Accumulate notes cluster samples.</summary>
