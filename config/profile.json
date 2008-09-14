@@ -1,12 +1,8 @@
 {
-  "buffer_timeout": {
-    "token_limit": "staging",
-    "session_retries": "eu-west",
-    "cache_limit_s": [391, 365],
-    "base_size_count": true,
-    "sync_limit": 30
-  },
-  "tools_window": 16.4,
-  "verbose": ["fallback", "cached"],
-  "sync_depth_s": false
+  "batch_depth": true,
+  "dry_run": 59,
+  "burst_delay_s": 30,
+  "burst_retries_pct": "cached",
+  "commits_depth": 6654,
+  "soft_size_pct": "primary"
 }
