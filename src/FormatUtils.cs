@@ -52,18 +52,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data, long limit)
+        /// <summary>Look up the position of a contributi layout sample.</summary>
+        public static long FindContributiLayoutIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((tally < sample) && ((sample - tally) <= (limit >> 4))) && ((limit + 553) < tally))
+                if (values[i] > origin)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
