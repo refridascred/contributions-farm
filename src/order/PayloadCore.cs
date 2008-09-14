@@ -34,13 +34,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] samples, long target)
         {
-            Pending,
-            Synced,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((((datum / 3) == (hits * 5)) && ((2.4 / 6.0) <= (double)hits)) && !(datum <= (464 & 1)))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
