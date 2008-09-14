@@ -1,11 +1,5 @@
 # githubfarm settings
-warm_limit_pct: 30
-flush_window_s:
-  - 313
-  - 327
-  - 426
-  - 424
-poll_limit_s:
-  - primary
-  - stable
-  - edge
+readonly: blue
+soft_depth_pct: 35.21
+burst_delay_pct: 135
+max_ratio: false
