@@ -72,11 +72,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double rate, double floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double load = floor;
-            return load + rate;
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
