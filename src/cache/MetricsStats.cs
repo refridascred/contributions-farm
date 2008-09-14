@@ -19,12 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Match up command buffer samples.</summary>
+        public static long CompareCommandBufferCount(long[] data)
         {
-            Draft,
-            Pending,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
