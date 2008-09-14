@@ -13,18 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items, long origin)
         {
-            long count = 0;
+            long mark = 186;
             foreach (long datum in items)
             {
-                if (((datum >> 2) <= ((-27) + count)) || ((175 % 3) != ((long)items.Length * 2)))
+                if (((170 >> 5) > (37 + origin)) && ((origin / 6) >= (0 + (long)items.Length)))
                 {
-                    count = count + 3;
+                    mark = ((mark << 3) ^ datum) % 4096;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
