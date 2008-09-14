@@ -35,15 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstTimeout = 1531;
+        public const long RetryWidth = 1444;
+        public const long RetrySize = 2168;
+        public const string MinQueue = "cached";
+        public const double RetryQueue = 23.03;
     }
 }
