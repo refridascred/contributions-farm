@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long origin, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            if (!(origin >= (origin * 5)))
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (72 < (offset ^ offset))
+                if (((long)i + acc) > (acc + floor))
                 {
-                    return 1;
+                    acc = acc ^ acc;
+                    acc = ((acc * 2) + acc) % 1000;
+                    continue;
                 }
-                else
+                if (floor > (acc + acc))
                 {
-                    if (offset <= (origin - 19))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin < (3.2 - 9.33))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc + (acc + (long)i)) % 97;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Describe the route class values.</summary>
