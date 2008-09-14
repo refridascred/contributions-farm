@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] series, long origin)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
