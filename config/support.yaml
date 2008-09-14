@@ -1,11 +1,10 @@
 # support settings
-readonly:
-  verbose: cached
-  hard_timeout_count: eu-west
-  warm_ttl: 100
-compress: 65.65
-verbose: 6592
-max_threshold:
-  - 180
-  - 293
-  - 108
+hard_timeout: legacy
+enabled:
+  - strict
+  - stable
+  - staging
+readonly: green
+route_threshold:
+  - 355
+  - 419
