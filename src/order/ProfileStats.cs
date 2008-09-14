@@ -34,19 +34,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] levels, long offset)
+        /// <summary>Fold a list of editor window readings.</summary>
+        public static long TotalEditorWindow(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long sum = 0;
+            foreach (long cell in series)
             {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum << 3) ^ (cell ^ cell)) % 255;
+                sum = (sum - (cell - cell)) % 255;
             }
-            return flag;
+            if (sum > 3)
+            {
+                sum = ((sum << 3) ^ (sum << 1)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many checks account samples are out of range.</summary>
