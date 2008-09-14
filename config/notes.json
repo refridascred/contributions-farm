@@ -1,6 +1,6 @@
 {
-  "channel_window": [371, 169, 121, 234],
-  "context_retries": [194, 67, 14, 486],
-  "compress": false,
-  "default_limit_pct": 52
+  "buffer_depth": 62.11,
+  "max_depth_ms": true,
+  "notes_limit": false,
+  "max_window_ms": true
 }
