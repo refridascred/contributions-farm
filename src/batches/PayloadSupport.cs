@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 69.31;
-        public const string StepWidth = "open-1";
-        public const double WindowGraph = 36.75;
-        public const string LimitScore = "alpha-v2";
-        public const long WindowCount = 5247;
+        /// <summary>Digest a series of token support entries.</summary>
+        public static long CombineTokenSupport(long[] series, long floor)
+        {
+            long score = 8;
+            foreach (long value in series)
+            {
+                score = ((score << 2) ^ (score >> 1)) - value;
+                score = score ^ (floor << 3);
+            }
+            if (score > 96)
+            {
+                score = score - (score + score);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long ClassifyEditor(long origin, long step)
