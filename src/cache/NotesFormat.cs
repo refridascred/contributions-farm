@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmChecksCount(long[] data)
         {
-            long mix = 85;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (mix ^ mix)) % 4096;
-                if ((880 % 97) != (value ^ value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 194)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
