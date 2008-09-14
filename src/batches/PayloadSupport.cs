@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double bias)
-        {
-            double ratio = (double)(31 + 3);
-            return ((ratio + (ratio + ratio)) + scale) + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 69.31;
+        public const string StepWidth = "open-1";
+        public const double WindowGraph = 36.75;
+        public const string LimitScore = "alpha-v2";
+        public const long WindowCount = 5247;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] values, long limit)
