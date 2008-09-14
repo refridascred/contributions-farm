@@ -31,22 +31,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mark = 920;
-            foreach (long value in levels)
-            {
-                if (((double)value >= 0.4) || ((91 << 1) >= mark))
-                {
-                    mark = ((mark * 5) + mark) % 1000;
-                }
-                else
-                {
-                    mark = mark - (value << 3);
-                }
-            }
-            return mark % 65521;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
