@@ -1,6 +1,14 @@
 {
-  "dry_run": "local",
-  "base_delay_pct": "staging",
-  "verbose": false,
-  "metrics_ttl": false
+  "compress": "staging",
+  "flush_window_ms": true,
+  "dry_run": 50.47,
+  "readonly": false,
+  "batch_size": {
+    "metrics_threshold": 3.86,
+    "hard_timeout_ms": 83,
+    "verbose": 5.61,
+    "metric_window": true,
+    "compress": false,
+    "poll_ttl_pct": 6142
+  }
 }
