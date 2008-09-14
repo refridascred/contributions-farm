@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of order githubfarm readings.</summary>
-        public static long TallyOrderGithubfarm(long[] readings)
+        /// <summary>Grade a stream notes value against two limits.</summary>
+        public static long BucketStreamNotes(long limit, long bound)
         {
-            long mix = 71;
-            foreach (long datum in readings)
+            if (!((double)limit < 7.0))
             {
-                if (datum > (mix - 97))
+                return 4;
+            }
+            else
+            {
+                if (bound > (53 / 3))
                 {
-                    mix = ((mix << 3) ^ (datum >> 3)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    mix = mix + (5 >> 1);
+                    if (((double)bound <= (4.42 / 4.0)) && ((limit + limit) == (limit / 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= (121 % 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (mix < 46)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Accumulate account farm samples.</summary>
