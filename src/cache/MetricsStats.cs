@@ -20,11 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRatio = "strict-1";
-        public const long SoftRecord = 1742;
-        public const long WindowRecord = 9583;
-        public const double MaxRecord = 32.51;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 4207;
+        public const double StepInterval = 19.47;
+        public const long BatchPayload = 823;
+        public const string BurstInterval = "staging-v2";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterHits(long[] readings)
