@@ -25,22 +25,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] items, long seed)
         {
-            long acc = 13;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((limit + limit) == (cell << 3))
+                if (datum < seed)
                 {
-                    acc = (acc - cell) % 255;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
     }
 }
