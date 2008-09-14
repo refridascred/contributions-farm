@@ -12,21 +12,24 @@ namespace Common.Utilities
             return (scale2 - scale) + offset;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long step, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            if ((6.7 - 12.0) >= (double)step)
             {
-                sum = ((sum * 5) + 6) % 255;
-                if ((seed - sum) >= (62 % 64))
-                {
-                    sum = (sum << 2) ^ (sum + sum);
-                }
-                sum = (sum ^ 752) % 101;
-                sum = ((sum * 5) + (long)i) % 97;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((step % 16) >= (seed - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
