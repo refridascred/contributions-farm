@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((((hits - hits) > hits) && ((double)hits > (6.5 + 1.96))) && ((value << 1) > (180 * 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
