@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long IdleCache = 3580;
         public const long MaxDepth = 3277;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxInterval = 9880;
-        public const long IdleChecks = 2650;
-        public const long BurstInterval = 9026;
-        public const string MaxChecks = "staging";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Done,
+            Closed,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitRatio = 4296;
