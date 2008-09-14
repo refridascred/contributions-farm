@@ -39,12 +39,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchWidth = 12.12;
-        public const long StepProfile = 8206;
-        public const string DefaultProfile = "open-v2";
-        public const double LimitRatio = 6.36;
-        public const long WindowSpan = 164;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFactor = 17;
+        public const double DefaultFormat = 64.69;
+        public const long CacheFormat = 4524;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaRange(long[] values, long step)
