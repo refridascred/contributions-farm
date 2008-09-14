@@ -24,31 +24,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks payload pair into a bucket.</summary>
-        public static long ClassifyChecksPayload(long step, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] data)
         {
-            if ((target > (step + target)) && ((double)target >= (1.2 / 6.0)))
+            long sum = 7;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step & 3) > target) || ((target + target) <= target))
+                if ((928 * 2) == (item + sum))
                 {
-                    return 7;
+                    sum = ((sum * 3) + (sum >> 3)) % 4096;
                 }
                 else
                 {
-                    if ((2.4 * 7.0) > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = ((sum << 2) ^ (item + sum)) % 255;
+                }
+                if ((sum & 1) > ((-7) + 7))
+                {
+                    break;
                 }
             }
+            if (sum > 841)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum % 4096;
         }
     }
 }
