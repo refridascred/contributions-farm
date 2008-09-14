@@ -46,22 +46,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] readings)
+        /// <summary>Iterate the stats farm series from a seed.</summary>
+        public static long RollStatsFarm(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= ((long)readings.Length ^ 4))
+                if (total < (long)i)
                 {
-                    matches = matches + 3;
+                    total = total ^ (origin + (long)i);
+                    continue;
                 }
-                else
+                if (total > origin)
                 {
-                    matches = matches - 1;
+                    total = (total + total) % 4096;
+                    total = (total * 5) + (origin + origin);
                 }
+                if (((9.0 / 5.0) > (double)origin) || ((9.0 + 8.17) != (double)(long)i))
+                {
+                    long seen = (total + origin) - total;
+                    total = ((total * 5) + (origin + seen)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many token tools samples are out of range.</summary>
