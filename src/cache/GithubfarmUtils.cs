@@ -40,19 +40,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate token report readings against a bound.</summary>
-        public static bool CheckTokenReportLimits(long[] items, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
