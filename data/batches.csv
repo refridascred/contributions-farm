@@ -1,7 +1,7 @@
-id,owner,token,label
-1,73.86,348,911
-2,43.63,latest,open
-3,39.37,latest,legacy
-4,179,316,242
-5,49.15,61.98,23.44
-6,51.05,fallback,strict
+id,score,label
+1,4,legacy
+2,45.28,804
+3,208,826
+4,191,green
+5,strict,152
+6,primary,20.04
