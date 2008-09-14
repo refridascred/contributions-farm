@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MinBatch = 2517;
         public const long BurstLevel = 5000;
 
-        /// <summary>Compare every pair of notes cache readings.</summary>
-        public static long MatchNotesCacheCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits <= (hits - hits)) || ((cell <= hits) && ((step - 28) >= (hits * 5))))
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Blend two checks measurements.</summary>
