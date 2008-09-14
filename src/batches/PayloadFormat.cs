@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double ratio, double offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            double ratio2 = (double)6 - (double)40;
-            for (int i = 0; i < 2; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                ratio2 = ((ratio2 + (double)5) + (double)(long)i) + ratio;
+                if ((floor * 4) <= (long)i)
+                {
+                    score = score ^ ((long)i + score);
+                }
+                else
+                {
+                    score = score + (-598);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return ratio2 + offset;
+            return score;
         }
 
         /// <summary>Accumulate notes cluster samples.</summary>
