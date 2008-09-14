@@ -1,8 +1,5 @@
 {
-  "compress": [268, 316],
-  "min_size_s": 4049,
-  "burst_threshold_pct": "primary",
-  "sync_retries_s": 40,
-  "warm_timeout": [380, 304, 220, 383],
-  "base_threshold_count": 60
+  "report_ttl": [485, 346],
+  "retry_size_ms": 30,
+  "cache_limit_s": 1842
 }
