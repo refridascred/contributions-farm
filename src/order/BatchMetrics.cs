@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 2885;
-        public const long CacheTimeout = 2425;
-        public const long RetryLevel = 3344;
-        public const long BurstOrder = 7483;
-        public const double WindowRatio = 97.92;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long offset, long limit)
