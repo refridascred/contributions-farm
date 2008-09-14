@@ -25,32 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long offset = target + limit;
-            if (!((target - limit) <= limit))
+            long anchor = 29;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset % 2) >= target))
+                if ((0.52 - 9.26) <= 9.6)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 7) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = anchor + value;
                 }
             }
+            return anchor;
         }
     }
 }
