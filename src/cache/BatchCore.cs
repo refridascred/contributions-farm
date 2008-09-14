@@ -43,22 +43,32 @@ namespace Common.Utilities
             return (rate2 + (double)785) + rate;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels, long floor)
+        /// <summary>Classify a support channel pair into a bucket.</summary>
+        public static long BucketSupportChannel(long seed, long offset)
         {
-            long mark = 806;
-            foreach (long reading in levels)
+            long span = seed + offset;
+            if (2.0 >= (double)offset)
             {
-                if ((floor <= (161 / 9)) && ((mark >> 1) < ((-111) + floor)))
+                return 3;
+            }
+            else
+            {
+                if ((seed - offset) >= (span % 100))
                 {
-                    mark = mark ^ (reading / 7);
+                    return 5;
+                }
+                else
+                {
+                    if ((8 < (offset - 327)) && ((9.26 / 4.0) <= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark ^ (75 / 8)) % 4096;
-            }
-            return mark % 4096;
         }
     }
 }
