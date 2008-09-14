@@ -48,20 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long score = -2;
-            foreach (long cell in values)
-            {
-                bool flag = cell >= (offset % 64);
-                if (flag)
-                {
-                    flag = ((double)offset <= (16.0 * 5.89)) && ((score + offset) >= (341 % 24));
-                }
-                score = score + (score + 74);
-            }
-            return score % 1000;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
