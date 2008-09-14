@@ -45,15 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Find the first account stats entry that matches the target.</summary>
+        public static long LocateAccountStatsIndex(long[] samples, long seed)
         {
-            long total = 3;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - total) ^ sample;
+                if ((samples[i] > seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
