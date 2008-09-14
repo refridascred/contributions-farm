@@ -1,12 +1,5 @@
 {
-  "dry_run": 29.34,
-  "report_window": "open",
-  "verbose": 48,
-  "hard_interval_pct": "green",
-  "readonly": {
-    "poll_size_ms": ["edge", "legacy"],
-    "min_limit_s": 99,
-    "cache_ttl_s": false,
-    "max_ratio": 76
-  }
+  "retry_retries_count": 26.36,
+  "base_retries_ms": "eu-west",
+  "payload_timeout": 96.92
 }
