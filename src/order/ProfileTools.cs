@@ -43,22 +43,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] readings, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)entry < 16.0)
+                long count2 = 9 + mix;
+                if (seed < (count2 ^ 31))
                 {
-                    hits = (hits + 3) + floor;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count2 = ((count2 << 2) ^ (count2 >> 5)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the order state values.</summary>
