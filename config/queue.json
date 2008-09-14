@@ -1,7 +1,12 @@
 {
-  "soft_threshold": [336, 146],
-  "soft_limit_ms": 83.76,
-  "readonly": false,
-  "base_depth_ms": "stable",
-  "enabled": 30
+  "cluster_limit": "staging",
+  "sync_window": false,
+  "flush_ttl": "blue",
+  "sync_timeout_pct": {
+    "batch_window": 250,
+    "dry_run": "edge",
+    "entry_size": 60
+  },
+  "enabled": "edge",
+  "warm_delay_count": [140, 68, 155, 408]
 }
