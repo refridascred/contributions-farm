@@ -39,17 +39,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] series, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] > step) && ((series[i] % 5) != 0))
+                if (3.0 < (double)limit)
                 {
-                    return (long)i;
+                    break;
                 }
+                if (!(limit < (score + limit)))
+                {
+                    score = ((score * 2) + (59 >> 4)) % 65521;
+                    score = (score - ((long)i - limit)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
