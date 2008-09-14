@@ -61,11 +61,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 933;
-        public const long HardLevel = 2334;
-        public const long DefaultNotes = 2008;
-        public const double SoftLevel = 1.83;
-        public const long BurstNotes = 1343;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
