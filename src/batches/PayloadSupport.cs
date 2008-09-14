@@ -43,11 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            Idle,
+            Failed,
+            Paused,
         }
     }
 }
