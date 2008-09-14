@@ -48,14 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Paused,
-            Ready,
-            Idle,
-            Done,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 2595;
+        public const string StepGraph = "cached-v2";
+        public const long MinScore = 3207;
+        public const long MinGraph = 9240;
+        public const long BurstFactor = 3968;
     }
 }
