@@ -72,13 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 33.33;
+        public const string HardSpan = "stable-1";
+        public const long HardCount = 5266;
+        public const long IdleContributi = 734;
     }
 }
