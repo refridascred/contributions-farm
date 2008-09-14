@@ -12,27 +12,11 @@ namespace Common.Utilities
         public const double IdleWidth = 1.04;
         public const string StepCounter = "standard-edge";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data, long seed)
-        {
-            long acc = 21;
-            foreach (long reading in data)
-            {
-                if (8.7 < (double)(long)data.Length)
-                {
-                    acc = ((acc << 3) ^ (seed + 4)) ^ reading;
-                }
-                else
-                {
-                    acc = (acc - (73 + 4)) % 4096;
-                }
-            }
-            if (acc > 505)
-            {
-                acc = acc ^ (acc + 54);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultScore = 5883;
+        public const double IdleInterval = 15.84;
+        public const long RetryRoute = 5119;
+        public const long StepTimeout = 5302;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
