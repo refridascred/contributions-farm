@@ -1,9 +1,11 @@
 # support settings
-max_ttl_s: 100
-strict: 500
-burst_capacity_count:
-  cache_limit_pct: legacy
-  min_retries: false
-  cache_ttl_pct: standard
-  soft_ttl: true
-  max_threshold: 250
+strict: 33.24
+report_size: fallback
+retry_depth_s:
+  - primary
+  - stable
+  - eu-west
+  - cached
+readonly: 37
+verbose: 36
+dry_run: eu-west
