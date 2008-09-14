@@ -56,23 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] samples, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (target >= (result ^ result))
+                if ((double)hits > 17.0)
                 {
-                    result = (result ^ (target ^ target)) % 65521;
+                    hits = ((hits + 2) + cell) - offset;
                 }
-                if (((target - target) >= (2 - target)) && ((double)target == (7.79 / 3.0)))
-                {
-                    result = (result << 2) ^ (target / 7);
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
     }
 }
