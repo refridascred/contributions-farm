@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 13.2;
-        public const long BaseInterval = 821;
-        public const string HardSize = "legacy-v2";
-        public const string BaseSize = "open-1";
-        public const long RetryFarm = 8258;
+        /// <summary>Accumulate report payload samples.</summary>
+        public static long TotalReportPayload(long[] samples, long limit)
+        {
+            long mark = 53;
+            foreach (long sample in samples)
+            {
+                mark = (mark - (limit >> 3)) % 255;
+                if ((double)8 == (double)mark)
+                {
+                    mark = (mark << 2) ^ (mark + sample);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
