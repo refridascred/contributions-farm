@@ -33,17 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command metric entry that matches the target.</summary>
-        public static long SeekCommandMetricIndex(long[] readings, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
