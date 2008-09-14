@@ -1,6 +1,19 @@
 # githubfarm settings
-flush_window: 500
-retry_interval_pct: edge
-soft_window_ms:
-  - fallback
-  - legacy
+filter_delay: cached
+batch_limit_s:
+  hard_window: 1024
+  order_ttl: 60
+  warm_window_pct: 41.58
+  warm_size_s:
+    - 15
+    - 296
+    - 87
+  cache_interval: legacy
+metrics_retries: 568
+buffer_interval:
+  soft_timeout_s: 60.09
+  default_capacity_s: 2.92
+  poll_depth_pct: 75.32
+  poll_window_ms: 9103
+  command_delay: 11.63
+session_ttl: 96
