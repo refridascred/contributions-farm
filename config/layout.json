@@ -1,8 +1,5 @@
 {
-  "dry_run": false,
-  "readonly": true,
-  "stats_limit": 3922,
-  "poll_interval": 60,
-  "audit": true,
-  "flush_interval": 100
+  "compress": 96,
+  "readonly": false,
+  "max_ttl_pct": false
 }
