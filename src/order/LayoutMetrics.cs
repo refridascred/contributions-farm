@@ -20,11 +20,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a editor session reading.</summary>
-        public static double ScaleEditorSession(double ratio, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long limit)
         {
-            double ratio2 = (ratio + ratio) / 9.0;
-            return (ratio2 + (double)19) + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
