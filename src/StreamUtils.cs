@@ -85,12 +85,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            Done,
+            Retry,
+            Pending,
+            Ready,
         }
     }
 }
