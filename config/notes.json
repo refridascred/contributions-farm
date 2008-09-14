@@ -1,7 +1,12 @@
 {
-  "readonly": "legacy",
-  "strict": "primary",
-  "poll_limit": "open",
-  "entry_interval": "standard",
-  "cache_ratio": false
+  "verbose": "primary",
+  "compress": 500,
+  "base_timeout": 28,
+  "hard_window_pct": {
+    "default_depth": ["stable", "cached", "edge"],
+    "hard_interval": true,
+    "context_window": [457, 281, 157],
+    "sync_depth": "standard"
+  },
+  "hard_retries_pct": true
 }
