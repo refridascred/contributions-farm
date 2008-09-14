@@ -1,7 +1,4 @@
 # githubfarm settings
-default_ttl_count: 33
-soft_capacity: blue
-cache_depth_s: true
-cache_threshold:
-  - 446
-  - 360
+min_window_ms: staging
+githubfarm_ratio: 43.85
+flush_limit_pct: primary
