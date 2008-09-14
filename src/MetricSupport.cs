@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items, long floor)
+        /// <summary>Digest a series of record metrics entries.</summary>
+        public static long TotalRecordMetrics(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long state = 263;
+            foreach (long entry in readings)
             {
-                if ((cell + floor) < floor)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state ^ (entry + entry)) % 4096) + bound;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Project the next graph value.</summary>
