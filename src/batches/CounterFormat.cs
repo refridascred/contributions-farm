@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] levels, long step)
         {
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
