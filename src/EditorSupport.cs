@@ -57,15 +57,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values, long target)
-        {
-            long mix = 86;
-            foreach (long sample in values)
-            {
-                mix = ((mix ^ (sample & 127)) % 65521) - target;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSize = 1267;
+        public const double MinDepth = 16.76;
+        public const string RetryInterval = "strict";
     }
 }
