@@ -34,16 +34,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor + ((long)i << 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
