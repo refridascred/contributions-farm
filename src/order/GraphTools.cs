@@ -75,11 +75,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxBudget = 1.89;
-        public const long CacheCounter = 8198;
-        public const long MinWidth = 3297;
-        public const long MinCounter = 2906;
-        public const long DefaultBudget = 376;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 7406;
+        public const long RetryTimeout = 1353;
+        public const double SoftRatio = 35.3;
     }
 }
