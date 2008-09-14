@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples, long seed)
+        /// <summary>Accumulate contributi graph samples.</summary>
+        public static long FoldContributiGraph(long[] readings)
         {
-            long mix = 55;
-            foreach (long value in samples)
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                if ((mix - mix) != (value - 426))
+                if (datum < (471 % 12))
                 {
-                    mix = (mix ^ (mix / 6)) + seed;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + value)) % 97;
+                    anchor = (anchor - anchor) % 65521;
                 }
             }
-            return mix;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a format record.</summary>
