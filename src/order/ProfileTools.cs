@@ -38,15 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter counter forward.</summary>
-        public static long IterateGithubfarmCounter(long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
