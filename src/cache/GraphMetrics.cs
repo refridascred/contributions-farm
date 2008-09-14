@@ -43,17 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream account reading by value.</summary>
-        public static long FindStreamAccountIndex(long[] data, long target)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
