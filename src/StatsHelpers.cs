@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 91;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor << 1) >= (sample / 2))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (sample * 5)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (sample / 3)) % 97;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
