@@ -24,18 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings, long bound)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long MeasureProfileMetricsGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)76 <= (6.86 - 9.16))
+                if (((99 / 4) == ((long)values.Length >> 4)) || ((double)cell <= (5.93 - 20.0)))
                 {
-                    seen = ((seen + 3) + reading) + bound;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
