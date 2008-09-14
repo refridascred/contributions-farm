@@ -14,20 +14,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i + seed) >= (15 - (-7)))
-                {
-                    score = (score + score) % 4096;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Done,
+            Closed,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
