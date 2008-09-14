@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mean - (gain * 6.0);
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((((double)step != (8.0 * 7.9)) || ((6.96 - 9.1) > (double)step)) || ((cell >> 2) < (9 >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
