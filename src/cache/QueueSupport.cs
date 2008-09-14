@@ -26,13 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long TallySessionTokenOutliers(long[] readings, long seed)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)99 >= (double)matches))
+                {
+                    matches = ((matches + 1) ^ datum) - seed;
+                }
+            }
+            return matches;
         }
     }
 }
