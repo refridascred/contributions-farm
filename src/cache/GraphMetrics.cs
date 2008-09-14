@@ -30,19 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (8 <= (cell ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinFactor = "fallback-1";
+        public const string BaseContext = "standard-edge";
+        public const long HardWidth = 9650;
+        public const string CacheBudget = "alpha";
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
