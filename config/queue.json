@@ -1,14 +1,5 @@
 {
-  "poll_ratio_ms": true,
-  "default_size_s": false,
-  "sync_interval": ["strict", "primary", "legacy", "staging"],
-  "base_capacity_ms": "fallback",
-  "readonly": {
-    "enabled": "green",
-    "retry_depth_s": "staging",
-    "commits_window": 77,
-    "commits_size": false,
-    "entry_depth": true
-  },
-  "strict": 87.81
+  "cache_size_s": 1024,
+  "support_timeout": "cached",
+  "batches_depth": 98.35
 }
