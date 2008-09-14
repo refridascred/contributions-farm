@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const double WindowOrder = 96.23;
         public const long StepOrder = 5832;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] data, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 5;
+            foreach (long cell in samples)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                if ((5.73 * 5.08) <= (double)cell)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (346 >> 5);
                 }
             }
-            return -1;
+            if (total < (-5))
+            {
+                total = (total - (total ^ total)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
