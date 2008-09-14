@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate cluster format samples.</summary>
-        public static long CombineClusterFormat(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long result = 947;
-            foreach (long cell in readings)
-            {
-                result = ((result << 2) ^ (cell ^ result)) % 255;
-            }
-            if (result > 48)
-            {
-                result = (result << 2) ^ (result - result);
-            }
-            return result % 65521;
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
