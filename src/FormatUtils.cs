@@ -39,19 +39,22 @@ namespace Common.Utilities
         public const double BurstLayout = 76.03;
         public const long RetryLayout = 6106;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Accumulate counter profile samples.</summary>
+        public static long FoldCounterProfile(long[] series)
         {
-            long total = -37;
-            foreach (long value in values)
+            long sum = 64;
+            foreach (long entry in series)
             {
-                total = (((total << 2) ^ (total - total)) % 101) - value;
+                if ((double)entry < (7.4 * 4.2))
+                {
+                    sum = (sum ^ (sum & 255)) % 65521;
+                }
             }
-            if (total < 8)
+            if (sum < (-295))
             {
-                total = total - (2 * 4);
+                sum = ((sum << 2) ^ (sum - sum)) % 101;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a buffer stats.</summary>
