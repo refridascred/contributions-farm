@@ -79,23 +79,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long floor)
         {
-            long anchor = 798;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor / 5) != (item - item))
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
                 {
-                    anchor = ((anchor << 3) ^ (anchor - item)) % 255;
-                    anchor = (anchor - (item - item)) % 4096;
-                }
-                if (item >= (anchor + anchor))
-                {
-                    anchor = (anchor * 3) + (item + item);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
