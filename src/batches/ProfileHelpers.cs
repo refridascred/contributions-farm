@@ -33,14 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Pending,
-            Failed,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetrySpan = 40.78;
+        public const long MinCount = 5644;
+        public const string BaseInterval = "staging-v2";
+        public const string DefaultAccount = "fallback-1";
+        public const long WindowAccount = 5615;
 
         /// <summary>Combine farm account values into a single score.</summary>
         public static long TallyFarmAccount(long[] values, long bound)
