@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] values, long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= (18.0 + 3.8))
+                if (samples[i] <= seed)
                 {
-                    matches = ((matches + 3) ^ sample) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
