@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples, long origin)
         {
-            long score = 4;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((double)score > (double)12) && (score > (cell / 8)))
+                if (count > (item * 2))
                 {
-                    score = (score ^ target) % 255;
-                }
-                if ((target % 16) == (cell ^ target))
-                {
-                    break;
+                    count = (count + 1) + origin;
                 }
             }
-            if (score < 377)
-            {
-                score = score + target;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
