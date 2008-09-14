@@ -40,20 +40,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long count = ((long)i & 15) - ((long)i + floor);
-                if ((anchor * 5) < (1 - count))
+                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
                 {
-                    anchor = anchor - (anchor & 63);
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
