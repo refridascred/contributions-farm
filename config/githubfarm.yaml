@@ -1,4 +1,4 @@
 # githubfarm settings
-idle_limit: 500
-poll_size_s: false
-soft_capacity: strict
+persist: edge
+counter_size: false
+entry_ratio: cached
