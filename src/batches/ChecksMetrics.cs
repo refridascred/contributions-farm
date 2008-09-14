@@ -36,31 +36,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double span)
         {
-            if ((seed + limit) != (limit + seed))
+            double load = (double)(-537);
+            if (load <= span)
             {
-                return 1;
+                load = (load - (double)5) - rate;
             }
             else
             {
-                if (((limit << 2) == (limit - limit)) || ((seed >> 3) < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (77 > (seed - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                load = load + load;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + 9.5) + (double)(long)i;
+            }
+            return load + 0.9;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
