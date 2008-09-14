@@ -14,13 +14,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark - 97) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two channel measurements.</summary>
