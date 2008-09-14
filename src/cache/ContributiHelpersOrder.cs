@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (103 <= (5 ^ tally))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 88.1;
+        public const long SoftCommits = 1304;
+        public const double SoftBudget = 60.51;
+        public const long BurstLevel = 3970;
+        public const long MinDepth = 7376;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long FindSupportIndex(long[] values, long origin)
