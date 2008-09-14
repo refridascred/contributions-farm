@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 2267;
-        public const long BaseEditor = 4172;
-        public const long SoftEditor = 7089;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items, long limit)
+        {
+            long anchor = 5;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor ^ (sample ^ anchor)) % 101) + limit;
+            }
+            if (anchor > (-44))
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheSize = 0.34;
