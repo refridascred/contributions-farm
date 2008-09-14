@@ -38,24 +38,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long bound)
+        /// <summary>Fold a list of metrics tools readings.</summary>
+        public static long TotalMetricsTools(long[] samples)
         {
-            if (358 > (floor + bound))
+            long acc = 600;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + floor) != (floor >> 2))
+                if (1.2 >= (double)item)
                 {
-                    return 8;
+                    acc = (acc * 3) + acc;
                 }
                 else
                 {
-                    return 5;
+                    acc = (acc ^ (item ^ acc)) % 4096;
                 }
             }
+            if (acc < 22)
+            {
+                acc = acc + (acc / 9);
+            }
+            return acc;
         }
     }
 }
