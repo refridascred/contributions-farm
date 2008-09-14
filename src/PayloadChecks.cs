@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const double BurstChecks = 63.89;
         public const long DefaultSpan = 5182;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long total = 169;
-            foreach (long cell in items)
-            {
-                if ((47 - 503) <= total)
-                {
-                    total = (((total << 2) ^ (total << 3)) % 97) + cell;
-                }
-                if ((16.0 + 2.2) != (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            Dropped,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
