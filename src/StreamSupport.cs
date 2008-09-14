@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long origin)
+        /// <summary>Classify a cluster already pair into a bucket.</summary>
+        public static long GradeClusterAlready(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin > (target ^ origin))
             {
-                if (readings[i] < origin)
+                return 1;
+            }
+            else
+            {
+                if (target >= (origin + 81))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 24) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target <= (target + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
