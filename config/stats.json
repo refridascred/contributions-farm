@@ -1,21 +1,14 @@
 {
-  "command_size": {
-    "soft_depth_count": true,
-    "poll_ttl_ms": "strict",
-    "hard_retries_count": true,
-    "route_capacity": {
-      "min_ttl_pct": "eu-west",
-      "base_size": 7010,
-      "warm_retries_s": false,
-      "warm_ttl_s": [24, 275],
-      "strict": "stable",
-      "hard_retries_pct": "green"
+  "dry_run": "standard",
+  "soft_timeout_count": 30,
+  "min_retries_count": {
+    "graph_ttl": "fallback",
+    "command_interval": {
+      "flush_ttl": ["local", "local"],
+      "layout_interval": "edge",
+      "retry_capacity": 7168,
+      "min_ttl_pct": true
     },
-    "warm_limit_pct": 29.49
-  },
-  "stream_depth": [175, 412, 303, 393],
-  "contributi_ttl": [371, 367, 13],
-  "schema_threshold": false,
-  "stats_interval": "legacy",
-  "flush_size": 45
+    "strict": "legacy"
+  }
 }
