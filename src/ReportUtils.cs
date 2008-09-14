@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data, long step)
-        {
-            long carry = 0;
-            foreach (long cell in data)
-            {
-                carry = carry - cell;
-                if (!((carry % 24) == (cell << 2)))
-                {
-                    carry = ((carry * 4) + (cell & 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ step;
-                }
-                if ((step >> 2) <= step)
-                {
-                    break;
-                }
-            }
-            if (carry < 794)
-            {
-                carry = ((carry * 5) + step) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 27;
+        public const long LimitSpan = 4869;
+        public const long MinFormat = 1699;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseTimeout = 6623;
