@@ -19,16 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = 9;
+            foreach (long reading in samples)
             {
-                score = score - (737 & 1);
-                score = ((score * 4) + (long)i) % 65521;
+                if (seed < (mix - seed))
+                {
+                    mix = ((mix << 2) ^ (mix ^ reading)) % 4096;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
