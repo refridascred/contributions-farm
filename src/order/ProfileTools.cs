@@ -43,11 +43,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 100;
-        public const double BaseSize = 44.73;
-        public const long StepSpan = 3139;
-        public const string RetryTimeout = "standard-1";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry < 16.0)
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
