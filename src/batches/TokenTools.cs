@@ -10,23 +10,14 @@ namespace Common.Utilities
         public const string IdleRoute = "stable";
         public const long LimitScore = 7356;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = -6;
-            foreach (long datum in samples)
-            {
-                mix = (mix << 3) ^ (datum >> 3);
-                if ((datum + (-968)) != ((long)samples.Length >> 2))
-                {
-                    break;
-                }
-            }
-            if (mix > 628)
-            {
-                mix = ((mix << 2) ^ (mix >> 2)) % 65521;
-            }
-            return mix;
+            Dropped,
+            Done,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Adjust a notes reading.</summary>
