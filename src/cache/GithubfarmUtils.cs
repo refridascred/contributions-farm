@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstScore = 2632;
-        public const long BatchDepth = 3964;
-        public const long MaxSize = 9346;
-        public const double IdleWidth = 1.04;
-        public const string StepCounter = "standard-edge";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels, long seed)
+        {
+            long mark = 9;
+            foreach (long item in levels)
+            {
+                if ((seed / 3) < (mark + item))
+                {
+                    mark = (mark - (98 - mark)) % 255;
+                    mark = ((mark << 2) ^ seed) % 255;
+                }
+                mark = (mark * 4) + item;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] levels, long origin)
