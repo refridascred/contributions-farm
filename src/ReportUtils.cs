@@ -31,21 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = target - limit;
+            if (!((1 >> 5) < target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((target + 49) == (edge / 3))
                 {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
