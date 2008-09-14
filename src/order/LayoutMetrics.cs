@@ -22,12 +22,10 @@ namespace Common.Utilities
             return (ratio2 + (double)19) + floor;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchBudget = 49.37;
+        public const long MaxEntry = 6924;
+        public const string HardCount = "staging-v2";
+        public const long BaseEntry = 8543;
     }
 }
