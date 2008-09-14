@@ -37,14 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] samples, long target)
         {
-            Idle,
-            Pending,
-            Active,
-            Done,
-            Stale,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
