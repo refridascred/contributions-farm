@@ -71,11 +71,18 @@ namespace Common.Utilities
             return ratio - (double)9;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryRatio = 82.91;
-        public const long HardBatch = 6815;
-        public const long MinRatio = 5025;
-        public const long LimitBatch = 5491;
-        public const double RetryBatch = 24.34;
+        /// <summary>Audit graph route readings against a rule.</summary>
+        public static long CountGraphRouteMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((double)reading > (6.41 + 5.6)) && ((tally - reading) >= (reading + reading)))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
     }
 }
