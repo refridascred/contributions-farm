@@ -1,17 +1,8 @@
 # githubfarm settings
-default_timeout: open
-strict: 78.72
-audit: 60.97
-flush_capacity_pct: false
-burst_timeout_s:
-  - strict
-  - local
-  - cached
-  - edge
-burst_window_s:
-  support_delay: 81.36
-  min_depth_ms: edge
-  soft_ttl_s:
-    - stable
-    - standard
-    - cached
+sync_size_pct: 26
+soft_size:
+  - 320
+  - 467
+  - 413
+  - 463
+default_depth_count: false
