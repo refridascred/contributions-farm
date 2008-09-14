@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command channel samples are out of range.</summary>
-        public static long AuditCommandChannelOutliers(long[] samples, long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((99 <= (count >> 3)) || !((1.0 * 4.2) < (double)sample))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
