@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const double LimitMetrics = 40.0;
         public const string CacheMetrics = "local";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryWidth = 76.04;
+        public const long SoftToken = 4133;
+        public const long HardRatio = 474;
+        public const string BurstToken = "local-1";
+        public const double BurstLevel = 81.31;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstInterval = 7529;
