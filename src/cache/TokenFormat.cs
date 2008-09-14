@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] levels, long seed)
+        /// <summary>Locate a buffer stats reading by value.</summary>
+        public static long LocateBufferStatsIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= seed)
+                if ((data[i] >= step) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
