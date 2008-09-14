@@ -38,20 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseCount = 90.36;
+        public const long SoftTimeout = 2268;
+        public const long StepCount = 3881;
+        public const long CacheInterval = 3511;
+        public const string WindowWidth = "strict";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamRange(long[] values, long origin)
