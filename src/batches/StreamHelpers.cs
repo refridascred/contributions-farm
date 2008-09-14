@@ -33,24 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            if ((seed >> 2) < (3 * 4))
+            long mix = 41;
+            foreach (long value in items)
             {
-                return 8;
+                mix = (((mix << 2) ^ 694) % 65521) ^ value;
             }
-            else
-            {
-                if (seed >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a metric record.</summary>
