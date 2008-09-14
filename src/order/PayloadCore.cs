@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of batch layout readings.</summary>
-        public static long OverlapBatchLayoutCount(long[] series)
+        /// <summary>Project the next token channel value.</summary>
+        public static double AdjustTokenChannel(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (rate + bias2))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + bias2;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 + (5.77 + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias / 5.0)) - (double)(long)i;
+            }
+            return bias2 - (bias / 5.0);
         }
 
         /// <summary>Describe the channel phase values.</summary>
