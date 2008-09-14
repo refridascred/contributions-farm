@@ -59,16 +59,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long result = 7;
+            foreach (long reading in readings)
             {
-                mark = (mark ^ (mark & 15)) % 101;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((result ^ floor) < 967)
+                {
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 5) + reading) % 97;
+                }
+                result = (result << 2) ^ result;
+                if ((reading + result) == (reading + 115))
+                {
+                    break;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
