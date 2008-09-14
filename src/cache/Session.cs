@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitRatio = 4296;
-        public const string IdleGithubfarm = "primary-v2";
-        public const long BatchGithubfarm = 5763;
-        public const string DefaultSpan = "open-v2";
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenGaps(long[] series)
