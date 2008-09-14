@@ -16,12 +16,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long limit, long step)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            if (!((step + step) >= (step - step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step / 8) <= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + limit) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
