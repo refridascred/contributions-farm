@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long HardTimeout = 4303;
         public const long CacheLevel = 2499;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 5) + ((-59) - bound)) % 97;
-                mark = mark ^ ((long)i % 16);
-                mark = ((mark * 4) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Accumulate command samples.</summary>
