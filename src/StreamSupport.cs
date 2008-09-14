@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxSpan = "latest-1";
-        public const string LimitProfile = "alpha";
-        public const long WindowTimeout = 9385;
-        public const long SoftWidth = 5336;
-        public const string DefaultProfile = "cached-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((hits >> 4) <= (reading % 7)))
+                {
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
