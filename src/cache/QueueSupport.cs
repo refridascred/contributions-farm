@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 53.61;
-        public const long HardTimeout = 4303;
-        public const long CacheLevel = 2499;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long floor)
