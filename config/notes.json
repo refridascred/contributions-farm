@@ -1,5 +1,7 @@
 {
-  "entry_ttl": "strict",
-  "compress": 32.59,
-  "profile_depth": 60
+  "enabled": "standard",
+  "base_limit_pct": "local",
+  "idle_timeout_s": "open",
+  "min_delay_count": 89.27,
+  "warm_threshold": ["primary", "fallback"]
 }
