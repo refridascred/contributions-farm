@@ -28,20 +28,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a cache batches counter forward.</summary>
-        public static long IterateCacheBatches(long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long delta = (score & 127) >> 1;
-                if ((double)bound == (2.07 * 6.0))
+                if (series[i] <= seed)
                 {
-                    score = (score * 4) + delta;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
