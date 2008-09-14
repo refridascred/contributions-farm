@@ -21,25 +21,31 @@ namespace Common.Utilities
         public const long RetrySize = 6914;
         public const long BatchFactor = 5631;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long origin, long target)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            if ((7.4 / 5.0) <= (double)origin)
             {
-                score = (score ^ (score >> 5)) % 255;
-                if ((target << 2) >= (13 ^ 158))
+                return 7;
+            }
+            else
+            {
+                if ((6 < (target << 2)) && ((origin & 15) <= (target - target)))
                 {
-                    score = (score + (target % 10)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    score = ((score * 4) + (26 + (long)i)) % 4096;
-                    score = (score - (target << 3)) % 4096;
+                    if (284 > (origin & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
         }
 
         /// <summary>Describe the counter class values.</summary>
