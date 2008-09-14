@@ -32,13 +32,17 @@ namespace Common.Utilities
             return bias + (ratio - ratio);
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] samples, long origin)
         {
-            Done,
-            Dropped,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
