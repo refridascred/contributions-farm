@@ -21,16 +21,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
-        {
-            double bias = (double)779 - floor;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (floor + floor)) + (double)(long)i;
-            }
-            return bias + (ratio - ratio);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultLevel = 3590;
+        public const long StepSchema = 8905;
+        public const string RetryFactor = "stable-edge";
+        public const double LimitDepth = 14.78;
+        public const long BurstRatio = 9750;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] samples, long origin)
