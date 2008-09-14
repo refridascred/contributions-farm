@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Match up record graph samples.</summary>
+        public static long OverlapRecordGraphCount(long[] series)
         {
-            long mark = 7;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mark > sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark + mark) % 4096;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Combine window route values into a single score.</summary>
