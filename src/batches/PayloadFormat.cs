@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long WindowRatio = 4386;
         public const long WindowProfile = 8719;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 4;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((score ^ score) <= score) || ((score + score) > value))
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 5) + (-866)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
