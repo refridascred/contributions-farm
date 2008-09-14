@@ -33,12 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
+            Pending,
             Failed,
-            Dropped,
-            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine farm account values into a single score.</summary>
