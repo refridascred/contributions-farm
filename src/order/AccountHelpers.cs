@@ -46,19 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long step)
+        /// <summary>Blend two route payload measurements.</summary>
+        public static double AdjustRoutePayload(double scale, double floor)
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double rate = (double)(2 + 84);
+            return (rate - floor) + scale;
         }
 
         /// <summary>Iterate the schema metric series from a seed.</summary>
