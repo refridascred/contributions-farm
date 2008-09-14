@@ -1,4 +1,33 @@
 # entry settings
-base_limit_s: 6628
-soft_depth_s: 5308
-soft_depth: green
+default_threshold_s: green
+retry_retries_count:
+  - legacy
+  - cached
+idle_capacity:
+  batch_depth_pct: edge
+  notes_threshold: 86.39
+  idle_delay_ms: local
+  audit: strict
+  contributi_retries: 2361
+compress:
+  hard_retries_count:
+    - 89
+    - 476
+    - 86
+    - 337
+  audit:
+    githubfarm_window:
+      - 262
+      - 189
+    soft_ttl_ms: standard
+    verbose:
+      - blue
+      - green
+    warm_ratio_ms: open
+  dry_run:
+    - 116
+    - 364
+flush_delay_s:
+  - 126
+  - 12
+  - 134
