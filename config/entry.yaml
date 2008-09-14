@@ -1,7 +1,26 @@
 # entry settings
-schema_ttl: true
-batch_window_s: primary
-burst_interval_pct:
-  - eu-west
-  - primary
-  - latest
+default_depth: 67.79
+batch_ttl_ms:
+  token_size:
+    buffer_capacity: 250
+    sync_size_ms: 24.73
+    verbose: 3161
+    compress: 1024
+    audit: standard
+    flush_timeout: false
+  base_interval_count:
+    - strict
+    - local
+    - staging
+  retry_timeout:
+    contributi_threshold:
+      - green
+      - edge
+      - cached
+    soft_delay: 30
+    payload_timeout: 60
+  contributi_interval: 250
+dry_run: open
+cache_timeout: open
+soft_delay: true
+channel_interval: 872
