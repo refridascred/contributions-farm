@@ -54,12 +54,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftTimeout = 13.68;
+        public const long DefaultDepth = 1810;
+        public const long SoftAlready = 5665;
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
         public static long CountFormatToolsGaps(long[] levels)
