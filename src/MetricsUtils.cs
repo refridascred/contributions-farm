@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseTimeout = 15.91;
+        public const string HardLevel = "staging";
+        public const long StepLayout = 997;
+        public const double MaxRatio = 28.25;
+        public const long DefaultLayout = 6567;
 
         /// <summary>Accumulate account samples.</summary>
         public static long FoldAccount(long[] samples)
