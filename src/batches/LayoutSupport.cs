@@ -57,17 +57,9 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 2641;
+        public const string LimitGithubfarm = "strict-1";
+        public const long HardGithubfarm = 5246;
     }
 }
