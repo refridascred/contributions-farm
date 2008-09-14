@@ -58,12 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Validate order format readings against a bound.</summary>
+        public static bool CheckOrderFormatBounds(long[] series, long floor)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
