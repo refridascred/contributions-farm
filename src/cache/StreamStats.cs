@@ -13,21 +13,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up record graph samples.</summary>
-        public static long OverlapRecordGraphCount(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = step + origin;
+            if ((span >> 5) != (span >> 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (double)span)
                 {
-                    if ((series[i] ^ series[j]) != 13)
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - step) >= origin)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((span - span) < 74))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine window route values into a single score.</summary>
