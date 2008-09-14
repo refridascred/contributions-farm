@@ -87,9 +87,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 637;
-        public const long MaxOrder = 5930;
-        public const double BurstOrder = 95.72;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] items)
+        {
+            long anchor = 13;
+            foreach (long item in items)
+            {
+                anchor = anchor ^ (item / 8);
+                anchor = anchor ^ item;
+                anchor = (anchor - (anchor / 9)) % 255;
+            }
+            return anchor % 97;
+        }
     }
 }
