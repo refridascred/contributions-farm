@@ -14,17 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a batch notes sample.</summary>
-        public static long FindBatchNotesIndex(long[] series, long offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the checks status values.</summary>
