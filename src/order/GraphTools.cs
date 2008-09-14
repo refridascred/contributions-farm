@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 35;
+            foreach (long reading in items)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) != 0))
+                if (!(carry > (reading / 3)))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (carry >> 3)) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the queue phase values.</summary>
