@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((target + acc) != (acc - target))
+                {
+                    acc = acc - (acc >> 5);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already info.</summary>
