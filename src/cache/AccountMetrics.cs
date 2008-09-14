@@ -60,22 +60,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = 7;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ score) <= (score >> 3))
-                {
-                    score = (score ^ (sample - score)) % 4096;
-                }
-            }
-            if (score < 173)
-            {
-                score = (score - score) % 255;
-            }
-            return score % 65521;
+            Pending,
+            Dropped,
+            New,
         }
     }
 }
