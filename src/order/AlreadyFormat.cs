@@ -21,20 +21,13 @@ namespace Common.Utilities
         public const double BatchLevel = 30.9;
         public const string BaseContributi = "fallback-v2";
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)sum == (1.0 / 3.0))
-                {
-                    sum = (sum - (16 % 16)) % 97;
-                    sum = ((sum << 3) ^ (offset - sum)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Synced,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Accumulate already samples.</summary>
