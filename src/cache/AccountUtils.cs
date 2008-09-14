@@ -33,17 +33,13 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Look up the position of a stream format sample.</summary>
-        public static long LocateStreamFormatIndex(long[] levels, long floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
