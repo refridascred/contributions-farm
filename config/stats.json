@@ -1,5 +1,7 @@
 {
-  "verbose": true,
-  "idle_interval_pct": [461, 312, 128],
-  "retry_capacity": "green"
+  "warm_timeout": "primary",
+  "soft_threshold": "staging",
+  "cache_depth_pct": 1024,
+  "min_threshold": true,
+  "schema_timeout": 29.7
 }
