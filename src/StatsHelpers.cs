@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] items, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double scale = (offset + offset) * 1.8;
+            if (scale >= offset)
             {
-                if ((offset + count) > reading)
-                {
-                    count = count + 2;
-                }
+                scale = (scale + offset) - ratio;
             }
-            return count;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + offset;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
