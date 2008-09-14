@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long offset)
+        /// <summary>Measure how many filter schema samples are out of range.</summary>
+        public static long AuditFilterSchemaOutliers(long[] data)
         {
-            if (offset >= (limit / 2))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + offset) == (offset + offset))
+                if ((seen << 3) != (64 + value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset < 20.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the record level values.</summary>
