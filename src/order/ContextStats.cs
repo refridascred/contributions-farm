@@ -29,11 +29,15 @@ namespace Common.Utilities
         public const long MinDepth = 7492;
         public const long BaseCluster = 2629;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double span)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            double rate = bias * 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) + span;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the record kind values.</summary>
