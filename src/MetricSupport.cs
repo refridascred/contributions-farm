@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double drift = floor;
-            if (drift >= (5.6 / 6.0))
-            {
-                drift = drift - (rate / 8.0);
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift + (drift / 3.0);
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
