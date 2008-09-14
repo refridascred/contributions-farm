@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long target)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample <= offset)
+                if ((target & 15) <= (state + (long)i))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    state = state + (946 + target);
+                }
+                state = ((state << 3) ^ 172) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
