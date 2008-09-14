@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the filter format entries that pass the check.</summary>
-        public static long AuditFilterFormatHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) < (297 + 561))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheScore = 45.79;
+        public const double BurstCache = 79.58;
+        public const long BatchDepth = 7830;
+        public const long SoftInterval = 7263;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long RollToken(long offset)
