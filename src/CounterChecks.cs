@@ -44,21 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of layout farm readings.</summary>
-        public static long CompareLayoutFarmCount(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every batch session entry stays within the limit.</summary>
