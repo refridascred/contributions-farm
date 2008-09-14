@@ -30,39 +30,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a cluster record pair into a bucket.</summary>
-        public static long GradeClusterRecord(long target, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] items, long seed)
         {
-            long cur = target - floor;
-            if (((target + target) <= cur) || ((double)target != (8.4 + 0.1)))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur * 4) < (target + 0))
+                if (sample >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((18.0 >= (double)cur) || ((13 ^ 1) == (target - floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor & 1) > target) && (cur > (cur - cur)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a payload counter counter forward.</summary>
