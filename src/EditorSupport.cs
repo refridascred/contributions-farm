@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleSize = 76.18;
-        public const double LimitRecord = 34.32;
-        public const double RetryRecord = 39.48;
-        public const string MaxRecord = "alpha";
+        /// <summary>Iterate the cache graph series from a seed.</summary>
+        public static long RollCacheGraph(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark - mark) % 101;
+                mark = ((mark << 2) ^ (origin - origin)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long ScoreCommits(long[] readings)
