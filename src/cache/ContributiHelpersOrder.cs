@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSpan = 8520;
-        public const long StepChannel = 1909;
-        public const double RetryChannel = 92.49;
-        public const double BurstChannel = 12.66;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) == (21 % 3))
+                {
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] readings, long bound)
