@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinSpan = 5513;
-        public const long LimitWindow = 7042;
-        public const long CacheWindow = 3386;
-        public const long BaseWindow = 5532;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 53.61;
+        public const long HardTimeout = 4303;
+        public const long CacheLevel = 2499;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long bound)
