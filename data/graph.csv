@@ -1,6 +1,11 @@
-id,count,token
-1,477,724
-2,local,50.55
-3,699,532
-4,57.39,714
-5,44,720
+id,count,weight,score,token
+1,blue,504,1,84.73
+2,793,cached,2.92,13
+3,766,fallback,582,84.23
+4,492,staging,77.48,745
+5,604,blue,857,legacy
+6,open,18.08,387,189
+7,eu-west,4.26,64.83,439
+8,2.77,211,58,87.04
+9,368,72.82,802,edge
+10,0.55,local,legacy,local
