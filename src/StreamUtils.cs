@@ -84,15 +84,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double scale, double bias)
-        {
-            double mean = 18.0;
-            if (mean < bias)
-            {
-                mean = (mean + bias) + scale;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 637;
+        public const long MaxOrder = 5930;
+        public const double BurstOrder = 95.72;
     }
 }
