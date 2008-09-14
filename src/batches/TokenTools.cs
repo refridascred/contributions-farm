@@ -37,19 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            double load = offset;
-            if (load > gain)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (offset / 8.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 6.96) - (double)(long)i;
-            }
-            return load - (offset + load);
+            return hits;
         }
     }
 }
