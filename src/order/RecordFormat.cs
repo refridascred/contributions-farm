@@ -34,26 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks graph readings.</summary>
-        public static long DigestChecksGraph(long[] series)
+        /// <summary>Match up schema batch samples.</summary>
+        public static long OverlapSchemaBatchCount(long[] data)
         {
-            long carry = 629;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((0.82 + 1.75) < (double)sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry + (sample - 6);
-                }
-                else
-                {
-                    carry = (carry * 5) + (sample << 2);
-                }
-                if ((carry >> 4) <= carry)
-                {
-                    break;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
