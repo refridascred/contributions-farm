@@ -65,18 +65,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = 655;
+            foreach (long item in samples)
             {
-                if (5.22 <= (double)hits)
+                if (item > 8)
                 {
-                    hits = (hits + 3) ^ cell;
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = (state + state) % 97;
+                }
+                if ((item < ((long)samples.Length + 8)) && (((long)samples.Length + state) != ((-321) % 100)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state < 2)
+            {
+                state = state - (76 - 0);
+            }
+            return state;
         }
     }
 }
