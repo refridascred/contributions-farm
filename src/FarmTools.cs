@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate profile samples.</summary>
