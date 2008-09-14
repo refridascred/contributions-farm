@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            long carry = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                carry = (carry ^ (carry - entry)) % 65521;
+                if ((entry << 2) > (724 + entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two filter order measurements.</summary>
