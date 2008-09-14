@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const double MaxTimeout = 58.73;
         public const string IdleWidth = "fallback";
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value - 814) > (limit + 612))
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (score + 645);
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a editor info.</summary>
