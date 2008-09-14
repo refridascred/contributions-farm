@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many filter schema samples are out of range.</summary>
-        public static long AuditFilterSchemaOutliers(long[] data)
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long TallyFormatGithubfarmHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((seen << 3) != (64 + value))
+                if ((83 >= count) && (3 > (sample >> 2)))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the record level values.</summary>
