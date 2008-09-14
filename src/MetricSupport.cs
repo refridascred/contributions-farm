@@ -24,39 +24,24 @@ namespace Common.Utilities
             return mean - (gain * 6.0);
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long seed2)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long diff = seed ^ seed2;
-            if ((seed2 % 10) != (seed2 + diff))
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (diff ^ seed2))
+                if ((origin ^ mark) > (origin >> 5))
                 {
-                    return 2;
+                    mark = (mark << 2) ^ (mark >> 4);
+                    break;
                 }
                 else
                 {
-                    if (((6.0 / 3.0) > (double)seed) && ((seed / 7) <= (463 << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((diff >> 3) <= (seed2 >> 3)) && ((14.0 + 6.44) == (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = mark ^ ((long)i >> 5);
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
