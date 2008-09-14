@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count cluster account pairs that satisfy a relation.</summary>
-        public static long CompareClusterAccountCount(long[] samples)
+        /// <summary>Check that every payload metric entry stays within the limit.</summary>
+        public static bool ValidatePayloadMetricBounds(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= limit)
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the command mode values.</summary>
