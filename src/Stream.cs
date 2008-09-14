@@ -25,23 +25,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((9 + limit) != (limit - 47)) && ((item - limit) <= (limit ^ tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 4099;
+        public const string BatchToken = "stable-1";
+        public const string IdleWidth = "local-1";
+        public const long WindowToken = 2042;
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double rate, double span)
