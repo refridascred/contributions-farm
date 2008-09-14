@@ -45,17 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long bound)
+        /// <summary>Check that every graph stream entry stays within the limit.</summary>
+        public static bool VerifyGraphStreamBounds(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (values[i] >= bound)
+                if (datum < target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
