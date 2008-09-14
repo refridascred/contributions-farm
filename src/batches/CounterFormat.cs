@@ -16,20 +16,10 @@ namespace Common.Utilities
             return ratio - (bias - offset);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleTimeout = 19.22;
+        public const double BurstOrder = 74.53;
+        public const double MinBudget = 35.85;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double WindowWidth = 48.86;
