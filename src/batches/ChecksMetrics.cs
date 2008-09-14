@@ -24,12 +24,18 @@ namespace Common.Utilities
             return ratio - (ratio * 4.0);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] samples, long step)
         {
-            Draft,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((double)sample >= 2.07) || ((double)count == (0.6 * 7.29))))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
