@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate checks farm readings against a bound.</summary>
-        public static bool GuardChecksFarmRange(long[] values, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the route class values.</summary>
