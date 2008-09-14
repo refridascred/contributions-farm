@@ -1,6 +1,7 @@
 {
-  "format_depth": "cached",
-  "poll_delay": "cached",
-  "soft_interval_pct": 95,
-  "sync_timeout_s": "fallback"
+  "batch_limit_ms": "staging",
+  "hard_capacity_count": [302, 75, 410, 175],
+  "poll_capacity_count": [26, 225, 235],
+  "sync_window_ms": "primary",
+  "sync_depth": ["blue", "open"]
 }
