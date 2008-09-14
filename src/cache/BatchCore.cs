@@ -24,11 +24,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double rate2 = bias;
-            return (rate2 + (double)785) + rate;
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
