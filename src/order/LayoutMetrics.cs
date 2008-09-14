@@ -19,11 +19,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen - 6) < (entry + entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
