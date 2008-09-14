@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next contributi graph value from a seed.</summary>
-        public static long StepContributiGraph(long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] data, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 42;
+            foreach (long entry in data)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                sum = sum ^ (floor / 8);
+                sum = sum ^ floor;
+                sum = (sum ^ (entry << 2)) % 255;
             }
-            return mix;
+            if (sum > 3)
+            {
+                sum = sum ^ (sum - floor);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
