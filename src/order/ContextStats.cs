@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long BurstRecord = 7755;
         public const string RetryTimeout = "local-v2";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen ^ reading) >= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the session state values.</summary>
