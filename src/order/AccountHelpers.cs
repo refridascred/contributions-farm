@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((4.5 - 2.9) > (double)(long)readings.Length)
-                {
-                    hits = ((hits + 3) ^ item) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 1341;
+        public const long MaxProfile = 7153;
+        public const long RetryDepth = 3698;
+        public const string MinTimeout = "alpha-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BurstDepth = 19.77;
