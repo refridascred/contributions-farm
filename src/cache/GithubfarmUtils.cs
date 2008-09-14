@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate entry queue samples.</summary>
+        public static long FoldEntryQueue(long[] levels, long floor)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long result = 67;
+            foreach (long item in levels)
+            {
+                result = ((((result * 4) + (result / 8)) % 65521) - item) - floor;
+            }
+            if (result < 7)
+            {
+                result = (result - ((long)levels.Length - result)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Grade a buffer checks value against two limits.</summary>
