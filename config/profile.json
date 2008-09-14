@@ -1,23 +1,10 @@
 {
-  "idle_interval_pct": false,
-  "soft_ttl_pct": ["staging", "open", "standard"],
-  "sync_ratio": true,
-  "audit": [397, 74],
-  "support_timeout": {
-    "layout_limit": {
-      "batch_delay": 500,
-      "idle_depth": true,
-      "min_threshold": "latest"
-    },
-    "default_size": true,
-    "readonly": ["local", "stable", "open"],
-    "audit": "open",
-    "soft_ratio_count": ["blue", "open", "strict"],
-    "burst_limit_pct": {
-      "payload_depth": "fallback",
-      "sync_ratio": 8607,
-      "contributi_depth": ["green", "primary"]
-    }
+  "compress": "local",
+  "sync_capacity_ms": {
+    "audit": true,
+    "queue_ttl": [239, 210, 477],
+    "buffer_retries": "fallback"
   },
-  "idle_capacity_s": 18
+  "filter_timeout": false,
+  "warm_delay_ms": "standard"
 }
