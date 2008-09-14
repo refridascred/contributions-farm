@@ -1,7 +1,22 @@
 {
-  "default_ttl_ms": 95,
-  "cache_ratio_pct": "edge",
-  "context_delay": 34,
-  "compress": ["green", "primary"],
-  "channel_window": 7688
+  "default_capacity_pct": 49.67,
+  "counter_size": 30.02,
+  "flush_depth_ms": [330, 436],
+  "metric_size": {
+    "retry_timeout_s": "fallback",
+    "flush_window_pct": "cached",
+    "warm_delay": 66.57,
+    "flush_ttl_pct": 58,
+    "default_depth_s": {
+      "session_window": 100,
+      "hard_timeout_pct": 500,
+      "order_size": 500
+    }
+  },
+  "strict": {
+    "batch_timeout_pct": 12,
+    "retry_timeout_s": "strict",
+    "poll_threshold": 22
+  },
+  "idle_capacity_ms": false
 }
