@@ -56,19 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] samples, long target)
+        /// <summary>Blend two graph command measurements.</summary>
+        public static double BlendGraphCommand(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double ratio = floor;
+            if (ratio > (ratio / 9.0))
             {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (floor - scale);
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + scale) - (double)(long)i;
+            }
+            return ratio - (double)9;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
