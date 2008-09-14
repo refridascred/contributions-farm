@@ -33,21 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks layout pairs that satisfy a relation.</summary>
-        public static long PairChecksLayoutCount(long[] series)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry - (offset * 5)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
