@@ -54,20 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph stream entry stays within the limit.</summary>
-        public static bool VerifyGraphStreamBounds(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 9126;
+        public const long HardAccount = 8681;
+        public const long MinAccount = 8991;
+        public const double BatchAccount = 38.7;
+        public const double SoftInterval = 63.64;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
