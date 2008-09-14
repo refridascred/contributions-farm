@@ -16,14 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Draft,
-            Paused,
-            Queued,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleLevel = 7578;
+        public const double SoftFilter = 37.8;
+        public const double LimitFilter = 57.82;
+        public const long MaxFilter = 8565;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] values)
