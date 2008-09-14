@@ -49,18 +49,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks contributi readings against a rule.</summary>
-        public static long TallyChecksContributiHits(long[] data, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                if (matches <= (floor ^ value))
+                if ((entry - carry) > (carry - (long)levels.Length))
                 {
-                    matches = matches + 1;
+                    carry = (carry + (carry * 5)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 97;
                 }
             }
-            return matches;
+            if (carry < (-4))
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
