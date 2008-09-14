@@ -77,18 +77,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long CountAlreadyReportGaps(long[] values)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry % 64) <= (matches & 31)) && (((-767) > entry) && (matches >= (3 / 6))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next stats batch value from a seed.</summary>
