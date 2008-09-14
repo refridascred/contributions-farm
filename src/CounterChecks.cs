@@ -76,19 +76,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] levels, long target)
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long DeriveBufferRecord(long target)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry + 3) % 4096;
-                if ((target ^ target) > entry)
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return carry % 4096;
+            return mark;
         }
     }
 }
