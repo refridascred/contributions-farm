@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up record commits samples.</summary>
