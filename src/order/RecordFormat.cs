@@ -56,10 +56,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "stable-edge";
-        public const long WindowBuffer = 7558;
-        public const long RetryBuffer = 6001;
+        /// <summary>Accumulate payload report samples.</summary>
+        public static long FoldPayloadReport(long[] series, long step)
+        {
+            long state = 322;
+            foreach (long datum in series)
+            {
+                long matches = state + (-60);
+                state = (state - (matches << 3)) % 1000;
+                state = ((state << 2) ^ (step + datum)) % 4096;
+            }
+            if (state < 59)
+            {
+                state = (state + (64 >> 2)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 5078;
