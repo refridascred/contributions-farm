@@ -1,10 +1,12 @@
 {
-  "graph_limit": "primary",
-  "readonly": {
-    "report_size": "staging",
-    "enabled": 59,
-    "counter_limit": 84.47,
-    "max_window": ["fallback", "blue", "blue", "latest"]
-  },
-  "persist": 100
+  "default_depth_count": ["staging", "staging", "blue"],
+  "dry_run": 500,
+  "order_interval": ["open", "standard"],
+  "min_interval_ms": true,
+  "soft_capacity_pct": {
+    "schema_size": false,
+    "default_ttl": "legacy",
+    "flush_depth_ms": ["latest", "primary", "blue", "green"],
+    "readonly": 1024
+  }
 }
