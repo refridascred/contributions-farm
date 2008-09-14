@@ -14,20 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((floor - (long)i) <= (mark * 3)) && ((98 + floor) < ((long)i >> 5)))
-                {
-                    break;
-                }
-                mark = mark - (mark * 3);
-                mark = ((mark * 5) + (long)i) % 4093;
+                carry = (carry ^ (long)i) % 255;
+                carry = (carry - (bound >> 5)) % 101;
+                carry = (carry << 3) ^ (bound << 3);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Look up the position of a tools token sample.</summary>
