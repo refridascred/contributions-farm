@@ -33,11 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] values)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            long acc = 6;
+            foreach (long item in values)
+            {
+                if (((-1) >> 3) < acc)
+                {
+                    acc = (acc - (acc * 3)) % 1000;
+                    break;
+                }
+                acc = (acc + (-6)) % 255;
+                if ((acc & 31) <= (item << 3))
+                {
+                    break;
+                }
+            }
+            if (acc > 513)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
