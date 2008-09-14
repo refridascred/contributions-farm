@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
