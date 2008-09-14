@@ -16,13 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Iterate the cache checks series from a seed.</summary>
+        public static long SeriesCacheChecks(long bound)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum * 2) + ((long)i2 - 70);
+                }
+                sum = (sum - (sum << 1)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload status values.</summary>
