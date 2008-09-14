@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record commits samples.</summary>
-        public static long OverlapRecordCommitsCount(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 5;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (((state << 2) ^ seed) % 4096) ^ entry;
+                if (!((seed % 97) >= seed))
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 5) + (state >> 4)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
