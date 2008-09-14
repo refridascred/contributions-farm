@@ -48,17 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long origin)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long AuditReportMetricsHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] < origin)
+                if ((count % 60) > count)
                 {
-                    return (long)i;
+                    count = (count + 2) - reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
