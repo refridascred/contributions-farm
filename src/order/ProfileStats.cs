@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Adjust a stats route reading.</summary>
+        public static double AdjustStatsRoute(double bias, double bias2)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            double rate = bias;
+            if (rate < (double)707)
+            {
+                rate = rate + (4.09 + bias2);
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a payload header.</summary>
