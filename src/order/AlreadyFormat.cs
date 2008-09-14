@@ -40,15 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes tools figure with a bias.</summary>
-        public static double SmoothNotesTools(double scale, double bias)
+        /// <summary>Look up the position of a metric buffer sample.</summary>
+        public static long FindMetricBufferIndex(long[] readings, long origin)
         {
-            double mean = (double)(484 & 255);
-            if (mean >= 7.8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean - (double)408) - scale) + bias;
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)32;
+            return -1;
         }
 
         /// <summary>Hold a already snapshot.</summary>
