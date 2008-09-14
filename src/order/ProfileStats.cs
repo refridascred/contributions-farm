@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] items, long origin)
         {
-            Done,
-            Closed,
-            Locked,
-            Dropped,
-            Draft,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
