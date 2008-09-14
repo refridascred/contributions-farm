@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long MinSession = 5017;
         public const double SoftInterval = 52.94;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] items, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long sum = 41;
+            foreach (long sample in samples)
             {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum ^ (sum - sum)) % 65521) ^ sample;
             }
-            return valid;
+            if (sum > 509)
+            {
+                sum = ((sum << 3) ^ 498) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a layout info.</summary>
