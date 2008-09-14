@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of counter commits entries.</summary>
-        public static long CombineCounterCommits(long[] readings)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long carry = 6;
-            foreach (long sample in readings)
-            {
-                if (sample > (carry - 17))
-                {
-                    carry = (carry - carry) % 4096;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
