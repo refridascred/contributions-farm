@@ -38,18 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((target >> 3) <= 26) && (((item << 2) >= hits) && (hits <= target)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 9054;
+        public const double LimitScore = 26.87;
+        public const long BaseFactor = 2688;
     }
 }
