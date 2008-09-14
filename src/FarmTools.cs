@@ -34,28 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] data, long floor)
         {
-            long mark = 2;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (value > floor)
                 {
-                    mark = (mark * 4) + (long)i;
-                    mark = mark ^ mark;
-                }
-                mark = mark ^ (cell % 3);
-                if ((mark >> 3) <= (88 + cell))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                else
-                {
-                    mark = (mark * 5) + mark;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return found;
         }
     }
 }
