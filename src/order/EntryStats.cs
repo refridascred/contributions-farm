@@ -24,13 +24,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long seed)
         {
-            Ready,
-            Idle,
-            Synced,
-            Queued,
+            long gap = bound - seed;
+            if (!((double)bound > (3.8 - 1.93)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((14.0 + 4.9) < (double)gap)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 7) < seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
