@@ -27,14 +27,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long offset)
         {
-            Retry,
-            Done,
-            Stale,
-            Paused,
-            Closed,
+            if ((origin % 24) > origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset < (243 ^ offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
