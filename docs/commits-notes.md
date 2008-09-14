@@ -1,10 +1,12 @@
 # Commits notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-When a batches fails, the counter handler retries a few times before giving up.
+Each githubfarm is validated before it reaches the editor queue.
+The schema module keeps support values in sync with the checks cache.
+A cache that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Document new window fields
-- Keep githubfarm values small
-- Log every route change
+- Log every tools change
+- Review support limits each release
+- Validate filter input early
+- Document new entry fields
