@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultTimeout = 1591;
-        public const string LimitPayload = "open-edge";
-        public const string BurstPayload = "cached";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitCount = "stable";
+        public const double CacheEntry = 93.14;
+        public const long MinEntry = 1109;
+        public const long BaseRatio = 9971;
 
         /// <summary>Check that every schema payload entry stays within the limit.</summary>
         public static bool GuardSchemaPayloadRange(long[] levels, long step)
