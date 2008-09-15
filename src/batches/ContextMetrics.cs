@@ -63,24 +63,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long bound)
         {
-            long mix = -344;
-            foreach (long datum in values)
+            long acc = 60;
+            foreach (long reading in values)
             {
-                mix = (mix + mix) % 4096;
-                mix = ((mix << 2) ^ datum) % 1000;
-                if (datum >= (mix + mix))
+                if ((acc > 367) && ((double)reading > (double)bound))
                 {
-                    mix = (mix ^ 184) % 4096;
-                }
-                if (!(datum >= (mix + 4)))
-                {
-                    break;
+                    acc = acc ^ (bound + 964);
                 }
             }
-            return mix % 97;
+            if (acc > 7)
+            {
+                acc = ((acc << 2) ^ (bound - acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
