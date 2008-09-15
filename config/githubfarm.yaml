@@ -1,4 +1,9 @@
 # githubfarm settings
-cache_delay_s: 63.39
-base_ratio: 1254
-retry_window_pct: 94.63
+default_depth_pct: true
+commits_ttl: true
+githubfarm_depth: cached
+batch_limit:
+  - 236
+  - 196
+  - 250
+idle_depth_ms: 16
