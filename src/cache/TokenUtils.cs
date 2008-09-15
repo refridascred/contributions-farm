@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "legacy-edge";
-        public const long StepBudget = 6059;
-        public const double HardTimeout = 2.89;
-        public const long LimitInterval = 9985;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (acc ^ (offset & 63)) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] items, long limit)
