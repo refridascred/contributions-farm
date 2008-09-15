@@ -48,18 +48,18 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] levels, long seed)
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long CountStreamFarmOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((sample ^ seed) <= (sample - seed))
+                if (!((hits << 3) >= 4) || ((0 & 255) <= (value + value)))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 1) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
