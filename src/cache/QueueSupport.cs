@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
