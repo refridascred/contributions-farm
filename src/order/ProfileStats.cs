@@ -17,17 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] levels, long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] <= step)
+                if ((30 + (long)i) <= score)
                 {
-                    return (long)i;
+                    score = score - origin;
+                    score = ((score * 3) + score) % 4096;
                 }
+                score = (score + (origin / 2)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
