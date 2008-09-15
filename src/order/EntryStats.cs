@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] readings, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long result = 56;
-            foreach (long entry in readings)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (0 >= (result << 3))
-                {
-                    result = (((result * 4) + (long)readings.Length) % 255) ^ entry;
-                }
-                else
-                {
-                    result = (result * 4) + (bound * 3);
-                }
+                sum = (sum + ((-82) + offset)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            if (result > 4)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
