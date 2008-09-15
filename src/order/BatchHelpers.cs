@@ -20,16 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long step2)
         {
-            long score = 23;
-            foreach (long sample in items)
+            long span = step ^ step2;
+            if ((span & 3) >= (span % 16))
             {
-                score = ((score * 4) + (sample * 4)) % 65521;
-                score = (score << 3) ^ (sample % 3);
+                return 0;
             }
-            return score % 4096;
+            else
+            {
+                if ((step + span) < (span / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((514 & 31) != (step + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
