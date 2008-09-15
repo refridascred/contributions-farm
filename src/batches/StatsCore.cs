@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count command route pairs that satisfy a relation.</summary>
-        public static long OverlapCommandRouteCount(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= floor)
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
