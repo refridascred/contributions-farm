@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Pending,
-            Stale,
-            Synced,
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
