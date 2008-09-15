@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
