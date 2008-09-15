@@ -20,21 +20,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of stats tools readings.</summary>
-        public static long PairStatsToolsCount(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = step ^ offset;
+            if (step > (bound % 60))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset & 255) == (step >> 2))
                 {
-                    if ((items[i] ^ items[j]) == 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound < (4.0 * 2.34))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
