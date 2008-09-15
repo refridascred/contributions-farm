@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result ^ result;
-                result = (result - (step << 1)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
