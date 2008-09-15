@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryCount = "cached-v2";
-        public const double HardLevel = 24.35;
-        public const long BurstScore = 6682;
-        public const double LimitSchema = 48.01;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] readings)
