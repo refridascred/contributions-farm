@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySpan = 3028;
-        public const long StepScore = 9938;
-        public const long LimitSpan = 8537;
-        public const long CacheLevel = 674;
-        public const double WindowGraph = 52.7;
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long seed, long bound)
