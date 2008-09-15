@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const long StepCache = 8822;
         public const double MaxCache = 91.13;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Failed,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a context summary.</summary>
