@@ -11,28 +11,17 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long offset)
         {
-            long acc = -789;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc + (375 / 5)) % 101;
-                acc = acc + (acc ^ origin);
-                if (((-854) ^ item) >= (4 - acc))
+                if (data[i] > offset)
                 {
-                    acc = acc - ((long)items.Length + acc);
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc > (-735))
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Locate a filter batches reading by value.</summary>
