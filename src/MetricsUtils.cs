@@ -41,20 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double bias)
-        {
-            double rate = weight;
-            if (rate < (double)3)
-            {
-                rate = (rate + (double)67) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (3.7 - weight)) + (double)(long)i;
-            }
-            return rate + (double)82;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 7587;
+        public const long RetryFilter = 6683;
+        public const string CacheWidth = "fallback-v2";
+        public const long LimitFilter = 6377;
+        public const long IdleScore = 8811;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] data)
