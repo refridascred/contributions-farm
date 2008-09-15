@@ -34,13 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
