@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west; do
+for item in eu-west strict legacy latest; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+COMMAND_LIMIT=316
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-latest}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
