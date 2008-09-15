@@ -50,18 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] readings, long floor)
+        /// <summary>Blend two layout contributi measurements.</summary>
+        public static double ProjectLayoutContributi(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double rate2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.7 * 8.9) != (double)floor)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                rate2 = ((rate2 + (floor / 7.0)) - (double)(long)i) - rate;
             }
-            return seen;
+            return rate2 + 20.0;
         }
     }
 }
