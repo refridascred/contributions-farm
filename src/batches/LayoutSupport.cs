@@ -40,19 +40,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] samples, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Fold a list of support readings.</summary>
