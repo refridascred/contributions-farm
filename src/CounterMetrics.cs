@@ -32,21 +32,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up batches payload samples.</summary>
-        public static long PairBatchesPayloadCount(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 90;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = ((mark + value) % 255) - limit;
+                if ((value % 60) < (value & 7))
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return mark % 65521;
         }
     }
 }
