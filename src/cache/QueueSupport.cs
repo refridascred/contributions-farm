@@ -38,9 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7250;
-        public const double BatchContributi = 80.24;
-        public const double BurstContributi = 47.92;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
