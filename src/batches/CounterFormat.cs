@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long origin)
+        /// <summary>Grade a checks editor value against two limits.</summary>
+        public static long BucketChecksEditor(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((1.3 / 9.0) < (double)limit) || ((limit >> 2) < (limit ^ limit)))
             {
-                if (series[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if ((3.2 + 12.0) > (double)limit)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)target > (7.0 - 4.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit > (508 % 64)) || ((target + target) == (target + 28)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
