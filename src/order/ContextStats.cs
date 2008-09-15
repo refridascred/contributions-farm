@@ -38,19 +38,11 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((-4) - sample) == (matches << 2))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 8575;
+        public const long BatchCluster = 4336;
+        public const double IdleSpan = 89.82;
+        public const long LimitRatio = 2533;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long limit)
