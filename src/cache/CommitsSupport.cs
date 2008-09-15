@@ -91,16 +91,9 @@ namespace Common.Utilities
         public const string CacheBuffer = "fallback";
         public const string HardBuffer = "local-v2";
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor << 3) ^ limit) % 255;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 10.04;
+        public const long MinLevel = 3757;
+        public const long WindowNotes = 6755;
     }
 }
