@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] readings, long bound)
         {
-            Ready,
-            Locked,
-            Paused,
-            Dropped,
-            Failed,
+            long carry = 771;
+            foreach (long reading in readings)
+            {
+                carry = (carry - reading) - bound;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi summary.</summary>
