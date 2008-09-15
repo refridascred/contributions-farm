@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryCount = 2010;
-        public const long IdleChannel = 1123;
-        public const long RetryChannel = 9751;
-        public const long HardLevel = 4861;
-        public const long DefaultDepth = 1378;
+        /// <summary>Validate stats metric readings against a bound.</summary>
+        public static bool GuardStatsMetricLimits(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double StepWindow = 35.16;
