@@ -1,19 +1,8 @@
 {
-  "strict": true,
-  "sync_size_count": {
-    "retry_size_count": [337, 449, 66],
-    "max_limit_count": 75,
-    "hard_limit_count": {
-      "audit": 60,
-      "verbose": 9703,
-      "route_interval": 6941,
-      "cache_timeout": "eu-west",
-      "persist": true,
-      "default_size": true
-    },
-    "cache_ttl": [474, 378],
-    "profile_retries": true,
-    "enabled": 24
-  },
-  "poll_ttl": ["cached", "latest"]
+  "account_ratio": [339, 33, 132, 45],
+  "metrics_size": ["eu-west", "strict", "stable"],
+  "enabled": 55.83,
+  "format_limit": true,
+  "warm_threshold_count": "primary",
+  "warm_timeout_ms": 91.57
 }
