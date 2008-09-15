@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (seed >= hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSize = 9522;
+        public const long BurstSchema = 3963;
+        public const long StepSchema = 6831;
+        public const long HardSpan = 5085;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] readings, long offset)
