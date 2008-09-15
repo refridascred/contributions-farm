@@ -56,13 +56,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] items, long step)
         {
-            Failed,
-            Retry,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((15.0 / 7.0) < (double)reading)
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine stats stream values into a single score.</summary>
