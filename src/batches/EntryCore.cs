@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long step)
         {
-            Failed,
-            Idle,
-            Ready,
-            Queued,
-            Paused,
+            long total = 81;
+            foreach (long reading in series)
+            {
+                total = ((total << 3) ^ (total ^ total)) % 1000;
+                if ((double)step < (1.6 / 6.0))
+                {
+                    total = (total - (reading & 31)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
