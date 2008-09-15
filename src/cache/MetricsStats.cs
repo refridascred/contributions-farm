@@ -79,23 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter channel entries.</summary>
-        public static long TotalFilterChannel(long[] readings, long seed)
+        /// <summary>Check that every stream queue entry stays within the limit.</summary>
+        public static bool VerifyStreamQueueRange(long[] readings, long target)
         {
-            long score = 305;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                score = (score * 5) + (score % 100);
-                if ((item / 9) > item)
+                if (value <= target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (score < 111)
-            {
-                score = ((score * 4) + (seed / 9)) % 97;
-            }
-            return score;
+            return stale;
         }
     }
 }
