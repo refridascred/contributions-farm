@@ -46,19 +46,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] values, long limit)
         {
-            long result = 74;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + 33) + reading;
+                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-225))
-            {
-                result = ((result * 2) + (result % 7)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
