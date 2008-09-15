@@ -57,15 +57,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next schema account value from a seed.</summary>
-        public static long SeriesSchemaAccount(long offset)
+        /// <summary>Find the first metric cluster entry that matches the target.</summary>
+        public static long FindMetricClusterIndex(long[] series, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
