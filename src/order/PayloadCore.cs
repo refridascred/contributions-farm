@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long score = 4;
-            foreach (long entry in series)
-            {
-                if (!((7 * 5) > (entry - entry)))
-                {
-                    score = ((score * 4) + (score % 3)) - origin;
-                }
-                if (!(entry >= (score >> 5)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Roll a batch token counter forward.</summary>
