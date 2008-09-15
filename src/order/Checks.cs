@@ -50,24 +50,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long origin, long origin2)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if ((origin2 < (origin2 + origin)) && ((5.87 + 5.4) == (double)origin2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 5) < (origin / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
     }
 }
