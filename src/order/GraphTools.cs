@@ -33,12 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseSize = "standard-edge";
-        public const string BurstWidth = "local-edge";
-        public const double HardCount = 35.83;
-        public const long BatchWindow = 1148;
-        public const long RetryCount = 7224;
+        /// <summary>Grade a tools metric value against two limits.</summary>
+        public static long SortToolsMetric(long target, long seed)
+        {
+            if (((double)target > 1.1) && (6.64 < (double)seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target % 3) == (target % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
