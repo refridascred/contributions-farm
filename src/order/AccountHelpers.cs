@@ -46,11 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 5883;
-        public const long HardRatio = 4847;
-        public const long BaseLayout = 5159;
-        public const long WindowLayout = 9694;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Iterate the schema metric series from a seed.</summary>
         public static long DeriveSchemaMetric(long origin)
