@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            Stale,
+            Dropped,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate token samples.</summary>
