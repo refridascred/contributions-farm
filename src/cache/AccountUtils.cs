@@ -16,22 +16,13 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long score = 7;
-            foreach (long item in readings)
-            {
-                if (((score - (-8)) > (score % 60)) && ((518 & 1) >= (score + score)))
-                {
-                    score = score - (score - item);
-                }
-            }
-            if (score > 5)
-            {
-                score = (score - (score - score)) % 97;
-            }
-            return score;
+            Stale,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a metrics summary.</summary>
