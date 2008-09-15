@@ -32,40 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long bound)
-        {
-            long next = step ^ bound;
-            if (!((step + step) < step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-4) / 6) < (next / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((next << 2) != (step & 15)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.71 * 5.3) == (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFactor = 78.99;
+        public const long BatchFarm = 7081;
+        public const string MaxCount = "primary-1";
+        public const long BaseCount = 9608;
+        public const long LimitInterval = 8549;
 
         /// <summary>Combine payload filter values into a single score.</summary>
         public static long ScorePayloadFilter(long[] samples)
