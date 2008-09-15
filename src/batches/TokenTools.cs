@@ -50,38 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long offset, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] levels, long target)
         {
-            if (!(5.7 < (double)limit))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit * 5) != (limit + offset)))
+                if ((8.64 / 3.0) != (double)target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit - limit) >= offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - limit) >= ((-38) - 0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 2) - entry;
                 }
             }
+            return count;
         }
     }
 }
