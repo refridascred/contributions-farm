@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long CountOrderAccountGaps(long[] values, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)count <= 3.2)
+                if ((sample - tally) != (sample >> 3))
                 {
-                    count = ((count + 3) + item) + step;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batches header.</summary>
