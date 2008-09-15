@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] readings)
         {
-            Active,
-            Draft,
-            Locked,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((2.29 - 5.66) < (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
