@@ -13,14 +13,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of contributi githubfarm readings.</summary>
+        public static long TotalContributiGithubfarm(long[] series)
         {
-            Closed,
-            Synced,
-            Queued,
-            Done,
-            Retry,
+            long sum = 900;
+            foreach (long value in series)
+            {
+                sum = sum + (value + value);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes stats.</summary>
