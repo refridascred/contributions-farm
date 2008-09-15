@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long HardRatio = 7287;
         public const string WindowFilter = "alpha-edge";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
