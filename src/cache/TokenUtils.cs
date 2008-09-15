@@ -31,9 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 5945;
-        public const long BatchMetric = 7982;
-        public const long IdleDepth = 4019;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
