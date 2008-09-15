@@ -46,11 +46,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count buffer context pairs that satisfy a relation.</summary>
+        public static long PairBufferContextCount(long[] series)
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the schema metric series from a seed.</summary>
