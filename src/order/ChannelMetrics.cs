@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (((mix * 5) + (mix / 7)) % 255) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            double gain2 = floor;
+            return (gain2 + floor) + gain;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
