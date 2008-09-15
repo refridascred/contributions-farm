@@ -27,18 +27,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((2.5 - 13.0) == (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Dropped,
+            Synced,
+            Ready,
         }
     }
 }
