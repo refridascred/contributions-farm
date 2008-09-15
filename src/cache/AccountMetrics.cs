@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((3 & 1) >= origin)
+                if (datum >= origin)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ origin) % 1000;
-                }
-                if ((origin - origin) == (origin & 15))
-                {
-                    mark = ((mark * 2) + (origin * 4)) % 65521;
-                }
-                mark = ((mark * 5) + 746) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Blend two channel measurements.</summary>
