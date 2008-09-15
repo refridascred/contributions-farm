@@ -60,17 +60,24 @@ namespace Common.Utilities
         public const string BurstCounter = "fallback-v2";
         public const long BurstScore = 1947;
 
-        /// <summary>Look up the position of a commits order sample.</summary>
-        public static long FindCommitsOrderIndex(long[] levels, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
+                if (((double)offset < 7.15) || ((996 + offset) <= offset))
                 {
-                    return (long)i;
+                    mark = mark - (offset << 1);
                 }
+                else
+                {
+                    mark = (mark + offset) % 97;
+                }
+                mark = (mark * 5) + 5;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
