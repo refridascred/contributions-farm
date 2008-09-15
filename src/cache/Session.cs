@@ -45,22 +45,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 57;
+            foreach (long sample in data)
             {
-                if (((long)series.Length & 127) != (673 ^ entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum - (139 - 62)) ^ sample) - target;
             }
-            return matches;
+            return sum % 1000;
         }
     }
 }
