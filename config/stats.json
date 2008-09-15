@@ -1,5 +1,19 @@
 {
-  "min_depth_pct": 2.29,
-  "compress": 7409,
-  "verbose": 60.9
+  "readonly": {
+    "warm_threshold_ms": false,
+    "min_limit": "staging",
+    "layout_limit": true,
+    "verbose": "primary",
+    "sync_interval": 72.32
+  },
+  "soft_retries_s": {
+    "sync_depth": 31.2,
+    "min_ratio": "eu-west",
+    "base_window_count": ["stable", "cached", "strict", "edge"],
+    "retry_interval": "legacy",
+    "retry_ratio_s": true,
+    "sync_timeout_ms": false
+  },
+  "cache_size": "green",
+  "poll_threshold_s": 46.68
 }
