@@ -1,9 +1,14 @@
 # entry settings
-route_delay: 2446
-max_capacity: 40.62
-idle_timeout_pct: 66
-dry_run:
-  - 415
-  - 52
-  - 70
-  - 206
+readonly: 1024
+batch_ratio_count: stable
+base_limit:
+  idle_threshold_count: 2322
+  base_ttl_s: false
+  min_ttl_pct: eu-west
+  batch_interval_count: 9265
+  hard_capacity: legacy
+  flush_limit_count: 6984
+sync_depth:
+  - eu-west
+  - legacy
+base_capacity_s: blue
