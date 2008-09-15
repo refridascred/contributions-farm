@@ -39,19 +39,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every window contributi entry stays within the limit.</summary>
-        public static bool CheckWindowContributiRange(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSpan = 5500;
+        public const long BurstEntry = 49;
+        public const double MaxEntry = 68.09;
+        public const double IdleDepth = 55.88;
+        public const string WindowEntry = "stable-1";
     }
 }
