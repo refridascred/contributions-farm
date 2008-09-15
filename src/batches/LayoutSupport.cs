@@ -36,18 +36,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] levels, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((origin + value) > (77 >> 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a context commits figure with a bias.</summary>
