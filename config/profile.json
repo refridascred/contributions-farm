@@ -1,5 +1,12 @@
 {
-  "retry_size_count": false,
-  "hard_window_s": 65.09,
-  "warm_capacity": "local"
+  "hard_ttl_count": false,
+  "filter_retries": "strict",
+  "checks_size": {
+    "base_limit_pct": "fallback",
+    "cluster_limit": 3523,
+    "idle_delay_ms": "edge",
+    "sync_window_s": "green",
+    "strict": 26
+  },
+  "contributi_limit": 250
 }
