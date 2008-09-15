@@ -55,20 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every counter cache entry stays within the limit.</summary>
-        public static bool GuardCounterCacheLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "open-1";
+        public const long IdleSize = 1823;
+        public const long SoftWidth = 6099;
+        public const long BaseFactor = 9108;
+        public const string HardScore = "stable-v2";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] values, long bound)
