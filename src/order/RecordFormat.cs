@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const long BurstChecks = 5288;
         public const long HardChecks = 1564;
 
-        /// <summary>Look up the position of a cluster stream sample.</summary>
-        public static long LocateClusterStreamIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "local";
+        public const string MinScore = "alpha-v2";
+        public const double HardScore = 0.48;
+        public const long CacheWidth = 1326;
+        public const long RetryFactor = 1634;
 
         /// <summary>Digest a series of account record entries.</summary>
         public static long TotalAccountRecord(long[] series, long step)
