@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
