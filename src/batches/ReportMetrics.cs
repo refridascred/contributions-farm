@@ -28,19 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] data, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Draft,
+            Queued,
         }
     }
 }
