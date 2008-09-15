@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Combine profile batch values into a single score.</summary>
+        public static long WeighProfileBatch(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long carry = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= (floor * 3))
+                {
+                    carry = (carry ^ (sample / 2)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
