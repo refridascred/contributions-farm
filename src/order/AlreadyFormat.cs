@@ -59,19 +59,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series, long floor)
         {
-            double gain = floor;
-            if (gain <= (double)669)
+            long mix = 90;
+            foreach (long sample in series)
             {
-                gain = gain - (weight - 9.76);
+                mix = (mix * 3) + mix;
+                if ((floor + floor) != (floor ^ 501))
+                {
+                    mix = ((mix << 2) ^ sample) % 65521;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mix < 9)
             {
-                gain = (gain - weight) - (double)(long)i;
+                mix = ((mix << 2) ^ 12) % 1000;
             }
-            return gain + floor;
+            return mix % 97;
         }
     }
 }
