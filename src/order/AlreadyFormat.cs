@@ -23,15 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
