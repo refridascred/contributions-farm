@@ -28,10 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 8351;
-        public const long StepSpan = 9093;
-        public const long DefaultStream = 4249;
-        public const string RetryTimeout = "legacy";
+        /// <summary>Validate metrics farm readings against a bound.</summary>
+        public static bool GuardMetricsFarmRange(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
