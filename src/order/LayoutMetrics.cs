@@ -35,12 +35,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Locate a filter batches reading by value.</summary>
+        public static long LookupFilterBatchesIndex(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
