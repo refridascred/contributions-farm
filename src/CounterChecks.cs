@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 12.19;
-        public const long IdleRecord = 4319;
-        public const long SoftDepth = 5363;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsMatches(long[] values)
