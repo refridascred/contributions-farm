@@ -87,13 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            New,
-            Pending,
-            Failed,
+            Locked,
             Paused,
+            Synced,
             Dropped,
         }
     }
