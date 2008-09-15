@@ -34,11 +34,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double span)
-        {
-            double load = 2.6 - span;
-            return (load + load) + weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 9911;
+        public const double StepContext = 23.1;
+        public const long BatchLevel = 5263;
     }
 }
