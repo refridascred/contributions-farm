@@ -1,24 +1,48 @@
 # entry settings
-channel_delay:
-  cache_ratio: false
-  retry_interval: stable
-  persist: blue
-max_size_count: 24
-default_threshold:
-  schema_capacity:
-    route_retries: open
-    persist: green
-    sync_ttl_pct: true
-    entry_capacity: 81.66
-    support_ratio:
-      - 45
-      - 41
-      - 70
-      - 240
-  flush_delay: 67
-  notes_ttl:
-    poll_retries_s: blue
-    cache_depth_s: false
-    readonly: staging
-hard_threshold_count: cached
-editor_delay: local
+base_depth_pct:
+  min_capacity: true
+  graph_interval: open
+  sync_limit_pct:
+    - 423
+    - 138
+    - 387
+    - 177
+  base_ratio_s:
+    default_delay: edge
+    cluster_size: eu-west
+    soft_threshold_s: 7630
+    retry_retries: true
+    token_retries: 30
+    poll_ratio_count: 14.32
+  strict: true
+  verbose: local
+burst_ratio:
+  - 475
+  - 176
+readonly: 30
+max_capacity_pct:
+  warm_ttl_pct: 4218
+  cache_interval_s:
+    hard_limit:
+      - 440
+      - 288
+      - 221
+    farm_limit: true
+    burst_retries_count: 303
+    sync_window: 82.15
+    base_timeout: local
+  soft_capacity:
+    default_delay_s: eu-west
+    metric_capacity:
+      - stable
+      - eu-west
+    min_threshold_ms: 1024
+    audit:
+      - 93
+      - 500
+      - 469
+      - 14
+burst_size_ms:
+  - 293
+  - 152
+cache_limit_count: 1024
