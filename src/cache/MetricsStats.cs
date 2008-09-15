@@ -32,23 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report cluster readings.</summary>
-        public static long TotalReportCluster(long[] samples, long floor)
-        {
-            long state = 28;
-            foreach (long datum in samples)
-            {
-                if (((floor * 5) > floor) || ((double)5 <= (double)state))
-                {
-                    state = (state - (state ^ floor)) - datum;
-                }
-                if (!((state / 8) < (state >> 3)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstSize = 4387;
+        public const string MaxSize = "stable-edge";
+        public const double BatchAccount = 28.52;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] values, long offset)
