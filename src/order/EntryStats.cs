@@ -59,12 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 8583;
+        public const long BaseContext = 1190;
+        public const long StepCount = 4350;
+        public const long DefaultScore = 6834;
     }
 }
