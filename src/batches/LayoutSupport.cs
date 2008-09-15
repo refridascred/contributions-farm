@@ -72,18 +72,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Scale a context commits figure with a bias.</summary>
+        public static double SmoothContextCommits(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double bias2 = ratio;
+            if (bias2 >= bias)
             {
-                if ((double)hits < (double)sample)
-                {
-                    hits = hits + 2;
-                }
+                bias2 = bias2 - ratio;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (ratio - 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
