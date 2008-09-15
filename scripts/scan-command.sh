@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=225
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=258
 log "limit is ${COMMAND_LIMIT}"
 
-for item in blue standard fallback latest; do
+for item in green cached staging; do
     log "checking ${item}"
 done
