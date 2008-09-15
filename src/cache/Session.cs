@@ -48,20 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the token report series from a seed.</summary>
-        public static long SeriesTokenReport(long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double floor)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            double scale = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)floor >= (double)(long)i) || (state >= (state >> 4)))
-                {
-                    state = ((state * 3) + floor) % 97;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                scale = (scale - weight) - (double)(long)i;
             }
-            return state;
+            return scale - (double)34;
         }
     }
 }
