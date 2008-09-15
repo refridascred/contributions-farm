@@ -21,12 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 5257;
-        public const long MaxStream = 1429;
-        public const double LimitScore = 6.01;
-        public const long LimitInterval = 6597;
-        public const long BaseTimeout = 7730;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
         public static long SeriesCommitsGraph(long origin)
