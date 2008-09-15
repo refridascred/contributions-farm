@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long limit)
         {
-            Closed,
-            Stale,
-            Paused,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
