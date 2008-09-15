@@ -50,11 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first metric cluster entry that matches the target.</summary>
