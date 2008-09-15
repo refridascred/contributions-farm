@@ -59,10 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 8583;
-        public const long BaseContext = 1190;
-        public const long StepCount = 4350;
-        public const long DefaultScore = 6834;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Idle,
+            Closed,
+            Paused,
+            Retry,
+        }
     }
 }
