@@ -40,22 +40,21 @@ namespace Common.Utilities
             return rate + (double)82;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values, long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long mix = 263;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mix > (value / 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (84 >> 2)) + limit;
-                }
-                else
-                {
-                    mix = mix - value;
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
