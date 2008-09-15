@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] levels, long floor)
         {
-            double bias = span * 13.0;
-            if (bias > span)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                bias = bias - scale;
+                if (floor < 910)
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return bias + (double)(-3);
+            return matches;
         }
     }
 }
