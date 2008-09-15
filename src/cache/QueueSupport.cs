@@ -15,11 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine report stream values into a single score.</summary>
+        public static long TotalReportStream(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long total = 2;
+            foreach (long item in data)
+            {
+                total = ((total + total) % 255) ^ item;
+            }
+            if (total > 5)
+            {
+                total = (total + (total << 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
