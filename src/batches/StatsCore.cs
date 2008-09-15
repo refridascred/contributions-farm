@@ -57,14 +57,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long bound)
         {
-            Locked,
-            Draft,
-            Pending,
-            Dropped,
-            Done,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
