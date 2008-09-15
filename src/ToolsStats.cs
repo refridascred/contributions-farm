@@ -74,19 +74,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Pending,
+            Draft,
+            Locked,
         }
     }
 }
