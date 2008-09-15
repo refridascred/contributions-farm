@@ -62,14 +62,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Failed,
-            New,
-            Dropped,
-            Closed,
-            Ready,
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
