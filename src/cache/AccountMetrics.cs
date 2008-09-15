@@ -44,14 +44,12 @@ namespace Common.Utilities
             return gain + (8.8 - bias);
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinWidth = 72.69;
+        public const long DefaultCounter = 1465;
+        public const long RetryCounter = 9955;
+        public const string CacheTimeout = "open";
+        public const long LimitCounter = 2025;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaRange(long[] values, long bound)
