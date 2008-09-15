@@ -1,11 +1,12 @@
 {
-  "enabled": ["strict", "open", "staging"],
-  "flush_delay_ms": {
-    "metrics_ttl": 207,
-    "cache_ttl_s": ["fallback", "primary"],
-    "sync_limit_ms": false
+  "readonly": {
+    "poll_retries": true,
+    "githubfarm_size": [29, 77, 26, 90],
+    "cache_window_s": 7186,
+    "cache_size": 86
   },
-  "metric_timeout": 5734,
-  "default_window": 70,
-  "poll_threshold_s": "eu-west"
+  "context_size": 79.66,
+  "stats_window": 30,
+  "warm_limit_pct": 100,
+  "verbose": "fallback"
 }
