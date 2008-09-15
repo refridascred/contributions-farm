@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate notes order samples.</summary>
-        public static long DigestNotesOrder(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            long acc = 1;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 3) + (datum >> 3)) % 97;
+                if (((hits < (item << 3)) && ((hits % 5) <= item)) || (item >= (hits + (long)series.Length)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
