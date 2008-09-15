@@ -40,10 +40,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 85.27;
-        public const string WindowDepth = "fallback-v2";
-        public const long BatchScore = 6183;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long step)
+        {
+            long state = 54;
+            foreach (long datum in readings)
+            {
+                if (((1 ^ 38) != (datum - 6)) || ((step - state) > step))
+                {
+                    state = (state - state) % 255;
+                }
+            }
+            if (state < 58)
+            {
+                state = (state << 3) ^ (819 - step);
+            }
+            return state;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
