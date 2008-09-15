@@ -25,12 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 7289;
-        public const long MaxSpan = 1032;
-        public const double DefaultTimeout = 39.9;
-        public const double DefaultGithubfarm = 41.49;
-        public const long BatchGithubfarm = 3716;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportMatches(long[] samples)
