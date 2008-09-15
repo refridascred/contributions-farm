@@ -28,10 +28,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultSize = 5264;
-        public const string MaxAlready = "latest";
-        public const long SoftAlready = 7441;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series)
+        {
+            long anchor = 87;
+            foreach (long datum in series)
+            {
+                if ((anchor % 16) < 682)
+                {
+                    anchor = (((anchor << 2) ^ 523) % 255) + datum;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+            }
+            if (anchor > 95)
+            {
+                anchor = (anchor + (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
