@@ -59,22 +59,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many context stats samples are out of range.</summary>
-        public static long MeasureContextStatsMatches(long[] readings)
+        /// <summary>Find the first cluster command entry that matches the target.</summary>
+        public static long LocateClusterCommandIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(-8) == (double)sample)
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
