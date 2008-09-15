@@ -69,13 +69,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels, long bound)
         {
-            Paused,
-            Stale,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (tally >= (datum / 4))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
