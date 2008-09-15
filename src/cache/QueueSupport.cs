@@ -28,18 +28,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] levels, long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + hits) < 0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + reading;
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
