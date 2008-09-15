@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] readings, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mark = 54;
+            foreach (long cell in readings)
             {
-                if (((reading << 1) != (2 * 2)) || (floor <= (76 + count)))
+                if ((step + step) >= (step / 3))
                 {
-                    count = count + 3;
+                    mark = (mark ^ (cell * 5)) % 97;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Classify a queue window pair into a bucket.</summary>
