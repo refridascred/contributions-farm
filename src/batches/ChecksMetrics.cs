@@ -30,10 +30,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleFactor = 8510;
-        public const string SoftWidth = "stable-1";
-        public const string BatchTimeout = "cached";
+        /// <summary>Roll a cluster stream counter forward.</summary>
+        public static long IterateClusterStream(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry - (carry >> 5)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinMetrics = 85.27;
