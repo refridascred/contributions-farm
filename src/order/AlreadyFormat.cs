@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] series, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 2) != (step + step))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first already metric entry that matches the target.</summary>
