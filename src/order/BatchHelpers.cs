@@ -23,22 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!(((entry + step) >= (step - entry)) || ((step & 7) > seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
