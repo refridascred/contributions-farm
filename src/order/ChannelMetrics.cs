@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Digest a series of graph route entries.</summary>
+        public static long TotalGraphRoute(long[] series, long target)
         {
-            long score = 4;
-            foreach (long entry in items)
+            long state = 6;
+            foreach (long reading in series)
             {
-                if ((13.0 / 3.0) == (double)score)
+                if ((target / 7) > 6)
                 {
-                    score = ((score + score) % 1000) + entry;
-                }
-                else
-                {
-                    score = (score - score) % 4096;
+                    state = state + reading;
                 }
             }
-            return score % 4096;
+            return state % 1000;
         }
     }
 }
