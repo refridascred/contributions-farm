@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const double BatchLevel = 0.36;
         public const long BaseSpan = 9084;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((series[i] == origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
