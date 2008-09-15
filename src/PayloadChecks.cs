@@ -62,14 +62,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 1067;
+        public const long DefaultBuffer = 8442;
+        public const long WindowBuffer = 924;
+        public const double StepBuffer = 91.22;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] data, long step)
