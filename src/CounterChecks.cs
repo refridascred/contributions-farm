@@ -47,26 +47,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            long result = 704;
-            foreach (long value in items)
+            double rate = (double)(9 % 5);
+            if (rate >= (double)172)
             {
-                if ((result - result) == (value + value))
-                {
-                    result = result ^ (result / 8);
-                }
-                if (((value * 3) > (result ^ 4)) && ((2 - result) > ((long)items.Length * 4)))
-                {
-                    break;
-                }
+                rate = rate + bias;
             }
-            if (result > 3)
-            {
-                result = (result + (result + result)) % 255;
-            }
-            return result;
+            return rate - (bias2 + bias);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
