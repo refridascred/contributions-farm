@@ -19,13 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix ^ (mix * 2)) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate stream account samples.</summary>
