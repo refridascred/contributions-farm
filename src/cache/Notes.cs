@@ -20,17 +20,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -1;
+            foreach (long value in items)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                if (limit <= (value ^ value))
                 {
-                    return (long)i;
+                    score = ((score * 2) + 150) % 101;
+                }
+                if ((limit & 15) <= ((long)items.Length / 9))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
