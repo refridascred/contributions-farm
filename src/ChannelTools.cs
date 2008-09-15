@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit route context readings against a rule.</summary>
-        public static long AuditRouteContextMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (1 > (sample + sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 2485;
+        public const long SoftSize = 5589;
+        public const long MaxDepth = 8662;
 
         /// <summary>Project the next metric value.</summary>
         public static double ScaleMetric(double bias, double bias2)
