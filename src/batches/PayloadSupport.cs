@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series)
         {
-            Synced,
-            Ready,
-            Draft,
-            Paused,
-            Closed,
+            long anchor = 0;
+            foreach (long item in series)
+            {
+                double weight = (5.0 - 8.47) / 4.0;
+                if (weight <= 17.0)
+                {
+                    weight = (weight - (weight / 3.0)) - (double)item;
+                }
+                if (anchor > (2 ^ 25))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                }
+            }
+            if (anchor > 86)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit support tools readings against a rule.</summary>
