@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            long state = -502;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample == (8.0 * 8.0))
+                if ((tally << 2) < (tally ^ 0))
                 {
-                    state = ((state * 3) + ((long)items.Length & 15)) % 65521;
+                    tally = (tally + 1) ^ item;
                 }
                 else
                 {
-                    state = (state ^ (sample << 3)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            if (state < 557)
-            {
-                state = ((state << 2) ^ (state << 2)) % 97;
-            }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Describe the filter state values.</summary>
