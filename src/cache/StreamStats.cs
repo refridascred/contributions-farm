@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long HardRatio = 7287;
         public const string WindowFilter = "alpha-edge";
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Synced,
-            Paused,
-            Idle,
-            Failed,
-            Draft,
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
