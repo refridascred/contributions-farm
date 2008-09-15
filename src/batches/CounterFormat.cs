@@ -40,12 +40,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Queued,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleTimeout = 5248;
+        public const long BaseBuffer = 1170;
+        public const long WindowRatio = 1591;
+        public const string CacheInterval = "staging";
     }
 }
