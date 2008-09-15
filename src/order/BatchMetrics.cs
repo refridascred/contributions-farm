@@ -31,24 +31,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            if (limit < (980 + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset <= (limit - offset)) && ((limit * 5) <= offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
