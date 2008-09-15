@@ -13,12 +13,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstCount = 1392;
-        public const double StepCount = 47.39;
-        public const long WindowScore = 6603;
-        public const double IdleTimeout = 81.7;
-        public const long IdleProfile = 3556;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxFactor = 1414;
+        public const long HardPayload = 6199;
+        public const string HardDepth = "fallback-1";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
