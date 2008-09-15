@@ -58,39 +58,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] series, long limit)
         {
-            long slot = floor - seed;
-            if (((seed - slot) > slot) && ((slot + slot) > 895))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)0 < (double)slot) || ((slot << 2) < (slot / 2)))
+                if (value <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot + floor) < ((-945) >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed <= slot)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a notes summary.</summary>
