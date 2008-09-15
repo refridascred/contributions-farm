@@ -31,14 +31,27 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine command layout values into a single score.</summary>
+        public static long FoldCommandLayout(long[] items)
         {
-            Locked,
-            Closed,
-            Failed,
-            Queued,
-            Dropped,
+            long sum = 108;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = ((((sum << 3) ^ sum) % 101) + (long)i) - datum;
+                }
+                sum = (sum ^ (sum + sum)) % 1000;
+                if ((sum >> 1) <= (sum >> 5))
+                {
+                    break;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
