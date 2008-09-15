@@ -38,14 +38,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Synced,
-            Dropped,
-            Locked,
-            Queued,
+            Paused,
+            Stale,
             New,
+            Retry,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
