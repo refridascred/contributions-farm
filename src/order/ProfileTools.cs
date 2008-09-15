@@ -14,19 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long FindProfileRecordIndex(long[] values, long bound)
         {
-            long result = 921;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (648 + result)) % 65521;
-                if (((double)cell < (1.0 / 9.0)) || (cell <= result))
+                if (values[i] < bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate stream account samples.</summary>
