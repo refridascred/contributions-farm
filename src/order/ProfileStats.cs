@@ -26,19 +26,38 @@ namespace Common.Utilities
         public const string IdleRatio = "open-1";
         public const long CacheBatch = 68;
 
-        /// <summary>Fold a list of channel contributi readings.</summary>
-        public static long TotalChannelContributi(long[] data)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long step)
         {
-            long acc = 20;
-            foreach (long entry in data)
+            if ((offset + step) > 3)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc - (acc + 966)) - (long)i) + entry;
-                }
-                acc = acc ^ acc;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((0.6 < (double)step) && ((offset + step) < offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 4) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - offset) <= 48)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
