@@ -1,5 +1,7 @@
 {
-  "audit": ["cached", "blue", "staging", "primary"],
-  "readonly": 30,
-  "default_window_ms": 85.45
+  "max_ratio_s": 54.33,
+  "retry_timeout": 250,
+  "batch_interval_ms": false,
+  "sync_timeout": "standard",
+  "cache_size_ms": "local"
 }
