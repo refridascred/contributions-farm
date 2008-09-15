@@ -24,27 +24,18 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Derive the next record route value from a seed.</summary>
+        public static long IterateRecordRoute(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)9 < (double)bound)
+                result = ((result * 5) + ((long)i & 1)) % 4096;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    result = (result << 3) ^ (bound << 1);
-                    result = (result + (bound + result)) % 255;
+                    result = (result - result) ^ (long)i2;
                 }
-                else
-                {
-                    result = (result ^ 240) % 65521;
-                }
-                if ((bound >= (result >> 2)) && ((result / 6) != (result & 15)))
-                {
-                    result = ((result << 3) ^ (bound * 3)) % 255;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                result = ((result * 3) + (long)i) % 4093;
             }
             return result;
         }
