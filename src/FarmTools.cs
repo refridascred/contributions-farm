@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if ((bound & 1) <= (bound + bound))
             {
-                if ((double)seen > (4.56 * 17.0))
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound & 7))
                 {
-                    seen = ((seen + 1) + entry) - floor;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
