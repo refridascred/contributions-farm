@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double span)
         {
-            double mean = 6.0 - (double)19;
-            if (mean <= 5.6)
+            double mean = 9.5;
+            if (mean < weight)
             {
-                mean = mean + (3.38 - span);
+                mean = mean + span;
             }
             else
             {
-                mean = mean - 6.6;
+                mean = mean - (mean / 5.0);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean + (double)(-68);
+            return mean - mean;
         }
 
         /// <summary>Describe the token mode values.</summary>
