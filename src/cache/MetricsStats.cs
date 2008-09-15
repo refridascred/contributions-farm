@@ -75,12 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Closed,
+            Draft,
+            Queued,
         }
     }
 }
