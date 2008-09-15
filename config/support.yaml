@@ -1,25 +1,15 @@
 # support settings
-verbose:
-  - cached
-  - local
-compress: 82.19
-soft_window_s:
-  default_timeout_s:
-    format_window: 30
-    min_window_ms: true
-    enabled: false
-  default_interval_count: 19.55
-  retry_depth_count: 9998
-  hard_delay_s:
-    account_limit: latest
-    retry_capacity: 97
-    stats_timeout: blue
-    min_capacity_pct:
-      - blue
+burst_ttl_ms: 96.34
+persist:
+  base_window_count: local
+  persist:
+    readonly:
       - standard
-      - eu-west
-    warm_capacity_pct: 2076
-    strict: 6184
-  enabled: 16.13
-  idle_capacity: 100
-githubfarm_ttl: 78
+      - cached
+      - strict
+    stats_interval: false
+    poll_delay: 78.33
+    retry_interval_count: 44
+  batch_interval_s: local
+  default_depth: legacy
+format_threshold: 500
