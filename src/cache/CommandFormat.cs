@@ -25,13 +25,16 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            Locked,
-            Draft,
-            Paused,
-            Dropped,
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark + (mark - seed);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
