@@ -37,10 +37,20 @@ namespace Common.Utilities
         public const double StepToken = 80.87;
         public const string IdleSpan = "latest-v2";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 760;
-        public const long DefaultCommits = 4075;
-        public const long CacheSpan = 4191;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxDepth = 6973;
