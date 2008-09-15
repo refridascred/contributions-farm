@@ -54,38 +54,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order cache input into a small class.</summary>
-        public static long BucketOrderCache(long bound, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            if ((15 - bound) == (offset / 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound * 4) == (66 - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((bound * 4) != (bound & 15)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Ready,
+            Closed,
         }
     }
 }
