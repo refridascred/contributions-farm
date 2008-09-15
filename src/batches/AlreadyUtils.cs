@@ -48,13 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 > ratio)
+            {
+                ratio2 = (ratio2 - (ratio2 * 2.67)) - span;
+            }
+            else
+            {
+                ratio2 = ratio2 + 8.2;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
