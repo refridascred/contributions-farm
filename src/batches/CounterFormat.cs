@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit metrics editor readings against a rule.</summary>
-        public static long TallyMetricsEditorMatches(long[] readings, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((step << 2) > seen)
-                {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the stats level values.</summary>
