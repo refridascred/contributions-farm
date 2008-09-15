@@ -1,12 +1,17 @@
 {
-  "batch_ratio_s": ["open", "staging", "strict"],
-  "warm_ttl": "legacy",
-  "editor_retries": {
-    "verbose": [223, 14, 340],
-    "cache_ratio": 250,
-    "record_ttl": 22,
-    "flush_capacity": "strict",
-    "soft_ttl_ms": 250
+  "poll_ratio": {
+    "base_timeout_s": "green",
+    "hard_depth": [86, 107],
+    "batch_ttl": "fallback",
+    "token_retries": ["local", "strict", "strict"]
   },
-  "account_capacity": 2688
+  "default_timeout_pct": 3870,
+  "min_delay_pct": {
+    "profile_ttl": 8163,
+    "dry_run": 27,
+    "soft_timeout_count": ["standard", "legacy"],
+    "batches_ratio": 195,
+    "enabled": 55.93,
+    "warm_interval_count": [298, 455]
+  }
 }
