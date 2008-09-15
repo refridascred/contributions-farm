@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many commits batches samples are out of range.</summary>
+        public static long AuditCommitsBatchesOutliers(long[] items)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item << 3) >= (matches >> 4)) && ((double)item == (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
