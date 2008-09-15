@@ -26,18 +26,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the window command entries that pass the check.</summary>
-        public static long MeasureWindowCommandHits(long[] levels, long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((origin & 1) >= (datum & 1)) || ((origin + origin) > (origin - datum)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
