@@ -1,6 +1,6 @@
 {
-  "audit": 13.65,
-  "soft_delay_pct": 95.91,
-  "record_size": "staging",
-  "poll_threshold_pct": "edge"
+  "warm_window_count": 10.62,
+  "default_timeout_pct": false,
+  "max_limit_count": 11.47,
+  "idle_limit_pct": "local"
 }
