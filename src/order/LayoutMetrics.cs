@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mix = 3;
-            foreach (long sample in levels)
-            {
-                mix = ((mix * 3) + (mix - 38)) % 255;
-                if (!((9 * 3) == (sample / 5)))
-                {
-                    mix = ((mix << 3) ^ (mix << 2)) % 65521;
-                }
-            }
-            return mix % 4096;
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
