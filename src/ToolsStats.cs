@@ -39,17 +39,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a entry metrics sample.</summary>
-        public static long FindEntryMetricsIndex(long[] readings, long step)
+        /// <summary>Project the next metrics buffer value.</summary>
+        public static double BlendMetricsBuffer(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (floor / 3.0) / 5.0;
+            if (ratio < (double)71)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (bias / 9.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio - (floor + floor);
         }
 
         /// <summary>Hold a batches summary.</summary>
