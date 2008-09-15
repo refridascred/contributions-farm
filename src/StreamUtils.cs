@@ -57,13 +57,17 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] series, long origin)
         {
-            Stale,
-            Failed,
-            Ready,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
