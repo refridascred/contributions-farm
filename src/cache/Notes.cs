@@ -22,12 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many layout profile samples are out of range.</summary>
+        public static long AuditLayoutProfileMatches(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)offset != (4.0 - 5.49))
+                {
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
