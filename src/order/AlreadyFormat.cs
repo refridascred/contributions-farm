@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinWidth = 2070;
-        public const long BaseEntry = 3345;
-        public const long CacheCount = 7914;
-        public const long StepEntry = 2256;
+        /// <summary>Locate a context tools reading by value.</summary>
+        public static long FindContextToolsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long floor, long bound)
