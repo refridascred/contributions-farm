@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count + 93) <= (count << 2))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
