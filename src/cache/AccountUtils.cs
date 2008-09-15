@@ -16,19 +16,22 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Project the next tools schema value.</summary>
-        public static double SmoothToolsSchema(double bias, double bias2)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            double bias3 = bias2;
-            if (bias3 < bias2)
+            long score = 7;
+            foreach (long item in readings)
             {
-                bias3 = bias3 + (bias * 11.0);
+                if (((score - (-8)) > (score % 60)) && ((518 & 1) >= (score + score)))
+                {
+                    score = score - (score - item);
+                }
             }
-            else
+            if (score > 5)
             {
-                bias3 = bias3 - bias3;
+                score = (score - (score - score)) % 97;
             }
-            return bias3 - bias3;
+            return score;
         }
 
         /// <summary>Hold a metrics summary.</summary>
