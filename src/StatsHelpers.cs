@@ -26,12 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryWidth = 76.04;
-        public const long SoftToken = 4133;
-        public const long HardRatio = 474;
-        public const string BurstToken = "local-1";
-        public const double BurstLevel = 81.31;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 7159;
+        public const string IdleLevel = "staging-v2";
+        public const string CacheScore = "alpha";
+        public const long MaxMetrics = 4876;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TotalAlready(long[] readings)
