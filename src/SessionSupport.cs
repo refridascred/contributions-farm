@@ -16,12 +16,18 @@ namespace Common.Utilities
             return bias - (bias * 13.0);
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] readings)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)tally >= (double)0)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
