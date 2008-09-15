@@ -52,15 +52,31 @@ namespace Common.Utilities
         public const string MaxSize = "stable-edge";
         public const double BatchAccount = 28.52;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            if ((floor & 7) > origin)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((double)origin == (3.1 - 7.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor < 18.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter channel entries.</summary>
