@@ -53,17 +53,13 @@ namespace Common.Utilities
             return ratio2 + (double)5;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
