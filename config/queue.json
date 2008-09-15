@@ -1,7 +1,7 @@
 {
-  "strict": "staging",
-  "soft_capacity_pct": 5.76,
-  "compress": ["strict", "blue"],
-  "dry_run": [438, 499, 376, 273],
-  "base_threshold_ms": ["eu-west", "cached", "fallback", "open"]
+  "min_window": ["cached", "open"],
+  "cache_threshold_pct": 4397,
+  "warm_threshold": false,
+  "hard_ratio": [405, 301, 338],
+  "default_capacity_s": "stable"
 }
