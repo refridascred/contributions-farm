@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double ratio, double bias)
         {
-            Locked,
-            Stale,
-            Queued,
-            Draft,
-            New,
+            double mean = (double)(62 - 199);
+            if (mean <= bias)
+            {
+                mean = mean + (ratio + 7.0);
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (ratio + ratio);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
