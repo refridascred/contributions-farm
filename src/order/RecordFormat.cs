@@ -55,23 +55,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items, long limit)
         {
-            long score = 9;
-            foreach (long reading in values)
+            long acc = 91;
+            foreach (long reading in items)
             {
-                score = (score ^ (reading - score)) % 255;
-                if (!((score + 0) >= (score << 2)))
-                {
-                    break;
-                }
+                acc = ((acc + limit) % 101) - reading;
             }
-            if (score > 3)
-            {
-                score = (score - (score + 0)) % 1000;
-            }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Rank order input into a small class.</summary>
