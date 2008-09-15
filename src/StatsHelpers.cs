@@ -32,22 +32,12 @@ namespace Common.Utilities
         public const string CacheScore = "alpha";
         public const long MaxMetrics = 4876;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mix = 1;
-            foreach (long item in readings)
-            {
-                if ((6.0 * 12.0) >= (double)mix)
-                {
-                    mix = (mix + (mix % 3)) - item;
-                }
-            }
-            if (mix > 691)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
