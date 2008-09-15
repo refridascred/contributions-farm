@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Blend two cache commits measurements.</summary>
+        public static double ProjectCacheCommits(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(10 >> 1);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (((ratio + 1.9) - (double)(long)i) - rate) - bias;
             }
-            return seen;
+            return ratio + (ratio / 4.0);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
