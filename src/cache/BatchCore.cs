@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultRatio = 1105;
+        public const long LimitBudget = 9698;
+        public const long SoftSchema = 6858;
 
         /// <summary>Fold a list of stream queue readings.</summary>
         public static long DigestStreamQueue(long[] readings)
