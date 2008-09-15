@@ -28,15 +28,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
