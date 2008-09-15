@@ -31,12 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "primary";
+        public const long MinToken = 1015;
+        public const double StepToken = 80.87;
+        public const string IdleSpan = "latest-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardCommits = 760;
