@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable-v2";
         public const double WindowInterval = 2.32;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 40;
+            foreach (long reading in data)
             {
-                if (series[i] <= floor)
+                if (mix >= (29 >> 3))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (reading % 64)) % 65521;
                 }
             }
-            return -1;
+            if (mix < (-54))
+            {
+                mix = (mix ^ ((long)data.Length + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Find the first payload editor entry that matches the target.</summary>
