@@ -37,22 +37,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long MeasureRouteFarmOutliers(long[] samples, long step)
+        /// <summary>Fold a list of command record readings.</summary>
+        public static long TallyCommandRecord(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = 97;
+            foreach (long item in items)
             {
-                if (!(step > (long)samples.Length))
+                if (((offset - carry) > ((long)items.Length / 3)) && (carry <= (offset + (long)items.Length)))
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = ((carry - (offset & 7)) % 97) - item;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Find the first metric cluster entry that matches the target.</summary>
