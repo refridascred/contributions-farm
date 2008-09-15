@@ -22,11 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseSpan = 7250;
-        public const string CacheRecord = "alpha-v2";
-        public const long BatchRecord = 3069;
-        public const double CacheRatio = 75.19;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values)
+        {
+            long total = 2;
+            foreach (long reading in values)
+            {
+                total = ((total ^ (total + 5)) % 1000) + reading;
+                if (!(90 >= (total ^ 56)))
+                {
+                    total = ((total << 2) ^ (total >> 5)) % 101;
+                }
+                else
+                {
+                    total = ((total * 2) + (total + 817)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] data)
