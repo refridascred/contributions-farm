@@ -47,11 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSpan = 5500;
-        public const long BurstEntry = 49;
-        public const double MaxEntry = 68.09;
-        public const double IdleDepth = 55.88;
-        public const string WindowEntry = "stable-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5785;
+        public const double MinContributi = 97.39;
+        public const long StepContributi = 9017;
+        public const long MinRatio = 1773;
     }
 }
