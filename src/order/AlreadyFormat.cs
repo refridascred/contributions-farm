@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] samples, long bound)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long carry = -80;
-            foreach (long reading in samples)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry * 5) + (8 / 7)) - reading;
-                carry = ((carry * 4) + (bound >> 1)) % 101;
+                result = (result + floor) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
