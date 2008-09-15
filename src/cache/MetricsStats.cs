@@ -47,15 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Match up support profile samples.</summary>
+        public static long MatchSupportProfileCount(long[] samples)
         {
-            double gain = scale;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = ((gain - gain) + (double)(long)i) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain - (3.0 * 7.77);
+            return count;
         }
 
         /// <summary>Iterate the account record series from a seed.</summary>
