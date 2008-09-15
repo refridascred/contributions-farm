@@ -39,16 +39,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 85.27;
+        public const string WindowDepth = "fallback-v2";
+        public const long BatchScore = 6183;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
