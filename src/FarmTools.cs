@@ -20,12 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
