@@ -31,22 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 411;
-            foreach (long datum in items)
-            {
-                if ((acc * 2) < (datum + datum))
-                {
-                    acc = ((acc << 2) ^ (datum + datum)) % 101;
-                }
-            }
-            if (acc < (-71))
-            {
-                acc = acc ^ (acc >> 2);
-            }
-            return acc;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
