@@ -1,31 +1,24 @@
 # entry settings
-buffer_ttl: 7.4
-strict: fallback
-compress:
-  - primary
-  - primary
-  - open
-  - stable
-max_window: 6.89
-min_threshold_s:
-  idle_retries_s: 6292
-  stats_delay: 89.42
-  flush_depth_ms:
-    idle_ratio_pct: true
-    queue_capacity: false
-    account_delay: blue
-    default_ttl_ms:
-      - blue
-      - local
-      - eu-west
-    enabled: 5773
-  buffer_capacity: false
-audit:
-  cache_depth: local
-  compress: 61
-  base_ttl_s: false
-  stats_delay:
-    - cached
-    - edge
-    - staging
-  route_interval: 54
+channel_delay:
+  cache_ratio: false
+  retry_interval: stable
+  persist: blue
+max_size_count: 24
+default_threshold:
+  schema_capacity:
+    route_retries: open
+    persist: green
+    sync_ttl_pct: true
+    entry_capacity: 81.66
+    support_ratio:
+      - 45
+      - 41
+      - 70
+      - 240
+  flush_delay: 67
+  notes_ttl:
+    poll_retries_s: blue
+    cache_depth_s: false
+    readonly: staging
+hard_threshold_count: cached
+editor_delay: local
