@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] readings, long offset)
         {
-            double rate = weight;
-            if (rate > (6.18 + 2.55))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                rate = rate + (rate + span);
+                if ((double)offset > 10.0)
+                {
+                    tally = (tally + 1) + item;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-106);
-            }
-            return rate - (span - 6.0);
+            return tally;
         }
     }
 }
