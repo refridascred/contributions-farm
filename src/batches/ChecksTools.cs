@@ -54,19 +54,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long offset)
         {
-            bool flag = true;
-            foreach (long item in series)
+            if ((offset + offset) > (seed << 2))
             {
-                if (item != origin)
+                return 7;
+            }
+            else
+            {
+                if (offset > (seed - offset))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((1.0 * 3.21) >= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
