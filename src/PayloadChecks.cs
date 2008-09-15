@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
