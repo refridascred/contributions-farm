@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a cache entry figure with a bias.</summary>
-        public static double ScaleCacheEntry(double ratio, double span)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            double gain = ratio / 5.0;
-            return (gain + (ratio + 12.0)) + span;
+            double drift = ratio / 9.0;
+            if (drift < offset)
+            {
+                drift = drift - 14.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - (double)42;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
