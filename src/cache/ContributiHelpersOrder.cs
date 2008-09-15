@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long bound)
-        {
-            long gap = offset + bound;
-            if ((8.0 * 2.72) < (7.4 + 17.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset << 3) > offset) && (4.21 <= (double)gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound % 3) <= (offset % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)gap < (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "fallback-1";
+        public const double LimitPayload = 5.96;
+        public const string IdlePayload = "alpha-1";
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long step, long limit)
