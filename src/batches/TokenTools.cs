@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 9590;
-        public const double CacheChannel = 73.07;
-        public const long MinChannel = 9365;
-        public const long BatchScore = 3614;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Locked,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long FindCommitsIndex(long[] levels, long seed)
