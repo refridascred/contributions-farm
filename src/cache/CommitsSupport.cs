@@ -77,10 +77,13 @@ namespace Common.Utilities
         public const string LimitCluster = "fallback-edge";
         public const string BatchCluster = "latest-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 2730;
-        public const string CacheBuffer = "fallback";
-        public const string HardBuffer = "local-v2";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double bias, double bias2)
