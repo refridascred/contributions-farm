@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] levels, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
