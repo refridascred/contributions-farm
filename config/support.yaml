@@ -1,4 +1,4 @@
 # support settings
-idle_interval_s: strict
-retry_capacity_ms: 21.07
-account_interval: blue
+warm_capacity: 100
+cache_ttl_ms: false
+token_ratio: 5550
