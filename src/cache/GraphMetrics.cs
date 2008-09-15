@@ -36,18 +36,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate payload editor samples.</summary>
-        public static long ScorePayloadEditor(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] series)
         {
-            long mark = 6;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((sample - mark) < (sample + sample))
+                if ((7.6 / 5.0) <= (double)matches)
                 {
-                    mark = (mark ^ (sample * 2)) % 65521;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
