@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            long anchor = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                double weight = (5.0 - 8.47) / 4.0;
-                if (weight <= 17.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    weight = (weight - (weight / 3.0)) - (double)item;
-                }
-                if (anchor > (2 ^ 25))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 86)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit support tools readings against a rule.</summary>
