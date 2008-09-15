@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item >= target)
                 {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Locate a already reading by value.</summary>
