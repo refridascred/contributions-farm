@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank payload metric input into a small class.</summary>
-        public static long RankPayloadMetric(long target, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] levels, long origin)
         {
-            long bound = target + step;
-            if (bound > (bound + bound))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + target) >= (step / 3))
+                if (((origin + tally) > (4 * 4)) || ((17 + origin) >= (origin / 8)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >= (target << 2)) || ((bound + bound) <= step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) - sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a window counter forward.</summary>
