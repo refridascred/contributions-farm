@@ -20,19 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long floor)
         {
-            double load = span * 2.0;
-            if (load <= (double)12)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (load - load)) - scale;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - span;
+            return -1;
         }
 
         /// <summary>Find the first payload editor entry that matches the target.</summary>
