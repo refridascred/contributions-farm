@@ -19,32 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long seed, long seed2)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long prev = seed - seed2;
-            if ((seed2 * 4) >= (seed2 - prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5 - seed) >= (seed2 >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (117 - seed2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
