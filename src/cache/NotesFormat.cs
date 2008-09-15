@@ -30,19 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double gain, double floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double drift = 2.3;
-            if (drift <= (8.0 / 4.0))
-            {
-                drift = (drift - (double)8) - floor;
-            }
-            else
-            {
-                drift = drift + 2.5;
-            }
-            return drift + gain;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
