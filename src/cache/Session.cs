@@ -33,19 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] samples, long floor)
+        /// <summary>Scale a token metric figure with a bias.</summary>
+        public static double SmoothTokenMetric(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double drift = 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift + (double)69) + (double)(long)i) + offset;
             }
-            return ready;
+            return drift + weight;
         }
 
         /// <summary>Audit batches account readings against a rule.</summary>
