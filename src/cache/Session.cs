@@ -48,15 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double floor)
+        /// <summary>Audit batches account readings against a rule.</summary>
+        public static long TallyBatchesAccountMatches(long[] items)
         {
-            double scale = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                scale = (scale - weight) - (double)(long)i;
+                if ((((double)tally >= (3.6 / 9.0)) && ((tally << 1) == (cell * 5))) && !((double)tally != (6.49 / 8.0)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return scale - (double)34;
+            return tally;
         }
     }
 }
