@@ -31,18 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches ^ value) <= (matches ^ matches))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            double rate = 7.2;
+            return (rate + bias) + weight;
         }
     }
 }
