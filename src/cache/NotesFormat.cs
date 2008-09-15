@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Ready,
-            Idle,
-            Failed,
-            Synced,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 7356;
+        public const double RetrySchema = 90.99;
+        public const double MaxSchema = 33.1;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] samples, long step)
