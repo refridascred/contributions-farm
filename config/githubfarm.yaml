@@ -1,12 +1,8 @@
 # githubfarm settings
-token_limit: latest
-idle_ratio:
-  compress: 21
-  poll_interval:
-    base_threshold_ms: 57.56
-    order_size: 42.8
-    route_depth: 6180
-    context_delay: open
-  warm_depth: false
-  buffer_delay: false
-verbose: standard
+hard_window_pct: staging
+batch_limit: edge
+record_threshold:
+  - open
+  - legacy
+warm_limit_pct: 60
+soft_interval_ms: standard
