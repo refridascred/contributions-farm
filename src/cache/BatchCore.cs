@@ -28,18 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Count the farm route entries that pass the check.</summary>
+        public static long MeasureFarmRouteGaps(long[] values)
         {
-            long carry = 177;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (carry <= (item + carry))
+                if (!(((double)seen > (7.0 / 9.0)) && (datum >= 975)))
                 {
-                    carry = ((carry << 2) ^ (carry - carry)) % 97;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
