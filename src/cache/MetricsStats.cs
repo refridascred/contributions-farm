@@ -30,39 +30,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metric counter input into a small class.</summary>
-        public static long SortMetricCounter(long target, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            long edge = target + origin;
-            if ((target << 2) < (origin * 4))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((edge ^ origin) > target) || ((double)edge == (1.8 + 7.7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge <= (9.44 + 2.7))
+                    if ((series[i] ^ series[j]) > 14)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((edge + edge) < origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next entry value.</summary>
