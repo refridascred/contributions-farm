@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up githubfarm notes samples.</summary>
-        public static long OverlapGithubfarmNotesCount(long[] values)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= step)
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the entry mode values.</summary>
