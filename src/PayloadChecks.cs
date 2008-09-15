@@ -64,18 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] readings, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen > ((long)readings.Length + seen))
+                if (data[i] <= step)
                 {
-                    seen = ((seen + 2) ^ datum) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
