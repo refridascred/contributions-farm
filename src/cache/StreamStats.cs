@@ -22,18 +22,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] values, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry <= 7.1)
+                if (samples[i] > origin)
                 {
-                    tally = (tally + 2) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
