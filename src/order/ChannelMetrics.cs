@@ -23,22 +23,24 @@ namespace Common.Utilities
             return (gain2 + floor) + gain;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] readings, long origin)
+        /// <summary>Classify a commits graph pair into a bucket.</summary>
+        public static long RankCommitsGraph(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((bound << 3) != (bound + bound))
             {
-                if ((tally << 2) >= (tally / 7))
+                return 8;
+            }
+            else
+            {
+                if ((bound / 6) == (floor + floor))
                 {
-                    tally = ((tally + 1) + cell) + origin;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
