@@ -38,12 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Roll a batch token counter forward.</summary>
+        public static long IterateBatchToken(long seed)
         {
-            Active,
-            Draft,
-            Synced,
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
