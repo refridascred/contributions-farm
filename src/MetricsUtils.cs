@@ -63,24 +63,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long floor)
-        {
-            if (!((double)step >= (5.63 + 1.2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step >= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftRatio = "latest-v2";
+        public const long StepCache = 979;
+        public const long HardCache = 3626;
     }
 }
