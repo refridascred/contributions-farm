@@ -30,14 +30,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleFactor = 8510;
+        public const string SoftWidth = "stable-1";
+        public const string BatchTimeout = "cached";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinMetrics = 85.27;
