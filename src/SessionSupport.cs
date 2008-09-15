@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double weight, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double bias = (span - span) - span;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias + (span / 9.0)) + (double)(long)i) + weight;
-            }
-            return bias - (bias * 13.0);
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
