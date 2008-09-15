@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a tools support sample.</summary>
-        public static long LocateToolsSupportIndex(long[] levels, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long datum in values)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    result = ((((result << 3) ^ datum) % 4096) ^ (long)i) + step;
                 }
+                result = (result ^ ((long)values.Length + 3)) % 255;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Describe the window phase values.</summary>
