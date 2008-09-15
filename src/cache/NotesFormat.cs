@@ -12,10 +12,26 @@ namespace Common.Utilities
         public const string MaxDepth = "strict-edge";
         public const long BurstCount = 6356;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 7356;
-        public const double RetrySchema = 90.99;
-        public const double MaxSchema = 33.1;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long seed, long target)
+        {
+            long delta = seed - target;
+            if (((double)seed < (6.0 - 6.3)) && ((326 + delta) > delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target >= (seed - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
