@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a report support pair into a bucket.</summary>
-        public static long BucketReportSupport(long offset, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long step = offset ^ origin;
-            if ((offset % 97) == (origin + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3 - origin) <= 616)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.9 + 2.8) < (17.0 - 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((602 ^ origin) <= (offset << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
