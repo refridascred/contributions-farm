@@ -16,11 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long bound)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long delta = seed + bound;
+            if (((bound + delta) >= (243 + 4)) && ((double)delta > (19.0 - 2.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.4 * 5.66) <= (double)delta)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
