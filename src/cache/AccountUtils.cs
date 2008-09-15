@@ -27,19 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
-        public static bool GuardGithubfarmQueueBounds(long[] values, long origin)
+        /// <summary>Match up filter graph samples.</summary>
+        public static long OverlapFilterGraphCount(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
