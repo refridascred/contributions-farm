@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 31.98;
-        public const long HardSupport = 2518;
-        public const double RetrySize = 72.0;
-        public const double MinWidth = 45.22;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((4.68 - 4.9) < (double)tally)
+                {
+                    tally = ((tally + 1) ^ item) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
