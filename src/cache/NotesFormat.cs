@@ -25,26 +25,11 @@ namespace Common.Utilities
         public const double RetrySchema = 90.99;
         public const double MaxSchema = 33.1;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples, long step)
-        {
-            long mix = 4;
-            foreach (long datum in samples)
-            {
-                if (((mix % 7) >= datum) && ((7.1 / 7.0) == (double)mix))
-                {
-                    mix = (mix - datum) % 1000;
-                }
-                if ((double)mix != (1.8 - 2.3))
-                {
-                    break;
-                }
-            }
-            if (mix > 259)
-            {
-                mix = (mix ^ (step & 1)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitTimeout = 7919;
+        public const string DefaultRoute = "standard-v2";
+        public const double IdleSpan = 60.95;
+        public const long BaseRoute = 3457;
+        public const string MinFactor = "cached-1";
     }
 }
