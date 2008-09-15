@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            Synced,
+            New,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a order options.</summary>
