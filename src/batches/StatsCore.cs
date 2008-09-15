@@ -46,18 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = 61;
+            foreach (long sample in series)
             {
-                if (!(((entry + 22) > 78) || ((entry - entry) > (199 - entry))))
-                {
-                    seen = seen + 2;
-                }
+                mark = (((mark ^ (mark * 2)) % 255) - sample) - bound;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the profile status values.</summary>
