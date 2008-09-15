@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream command readings against a rule.</summary>
-        public static long MeasureStreamCommandOutliers(long[] items, long floor)
+        /// <summary>Find the first notes profile entry that matches the target.</summary>
+        public static long LookupNotesProfileIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor < (reading * 2)) && (count <= (reading % 100)))
+                if (levels[i] > step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
