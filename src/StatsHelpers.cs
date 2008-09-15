@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] values, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (limit < datum)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
