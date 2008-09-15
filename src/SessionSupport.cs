@@ -20,11 +20,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double bias)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            double rate = 7.2;
-            return (rate + bias) + weight;
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)(long)i == (double)sum))
+                {
+                    sum = sum ^ (sum - 42);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
