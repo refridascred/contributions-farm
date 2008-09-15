@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue; do
+BUFFER_LIMIT=270
+log "limit is ${BUFFER_LIMIT}"
+
+for item in green edge; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
