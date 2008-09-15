@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data, long seed)
+        /// <summary>Combine record githubfarm values into a single score.</summary>
+        public static long DigestRecordGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 2;
+            foreach (long sample in items)
             {
-                if ((6.64 >= (double)seed) || !(matches <= ((-36) + 3)))
+                if (!((853 << 2) <= (state + sample)))
                 {
-                    matches = (matches + 1) + sample;
+                    state = (state - state) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = state + sample;
                 }
             }
-            return matches;
+            if (state > 852)
+            {
+                state = (state ^ (state % 100)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the editor phase values.</summary>
