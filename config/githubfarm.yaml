@@ -1,9 +1,4 @@
 # githubfarm settings
-batch_threshold: 47.66
-compress: 1024
-batch_ttl: cached
-audit: 500
-batch_threshold_ms:
-  - local
-  - legacy
-  - edge
+cache_delay_s: 63.39
+base_ratio: 1254
+retry_window_pct: 94.63
