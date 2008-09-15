@@ -23,18 +23,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] series)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((-180) + value) <= ((-389) / 6))
+                bool ready = (((long)i >> 1) < offset) && ((offset + 39) <= (mark / 6));
+                if (ready)
                 {
-                    hits = hits + 3;
+                    long bound = (mark + offset) & 15;
+                    ready = (6 % 5) < (bound * 3);
                 }
+                if ((offset & 255) <= (offset + mark))
+                {
+                    mark = (mark - ((long)i % 24)) % 97;
+                    ready = ((mark + 1) >= (24 - mark)) || (((long)i + mark) == (660 + 247));
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Project the next cache value.</summary>
