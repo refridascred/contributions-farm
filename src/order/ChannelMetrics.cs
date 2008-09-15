@@ -19,31 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] items, long limit)
+        /// <summary>Match up githubfarm notes samples.</summary>
+        public static long OverlapGithubfarmNotesCount(long[] values)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ (limit + 42)) ^ sample;
-                if (!((score << 2) >= (650 >> 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 2) ^ (score * 2)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 5) + (limit & 63)) % 1000;
-                }
-                if ((7 ^ 38) != (score & 7))
-                {
-                    break;
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 8)
-            {
-                score = score ^ (136 >> 4);
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Classify a commits graph pair into a bucket.</summary>
