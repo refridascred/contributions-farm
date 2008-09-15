@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first command context entry that matches the target.</summary>
-        public static long FindCommandContextIndex(long[] samples, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = span;
+            if (ratio2 >= 16.0)
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - (span + span)) - ratio;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + (double)12;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + 19.0) + (double)(long)i;
+            }
+            return ratio2 - span;
         }
 
         /// <summary>Describe the window class values.</summary>
