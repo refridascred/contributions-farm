@@ -42,18 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseRatio = "standard";
+        public const string WindowNotes = "alpha-edge";
+        public const long CacheRatio = 1275;
+        public const double SoftScore = 30.06;
+        public const long StepWidth = 334;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] values, long offset)
