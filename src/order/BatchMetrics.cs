@@ -44,12 +44,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "strict-edge";
-        public const long IdleScore = 2436;
-        public const long IdleBudget = 3823;
-        public const long BurstChannel = 4751;
-        public const long CacheChannel = 1722;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double ratio, double offset)
+        {
+            double scale = (double)(402 + 2);
+            if (scale > (double)77)
+            {
+                scale = scale - (20.0 / 7.0);
+            }
+            else
+            {
+                scale = scale + (offset + ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (scale + scale);
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] data, long seed)
