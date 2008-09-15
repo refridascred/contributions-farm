@@ -22,22 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Measure how many batches editor samples are out of range.</summary>
+        public static long TallyBatchesEditorOutliers(long[] readings, long seed)
         {
-            long mark = 984;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((mark & 15) <= mark) && ((double)sample == (2.89 / 5.0)))
+                if (hits > (value - hits))
                 {
-                    mark = mark ^ (mark / 8);
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
