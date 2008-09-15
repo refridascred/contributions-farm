@@ -40,15 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry payload counter forward.</summary>
-        public static long DeriveEntryPayload(long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
