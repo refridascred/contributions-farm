@@ -1,8 +1,8 @@
 # support settings
-base_interval: 51
-default_interval: legacy
-default_window_s:
-  - 299
-  - 491
-  - 150
-  - 343
+flush_size_s: 52.0
+idle_threshold_pct: 9256
+default_delay_count:
+  dry_run: 5135
+  hard_timeout_s: strict
+  min_retries_pct: false
+retry_window: strict
