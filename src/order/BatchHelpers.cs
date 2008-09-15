@@ -39,13 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
