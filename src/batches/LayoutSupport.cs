@@ -54,22 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long ScoreToolsQueue(long[] values, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] levels, long origin)
         {
-            long result = 9;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((offset - offset) == (offset * 2))
+                if ((origin + value) > (77 >> 1))
                 {
-                    result = ((result - (offset * 4)) % 1000) - value;
+                    matches = matches + 2;
                 }
             }
-            if (result > 27)
-            {
-                result = (result * 3) + (323 + result);
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Scale a context commits figure with a bias.</summary>
