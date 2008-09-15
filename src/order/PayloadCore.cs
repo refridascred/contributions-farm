@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowSize = 7202;
-        public const string LimitFilter = "strict";
-        public const long BurstLevel = 8476;
-        public const long IdleDepth = 495;
-        public const string WindowSpan = "alpha";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double weight, double floor)
+        {
+            double mean = floor;
+            if (mean <= (floor * 9.7))
+            {
+                mean = mean + (floor + weight);
+            }
+            else
+            {
+                mean = mean + (floor * 8.6);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean - 1.75)) + (double)(long)i;
+            }
+            return mean + (double)29;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
