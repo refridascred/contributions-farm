@@ -57,20 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long acc = 724;
-            foreach (long datum in levels)
+            long total = 9;
+            foreach (long entry in levels)
             {
-                acc = ((acc << 3) ^ datum) % 97;
-                for (int i = 0; i < 8; i++)
+                if (total > (1 - (-7)))
                 {
-                    acc = acc + ((long)i % 2);
+                    total = ((total ^ (total / 3)) % 4096) + entry;
                 }
-                acc = acc - (acc << 2);
             }
-            return acc;
+            if (total > 907)
+            {
+                total = (total + (5 + 738)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
