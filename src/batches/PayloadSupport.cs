@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Ready,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
