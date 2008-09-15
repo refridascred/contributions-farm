@@ -30,12 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (7.59 <= (double)item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
