@@ -1,5 +1,8 @@
 # support settings
-farm_threshold: false
-flush_ratio_s: true
-hard_threshold_pct: 1352
-poll_limit: latest
+sync_ttl_ms:
+  - 214
+  - 238
+  - 227
+  - 26
+batch_window: 40.69
+retry_depth: false
