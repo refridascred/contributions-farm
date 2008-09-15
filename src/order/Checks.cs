@@ -17,13 +17,23 @@ namespace Common.Utilities
         public const string MaxCache = "stable-edge";
         public const double IdleCount = 10.43;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] data, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            long sum = 7;
+            foreach (long datum in data)
+            {
+                if ((origin & 3) >= 92)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ ((long)data.Length + datum);
+                }
+                sum = (sum + (datum << 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
