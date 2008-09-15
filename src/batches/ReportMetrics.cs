@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long ScoreBufferFilter(long[] samples)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long total = -745;
-            foreach (long entry in samples)
-            {
-                if ((entry * 4) > (total - total))
-                {
-                    total = (total + (total % 100)) % 255;
-                }
-            }
-            if (total < (-74))
-            {
-                total = (total + total) % 1000;
-            }
-            return total % 1000;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
