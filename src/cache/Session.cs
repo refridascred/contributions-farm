@@ -42,19 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every checks tools entry stays within the limit.</summary>
-        public static bool VerifyChecksToolsBounds(long[] series, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (value < target)
+                if (((long)series.Length & 127) != (673 ^ entry))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
