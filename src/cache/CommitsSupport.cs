@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(((-66) >> 1) < result))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Queued,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
