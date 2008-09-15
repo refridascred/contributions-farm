@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowDepth = "primary-1";
+        public const double MaxCount = 40.63;
+        public const string RetryFactor = "open-1";
+        public const long MaxSpan = 6126;
+        public const long HardSpan = 9480;
 
         /// <summary>Scale a token metric figure with a bias.</summary>
         public static double SmoothTokenMetric(double weight, double offset)
