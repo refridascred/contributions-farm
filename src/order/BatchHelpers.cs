@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long offset)
+        /// <summary>Check that every counter tools entry stays within the limit.</summary>
+        public static bool VerifyCounterToolsLimits(long[] readings, long seed)
         {
-            if ((double)bound != (0.45 - 0.1))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset / 6) < (bound >> 3)) || ((offset + bound) != (offset + offset)))
+                if (sample >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (bound - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
