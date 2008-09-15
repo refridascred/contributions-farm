@@ -25,9 +25,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 3396;
-        public const long StepChecks = 6333;
-        public const long BatchChecks = 4218;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 5945;
+        public const long BatchMetric = 7982;
+        public const long IdleDepth = 4019;
     }
 }
