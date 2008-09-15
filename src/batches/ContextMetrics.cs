@@ -63,11 +63,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            if ((seed - (-409)) <= (offset & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset << 3) == (26 % 10)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
