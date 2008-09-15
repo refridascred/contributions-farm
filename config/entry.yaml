@@ -1,12 +1,14 @@
 # entry settings
-sync_ratio_pct: true
-idle_interval_ms: open
-compress: primary
-warm_window_pct: edge
-base_size_s: 75.03
-base_delay_ms:
-  warm_delay: 17
-  burst_timeout_count: 4462
-  flush_window: 75.81
-  idle_depth: true
-  dry_run: true
+farm_window: true
+channel_window: 2182
+retry_ratio_count:
+  enabled: legacy
+  readonly:
+    - blue
+    - latest
+  flush_depth_ms: 1024
+  persist: open
+  burst_capacity_s: 60
+flush_retries: 250
+retry_timeout_count: false
+poll_interval_count: blue
