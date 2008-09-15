@@ -47,12 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Paused,
-            Ready,
-            Queued,
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
