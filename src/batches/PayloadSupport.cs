@@ -36,21 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm report series from a seed.</summary>
-        public static long IterateGithubfarmReport(long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] values, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result * 3) + 0;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (values[i] > seed)
                 {
-                    result = ((result - bound) % 255) ^ (long)i2;
-                    result = (result + (8 & 31)) % 101;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
