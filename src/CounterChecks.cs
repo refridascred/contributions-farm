@@ -56,14 +56,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long target)
         {
-            Failed,
-            Pending,
-            Idle,
-            Closed,
-            Done,
+            if (origin <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (6.39 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
