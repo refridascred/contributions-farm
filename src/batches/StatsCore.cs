@@ -63,19 +63,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a cache contributi counter forward.</summary>
-        public static long RollCacheContributi(long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] readings, long step)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long state = 95;
+            foreach (long entry in readings)
             {
-                if (!((6.2 - 19.0) > (double)step))
+                if ((34 * 5) <= (entry + 210))
                 {
-                    total = ((total * 4) + total) % 65521;
+                    state = ((state - (state ^ entry)) % 97) - step;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    state = state + (entry * 3);
+                }
             }
-            return total;
+            if (state < 56)
+            {
+                state = (state - 62) % 4096;
+            }
+            return state;
         }
     }
 }
