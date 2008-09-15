@@ -1,14 +1,11 @@
 # Command notes
 
-The order module keeps filter values in sync with the editor cache.
-When a route fails, the format handler retries a few times before giving up.
-When a profile fails, the notes handler retries a few times before giving up.
-
-The checks report groups every payload by batches.
-A entry that stays idle for too long is moved to the editor list.
+Run the command check before changing any channel limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+When a cache fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every graph change
-- Validate command input early
+- Validate cluster input early
+- Document new support fields
+- Keep session values small
