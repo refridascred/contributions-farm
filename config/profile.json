@@ -1,5 +1,12 @@
 {
-  "default_ttl_pct": true,
-  "metrics_timeout": 27.16,
-  "base_ratio_ms": "standard"
+  "command_retries": 2952,
+  "layout_size": "strict",
+  "editor_delay": {
+    "soft_delay": ["legacy", "strict", "primary", "local"],
+    "batch_interval": 84,
+    "soft_window_count": 2120,
+    "burst_timeout_pct": "open",
+    "soft_capacity_s": "strict"
+  },
+  "already_size": "edge"
 }
