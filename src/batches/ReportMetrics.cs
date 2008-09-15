@@ -20,12 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowFactor = 32.36;
-        public const long SoftDepth = 4783;
-        public const long BaseSchema = 2669;
-        public const long CacheCount = 8935;
-        public const long LimitLevel = 744;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 8735;
+        public const double BatchLevel = 0.36;
+        public const long BaseSpan = 9084;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long limit)
