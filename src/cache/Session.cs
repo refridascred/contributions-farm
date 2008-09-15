@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Digest a series of session githubfarm entries.</summary>
+        public static long TallySessionGithubfarm(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 5;
+            foreach (long datum in items)
             {
-                if (((hits < (item << 3)) && ((hits % 5) <= item)) || (item >= (hits + (long)series.Length)))
+                state = ((state * 3) + (state + (-6))) % 1000;
+                if (2.6 < (double)state)
                 {
-                    hits = hits + 2;
+                    state = (state ^ (target ^ datum)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (8 << 1)) % 1000;
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
