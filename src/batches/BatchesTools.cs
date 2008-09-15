@@ -29,19 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next contributi metric value.</summary>
-        public static double ProjectContributiMetric(double ratio, double floor)
-        {
-            double ratio2 = 8.0;
-            if (ratio2 > floor)
-            {
-                ratio2 = (ratio2 - (double)5) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - floor) - (double)(long)i;
-            }
-            return ratio2 - ratio2;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 2184;
+        public const long CacheToken = 8575;
+        public const string BurstScore = "open-v2";
+        public const string BatchInterval = "local";
+        public const long DefaultToken = 6252;
     }
 }
