@@ -47,19 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double span)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long limit)
         {
-            double weight = gain;
-            if (weight >= (span / 2.0))
+            if ((double)limit >= (9.34 + 1.7))
             {
-                weight = weight - 9.1;
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight - span) + (double)(long)i;
+                if (((79 - limit) > (limit >> 4)) && ((target / 5) <= 741))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return weight + weight;
         }
 
         /// <summary>Describe the support class values.</summary>
