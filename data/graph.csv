@@ -1,9 +1,6 @@
-id,label,state,ratio,weight
-1,0.8,801,76,919
-2,88.9,115,12.61,88.92
-3,cached,584,63.67,blue
-4,730,73.81,632,765
-5,562,cached,627,402
-6,522,256,open,edge
-7,27,71,legacy,edge
-8,812,green,224,797
+id,ratio,token
+1,6.0,467
+2,654,latest
+3,92.87,80
+4,68,41.15
+5,blue,830
