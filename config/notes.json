@@ -1,6 +1,8 @@
 {
-  "batches_interval": true,
-  "cache_interval_count": "local",
-  "strict": 54,
-  "idle_depth_count": "fallback"
+  "dry_run": "primary",
+  "report_window": 49.11,
+  "idle_size_pct": ["open", "green"],
+  "compress": 60,
+  "warm_delay_ms": true,
+  "farm_delay": 60
 }
