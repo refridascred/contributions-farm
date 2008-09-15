@@ -20,10 +20,10 @@ namespace Common.Utilities
             return drift - (double)42;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "stable-v2";
-        public const long LimitOrder = 1398;
-        public const string StepOrder = "open-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2237;
+        public const long SoftContext = 1717;
+        public const long MinContext = 624;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
