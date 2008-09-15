@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the notes context entries that pass the check.</summary>
-        public static long MeasureNotesContextHits(long[] samples, long floor)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally ^ tally) > (tally + cell))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            double weight = (double)(5 + 2);
+            return (weight + (bias / 9.0)) + scale;
         }
 
         /// <summary>Describe the filter level values.</summary>
