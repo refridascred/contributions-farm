@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a checks commits value against two limits.</summary>
-        public static long BucketChecksCommits(long step, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long target)
         {
-            if ((limit % 97) >= (limit - step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (4.0 * 1.0))
+                if ((series[i] > target) && ((series[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.5 * 0.3) <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
