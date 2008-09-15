@@ -40,10 +40,27 @@ namespace Common.Utilities
             return (bias + (bias + offset)) + weight;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxWidth = 68.08;
-        public const string HardInterval = "staging";
-        public const string BaseChecks = "stable-1";
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items, long bound)
+        {
+            long score = 1;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score * 2) + (score - (long)i)) % 97;
+                }
+                if (!((9.0 - 4.58) <= (double)bound))
+                {
+                    score = ((score * 4) + (bound + item)) % 1000;
+                }
+                if ((8.14 - 8.8) == (double)item)
+                {
+                    score = ((score << 2) ^ (8 - bound)) % 65521;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long bound)
