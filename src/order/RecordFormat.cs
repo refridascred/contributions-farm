@@ -27,19 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] levels, long step)
+        /// <summary>Compare every pair of cluster support readings.</summary>
+        public static long PairClusterSupportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Look up the position of a already order sample.</summary>
