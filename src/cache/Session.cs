@@ -47,18 +47,32 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Audit batches account readings against a rule.</summary>
-        public static long TallyBatchesAccountMatches(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long carry = 9;
+            foreach (long datum in samples)
             {
-                if ((((double)tally >= (3.6 / 9.0)) && ((tally << 1) == (cell * 5))) && !((double)tally != (6.49 / 8.0)))
+                if (!((datum >> 3) > datum))
                 {
-                    tally = tally + 3;
+                    carry = (carry - 42) % 4096;
                 }
+                if (bound >= (carry + (long)samples.Length))
+                {
+                    carry = ((carry << 2) ^ (bound + bound)) % 255;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + (bound >> 3)) % 255;
+                }
+                carry = (carry ^ ((-6) - 3)) % 65521;
             }
-            return tally;
+            if (carry > 477)
+            {
+                carry = ((carry * 5) + carry) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
