@@ -32,19 +32,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings, long limit)
         {
-            long mark = 90;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark + value) % 255) - limit;
-                if ((value % 60) < (value & 7))
+                if ((double)limit <= (0.3 / 9.0))
                 {
-                    break;
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
