@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long target, long target2)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            if ((double)target > (double)target2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + target) <= (target2 + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a batch token counter forward.</summary>
