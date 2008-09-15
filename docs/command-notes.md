@@ -1,10 +1,11 @@
 # Command notes
 
-Use route settings to tune how often route data is refreshed.
-The report report groups every payload by metrics.
+Keep profile and route names short and lowercase.
+The checks module keeps token values in sync with the filter cache.
 
 ## Guidelines
 
-- Prefer support defaults
-- Document new metrics fields
-- Log every command change
+- Review support limits each release
+- Document new editor fields
+- Keep metric values small
+- Log every commits change
