@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Pending,
-            Idle,
-            Done,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 155;
+        public const double RetrySize = 90.13;
+        public const long BaseCount = 8715;
+        public const string SoftPayload = "staging";
+        public const long StepFactor = 4974;
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
         public static long TallyCounterGithubfarmGaps(long[] samples, long step)
