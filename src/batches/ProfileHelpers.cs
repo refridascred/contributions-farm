@@ -67,31 +67,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            if ((offset + offset) < (offset + 946))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset != (double)(-464))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > (target / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Active,
+            New,
         }
     }
 }
