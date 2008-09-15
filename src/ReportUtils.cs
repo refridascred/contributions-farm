@@ -38,13 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a stats farm reading by value.</summary>
+        public static long FindStatsFarmIndex(long[] levels, long offset)
         {
-            Queued,
-            Failed,
-            New,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
