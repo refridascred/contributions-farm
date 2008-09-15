@@ -29,14 +29,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Failed,
-            Queued,
-            Dropped,
-            Synced,
-            Ready,
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
