@@ -23,15 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate contributi editor samples.</summary>
-        public static long DigestContributiEditor(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 0;
-            foreach (long entry in samples)
-            {
-                state = (state << 2) ^ (entry >> 2);
-            }
-            return state % 97;
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up checks samples.</summary>
