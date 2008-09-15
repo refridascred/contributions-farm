@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long origin)
-        {
-            if (!(offset >= (origin - 50)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset >= (4.0 + 2.51)) || ((offset + origin) < (origin + offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin % 60) >= (origin >> 2)) || ((origin % 60) > (origin + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowSize = 7202;
+        public const string LimitFilter = "strict";
+        public const long BurstLevel = 8476;
+        public const long IdleDepth = 495;
+        public const string WindowSpan = "alpha";
 
         /// <summary>Blend two report measurements.</summary>
         public static double AdjustReport(double gain, double span)
