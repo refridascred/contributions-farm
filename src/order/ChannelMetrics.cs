@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long limit)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
