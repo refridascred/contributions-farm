@@ -34,17 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first counter buffer entry that matches the target.</summary>
-        public static long SeekCounterBufferIndex(long[] samples, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                if (((7.27 - 12.0) != (double)tally) && (((-51) - tally) > (target - tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a graph record.</summary>
