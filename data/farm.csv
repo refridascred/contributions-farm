@@ -1,8 +1,9 @@
-id,count,active,region
-1,140,edge,stable
-2,fallback,938,928
-3,staging,214,276
-4,397,644,55.73
-5,494,13,2.64
-6,680,fallback,cached
-7,blue,32.15,509
+id,level,owner,rank
+1,green,95.28,standard
+2,82.02,primary,95
+3,306,85.52,59
+4,26.37,73.6,1.33
+5,standard,open,blue
+6,75.84,75.67,200
+7,13.76,928,72.13
+8,edge,48.88,474
