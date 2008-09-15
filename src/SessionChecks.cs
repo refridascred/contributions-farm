@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 0;
+            foreach (long sample in values)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                mark = mark + limit;
+                if ((mark + sample) >= (mark % 3))
+                {
+                    mark = mark + mark;
+                    mark = ((mark << 3) ^ 9) % 1000;
+                }
+                mark = (mark + (long)values.Length) % 101;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
