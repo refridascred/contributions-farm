@@ -42,11 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] items, long origin)
         {
-            double ratio2 = ratio / 4.0;
-            return ratio2 + (offset * 2.68);
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
