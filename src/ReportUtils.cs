@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string HardTools = "cached-1";
         public const long MinTimeout = 7770;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (item < origin)
+                if (((tally % 60) < (seed - reading)) || ((double)seed < (4.2 + 13.0)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit account already readings against a rule.</summary>
