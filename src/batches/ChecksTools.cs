@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Locked,
-            Pending,
-            New,
-            Dropped,
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
