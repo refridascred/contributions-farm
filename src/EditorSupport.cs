@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            double load = (double)(3 * 5);
-            if (load <= (gain + bias))
+            double weight = (double)(83 & 7);
+            for (int i = 0; i < 9; i++)
             {
-                load = load + (gain / 3.0);
+                weight = ((weight + (double)(long)i) - rate) - offset;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + gain) - (double)(long)i;
-            }
-            return load + (load / 5.0);
+            return weight + 9.4;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
