@@ -1,4 +1,10 @@
 # support settings
-soft_timeout_ms: false
-strict: 90.58
-hard_size_ms: 60
+audit: eu-west
+channel_delay: 972
+dry_run:
+  burst_window_s: 37
+  base_delay_pct: 73.15
+  persist: 9109
+  commits_limit: 26.35
+  compress: 71
+  min_interval: stable
