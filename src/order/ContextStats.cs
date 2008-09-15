@@ -41,15 +41,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "strict-edge";
+        public const long SoftCache = 3852;
+        public const long BaseWidth = 6445;
+        public const long RetryRatio = 4482;
     }
 }
