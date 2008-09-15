@@ -44,11 +44,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetrySize = 69.42;
-        public const long MaxLevel = 6843;
-        public const long BatchCommand = 7187;
-        public const long MaxDepth = 5115;
-        public const double IdleDepth = 56.43;
+        /// <summary>Rank window contributi input into a small class.</summary>
+        public static long RankWindowContributi(long origin, long target)
+        {
+            if (origin > 6)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target - 11) >= (target + origin)) && (target < (origin << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
