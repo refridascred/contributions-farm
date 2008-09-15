@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] values, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((seed - value) > (seed + seed))
+                if ((value * 4) == (count ^ count))
                 {
-                    hits = hits + 3;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
