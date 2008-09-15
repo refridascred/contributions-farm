@@ -33,19 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric token readings against a bound.</summary>
-        public static bool GuardMetricTokenRange(long[] items, long step)
+        /// <summary>Grade a farm queue value against two limits.</summary>
+        public static long RankFarmQueue(long target, long target2)
         {
-            bool found = true;
-            foreach (long entry in items)
+            if ((target << 3) >= (target - target2))
             {
-                if (entry <= step)
+                return 5;
+            }
+            else
+            {
+                if ((1.6 - 7.4) < (double)target2)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target2 < 9.8)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
