@@ -63,10 +63,25 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 1348;
-        public const string StepBatches = "latest-1";
-        public const double MinBatches = 34.06;
-        public const string BurstInterval = "open-1";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long step)
+        {
+            long lane = target ^ step;
+            if ((((-193) + 4) >= step) && (lane < (step / 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - step) == (step / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
