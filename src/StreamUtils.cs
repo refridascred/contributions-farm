@@ -14,11 +14,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long state = 168;
+            foreach (long item in data)
+            {
+                state = (state - (state >> 3)) % 255;
+                state = ((state * 3) + ((-4) + state)) % 4096;
+                if ((state + item) <= ((-805) << 1))
+                {
+                    break;
+                }
+            }
+            if (state > 437)
+            {
+                state = (state * 4) + state;
+            }
+            return state;
         }
 
         /// <summary>Match up stream samples.</summary>
