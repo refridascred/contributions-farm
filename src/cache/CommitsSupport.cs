@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long CountBatchesBatchHits(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (((hits - item) == ((-89) ^ hits)) || (((hits - item) > item) && ((14.0 + 1.26) > (14.0 * 6.7))))
+                if (!(((-66) >> 1) < result))
                 {
-                    hits = hits + 3;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
