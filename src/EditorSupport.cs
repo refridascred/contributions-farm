@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const string DefaultRatio = "alpha-v2";
         public const string MaxInterval = "stable";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Count the window command entries that pass the check.</summary>
+        public static long MeasureWindowCommandHits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)tally >= (double)item)
+                if (((origin & 1) >= (datum & 1)) || ((origin + origin) > (origin - datum)))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
