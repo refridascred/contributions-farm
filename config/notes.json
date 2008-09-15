@@ -1,6 +1,19 @@
 {
-  "base_timeout": 250,
-  "route_retries": "blue",
-  "default_threshold_count": false,
-  "base_ttl_pct": 24.5
+  "readonly": 60,
+  "batch_size": {
+    "contributi_retries": "cached",
+    "dry_run": 1,
+    "verbose": "stable",
+    "flush_depth_s": "edge",
+    "graph_depth": {
+      "contributi_window": 5881,
+      "idle_threshold": 71.61,
+      "stream_ratio": "legacy",
+      "cache_retries": "open"
+    }
+  },
+  "max_ratio_count": "strict",
+  "channel_interval": 19.57,
+  "soft_delay_s": 100,
+  "audit": 8893
 }
