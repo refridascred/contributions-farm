@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long LimitOrder = 1398;
         public const string StepOrder = "open-v2";
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
