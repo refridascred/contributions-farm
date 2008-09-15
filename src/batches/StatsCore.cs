@@ -46,12 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 9126;
-        public const long HardAccount = 8681;
-        public const long MinAccount = 8991;
-        public const double BatchAccount = 38.7;
-        public const double SoftInterval = 63.64;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
+        {
+            long result = 299;
+            foreach (long reading in values)
+            {
+                if ((reading * 5) >= result)
+                {
+                    result = (result - (result / 2)) % 97;
+                }
+                result = (result - result) % 101;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
