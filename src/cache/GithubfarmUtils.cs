@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxFactor = "alpha-1";
+        public const long HardWidth = 8076;
+        public const string BatchRoute = "stable-edge";
+        public const long IdleRoute = 9423;
+        public const long BurstRoute = 7318;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
