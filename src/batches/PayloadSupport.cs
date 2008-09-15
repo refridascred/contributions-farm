@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long TallyBatchOrderHits(long[] levels, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (matches < (floor >> 3))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                long gap = (acc >> 5) + (target / 6);
+                acc = ((acc << 3) ^ (gap << 2)) % 101;
+                gap = (gap - ((long)i + acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
