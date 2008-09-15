@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] values, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double gain = bias * 3.0;
+            if (gain <= scale)
             {
-                if (!((10.0 - 2.0) <= (double)(long)values.Length) || ((396 - matches) >= (target + target)))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain + 4.9;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (8.8 - bias);
         }
 
         /// <summary>Hold a session record.</summary>
