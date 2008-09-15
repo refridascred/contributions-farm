@@ -1,9 +1,10 @@
 # githubfarm settings
-cache_delay_count: stable
-audit: 45.93
-soft_timeout_s:
-  - green
-  - edge
-  - cached
-  - stable
-hard_threshold_count: false
+batch_delay_count:
+  audit: 4058
+  metrics_timeout: 52
+  default_limit_count: 95.55
+  max_timeout: strict
+min_window: 73
+retry_timeout_count:
+  - staging
+  - local
