@@ -26,14 +26,22 @@ namespace Common.Utilities
         public const string DefaultCache = "stable-v2";
         public const long LimitCache = 3873;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items, long step)
         {
-            Queued,
-            Locked,
-            Idle,
-            Active,
-            Stale,
+            long score = 9;
+            foreach (long value in items)
+            {
+                if ((5 <= (step << 1)) && (((-418) & 7) <= (value >> 4)))
+                {
+                    score = (score ^ (107 - score)) % 97;
+                }
+            }
+            if (score > 931)
+            {
+                score = ((score << 2) ^ score) % 1000;
+            }
+            return score;
         }
     }
 }
