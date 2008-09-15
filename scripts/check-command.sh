@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=81
-log "limit is ${COMMAND_LIMIT}"
-
-for item in stable latest edge; do
+for item in strict cached; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+mode="${1:-green}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
