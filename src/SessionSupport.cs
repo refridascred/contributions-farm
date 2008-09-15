@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of report entry readings.</summary>
