@@ -77,12 +77,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long step)
+        /// <summary>Locate a report commits reading by value.</summary>
+        public static long FindReportCommitsIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] <= step)
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
