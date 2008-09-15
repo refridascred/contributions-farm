@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] levels, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum % 5) < target)
+                if (levels[i] <= step)
                 {
-                    sum = sum - (target / 3);
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
