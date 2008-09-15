@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data, long seed)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >> 4) > (seed - datum))
-                {
-                    acc = acc + (acc >> 2);
-                }
-            }
-            return acc % 97;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
