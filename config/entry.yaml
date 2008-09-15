@@ -1,5 +1,10 @@
 # entry settings
-base_size_ms: 57.54
-default_depth_ms: 4.67
-poll_depth_ms: legacy
-flush_size: legacy
+profile_limit: 271
+entry_timeout:
+  - fallback
+  - primary
+warm_size:
+  - latest
+  - primary
+  - strict
+  - stable
