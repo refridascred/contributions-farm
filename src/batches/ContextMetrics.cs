@@ -41,13 +41,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Active,
-            Queued,
-            Ready,
-            Paused,
+            Locked,
+            Stale,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
