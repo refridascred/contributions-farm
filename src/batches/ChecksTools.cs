@@ -26,20 +26,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 683;
+        public const string DefaultInterval = "open-1";
+        public const long MaxTimeout = 8555;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] readings)
