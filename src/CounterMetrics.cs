@@ -36,12 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
