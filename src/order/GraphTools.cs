@@ -62,32 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] values, long step)
         {
-            long lane = limit ^ bound;
-            if ((bound + bound) != (bound / 3))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (lane <= (bound ^ lane))
+                if (item > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + limit) != (lane + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the support class values.</summary>
