@@ -1,7 +1,5 @@
 {
-  "sync_interval_s": 86.42,
-  "format_ratio": false,
-  "filter_depth": "standard",
-  "soft_ratio_ms": false,
-  "retry_threshold_count": false
+  "layout_ttl": 7242,
+  "persist": ["staging", "local"],
+  "commits_ttl": 46
 }
