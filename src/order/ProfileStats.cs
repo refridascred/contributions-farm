@@ -42,19 +42,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
         {
-            double mean = gain;
-            if (mean < (3.09 * 9.4))
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                mean = (mean + (mean - mean)) - span;
+                long diff = offset;
+                if ((713 + diff) != (263 << 3))
+                {
+                    state = (state << 3) ^ (diff + 67);
+                }
+                diff = ((diff * 5) + (796 % 64)) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean * 7.26)) - (double)(long)i;
-            }
-            return mean - 5.4;
+            return state;
         }
     }
 }
