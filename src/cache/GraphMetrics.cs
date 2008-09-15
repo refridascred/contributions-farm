@@ -13,17 +13,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 7;
+            foreach (long datum in levels)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result ^ ((long)levels.Length % 12)) % 101) - datum) - limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
