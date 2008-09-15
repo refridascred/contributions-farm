@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2375;
-        public const long BurstCount = 6689;
-        public const long BurstLayout = 3439;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long limit, long seed)
+        {
+            long cur = limit ^ seed;
+            if (limit <= cur)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((2.91 - 2.0) != (double)cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (cur % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit > (limit >> 5)) && ((19.0 - 0.65) == (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] samples, long offset)
