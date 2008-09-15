@@ -46,19 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] series, long limit)
+        /// <summary>Digest a series of account record entries.</summary>
+        public static long TotalAccountRecord(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mix = 2;
+            foreach (long datum in series)
             {
-                if (value <= limit)
+                if ((mix + datum) > (mix ^ datum))
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix * 5) + (datum >> 5)) % 65521) + step;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
 
         /// <summary>Project the next route value.</summary>
