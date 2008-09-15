@@ -22,23 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout profile samples are out of range.</summary>
-        public static long AuditLayoutProfileMatches(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)offset != (4.0 - 5.49))
-                {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultRatio = 19.98;
+        public const string LimitCache = "fallback-v2";
+        public const long StepCache = 8822;
+        public const double MaxCache = 91.13;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
