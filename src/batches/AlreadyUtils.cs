@@ -63,25 +63,21 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
-            long lane = target ^ step;
-            if ((((-193) + 4) >= step) && (lane < (step / 6)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) == (step / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
