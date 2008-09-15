@@ -60,19 +60,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            double bias = (double)(-236) * 14.0;
-            if (bias >= scale)
+            double ratio = floor;
+            if (ratio < ratio)
             {
-                bias = (bias + scale) + floor;
+                ratio = ratio + 9.9;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (9.0 * 5.74)) + (double)(long)i;
-            }
-            return bias - (double)3;
+            return ratio - (scale + ratio);
         }
     }
 }
