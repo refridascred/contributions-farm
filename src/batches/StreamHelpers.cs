@@ -19,11 +19,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double ratio, double bias)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] values, long offset)
         {
-            double ratio2 = (ratio - ratio) + 20.0;
-            return (ratio2 + 4.51) + bias;
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
