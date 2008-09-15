@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const long SoftRoute = 1485;
         public const string SoftScore = "fallback-edge";
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] samples, long offset)
         {
-            long edge = seed + origin;
-            if ((seed >> 3) <= (42 - edge))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)origin <= (5.81 * 11.0)))
+                if (datum >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
