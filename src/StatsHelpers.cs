@@ -62,15 +62,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 307;
-            foreach (long datum in levels)
-            {
-                carry = ((carry << 3) ^ (datum ^ datum)) - target;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
