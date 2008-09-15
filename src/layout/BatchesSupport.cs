@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long DefaultCluster = 7942;
         public const long StepTimeout = 8017;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long step)
+        /// <summary>Roll a support contributi counter forward.</summary>
+        public static long RollSupportContributi(long target)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (item <= step)
+                if ((long)i != (target / 9))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix << 3) ^ ((long)i ^ (long)i);
                 }
+                else
+                {
+                    mix = (mix ^ (mix - (long)i)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a token header.</summary>
