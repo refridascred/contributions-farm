@@ -54,20 +54,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            if (!(offset > (offset * 3)))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc - origin) % 255) ^ (long)i2;
-                    acc = acc + (origin + origin);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (offset > (2 / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
