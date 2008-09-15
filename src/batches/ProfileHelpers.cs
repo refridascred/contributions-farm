@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const double MinStream = 9.69;
         public const double LimitStream = 11.31;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] data, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > step)
+                if ((6 - origin) > (anchor >> 4))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor * 5) + (origin & 3);
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Hold a schema options.</summary>
