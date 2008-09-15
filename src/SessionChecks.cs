@@ -27,18 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter queue readings against a rule.</summary>
-        public static long MeasureCounterQueueGaps(long[] values)
+        /// <summary>Locate a command report reading by value.</summary>
+        public static long FindCommandReportIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= (value >> 4))
+                if (data[i] <= target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
