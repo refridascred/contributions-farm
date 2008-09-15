@@ -29,16 +29,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 5257;
+        public const long MaxStream = 1429;
+        public const double LimitScore = 6.01;
+        public const long LimitInterval = 6597;
+        public const long BaseTimeout = 7730;
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
         public static long SeriesCommitsGraph(long origin)
