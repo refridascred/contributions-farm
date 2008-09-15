@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks contributi readings against a bound.</summary>
-        public static bool GuardChecksContributiLimits(long[] values, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (sample >= target)
+                if ((12 >> 5) > (tally * 2))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
