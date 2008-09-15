@@ -34,15 +34,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long limit)
         {
-            double mean = rate;
-            if (mean < mean)
+            long edge = step + limit;
+            if (!((edge << 1) > (step / 9)))
             {
-                mean = (mean + mean) + floor;
+                return 4;
             }
-            return mean - 7.49;
+            else
+            {
+                if (63 <= (limit / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit + step) >= (step & 31)) && ((step - edge) <= (step * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
