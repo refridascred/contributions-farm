@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long RetryWidth = 5231;
         public const long BurstWidth = 566;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data, long step)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!(((entry + step) >= (step - entry)) || ((step & 7) > seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
