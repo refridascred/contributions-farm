@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double bias)
+        /// <summary>Rank route report input into a small class.</summary>
+        public static long SortRouteReport(long seed, long target)
         {
-            double scale2 = scale + (9.0 - scale);
-            return scale2 + (bias + scale);
+            if ((double)target < 19.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)target <= (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((314 + target) >= (seed + target)) || ((0.52 / 9.0) >= (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < (target & 15))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
