@@ -1,24 +1,5 @@
 {
-  "base_delay_s": 10.84,
-  "batches_ttl": "latest",
-  "flush_window": {
-    "base_threshold_s": "stable",
-    "sync_ttl_count": 100,
-    "strict": "edge",
-    "queue_depth": "strict",
-    "min_depth_s": true
-  },
-  "hard_ratio_pct": false,
-  "cache_depth_count": {
-    "commits_ratio": 1024,
-    "min_interval_pct": {
-      "dry_run": ["local", "fallback"],
-      "stats_retries": "primary",
-      "idle_ttl_ms": 30
-    },
-    "sync_ratio_pct": ["local", "open"],
-    "batch_ttl_ms": "open",
-    "sync_retries_count": 66,
-    "token_ratio": 1024
-  }
+  "checks_threshold": "cached",
+  "hard_ttl_pct": 8045,
+  "queue_interval": [131, 300, 221, 454]
 }
