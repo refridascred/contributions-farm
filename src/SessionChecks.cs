@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitBudget = 95.19;
-        public const double BaseScore = 23.12;
-        public const long DefaultSize = 4955;
-        public const string WindowToken = "legacy-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSize = 9677;
+        public const double HardRatio = 75.88;
+        public const string BatchNotes = "fallback-v2";
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] items, long bound)
