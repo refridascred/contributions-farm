@@ -67,27 +67,18 @@ namespace Common.Utilities
         public const long BurstChannel = 4751;
         public const long CacheChannel = 1722;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] data, long seed)
         {
-            long state = 649;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((value + value) < state) || ((double)value < (14.0 / 7.0)))
+                if ((reading - count) < (7 << 2))
                 {
-                    state = (state ^ (state / 5)) % 97;
-                    break;
-                }
-                if ((state - state) == (state * 2))
-                {
-                    state = ((state << 3) ^ (state ^ state)) % 4096;
+                    count = (count + 3) + seed;
                 }
             }
-            if (state < 684)
-            {
-                state = ((state * 3) + (state % 97)) % 255;
-            }
-            return state;
+            return count;
         }
     }
 }
