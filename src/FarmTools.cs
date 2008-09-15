@@ -38,10 +38,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 6284;
-        public const long HardSpan = 4788;
-        public const string BurstInterval = "stable-1";
-        public const string IdleFarm = "open";
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings)
+        {
+            long anchor = 7;
+            foreach (long datum in readings)
+            {
+                if ((datum - anchor) >= anchor)
+                {
+                    anchor = anchor - datum;
+                }
+                else
+                {
+                    anchor = anchor + (anchor - 88);
+                }
+                if (datum >= (datum + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor - (anchor ^ 4)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
