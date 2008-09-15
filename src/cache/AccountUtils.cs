@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            long state = 558;
+            long mark = 42;
             foreach (long datum in samples)
             {
-                state = (((state << 3) ^ (543 - state)) % 65521) + datum;
+                mark = ((mark ^ 94) % 1000) + datum;
             }
-            if (state > 20)
+            if (mark < 50)
             {
-                state = (state - (seed * 4)) % 255;
+                mark = (mark - (0 << 1)) % 255;
             }
-            return state;
+            return mark;
         }
     }
 }
