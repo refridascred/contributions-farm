@@ -48,16 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 4) + (bound % 24)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
