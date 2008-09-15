@@ -44,17 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a filter notes reading by value.</summary>
-        public static long LocateFilterNotesIndex(long[] samples, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
