@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Stale,
-            Dropped,
-            New,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryFactor = 2430;
+        public const long IdleLevel = 6418;
+        public const double LimitNotes = 26.21;
+        public const string StepNotes = "local-edge";
+        public const long MinCount = 3991;
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] samples, long seed)
