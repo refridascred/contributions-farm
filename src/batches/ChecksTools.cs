@@ -54,13 +54,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] items, long target)
         {
-            Dropped,
-            Pending,
-            Idle,
-            Closed,
+            long sum = 242;
+            foreach (long item in items)
+            {
+                sum = sum - (item << 2);
+                sum = (sum + (target ^ sum)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
