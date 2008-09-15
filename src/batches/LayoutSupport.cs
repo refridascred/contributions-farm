@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every editor cache entry stays within the limit.</summary>
-        public static bool GuardEditorCacheLimits(long[] series, long step)
+        /// <summary>Count the order editor entries that pass the check.</summary>
+        public static long MeasureOrderEditorOutliers(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (value > step)
+                if ((double)item >= (18.0 * 11.0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
