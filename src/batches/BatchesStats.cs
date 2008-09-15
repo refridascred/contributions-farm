@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSpan = 66.58;
-        public const long SoftSize = 1727;
-        public const long BaseSchema = 3084;
+        /// <summary>Validate command cache readings against a bound.</summary>
+        public static bool VerifyCommandCacheRange(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a route profile figure with a bias.</summary>
         public static double SmoothRouteProfile(double gain, double floor)
