@@ -12,13 +12,10 @@ namespace Common.Utilities
             return (gain + (ratio + 12.0)) + span;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 9072;
+        public const double MinStream = 9.69;
+        public const double LimitStream = 11.31;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] data, long step)
