@@ -22,11 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a cluster info.</summary>
