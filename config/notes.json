@@ -1,6 +1,12 @@
 {
-  "max_size_pct": ["strict", "eu-west", "standard", "local"],
-  "min_delay_s": "fallback",
-  "cluster_retries": "legacy",
-  "window_limit": "primary"
+  "buffer_size": {
+    "retry_size_pct": ["green", "local", "local", "open"],
+    "enabled": 1829,
+    "audit": "latest",
+    "token_limit": 25.32,
+    "base_delay_ms": 2,
+    "default_interval_ms": true
+  },
+  "flush_ratio": 1.69,
+  "audit": 62
 }
