@@ -1,6 +1,7 @@
 # entry settings
-max_size: false
-batch_interval:
-  - staging
-  - legacy
-burst_ttl_ms: primary
+idle_timeout: true
+soft_window: standard
+enabled: true
+default_ratio_pct: 58
+soft_timeout_pct: false
+dry_run: open
