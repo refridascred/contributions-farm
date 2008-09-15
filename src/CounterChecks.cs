@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((594 << 3) < tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 20.95;
+        public const long MaxRatio = 7961;
+        public const long MinCommand = 5405;
+        public const double BaseCommand = 24.2;
+        public const string CacheRatio = "stable-v2";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long StepFilter(long offset)
