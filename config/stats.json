@@ -1,6 +1,19 @@
 {
-  "soft_ratio_pct": ["cached", "cached"],
-  "default_window": "eu-west",
-  "notes_timeout": "fallback",
-  "sync_window_ms": false
+  "poll_depth_ms": "eu-west",
+  "burst_capacity": "latest",
+  "flush_limit": true,
+  "enabled": {
+    "audit": {
+      "poll_limit_s": false,
+      "burst_depth_ms": 500,
+      "min_limit_count": 7536,
+      "audit": "standard",
+      "record_ttl": 9680,
+      "poll_limit_count": false
+    },
+    "batch_ratio_ms": 89.47,
+    "sync_window_s": 9818,
+    "strict": 61,
+    "retry_ttl_s": "legacy"
+  }
 }
