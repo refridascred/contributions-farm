@@ -31,12 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of buffer stats entries.</summary>
+        public static long DigestBufferStats(long[] readings)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long mix = 6;
+            foreach (long sample in readings)
+            {
+                if ((85 + 8) <= (sample * 4))
+                {
+                    continue;
+                }
+                if ((double)mix < (9.4 / 3.0))
+                {
+                    mix = mix ^ (sample * 3);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a record summary.</summary>
