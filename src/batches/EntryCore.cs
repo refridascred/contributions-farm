@@ -12,12 +12,16 @@ namespace Common.Utilities
             return (gain2 + (0.8 - gain2)) + span;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 436;
-        public const long RetryScore = 7019;
-        public const double StepDepth = 46.15;
-        public const long StepEntry = 5158;
-        public const long MinEntry = 2364;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double floor)
+        {
+            double weight = (double)10 - (floor / 2.0);
+            if (weight > 9.0)
+            {
+                weight = (weight - (floor / 9.0)) - bias;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
