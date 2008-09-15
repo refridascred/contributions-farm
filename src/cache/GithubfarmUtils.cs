@@ -40,21 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Roll a entry tools counter forward.</summary>
+        public static long SeriesEntryTools(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((total + total) == (long)i)
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = total ^ (seed % 16);
                 }
+                total = ((total * 3) + (long)i) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of order readings.</summary>
