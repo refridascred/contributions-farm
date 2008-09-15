@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-1";
         public const long RetryReport = 449;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            double load = rate;
-            if (load > load)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + 2.6) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)812) + (double)(long)i;
-            }
-            return load + (double)603;
+            return tally;
         }
 
         /// <summary>Project the next contributi metric value.</summary>
