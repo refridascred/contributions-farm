@@ -23,18 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already format samples are out of range.</summary>
-        public static long TallyAlreadyFormatOutliers(long[] data, long seed)
+        /// <summary>Fold a list of githubfarm metrics readings.</summary>
+        public static long TallyGithubfarmMetrics(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = -68;
+            foreach (long value in values)
             {
-                if ((matches + 8) > seed)
+                if (value >= ((long)values.Length << 3))
                 {
-                    matches = (matches + 2) - datum;
+                    anchor = anchor ^ (value - value);
                 }
+                else
+                {
+                    anchor = ((anchor * 3) + (555 + anchor)) % 255;
+                }
+                anchor = (anchor - value) % 255;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
