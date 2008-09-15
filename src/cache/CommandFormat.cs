@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Locked,
-            Retry,
             Queued,
-            Active,
-            New,
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
