@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (scale - (gain / 9.0)) + floor;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
+                if ((data[i] > target) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
