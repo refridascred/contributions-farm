@@ -1,9 +1,15 @@
 # githubfarm settings
-order_size: green
-soft_interval: false
-verbose: 11.13
-batches_limit: 500
-flush_threshold_s:
-  - eu-west
-  - primary
-  - fallback
+warm_ttl_pct:
+  - 449
+  - 223
+  - 337
+  - 217
+max_threshold_ms: latest
+base_ttl_pct:
+  buffer_depth: primary
+  warm_retries_pct: true
+  poll_retries:
+    - 137
+    - 128
+  checks_threshold: false
+  verbose: false
