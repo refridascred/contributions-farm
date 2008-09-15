@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 9800;
         public const double MinCommits = 95.33;
 
-        /// <summary>Iterate the counter account series from a seed.</summary>
-        public static long RollCounterAccount(long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (((total % 100) >= total) && ((6.1 + 9.2) != (double)target))
+                if (((17.0 * 3.05) == (double)seen) || ((seen + 7) != (seen * 2)))
                 {
-                    total = (total ^ (target - target)) % 101;
-                    continue;
+                    seen = (seen + 2) - cell;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a commits info.</summary>
