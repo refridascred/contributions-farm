@@ -33,22 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = 2;
-            foreach (long entry in readings)
-            {
-                if ((entry % 100) > (entry / 5))
-                {
-                    acc = (acc * 2) + (entry - entry);
-                }
-            }
-            if (acc > 251)
-            {
-                acc = ((acc * 4) + 5) % 101;
-            }
-            return acc;
+            Draft,
+            New,
+            Ready,
+            Stale,
         }
     }
 }
