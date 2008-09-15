@@ -72,17 +72,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metric cluster entry that matches the target.</summary>
-        public static long FindMetricClusterIndex(long[] series, long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
