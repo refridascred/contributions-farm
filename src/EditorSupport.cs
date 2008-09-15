@@ -41,13 +41,32 @@ namespace Common.Utilities
             return load + (load / 5.0);
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long step)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            long slot = target ^ step;
+            if ((1.41 + 5.42) > (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ 653) > slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0.43 / 7.0) > (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of session readings.</summary>
