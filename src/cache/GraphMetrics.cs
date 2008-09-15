@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 5.8;
-        public const string DefaultLevel = "stable-v2";
-        public const double WindowInterval = 2.32;
+        /// <summary>Measure how many entry filter samples are out of range.</summary>
+        public static long CountEntryFilterMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen / 9) != (origin + seen))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ProjectCounter(double scale, double floor)
