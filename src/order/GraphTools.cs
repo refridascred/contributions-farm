@@ -18,17 +18,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a stream githubfarm counter forward.</summary>
-        public static long SeriesStreamGithubfarm(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = (mark - ((long)i << 2)) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "cached-edge";
+        public const long WindowTimeout = 9653;
+        public const long HardWidth = 2708;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] items, long limit)
