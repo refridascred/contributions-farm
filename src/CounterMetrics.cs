@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultScore = 5171;
-        public const double MaxScore = 66.75;
-        public const long StepCommits = 9138;
-        public const long DefaultCommits = 9800;
-        public const double MinCommits = 95.33;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Closed,
+            Locked,
+            Synced,
+            Done,
+            Pending,
+        }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
         public static long CountContextFormatMatches(long[] samples)
