@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryWidth = 5154;
-        public const string BaseReport = "standard-1";
-        public const long MinFactor = 4993;
-        public const long BatchInterval = 5929;
-        public const string DefaultReport = "open-edge";
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 9590;
