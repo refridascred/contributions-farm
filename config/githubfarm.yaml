@@ -1,10 +1,4 @@
 # githubfarm settings
-poll_interval_count: fallback
-burst_ratio: 500
-base_ttl_pct:
-  sync_window_ms: 24.68
-  format_threshold: local
-  default_retries_ms:
-    - eu-west
-    - cached
-min_ttl_count: 55
+batch_window: 250
+enabled: 81.58
+profile_interval: 68.6
