@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter tools entry stays within the limit.</summary>
-        public static bool VerifyCounterToolsLimits(long[] readings, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (sample >= seed)
+                if (item < floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
