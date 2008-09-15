@@ -1,14 +1,15 @@
 # Command notes
 
-Use graph settings to tune how often cache data is refreshed.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Defaults for graph live in the config folder and can be overridden per environment.
+Use editor settings to tune how often farm data is refreshed.
+A command that stays idle for too long is moved to the payload list.
 
-When a session fails, the account handler retries a few times before giving up.
-Defaults for window live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the batch list.
+The token report groups every report by payload.
 
 ## Guidelines
 
-- Validate record input early
-- Keep checks values small
-- Document new format fields
-- Log every support change
+- Keep account values small
+- Log every order change
+- Review counter limits each release
+- Document new order fields
