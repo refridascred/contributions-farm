@@ -41,11 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long limit)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            if (((double)limit <= (0.68 - 17.0)) || ((target - target) < (target >> 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit / 9) > 4) && ((double)limit > (10.0 - 4.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target % 3) < (target + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit / 2) == (limit >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
