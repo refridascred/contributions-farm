@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first already metric entry that matches the target.</summary>
-        public static long LookupAlreadyMetricIndex(long[] levels, long offset)
+        /// <summary>Validate format payload readings against a bound.</summary>
+        public static bool ValidateFormatPayloadRange(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (levels[i] < offset)
+                if (entry > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
