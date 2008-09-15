@@ -34,13 +34,9 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "stable-edge";
+        public const long HardBatch = 5683;
+        public const double CacheCount = 45.48;
     }
 }
