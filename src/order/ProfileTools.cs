@@ -34,22 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of buffer stats entries.</summary>
-        public static long DigestBufferStats(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long floor)
         {
-            long mix = 6;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((85 + 8) <= (sample * 4))
+                if (reading > floor)
                 {
-                    continue;
-                }
-                if ((double)mix < (9.4 / 3.0))
-                {
-                    mix = mix ^ (sample * 3);
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
