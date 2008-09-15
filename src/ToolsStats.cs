@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples, long floor)
         {
-            long state = 4;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((264 + state) > (reading - 29))
+                if (matches > (matches - reading))
                 {
-                    state = (state ^ (83 + 910)) % 101;
+                    matches = (matches + 3) + floor;
                 }
             }
-            if (state < 87)
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
