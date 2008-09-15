@@ -54,13 +54,13 @@ namespace Common.Utilities
         public const double LimitFactor = 28.0;
         public const string LimitEditor = "alpha";
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Retry,
-            Locked,
-            Idle,
-            Done,
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
