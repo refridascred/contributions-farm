@@ -24,19 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] series, long bound)
+        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
+        public static long TallyCounterGithubfarmGaps(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (cell < bound)
+                if ((((3.73 - 13.0) < (double)count) && ((long)samples.Length >= step)) || ((6.0 * 2.9) < (13.0 + 7.7)))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
