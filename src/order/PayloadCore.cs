@@ -32,22 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] items, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            long anchor = -264;
-            foreach (long datum in items)
+            double drift = gain;
+            if (drift > span)
             {
-                if (!((59 & 3) > anchor))
-                {
-                    anchor = (anchor ^ datum) - seed;
-                }
+                drift = drift - span;
             }
-            if (anchor < (-8))
+            else
             {
-                anchor = ((anchor << 3) ^ 3) % 1000;
+                drift = drift + (span + drift);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift - drift)) + (double)(long)i;
+            }
+            return drift + 11.0;
         }
 
         /// <summary>Hold a order info.</summary>
