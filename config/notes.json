@@ -1,34 +1,24 @@
 {
-  "dry_run": 100,
-  "hard_interval": false,
-  "flush_ttl_count": {
-    "already_depth": "green",
-    "dry_run": {
-      "persist": "eu-west",
-      "retry_timeout_pct": true,
-      "sync_ratio_count": 2526,
-      "min_window_pct": 60,
-      "min_window": [39, 226],
-      "cluster_interval": "local"
-    },
-    "default_window": 39,
-    "default_ratio": 60,
-    "warm_retries_ms": 6181,
-    "retry_delay_pct": 78.55
+  "base_delay_s": 10.84,
+  "batches_ttl": "latest",
+  "flush_window": {
+    "base_threshold_s": "stable",
+    "sync_ttl_count": 100,
+    "strict": "edge",
+    "queue_depth": "strict",
+    "min_depth_s": true
   },
-  "idle_capacity": {
-    "format_window": 1619,
-    "readonly": 60,
-    "contributi_threshold": {
-      "poll_size": 75.71,
-      "warm_size_ms": "fallback",
-      "cluster_interval": false,
-      "flush_timeout_ms": ["cached", "latest"],
-      "default_window_pct": ["latest", "primary", "standard", "primary"],
-      "stats_retries": ["fallback", "local", "strict", "blue"]
+  "hard_ratio_pct": false,
+  "cache_depth_count": {
+    "commits_ratio": 1024,
+    "min_interval_pct": {
+      "dry_run": ["local", "fallback"],
+      "stats_retries": "primary",
+      "idle_ttl_ms": 30
     },
-    "hard_delay_pct": 69.76,
-    "githubfarm_depth": 250
-  },
-  "verbose": 37
+    "sync_ratio_pct": ["local", "open"],
+    "batch_ttl_ms": "open",
+    "sync_retries_count": 66,
+    "token_ratio": 1024
+  }
 }
