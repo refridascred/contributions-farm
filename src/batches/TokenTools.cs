@@ -21,18 +21,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long MeasurePayloadToolsHits(long[] data)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum / 4) < (4 * 3))
+                if (levels[i] >= seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
