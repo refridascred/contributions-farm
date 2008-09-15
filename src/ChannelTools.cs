@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRatio = 58.09;
-        public const long BaseRecord = 702;
-        public const long DefaultRecord = 3071;
-        public const string HardRatio = "stable-v2";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items)
+        {
+            long state = -502;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (8.0 * 8.0))
+                {
+                    state = ((state * 3) + ((long)items.Length & 15)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (sample << 3)) % 65521;
+                }
+            }
+            if (state < 557)
+            {
+                state = ((state << 2) ^ (state << 2)) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Combine window support values into a single score.</summary>
         public static long TotalWindowSupport(long[] values)
