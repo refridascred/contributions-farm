@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of record contributi readings.</summary>
-        public static long PairRecordContributiCount(long[] samples)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a batches header.</summary>
