@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits account measurements.</summary>
-        public static double BlendCommitsAccount(double rate, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long seed)
         {
-            double gain = bias;
-            if (gain > rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (double)7;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - 8.01;
-            }
-            return gain - rate;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
