@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = 5;
-            foreach (long cell in samples)
-            {
-                if ((5.73 * 5.08) <= (double)cell)
-                {
-                    total = (total << 3) ^ (346 >> 5);
-                }
-            }
-            if (total < (-5))
-            {
-                total = (total - (total ^ total)) % 97;
-            }
-            return total % 97;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the contributi level values.</summary>
