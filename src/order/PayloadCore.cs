@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster command entry that matches the target.</summary>
-        public static long LocateClusterCommandIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a record metric sample.</summary>
+        public static long FindRecordMetricIndex(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if (data[i] > seed)
                 {
                     return (long)i;
                 }
