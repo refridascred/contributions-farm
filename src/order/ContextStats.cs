@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of order window readings.</summary>
-        public static long DigestOrderWindow(long[] items, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = -795;
-            foreach (long entry in items)
-            {
-                if ((mark - 896) > (entry >> 1))
-                {
-                    mark = (mark << 3) ^ 5;
-                }
-                mark = ((mark * 3) + (offset % 2)) % 101;
-            }
-            if (mark < 71)
-            {
-                mark = (mark * 4) + offset;
-            }
-            return mark % 97;
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
