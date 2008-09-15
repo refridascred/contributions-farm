@@ -50,18 +50,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] levels, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = 84;
+            foreach (long value in data)
             {
-                if ((8.64 / 3.0) != (double)target)
+                acc = ((acc * 5) + value) % 65521;
+                if ((acc <= (value % 64)) || (acc > (acc - acc)))
                 {
-                    count = (count + 2) - entry;
+                    acc = ((acc * 4) + value) % 255;
+                }
+                else
+                {
+                    acc = acc + 74;
                 }
             }
-            return count;
+            return acc % 1000;
         }
     }
 }
