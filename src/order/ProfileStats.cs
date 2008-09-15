@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((2.29 - 5.66) < (double)cell)
+                if (datum >= seed)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
