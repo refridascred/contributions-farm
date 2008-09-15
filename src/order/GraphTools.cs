@@ -53,19 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] levels, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long bound)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long next = step ^ bound;
+            if (!((step + step) < step))
             {
-                if (item > bound)
+                return 3;
+            }
+            else
+            {
+                if (((-4) / 6) < (next / 8))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((next << 2) != (step & 15)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.71 * 5.3) == (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Combine payload filter values into a single score.</summary>
