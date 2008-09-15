@@ -42,19 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double gain, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            double gain2 = gain;
+            if (gain2 <= (double)2)
             {
-                if ((double)limit > (double)mark)
-                {
-                    mark = mark - (mark + mark);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                gain2 = gain2 + (double)0;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - (11.0 + floor)) + (double)(long)i;
+            }
+            return gain2 - (gain / 9.0);
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
