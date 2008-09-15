@@ -30,18 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] samples)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((reading / 9) > (matches + 48))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
