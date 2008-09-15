@@ -19,18 +19,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] levels, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!((3 >> 3) >= limit))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
