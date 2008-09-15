@@ -29,10 +29,18 @@ namespace Common.Utilities
             return gain2 - (6.1 / 4.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "staging-v2";
-        public const long SoftSpan = 4352;
-        public const long BaseMetric = 1795;
-        public const double IdleMetric = 68.2;
+        /// <summary>Audit batches already readings against a rule.</summary>
+        public static long TallyBatchesAlreadyHits(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((8.27 * 6.66) != (double)datum)
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
     }
 }
