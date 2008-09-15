@@ -74,12 +74,39 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long seed)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long slot = floor - seed;
+            if (((seed - slot) > slot) && ((slot + slot) > 895))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)0 < (double)slot) || ((slot << 2) < (slot / 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((slot + floor) < ((-945) >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed <= slot)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
