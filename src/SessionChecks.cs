@@ -39,15 +39,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long origin, long bound)
         {
-            long carry = 2;
-            foreach (long sample in readings)
+            if (((double)origin >= (7.48 * 1.3)) && ((bound / 5) > (origin << 3)))
             {
-                carry = (carry * 4) + (sample ^ 58);
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((13 / 2) > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound > (bound % 24))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= (bound - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
