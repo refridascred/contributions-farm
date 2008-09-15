@@ -45,16 +45,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double rate, double floor)
-        {
-            double mean = (double)95 - (rate * 6.15);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "strict-edge";
+        public const string LimitSize = "latest";
+        public const long BurstBudget = 765;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long step, long bound)
