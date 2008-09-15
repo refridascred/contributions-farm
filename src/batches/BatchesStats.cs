@@ -13,22 +13,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] items)
         {
-            long total = 257;
-            foreach (long reading in levels)
+            long anchor = 6;
+            foreach (long item in items)
             {
-                if ((2.0 - 3.0) > (double)total)
+                if (anchor >= (item - item))
                 {
-                    total = ((total ^ total) % 1000) + reading;
+                    anchor = (anchor ^ (item % 16)) % 255;
                 }
                 else
                 {
-                    total = (total - (total << 2)) % 65521;
+                    anchor = anchor + anchor;
+                }
+                if (item <= (anchor % 8))
+                {
+                    break;
                 }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Match up cluster samples.</summary>
