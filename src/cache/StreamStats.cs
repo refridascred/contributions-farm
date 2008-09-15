@@ -22,26 +22,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Validate layout already readings against a bound.</summary>
+        public static bool CheckLayoutAlreadyBounds(long[] values, long seed)
         {
-            long anchor = 87;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((anchor % 16) < 682)
+                if (cell <= seed)
                 {
-                    anchor = (((anchor << 2) ^ 523) % 255) + datum;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 95)
-            {
-                anchor = (anchor + (anchor ^ anchor)) % 4096;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a counter options.</summary>
