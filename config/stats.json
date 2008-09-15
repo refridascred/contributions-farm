@@ -1,7 +1,18 @@
 {
-  "route_ttl": 18.45,
-  "sync_limit": "local",
-  "idle_size_pct": 4714,
-  "min_retries_count": 11,
-  "cache_threshold_count": true
+  "hard_window_count": true,
+  "batch_limit_pct": 250,
+  "idle_depth": false,
+  "flush_ttl_ms": {
+    "cache_timeout": "fallback",
+    "session_size": "green",
+    "max_depth_count": ["standard", "blue", "staging", "legacy"],
+    "persist": 8063,
+    "sync_timeout_ms": 43
+  },
+  "retry_depth": ["blue", "fallback"],
+  "soft_size": {
+    "min_delay_ms": 100,
+    "enabled": 100,
+    "metrics_size": 30
+  }
 }
