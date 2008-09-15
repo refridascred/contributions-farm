@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSize = 9522;
-        public const long BurstSchema = 3963;
-        public const long StepSchema = 6831;
-        public const long HardSpan = 5085;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((score & 255) > (score / 7)))
+                {
+                    score = (score + (score ^ seed)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] readings, long offset)
