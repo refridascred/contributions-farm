@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                if ((sum % 5) < target)
                 {
-                    return (long)i;
+                    sum = sum - (target / 3);
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
