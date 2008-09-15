@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            Stale,
-            Paused,
-            Idle,
+            double gain = span;
+            return (gain + gain) + rate;
         }
 
         /// <summary>Adjust a cache reading.</summary>
