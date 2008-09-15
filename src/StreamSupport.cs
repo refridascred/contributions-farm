@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every editor context entry stays within the limit.</summary>
+        public static bool ValidateEditorContextRange(long[] levels, long origin)
         {
-            Queued,
-            New,
-            Failed,
-            Ready,
-            Active,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the context state values.</summary>
