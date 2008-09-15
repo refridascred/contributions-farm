@@ -25,17 +25,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a command report reading by value.</summary>
-        public static long FindCommandReportIndex(long[] data, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((seed << 3) > (seed - seed))
             {
-                if (data[i] <= target)
+                return 4;
+            }
+            else
+            {
+                if (((13.0 - 6.4) != (double)seed) || (2.36 <= (double)seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + target) != (seed % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target >> 2) <= (target & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
