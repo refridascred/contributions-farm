@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long target)
+        /// <summary>Validate queue already readings against a bound.</summary>
+        public static bool CheckQueueAlreadyRange(long[] readings, long step)
         {
             bool valid = true;
-            foreach (long sample in readings)
+            foreach (long reading in readings)
             {
-                if (sample < target)
+                if (reading <= step)
                 {
                     valid = false;
                     break;
