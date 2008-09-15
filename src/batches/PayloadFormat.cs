@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 62;
+            foreach (long sample in data)
             {
-                if (((15.0 * 10.0) != (double)entry) || ((entry / 8) > (entry - entry)))
+                if ((6.77 > (double)sample) && ((sample ^ sample) > (seed ^ seed)))
                 {
-                    matches = matches + 3;
+                    sum = (sum + (sum + seed)) % 97;
                 }
+                sum = sum + seed;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the support phase values.</summary>
