@@ -1,11 +1,15 @@
 # entry settings
-flush_threshold_count: 825
-retry_limit: 4599
-min_delay: blue
-min_threshold: 17.95
-route_delay: 4534
-layout_limit:
-  dry_run: open
-  strict: 1901
-  checks_threshold: false
-  already_delay: 33.21
+soft_interval_ms: 72
+dry_run:
+  batch_ttl_ms: 100
+  dry_run: false
+  metric_retries: 7.49
+readonly:
+  - 249
+  - 33
+metric_threshold:
+  - legacy
+  - legacy
+  - edge
+  - latest
+editor_window: 87
