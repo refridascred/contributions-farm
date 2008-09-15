@@ -50,28 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster payload readings.</summary>
-        public static long TallyClusterPayload(long[] levels)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long anchor = 17;
-            foreach (long reading in levels)
-            {
-                anchor = anchor + (anchor + 894);
-                if (!((double)reading > (1.8 - 8.7)))
-                {
-                    anchor = anchor + (anchor / 4);
-                    anchor = ((anchor * 5) + 2) % 101;
-                }
-                if ((double)reading != (double)(-5))
-                {
-                    anchor = (anchor ^ reading) % 255;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-            }
-            return anchor;
+            Stale,
+            Idle,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
