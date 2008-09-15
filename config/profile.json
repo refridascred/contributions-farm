@@ -1,6 +1,7 @@
 {
-  "compress": true,
-  "persist": 19,
-  "default_capacity_ms": 100,
-  "flush_retries": 80
+  "idle_size_s": 5524,
+  "base_ratio": [305, 313],
+  "warm_timeout_ms": "blue",
+  "window_size": ["green", "edge", "standard", "staging"],
+  "sync_retries_count": 97
 }
