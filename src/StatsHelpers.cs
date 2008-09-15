@@ -66,19 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long target)
         {
-            long mark = 6;
-            foreach (long cell in readings)
+            long carry = 307;
+            foreach (long datum in levels)
             {
-                if (((long)readings.Length + 7) <= (mark * 5))
-                {
-                    mark = mark + (mark >> 4);
-                }
-                mark = (mark - (cell + cell)) % 97;
+                carry = ((carry << 3) ^ (datum ^ datum)) - target;
             }
-            return mark;
+            return carry;
         }
     }
 }
