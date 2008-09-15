@@ -1,10 +1,14 @@
 # entry settings
-cache_limit_pct: strict
-retry_window: 80.64
-idle_delay_s: true
-schema_ttl:
-  dry_run: 60
-  base_interval_ms: 69
-  flush_interval_s: 74.91
-idle_delay_pct: 23
-dry_run: standard
+retry_interval:
+  soft_ratio_s: 30
+  poll_depth_s: 9682
+  base_size_pct: false
+  cache_ttl_pct: 9046
+  commits_window:
+    - 217
+    - 297
+    - 317
+  soft_ratio: primary
+payload_size: latest
+strict: 3.06
+poll_window_count: 1024
