@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] readings)
         {
-            Paused,
-            Stale,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (cell + cell))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
