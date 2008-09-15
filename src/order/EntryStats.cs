@@ -29,17 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already counter entry that matches the target.</summary>
-        public static long LocateAlreadyCounterIndex(long[] levels, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -90;
+            foreach (long reading in samples)
             {
-                if (levels[i] <= target)
+                if (((129 - reading) <= 1) && ((carry + carry) < carry))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ reading) % 255;
                 }
             }
-            return -1;
+            if (carry > 9)
+            {
+                carry = carry - (step - step);
+            }
+            return carry;
         }
 
         /// <summary>Adjust a context reading.</summary>
