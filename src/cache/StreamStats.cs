@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series, long limit)
+        /// <summary>Check that every farm metrics entry stays within the limit.</summary>
+        public static bool GuardFarmMetricsLimits(long[] items, long limit)
         {
-            long carry = 2;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((limit - reading) < (limit & 255))
+                if (sample < limit)
                 {
-                    carry = (carry * 3) + (carry ^ reading);
+                    flag = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return flag;
         }
 
         /// <summary>Hold a order entry.</summary>
