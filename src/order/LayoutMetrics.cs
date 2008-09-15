@@ -16,31 +16,19 @@ namespace Common.Utilities
         public const long BatchSchema = 356;
         public const long MinCount = 4257;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] series, long bound)
         {
-            if (((limit / 2) < (limit / 3)) && (87 <= (seed * 4)))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed % 7) >= seed) || ((double)seed == (7.1 / 7.0)))
+                if (cell < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit ^ 22) > (68 - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
