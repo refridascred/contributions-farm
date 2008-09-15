@@ -87,32 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long step)
-        {
-            long step2 = floor + step;
-            if (!((double)step2 != (7.0 + 2.48)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + step) <= step2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step >= (double)35)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 3980;
+        public const long BatchSpan = 6572;
+        public const long CacheFactor = 2290;
+        public const string HardBuffer = "primary-v2";
+        public const double BatchBuffer = 35.31;
     }
 }
