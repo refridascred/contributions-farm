@@ -39,19 +39,13 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] series, long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Ready,
+            Pending,
+            Done,
         }
     }
 }
