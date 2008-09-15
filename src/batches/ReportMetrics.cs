@@ -28,12 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Ready,
-            Draft,
-            Queued,
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
