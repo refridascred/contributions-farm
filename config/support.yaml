@@ -1,22 +1,21 @@
 # support settings
-dry_run:
-  editor_window:
-    batch_interval: fallback
-    retry_size:
-      - 425
-      - 228
-      - 230
-    sync_ttl_pct: eu-west
-    readonly: 2166
-    hard_interval: false
-    entry_interval: 3881
-  entry_ratio: 80.29
-  enabled: 5155
-  burst_size_ms: 34
-  batch_retries: 5
-persist: 8260
-burst_retries_ms:
-  dry_run: 7873
-  min_depth_s: open
-  metric_timeout: 30
-  compress: false
+route_retries: strict
+base_delay_count:
+  - 484
+  - 136
+  - 341
+  - 35
+base_ratio: latest
+burst_depth_pct: 60
+idle_window_s:
+  max_interval_s:
+    audit: 15
+    idle_ratio: 250
+    strict: 68
+    poll_retries_count: green
+  burst_timeout: true
+  max_retries_pct: edge
+  min_depth_ms: stable
+  min_delay_pct: false
+  compress: 2282
+graph_threshold: 500
