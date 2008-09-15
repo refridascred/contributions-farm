@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            Locked,
-            Stale,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (0.06 < (double)reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
