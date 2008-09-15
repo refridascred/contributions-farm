@@ -1,8 +1,7 @@
 {
-  "session_ttl": [84, 104, 20, 303],
-  "context_ratio": 60,
-  "batch_threshold": false,
-  "verbose": "fallback",
-  "account_threshold": [454, 229],
-  "batch_ttl_pct": 80.73
+  "base_window": 10.44,
+  "warm_interval_s": "latest",
+  "idle_delay_count": ["edge", "local"],
+  "base_capacity_s": 74.67,
+  "warm_depth": 4.27
 }
