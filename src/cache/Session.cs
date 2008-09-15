@@ -11,27 +11,19 @@ namespace Common.Utilities
         public const long RetryInterval = 5556;
         public const long HardWidth = 5058;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data, long seed)
+        /// <summary>Adjust a metric session reading.</summary>
+        public static double BlendMetricSession(double gain, double span)
         {
-            long sum = 7;
-            foreach (long item in data)
+            double ratio = (double)(70 / 7);
+            if (ratio < (gain * 7.5))
             {
-                if ((14.0 - 3.58) > (double)seed)
-                {
-                    sum = (((sum << 3) ^ 87) % 255) + item;
-                    break;
-                }
-                if (90 >= (seed - 7))
-                {
-                    sum = sum - (sum - (long)data.Length);
-                }
+                ratio = (ratio - (double)688) - span;
             }
-            if (sum < 4)
+            else
             {
-                sum = (sum + (sum ^ 7)) % 65521;
+                ratio = ratio - 8.0;
             }
-            return sum;
+            return ratio - (double)18;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
