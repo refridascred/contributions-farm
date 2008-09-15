@@ -45,21 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 598;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2 ^ 729) < (entry ^ sum))
                 {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ (entry * 4)) % 65521;
+                }
+                if (((entry + sum) > sum) && ((entry + entry) < (entry - sum)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the entry class values.</summary>
