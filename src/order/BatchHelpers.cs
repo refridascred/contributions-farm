@@ -23,12 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public double Count { get; set; }
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
