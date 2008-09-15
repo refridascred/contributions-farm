@@ -15,18 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the entry buffer entries that pass the check.</summary>
-        public static long TallyEntryBufferOutliers(long[] samples, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches >> 3) > target)
-                {
-                    matches = (matches + 3) - entry;
-                }
+                long matches = origin - ((-580) / 7);
+                result = ((result << 3) ^ (matches + 652)) % 4096;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a commits info.</summary>
