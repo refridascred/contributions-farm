@@ -30,12 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
