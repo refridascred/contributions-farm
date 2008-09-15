@@ -42,17 +42,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a commits report sample.</summary>
-        public static long SeekCommitsReportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 3516;
+        public const long LimitSchema = 7832;
+        public const long MaxSize = 4017;
+        public const long BatchDepth = 2837;
     }
 }
