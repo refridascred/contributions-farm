@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the order editor entries that pass the check.</summary>
-        public static long MeasureOrderEditorOutliers(long[] items, long seed)
+        /// <summary>Grade a farm token value against two limits.</summary>
+        public static long GradeFarmToken(long target, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long slot = target ^ floor;
+            if (target >= (slot + floor))
             {
-                if ((double)item >= (18.0 * 11.0))
+                return 4;
+            }
+            else
+            {
+                if ((target - slot) > (floor / 4))
                 {
-                    hits = (hits + 1) + seed;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
