@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long AuditBatchesMetricsMatches(long[] readings, long step)
         {
-            Pending,
-            Stale,
-            Active,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((444 - 576) != (hits & 7))
+                {
+                    hits = ((hits + 3) + cell) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
