@@ -28,18 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many session stream samples are out of range.</summary>
-        public static long AuditSessionStreamHits(long[] readings, long seed)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (seed <= (value / 9))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate commits route samples.</summary>
