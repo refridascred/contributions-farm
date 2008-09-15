@@ -23,19 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] levels, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long total = 0;
+            foreach (long sample in data)
             {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total << 3) ^ total) + sample) - seed;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Describe the batches kind values.</summary>
