@@ -32,10 +32,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardInterval = 5476;
-        public const long BaseOrder = 1574;
-        public const long MaxOrder = 4914;
-        public const long HardCount = 6260;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Retry,
+            Paused,
+            Dropped,
+            Stale,
+            Draft,
+        }
     }
 }
