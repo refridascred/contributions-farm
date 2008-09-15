@@ -52,10 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5209;
-        public const double WindowCommand = 56.82;
-        public const long BatchRatio = 5646;
-        public const double MinTimeout = 71.15;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
