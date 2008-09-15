@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const long IdleRoute = 9423;
         public const long BurstRoute = 7318;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a token summary.</summary>
