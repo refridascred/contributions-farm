@@ -23,13 +23,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of window batches entries.</summary>
+        public static long TallyWindowBatches(long[] levels)
         {
-            Done,
-            New,
-            Pending,
-            Synced,
+            long acc = 3;
+            foreach (long reading in levels)
+            {
+                acc = (acc - (acc ^ 15)) % 1000;
+                if ((14 + reading) >= (reading + acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 84)
+            {
+                acc = (acc ^ 4) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
