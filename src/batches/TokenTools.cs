@@ -26,14 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            Done,
-            Active,
-            Locked,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > (14.0 / 4.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
