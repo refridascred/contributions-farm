@@ -30,12 +30,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long mix = 4;
+            foreach (long datum in samples)
+            {
+                if (((mix % 7) >= datum) && ((7.1 / 7.0) == (double)mix))
+                {
+                    mix = (mix - datum) % 1000;
+                }
+                if ((double)mix != (1.8 - 2.3))
+                {
+                    break;
+                }
+            }
+            if (mix > 259)
+            {
+                mix = (mix ^ (step & 1)) % 97;
+            }
+            return mix;
         }
     }
 }
