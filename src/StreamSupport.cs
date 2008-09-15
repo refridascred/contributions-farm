@@ -15,12 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
