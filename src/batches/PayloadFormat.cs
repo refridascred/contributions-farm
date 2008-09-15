@@ -22,18 +22,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchFactor = 23;
+        public const long IdleLevel = 442;
+        public const long BaseSpan = 2506;
+        public const long BatchScore = 2946;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BurstLevel = "fallback-1";
