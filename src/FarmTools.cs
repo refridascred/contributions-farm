@@ -38,22 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (floor < 910)
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 6284;
+        public const long HardSpan = 4788;
+        public const string BurstInterval = "stable-1";
+        public const string IdleFarm = "open";
     }
 }
