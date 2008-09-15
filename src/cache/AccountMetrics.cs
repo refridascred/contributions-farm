@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseLevel = 2933;
+        public const long RetryNotes = 8951;
+        public const double DefaultNotes = 91.84;
+        public const double BurstSize = 0.34;
+        public const string MinScore = "primary-edge";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double scale, double bias)
