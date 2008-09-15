@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items, long limit)
         {
-            Retry,
-            Active,
-            Idle,
-            New,
-            Ready,
+            long anchor = 2;
+            foreach (long datum in items)
+            {
+                if ((double)limit >= (double)datum)
+                {
+                    anchor = anchor + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
