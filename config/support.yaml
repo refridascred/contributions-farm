@@ -1,7 +1,23 @@
 # support settings
-retry_capacity:
-  - 490
-  - 483
-  - 339
-tools_delay: 8156
-record_ratio: 60
+cache_interval: false
+idle_delay:
+  max_limit_pct: strict
+  hard_threshold:
+    record_interval:
+      - open
+      - stable
+    idle_ratio_pct:
+      - 196
+      - 476
+      - 396
+      - 491
+    checks_depth:
+      - 107
+      - 304
+      - 125
+    max_delay_ms: 2.24
+  soft_delay_s: latest
+  strict: false
+  hard_capacity_s: stable
+audit: 30
+warm_interval_ms: open
