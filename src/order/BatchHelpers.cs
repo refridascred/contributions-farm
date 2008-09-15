@@ -46,18 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches tools readings.</summary>
-        public static long TotalBatchesTools(long[] items, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long offset, long floor)
         {
-            long mark = 714;
-            foreach (long datum in items)
+            if ((offset % 3) > (floor ^ floor))
             {
-                if ((72 << 3) < mark)
+                return 8;
+            }
+            else
+            {
+                if (!((floor & 31) < (floor + offset)))
                 {
-                    mark = (((mark + (mark / 2)) % 1000) + datum) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if (!((floor + 79) > (offset - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 97;
         }
     }
 }
