@@ -49,14 +49,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            Ready,
-            New,
-            Retry,
-            Paused,
-            Active,
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((3 + offset) < (offset + (long)i))
+                {
+                    state = ((state << 2) ^ ((long)i % 10)) % 101;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
