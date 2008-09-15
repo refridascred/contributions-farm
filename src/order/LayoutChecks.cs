@@ -88,31 +88,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] values)
         {
-            if ((double)limit <= 6.0)
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 1) <= (target % 97))
+                if (((-6) * 3) <= (seen + item))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target < (target & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate counter support readings against a bound.</summary>
