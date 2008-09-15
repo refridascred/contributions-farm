@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] series, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= target)
+                if (carry > (carry ^ carry))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 4) + (15 - carry)) % 255;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Check that every counter cache entry stays within the limit.</summary>
