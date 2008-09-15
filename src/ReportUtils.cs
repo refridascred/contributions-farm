@@ -77,15 +77,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double span)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double gain = span + (bias / 6.0);
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - (double)71;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
