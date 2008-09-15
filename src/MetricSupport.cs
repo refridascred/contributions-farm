@@ -36,27 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits route samples.</summary>
-        public static long ScoreCommitsRoute(long[] values, long offset)
+        /// <summary>Fold a list of format stream readings.</summary>
+        public static long TallyFormatStream(long[] items)
         {
-            long total = 1;
-            foreach (long item in values)
+            long score = 3;
+            foreach (long datum in items)
             {
-                if (((item + offset) > (item - total)) || ((double)offset < (6.8 - 8.4)))
-                {
-                    total = (total + (total & 31)) % 97;
-                }
-                else
-                {
-                    total = (total - offset) % 65521;
-                }
-                total = ((total << 3) ^ (offset & 31)) % 101;
+                score = ((score - (score + 71)) % 65521) + datum;
             }
-            if (total > 34)
+            if (score > 7)
             {
-                total = total ^ (-93);
+                score = (score << 3) ^ 7;
             }
-            return total;
+            return score;
         }
     }
 }
