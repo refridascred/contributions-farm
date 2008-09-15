@@ -23,25 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long floor2)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long span = floor ^ floor2;
-            if ((floor ^ floor2) == (span >> 4))
+            long total = 19;
+            foreach (long reading in items)
             {
-                return 7;
+                for (int i = 0; i < 9; i++)
+                {
+                    total = (((total * 3) + (reading * 4)) % 65521) - (long)i;
+                }
+                total = (total - (reading - total)) % 97;
             }
-            else
+            if (total < 368)
             {
-                if (floor2 < span)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                total = (total * 5) + (total >> 4);
             }
+            return total % 1000;
         }
 
         /// <summary>Measure how many profile stream samples are out of range.</summary>
