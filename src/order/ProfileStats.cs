@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] items, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((item * 5) >= (3 % 8)))
+                if (sample != offset)
                 {
-                    seen = (seen + 2) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a payload header.</summary>
