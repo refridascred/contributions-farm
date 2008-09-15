@@ -91,11 +91,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 3980;
-        public const long BatchSpan = 6572;
-        public const long CacheFactor = 2290;
-        public const string HardBuffer = "primary-v2";
-        public const double BatchBuffer = 35.31;
+        /// <summary>Derive the next filter payload value from a seed.</summary>
+        public static long DeriveFilterPayload(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(floor >= (acc ^ floor)))
+                {
+                    acc = (acc + (1 + acc)) % 97;
+                    acc = (acc ^ (acc + floor)) % 255;
+                }
+                acc = acc ^ (floor >> 5);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
