@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] levels, long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((origin + tally) > (4 * 4)) || ((17 + origin) >= (origin / 8)))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a window counter forward.</summary>
