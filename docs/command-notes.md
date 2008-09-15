@@ -1,14 +1,11 @@
 # Command notes
 
-The payload report groups every token by stats.
-Each token is validated before it reaches the stats queue.
-
-A support that stays idle for too long is moved to the layout list.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The command report groups every tools by queue.
+Each metric is validated before it reaches the order queue.
+Each editor is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Document new support fields
-- Review context limits each release
-- Validate tools input early
-- Keep contributi values small
+- Review checks limits each release
+- Log every githubfarm change
+- Prefer window defaults
