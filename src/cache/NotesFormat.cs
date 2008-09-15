@@ -25,17 +25,32 @@ namespace Common.Utilities
         public const double RetrySchema = 90.99;
         public const double MaxSchema = 33.1;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] samples, long limit)
+        /// <summary>Rank context report input into a small class.</summary>
+        public static long BucketContextReport(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = bound + limit;
+            if (((bound + bound) > ((-75) - step)) && ((limit / 3) <= (bound & 3)))
             {
-                if (samples[i] == limit)
+                return 6;
+            }
+            else
+            {
+                if ((limit - bound) != (2 & 63))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((7 % 100) <= (bound / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
