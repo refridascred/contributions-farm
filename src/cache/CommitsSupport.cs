@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const double MinDepth = 47.16;
         public const long SoftQueue = 798;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels, long origin)
         {
-            Ready,
-            Queued,
-            Done,
-            Draft,
+            long anchor = 72;
+            foreach (long sample in levels)
+            {
+                if (origin >= (sample / 5))
+                {
+                    anchor = ((anchor * 2) + (anchor + origin)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
