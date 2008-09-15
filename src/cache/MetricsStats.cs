@@ -47,10 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstSize = 4387;
-        public const string MaxSize = "stable-edge";
-        public const double BatchAccount = 28.52;
+        /// <summary>Locate a already buffer reading by value.</summary>
+        public static long LookupAlreadyBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long origin, long floor)
