@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a profile account pair into a bucket.</summary>
-        public static long RankProfileAccount(long limit, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long edge = limit - offset;
-            if ((275 - (-377)) == (edge + 20))
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9.79 / 6.0) < (double)edge)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
