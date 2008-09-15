@@ -51,12 +51,18 @@ namespace Common.Utilities
             return drift + 11.0;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (hits <= (sample << 2))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cluster command entry that matches the target.</summary>
