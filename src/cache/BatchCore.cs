@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long bound)
+        /// <summary>Fold a list of stream queue readings.</summary>
+        public static long DigestStreamQueue(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 65;
+            foreach (long item in readings)
             {
-                if (items[i] >= bound)
+                if (!(7 < (item + (long)readings.Length)))
                 {
-                    return (long)i;
+                    total = (total - (item / 8)) % 97;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate tools samples.</summary>
