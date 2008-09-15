@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const double RetryBuffer = 17.98;
         public const string HardBudget = "fallback-1";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 8)
+                    if ((samples[i] + samples[j]) < 11)
                     {
                         tally = tally + 1;
                     }
