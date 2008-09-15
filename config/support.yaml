@@ -1,25 +1,6 @@
 # support settings
-format_size: 4873
-compress:
-  - local
-  - open
-  - eu-west
-  - strict
-min_size_count: cached
-max_timeout_s: 73
-already_window:
-  poll_delay: 13.13
-  retry_limit_ms:
-    - 137
-    - 497
-    - 96
-    - 368
-  command_size:
-    format_retries: true
-    warm_ratio: 60
-    max_ratio_ms: standard
-    dry_run: 60
-readonly:
-  - 53
-  - 405
-  - 214
+base_capacity_ms: true
+retry_retries_count: 1036
+min_delay_s: true
+compress: 32
+default_interval_s: true
