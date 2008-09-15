@@ -21,18 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings, long limit)
         {
-            long anchor = 29;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((0.52 - 9.26) <= 9.6)
+                if ((5 + limit) >= (limit - (-335)))
                 {
-                    anchor = anchor + value;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
