@@ -31,24 +31,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next commits graph value from a seed.</summary>
-        public static long SeriesCommitsGraph(long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            if (!((floor & 3) > floor))
             {
-                anchor = (anchor << 2) ^ (origin + anchor);
-                if ((183 ^ (long)i) > origin)
-                {
-                    anchor = ((anchor * 2) + (origin % 5)) % 65521;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (anchor + (origin * 5)) + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((double)floor < (1.62 * 11.0)) || (0.8 <= (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (1.1 + 7.07))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
