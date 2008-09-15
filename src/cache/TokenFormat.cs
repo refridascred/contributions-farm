@@ -38,17 +38,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (rate - 18.0) + (double)6;
+            if (drift < (double)45)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + 18.0) - bias;
             }
-            return -1;
+            else
+            {
+                drift = drift + rate;
+            }
+            return drift + (0.3 + rate);
         }
     }
 }
