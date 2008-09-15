@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long total = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (reading & 31))
+                {
+                    total = (total * 4) + (reading / 5);
+                }
+                if ((4 + 9) < total)
+                {
+                    total = total ^ (reading - 0);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
