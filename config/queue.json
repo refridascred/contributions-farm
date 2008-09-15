@@ -1,6 +1,6 @@
 {
-  "graph_timeout": ["green", "cached", "local", "eu-west"],
-  "retry_timeout_ms": ["fallback", "eu-west", "edge"],
-  "audit": "staging",
-  "burst_limit_pct": true
+  "contributi_window": 41.19,
+  "verbose": 20.16,
+  "min_ttl_s": "open",
+  "idle_ttl": false
 }
