@@ -29,19 +29,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double span)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long target)
         {
-            double mean = (double)850 + rate;
-            if (mean < (5.08 - rate))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (rate / 8.0);
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - span;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
