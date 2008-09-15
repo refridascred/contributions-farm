@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long origin, long step)
         {
-            long mark = -7;
-            foreach (long value in series)
+            if ((0.2 * 6.0) == (double)origin)
             {
-                if (((-141) + mark) <= (-7))
+                return 3;
+            }
+            else
+            {
+                if ((origin + step) != (256 + 846))
                 {
-                    mark = (mark + (origin - mark)) + value;
+                    return 1;
                 }
                 else
                 {
-                    mark = mark ^ (mark + mark);
+                    return 5;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
