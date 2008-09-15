@@ -14,17 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long FindProfileRecordIndex(long[] values, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate stream account samples.</summary>
