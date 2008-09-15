@@ -55,12 +55,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRatio = 82.26;
-        public const long CacheRoute = 9724;
-        public const long MinLevel = 9180;
-        public const string IdleRoute = "strict-1";
-        public const double HardCount = 98.84;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long StepStream(long step)
