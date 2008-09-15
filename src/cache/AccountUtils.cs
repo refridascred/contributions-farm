@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((tally & 31) < (tally / 9)) && ((double)value >= (double)(long)levels.Length))
-                {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
