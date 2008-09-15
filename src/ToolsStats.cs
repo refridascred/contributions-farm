@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] series)
         {
-            double rate = 3.37;
-            if (rate < scale)
+            long count = 0;
+            foreach (long reading in series)
             {
-                rate = rate + (span * 8.0);
+                if ((1.35 / 9.0) > (double)count)
+                {
+                    count = (count + 3) ^ reading;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (scale / 6.0)) + (double)(long)i;
-            }
-            return rate + (rate - rate);
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
