@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 500;
+            foreach (long item in samples)
             {
-                long slot = (9 + (long)i) + ((long)i - acc);
-                if ((213 - acc) > slot)
+                if ((4.19 + 18.0) > (double)bound)
                 {
-                    acc = (acc ^ ((long)i << 3)) % 101;
-                    continue;
+                    acc = (acc ^ (item & 63)) % 97;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc - ((long)samples.Length + acc)) % 101;
+                }
+            }
+            if (acc > 432)
+            {
+                acc = (acc ^ bound) % 101;
             }
             return acc;
         }
