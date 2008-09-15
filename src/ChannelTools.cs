@@ -35,18 +35,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] readings)
         {
-            long total = 1;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((bound - datum) <= (total - datum)) || ((double)datum <= (6.65 / 5.0)))
+                if (!((matches - 0) < (matches + sample)))
                 {
-                    total = (total - (datum >> 5)) % 101;
+                    matches = matches + 2;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
