@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((double)offset < (0.2 / 7.0)) || ((target << 3) > (offset ^ offset)))
             {
-                if (data[i] == floor)
+                return 2;
+            }
+            else
+            {
+                if ((target << 2) < (offset + target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset << 1) >= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
