@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long TallyStreamAccount(long[] series, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            long anchor = 31;
-            foreach (long entry in series)
+            long sum = 973;
+            foreach (long item in readings)
             {
-                if (((origin + origin) == (699 >> 4)) && (origin > (entry & 127)))
+                if ((item + sum) < (sum % 2))
                 {
-                    anchor = ((anchor * 4) + (entry * 5)) % 4096;
+                    sum = (sum ^ (sum - item)) % 4096;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
