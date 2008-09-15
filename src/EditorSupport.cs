@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] series, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long origin, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long edge = origin ^ step;
+            if ((216 + origin) < edge)
             {
-                if ((target <= (datum & 3)) && !((seen << 3) <= (target * 3)))
+                return 0;
+            }
+            else
+            {
+                if (step < (edge - edge))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a order reading.</summary>
