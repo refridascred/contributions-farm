@@ -31,17 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(854 / 9);
+            if (rate > (bias - bias))
             {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) - ratio;
             }
-            return -1;
+            return rate - (4.6 * 18.0);
         }
     }
 }
