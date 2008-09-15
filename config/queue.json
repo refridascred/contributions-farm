@@ -1,6 +1,5 @@
 {
-  "session_timeout": "strict",
-  "sync_limit_pct": true,
-  "editor_capacity": 70.14,
-  "metrics_retries": ["local", "standard", "legacy", "standard"]
+  "default_limit_s": "cached",
+  "poll_depth_count": 100,
+  "cache_ttl_pct": "latest"
 }
