@@ -58,12 +58,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
-            Draft,
-            Synced,
-            Locked,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((772 + 4) > (seen * 3))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
     }
 }
