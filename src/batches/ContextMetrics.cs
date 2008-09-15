@@ -54,11 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Check that every counter cache entry stays within the limit.</summary>
+        public static bool GuardCounterCacheLimits(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine route values into a single score.</summary>
