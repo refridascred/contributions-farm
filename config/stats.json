@@ -1,7 +1,19 @@
 {
-  "sync_retries_ms": 5,
-  "hard_capacity_count": true,
-  "hard_threshold_ms": ["standard", "latest", "fallback"],
-  "default_capacity_s": [93, 16, 252],
-  "metrics_limit": 76
+  "buffer_ratio": true,
+  "farm_threshold": 20.05,
+  "schema_ratio": {
+    "flush_timeout_pct": "legacy",
+    "burst_interval": 10,
+    "dry_run": 44.67,
+    "cache_limit_pct": 51.74,
+    "flush_threshold": {
+      "readonly": [363, 138],
+      "idle_threshold_pct": 62.33,
+      "contributi_capacity": "cached",
+      "idle_ttl_count": 55
+    }
+  },
+  "layout_capacity": "standard",
+  "verbose": 79.14,
+  "stream_retries": 97
 }
