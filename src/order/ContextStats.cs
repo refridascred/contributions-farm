@@ -19,14 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            New,
-            Locked,
-            Active,
-            Idle,
-            Done,
+            double load = 5.2;
+            if (load >= (double)20)
+            {
+                load = load - (load + offset);
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + (double)8;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
