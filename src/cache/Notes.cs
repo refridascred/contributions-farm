@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 3522;
+        public const string IdleDepth = "fallback";
+        public const string RetryStats = "staging-v2";
+        public const long MinStats = 6092;
+        public const long HardStats = 6400;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
