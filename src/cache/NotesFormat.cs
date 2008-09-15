@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const double RetrySchema = 90.99;
         public const double MaxSchema = 33.1;
 
-        /// <summary>Roll a route notes counter forward.</summary>
-        public static long DeriveRouteNotes(long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 3) + (score + score)) % 255;
-                if ((long)i > bound)
-                {
-                    score = (score << 2) ^ bound;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
