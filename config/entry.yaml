@@ -1,6 +1,5 @@
 # entry settings
-sync_size:
-  - 471
-  - 498
-retry_ttl: eu-west
-min_retries_pct: 82.16
+base_size_ms: 57.54
+default_depth_ms: 4.67
+poll_depth_ms: legacy
+flush_size: legacy
