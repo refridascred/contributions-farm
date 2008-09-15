@@ -1,11 +1,10 @@
 # support settings
-strict: 33.24
-report_size: fallback
-retry_depth_s:
+max_depth_s: legacy
+sync_delay_ms: fallback
+verbose:
+  - strict
+  - strict
   - primary
-  - stable
-  - eu-west
-  - cached
-readonly: 37
-verbose: 36
-dry_run: eu-west
+  - staging
+enabled: eu-west
+base_ratio_count: 3806
