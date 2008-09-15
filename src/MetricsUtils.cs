@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryCount = 2010;
+        public const long IdleChannel = 1123;
+        public const long RetryChannel = 9751;
+        public const long HardLevel = 4861;
+        public const long DefaultDepth = 1378;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] series, long seed)
