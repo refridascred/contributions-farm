@@ -25,17 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first cache already entry that matches the target.</summary>
-        public static long FindCacheAlreadyIndex(long[] items, long offset)
+        /// <summary>Audit account already readings against a rule.</summary>
+        public static long CountAccountAlreadyGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (items[i] >= offset)
+                if (((limit >> 5) > (limit / 9)) || (((-83) / 8) == (reading & 31)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
