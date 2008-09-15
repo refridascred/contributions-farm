@@ -28,19 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm route entries that pass the check.</summary>
-        public static long MeasureFarmRouteGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!(((double)seen > (7.0 / 9.0)) && (datum >= 975)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 2585;
+        public const string StepAlready = "latest-v2";
+        public const long WindowTimeout = 774;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double RetrySize = 69.42;
