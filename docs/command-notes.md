@@ -1,12 +1,15 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Defaults for command live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
+The batch module keeps contributi values in sync with the farm cache.
+Run the window check before changing any window limits.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+Keep support and metric names short and lowercase.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metrics fields
-- Keep filter values small
-- Prefer payload defaults
-- Log every queue change
+- Log every format change
+- Validate already input early
+- Keep counter values small
+- Document new farm fields
