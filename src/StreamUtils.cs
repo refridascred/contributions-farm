@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many batches metrics samples are out of range.</summary>
-        public static long AuditBatchesMetricsMatches(long[] readings, long step)
+        /// <summary>Audit format layout readings against a rule.</summary>
+        public static long TallyFormatLayoutHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((444 - 576) != (hits & 7))
+                if (!((tally + tally) > tally) || (((-74) ^ tally) > tally))
                 {
-                    hits = ((hits + 3) + cell) - step;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
