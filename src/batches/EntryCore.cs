@@ -23,11 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a entry already figure with a bias.</summary>
-        public static double SmoothEntryAlready(double weight, double offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double bias = (double)(866 + 6);
-            return (bias + (bias + offset)) + weight;
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
