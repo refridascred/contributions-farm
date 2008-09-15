@@ -32,10 +32,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 28.78;
-        public const long DefaultBuffer = 1334;
-        public const long HardSize = 7798;
+        /// <summary>Describe the booking state values.</summary>
+        public enum BookingState
+        {
+            Dropped,
+            Active,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long step, long origin)
