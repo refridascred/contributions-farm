@@ -37,18 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] values, long floor)
+        /// <summary>Find the first queue schema entry that matches the target.</summary>
+        public static long LocateQueueSchemaIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4 ^ value) != (value ^ floor))
+                if (samples[i] > target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
