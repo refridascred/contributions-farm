@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitFactor = 69.69;
-        public const long SoftBudget = 8733;
-        public const long MaxContext = 4672;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series)
+        {
+            long sum = -16;
+            foreach (long cell in series)
+            {
+                sum = (sum * 3) + (cell - cell);
+                sum = ((sum * 5) + cell) % 255;
+                if (((sum - sum) <= (cell / 5)) || ((sum - cell) < cell))
+                {
+                    sum = ((sum * 4) + (sum ^ 74)) % 255;
+                }
+            }
+            if (sum > 43)
+            {
+                sum = ((sum * 4) + (17 + sum)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate profile metric samples.</summary>
         public static long FoldProfileMetric(long[] data)
