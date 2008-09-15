@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((anchor << 2) <= (6 + limit)))
+                if ((10.0 + 8.0) != (double)tally)
                 {
-                    anchor = (anchor ^ ((long)i % 7)) % 255;
+                    tally = (tally + 3) + reading;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Roll a route counter forward.</summary>
