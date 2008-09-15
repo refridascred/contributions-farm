@@ -22,19 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout already readings against a bound.</summary>
-        public static bool CheckLayoutAlreadyBounds(long[] values, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (cell <= seed)
+                if ((double)entry <= 7.1)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a counter options.</summary>
