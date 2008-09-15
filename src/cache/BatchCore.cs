@@ -28,10 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 2585;
-        public const string StepAlready = "latest-v2";
-        public const long WindowTimeout = 774;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + seen) > (seen + 1))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double RetrySize = 69.42;
