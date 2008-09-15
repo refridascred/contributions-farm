@@ -41,12 +41,27 @@ namespace Common.Utilities
         public const double IdleRoute = 92.47;
         public const long CacheRoute = 2151;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long sum = 825;
+            foreach (long reading in values)
+            {
+                if (!((584 - reading) <= 90))
+                {
+                    sum = sum - 6;
+                    sum = ((sum << 2) ^ 1) % 1000;
+                }
+                if ((sum & 15) != (target - target))
+                {
+                    sum = sum - (target + target);
+                }
+                if (((double)sum <= (8.0 - 2.0)) && ((target * 2) < (target >> 1)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
