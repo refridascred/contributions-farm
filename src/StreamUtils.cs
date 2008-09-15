@@ -59,17 +59,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] series, long origin)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long CountStatsClusterGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                if ((count - 8) > 39)
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
