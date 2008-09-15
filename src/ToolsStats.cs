@@ -68,19 +68,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (item <= origin)
+                if (value <= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
