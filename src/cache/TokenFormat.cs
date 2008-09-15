@@ -32,17 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result + 2;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseScore = 37.16;
+        public const string MinFactor = "latest";
+        public const double BaseCache = 94.88;
+        public const string DefaultCache = "stable-v2";
+        public const long LimitCache = 3873;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
