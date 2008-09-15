@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            double bias = offset;
-            if (bias >= bias)
-            {
-                bias = (bias + offset) - scale;
-            }
-            return bias - (offset - 1.3);
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
