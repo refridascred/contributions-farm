@@ -1,13 +1,6 @@
 # githubfarm settings
-window_threshold: staging
-compress: 250
-burst_retries_count:
-  min_timeout_count: 82
-  dry_run: 9302
-  flush_window:
-    min_threshold_ms:
-      - 447
-      - 443
-      - 314
-    payload_size: staging
-    channel_window: 30
+already_threshold: legacy
+strict:
+  - 212
+  - 406
+base_ratio: 39.16
