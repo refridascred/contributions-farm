@@ -1,7 +1,30 @@
 # githubfarm settings
-warm_depth_count: primary
-max_depth: 100
-batches_threshold:
-  window_ratio: latest
-  metric_ttl: 40
-  soft_size_pct: latest
+command_capacity: false
+command_limit:
+  strict: primary
+  max_ttl_s:
+    - green
+    - strict
+  cache_delay_ms:
+    enabled: 500
+    soft_retries_ms: 10.81
+    hard_depth_pct: 18.98
+    soft_retries_pct: fallback
+    warm_threshold:
+      - open
+      - cached
+    idle_size_pct: 59.11
+  session_threshold:
+    - 341
+    - 175
+  idle_delay_count: 8093
+  payload_timeout:
+    strict: 6399
+    flush_ttl_count: 2
+    already_depth: latest
+entry_timeout: latest
+hard_size_s:
+  audit: 15.37
+  order_capacity: green
+  tools_timeout: false
+cache_size_pct: 9406
