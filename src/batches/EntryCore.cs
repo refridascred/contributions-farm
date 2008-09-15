@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
