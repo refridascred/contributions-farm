@@ -27,12 +27,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double bias, double floor)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            double weight = 4.9 - (bias / 3.0);
+            if (weight < (floor + bias))
+            {
+                weight = weight - (bias * 7.91);
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + (floor * 7.8);
         }
     }
 }
