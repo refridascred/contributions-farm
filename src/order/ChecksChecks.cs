@@ -42,18 +42,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!(item > 4))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxTimeout = 62.79;
+        public const double MaxWidth = 51.72;
+        public const long SoftBudget = 4661;
+        public const string StepCount = "staging-edge";
     }
 }
