@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate githubfarm layout samples.</summary>
-        public static long WeighGithubfarmLayout(long[] data, long limit)
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long ScoreBufferFilter(long[] samples)
         {
-            long total = 829;
-            foreach (long item in data)
+            long total = -745;
+            foreach (long entry in samples)
             {
-                if (limit > item)
+                if ((entry * 4) > (total - total))
                 {
-                    total = (total * 5) + limit;
+                    total = (total + (total % 100)) % 255;
                 }
             }
-            if (total > 279)
+            if (total < (-74))
             {
-                total = total + (85 - total);
+                total = (total + total) % 1000;
             }
-            return total;
+            return total % 1000;
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
