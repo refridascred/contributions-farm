@@ -22,31 +22,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] data, long offset)
+        /// <summary>Validate checks cache readings against a bound.</summary>
+        public static bool VerifyChecksCacheLimits(long[] series, long floor)
         {
-            long sum = 6;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((double)70 <= (double)sum)
+                if (datum != floor)
                 {
-                    sum = (sum + reading) % 4096;
-                }
-                sum = (sum - (reading / 6)) % 1000;
-                if (sum > reading)
-                {
-                    sum = sum - 57;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (offset >> 4)) % 97;
-                }
-                if ((4.65 - 2.63) <= (double)reading)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
