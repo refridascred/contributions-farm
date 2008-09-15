@@ -44,19 +44,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] data, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (entry != offset)
+                if (((tally ^ entry) == (tally + tally)) || !(tally >= (8 * 4)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Rank layout context input into a small class.</summary>
