@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the entry buffer entries that pass the check.</summary>
+        public static long TallyEntryBufferOutliers(long[] samples, long target)
         {
-            Failed,
-            Paused,
-            Ready,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches >> 3) > target)
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
