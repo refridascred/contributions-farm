@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long WindowSpan = 6734;
         public const long WindowLevel = 3891;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long limit)
+        /// <summary>Audit profile commits readings against a rule.</summary>
+        public static long CountProfileCommitsOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] > limit)
+                if ((datum / 8) < (datum / 3))
                 {
-                    return (long)i;
+                    count = (count + 3) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
