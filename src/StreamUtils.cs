@@ -71,13 +71,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] samples, long step)
         {
-            Locked,
-            Paused,
-            Synced,
-            Dropped,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (4 >= (count - datum))
+                {
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
