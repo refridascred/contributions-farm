@@ -20,11 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 27.99;
-        public const double WindowOrder = 5.83;
-        public const double IdleOrder = 8.06;
-        public const long HardSize = 2908;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowFactor = 32.36;
+        public const long SoftDepth = 4783;
+        public const long BaseSchema = 2669;
+        public const long CacheCount = 8935;
+        public const long LimitLevel = 744;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long limit)
