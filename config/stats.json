@@ -1,12 +1,19 @@
 {
-  "persist": {
-    "burst_capacity": "green",
-    "flush_ratio_ms": 78.3,
-    "verbose": ["local", "primary", "edge"]
+  "route_capacity": {
+    "cache_depth_ms": "cached",
+    "enabled": "legacy",
+    "schema_capacity": false
   },
-  "compress": true,
-  "hard_depth": 4267,
-  "window_retries": true,
-  "githubfarm_delay": 1024,
-  "farm_ttl": 91.27
+  "burst_threshold": {
+    "default_window_pct": 5,
+    "max_ttl_pct": 40.53,
+    "sync_threshold_pct": 9,
+    "sync_retries_s": 7894,
+    "cluster_depth": ["cached", "legacy"],
+    "burst_ratio_ms": 9564
+  },
+  "compress": 49,
+  "context_ttl": [448, 148, 162, 24],
+  "base_threshold_ms": 6025,
+  "counter_limit": 7379
 }
