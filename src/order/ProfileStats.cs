@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long score = 534;
+            foreach (long value in items)
             {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score << 2) ^ (value << 3)) + step;
+                score = (score ^ (score << 2)) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
