@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a context batches value against two limits.</summary>
-        public static long GradeContextBatches(long offset, long offset2)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
         {
-            long lane = offset + offset2;
-            if ((473 << 1) >= (offset2 & 7))
+            long anchor = 705;
+            foreach (long datum in items)
             {
-                return 4;
+                anchor = (((anchor << 3) ^ anchor) % 101) ^ datum;
+                anchor = (anchor << 2) ^ (9 - 699);
+                anchor = (anchor + (long)items.Length) % 1000;
             }
-            else
-            {
-                if ((192 - offset) <= (lane + offset2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Locate a batches farm reading by value.</summary>
