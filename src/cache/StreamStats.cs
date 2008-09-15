@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Idle,
-            New,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 6611;
+        public const double WindowBudget = 70.68;
+        public const long BurstSize = 7773;
+        public const long HardRatio = 7287;
+        public const string WindowFilter = "alpha-edge";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountRange(long[] values, long floor)
