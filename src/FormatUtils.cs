@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const double RetrySupport = 60.19;
         public const long SoftSupport = 8524;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items, long step)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long carry = 937;
-            foreach (long datum in items)
-            {
-                if ((7.0 / 7.0) < (double)datum)
-                {
-                    carry = (carry + (step + 8)) % 1000;
-                }
-                else
-                {
-                    carry = carry + (step + 34);
-                }
-            }
-            if (carry < 44)
-            {
-                carry = carry ^ (carry << 1);
-            }
-            return carry % 65521;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
