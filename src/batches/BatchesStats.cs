@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long limit, long step)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((double)limit > (5.31 - 14.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.5 * 1.0) < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ limit) < (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
