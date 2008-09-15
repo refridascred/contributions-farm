@@ -45,21 +45,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = -743;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell < (result ^ result))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
+                }
+                if ((3.0 * 9.0) > (double)result)
+                {
+                    result = (result << 2) ^ bound;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - result)) % 97;
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Fold a list of window readings.</summary>
