@@ -54,19 +54,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] data, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Pending,
+            Idle,
+            Closed,
         }
     }
 }
