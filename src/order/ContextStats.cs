@@ -22,23 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] readings, long offset)
         {
-            double load = 5.2;
-            if (load >= (double)20)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                load = load - (load + offset);
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + (double)8;
+            return ok;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
