@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] series, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((floor * 2) == (value - 493))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
