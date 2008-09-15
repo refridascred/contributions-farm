@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] values)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((((636 ^ sample) >= count) || (count < (count + sample))) || (sample <= 32))
+                if (entry > origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
