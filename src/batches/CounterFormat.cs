@@ -14,19 +14,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] readings, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Pending,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
