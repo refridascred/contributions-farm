@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Roll a token graph counter forward.</summary>
+        public static long IterateTokenGraph(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
