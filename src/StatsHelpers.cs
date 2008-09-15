@@ -53,17 +53,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a context notes sample.</summary>
-        public static long LocateContextNotesIndex(long[] samples, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate payload samples.</summary>
