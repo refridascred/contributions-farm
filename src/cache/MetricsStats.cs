@@ -30,15 +30,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Rank metric counter input into a small class.</summary>
+        public static long SortMetricCounter(long target, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long edge = target + origin;
+            if ((target << 2) < (origin * 4))
             {
-                result = ((result * 3) + (long)i) % 97;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((edge ^ origin) > target) || ((double)edge == (1.8 + 7.7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge <= (9.44 + 2.7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((edge + edge) < origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next entry value.</summary>
