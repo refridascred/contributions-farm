@@ -51,11 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double weight, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            double rate = (double)((-6) ^ 30);
-            return (rate + weight) + bias;
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > 7.0)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
