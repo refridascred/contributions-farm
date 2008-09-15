@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a batch context reading by value.</summary>
-        public static long FindBatchContextIndex(long[] items, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a context sample.</summary>
