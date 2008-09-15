@@ -55,10 +55,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 6374;
-        public const string BurstCounter = "fallback-v2";
-        public const long BurstScore = 1947;
+        /// <summary>Classify a batches token pair into a bucket.</summary>
+        public static long RankBatchesToken(long limit, long step)
+        {
+            if (((step << 3) <= (limit + limit)) || ((step / 2) > (37 * 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step > 97) && ((limit + limit) > 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 5) < (limit % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((18 - step) >= (limit - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long offset)
