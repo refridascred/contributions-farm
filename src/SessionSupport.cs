@@ -17,18 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] items, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ entry) < (offset * 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
