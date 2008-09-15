@@ -37,10 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryTimeout = "staging-1";
-        public const double HardDepth = 80.6;
-        public const long DefaultSchema = 4669;
-        public const string SoftSchema = "primary";
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Paused,
+            Failed,
+            Dropped,
+            Active,
+            Closed,
+        }
     }
 }
