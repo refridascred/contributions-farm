@@ -12,15 +12,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Queued,
-            Closed,
-            Draft,
-            Locked,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 3173;
+        public const long MaxDepth = 1184;
+        public const double BurstLevel = 41.16;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] items)
