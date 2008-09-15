@@ -1,7 +1,7 @@
 # githubfarm settings
-profile_timeout: 6707
-enabled: true
-flush_ttl_count: edge
-base_window_count: 8813
-counter_size: local
-poll_size_count: legacy
+base_interval_ms: 2644
+flush_limit_pct: true
+cache_window: cached
+base_retries: 500
+min_ttl_s: 9
+persist: 37
