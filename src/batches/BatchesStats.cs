@@ -13,13 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series)
         {
-            Paused,
-            Retry,
-            Synced,
-            Pending,
+            long carry = 9;
+            foreach (long reading in series)
+            {
+                if ((70 + reading) <= (carry << 1))
+                {
+                    carry = (carry * 5) + 138;
+                    carry = ((carry * 5) + (carry & 1)) % 65521;
+                }
+                carry = (carry - (reading / 2)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up cluster samples.</summary>
