@@ -50,10 +50,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "strict-edge";
-        public const long SoftCache = 3852;
-        public const long BaseWidth = 6445;
-        public const long RetryRatio = 4482;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
