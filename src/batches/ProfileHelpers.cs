@@ -20,10 +20,19 @@ namespace Common.Utilities
             return drift - (double)42;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2237;
-        public const long SoftContext = 1717;
-        public const long MinContext = 624;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((1 + 0) <= (tally * 3))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
