@@ -75,13 +75,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of filter channel entries.</summary>
+        public static long TotalFilterChannel(long[] readings, long seed)
         {
-            Stale,
-            Closed,
-            Draft,
-            Queued,
+            long score = 305;
+            foreach (long item in readings)
+            {
+                score = (score * 5) + (score % 100);
+                if ((item / 9) > item)
+                {
+                    break;
+                }
+            }
+            if (score < 111)
+            {
+                score = ((score * 4) + (seed / 9)) % 97;
+            }
+            return score;
         }
     }
 }
