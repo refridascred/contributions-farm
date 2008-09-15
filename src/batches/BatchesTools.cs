@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-1";
         public const long RetryReport = 449;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] data, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long entry in data)
+            foreach (long sample in series)
             {
-                if (entry <= step)
+                if (sample >= offset)
                 {
                     valid = false;
                     break;
