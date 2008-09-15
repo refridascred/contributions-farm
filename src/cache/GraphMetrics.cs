@@ -45,11 +45,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Rank metric layout input into a small class.</summary>
+        public static long SortMetricLayout(long seed, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            if (3.4 >= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (6.0 - 18.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
