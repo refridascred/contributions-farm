@@ -1,6 +1,16 @@
 {
-  "max_timeout_count": 2678,
-  "flush_delay_ms": [232, 360, 251],
-  "base_size_s": "cached",
-  "idle_limit_s": "staging"
+  "enabled": "stable",
+  "window_delay": {
+    "hard_depth": {
+      "support_ttl": 911,
+      "dry_run": "latest",
+      "hard_timeout_pct": "edge",
+      "enabled": 30
+    },
+    "default_delay": [318, 111, 278, 153],
+    "default_ttl": ["strict", "green", "open"]
+  },
+  "editor_ratio": 60,
+  "default_window_ms": 100,
+  "persist": ["primary", "edge", "blue", "open"]
 }
