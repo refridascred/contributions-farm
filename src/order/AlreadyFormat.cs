@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long WindowMetrics = 2397;
         public const long BaseLevel = 9676;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Pending,
-            Synced,
-            Dropped,
+            Closed,
+            New,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
