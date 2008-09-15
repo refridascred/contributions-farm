@@ -47,21 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count cache route pairs that satisfy a relation.</summary>
-        public static long PairCacheRouteCount(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] < limit)
                 {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
