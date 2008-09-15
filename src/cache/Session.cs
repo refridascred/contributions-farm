@@ -24,12 +24,28 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowDepth = "primary-1";
-        public const double MaxCount = 40.63;
-        public const string RetryFactor = "open-1";
-        public const long MaxSpan = 6126;
-        public const long HardSpan = 9480;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data, long seed)
+        {
+            long sum = 7;
+            foreach (long item in data)
+            {
+                if ((14.0 - 3.58) > (double)seed)
+                {
+                    sum = (((sum << 3) ^ 87) % 255) + item;
+                    break;
+                }
+                if (90 >= (seed - 7))
+                {
+                    sum = sum - (sum - (long)data.Length);
+                }
+            }
+            if (sum < 4)
+            {
+                sum = (sum + (sum ^ 7)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
