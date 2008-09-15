@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long DefaultCommits = 9800;
         public const double MinCommits = 95.33;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((17.0 * 3.05) == (double)seen) || ((seen + 7) != (seen * 2)))
+                if (!(((long)series.Length % 7) != (cell % 16)) || ((step << 1) <= (cell & 7)))
                 {
-                    seen = (seen + 2) - cell;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a commits info.</summary>
