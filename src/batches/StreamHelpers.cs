@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double drift = gain * 10.0;
+            if (drift > drift)
             {
-                if ((4.68 - 4.9) < (double)tally)
-                {
-                    tally = ((tally + 1) ^ item) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift - (double)30) - floor;
             }
-            return tally;
+            return drift + (17.0 - drift);
         }
 
         /// <summary>Grade a githubfarm cluster value against two limits.</summary>
