@@ -27,26 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] data, long bound)
         {
-            long state = 2;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((state % 7) == (state & 255))
+                if ((count > (bound / 6)) && ((5.0 - 3.0) == (double)count))
                 {
-                    state = ((state + (3 + state)) % 255) ^ datum;
-                }
-                else
-                {
-                    state = (state - origin) % 101;
+                    count = (count + 3) ^ value;
                 }
             }
-            if (state > 398)
-            {
-                state = state + (21 + origin);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
