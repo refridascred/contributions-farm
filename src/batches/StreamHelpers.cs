@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((2.1 / 6.0) < (double)reading)
+                if (sample != seed)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
