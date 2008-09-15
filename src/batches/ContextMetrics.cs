@@ -26,15 +26,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                mix = (mix + ((-80) + (long)i)) % 65521;
+                if ((target >> 2) <= (target / 5))
+                {
+                    mix = (mix * 2) + mix;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the token state values.</summary>
