@@ -44,22 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (7.59 <= (double)item)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Idle,
+            Active,
+            Stale,
         }
     }
 }
