@@ -1,33 +1,13 @@
 # githubfarm settings
-cluster_depth: 9192
-entry_capacity: 23.46
-soft_interval: 63.95
-soft_ttl_count:
-  warm_capacity_s:
-    audit: edge
-    batch_depth_s: edge
-    base_delay_ms: 30
-    soft_retries_ms: 15.94
-    verbose:
-      - edge
-      - fallback
-    cache_capacity_s: 250
-  batch_window_s:
-    - 205
-    - 463
-  burst_interval_s:
-    - blue
-    - local
-  burst_window_pct: 54.26
-soft_interval_ms:
-  min_limit: 250
-  hard_interval_count: 21.77
-  strict:
-    warm_interval: 15
-    strict: 4611
-    poll_delay_s: 100
-    report_delay: cached
-  base_capacity_s: open
-  default_capacity_s: eu-west
-  max_size_s: blue
-max_limit_s: 30
+window_threshold: staging
+compress: 250
+burst_retries_count:
+  min_timeout_count: 82
+  dry_run: 9302
+  flush_window:
+    min_threshold_ms:
+      - 447
+      - 443
+      - 314
+    payload_size: staging
+    channel_window: 30
