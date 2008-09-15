@@ -40,23 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double rate, double bias)
-        {
-            double scale = (rate - rate) / 6.0;
-            if (scale >= (bias / 2.0))
-            {
-                scale = scale - (double)41;
-            }
-            else
-            {
-                scale = scale - (bias + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (bias - scale);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "latest-1";
+        public const long SoftDepth = 9854;
+        public const long HardStream = 726;
+        public const long BaseFactor = 4899;
+        public const long BaseStream = 8465;
     }
 }
