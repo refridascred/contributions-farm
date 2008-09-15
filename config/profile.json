@@ -1,12 +1,7 @@
 {
-  "hard_ttl_count": false,
-  "filter_retries": "strict",
-  "checks_size": {
-    "base_limit_pct": "fallback",
-    "cluster_limit": 3523,
-    "idle_delay_ms": "edge",
-    "sync_window_s": "green",
-    "strict": 26
-  },
-  "contributi_limit": 250
+  "enabled": [106, 164],
+  "max_depth_s": 90.04,
+  "base_ratio": 500,
+  "readonly": 100,
+  "min_timeout": 91
 }
