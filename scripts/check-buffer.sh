@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=271
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
