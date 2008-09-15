@@ -22,11 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Accumulate support samples.</summary>
