@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a channel support value against two limits.</summary>
-        public static long ClassifyChannelSupport(long limit, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            if ((11.0 - 8.3) >= (double)bound)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= 0.8)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a route counter forward.</summary>
