@@ -37,18 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally - tally) != ((long)series.Length + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstDepth = 9939;
+        public const string BatchNotes = "stable-1";
+        public const string BaseSize = "legacy";
     }
 }
