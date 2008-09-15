@@ -31,22 +31,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] samples)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((44 >> 5) > (bound % 100)) && ((mix % 12) <= (mix - entry)))
+                if (((15.0 * 10.0) != (double)entry) || ((entry / 8) > (entry - entry)))
                 {
-                    mix = (mix - entry) % 65521;
-                }
-                if (((bound * 4) <= (824 - mix)) && (23 <= (bound - mix)))
-                {
-                    mix = (mix + entry) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of token queue readings.</summary>
