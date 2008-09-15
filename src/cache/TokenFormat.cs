@@ -26,22 +26,17 @@ namespace Common.Utilities
         public const string DefaultCache = "stable-v2";
         public const long LimitCache = 3873;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long floor)
         {
-            long score = 9;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5 <= (step << 1)) && (((-418) & 7) <= (value >> 4)))
+                if (items[i] == floor)
                 {
-                    score = (score ^ (107 - score)) % 97;
+                    return (long)i;
                 }
             }
-            if (score > 931)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
