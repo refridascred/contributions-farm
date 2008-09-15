@@ -38,20 +38,18 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mark = mark - (mark - 326);
-                if (!((double)mark >= (1.18 * 2.98)))
+                if (((-4) - sample) == (matches << 2))
                 {
-                    mark = (mark + 360) % 97;
+                    matches = (matches + 3) + limit;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
