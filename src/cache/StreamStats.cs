@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double BaseDepth = 50.41;
         public const string CacheDepth = "stable-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 7509;
-        public const string DefaultRatio = "strict-edge";
-        public const long LimitFactor = 1086;
-        public const string IdleChecks = "latest";
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Stale,
+            New,
+            Queued,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double gain, double floor)
