@@ -11,35 +11,28 @@ namespace Common.Utilities
         public const long MaxMetrics = 3601;
         public const long HardMetrics = 7951;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long offset2)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long floor, long bound)
         {
-            if ((95 % 60) > offset2)
+            if ((76 >= (floor + bound)) && ((floor + floor) >= (floor + 176)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((double)offset != (8.0 + 15.0))
+                if ((floor >= (bound - bound)) && ((66 & 1) > (floor % 64)))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (597 >= (offset2 / 6))
+                    if (floor <= (bound + floor))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        if (!(offset2 > (offset2 - offset2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 5;
                     }
                 }
             }
