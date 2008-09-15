@@ -38,15 +38,18 @@ namespace Common.Utilities
             return drift + (double)(-872);
         }
 
-        /// <summary>Derive the next order buffer value from a seed.</summary>
-        public static long SeriesOrderBuffer(long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((tally + tally) <= value)
+                {
+                    tally = tally + 2;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
