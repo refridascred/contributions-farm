@@ -34,19 +34,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of support entry entries.</summary>
-        public static long FoldSupportEntry(long[] series)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long mark = 930;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (mark * 2)) % 101;
-                if (!((cell - cell) >= (cell & 255)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
