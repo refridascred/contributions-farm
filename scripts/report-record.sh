@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -22,8 +22,5 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=495
+log "limit is ${RECORD_LIMIT}"
