@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session batches samples.</summary>
-        public static long MatchSessionBatchesCount(long[] levels)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
