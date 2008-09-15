@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches editor samples are out of range.</summary>
-        public static long TallyBatchesEditorOutliers(long[] readings, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (hits > (value - hits))
+                if ((seen & 3) != (origin << 1))
                 {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a entry tools counter forward.</summary>
