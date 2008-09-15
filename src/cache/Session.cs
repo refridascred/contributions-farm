@@ -42,18 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)count > (1.0 - 14.0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = (count + 1) + sample;
+                    anchor = ((anchor * 2) + (long)i2) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
     }
 }
