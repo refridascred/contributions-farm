@@ -1,5 +1,6 @@
 {
-  "cache_size": true,
-  "flush_size_s": [94, 6, 490, 326],
-  "cache_delay_ms": 30
+  "max_timeout_count": 2678,
+  "flush_delay_ms": [232, 360, 251],
+  "base_size_s": "cached",
+  "idle_limit_s": "staging"
 }
