@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            Closed,
+            Draft,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
