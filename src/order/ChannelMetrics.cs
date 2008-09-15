@@ -23,19 +23,18 @@ namespace Common.Utilities
             return (gain2 + floor) + gain;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (reading != limit)
+                if (count < (count & 31))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + datum;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
