@@ -1,7 +1,12 @@
 {
-  "batch_delay": 19.95,
-  "readonly": "local",
-  "farm_timeout": 35,
-  "soft_ratio_pct": 22,
-  "retry_interval_pct": 74
+  "farm_retries": 49,
+  "burst_delay": "legacy",
+  "idle_size_s": {
+    "context_capacity": 22,
+    "soft_depth_count": "legacy",
+    "route_size": 48.2,
+    "queue_delay": [108, 86]
+  },
+  "audit": 7948,
+  "cluster_interval": "fallback"
 }
