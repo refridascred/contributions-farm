@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
