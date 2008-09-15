@@ -23,23 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm metrics readings.</summary>
-        public static long TallyGithubfarmMetrics(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long target)
         {
-            long anchor = -68;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= ((long)values.Length << 3))
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
                 {
-                    anchor = anchor ^ (value - value);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor * 3) + (555 + anchor)) % 255;
-                }
-                anchor = (anchor - value) % 255;
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many profile stream samples are out of range.</summary>
