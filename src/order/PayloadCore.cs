@@ -50,31 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a stream schema pair into a bucket.</summary>
-        public static long RankStreamSchema(long floor, long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((5 + floor) <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((1 % 60) < (51 ^ step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step - floor) > step) && ((step + floor) < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
