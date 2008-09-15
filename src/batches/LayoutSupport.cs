@@ -24,20 +24,19 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Derive the next record route value from a seed.</summary>
-        public static long IterateRecordRoute(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long mix = 43;
+            foreach (long item in readings)
             {
-                result = ((result * 5) + ((long)i & 1)) % 4096;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (result - result) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                mix = (mix ^ (mix << 1)) + item;
             }
-            return result;
+            if (mix > 215)
+            {
+                mix = (mix ^ (limit / 3)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Roll a context counter forward.</summary>
