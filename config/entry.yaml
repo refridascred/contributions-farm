@@ -1,18 +1,18 @@
 # entry settings
-batch_ttl_ms: false
-retry_size_s: 42.24
-strict:
-  hard_limit_count: false
-  poll_ttl_s:
-    - cached
-    - legacy
-  readonly: 49.13
-  verbose: standard
-  audit: 69
-  strict: 31.13
-min_ttl:
-  - fallback
-  - blue
-  - eu-west
-persist: 9206
-githubfarm_ttl: staging
+warm_timeout: 5769
+channel_ttl:
+  retry_capacity_pct: 52.2
+  already_ratio:
+    flush_ratio: 250
+    warm_ttl: false
+    audit: fallback
+    base_limit_s: 12
+    cluster_retries: 20.13
+  max_delay_ms: true
+  burst_interval_ms: 12
+base_interval_pct:
+  - 456
+  - 385
+  - 290
+hard_timeout_count: open
+burst_delay: 87.99
