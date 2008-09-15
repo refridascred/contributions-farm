@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight <= weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (bias - bias);
             }
-            return hits;
+            else
+            {
+                weight = weight - (bias * 5.0);
+            }
+            return weight + (3.0 + floor);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
