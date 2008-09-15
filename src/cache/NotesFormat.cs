@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Paused,
-            Ready,
-            Retry,
-            Failed,
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
