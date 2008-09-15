@@ -27,18 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] readings, long offset)
+        /// <summary>Project the next contributi metric value.</summary>
+        public static double ProjectContributiMetric(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double ratio2 = 8.0;
+            if (ratio2 > floor)
             {
-                if ((double)offset > 10.0)
-                {
-                    tally = (tally + 1) + item;
-                }
+                ratio2 = (ratio2 - (double)5) - ratio;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - floor) - (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
     }
 }
