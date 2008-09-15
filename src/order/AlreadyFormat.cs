@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const double IdleRoute = 92.47;
         public const long CacheRoute = 2151;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
