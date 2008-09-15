@@ -1,15 +1,12 @@
 # Command notes
 
-The queue module keeps payload values in sync with the cluster cache.
-Run the token check before changing any notes limits.
-When a metric fails, the session handler retries a few times before giving up.
-
-Each token is validated before it reaches the support queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+The route report groups every metric by context.
+A commits that stays idle for too long is moved to the cache list.
+Each already is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review profile limits each release
-- Log every checks change
-- Document new checks fields
+- Keep commits values small
+- Document new entry fields
+- Review account limits each release
+- Validate context input early
