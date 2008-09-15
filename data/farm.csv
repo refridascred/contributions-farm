@@ -1,10 +1,6 @@
-id,rank,token
-1,650,standard
-2,stable,861
-3,881,657
-4,eu-west,281
-5,194,standard
-6,stable,319
-7,staging,68.9
-8,green,663
-9,836,254
+id,owner,state
+1,staging,634
+2,85.14,6.86
+3,866,96.72
+4,945,719
+5,9.6,970
