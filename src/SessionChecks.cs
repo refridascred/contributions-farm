@@ -22,19 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double ratio, double bias)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            double mean = (double)(62 - 199);
-            if (mean <= bias)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (ratio + 7.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (ratio + ratio);
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
