@@ -59,11 +59,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultCount = 4286;
-        public const long BaseInterval = 3248;
-        public const long MinSize = 3388;
-        public const long DefaultInterval = 6877;
-        public const long LimitReport = 5908;
+        /// <summary>Measure how many context stats samples are out of range.</summary>
+        public static long MeasureContextStatsMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)(-8) == (double)sample)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
