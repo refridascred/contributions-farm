@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "open-v2";
-        public const long StepCounter = 2829;
-        public const long MaxCounter = 9111;
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long ScoreCommitsOrder(long[] values, long seed)
+        {
+            long mark = 401;
+            foreach (long value in values)
+            {
+                mark = ((mark ^ ((long)values.Length >> 1)) + value) - seed;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long RollAccount(long origin)
