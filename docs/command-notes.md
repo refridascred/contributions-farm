@@ -1,15 +1,16 @@
 # Command notes
 
-The batch module keeps contributi values in sync with the farm cache.
-Run the window check before changing any window limits.
-Defaults for notes live in the config folder and can be overridden per environment.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any entry limits.
+The route report groups every order by window.
 
-Keep support and metric names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Each schema is validated before it reaches the route queue.
+The support module keeps filter values in sync with the schema cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every format change
-- Validate already input early
-- Keep counter values small
-- Document new farm fields
+- Validate session input early
+- Document new queue fields
+- Prefer order defaults
+- Log every counter change
