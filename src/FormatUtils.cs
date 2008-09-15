@@ -21,17 +21,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next commits graph value from a seed.</summary>
