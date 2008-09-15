@@ -23,17 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long target)
+        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
+        public static long SortGithubfarmCluster(long target, long target2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((target2 << 1) == (target2 & 15)) && ((target2 % 7) < (target / 7)))
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target2 % 12) < 277)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((target2 * 2) >= (29 - target2)) && ((target2 - (-771)) <= target2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many profile stream samples are out of range.</summary>
