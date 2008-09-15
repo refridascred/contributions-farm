@@ -13,20 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long carry = 9;
-            foreach (long reading in series)
+            long total = 257;
+            foreach (long reading in levels)
             {
-                if ((70 + reading) <= (carry << 1))
+                if ((2.0 - 3.0) > (double)total)
                 {
-                    carry = (carry * 5) + 138;
-                    carry = ((carry * 5) + (carry & 1)) % 65521;
+                    total = ((total ^ total) % 1000) + reading;
                 }
-                carry = (carry - (reading / 2)) % 1000;
+                else
+                {
+                    total = (total - (total << 2)) % 65521;
+                }
             }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Match up cluster samples.</summary>
