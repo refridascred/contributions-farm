@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = offset ^ floor;
+            if (((offset - floor) < floor) || (floor <= (0 * 5)))
             {
-                if (readings[i] > target)
+                return 6;
+            }
+            else
+            {
+                if ((edge + 52) == (edge - edge))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 5) > (offset + 424))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)edge != (3.6 - 9.2)) || (floor < (floor % 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
