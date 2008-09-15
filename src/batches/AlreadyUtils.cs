@@ -19,18 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long result = 934;
-            foreach (long sample in values)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((result + result) >= (56 - result)) && (0 > (result - 0)))
-                {
-                    result = ((result << 2) ^ (676 ^ (-29))) + sample;
-                }
+                mix = ((mix << 3) ^ (mix - offset)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Adjust a window reading.</summary>
