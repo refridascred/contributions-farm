@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BatchSupport = 320;
         public const double HardSupport = 42.15;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            Locked,
-            New,
-            Failed,
+            double mean = weight;
+            if (mean <= (8.0 / 7.0))
+            {
+                mean = (mean - mean) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
