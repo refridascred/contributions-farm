@@ -1,6 +1,18 @@
 {
-  "notes_threshold": 44.9,
-  "readonly": false,
-  "profile_ttl": "open",
-  "retry_threshold": 90.74
+  "retry_delay_count": [233, 391, 268, 164],
+  "stream_size": 30,
+  "default_interval_s": {
+    "context_timeout": "blue",
+    "hard_limit_pct": "fallback",
+    "metrics_depth": "latest",
+    "burst_interval_ms": {
+      "soft_window": false,
+      "metrics_delay": "fallback",
+      "session_depth": "latest",
+      "checks_retries": 3940,
+      "strict": 3979,
+      "hard_delay": false
+    }
+  },
+  "retry_depth_s": "latest"
 }
