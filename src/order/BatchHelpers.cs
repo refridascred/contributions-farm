@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.77 + 19.0) < (double)seen)
+                if (data[i] == target)
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of batches tools readings.</summary>
