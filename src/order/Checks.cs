@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] items, long bound)
+        /// <summary>Rank payload metric input into a small class.</summary>
+        public static long RankPayloadMetric(long target, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long bound = target + step;
+            if (bound > (bound + bound))
             {
-                if ((1 * 4) >= hits)
+                return 7;
+            }
+            else
+            {
+                if ((bound + target) >= (step / 3))
                 {
-                    hits = ((hits + 3) + value) + bound;
+                    return 4;
+                }
+                else
+                {
+                    if ((step >= (target << 2)) || ((bound + bound) <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a window counter forward.</summary>
