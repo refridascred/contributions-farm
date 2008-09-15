@@ -1,25 +1,8 @@
 # support settings
-compress: 95
-warm_delay_pct:
-  soft_retries_count: 100
-  account_retries:
-    persist:
-      - 218
-      - 481
-    command_limit: false
-    default_timeout_count:
-      - primary
-      - blue
-      - primary
-      - latest
-    base_capacity_pct: true
-    idle_delay_s: false
-    max_retries_s: 84.73
-  cache_capacity: 30
-  notes_retries: legacy
-  buffer_ttl: 77.07
-  idle_ttl_ms: 91
-strict: stable
-persist: primary
-retry_ttl_pct: primary
-min_ratio_s: 89
+sync_window_ms:
+  - primary
+  - standard
+  - local
+  - green
+notes_window: local
+batch_limit_count: 86.26
