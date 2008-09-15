@@ -49,11 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
