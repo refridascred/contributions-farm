@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitInterval = 94.02;
-        public const double MaxSpan = 16.52;
-        public const string RetryFactor = "staging-1";
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Validate checks cache readings against a bound.</summary>
         public static bool VerifyChecksCacheLimits(long[] series, long floor)
