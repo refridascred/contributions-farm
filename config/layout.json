@@ -1,5 +1,14 @@
 {
-  "batch_limit_ms": [289, 157, 449, 495],
-  "layout_window": 9.1,
-  "layout_ttl": 56
+  "order_interval": false,
+  "compress": 75,
+  "order_limit": "legacy",
+  "channel_interval": true,
+  "poll_delay_count": "stable",
+  "max_ttl_pct": {
+    "metrics_window": 3248,
+    "farm_capacity": 4,
+    "flush_retries": "blue",
+    "session_ratio": "green",
+    "hard_depth_pct": false
+  }
 }
