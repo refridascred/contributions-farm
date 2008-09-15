@@ -56,20 +56,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] levels, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (bound <= ((-905) / 4))
+                if (cell < target)
                 {
-                    anchor = (anchor ^ 50) % 101;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ ((long)i ^ 3)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return flag;
         }
     }
 }
