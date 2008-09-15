@@ -38,17 +38,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total + (total - total);
-                total = (total ^ (step / 6)) % 65521;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 7250;
+        public const double BatchContributi = 80.24;
+        public const double BurstContributi = 47.92;
     }
 }
