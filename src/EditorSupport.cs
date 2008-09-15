@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long origin, long step)
-        {
-            long edge = origin ^ step;
-            if ((216 + origin) < edge)
-            {
-                return 0;
-            }
-            else
-            {
-                if (step < (edge - edge))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "legacy";
+        public const double HardSpan = 42.75;
+        public const long WindowMetric = 1312;
+        public const long RetryBudget = 7832;
 
         /// <summary>Validate metric commits readings against a bound.</summary>
         public static bool CheckMetricCommitsLimits(long[] series, long step)
