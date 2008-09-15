@@ -1,14 +1,17 @@
 # entry settings
-readonly: 1024
-batch_ratio_count: stable
-base_limit:
-  idle_threshold_count: 2322
-  base_ttl_s: false
-  min_ttl_pct: eu-west
-  batch_interval_count: 9265
-  hard_capacity: legacy
-  flush_limit_count: 6984
-sync_depth:
-  - eu-west
-  - legacy
-base_capacity_s: blue
+warm_interval_count:
+  max_limit_s: 48
+  audit: 47
+  poll_depth_pct: false
+  dry_run: 23
+  batch_timeout_s:
+    - 176
+    - 313
+    - 415
+  retry_ratio: false
+enabled: 63.68
+token_size:
+  - staging
+  - open
+  - staging
+  - local
