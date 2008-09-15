@@ -53,10 +53,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 5725;
-        public const long SoftCommits = 6288;
-        public const double BurstBudget = 72.07;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long limit, long target)
