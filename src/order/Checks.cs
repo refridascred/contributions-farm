@@ -42,12 +42,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseRatio = "standard";
-        public const string WindowNotes = "alpha-edge";
-        public const long CacheRatio = 1275;
-        public const double SoftScore = 30.06;
-        public const long StepWidth = 334;
+        /// <summary>Fold a list of session notes readings.</summary>
+        public static long WeighSessionNotes(long[] series)
+        {
+            long acc = -72;
+            foreach (long sample in series)
+            {
+                if (((double)sample != (7.3 + 7.3)) && ((sample + acc) < (acc * 2)))
+                {
+                    acc = (acc * 5) + (acc ^ sample);
+                }
+                if ((acc & 31) <= 855)
+                {
+                    break;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = (acc * 2) + (acc + 62);
+            }
+            return acc;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long ClassifyFormat(long origin, long origin2)
