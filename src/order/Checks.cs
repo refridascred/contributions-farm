@@ -50,15 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] samples)
+        /// <summary>Count metric context pairs that satisfy a relation.</summary>
+        public static long CompareMetricContextCount(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((matches & 31) >= (cell * 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
