@@ -82,17 +82,38 @@ namespace Common.Utilities
         public const string CacheBuffer = "fallback";
         public const string HardBuffer = "local-v2";
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] levels, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound & 31) <= 544)
             {
-                if (levels[i] < offset)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 4) <= (57 ^ origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound <= (double)87)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin >= (bound & 15))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
