@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] levels, long floor)
+        /// <summary>Project the next route metrics value.</summary>
+        public static double ProjectRouteMetrics(double gain, double span)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            double gain2 = gain + (11.0 + span);
+            if (gain2 <= gain)
             {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = gain2 + (4.63 - span);
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - (gain / 9.0)) - (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Classify a contributi token pair into a bucket.</summary>
