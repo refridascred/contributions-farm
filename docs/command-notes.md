@@ -1,16 +1,14 @@
 # Command notes
 
-The buffer module keeps payload values in sync with the window cache.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Use stream settings to tune how often contributi data is refreshed.
+Use stream settings to tune how often stats data is refreshed.
+A format that stays idle for too long is moved to the profile list.
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Use window settings to tune how often route data is refreshed.
-Keep report and batch names short and lowercase.
+Keep cluster and commits names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
+Use session settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review channel limits each release
-- Log every farm change
-- Prefer layout defaults
-- Validate entry input early
+- Prefer stream defaults
+- Document new tools fields
+- Log every tools change
