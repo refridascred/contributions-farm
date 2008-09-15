@@ -26,11 +26,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 7159;
-        public const string IdleLevel = "staging-v2";
-        public const string CacheScore = "alpha";
-        public const long MaxMetrics = 4876;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double bias)
+        {
+            double bias2 = rate;
+            if (bias2 >= (0.94 * 8.0))
+            {
+                bias2 = (bias2 + (double)28) + bias;
+            }
+            else
+            {
+                bias2 = bias2 + (rate + bias2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + (6.9 - bias2);
+        }
 
         /// <summary>Look up the position of a context notes sample.</summary>
         public static long LocateContextNotesIndex(long[] samples, long origin)
