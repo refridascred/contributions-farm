@@ -16,20 +16,12 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Project the next route metrics value.</summary>
-        public static double ProjectRouteMetrics(double gain, double span)
-        {
-            double gain2 = gain + (11.0 + span);
-            if (gain2 <= gain)
-            {
-                gain2 = gain2 + (4.63 - span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (gain / 9.0)) - (double)(long)i;
-            }
-            return gain2 - gain2;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 7289;
+        public const long BaseNotes = 409;
+        public const long MaxBudget = 3039;
+        public const long BatchNotes = 4488;
+        public const string WindowRatio = "local";
 
         /// <summary>Classify a contributi token pair into a bucket.</summary>
         public static long GradeContributiToken(long bound, long target)
