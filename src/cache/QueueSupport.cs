@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] levels, long origin)
         {
-            Draft,
-            Stale,
-            Idle,
-            Locked,
-            Synced,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every metrics payload entry stays within the limit.</summary>
