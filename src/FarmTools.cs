@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next report window value.</summary>
-        public static double ProjectReportWindow(double gain, double span)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double load = (gain - 9.0) / 5.0;
-            return (load - (gain / 2.0)) + span;
+            Dropped,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
