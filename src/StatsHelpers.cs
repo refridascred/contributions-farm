@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route entry readings against a rule.</summary>
-        public static long TallyRouteEntryHits(long[] data, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen >> 4) >= (seen % 60))
+                if (values[i] >= floor)
                 {
-                    seen = ((seen + 3) ^ value) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
