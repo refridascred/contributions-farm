@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value + hits) > value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a contributi summary.</summary>
