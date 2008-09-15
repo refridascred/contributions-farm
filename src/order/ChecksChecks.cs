@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const string StepNotes = "local-edge";
         public const long MinCount = 3991;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
         {
-            Done,
-            Draft,
-            Pending,
-            Queued,
-            Synced,
+            long anchor = 76;
+            foreach (long value in levels)
+            {
+                anchor = anchor + (value >> 2);
+                anchor = ((anchor << 3) ^ (value + 125)) % 255;
+                if (value > (anchor ^ anchor))
+                {
+                    anchor = (anchor - (anchor + (long)levels.Length)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor / 6)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
