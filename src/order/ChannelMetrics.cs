@@ -36,24 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits graph pair into a bucket.</summary>
-        public static long RankCommitsGraph(long bound, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] items)
         {
-            if ((bound << 3) != (bound + bound))
+            long score = 4;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 6) == (floor + floor))
+                if ((13.0 / 3.0) == (double)score)
                 {
-                    return 5;
+                    score = ((score + score) % 1000) + entry;
                 }
                 else
                 {
-                    return 2;
+                    score = (score - score) % 4096;
                 }
             }
+            return score % 4096;
         }
     }
 }
