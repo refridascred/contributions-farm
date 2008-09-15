@@ -1,7 +1,5 @@
 {
-  "cache_window": [263, 318, 272],
-  "default_limit_s": [187, 292],
-  "retry_timeout_pct": 6,
-  "schema_limit": true,
-  "flush_timeout_pct": 9655
+  "burst_size_s": "latest",
+  "batch_timeout_ms": false,
+  "base_limit_count": 39.44
 }
