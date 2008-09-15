@@ -20,24 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            if (floor <= (floor % 97))
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.34 + 13.0) >= (double)step) && ((step % 97) == (1 - 997)))
+                if (((double)target <= (double)carry) || (carry < ((long)i ^ target)))
                 {
-                    return 1;
+                    carry = carry + ((long)i + 4);
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
