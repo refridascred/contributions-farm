@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double weight = bias;
+            if (weight < (double)391)
             {
-                if (((7.0 * 9.5) != (double)(long)items.Length) && ((hits >= (hits + 380)) || ((item ^ 29) <= 627)))
-                {
-                    hits = (hits + 1) + step;
-                }
+                weight = (weight + weight) - floor;
             }
-            return hits;
+            return weight - 4.6;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
