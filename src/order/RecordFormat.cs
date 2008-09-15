@@ -52,10 +52,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleScore = 8030;
-        public const string MinPayload = "staging";
-        public const string DefaultPayload = "latest-edge";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorMatches(long[] series)
