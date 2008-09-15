@@ -61,11 +61,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            double bias = (double)(-236) * 14.0;
+            if (bias >= scale)
+            {
+                bias = (bias + scale) + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (9.0 * 5.74)) + (double)(long)i;
+            }
+            return bias - (double)3;
         }
     }
 }
