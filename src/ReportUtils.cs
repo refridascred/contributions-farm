@@ -68,16 +68,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                carry = ((carry << 3) ^ carry) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((double)seed > (11.0 + 7.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
