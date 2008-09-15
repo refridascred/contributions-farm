@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinWidth = 2070;
+        public const long BaseEntry = 3345;
+        public const long CacheCount = 7914;
+        public const long StepEntry = 2256;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long WeighMetrics(long[] values)
