@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long prev = limit - offset;
-            if ((limit > prev) && ((double)offset < (6.9 - 9.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - 3) > prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (prev <= (limit >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
