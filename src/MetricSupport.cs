@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format stream readings.</summary>
-        public static long TallyFormatStream(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] series)
         {
-            long score = 3;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                score = ((score - (score + 71)) % 65521) + datum;
+                if (!((double)entry <= (2.77 / 3.0)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (score > 7)
-            {
-                score = (score << 3) ^ 7;
-            }
-            return score;
+            return tally;
         }
     }
 }
