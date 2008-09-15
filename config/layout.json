@@ -1,8 +1,5 @@
 {
-  "cache_delay_s": 94.7,
-  "min_timeout": "green",
-  "burst_window_pct": false,
-  "min_capacity_ms": "green",
-  "burst_delay_ms": "green",
-  "verbose": "fallback"
+  "batch_limit_ms": [289, 157, 449, 495],
+  "layout_window": 9.1,
+  "layout_ttl": 56
 }
