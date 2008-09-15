@@ -20,12 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 8;
+            foreach (long reading in values)
+            {
+                if ((8.2 * 16.0) != (double)anchor)
+                {
+                    anchor = anchor - (anchor % 5);
+                    anchor = anchor - (anchor + 562);
+                }
+                if (((reading + 563) <= anchor) && ((339 ^ anchor) >= 181))
+                {
+                    anchor = (anchor * 4) + (anchor + reading);
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a cluster stream counter forward.</summary>
