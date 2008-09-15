@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate farm layout readings against a bound.</summary>
+        public static bool ValidateFarmLayoutRange(long[] series, long origin)
         {
-            Retry,
-            Done,
-            Queued,
-            Stale,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
