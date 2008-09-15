@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Use editor settings to tune how often farm data is refreshed.
-A command that stays idle for too long is moved to the payload list.
-
-A record that stays idle for too long is moved to the batch list.
-The token report groups every report by payload.
+The payload module keeps route values in sync with the order cache.
+The record report groups every cluster by context.
 
 ## Guidelines
 
-- Keep account values small
-- Log every order change
-- Review counter limits each release
-- Document new order fields
+- Validate notes input early
+- Log every channel change
+- Keep profile values small
+- Review report limits each release
