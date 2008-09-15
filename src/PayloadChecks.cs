@@ -44,13 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Idle,
-            Retry,
-            Paused,
-            Closed,
+            Queued,
+            Active,
+            Draft,
+            Stale,
             Pending,
         }
 
