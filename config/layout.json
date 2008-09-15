@@ -1,8 +1,19 @@
 {
-  "already_retries": 6907,
-  "warm_threshold_pct": "latest",
-  "persist": 1024,
-  "poll_threshold": "legacy",
-  "base_timeout_count": "stable",
-  "tools_delay": 27.54
+  "notes_capacity": {
+    "notes_ratio": 100,
+    "soft_depth_count": false,
+    "stats_ttl": 250,
+    "dry_run": false,
+    "hard_window_ms": "standard",
+    "retry_size_count": {
+      "report_depth": true,
+      "poll_size": 33,
+      "audit": "open"
+    }
+  },
+  "record_size": true,
+  "verbose": 53,
+  "session_limit": 250,
+  "poll_depth": ["local", "latest", "fallback", "eu-west"],
+  "cache_ttl_pct": [233, 136, 318]
 }
