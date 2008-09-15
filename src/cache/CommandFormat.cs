@@ -11,23 +11,32 @@ namespace Common.Utilities
         public const long HardCache = 6857;
         public const long StepCache = 5758;
 
-        /// <summary>Project the next order account value.</summary>
-        public static double ProjectOrderAccount(double rate, double bias)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long floor)
         {
-            double mean = rate;
-            if (mean <= 9.49)
+            long prev = limit - floor;
+            if ((floor ^ prev) < (floor + limit))
             {
-                mean = (mean + (double)389) - bias;
+                return 0;
             }
             else
             {
-                mean = mean - (double)148;
+                if ((prev & 3) >= (prev + prev))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)prev <= (12.0 * 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (rate - 5.45)) - (double)(long)i;
-            }
-            return mean + mean;
         }
 
         /// <summary>Describe the account mode values.</summary>
