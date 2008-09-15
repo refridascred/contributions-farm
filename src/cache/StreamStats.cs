@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4339;
+        public const long RetryChecks = 157;
+        public const long HardBudget = 3125;
+        public const double BaseDepth = 50.41;
+        public const string CacheDepth = "stable-1";
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
