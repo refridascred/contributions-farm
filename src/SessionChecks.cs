@@ -50,15 +50,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the token counter series from a seed.</summary>
-        public static long StepTokenCounter(long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
