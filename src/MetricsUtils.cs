@@ -38,24 +38,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mix = -158;
-            foreach (long item in data)
-            {
-                mix = ((mix * 2) + (622 - item)) % 101;
-                mix = (mix + (item ^ 7)) % 101;
-                if (((item - (long)data.Length) > (4 & 15)) && ((mix << 1) >= mix))
-                {
-                    mix = (mix + (item + mix)) % 4096;
-                }
-            }
-            if (mix > (-99))
-            {
-                mix = mix + (mix << 1);
-            }
-            return mix;
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
