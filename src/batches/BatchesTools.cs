@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 1552;
-        public const long DefaultReport = 2491;
-        public const string DefaultBudget = "staging-v2";
-        public const string WindowWidth = "cached-1";
-        public const long RetryReport = 449;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] series, long offset)
