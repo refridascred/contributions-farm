@@ -59,14 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Stale,
-            Closed,
-            Dropped,
             Active,
             Ready,
+            Queued,
         }
     }
 }
