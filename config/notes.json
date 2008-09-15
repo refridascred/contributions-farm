@@ -1,8 +1,6 @@
 {
-  "dry_run": "primary",
-  "report_window": 49.11,
-  "idle_size_pct": ["open", "green"],
-  "compress": 60,
-  "warm_delay_ms": true,
-  "farm_delay": 60
+  "audit": 13.65,
+  "soft_delay_pct": 95.91,
+  "record_size": "staging",
+  "poll_threshold_pct": "edge"
 }
