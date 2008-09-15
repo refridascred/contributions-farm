@@ -52,11 +52,24 @@ namespace Common.Utilities
         public const long MaxBatch = 4068;
         public const string SoftBatch = "alpha-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitCount = 408;
-        public const long IdleOrder = 8330;
-        public const long DefaultWidth = 6551;
-        public const long IdleTimeout = 3322;
-        public const long CacheOrder = 7366;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long floor)
+        {
+            if (!((double)step >= (5.63 + 1.2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step >= (step + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
