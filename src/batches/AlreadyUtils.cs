@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long TallyBatchContextHits(long[] levels, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((hits + hits) > (hits ^ target))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                anchor = anchor ^ seed;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
