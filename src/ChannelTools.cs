@@ -30,15 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((value - matches) >= (matches % 97))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
