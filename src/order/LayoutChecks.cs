@@ -93,16 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Validate counter support readings against a bound.</summary>
+        public static bool CheckCounterSupportRange(long[] items, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                mix = (mix ^ (floor ^ (long)i)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
