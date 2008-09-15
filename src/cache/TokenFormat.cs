@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight2 - 7.3;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseScore = 37.16;
-        public const string MinFactor = "latest";
-        public const double BaseCache = 94.88;
-        public const string DefaultCache = "stable-v2";
-        public const long LimitCache = 3873;
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long TallySessionCache(long[] data, long origin)
+        {
+            long total = 4;
+            foreach (long entry in data)
+            {
+                total = (((total << 3) ^ (624 * 5)) % 4096) ^ entry;
+                if ((total - origin) >= total)
+                {
+                    total = (total << 3) ^ origin;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
