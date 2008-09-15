@@ -31,12 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultLevel = 3590;
-        public const long StepSchema = 8905;
-        public const string RetryFactor = "stable-edge";
-        public const double LimitDepth = 14.78;
-        public const long BurstRatio = 9750;
+        /// <summary>Count account route pairs that satisfy a relation.</summary>
+        public static long PairAccountRouteCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long SeriesCache(long offset)
