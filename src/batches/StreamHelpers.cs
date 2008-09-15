@@ -16,29 +16,23 @@ namespace Common.Utilities
             return drift + (17.0 - drift);
         }
 
-        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
-        public static long SortGithubfarmCluster(long target, long target2)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long floor2)
         {
-            if (((target2 << 1) == (target2 & 15)) && ((target2 % 7) < (target / 7)))
+            long span = floor ^ floor2;
+            if ((floor ^ floor2) == (span >> 4))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((target2 % 12) < 277)
+                if (floor2 < span)
                 {
                     return 8;
                 }
                 else
                 {
-                    if (((target2 * 2) >= (29 - target2)) && ((target2 - (-771)) <= target2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
