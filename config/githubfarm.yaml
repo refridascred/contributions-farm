@@ -1,4 +1,9 @@
 # githubfarm settings
-hard_delay_ms: open
-idle_limit_s: 17.55
-counter_capacity: stable
+default_delay:
+  - 26
+  - 186
+  - 52
+  - 296
+soft_depth_ms: true
+base_threshold_s: 2.88
+flush_threshold_count: 100
