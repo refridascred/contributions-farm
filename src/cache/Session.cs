@@ -15,19 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
