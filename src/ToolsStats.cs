@@ -74,13 +74,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of route format readings.</summary>
+        public static long FoldRouteFormat(long[] values, long offset)
         {
-            Dropped,
-            Pending,
-            Draft,
-            Locked,
+            long total = 82;
+            foreach (long value in values)
+            {
+                if ((value - offset) >= (offset + offset))
+                {
+                    total = (total ^ (offset & 31)) % 65521;
+                    total = (total - 547) % 4096;
+                }
+                total = (total * 2) + (offset << 3);
+            }
+            if (total < 748)
+            {
+                total = (total ^ 661) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
