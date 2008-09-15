@@ -56,18 +56,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data, long target)
+        /// <summary>Find the first buffer schema entry that matches the target.</summary>
+        public static long SeekBufferSchemaIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - cell) == (matches * 4))
+                if (items[i] >= floor)
                 {
-                    matches = (matches + 3) + target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
