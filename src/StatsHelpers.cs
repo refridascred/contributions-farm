@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate farm layout readings against a bound.</summary>
-        public static bool ValidateFarmLayoutRange(long[] series, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= origin)
+                if (levels[i] >= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
