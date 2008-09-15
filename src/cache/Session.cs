@@ -13,32 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long floor)
+        /// <summary>Count the checks record entries that pass the check.</summary>
+        public static long AuditChecksRecordMatches(long[] readings, long seed)
         {
-            long cur = seed + floor;
-            if (!((cur - floor) < (cur << 1)))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)cur < (7.8 + 11.0)) || (7.1 >= (double)cur))
+                if ((seed + (-417)) >= (65 % 10))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 3) != (cur % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 1) ^ reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
