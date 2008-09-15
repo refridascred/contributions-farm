@@ -27,18 +27,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 2;
+            foreach (long datum in readings)
             {
-                if ((reading + count) == (count + reading))
+                if ((state % 7) == (state & 255))
                 {
-                    count = count + 1;
+                    state = ((state + (3 + state)) % 255) ^ datum;
+                }
+                else
+                {
+                    state = (state - origin) % 101;
                 }
             }
-            return count;
+            if (state > 398)
+            {
+                state = state + (21 + origin);
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
