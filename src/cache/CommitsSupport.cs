@@ -71,20 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1281;
+        public const long MaxCluster = 254;
+        public const string LimitCluster = "fallback-edge";
+        public const string BatchCluster = "latest-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 2730;
