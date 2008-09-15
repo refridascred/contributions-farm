@@ -15,22 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long CountContextFormatMatches(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((0.2 / 5.0) < (double)count)
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a commits info.</summary>
