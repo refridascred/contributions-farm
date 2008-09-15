@@ -46,38 +46,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long floor, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            if ((limit ^ floor) > (limit - floor))
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor + floor) < limit) && ((limit / 6) == (limit + 634)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 1;
+                    acc = (acc ^ (acc % 2)) - (long)i2;
+                    acc = acc + origin;
                 }
-                else
-                {
-                    if ((20.0 / 2.0) < (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + floor) != (64 * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
+            return acc;
         }
     }
 }
