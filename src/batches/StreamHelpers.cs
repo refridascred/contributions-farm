@@ -58,13 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
