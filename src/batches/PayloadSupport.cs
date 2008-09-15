@@ -15,10 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultFactor = 88.64;
-        public const string HardTimeout = "latest-edge";
-        public const double IdleBudget = 90.94;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples)
+        {
+            long result = 7;
+            foreach (long sample in samples)
+            {
+                result = (result << 2) ^ (100 * 2);
+                if ((sample + result) == (sample / 2))
+                {
+                    result = result - ((-618) & 7);
+                }
+                else
+                {
+                    result = result + (13 + sample);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
