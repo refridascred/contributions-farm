@@ -1,7 +1,19 @@
 # githubfarm settings
-base_interval_ms: 2644
-flush_limit_pct: true
-cache_window: cached
-base_retries: 500
-min_ttl_s: 9
-persist: 37
+persist: 81
+strict:
+  idle_interval_s:
+    batches_ratio: cached
+    format_size: open
+    compress: primary
+  flush_delay_pct: true
+  command_timeout: 250
+  enabled: 50
+  poll_window_s: 48
+  warm_depth_pct: 71.61
+min_threshold_count: staging
+dry_run: 30
+poll_ttl_pct:
+  min_ttl: true
+  report_retries: local
+  compress: staging
+batch_timeout_pct: 100
