@@ -20,11 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheRatio = 8482;
-        public const double CacheSession = 69.63;
-        public const long BaseSession = 910;
-        public const string MaxSession = "open-1";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((step / 4) != (step + 6))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileGaps(long[] values)
