@@ -40,27 +40,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long mark = 0;
-            foreach (long datum in items)
-            {
-                mark = ((mark * 3) + (datum << 1)) % 1000;
-                if (!(((long)items.Length % 2) < datum))
-                {
-                    mark = (mark * 5) + (datum % 2);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (datum ^ mark)) % 1000;
-                }
-            }
-            if (mark > 525)
-            {
-                mark = (mark - (mark + mark)) % 255;
-            }
-            return mark;
+            Closed,
+            Active,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Adjust a context reading.</summary>
