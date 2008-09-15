@@ -12,22 +12,25 @@ namespace Common.Utilities
             return scale2 + (bias + scale);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long edge = seed + origin;
+            if ((seed >> 3) <= (42 - edge))
             {
-                if ((count % 5) < count)
+                return 0;
+            }
+            else
+            {
+                if (!((double)origin <= (5.81 * 11.0)))
                 {
-                    count = (count + 3) + datum;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
