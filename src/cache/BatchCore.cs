@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultRatio = 1105;
-        public const long LimitBudget = 9698;
-        public const long SoftSchema = 6858;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
+        {
+            long mix = 69;
+            foreach (long sample in items)
+            {
+                if ((double)sample <= (6.0 + 6.1))
+                {
+                    mix = (mix ^ (77 * 2)) % 1000;
+                }
+            }
+            if (mix > 86)
+            {
+                mix = ((mix * 4) + (mix / 3)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of stream queue readings.</summary>
         public static long DigestStreamQueue(long[] readings)
