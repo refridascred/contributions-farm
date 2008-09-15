@@ -56,22 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings, long bound)
         {
-            long total = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (total > (1 - (-7)))
+                if ((900 + bound) <= 37)
                 {
-                    total = ((total ^ (total / 3)) % 4096) + entry;
+                    hits = (hits + 2) + item;
                 }
             }
-            if (total > 907)
-            {
-                total = (total + (5 + 738)) % 101;
-            }
-            return total % 4096;
+            return hits;
         }
     }
 }
