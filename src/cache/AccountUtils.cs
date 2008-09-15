@@ -14,10 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 6311;
-        public const long SoftSpan = 7338;
-        public const double StepInterval = 31.99;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long FoldOrder(long[] samples, long seed)
