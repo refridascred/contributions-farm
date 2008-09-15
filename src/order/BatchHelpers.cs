@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySpan = 3028;
+        public const long StepScore = 9938;
+        public const long LimitSpan = 8537;
+        public const long CacheLevel = 674;
+        public const double WindowGraph = 52.7;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long seed, long bound)
