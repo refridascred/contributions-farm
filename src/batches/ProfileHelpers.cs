@@ -57,18 +57,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] data, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((offset + 165) < (offset >> 4))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Locked,
+            Retry,
+            New,
         }
     }
 }
