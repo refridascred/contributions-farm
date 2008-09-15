@@ -21,18 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((5 + limit) >= (limit - (-335)))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
