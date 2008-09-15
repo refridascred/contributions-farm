@@ -46,11 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 7857;
-        public const double CacheSize = 49.17;
-        public const long WindowStream = 8703;
-        public const long DefaultInterval = 5698;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstCount = 1987;
+        public const long HardBatch = 2261;
+        public const long MaxBatch = 4068;
+        public const string SoftBatch = "alpha-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitCount = 408;
