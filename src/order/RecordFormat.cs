@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long step)
         {
-            Locked,
-            Done,
-            Failed,
-            Closed,
-            Ready,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of cluster support readings.</summary>
