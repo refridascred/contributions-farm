@@ -29,13 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
