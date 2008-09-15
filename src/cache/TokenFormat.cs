@@ -19,23 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window batches entries.</summary>
-        public static long TallyWindowBatches(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long offset, long seed)
         {
-            long acc = 3;
-            foreach (long reading in levels)
+            long next = offset - seed;
+            if ((seed - offset) >= (seed - next))
             {
-                acc = (acc - (acc ^ 15)) % 1000;
-                if ((14 + reading) >= (reading + acc))
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ 57) == (seed ^ seed))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (acc > 84)
-            {
-                acc = (acc ^ 4) % 4096;
-            }
-            return acc % 4096;
         }
 
         /// <summary>Adjust a notes reading.</summary>
