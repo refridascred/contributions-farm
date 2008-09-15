@@ -34,18 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] values, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((847 / 8) != (84 + offset))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Pending,
+            Dropped,
+            Closed,
         }
     }
 }
