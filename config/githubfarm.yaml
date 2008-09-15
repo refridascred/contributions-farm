@@ -1,11 +1,9 @@
 # githubfarm settings
-soft_window_ms: false
-default_retries_pct: eu-west
-persist:
-  soft_ratio_count: latest
-  batches_delay: 92
-  max_ratio_pct: 36
-contributi_interval:
-  - 200
-  - 412
-base_retries_s: fallback
+batch_threshold: 47.66
+compress: 1024
+batch_ttl: cached
+audit: 500
+batch_threshold_ms:
+  - local
+  - legacy
+  - edge
