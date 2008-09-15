@@ -42,11 +42,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultTimeout = 1167;
-        public const long BaseSpan = 491;
-        public const long DefaultFormat = 4414;
-        public const double DefaultDepth = 14.41;
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long CountProfileStreamMatches(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((16.0 - 6.32) == (double)origin) || (sample < (count << 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
