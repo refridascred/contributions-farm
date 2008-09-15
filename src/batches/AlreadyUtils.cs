@@ -54,16 +54,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 760;
+        public const long DefaultCommits = 4075;
+        public const long CacheSpan = 4191;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxDepth = 6973;
