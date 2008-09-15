@@ -34,18 +34,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double bias)
         {
-            long acc = 90;
-            foreach (long datum in items)
+            double rate = weight;
+            if (rate < (double)3)
             {
-                if ((double)acc >= (10.0 * 1.9))
-                {
-                    acc = (acc + (acc + origin)) - datum;
-                }
+                rate = (rate + (double)67) + bias;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (3.7 - weight)) + (double)(long)i;
+            }
+            return rate + (double)82;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
