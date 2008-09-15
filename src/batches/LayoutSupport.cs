@@ -28,27 +28,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine command layout values into a single score.</summary>
-        public static long FoldCommandLayout(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long step)
         {
-            long sum = 108;
-            foreach (long datum in items)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = ((((sum << 3) ^ sum) % 101) + (long)i) - datum;
-                }
-                sum = (sum ^ (sum + sum)) % 1000;
-                if ((sum >> 1) <= (sum >> 5))
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (sum < 7)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
