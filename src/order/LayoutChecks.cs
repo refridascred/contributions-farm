@@ -75,19 +75,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter support readings against a bound.</summary>
-        public static bool CheckCounterSupportRange(long[] items, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
