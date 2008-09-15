@@ -37,18 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph route entries.</summary>
-        public static long TotalGraphRoute(long[] series, long target)
-        {
-            long state = 6;
-            foreach (long reading in series)
-            {
-                if ((target / 7) > 6)
-                {
-                    state = state + reading;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryTimeout = "staging-1";
+        public const double HardDepth = 80.6;
+        public const long DefaultSchema = 4669;
+        public const string SoftSchema = "primary";
     }
 }
