@@ -66,21 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                long diff = offset;
-                if ((713 + diff) != (263 << 3))
-                {
-                    state = (state << 3) ^ (diff + 67);
-                }
-                diff = ((diff * 5) + (796 % 64)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Pending,
+            Active,
         }
     }
 }
