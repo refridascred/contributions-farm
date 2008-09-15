@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate checks cache readings against a bound.</summary>
-        public static bool VerifyChecksCacheLimits(long[] series, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (datum != floor)
+                if (!((matches + 163) == (matches + cell)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
