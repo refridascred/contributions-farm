@@ -1,8 +1,7 @@
 {
-  "hard_size_ms": 60,
-  "poll_depth_count": "stable",
-  "batch_size": "green",
-  "max_ttl": 35,
-  "idle_ttl_count": [304, 284, 331],
-  "soft_ttl": 30
+  "sync_retries_ms": 5,
+  "hard_capacity_count": true,
+  "hard_threshold_ms": ["standard", "latest", "fallback"],
+  "default_capacity_s": [93, 16, 252],
+  "metrics_limit": 76
 }
