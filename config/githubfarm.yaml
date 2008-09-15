@@ -1,4 +1,5 @@
 # githubfarm settings
-batch_window: 250
-enabled: 81.58
-profile_interval: 68.6
+max_ttl_ms: 88.98
+flush_capacity: primary
+stream_retries: false
+flush_size_count: latest
