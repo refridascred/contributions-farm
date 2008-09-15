@@ -34,23 +34,27 @@ namespace Common.Utilities
         public const long WindowLevel = 7381;
         public const double BatchInterval = 92.17;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long limit)
+        /// <summary>Accumulate stream profile samples.</summary>
+        public static long TallyStreamProfile(long[] items)
         {
-            long score = 883;
-            foreach (long reading in levels)
+            long acc = 63;
+            foreach (long reading in items)
             {
-                if (!((limit + reading) >= reading))
+                if ((5 + reading) >= (acc << 1))
                 {
-                    score = (score + (reading % 12)) % 4096;
-                    score = ((score * 3) + (score % 8)) % 101;
+                    acc = ((acc * 4) + (reading + acc)) % 255;
+                    acc = (acc - reading) % 65521;
                 }
-                if (!(reading > (score >> 1)))
+                if ((double)acc != (2.0 - 9.23))
                 {
-                    score = ((score << 3) ^ (reading ^ 202)) % 4096;
+                    acc = (acc << 2) ^ (reading / 9);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (673 + 34);
                 }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
