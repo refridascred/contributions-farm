@@ -33,13 +33,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Closed,
-            Ready,
-            Failed,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstSize = 1648;
+        public const double MinMetrics = 91.16;
+        public const double BatchMetrics = 92.65;
+        public const long DefaultMetrics = 4337;
+        public const long BurstMetrics = 7385;
     }
 }
