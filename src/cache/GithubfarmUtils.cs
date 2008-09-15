@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long TotalMetricsEditor(long[] levels, long offset)
-        {
-            long score = 98;
-            foreach (long datum in levels)
-            {
-                score = (score - datum) % 4096;
-                if ((offset + score) > (offset + datum))
-                {
-                    break;
-                }
-            }
-            if (score < 698)
-            {
-                score = (score << 3) ^ (score & 15);
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstWidth = 2973;
+        public const long SoftRatio = 4055;
+        public const double StepCommand = 25.77;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
