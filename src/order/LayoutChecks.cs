@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a githubfarm filter value against two limits.</summary>
-        public static long BucketGithubfarmFilter(long bound, long origin)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long step)
         {
-            if ((origin * 4) == (bound & 127))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (origin + origin))
+                if (values[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + origin) <= (bound ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two commits account measurements.</summary>
