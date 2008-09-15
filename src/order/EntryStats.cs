@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long RetryBuffer = 1710;
         public const string MinRatio = "alpha-edge";
 
-        /// <summary>Validate tools layout readings against a bound.</summary>
-        public static bool ValidateToolsLayoutRange(long[] readings, long offset)
+        /// <summary>Audit editor cluster readings against a rule.</summary>
+        public static long MeasureEditorClusterOutliers(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (value < offset)
+                if (datum >= (datum + (-450)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a contributi summary.</summary>
