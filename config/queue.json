@@ -1,21 +1,6 @@
 {
-  "audit": 3600,
-  "soft_depth": [452, 152],
-  "batch_delay_pct": 22.94,
-  "readonly": "primary",
-  "max_size_pct": {
-    "warm_size_s": ["green", "blue", "open", "eu-west"],
-    "compress": "open",
-    "warm_capacity_ms": 26.8,
-    "contributi_threshold": {
-      "max_size_ms": 76.52,
-      "verbose": false,
-      "cache_depth_ms": 89.66,
-      "commits_depth": [222, 463, 8, 174],
-      "soft_ttl_ms": 7139,
-      "command_window": "strict"
-    },
-    "warm_timeout_ms": 14,
-    "strict": 100
-  }
+  "window_limit": 1024,
+  "enabled": "latest",
+  "min_capacity_count": [85, 434],
+  "burst_delay_pct": "staging"
 }
