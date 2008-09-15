@@ -55,19 +55,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long mark = 5;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark + (mark & 7)) % 65521) ^ entry;
-                if (((double)mark < 5.99) && ((double)mark <= (9.0 - 4.83)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark * 3) + (mark - mark)) % 97;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Project the next metric value.</summary>
