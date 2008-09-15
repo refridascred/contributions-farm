@@ -1,7 +1,10 @@
 # entry settings
-idle_timeout: true
-soft_window: standard
-enabled: true
-default_ratio_pct: 58
-soft_timeout_pct: false
-dry_run: open
+cache_limit_pct: strict
+retry_window: 80.64
+idle_delay_s: true
+schema_ttl:
+  dry_run: 60
+  base_interval_ms: 69
+  flush_interval_s: 74.91
+idle_delay_pct: 23
+dry_run: standard
