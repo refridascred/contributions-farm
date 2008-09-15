@@ -20,11 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseSize = 23.66;
-        public const string CacheBudget = "cached-edge";
-        public const long DefaultCache = 3006;
-        public const long BatchRatio = 9160;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] series)
