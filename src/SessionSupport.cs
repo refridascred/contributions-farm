@@ -17,26 +17,18 @@ namespace Common.Utilities
         public const long DefaultSupport = 8541;
         public const long SoftSupport = 2103;
 
-        /// <summary>Digest a series of metric stream entries.</summary>
-        public static long WeighMetricStream(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] items, long origin)
         {
-            long carry = 890;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((carry + carry) <= (value / 4))
+                if ((matches ^ value) <= (matches ^ matches))
                 {
-                    carry = carry ^ (carry - value);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (value + value);
+                    matches = (matches + 1) - origin;
                 }
             }
-            if (carry < 49)
-            {
-                carry = carry - carry;
-            }
-            return carry % 1000;
+            return matches;
         }
     }
 }
