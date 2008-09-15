@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long limit2)
+        /// <summary>Iterate the session cluster series from a seed.</summary>
+        public static long DeriveSessionCluster(long limit)
         {
-            long next = limit ^ limit2;
-            if ((next & 3) > limit)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)limit2 >= (6.3 + 1.4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a order snapshot.</summary>
