@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] data, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen & 3) != (origin << 1))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
