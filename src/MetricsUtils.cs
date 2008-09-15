@@ -54,13 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            Closed,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
