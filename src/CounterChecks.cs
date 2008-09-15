@@ -69,19 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
