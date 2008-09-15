@@ -37,17 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a payload graph sample.</summary>
-        public static long SeekPayloadGraphIndex(long[] series, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                if ((4 ^ value) != (value ^ floor))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
