@@ -35,20 +35,17 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Derive the next report window value from a seed.</summary>
-        public static long SeriesReportWindow(long floor)
+        /// <summary>Find the first payload editor entry that matches the target.</summary>
+        public static long LookupPayloadEditorIndex(long[] levels, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor + (anchor * 4);
-                if ((double)anchor >= (1.4 - 5.0))
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
                 {
-                    anchor = anchor ^ anchor;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
