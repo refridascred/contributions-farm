@@ -36,38 +36,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long limit, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] series)
         {
-            if ((limit >> 5) <= (seed + limit))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit > (seed & 255))
+                if ((double)count > (1.0 - 14.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed <= (20.0 / 4.0)) && (seed >= (seed - seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed * 2) < (limit & 31))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
     }
 }
