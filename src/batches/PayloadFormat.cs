@@ -35,20 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] data, long seed)
-        {
-            long sum = 62;
-            foreach (long sample in data)
-            {
-                if ((6.77 > (double)sample) && ((sample ^ sample) > (seed ^ seed)))
-                {
-                    sum = (sum + (sum + seed)) % 97;
-                }
-                sum = sum + seed;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstLevel = "fallback-1";
+        public const long RetrySupport = 3940;
+        public const long BurstTimeout = 4343;
+        public const string LimitSupport = "open-1";
+        public const string BaseSupport = "alpha-edge";
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
