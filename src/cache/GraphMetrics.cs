@@ -46,11 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "legacy-1";
-        public const double BurstEditor = 44.76;
-        public const double LimitFactor = 28.0;
-        public const string LimitEditor = "alpha";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double RetryAccount = 35.38;
