@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const string CacheScore = "alpha";
         public const long MaxMetrics = 4876;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Look up the position of a context notes sample.</summary>
+        public static long LocateContextNotesIndex(long[] samples, long origin)
         {
-            Ready,
-            Dropped,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
