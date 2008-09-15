@@ -1,17 +1,10 @@
 # entry settings
-retry_ttl_count: true
-sync_depth: blue
-warm_threshold_ms: local
 poll_capacity:
-  cluster_ratio: 68.57
-  default_delay: true
-  batch_retries_s: green
-  cache_interval:
-    soft_capacity_ms: 6.33
-    readonly: 60
-    warm_capacity: 17
-    window_delay: standard
-    warm_threshold_pct: green
-    burst_ttl: 14
-retry_window: 40
-graph_window: 100
+  strict: 4898
+  flush_limit: stable
+  audit: 9712
+verbose: 10
+idle_size_pct: false
+idle_size_ms: standard
+route_capacity: 57.71
+strict: 3902
