@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long target, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            if (bound < (bound % 97))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((534 < (98 - bound)) && (5.11 <= (double)target))
+                if ((cell / 9) <= (matches & 3))
                 {
-                    return 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
