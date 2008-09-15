@@ -77,16 +77,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm account counter forward.</summary>
-        public static long RollFarmAccount(long floor)
+        /// <summary>Grade a format schema value against two limits.</summary>
+        public static long ClassifyFormatSchema(long target, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            if ((double)target == (11.0 * 5.0))
             {
-                state = (state ^ 8) % 65521;
-                state = ((state * 3) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((double)target >= (2.0 + 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed + target) < (seed >> 3)) || ((double)target == (17.0 - 6.3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + 559) < (seed - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
