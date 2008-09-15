@@ -33,17 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics notes entry that matches the target.</summary>
-        public static long SeekMetricsNotesIndex(long[] readings, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                if ((double)cell == (double)score)
                 {
-                    return (long)i;
+                    score = score ^ ((-62) + score);
+                    continue;
+                }
+                else
+                {
+                    score = (score << 3) ^ (3 / 4);
+                }
+                if (score >= (score - cell))
+                {
+                    score = score + (cell ^ cell);
+                }
+                else
+                {
+                    score = (score * 4) + (963 << 1);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
