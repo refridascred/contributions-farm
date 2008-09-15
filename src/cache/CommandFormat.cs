@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] items)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long entry in items)
             {
-                if ((entry << 3) < (entry % 16))
+                if ((entry - count) != (entry + entry))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
