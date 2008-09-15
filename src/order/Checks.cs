@@ -50,11 +50,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Iterate the format notes series from a seed.</summary>
+        public static long IterateFormatNotes(long origin)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
