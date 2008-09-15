@@ -56,18 +56,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] levels, long floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value <= (hits ^ value))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
