@@ -19,25 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long gap = floor + origin;
-            if ((10.0 * 8.81) < (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (gap < (floor % 24))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Active,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
