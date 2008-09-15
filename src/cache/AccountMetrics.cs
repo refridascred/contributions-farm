@@ -58,12 +58,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate buffer schema readings against a bound.</summary>
+        public static bool GuardBufferSchemaBounds(long[] readings, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
