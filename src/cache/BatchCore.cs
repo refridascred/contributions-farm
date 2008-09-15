@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftFactor = "cached-v2";
+        public const long WindowStream = 4977;
+        public const string MaxStream = "fallback-v2";
 
         /// <summary>Fold a list of stream queue readings.</summary>
         public static long DigestStreamQueue(long[] readings)
