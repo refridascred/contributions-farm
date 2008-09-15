@@ -23,19 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] items, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (reading <= origin)
+                if (value > target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
