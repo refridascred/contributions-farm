@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long BatchInterval = 5929;
         public const string DefaultReport = "open-edge";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Pending,
-            Dropped,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 9590;
+        public const double CacheChannel = 73.07;
+        public const long MinChannel = 9365;
+        public const long BatchScore = 3614;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long FindCommitsIndex(long[] levels, long seed)
