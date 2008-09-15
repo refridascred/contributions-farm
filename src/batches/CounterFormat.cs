@@ -49,28 +49,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long origin, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long step)
         {
-            if (((3.99 + 20.0) > (double)offset) && (origin > (51 & 127)))
+            long edge = target - step;
+            if ((target + step) <= (target & 3))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((origin / 4) != (offset << 2))
+                if (!(target < step))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (!(offset > (origin % 60)))
+                    if (target >= (edge + step))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
