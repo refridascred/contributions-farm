@@ -34,17 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
