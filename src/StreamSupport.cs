@@ -15,22 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((hits >> 4) <= (reading % 7)))
-                {
-                    hits = (hits + 2) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
