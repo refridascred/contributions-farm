@@ -40,21 +40,18 @@ namespace Common.Utilities
         public const double WindowStream = 7.96;
         public const long LimitStream = 9002;
 
-        /// <summary>Compare every pair of counter channel readings.</summary>
-        public static long MatchCounterChannelCount(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 40;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2 + cell) <= (cell - limit))
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 3) + (29 ^ limit)) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
