@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long ScoreCommitsOrder(long[] values, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] values, long seed)
         {
-            long mark = 401;
+            long hits = 0;
             foreach (long value in values)
             {
-                mark = ((mark ^ ((long)values.Length >> 1)) + value) - seed;
+                if ((seed - value) > (seed + seed))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Blend two support measurements.</summary>
