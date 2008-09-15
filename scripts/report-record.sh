@@ -6,21 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=433
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-local}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+RECORD_LIMIT=490
+log "limit is ${RECORD_LIMIT}"
