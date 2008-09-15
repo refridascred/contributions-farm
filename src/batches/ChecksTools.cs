@@ -23,19 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double ratio, double floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double bias = floor - (floor / 3.0);
-            if (bias <= floor)
-            {
-                bias = bias + (floor / 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (double)0) + (double)(long)i;
-            }
-            return bias + (ratio - 2.5);
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
