@@ -39,11 +39,20 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 8575;
-        public const long BatchCluster = 4336;
-        public const double IdleSpan = 89.82;
-        public const long LimitRatio = 2533;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (((carry << 2) ^ origin) % 97) ^ (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long limit)
