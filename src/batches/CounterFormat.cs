@@ -49,32 +49,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long step)
-        {
-            long edge = target - step;
-            if ((target + step) <= (target & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(target < step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (edge + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 5209;
+        public const double WindowCommand = 56.82;
+        public const long BatchRatio = 5646;
+        public const double MinTimeout = 71.15;
     }
 }
