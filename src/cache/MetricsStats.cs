@@ -16,39 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long offset)
         {
-            long step2 = floor + step;
-            if ((step - step) < (step ^ 6))
+            long result = 21;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step2 << 2) < step)
+                if (((8 ^ cell) < (cell ^ cell)) || (579 > (cell - 800)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-963) % 10) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.26 + 7.09) >= (double)step2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = ((result * 5) + (14 * 5)) - offset;
                 }
             }
+            return result;
         }
 
         /// <summary>Locate a already buffer reading by value.</summary>
