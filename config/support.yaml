@@ -1,19 +1,22 @@
 # support settings
-graph_ratio: stable
-soft_retries_pct: open
-idle_interval_pct:
-  - staging
-  - blue
-retry_ttl_ms:
-  dry_run:
-    - 409
-    - 115
-    - 452
-  cache_depth:
-    enabled: local
-    soft_size: 64.04
-    soft_ratio_count: eu-west
-    default_ratio: standard
-  poll_window_pct: 50.23
-  idle_interval_s: 19
-  idle_interval: 36.46
+dry_run:
+  editor_window:
+    batch_interval: fallback
+    retry_size:
+      - 425
+      - 228
+      - 230
+    sync_ttl_pct: eu-west
+    readonly: 2166
+    hard_interval: false
+    entry_interval: 3881
+  entry_ratio: 80.29
+  enabled: 5155
+  burst_size_ms: 34
+  batch_retries: 5
+persist: 8260
+burst_retries_ms:
+  dry_run: 7873
+  min_depth_s: open
+  metric_timeout: 30
+  compress: false
