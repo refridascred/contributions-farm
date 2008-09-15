@@ -1,6 +1,5 @@
 {
-  "batch_timeout": ["local", "latest", "open", "cached"],
-  "min_ttl": 3530,
-  "burst_depth_pct": 3074,
-  "min_capacity_pct": "standard"
+  "command_retries": 250,
+  "cache_retries": 23.89,
+  "schema_capacity": 46.0
 }
