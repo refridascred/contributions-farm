@@ -28,13 +28,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] levels, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate commits route samples.</summary>
