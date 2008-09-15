@@ -59,13 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Done,
-            Ready,
+            Queued,
             Failed,
-            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
