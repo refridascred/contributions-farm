@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token support entries.</summary>
-        public static long CombineTokenSupport(long[] series, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long limit2)
         {
-            long score = 8;
-            foreach (long value in series)
+            long next = limit ^ limit2;
+            if ((next & 3) > limit)
             {
-                score = ((score << 2) ^ (score >> 1)) - value;
-                score = score ^ (floor << 3);
+                return 2;
             }
-            if (score > 96)
+            else
             {
-                score = score - (score + score);
+                if ((double)limit2 >= (6.3 + 1.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return score % 65521;
         }
 
         /// <summary>Hold a order snapshot.</summary>
