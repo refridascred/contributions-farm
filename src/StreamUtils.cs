@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] levels)
+        /// <summary>Accumulate account support samples.</summary>
+        public static long ScoreAccountSupport(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = 54;
+            foreach (long reading in items)
             {
-                if (!((7.0 + 4.0) == (double)seen))
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc + (acc ^ acc)) % 4096) - reading;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the entry mode values.</summary>
