@@ -28,20 +28,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every farm metrics entry stays within the limit.</summary>
-        public static bool GuardFarmMetricsLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSize = 5264;
+        public const string MaxAlready = "latest";
+        public const long SoftAlready = 7441;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
