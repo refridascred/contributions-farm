@@ -10,39 +10,14 @@ namespace Common.Utilities
         public const double LimitPayload = 5.96;
         public const string IdlePayload = "alpha-1";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long gap = step ^ limit;
-            if (!((limit & 7) < (gap + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((3.75 + 4.67) < (double)step) && (gap > (gap + gap)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((gap >= (step << 2)) && (limit >= (gap ^ 26)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((15.0 + 5.59) == (double)gap) || ((double)step >= 8.62))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Digest a series of window entries.</summary>
