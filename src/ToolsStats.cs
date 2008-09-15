@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] samples, long target)
+        /// <summary>Find the first metrics notes entry that matches the target.</summary>
+        public static long SeekMetricsNotesIndex(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] < target)
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
