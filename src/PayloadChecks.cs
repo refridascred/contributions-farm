@@ -50,11 +50,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long MeasureRouteFarmOutliers(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!(step > (long)samples.Length))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first metric cluster entry that matches the target.</summary>
