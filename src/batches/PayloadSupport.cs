@@ -42,11 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 5652;
-        public const long CacheBudget = 5673;
-        public const double LimitLayout = 58.2;
-        public const double IdleLayout = 3.23;
-        public const long WindowDepth = 4690;
+        /// <summary>Iterate the githubfarm report series from a seed.</summary>
+        public static long IterateGithubfarmReport(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result * 3) + 0;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result - bound) % 255) ^ (long)i2;
+                    result = (result + (8 & 31)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
