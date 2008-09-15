@@ -60,18 +60,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] values)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-6) * 3) <= (seen + item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate counter support readings against a bound.</summary>
