@@ -20,18 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 4) < tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
