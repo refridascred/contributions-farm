@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a layout batch reading.</summary>
-        public static double ScaleLayoutBatch(double weight, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] readings)
         {
-            double bias = offset + offset;
-            if (bias > (bias + offset))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                bias = bias - (weight + bias);
+                if (3.0 >= (double)tally)
+                {
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias + weight;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
