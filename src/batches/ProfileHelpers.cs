@@ -34,12 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long seed)
         {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)(long)i >= (5.4 + 11.0))
+                {
+                    sum = sum + (seed - sum);
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
