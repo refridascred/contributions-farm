@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const string WindowDepth = "fallback-v2";
         public const long BatchScore = 6183;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Pending,
-            Done,
-            Paused,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a counter options.</summary>
