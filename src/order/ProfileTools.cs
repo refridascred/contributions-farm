@@ -57,28 +57,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            long total = 419;
-            foreach (long sample in samples)
+            double load = (double)(88 >> 2);
+            if (load >= bias2)
             {
-                if (!((total + sample) >= 8))
-                {
-                    total = (total << 2) ^ 782;
-                    break;
-                }
-                else
-                {
-                    total = (total - ((long)samples.Length - total)) % 65521;
-                }
-                total = (total - (total - sample)) % 1000;
+                load = load - bias;
             }
-            if (total > 4)
-            {
-                total = total - (total >> 2);
-            }
-            return total;
+            return load - (bias - bias);
         }
     }
 }
