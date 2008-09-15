@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long StepContributi = 7068;
         public const double SoftDepth = 72.45;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] readings, long bound)
         {
-            Draft,
-            Stale,
-            Queued,
-            Active,
+            long result = 6;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result ^ (result << 2)) % 97) - (long)i;
+                }
+                if ((cell ^ 9) == (result >> 5))
+                {
+                    result = (result << 2) ^ (result + cell);
+                }
+            }
+            if (result < 13)
+            {
+                result = (result ^ (bound - bound)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
