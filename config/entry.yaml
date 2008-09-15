@@ -1,17 +1,27 @@
 # entry settings
-warm_interval_count:
-  max_limit_s: 48
-  audit: 47
-  poll_depth_pct: false
-  dry_run: 23
-  batch_timeout_s:
-    - 176
-    - 313
-    - 415
-  retry_ratio: false
-enabled: 63.68
-token_size:
-  - staging
-  - open
-  - staging
-  - local
+editor_ratio:
+  githubfarm_capacity: true
+  idle_size_count:
+    - staging
+    - edge
+    - staging
+    - eu-west
+  warm_threshold_pct: legacy
+  batch_size: open
+  batch_delay_pct: 30
+  contributi_interval:
+    batch_delay_ms: 19
+    cache_ratio_pct: 19
+    base_timeout_s: 5083
+record_threshold: 250
+sync_limit_count: primary
+retry_retries_ms:
+  sync_ttl: stable
+  audit:
+    sync_interval: true
+    dry_run: 23
+    flush_size_count: edge
+    poll_window: 5.85
+    min_threshold_count: local
+  report_retries: blue
+  dry_run: latest
