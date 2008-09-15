@@ -43,23 +43,16 @@ namespace Common.Utilities
         public const string IdleRoute = "strict-1";
         public const double HardCount = 98.84;
 
-        /// <summary>Scale a context commits figure with a bias.</summary>
-        public static double SmoothContextCommits(double ratio, double bias)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long seed)
         {
-            double bias2 = ratio;
-            if (bias2 >= bias)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                bias2 = bias2 - ratio;
+                mark = (mark - (seed >> 1)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                bias2 = bias2 - (ratio - 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return mark;
         }
     }
 }
