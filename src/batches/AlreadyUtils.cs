@@ -59,12 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Active,
-            Ready,
-            Queued,
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
