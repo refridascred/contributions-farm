@@ -27,12 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double bias, double floor)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            double scale = bias;
+            if (scale > (bias * 5.46))
+            {
+                scale = scale - (floor - floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (floor - bias)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
