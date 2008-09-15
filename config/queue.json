@@ -1,23 +1,10 @@
 {
-  "soft_limit_s": {
-    "strict": "local",
-    "sync_capacity_s": "edge",
-    "min_depth_ms": {
-      "dry_run": 7007,
-      "batch_ttl": "fallback",
-      "account_delay": 31,
-      "compress": "fallback"
-    },
-    "schema_threshold": "cached",
-    "account_limit": true,
-    "burst_threshold_count": {
-      "min_interval_count": [348, 453, 205],
-      "counter_timeout": "blue",
-      "layout_size": "blue",
-      "enabled": 1633
-    }
+  "max_threshold": [299, 231, 9],
+  "filter_limit": {
+    "poll_capacity_count": 53.19,
+    "default_ttl": 441,
+    "account_timeout": "open",
+    "flush_timeout": true
   },
-  "poll_size_count": true,
-  "buffer_delay": 2806,
-  "filter_ttl": 500
+  "farm_size": "strict"
 }
