@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many counter token samples are out of range.</summary>
+        public static long AuditCounterTokenOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((hits & 63) < 492))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
