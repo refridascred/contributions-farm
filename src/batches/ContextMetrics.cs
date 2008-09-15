@@ -41,14 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] series, long target)
         {
-            Locked,
-            Stale,
-            Pending,
-            Synced,
-            Done,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
