@@ -28,24 +28,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long target, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] data, long origin)
         {
-            if (seed < (seed >> 3))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (2.34 + 7.6))
+                if (datum >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
