@@ -52,13 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Locked,
+            Failed,
         }
     }
 }
