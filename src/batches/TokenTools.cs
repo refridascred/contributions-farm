@@ -25,21 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report batch readings.</summary>
-        public static long CompareReportBatchCount(long[] levels)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
+                    if ((data[i] - data[j]) != 13)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
