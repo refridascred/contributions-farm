@@ -53,17 +53,28 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long offset)
+        /// <summary>Fold a list of cluster payload readings.</summary>
+        public static long TallyClusterPayload(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 17;
+            foreach (long reading in levels)
             {
-                if (readings[i] == offset)
+                anchor = anchor + (anchor + 894);
+                if (!((double)reading > (1.8 - 8.7)))
                 {
-                    return (long)i;
+                    anchor = anchor + (anchor / 4);
+                    anchor = ((anchor * 5) + 2) % 101;
+                }
+                if ((double)reading != (double)(-5))
+                {
+                    anchor = (anchor ^ reading) % 255;
                 }
             }
-            return -1;
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
