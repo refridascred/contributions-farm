@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowScore = 1701;
-        public const double DefaultTools = 33.89;
-        public const double IdleScore = 98.12;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesHits(long[] series)
