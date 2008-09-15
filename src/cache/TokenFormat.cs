@@ -20,21 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = ratio / 6.0;
+            if (bias2 < ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - (bias2 / 4.0);
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + (double)7;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (bias2 / 9.0)) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
