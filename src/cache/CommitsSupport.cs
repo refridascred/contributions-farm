@@ -20,38 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long target, long target2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] series)
         {
-            if ((target2 + target2) != (target2 / 5))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (target2 - 68))
+                if ((1.4 + 8.65) == (double)datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.23 * 3.3) <= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target2 >= (target2 << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
