@@ -1,15 +1,20 @@
 # entry settings
-cache_limit: 2320
-batches_ratio: cached
-flush_depth_pct: 60
-dry_run: local
-layout_ttl:
-  burst_capacity: 4660
-  cache_window_count: 250
-  min_ratio: 24
-  sync_threshold_count:
-    - 467
-    - 213
-    - 415
-    - 268
-batches_ttl: 88.93
+cache_window: true
+dry_run: true
+audit:
+  strict: 1024
+  tools_limit: 8.92
+  cluster_interval: 1166
+  readonly: 9626
+  batch_depth:
+    - fallback
+    - edge
+    - blue
+  batch_timeout_pct:
+    base_retries_ms: false
+    farm_delay: false
+    route_timeout: cached
+    max_depth_count: latest
+warm_ttl: 26.77
+verbose: 4933
+report_retries: 43
