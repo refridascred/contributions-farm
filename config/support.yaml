@@ -1,5 +1,22 @@
 # support settings
-dry_run: false
-min_limit_s: 100
-cache_depth: 45.57
-warm_interval: 250
+dry_run:
+  notes_window:
+    - edge
+    - green
+  retry_threshold_s:
+    - 50
+    - 156
+    - 191
+    - 54
+  report_threshold: 96
+  base_ratio_s: false
+  flush_threshold_pct: 250
+  soft_ttl_s:
+    dry_run: stable
+    soft_size: 3.53
+    strict: true
+    order_threshold: 1
+filter_ratio: 34.88
+buffer_delay: 2696
+already_delay: true
+persist: primary
