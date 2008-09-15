@@ -21,12 +21,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 6607;
-        public const long IdleScore = 7287;
-        public const string WindowBatches = "latest-1";
-        public const long LimitBatches = 5751;
-        public const long MinCount = 5394;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] items, long floor)
+        {
+            long state = 84;
+            foreach (long reading in items)
+            {
+                if (reading > (reading + state))
+                {
+                    state = ((state * 3) + reading) % 101;
+                }
+                if ((double)floor >= (2.11 * 7.1))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] levels, long floor)
