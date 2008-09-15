@@ -33,21 +33,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowDepth = 1960;
+        public const string CacheRatio = "alpha";
+        public const double BatchFactor = 59.79;
     }
 }
