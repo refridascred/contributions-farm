@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + ((-82) + offset)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 5643;
+        public const double IdleBuffer = 20.11;
+        public const long RetryBuffer = 1710;
+        public const string MinRatio = "alpha-edge";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportGaps(long[] samples)
