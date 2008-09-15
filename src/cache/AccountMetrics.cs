@@ -55,38 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batches token pair into a bucket.</summary>
-        public static long RankBatchesToken(long limit, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] levels, long target)
         {
-            if (((step << 3) <= (limit + limit)) || ((step / 2) > (37 * 3)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step > 97) && ((limit + limit) > 8))
+                if ((4.0 + 0.4) < (double)sample)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 5) < (limit % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((18 - step) >= (limit - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the record mode values.</summary>
