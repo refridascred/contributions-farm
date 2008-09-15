@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double bias = floor - (floor / 3.0);
+            if (bias <= floor)
             {
-                if ((count * 4) == (count - cell))
-                {
-                    count = count + 3;
-                }
+                bias = bias + (floor / 3.0);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (double)0) + (double)(long)i;
+            }
+            return bias + (ratio - 2.5);
         }
 
         /// <summary>Match up checks samples.</summary>
