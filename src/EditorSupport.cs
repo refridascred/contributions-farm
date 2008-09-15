@@ -51,12 +51,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Derive the next checks order value from a seed.</summary>
+        public static long IterateChecksOrder(long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            long total = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total ^ ((long)i >> 2)) % 255;
+                if (((long)i << 2) > (total / 9))
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
