@@ -46,17 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = 1.83;
+            if (ratio < ratio)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (ratio / 5.0)) - offset;
             }
-            return -1;
+            return ratio - rate;
         }
 
         /// <summary>Describe the record phase values.</summary>
