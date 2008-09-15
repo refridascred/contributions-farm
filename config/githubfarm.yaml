@@ -1,6 +1,9 @@
 # githubfarm settings
-layout_timeout: 5800
-audit:
-  - 145
-  - 194
-batch_delay: blue
+order_size: green
+soft_interval: false
+verbose: 11.13
+batches_limit: 500
+flush_threshold_s:
+  - eu-west
+  - primary
+  - fallback
