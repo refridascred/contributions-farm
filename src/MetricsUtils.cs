@@ -28,13 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Active,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSize = 4031;
+        public const long MinEditor = 7664;
+        public const long DefaultDepth = 4;
+        public const double BurstSpan = 59.77;
+        public const long BaseEditor = 8172;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstCount = 1987;
