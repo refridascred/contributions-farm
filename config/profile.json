@@ -1,7 +1,5 @@
 {
-  "compress": "edge",
-  "batch_threshold": "primary",
-  "burst_limit_ms": true,
-  "soft_threshold_count": 9,
-  "idle_capacity": ["eu-west", "legacy", "staging", "primary"]
+  "cache_size": true,
+  "flush_size_s": [94, 6, 490, 326],
+  "cache_delay_ms": 30
 }
