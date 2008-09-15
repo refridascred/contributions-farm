@@ -63,17 +63,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
