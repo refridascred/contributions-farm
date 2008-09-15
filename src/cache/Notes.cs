@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const double WindowStream = 7.96;
         public const long LimitStream = 9002;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 1749;
+        public const long BurstSize = 6829;
+        public const long DefaultTimeout = 1108;
+        public const long IdleInterval = 4531;
+        public const long SoftSpan = 7666;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitRatio = 1734;
