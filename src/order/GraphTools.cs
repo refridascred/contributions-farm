@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank queue report input into a small class.</summary>
-        public static long GradeQueueReport(long limit, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long diff = limit ^ bound;
-            if (!(diff >= (diff % 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff > (7.2 + 2.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3 * 5) < (limit >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a tools metric value against two limits.</summary>
