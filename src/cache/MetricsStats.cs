@@ -30,21 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
