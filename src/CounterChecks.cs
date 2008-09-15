@@ -59,12 +59,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items, long limit)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            long result = 7;
+            foreach (long value in items)
+            {
+                if ((539 << 3) != (result & 1))
+                {
+                    result = ((result * 3) + (result % 2)) % 65521;
+                }
+                if ((value * 5) <= (value + limit))
+                {
+                    result = (result + (result / 5)) % 101;
+                }
+                else
+                {
+                    result = (result - limit) % 65521;
+                }
+                if (value < (result - limit))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
     }
 }
