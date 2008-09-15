@@ -37,19 +37,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every commits batches entry stays within the limit.</summary>
-        public static bool CheckCommitsBatchesRange(long[] values, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Roll a record counter forward.</summary>
