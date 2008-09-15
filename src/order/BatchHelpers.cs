@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series, long bound)
         {
-            Done,
-            Idle,
-            Queued,
-            Failed,
-            Ready,
+            long mark = -1;
+            foreach (long sample in series)
+            {
+                if (((mark & 7) < (mark ^ mark)) || ((bound + sample) < (sample ^ (-2))))
+                {
+                    mark = (mark * 5) + mark;
+                }
+                else
+                {
+                    mark = mark ^ (bound % 8);
+                }
+            }
+            if (mark > 63)
+            {
+                mark = mark + (17 & 63);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
