@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples)
+        /// <summary>Look up the position of a metric farm sample.</summary>
+        public static long LocateMetricFarmIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value * 4) == (count ^ count))
+                if (data[i] == bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up githubfarm notes samples.</summary>
