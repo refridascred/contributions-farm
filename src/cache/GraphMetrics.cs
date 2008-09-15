@@ -52,9 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 35.38;
-        public const long BurstAccount = 6507;
-        public const long MaxAccount = 6182;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= (double)3)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
+        }
     }
 }
