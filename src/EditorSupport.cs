@@ -49,17 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cache graph series from a seed.</summary>
-        public static long RollCacheGraph(long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long anchor = 70;
+            foreach (long cell in values)
             {
-                mark = (mark - mark) % 101;
-                mark = ((mark << 2) ^ (origin - origin)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
+                anchor = (anchor + (6 >> 4)) + cell;
             }
-            return mark;
+            if (anchor > 83)
+            {
+                anchor = (anchor - (27 & 7)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next checks order value from a seed.</summary>
