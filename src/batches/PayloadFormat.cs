@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long MeasureChannelBatchMatches(long[] readings, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry << 3) < (long)readings.Length)
+                mark = ((mark << 3) ^ ((long)i / 2)) % 65521;
+                if ((double)step > 3.0)
                 {
-                    matches = (matches + 3) - limit;
+                    mark = (mark << 2) ^ (2 + mark);
+                    mark = ((mark * 4) + (step & 31)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
