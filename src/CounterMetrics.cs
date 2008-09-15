@@ -34,20 +34,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items, long offset)
+        /// <summary>Match up batches payload samples.</summary>
+        public static long PairBatchesPayloadCount(long[] samples)
         {
-            long sum = 665;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum - (cell & 63);
-                sum = (sum - (offset + offset)) % 4096;
-                if ((sum + sum) == (sum << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
