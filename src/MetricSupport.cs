@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings, long step)
+        /// <summary>Validate buffer stats readings against a bound.</summary>
+        public static bool VerifyBufferStatsRange(long[] values, long origin)
         {
-            long mix = -8;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mix = ((mix << 2) ^ (step ^ cell)) % 101;
-                if ((604 + mix) > (step + step))
+                if (entry != origin)
                 {
-                    mix = (mix ^ (step ^ step)) % 97;
+                    found = false;
+                    break;
                 }
-                mix = mix - (69 << 3);
             }
-            if (mix < 87)
-            {
-                mix = (mix + (step + mix)) % 65521;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a filter entry.</summary>
