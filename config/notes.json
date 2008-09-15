@@ -1,15 +1,6 @@
 {
-  "warm_retries_count": 167,
-  "cluster_window": {
-    "profile_threshold": 66.43,
-    "min_threshold_s": [377, 50],
-    "idle_interval_count": 30.34,
-    "compress": "cached",
-    "verbose": ["legacy", "staging", "fallback"],
-    "window_window": 30
-  },
-  "poll_timeout_ms": false,
-  "persist": 26,
-  "dry_run": "open",
-  "default_retries_pct": true
+  "idle_ttl_s": 36.3,
+  "support_limit": [136, 356],
+  "cluster_capacity": 53.4,
+  "warm_retries_ms": "latest"
 }
