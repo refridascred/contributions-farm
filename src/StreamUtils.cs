@@ -44,23 +44,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a support metric reading.</summary>
-        public static double SmoothSupportMetric(double bias, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] data, long offset)
         {
-            double drift = (double)8 * 3.1;
-            if (drift <= span)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                drift = (drift + (span + 4.05)) + bias;
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)60;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift * 13.0)) + (double)(long)i;
-            }
-            return drift + (double)2;
+            return ok;
         }
 
         /// <summary>Locate a support reading by value.</summary>
