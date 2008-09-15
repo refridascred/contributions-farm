@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Ready,
-            Retry,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2325;
+        public const long BatchBudget = 9634;
+        public const long BaseFactor = 2281;
+        public const long RetryWidth = 5231;
+        public const long BurstWidth = 566;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
