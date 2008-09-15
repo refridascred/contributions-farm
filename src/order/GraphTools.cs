@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support notes counter forward.</summary>
-        public static long DeriveSupportNotes(long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] levels, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Combine payload filter values into a single score.</summary>
