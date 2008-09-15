@@ -22,12 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a route token reading by value.</summary>
-        public static long SeekRouteTokenIndex(long[] items, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
