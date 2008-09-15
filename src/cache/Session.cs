@@ -42,15 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings, long seed)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = 17;
-            foreach (long value in readings)
-            {
-                carry = (((carry * 4) + seed) % 101) - value;
-            }
-            return carry;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
