@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double span)
-        {
-            double rate2 = span;
-            if (rate2 >= rate)
-            {
-                rate2 = rate2 + (span + 4.4);
-            }
-            return rate2 + (double)223;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 4617;
+        public const long CacheOrder = 5330;
+        public const long BaseOrder = 571;
+        public const string IdleRatio = "local-v2";
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
