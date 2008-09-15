@@ -26,17 +26,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 8351;
+        public const long StepSpan = 9093;
+        public const long DefaultStream = 4249;
+        public const string RetryTimeout = "legacy";
     }
 }
