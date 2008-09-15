@@ -1,7 +1,5 @@
 {
-  "retry_delay_s": 100,
-  "audit": 29.24,
-  "sync_capacity_ms": true,
-  "record_size": 98.82,
-  "strict": [17, 287, 359]
+  "retry_size_count": false,
+  "hard_window_s": 65.09,
+  "warm_capacity": "local"
 }
