@@ -1,6 +1,4 @@
 # support settings
-strict: eu-west
-format_depth:
-  - 455
-  - 68
-hard_limit_ms: 80.82
+base_capacity: 100
+max_timeout: cached
+cache_depth_pct: 250
