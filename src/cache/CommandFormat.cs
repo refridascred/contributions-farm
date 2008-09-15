@@ -19,15 +19,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] levels, long limit)
         {
-            double load = offset / 5.0;
-            if (load >= (double)103)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                load = load - ratio;
+                if (!((3 >> 3) >= limit))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return load + offset;
+            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
