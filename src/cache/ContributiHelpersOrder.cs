@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry - (step ^ 61)) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
