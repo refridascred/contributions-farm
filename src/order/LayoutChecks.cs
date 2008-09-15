@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 3748;
+        public const double DefaultTools = 30.55;
+        public const long CacheSpan = 8428;
+        public const long DefaultInterval = 5590;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
