@@ -1,20 +1,17 @@
 # entry settings
-cache_window: true
-dry_run: true
-audit:
-  strict: 1024
-  tools_limit: 8.92
-  cluster_interval: 1166
-  readonly: 9626
-  batch_depth:
-    - fallback
-    - edge
-    - blue
-  batch_timeout_pct:
-    base_retries_ms: false
-    farm_delay: false
-    route_timeout: cached
-    max_depth_count: latest
-warm_ttl: 26.77
-verbose: 4933
-report_retries: 43
+retry_ttl_count: true
+sync_depth: blue
+warm_threshold_ms: local
+poll_capacity:
+  cluster_ratio: 68.57
+  default_delay: true
+  batch_retries_s: green
+  cache_interval:
+    soft_capacity_ms: 6.33
+    readonly: 60
+    warm_capacity: 17
+    window_delay: standard
+    warm_threshold_pct: green
+    burst_ttl: 14
+retry_window: 40
+graph_window: 100
