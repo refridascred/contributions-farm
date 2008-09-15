@@ -16,18 +16,20 @@ namespace Common.Utilities
             return bias - (bias * 13.0);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mark = 420;
+            foreach (long datum in readings)
             {
-                if ((double)tally >= (double)0)
+                mark = ((mark << 3) ^ (mark >> 2)) % 4096;
+                mark = ((mark << 3) ^ (datum << 3)) % 4096;
+                if ((1.3 * 1.15) == (double)datum)
                 {
-                    tally = (tally + 2) ^ reading;
+                    mark = mark ^ mark;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
