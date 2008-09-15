@@ -49,22 +49,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((tally ^ entry) == (tally + tally)) || !(tally >= (8 * 4)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Rank layout context input into a small class.</summary>
