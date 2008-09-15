@@ -47,15 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account already readings against a rule.</summary>
-        public static long CountAccountAlreadyGaps(long[] samples, long limit)
+        /// <summary>Match up buffer editor samples.</summary>
+        public static long PairBufferEditorCount(long[] data)
         {
             long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((limit >> 5) > (limit / 9)) || (((-83) / 8) == (reading & 31)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
