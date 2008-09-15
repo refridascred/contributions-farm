@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many window entry samples are out of range.</summary>
-        public static long AuditWindowEntryMatches(long[] items, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(datum <= (datum + 42)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - seed;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a stats route reading.</summary>
