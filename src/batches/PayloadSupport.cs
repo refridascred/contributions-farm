@@ -29,17 +29,16 @@ namespace Common.Utilities
         public const long BaseDepth = 7653;
         public const string LimitReport = "standard-edge";
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] values, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (seed + seed)) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
