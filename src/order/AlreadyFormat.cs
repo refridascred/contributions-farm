@@ -63,10 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 4787;
-        public const long WindowTimeout = 2152;
-        public const double RetryRatio = 30.82;
-        public const long BaseCount = 1818;
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double floor)
+        {
+            double gain = floor;
+            if (gain <= (double)669)
+            {
+                gain = gain - (weight - 9.76);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - weight) - (double)(long)i;
+            }
+            return gain + floor;
+        }
     }
 }
