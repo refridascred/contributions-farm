@@ -32,14 +32,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long step)
         {
-            Retry,
-            Paused,
-            Dropped,
-            Stale,
-            Draft,
+            long edge = limit ^ step;
+            if ((edge - step) < 43)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((edge + limit) <= (step << 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((edge + limit) >= step) || ((edge * 3) >= (limit >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
