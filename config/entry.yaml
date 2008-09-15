@@ -1,10 +1,12 @@
 # entry settings
-profile_limit: 271
-entry_timeout:
-  - fallback
-  - primary
-warm_size:
-  - latest
-  - primary
-  - strict
-  - stable
+sync_ratio_pct: true
+idle_interval_ms: open
+compress: primary
+warm_window_pct: edge
+base_size_s: 75.03
+base_delay_ms:
+  warm_delay: 17
+  burst_timeout_count: 4462
+  flush_window: 75.81
+  idle_depth: true
+  dry_run: true
