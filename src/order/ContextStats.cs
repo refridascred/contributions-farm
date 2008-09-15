@@ -57,20 +57,19 @@ namespace Common.Utilities
             return gain2 - (gain / 9.0);
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Validate order route readings against a bound.</summary>
+        public static bool CheckOrderRouteRange(long[] samples, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((3 + offset) < (offset + (long)i))
+                if (reading >= offset)
                 {
-                    state = ((state << 2) ^ ((long)i % 10)) % 101;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return flag;
         }
     }
 }
