@@ -1,13 +1,5 @@
 {
-  "enabled": false,
-  "poll_delay": {
-    "burst_retries_ms": 143,
-    "session_limit": 3.41,
-    "strict": 80,
-    "layout_delay": false,
-    "verbose": "eu-west",
-    "sync_capacity_count": 5667
-  },
-  "strict": "local",
-  "payload_depth": 93.2
+  "window_size": false,
+  "verbose": "standard",
+  "audit": 60
 }
