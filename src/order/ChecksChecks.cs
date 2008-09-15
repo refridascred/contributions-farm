@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long offset)
         {
-            double weight = 14.0 * 0.9;
-            if (weight > (double)(-5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - weight) - bias;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (offset * 18.0)) + (double)(long)i;
-            }
-            return weight + (offset * 5.0);
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
