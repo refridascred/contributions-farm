@@ -57,13 +57,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data, long seed)
+        /// <summary>Combine githubfarm cluster values into a single score.</summary>
+        public static long DigestGithubfarmCluster(long[] items)
         {
-            long score = 69;
-            foreach (long item in data)
+            long score = 14;
+            foreach (long item in items)
             {
-                score = (score + (item / 4)) + seed;
+                if ((item + score) > (6 & 3))
+                {
+                    score = score + (item / 8);
+                    score = (score - (score - score)) % 255;
+                }
+                if ((item * 2) > (score >> 2))
+                {
+                    score = (score - (7 - item)) % 255;
+                }
+            }
+            if (score < 7)
+            {
+                score = score + (score << 3);
             }
             return score;
         }
