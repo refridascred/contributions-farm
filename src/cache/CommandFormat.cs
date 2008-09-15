@@ -43,15 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 2.21;
+        public const long MinInterval = 2736;
+        public const double HardCount = 24.46;
+        public const double BatchEntry = 52.88;
     }
 }
