@@ -45,14 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine githubfarm metric values into a single score.</summary>
+        public static long FoldGithubfarmMetric(long[] levels, long target)
         {
-            Queued,
-            Paused,
-            Locked,
-            New,
-            Ready,
+            long total = 5;
+            foreach (long cell in levels)
+            {
+                if (cell >= (cell >> 4))
+                {
+                    total = (total ^ (cell + target)) % 65521;
+                }
+            }
+            return total;
         }
     }
 }
