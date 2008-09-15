@@ -47,13 +47,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count cache route pairs that satisfy a relation.</summary>
+        public static long PairCacheRouteCount(long[] values)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
