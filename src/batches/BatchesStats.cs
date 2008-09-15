@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate command cache readings against a bound.</summary>
-        public static bool VerifyCommandCacheRange(long[] values, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long limit, long step)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            if ((double)limit > (5.31 - 14.0))
             {
-                if (reading <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((4.5 * 1.0) < (double)step)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ limit) < (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
