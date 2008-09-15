@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format window sample.</summary>
-        public static long LocateFormatWindowIndex(long[] data, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
