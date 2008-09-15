@@ -38,31 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long limit)
+        /// <summary>Count the batch entry entries that pass the check.</summary>
+        public static long TallyBatchEntryGaps(long[] levels, long step)
         {
-            if (!((floor & 3) > floor))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor < (1.62 * 11.0)) || (0.8 <= (double)floor))
+                if ((double)step >= 3.11)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (1.1 + 7.07))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 3) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
