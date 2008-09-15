@@ -63,15 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema metric series from a seed.</summary>
-        public static long DeriveSchemaMetric(long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
