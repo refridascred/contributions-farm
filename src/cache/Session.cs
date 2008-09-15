@@ -37,32 +37,19 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples, long bound)
+        /// <summary>Check that every window contributi entry stays within the limit.</summary>
+        public static bool CheckWindowContributiRange(long[] levels, long seed)
         {
-            long carry = 9;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (!((datum >> 3) > datum))
+                if (reading < seed)
                 {
-                    carry = (carry - 42) % 4096;
+                    valid = false;
+                    break;
                 }
-                if (bound >= (carry + (long)samples.Length))
-                {
-                    carry = ((carry << 2) ^ (bound + bound)) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + (bound >> 3)) % 255;
-                }
-                carry = (carry ^ ((-6) - 3)) % 65521;
             }
-            if (carry > 477)
-            {
-                carry = ((carry * 5) + carry) % 255;
-            }
-            return carry % 65521;
+            return valid;
         }
     }
 }
