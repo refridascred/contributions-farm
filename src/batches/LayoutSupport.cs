@@ -42,16 +42,11 @@ namespace Common.Utilities
         public const string IdleRoute = "strict-1";
         public const double HardCount = 98.84;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = (mark - (seed >> 1)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseSpan = "fallback-v2";
+        public const double WindowCount = 87.2;
+        public const long LimitSize = 1258;
+        public const long BurstMetric = 2048;
+        public const double WindowMetric = 67.7;
     }
 }
