@@ -14,13 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!(value <= (2 + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
