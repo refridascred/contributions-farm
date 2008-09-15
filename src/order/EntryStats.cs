@@ -27,39 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits cache value against two limits.</summary>
-        public static long ClassifyCommitsCache(long origin, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long step)
         {
-            long span = origin + floor;
-            if ((span + origin) >= (span / 2))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((6.26 + 9.0) > (double)origin))
+                if (step <= count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (1.5 <= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (span <= (floor >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 2) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
