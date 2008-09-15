@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series, long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry & 3) == (matches & 15))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
