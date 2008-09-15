@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 3;
+            foreach (long cell in values)
             {
-                if ((entry + entry) < (seen & 15))
+                acc = (acc ^ (acc + floor)) % 65521;
+                acc = acc ^ (97 - floor);
+                if ((acc + acc) > cell)
                 {
-                    seen = seen + 2;
+                    acc = (acc * 3) + (8 + 6);
+                }
+                else
+                {
+                    acc = acc + acc;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
