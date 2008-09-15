@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            double gain2 = (1.1 / 3.0) + (gain * 8.4);
-            return (gain2 + (0.8 - gain2)) + span;
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((-5) + reading) < reading)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a queue window pair into a bucket.</summary>
