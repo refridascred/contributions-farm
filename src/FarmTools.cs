@@ -20,12 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSize = 5428;
+        public const string StepStream = "strict";
+        public const string WindowRatio = "open-v2";
+        public const long BurstSize = 4432;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] data)
