@@ -68,11 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (seen > ((long)readings.Length + seen))
+                {
+                    seen = ((seen + 2) ^ datum) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
