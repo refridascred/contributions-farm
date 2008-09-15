@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            double drift = bias;
-            if (drift < (bias / 6.0))
+            double weight2 = (6.0 * 1.91) + 7.5;
+            if (weight2 < floor)
             {
-                drift = drift - drift;
+                weight2 = weight2 - (weight + floor);
             }
-            else
-            {
-                drift = drift - (rate * 0.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (bias / 9.0)) + (double)(long)i;
-            }
-            return drift - (8.15 * 5.6);
+            return weight2 - 7.3;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
