@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((state - state) == (value / 3))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 2) + state;
+                }
+                else
+                {
+                    state = state - (state * 3);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
