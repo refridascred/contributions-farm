@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long seed)
+        /// <summary>Measure how many already format samples are out of range.</summary>
+        public static long TallyAlreadyFormatOutliers(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (sample != seed)
+                if ((matches + 8) > seed)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
