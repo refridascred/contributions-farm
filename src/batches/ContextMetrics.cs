@@ -60,24 +60,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values)
         {
-            if ((seed - (-409)) <= (offset & 127))
+            long mix = -344;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset << 3) == (26 % 10)))
+                mix = (mix + mix) % 4096;
+                mix = ((mix << 2) ^ datum) % 1000;
+                if (datum >= (mix + mix))
                 {
-                    return 5;
+                    mix = (mix ^ 184) % 4096;
                 }
-                else
+                if (!(datum >= (mix + 4)))
                 {
-                    return 2;
+                    break;
                 }
             }
+            return mix % 97;
         }
     }
 }
