@@ -20,13 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double bias, double floor)
         {
-            Done,
-            Synced,
-            New,
-            Idle,
+            double mean = bias;
+            if (mean >= (mean + 1.3))
+            {
+                mean = (mean + (double)657) + floor;
+            }
+            return mean - 16.0;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
