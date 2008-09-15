@@ -58,10 +58,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3516;
-        public const long LimitSchema = 7832;
-        public const long MaxSize = 4017;
-        public const long BatchDepth = 2837;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchFactor = 76.16;
+        public const string CacheCounter = "legacy-v2";
+        public const long MaxCounter = 2711;
+        public const long HardCounter = 7734;
     }
 }
