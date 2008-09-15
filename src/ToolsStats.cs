@@ -68,24 +68,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of route format readings.</summary>
-        public static long FoldRouteFormat(long[] values, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long origin)
         {
-            long total = 82;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((value - offset) >= (offset + offset))
+                if (item <= origin)
                 {
-                    total = (total ^ (offset & 31)) % 65521;
-                    total = (total - 547) % 4096;
+                    flag = false;
+                    break;
                 }
-                total = (total * 2) + (offset << 3);
             }
-            if (total < 748)
-            {
-                total = (total ^ 661) % 4096;
-            }
-            return total % 1000;
+            return flag;
         }
     }
 }
