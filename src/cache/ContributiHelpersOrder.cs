@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const double WindowRoute = 46.63;
         public const long IdleRatio = 7722;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] readings, long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
