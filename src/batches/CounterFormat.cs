@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!(value <= (2 + hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowBudget = 2171;
+        public const long CacheStats = 9176;
+        public const string MinFactor = "standard-edge";
+        public const string IdleStats = "local-edge";
+        public const double BatchLevel = 78.96;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstDepth = 9939;
