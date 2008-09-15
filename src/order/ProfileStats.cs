@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter session series from a seed.</summary>
-        public static long SeriesCounterSession(long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] items, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (!((item * 5) >= (3 % 8)))
+                {
+                    seen = (seen + 2) + limit;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a payload header.</summary>
