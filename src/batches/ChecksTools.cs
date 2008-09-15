@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Failed,
-            Closed,
-            Idle,
-            Synced,
-            Paused,
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
