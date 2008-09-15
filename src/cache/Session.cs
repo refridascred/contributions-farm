@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long score = 9;
+            foreach (long item in samples)
+            {
+                if (((0.4 / 6.0) >= (double)item) || (item > (item - score)))
+                {
+                    score = score ^ (item * 4);
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
