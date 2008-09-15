@@ -12,24 +12,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a tools metric value against two limits.</summary>
-        public static long SortToolsMetric(long target, long seed)
+        /// <summary>Match up graph schema samples.</summary>
+        public static long CompareGraphSchemaCount(long[] levels)
         {
-            if (((double)target > 1.1) && (6.64 < (double)seed))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 3) == (target % 60))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
