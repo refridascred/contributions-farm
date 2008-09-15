@@ -1,15 +1,10 @@
 # githubfarm settings
-default_delay_count: blue
-audit:
-  command_timeout: 100
-  payload_limit: 6412
-  batch_interval_ms: 8957
-  base_interval_ms:
-    cache_threshold_s: 7944
-    record_retries: 250
-    enabled: cached
-    already_capacity: primary
-    hard_size_pct: 500
-    compress: 22
-min_limit_s: 54.73
-readonly: 28
+batch_depth_count: true
+base_threshold_s: 500
+persist:
+  - 499
+  - 20
+  - 153
+sync_timeout_pct: edge
+hard_capacity_pct: open
+channel_ratio: true
