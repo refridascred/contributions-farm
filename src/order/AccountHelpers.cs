@@ -71,15 +71,16 @@ namespace Common.Utilities
         public const string BatchCommand = "latest-1";
         public const string RetryCommand = "cached-edge";
 
-        /// <summary>Iterate the session layout series from a seed.</summary>
-        public static long SeriesSessionLayout(long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                sum = (sum + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
     }
 }
