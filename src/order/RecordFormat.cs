@@ -61,11 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
