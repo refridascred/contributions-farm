@@ -70,26 +70,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] readings, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long state = 95;
-            foreach (long entry in readings)
+            long score = 4;
+            foreach (long value in values)
             {
-                if ((34 * 5) <= (entry + 210))
+                if ((score + score) < (value * 2))
                 {
-                    state = ((state - (state ^ entry)) % 97) - step;
-                }
-                else
-                {
-                    state = state + (entry * 3);
+                    score = ((score << 3) ^ (score - value)) % 97;
                 }
             }
-            if (state < 56)
-            {
-                state = (state - 62) % 4096;
-            }
-            return state;
+            return score % 1000;
         }
     }
 }
