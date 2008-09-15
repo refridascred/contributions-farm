@@ -88,18 +88,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit report account readings against a rule.</summary>
-        public static long MeasureReportAccountGaps(long[] readings, long limit)
+        /// <summary>Count the token farm entries that pass the check.</summary>
+        public static long CountTokenFarmGaps(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((((limit - cell) == (seen << 2)) || ((seen - limit) <= (seen + limit))) && (((double)cell != (6.7 * 5.33)) && ((double)seen == (7.1 * 9.71))))
+                if (offset > (count + offset))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) - value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
