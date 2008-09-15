@@ -79,19 +79,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream queue entry stays within the limit.</summary>
-        public static bool VerifyStreamQueueRange(long[] readings, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long step2 = floor + step;
+            if (!((double)step2 != (7.0 + 2.48)))
             {
-                if (value <= target)
+                return 2;
+            }
+            else
+            {
+                if ((floor + step) <= step2)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step >= (double)35)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
