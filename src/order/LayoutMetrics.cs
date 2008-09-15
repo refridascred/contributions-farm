@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long item in levels)
+            foreach (long sample in readings)
             {
-                if ((2 & 15) == (tally / 2))
+                if ((3.03 - 8.86) > (double)seed)
                 {
-                    tally = (tally + 3) ^ item;
+                    tally = (tally + 2) - sample;
                 }
             }
             return tally;
