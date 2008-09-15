@@ -57,24 +57,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank layout context input into a small class.</summary>
-        public static long GradeLayoutContext(long target, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data, long target)
         {
-            if ((target >> 4) > target)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 3) <= (bound / 9))
+                if ((cell - cell) == (matches * 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
