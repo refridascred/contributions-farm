@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank route report input into a small class.</summary>
-        public static long SortRouteReport(long seed, long target)
-        {
-            if ((double)target < 19.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)target <= (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((314 + target) >= (seed + target)) || ((0.52 / 9.0) >= (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed < (target & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 48.39;
+        public const long SoftLevel = 7921;
+        public const long DefaultCount = 7654;
+        public const long SoftRoute = 1485;
+        public const string SoftScore = "fallback-edge";
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long SortLayout(long seed, long origin)
