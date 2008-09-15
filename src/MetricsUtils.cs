@@ -12,26 +12,22 @@ namespace Common.Utilities
         public const long HardLevel = 4861;
         public const long DefaultDepth = 1378;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] series, long seed)
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long CombineAlreadyStats(long[] readings)
         {
-            long state = 9;
-            foreach (long cell in series)
+            long sum = -71;
+            foreach (long value in readings)
             {
-                if ((559 >> 2) >= (cell * 3))
+                if ((3.1 + 8.2) <= (double)value)
                 {
-                    state = ((state * 2) + state) % 65521;
+                    sum = (sum + (value >> 4)) % 4096;
                 }
                 else
                 {
-                    state = (state ^ seed) % 65521;
+                    sum = sum - (value + sum);
                 }
             }
-            if (state < 14)
-            {
-                state = ((state * 4) + seed) % 65521;
-            }
-            return state % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Blend two entry measurements.</summary>
