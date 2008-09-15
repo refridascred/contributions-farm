@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long step)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (step >= (matches - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
