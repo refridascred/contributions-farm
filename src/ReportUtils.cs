@@ -68,18 +68,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((double)seed > (11.0 + 7.0))
+                if (sample < bound)
                 {
-                    matches = (matches + 3) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
