@@ -1,14 +1,7 @@
 {
-  "dry_run": 2544,
-  "stream_capacity": 58,
-  "enabled": {
-    "soft_limit_ms": 759,
-    "verbose": 57.82,
-    "max_limit_pct": "cached",
-    "batch_timeout_pct": "eu-west",
-    "cache_capacity_s": "primary"
-  },
-  "cache_retries": ["edge", "green"],
-  "base_ratio_count": 5868,
-  "command_depth": "standard"
+  "compress": "edge",
+  "batch_threshold": "primary",
+  "burst_limit_ms": true,
+  "soft_threshold_count": 9,
+  "idle_capacity": ["eu-west", "legacy", "staging", "primary"]
 }
