@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every order command entry stays within the limit.</summary>
-        public static bool ValidateOrderCommandRange(long[] series, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (value >= seed)
+                if (limit < datum)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
