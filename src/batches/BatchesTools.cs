@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-1";
         public const long RetryReport = 449;
 
-        /// <summary>Look up the position of a layout report sample.</summary>
-        public static long LookupLayoutReportIndex(long[] levels, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                acc = ((acc ^ (acc << 1)) + item) + target;
+                if (!((acc / 6) < (35 / 7)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Hold a order entry.</summary>
