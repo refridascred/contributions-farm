@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            double rate2 = span;
+            if (rate2 >= rate)
             {
-                state = ((state * 5) + (long)i) % 101;
+                rate2 = rate2 + (span + 4.4);
             }
-            return state;
+            return rate2 + (double)223;
         }
 
         /// <summary>Hold a support options.</summary>
