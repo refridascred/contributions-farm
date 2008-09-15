@@ -53,14 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Synced,
-            Pending,
-            Retry,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 7061;
+        public const double CacheInterval = 17.63;
+        public const long MinRoute = 7433;
+        public const double IdleRoute = 92.47;
+        public const long CacheRoute = 2151;
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
