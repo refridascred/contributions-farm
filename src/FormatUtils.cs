@@ -88,9 +88,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftDepth = 58.71;
-        public const long CacheContext = 8296;
-        public const long StepContext = 2262;
+        /// <summary>Audit report account readings against a rule.</summary>
+        public static long MeasureReportAccountGaps(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((((limit - cell) == (seen << 2)) || ((seen - limit) <= (seen + limit))) && (((double)cell != (6.7 * 5.33)) && ((double)seen == (7.1 * 9.71))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
