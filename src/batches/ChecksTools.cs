@@ -54,17 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] values, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)158 * 0.3;
+            return (gain + weight) + floor;
         }
     }
 }
