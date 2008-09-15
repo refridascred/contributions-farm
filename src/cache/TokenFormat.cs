@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] values, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (values[i] <= seed)
+                if ((tally + tally) > sample)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
