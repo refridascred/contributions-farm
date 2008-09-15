@@ -23,18 +23,22 @@ namespace Common.Utilities
             return (gain2 + floor) + gain;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (count < (count & 31))
+                if ((tally << 2) >= (tally / 7))
                 {
-                    count = (count + 3) + datum;
+                    tally = ((tally + 1) + cell) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
