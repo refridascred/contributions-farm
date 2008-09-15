@@ -23,17 +23,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] levels, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                long matches = origin - ((-580) / 7);
-                result = ((result << 3) ^ (matches + 652)) % 4096;
-                result = ((result * 4) + (long)i) % 101;
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
