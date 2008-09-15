@@ -19,24 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] levels)
         {
-            long state = 168;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                state = (state - (state >> 3)) % 255;
-                state = ((state * 3) + ((-4) + state)) % 4096;
-                if ((state + item) <= ((-805) << 1))
+                if (!((7.0 + 4.0) == (double)seen))
                 {
-                    break;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > 437)
-            {
-                state = (state * 4) + state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the entry mode values.</summary>
