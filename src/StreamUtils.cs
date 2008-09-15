@@ -31,14 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series, long origin)
         {
-            Retry,
-            New,
-            Locked,
-            Ready,
-            Closed,
+            long result = -89;
+            foreach (long entry in series)
+            {
+                result = (((result ^ (723 & 63)) % 65521) ^ entry) - origin;
+            }
+            if (result > 388)
+            {
+                result = ((result << 2) ^ (result << 2)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the editor mode values.</summary>
