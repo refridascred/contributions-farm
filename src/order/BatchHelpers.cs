@@ -23,12 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 2429;
-        public const long SoftGraph = 4362;
-        public const string MaxGraph = "stable-1";
-        public const long DefaultTimeout = 3011;
-        public const double BaseGraph = 26.33;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((7.1 + 2.34) < (double)mix) && ((mix >> 4) <= offset))
+                {
+                    mix = (mix ^ (offset + 17)) % 101;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
