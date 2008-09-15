@@ -29,11 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
