@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 5643;
-        public const double IdleBuffer = 20.11;
-        public const long RetryBuffer = 1710;
-        public const string MinRatio = "alpha-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 62.26;
+        public const string BurstPayload = "cached-v2";
+        public const string BatchPayload = "legacy-edge";
 
         /// <summary>Audit editor cluster readings against a rule.</summary>
         public static long MeasureEditorClusterOutliers(long[] values, long step)
