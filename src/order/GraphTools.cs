@@ -58,13 +58,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Locked,
-            Failed,
-            Active,
-            Pending,
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
