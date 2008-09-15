@@ -12,21 +12,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a entry stats.</summary>
