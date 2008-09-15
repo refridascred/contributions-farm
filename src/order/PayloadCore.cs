@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long IdleDepth = 495;
         public const string WindowSpan = "alpha";
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double drift = gain;
-            if (drift > span)
-            {
-                drift = drift - span;
-            }
-            else
-            {
-                drift = drift + (span + drift);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift + 11.0;
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
