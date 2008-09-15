@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            double weight = bias;
-            if (weight <= weight)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight + (bias - bias);
+                if (!(0.8 >= (double)(long)i))
+                {
+                    mark = (mark * 3) + (bound >> 4);
+                    mark = (mark * 4) + (562 / 9);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight - (bias * 5.0);
-            }
-            return weight + (3.0 + floor);
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
