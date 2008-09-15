@@ -60,18 +60,27 @@ namespace Common.Utilities
         public const long BurstChannel = 4751;
         public const long CacheChannel = 1722;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = 649;
+            foreach (long value in data)
             {
-                if ((sample - sample) == (long)series.Length)
+                if (((value + value) < state) || ((double)value < (14.0 / 7.0)))
                 {
-                    tally = tally + 1;
+                    state = (state ^ (state / 5)) % 97;
+                    break;
+                }
+                if ((state - state) == (state * 2))
+                {
+                    state = ((state << 3) ^ (state ^ state)) % 4096;
                 }
             }
-            return tally;
+            if (state < 684)
+            {
+                state = ((state * 3) + (state % 97)) % 255;
+            }
+            return state;
         }
     }
 }
