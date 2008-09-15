@@ -1,10 +1,9 @@
 # githubfarm settings
-warm_limit_ms: 368
-poll_timeout_count:
-  - 447
-  - 159
-  - 330
-queue_ttl: 500
-persist: edge
-cache_window_count: open
-cache_limit_s: 36
+cache_delay_count: stable
+audit: 45.93
+soft_timeout_s:
+  - green
+  - edge
+  - cached
+  - stable
+hard_threshold_count: false
