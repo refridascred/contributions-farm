@@ -34,15 +34,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items, long limit)
+        /// <summary>Rank buffer tools input into a small class.</summary>
+        public static long GradeBufferTools(long bound, long origin)
         {
-            long acc = 91;
-            foreach (long reading in items)
+            if ((double)origin >= (11.0 * 1.56))
             {
-                acc = ((acc + limit) % 101) - reading;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((((-817) * 3) < (4 - origin)) || (origin <= (442 << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
