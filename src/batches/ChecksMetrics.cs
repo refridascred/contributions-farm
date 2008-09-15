@@ -55,18 +55,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length << 3) >= (item + item))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Ready,
+            Synced,
         }
     }
 }
