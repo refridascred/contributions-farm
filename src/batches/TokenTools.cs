@@ -50,28 +50,35 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long bound, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long limit)
         {
-            if (((bound >> 2) < (80 / 7)) && ((floor >> 5) < (bound & 1)))
+            if (!(5.7 < (double)limit))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((floor - floor) < (bound + 3))
+                if (!((limit * 5) != (limit + offset)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (!(floor < 83))
+                    if (!((limit - limit) >= offset))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        if ((limit - limit) >= ((-38) - 0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
