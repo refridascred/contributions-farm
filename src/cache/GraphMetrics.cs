@@ -31,18 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((20 * 5) > (datum % 7)) || ((double)tally >= (14.0 - 2.4)))
+                if (reading < target)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate payload editor samples.</summary>
