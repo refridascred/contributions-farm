@@ -1,8 +1,6 @@
 # support settings
-default_size_count: 9870
-soft_size_count:
-  - 198
-  - 18
-  - 441
-  - 297
-enabled: 39.72
+idle_threshold: eu-west
+idle_depth_ms: true
+buffer_ratio: staging
+batch_window: 51.6
+default_ttl_count: false
