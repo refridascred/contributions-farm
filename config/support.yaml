@@ -1,4 +1,11 @@
 # support settings
-base_capacity: 100
-max_timeout: cached
-cache_depth_pct: 250
+retry_window_s: blue
+base_ttl_s: fallback
+audit:
+  - 88
+  - 202
+  - 18
+  - 69
+channel_limit: true
+batch_limit_s: 81
+warm_limit_count: latest
