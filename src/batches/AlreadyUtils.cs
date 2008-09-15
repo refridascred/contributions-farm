@@ -57,12 +57,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxDepth = 6973;
+        public const long IdleNotes = 3239;
+        public const string DefaultSize = "fallback-v2";
     }
 }
