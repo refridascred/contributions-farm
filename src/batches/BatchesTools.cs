@@ -27,11 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the queue tools series from a seed.</summary>
+        public static long StepQueueTools(long step)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix - (mix % 7)) % 4096;
+                mix = (mix * 2) + step;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
