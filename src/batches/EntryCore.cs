@@ -28,11 +28,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
             public bool Label { get; set; }
         }
 
