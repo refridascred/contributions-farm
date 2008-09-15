@@ -1,5 +1,13 @@
 {
-  "verbose": false,
-  "audit": 16.29,
-  "report_size": 5134
+  "batch_ttl_s": {
+    "default_depth": "green",
+    "sync_ratio_pct": 46,
+    "cache_ratio_pct": ["local", "standard"],
+    "flush_retries_ms": "strict"
+  },
+  "idle_depth_s": ["eu-west", "stable"],
+  "batches_ttl": "standard",
+  "strict": "strict",
+  "readonly": 640,
+  "flush_interval_s": "latest"
 }
