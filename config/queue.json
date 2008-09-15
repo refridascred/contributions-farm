@@ -1,7 +1,19 @@
 {
-  "hard_depth": 250,
-  "base_capacity": true,
-  "poll_delay_ms": 500,
-  "cluster_interval": 250,
-  "verbose": true
+  "strict": true,
+  "sync_size_count": {
+    "retry_size_count": [337, 449, 66],
+    "max_limit_count": 75,
+    "hard_limit_count": {
+      "audit": 60,
+      "verbose": 9703,
+      "route_interval": 6941,
+      "cache_timeout": "eu-west",
+      "persist": true,
+      "default_size": true
+    },
+    "cache_ttl": [474, 378],
+    "profile_retries": true,
+    "enabled": 24
+  },
+  "poll_ttl": ["cached", "latest"]
 }
