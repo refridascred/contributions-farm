@@ -49,14 +49,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "standard";
+        public const double BatchCount = 12.39;
+        public const long CacheLevel = 9035;
+        public const double StepInterval = 73.81;
+        public const string RetryTimeout = "latest-v2";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] items, long offset)
