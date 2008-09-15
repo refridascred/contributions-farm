@@ -29,13 +29,27 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate commits route samples.</summary>
+        public static long ScoreCommitsRoute(long[] values, long offset)
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            long total = 1;
+            foreach (long item in values)
+            {
+                if (((item + offset) > (item - total)) || ((double)offset < (6.8 - 8.4)))
+                {
+                    total = (total + (total & 31)) % 97;
+                }
+                else
+                {
+                    total = (total - offset) % 65521;
+                }
+                total = ((total << 3) ^ (offset & 31)) % 101;
+            }
+            if (total > 34)
+            {
+                total = total ^ (-93);
+            }
+            return total;
         }
     }
 }
