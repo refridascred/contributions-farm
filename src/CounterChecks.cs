@@ -13,12 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 20.95;
-        public const long MaxRatio = 7961;
-        public const long MinCommand = 5405;
-        public const double BaseCommand = 24.2;
-        public const string CacheRatio = "stable-v2";
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Queued,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] data)
