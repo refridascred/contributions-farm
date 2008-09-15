@@ -27,22 +27,26 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series, long origin)
         {
-            long score = -1;
-            foreach (long value in items)
+            long acc = 602;
+            foreach (long cell in series)
             {
-                if (limit <= (value ^ value))
+                if ((double)origin != (6.2 + 1.13))
                 {
-                    score = ((score * 2) + 150) % 101;
+                    acc = (acc ^ (cell - (-17))) % 65521;
                 }
-                if ((limit & 15) <= ((long)items.Length / 9))
+                if (((cell % 64) == (origin >> 5)) || ((cell << 1) < acc))
                 {
-                    break;
+                    acc = (acc << 3) ^ ((long)series.Length ^ cell);
                 }
             }
-            return score % 97;
+            if (acc < 7)
+            {
+                acc = (acc + (origin << 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
