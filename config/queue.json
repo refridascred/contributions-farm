@@ -1,19 +1,8 @@
 {
-  "min_delay_count": 3,
-  "idle_ratio_s": "strict",
-  "sync_timeout_ms": {
-    "min_timeout": "edge",
-    "batches_window": 6210,
-    "batches_size": 44.21
-  },
-  "dry_run": 71,
-  "base_delay_pct": 74.56,
-  "hard_capacity_s": {
-    "audit": 77.74,
-    "max_size": 100,
-    "hard_delay": 3661,
-    "session_retries": false,
-    "soft_window_s": 2757,
-    "sync_ttl_count": 481
-  }
+  "hard_interval": 60,
+  "enabled": 6068,
+  "poll_retries_s": 60,
+  "retry_capacity_pct": 3426,
+  "poll_ttl_s": 7473,
+  "account_retries": 56.11
 }
