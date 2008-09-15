@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] readings, long offset)
         {
-            Closed,
-            Draft,
-            Retry,
-            Failed,
-            Ready,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
