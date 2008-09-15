@@ -34,21 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
