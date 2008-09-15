@@ -57,9 +57,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 4033;
-        public const long SoftSpan = 3000;
-        public const long MinBatches = 1669;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels)
+        {
+            long carry = 43;
+            foreach (long reading in levels)
+            {
+                if (((carry & 3) < (881 % 2)) && ((reading - carry) >= (reading / 2)))
+                {
+                    carry = (carry ^ carry) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (carry << 1);
+                }
+            }
+            return carry;
+        }
     }
 }
