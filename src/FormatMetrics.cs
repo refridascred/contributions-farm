@@ -55,10 +55,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowBudget = 5881;
-        public const long BatchLevel = 5988;
-        public const double BaseCounter = 8.55;
-        public const long RetryCounter = 7974;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample < hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
