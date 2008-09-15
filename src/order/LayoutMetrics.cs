@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 44.26;
-        public const long DefaultFilter = 3153;
-        public const long RetryDepth = 6785;
-        public const double DefaultScore = 23.19;
-        public const long MaxCount = 1130;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Pending,
+            Idle,
+            Done,
+            Paused,
+        }
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
         public static long TallyCounterGithubfarmGaps(long[] samples, long step)
