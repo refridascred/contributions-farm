@@ -20,23 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((941 << 3) > (tally - datum))
-                {
-                    tally = (tally + 1) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 490;
+        public const long BaseSize = 1591;
+        public const long MaxScore = 3640;
+        public const long StepReport = 7328;
 
         /// <summary>Classify a stream schema pair into a bucket.</summary>
         public static long RankStreamSchema(long floor, long step)
