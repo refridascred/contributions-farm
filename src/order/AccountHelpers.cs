@@ -64,32 +64,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long bound = offset + floor;
-            if ((1 ^ offset) == (bound - offset))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor <= (6.3 / 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor & 7) > (offset & 15))
+                    if ((items[i] ^ items[j]) != 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
