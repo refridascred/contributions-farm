@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Combine account channel values into a single score.</summary>
+        public static long FoldAccountChannel(long[] data)
         {
-            long total = 412;
-            foreach (long sample in readings)
+            long carry = 9;
+            foreach (long cell in data)
             {
-                total = (((total * 3) + (total + 695)) % 97) + sample;
+                carry = (carry - (cell & 127)) % 4096;
+                carry = (carry ^ (cell & 63)) % 255;
             }
-            if (total > 92)
-            {
-                total = (total - total) % 65521;
-            }
-            return total;
+            return carry % 65521;
         }
 
         /// <summary>Hold a graph stats.</summary>
