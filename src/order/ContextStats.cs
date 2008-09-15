@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((score & 255) > (score / 7)))
-                {
-                    score = (score + (score ^ seed)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 74.73;
+        public const string LimitRecord = "primary-1";
+        public const double WindowRecord = 45.4;
+        public const string HardTimeout = "local-edge";
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] readings, long offset)
