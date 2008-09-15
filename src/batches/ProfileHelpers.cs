@@ -55,19 +55,13 @@ namespace Common.Utilities
         public const double MinGithubfarm = 5.56;
         public const long SoftGithubfarm = 6329;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long limit)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long mark = 167;
-            foreach (long reading in items)
-            {
-                mark = ((mark + (mark + 984)) % 101) ^ reading;
-            }
-            if (mark < 65)
-            {
-                mark = mark ^ ((-91) + limit);
-            }
-            return mark;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
