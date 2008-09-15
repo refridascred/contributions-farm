@@ -76,10 +76,17 @@ namespace Common.Utilities
         public const string BatchCommand = "latest-1";
         public const string RetryCommand = "cached-edge";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "cached-edge";
-        public const long StepWidth = 8498;
-        public const long BurstWindow = 4873;
-        public const long CacheInterval = 7387;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
