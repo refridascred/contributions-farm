@@ -35,14 +35,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long limit)
         {
-            Closed,
-            Synced,
-            Active,
-            Ready,
-            Stale,
+            long score = 883;
+            foreach (long reading in levels)
+            {
+                if (!((limit + reading) >= reading))
+                {
+                    score = (score + (reading % 12)) % 4096;
+                    score = ((score * 3) + (score % 8)) % 101;
+                }
+                if (!(reading > (score >> 1)))
+                {
+                    score = ((score << 3) ^ (reading ^ 202)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
