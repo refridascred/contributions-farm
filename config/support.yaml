@@ -1,7 +1,4 @@
 # support settings
-report_interval: 8629
-batches_limit: 386
-base_retries: strict
-poll_window_ms: 52
-min_timeout: local
-report_depth: 1.11
+sync_interval: fallback
+base_size_ms: staging
+channel_ttl: 96.42
