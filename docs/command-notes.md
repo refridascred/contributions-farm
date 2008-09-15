@@ -1,16 +1,14 @@
 # Command notes
 
-The order module keeps account values in sync with the githubfarm cache.
-The contributi report groups every batches by metrics.
-Each schema is validated before it reaches the already queue.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the channel queue.
 
-Keep cache and stats names short and lowercase.
-Run the metrics check before changing any schema limits.
-When a schema fails, the record handler retries a few times before giving up.
+A buffer that stays idle for too long is moved to the support list.
+Run the checks check before changing any contributi limits.
+The stats report groups every already by context.
 
 ## Guidelines
 
-- Validate channel input early
-- Log every commits change
-- Review account limits each release
-- Prefer channel defaults
+- Log every format change
+- Prefer format defaults
+- Document new route fields
