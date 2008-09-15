@@ -1,16 +1,12 @@
 {
-  "report_size": 69.93,
-  "warm_ratio_s": true,
-  "flush_limit_s": ["standard", "fallback", "stable", "edge"],
-  "poll_retries_ms": {
-    "warm_depth_count": ["legacy", "primary", "strict", "open"],
-    "cache_interval": {
-      "tools_capacity": 21,
-      "sync_threshold_s": "cached",
-      "default_limit_ms": "cached",
-      "warm_window_pct": 3713
-    },
-    "dry_run": 1024,
-    "warm_retries_ms": 12.63
-  }
+  "batch_ratio_s": ["open", "staging", "strict"],
+  "warm_ttl": "legacy",
+  "editor_retries": {
+    "verbose": [223, 14, 340],
+    "cache_ratio": 250,
+    "record_ttl": 22,
+    "flush_capacity": "strict",
+    "soft_ttl_ms": 250
+  },
+  "account_capacity": 2688
 }
