@@ -1,5 +1,6 @@
 {
-  "command_retries": 250,
-  "cache_retries": 23.89,
-  "schema_capacity": 46.0
+  "soft_ttl": 46.27,
+  "payload_retries": "local",
+  "notes_ratio": true,
+  "retry_depth_count": "fallback"
 }
