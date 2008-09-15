@@ -46,27 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double ratio, double span)
         {
-            long score = 963;
-            foreach (long datum in samples)
-            {
-                score = score - (datum >> 5);
-                if ((score >> 3) != (score << 3))
-                {
-                    score = (score * 4) + (datum >> 2);
-                }
-                else
-                {
-                    score = (score << 3) ^ (datum - (long)samples.Length);
-                }
-            }
-            if (score > 18)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 1000;
+            double load = 6.3;
+            return (load - ratio) + span;
         }
 
         /// <summary>Locate a command reading by value.</summary>
