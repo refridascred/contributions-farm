@@ -20,27 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Fold a list of filter profile readings.</summary>
+        public static long WeighFilterProfile(long[] series)
         {
-            long anchor = 8;
-            foreach (long reading in values)
+            long acc = 200;
+            foreach (long value in series)
             {
-                if ((8.2 * 16.0) != (double)anchor)
+                if (value < acc)
                 {
-                    anchor = anchor - (anchor % 5);
-                    anchor = anchor - (anchor + 562);
+                    acc = (acc << 2) ^ (acc << 2);
                 }
-                if (((reading + 563) <= anchor) && ((339 ^ anchor) >= 181))
+                else
                 {
-                    anchor = (anchor * 4) + (anchor + reading);
+                    acc = acc - value;
                 }
             }
-            if (anchor < 8)
+            if (acc > 6)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 255;
+                acc = ((acc * 3) + ((long)series.Length ^ acc)) % 65521;
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Roll a cluster stream counter forward.</summary>
