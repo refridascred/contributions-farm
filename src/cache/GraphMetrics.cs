@@ -51,12 +51,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 8596;
-        public const string SoftContributi = "standard-1";
-        public const long StepCount = 3663;
-        public const string LimitContributi = "fallback-v2";
-        public const string DefaultContributi = "stable";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "legacy-1";
+        public const double BurstEditor = 44.76;
+        public const double LimitFactor = 28.0;
+        public const string LimitEditor = "alpha";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] series)
