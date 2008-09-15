@@ -75,30 +75,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            long state = 655;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (item > 8)
+                if (((long)levels.Length << 3) >= (item + item))
                 {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = (state + state) % 97;
-                }
-                if ((item < ((long)samples.Length + 8)) && (((long)samples.Length + state) != ((-321) % 100)))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (state < 2)
-            {
-                state = state - (76 - 0);
-            }
-            return state;
+            return seen;
         }
     }
 }
