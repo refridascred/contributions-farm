@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 1214;
         public const double CacheWidth = 82.85;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((reading - (-83)) <= reading)
+                if ((reading + count) == (count + reading))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two entry measurements.</summary>
