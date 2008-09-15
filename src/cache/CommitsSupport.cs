@@ -43,20 +43,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleWidth = 8245;
+        public const long BurstSize = 8079;
+        public const string RetryNotes = "legacy-1";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
