@@ -15,32 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a session order value against two limits.</summary>
-        public static long GradeSessionOrder(long offset, long offset2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long origin)
         {
-            long step = offset - offset2;
-            if (((step / 6) == (offset2 ^ offset)) || ((offset - offset2) >= (step / 6)))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset2 / 9) >= (step << 1)) || (((-684) * 5) > (offset / 5)))
+                if (item != origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step >> 2) < (step % 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
