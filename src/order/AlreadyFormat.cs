@@ -21,22 +21,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] readings)
+        /// <summary>Find the first already metric entry that matches the target.</summary>
+        public static long LookupAlreadyMetricIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally >= 54)
+                if (levels[i] < offset)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
