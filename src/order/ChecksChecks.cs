@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = offset ^ limit;
+            if ((offset & 15) == (offset << 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((offset + prev) >= (offset + offset)) || ((offset / 9) <= 52))
                 {
-                    if ((readings[i] + readings[j]) < 19)
+                    return 6;
+                }
+                else
+                {
+                    if (3 < offset)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
