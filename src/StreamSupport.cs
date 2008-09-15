@@ -24,21 +24,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] series)
+        public static long CountQueueGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((1.2 + 4.1) != (double)entry))
+                if ((seen - (long)data.Length) <= (reading << 3))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
