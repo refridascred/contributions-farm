@@ -19,24 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long origin, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] readings)
         {
-            if ((origin >> 4) >= floor)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.25 + 0.1) <= 6.5)
+                if ((count * 4) == (count - cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up checks samples.</summary>
