@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Paused,
-            Draft,
-            Queued,
-            New,
-            Locked,
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the batch editor series from a seed.</summary>
