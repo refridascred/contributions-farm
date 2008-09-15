@@ -1,8 +1,15 @@
 # githubfarm settings
-burst_window_ms: 60
-base_threshold_ms: 1024
-flush_delay:
-  - 234
-  - 96
-  - 85
-burst_capacity: 83
+warm_retries: true
+burst_threshold_s: latest
+flush_depth: fallback
+cache_retries: staging
+cluster_threshold:
+  - standard
+  - edge
+  - open
+  - green
+base_threshold:
+  - 289
+  - 426
+  - 483
+  - 315
