@@ -49,35 +49,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token queue readings.</summary>
-        public static long CombineTokenQueue(long[] data, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long bound)
         {
-            long carry = 0;
-            foreach (long value in data)
+            if ((double)step != (9.2 - 20.0))
             {
-                if ((24 + limit) <= (value * 2))
+                return 7;
+            }
+            else
+            {
+                if (!((bound / 4) <= (bound + step)))
                 {
-                    carry = (carry + value) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    long next = carry;
-                    carry = (carry - (next - limit)) % 65521;
-                }
-                if ((value ^ value) == (value << 1))
-                {
-                    carry = carry - 5;
-                }
-                if ((8.89 / 4.0) >= (double)value)
-                {
-                    carry = (carry << 2) ^ (limit + 47);
-                }
-                if ((carry ^ value) > value)
-                {
-                    break;
+                    if (((-193) + step) > ((-82) & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step & 255) == (242 + step)) && ((82 ^ step) > step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
     }
 }
