@@ -70,21 +70,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry * 5) + (step << 3)) ^ (long)i2;
-                }
-                carry = ((carry << 3) ^ carry) % 255;
-                carry = (carry * 5) + ((long)i ^ step);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 9990;
+        public const long HardDepth = 2149;
+        public const double BurstSupport = 66.29;
+        public const long BaseWidth = 9601;
     }
 }
