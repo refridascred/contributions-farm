@@ -1,7 +1,15 @@
 {
-  "burst_limit": "cached",
-  "persist": 7835,
-  "compress": "green",
-  "poll_timeout_s": false,
-  "batch_threshold": false
+  "idle_capacity": {
+    "metric_threshold": [75, 169, 292],
+    "cache_limit": 89.19,
+    "max_timeout": true,
+    "cache_threshold_ms": "local",
+    "enabled": 4412,
+    "verbose": 60
+  },
+  "account_threshold": "legacy",
+  "poll_ttl_ms": [383, 193, 414, 491],
+  "default_threshold_s": 5817,
+  "soft_interval_ms": true,
+  "enabled": 25
 }
