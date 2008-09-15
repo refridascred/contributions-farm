@@ -1,9 +1,20 @@
 # githubfarm settings
-default_depth_pct: true
-commits_ttl: true
-githubfarm_depth: cached
-batch_limit:
-  - 236
-  - 196
-  - 250
-idle_depth_ms: 16
+base_capacity: 60
+strict:
+  hard_interval:
+    - 158
+    - 279
+    - 29
+  base_window_ms: open
+  idle_threshold: 60
+  hard_timeout: open
+  default_timeout_pct: 9
+  default_threshold_ms: 60
+max_window_count: strict
+sync_interval_pct:
+  report_timeout: eu-west
+  editor_ratio: 60
+  record_retries: standard
+  sync_retries_pct: 7695
+  hard_size_s: 4989
+  checks_delay: 6574
