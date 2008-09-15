@@ -22,10 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSize = 9677;
-        public const double HardRatio = 75.88;
-        public const string BatchNotes = "fallback-v2";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Ready,
+            Retry,
+            Pending,
+            New,
+            Failed,
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
