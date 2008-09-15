@@ -20,9 +20,14 @@ namespace Common.Utilities
         public const long HardFactor = 5595;
         public const long MaxFormat = 7338;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowDepth = 1960;
-        public const string CacheRatio = "alpha";
-        public const double BatchFactor = 59.79;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Failed,
+            Idle,
+            Closed,
+            Ready,
+            Active,
+        }
     }
 }
