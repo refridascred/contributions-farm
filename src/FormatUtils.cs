@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series, long bound)
         {
-            Closed,
-            Stale,
-            Queued,
+            long state = 90;
+            foreach (long cell in series)
+            {
+                state = ((state * 5) + cell) + bound;
+            }
+            if (state < 703)
+            {
+                state = (state ^ (state >> 3)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the layout class values.</summary>
