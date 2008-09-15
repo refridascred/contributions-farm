@@ -41,17 +41,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Locate a command reading by value.</summary>
