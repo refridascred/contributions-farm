@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
+        public static bool GuardPayloadBufferRange(long[] levels, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((seed ^ seed) != ((long)i * 5))
+                if (reading >= step)
                 {
-                    state = ((state << 3) ^ (seed + state)) % 101;
-                    state = (state - (state % 97)) % 101;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    state = (state ^ 3) % 255;
-                    state = (state - (seed % 64)) % 255;
-                }
-                state = state - (state << 3);
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a buffer options.</summary>
