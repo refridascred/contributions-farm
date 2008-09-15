@@ -38,11 +38,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 288;
+            foreach (long sample in values)
+            {
+                if ((5 + sample) == (mark << 2))
+                {
+                    mark = (mark ^ (mark + mark)) % 4096;
+                }
+                if (((6.0 + 2.0) == (double)sample) && ((mark - sample) >= 791))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
