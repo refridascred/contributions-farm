@@ -1,12 +1,8 @@
 {
-  "readonly": {
-    "poll_retries": true,
-    "githubfarm_size": [29, 77, 26, 90],
-    "cache_window_s": 7186,
-    "cache_size": 86
-  },
-  "context_size": 79.66,
-  "stats_window": 30,
-  "warm_limit_pct": 100,
-  "verbose": "fallback"
+  "poll_depth_s": 85,
+  "persist": 82,
+  "compress": [214, 418, 154],
+  "base_limit_pct": ["edge", "local", "local"],
+  "tools_threshold": 39.49,
+  "route_capacity": [184, 496, 251, 55]
 }
