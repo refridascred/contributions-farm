@@ -1,8 +1,7 @@
 # githubfarm settings
-readonly: 94
-queue_capacity:
-  - legacy
-  - stable
-  - strict
-  - edge
-hard_window: 40.06
+warm_depth_count: primary
+max_depth: 100
+batches_threshold:
+  window_ratio: latest
+  metric_ttl: 40
+  soft_size_pct: latest
