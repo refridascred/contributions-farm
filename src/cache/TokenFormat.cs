@@ -23,22 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long sum = 83;
-            foreach (long item in series)
-            {
-                if (((sum * 5) >= sum) && ((sum << 3) == (sum & 63)))
-                {
-                    sum = ((sum << 3) ^ (item * 4)) % 65521;
-                }
-                if ((item < (sum + sum)) && ((item + sum) < 8))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
