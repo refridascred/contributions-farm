@@ -47,10 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleFactor = "strict-edge";
-        public const double BurstScore = 12.68;
-        public const long MinCount = 4864;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
         public static long TallyBatchesWindowHits(long[] series, long target)
