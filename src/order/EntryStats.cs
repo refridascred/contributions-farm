@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long LimitScore = 3185;
         public const long RetryRoute = 3418;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] series, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count <= (148 + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) + reading;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
