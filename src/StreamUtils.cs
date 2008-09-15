@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit format layout readings against a rule.</summary>
-        public static long TallyFormatLayoutHits(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                if (!((tally + tally) > tally) || (((-74) ^ tally) > tally))
+                if ((double)carry > (3.7 * 0.56))
                 {
-                    tally = (tally + 3) ^ item;
+                    carry = (carry - (3 & 63)) ^ entry;
+                }
+                else
+                {
+                    carry = carry - (595 + carry);
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
