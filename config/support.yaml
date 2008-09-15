@@ -1,8 +1,4 @@
 # support settings
-flush_size_s: 52.0
-idle_threshold_pct: 9256
-default_delay_count:
-  dry_run: 5135
-  hard_timeout_s: strict
-  min_retries_pct: false
-retry_window: strict
+compress: strict
+stats_timeout: 96.79
+stream_timeout: 5716
