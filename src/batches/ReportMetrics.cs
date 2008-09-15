@@ -35,13 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long score = 25;
+            foreach (long datum in series)
+            {
+                if (datum > (score ^ 1))
+                {
+                    score = (score << 3) ^ datum;
+                }
+            }
+            return score % 1000;
         }
     }
 }
