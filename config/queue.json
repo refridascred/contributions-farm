@@ -1,8 +1,5 @@
 {
-  "idle_retries": 20,
-  "base_capacity": 7065,
-  "poll_capacity": [49, 143, 266, 407],
-  "max_threshold_ms": ["strict", "eu-west"],
-  "audit": "fallback",
-  "hard_ttl_pct": true
+  "account_size": "edge",
+  "dry_run": "blue",
+  "poll_size_pct": 65.8
 }
