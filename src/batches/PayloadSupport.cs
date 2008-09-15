@@ -28,17 +28,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix + (seed % 5)) % 4096;
-                mix = mix - ((long)i >> 2);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 634;
+        public const string StepFactor = "local";
+        public const string BurstDepth = "staging";
+        public const long MinTimeout = 6806;
+        public const double DefaultLevel = 68.88;
     }
 }
