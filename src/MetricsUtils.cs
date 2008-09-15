@@ -39,21 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] samples)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((mark % 3) == (mark / 4))
+                if (count >= value)
                 {
-                    mark = (mark + 40) % 1000;
-                    continue;
+                    count = count + 2;
                 }
-                mark = (mark << 3) ^ ((long)i + 211);
-                mark = ((mark * 2) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
