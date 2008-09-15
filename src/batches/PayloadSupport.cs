@@ -29,9 +29,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSize = "legacy-1";
-        public const long IdleFactor = 5933;
-        public const long SoftSupport = 5839;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 5652;
+        public const long CacheBudget = 5673;
+        public const double LimitLayout = 58.2;
+        public const double IdleLayout = 3.23;
+        public const long WindowDepth = 4690;
     }
 }
