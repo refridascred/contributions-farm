@@ -15,23 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long TallyBatchOrderHits(long[] levels, long floor)
         {
-            long result = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                result = (result << 2) ^ (100 * 2);
-                if ((sample + result) == (sample / 2))
+                if (matches < (floor >> 3))
                 {
-                    result = result - ((-618) & 7);
-                }
-                else
-                {
-                    result = result + (13 + sample);
+                    matches = (matches + 3) + reading;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
