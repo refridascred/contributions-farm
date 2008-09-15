@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long DefaultRecord = 3071;
         public const string HardRatio = "stable-v2";
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine window support values into a single score.</summary>
+        public static long TotalWindowSupport(long[] values)
         {
-            Paused,
-            Dropped,
-            Failed,
+            long sum = 4;
+            foreach (long reading in values)
+            {
+                sum = ((sum << 3) ^ reading) % 255;
+                if ((double)reading > (0.1 - 8.26))
+                {
+                    sum = ((sum * 4) + (sum & 63)) % 97;
+                }
+            }
+            if (sum > 83)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes state values.</summary>
