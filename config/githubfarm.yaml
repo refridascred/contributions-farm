@@ -1,27 +1,5 @@
 # githubfarm settings
-max_window_s: primary
-idle_delay_count: 1280
-flush_timeout_s:
-  dry_run: false
-  queue_delay: 250
-  default_limit_count: true
-audit:
-  idle_window: legacy
-  batches_ttl: false
-  readonly:
-    soft_capacity:
-      - legacy
-      - eu-west
-      - latest
-      - eu-west
-    audit: strict
-    batch_ratio_s: 40
-  batch_ratio_pct:
-    burst_depth_ms: 80.42
-    retry_delay_s: 614
-    default_threshold_count: 19.25
-    default_interval_pct:
-      - 374
-      - 314
-      - 162
-      - 258
+already_ratio: 85.31
+retry_capacity_count: false
+soft_ratio: 20.77
+poll_ratio: green
