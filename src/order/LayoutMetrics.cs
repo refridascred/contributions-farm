@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] levels)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((2 & 15) == (tally / 2))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches class values.</summary>
