@@ -34,13 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
