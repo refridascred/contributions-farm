@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (0.06 < (double)reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
