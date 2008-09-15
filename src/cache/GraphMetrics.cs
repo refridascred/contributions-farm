@@ -45,13 +45,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a schema options.</summary>
