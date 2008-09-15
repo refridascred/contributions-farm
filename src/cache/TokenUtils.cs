@@ -25,12 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstDepth = 1591;
-        public const long BaseSchema = 955;
-        public const long LimitSchema = 8006;
-        public const long BatchSchema = 1668;
-        public const double BatchTimeout = 65.49;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Closed,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
