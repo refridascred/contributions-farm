@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 48.39;
-        public const long SoftLevel = 7921;
-        public const long DefaultCount = 7654;
-        public const long SoftRoute = 1485;
-        public const string SoftScore = "fallback-edge";
+        /// <summary>Derive the next farm report value from a seed.</summary>
+        public static long StepFarmReport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = acc + acc;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
