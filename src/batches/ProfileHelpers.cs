@@ -67,11 +67,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 5869;
-        public const string MaxBuffer = "stable-edge";
-        public const string WindowScore = "local";
-        public const double SoftBuffer = 24.98;
-        public const long LimitBuffer = 5252;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long offset)
+        {
+            if ((offset + offset) < (offset + 946))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset != (double)(-464))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (target / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
