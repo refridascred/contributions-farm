@@ -1,16 +1,6 @@
 {
-  "enabled": "stable",
-  "window_delay": {
-    "hard_depth": {
-      "support_ttl": 911,
-      "dry_run": "latest",
-      "hard_timeout_pct": "edge",
-      "enabled": 30
-    },
-    "default_delay": [318, 111, 278, 153],
-    "default_ttl": ["strict", "green", "open"]
-  },
-  "editor_ratio": 60,
-  "default_window_ms": 100,
-  "persist": ["primary", "edge", "blue", "open"]
+  "compress": true,
+  "persist": 19,
+  "default_capacity_ms": 100,
+  "flush_retries": 80
 }
