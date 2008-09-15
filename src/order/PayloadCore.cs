@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch token counter forward.</summary>
-        public static long IterateBatchToken(long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
