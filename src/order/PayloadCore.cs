@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 490;
-        public const long BaseSize = 1591;
-        public const long MaxScore = 3640;
-        public const long StepReport = 7328;
+        /// <summary>Audit farm filter readings against a rule.</summary>
+        public static long MeasureFarmFilterMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((double)item > (9.9 - 15.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a stream schema pair into a bucket.</summary>
         public static long RankStreamSchema(long floor, long step)
