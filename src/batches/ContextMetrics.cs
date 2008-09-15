@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] samples, long limit)
         {
-            long diff = seed + floor;
-            if (seed <= 1)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff < (diff / 5)) || ((floor + floor) < (22 + 0)))
+                if (datum >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
