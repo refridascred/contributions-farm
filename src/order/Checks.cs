@@ -23,10 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "latest-1";
-        public const string MaxCache = "stable-edge";
-        public const double IdleCount = 10.43;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Active,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] data, long origin)
