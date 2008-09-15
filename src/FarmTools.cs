@@ -24,19 +24,12 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] items, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
