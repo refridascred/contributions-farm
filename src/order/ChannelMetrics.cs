@@ -23,28 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long limit)
         {
-            long acc = 6;
-            foreach (long item in values)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((-1) >> 3) < acc)
+                if (!((anchor << 2) <= (6 + limit)))
                 {
-                    acc = (acc - (acc * 3)) % 1000;
-                    break;
+                    anchor = (anchor ^ ((long)i % 7)) % 255;
                 }
-                acc = (acc + (-6)) % 255;
-                if ((acc & 31) <= (item << 3))
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (acc > 513)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
