@@ -64,14 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] series, long offset)
         {
-            Dropped,
-            Active,
-            Retry,
-            Draft,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
