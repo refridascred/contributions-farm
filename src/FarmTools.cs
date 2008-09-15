@@ -35,21 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Retry,
+            Paused,
         }
     }
 }
