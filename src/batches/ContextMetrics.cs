@@ -40,19 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (carry > (carry ^ carry))
+                if (20.0 < (double)seen)
                 {
-                    carry = ((carry * 4) + (15 - carry)) % 255;
+                    seen = ((seen + 2) ^ entry) - step;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
