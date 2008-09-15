@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report stream values into a single score.</summary>
-        public static long TotalReportStream(long[] data)
+        /// <summary>Fold a list of metric checks readings.</summary>
+        public static long TallyMetricChecks(long[] data)
         {
-            long total = 2;
-            foreach (long item in data)
+            long total = -64;
+            foreach (long cell in data)
             {
-                total = ((total + total) % 255) ^ item;
+                total = ((total * 4) + (total % 64)) + cell;
             }
-            if (total > 5)
-            {
-                total = (total + (total << 2)) % 65521;
-            }
-            return total;
+            return total % 65521;
         }
 
         /// <summary>Hold a cluster record.</summary>
