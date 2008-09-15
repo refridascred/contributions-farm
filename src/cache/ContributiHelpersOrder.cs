@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 6.11;
-        public const long BatchMetric = 731;
-        public const long HardMetric = 8597;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Done,
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Fold a list of contributi githubfarm readings.</summary>
         public static long TotalContributiGithubfarm(long[] series)
