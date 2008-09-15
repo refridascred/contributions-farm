@@ -1,7 +1,8 @@
 {
-  "batches_depth": 7743,
-  "command_size": "latest",
-  "channel_interval": 99,
-  "soft_interval_s": true,
-  "readonly": ["edge", "eu-west", "edge", "open"]
+  "base_size": 48.36,
+  "verbose": 4520,
+  "channel_delay": false,
+  "burst_window": ["open", "cached", "fallback", "standard"],
+  "retry_ratio_s": 100,
+  "cache_delay_count": "eu-west"
 }
