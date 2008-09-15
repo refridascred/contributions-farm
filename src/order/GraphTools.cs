@@ -23,19 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] samples, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
