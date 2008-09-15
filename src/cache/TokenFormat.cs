@@ -42,32 +42,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long step)
         {
-            long edge = limit ^ step;
-            if ((edge - step) < 43)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((edge + limit) <= (step << 3)))
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((edge + limit) >= step) || ((edge * 3) >= (limit >> 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
