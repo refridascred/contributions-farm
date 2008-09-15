@@ -42,13 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every checks tools entry stays within the limit.</summary>
+        public static bool VerifyChecksToolsBounds(long[] series, long target)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
