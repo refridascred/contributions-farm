@@ -39,14 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate channel route samples.</summary>
+        public static long CombineChannelRoute(long[] data, long limit)
         {
-            Retry,
-            Pending,
-            Idle,
-            Dropped,
-            Closed,
+            long mark = 60;
+            foreach (long reading in data)
+            {
+                if ((mark / 5) == (reading + reading))
+                {
+                    mark = (mark - (limit - 161)) % 101;
+                }
+                if ((limit & 15) == (345 + mark))
+                {
+                    mark = (mark * 2) + (limit << 2);
+                }
+                if (((4 % 3) != (mark & 15)) || (reading < (reading ^ limit)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
