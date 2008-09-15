@@ -67,9 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 3864;
-        public const long BatchSpan = 5815;
-        public const long DefaultAccount = 3437;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally % 64) >= (offset & 63))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
     }
 }
