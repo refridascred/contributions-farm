@@ -48,19 +48,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double drift = gain;
-            if (drift <= drift)
-            {
-                drift = (drift - (drift * 6.0)) + offset;
-            }
-            else
-            {
-                drift = drift + (gain / 3.0);
-            }
-            return drift + (double)64;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
