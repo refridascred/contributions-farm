@@ -42,17 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] readings, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset + floor) < (floor & 3))
             {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor - offset) == (floor / 4))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next commits value.</summary>
