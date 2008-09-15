@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchLevel = 5049;
-        public const string WindowInterval = "local";
-        public const double BatchFarm = 96.97;
-        public const long RetryInterval = 1281;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double weight, double span)
+        {
+            double bias = (span - span) - span;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias + (span / 9.0)) + (double)(long)i) + weight;
+            }
+            return bias - (bias * 13.0);
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
