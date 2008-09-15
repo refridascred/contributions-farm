@@ -48,21 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metric context pairs that satisfy a relation.</summary>
-        public static long CompareMetricContextCount(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] == limit)
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
