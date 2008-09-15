@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double span)
-        {
-            double gain = (double)143 + (double)7;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (((gain - (double)7) + (double)(long)i) + rate) + span;
-            }
-            return gain - 11.0;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "strict";
+        public const double MinWidth = 17.28;
+        public const long CacheSize = 2895;
+        public const long WindowSession = 6529;
+        public const string SoftSession = "strict";
 
         /// <summary>Combine command layout values into a single score.</summary>
         public static long FoldCommandLayout(long[] items)
