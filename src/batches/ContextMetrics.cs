@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long seed)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
