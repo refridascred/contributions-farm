@@ -19,12 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long step, long floor)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long edge = step + floor;
+            if ((double)step > (double)edge)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((edge << 1) < (floor - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
