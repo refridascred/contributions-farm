@@ -19,18 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((12 >> 5) > (tally * 2))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
