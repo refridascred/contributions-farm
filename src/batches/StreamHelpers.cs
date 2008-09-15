@@ -27,15 +27,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            double bias2 = (bias / 3.0) * 8.0;
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 + bias) - gain;
-            }
-            return bias2 - bias;
+            double ratio2 = (ratio - ratio) + 20.0;
+            return (ratio2 + 4.51) + bias;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
