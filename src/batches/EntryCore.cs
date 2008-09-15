@@ -12,24 +12,18 @@ namespace Common.Utilities
             return (gain2 + (0.8 - gain2)) + span;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long origin2)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values, long step)
         {
-            if (((-518) + 14) >= (origin2 + 4))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin < (origin2 + origin2))
+                if (!(step > (matches >> 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 1) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a filter record.</summary>
