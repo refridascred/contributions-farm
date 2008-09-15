@@ -1,10 +1,7 @@
-id,label,ratio
-1,386,888
-2,20.21,73.99
-3,edge,14.13
-4,302,staging
-5,90.51,local
-6,27,fallback
-7,local,44.63
-8,fallback,fallback
-9,strict,928
+id,count,level,rank
+1,819,742,43.13
+2,28.88,857,44.67
+3,133,32.34,green
+4,31.73,197,55.48
+5,287,92.85,541
+6,88.69,74.59,588
