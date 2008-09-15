@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 9044;
+        public const long BatchSchema = 356;
+        public const long MinCount = 4257;
 
         /// <summary>Locate a filter batches reading by value.</summary>
         public static long LookupFilterBatchesIndex(long[] items, long seed)
