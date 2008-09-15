@@ -20,15 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a route profile figure with a bias.</summary>
-        public static double SmoothRouteProfile(double gain, double floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double load = (double)(70 - 77);
-            if (load >= floor)
-            {
-                load = (load + (load * 2.0)) - gain;
-            }
-            return load + load;
+            Failed,
+            Idle,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
