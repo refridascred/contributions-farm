@@ -1,8 +1,5 @@
 {
-  "base_size": 48.36,
-  "verbose": 4520,
-  "channel_delay": false,
-  "burst_window": ["open", "cached", "fallback", "standard"],
-  "retry_ratio_s": 100,
-  "cache_delay_count": "eu-west"
+  "sync_interval": 70.45,
+  "githubfarm_threshold": ["local", "green", "staging"],
+  "enabled": "staging"
 }
