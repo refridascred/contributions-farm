@@ -1,11 +1,10 @@
 # Command notes
 
-Each batch is validated before it reaches the githubfarm queue.
-Each account is validated before it reaches the profile queue.
+When a batches fails, the entry handler retries a few times before giving up.
+Keep notes and format names short and lowercase.
 
 ## Guidelines
 
-- Log every batches change
-- Review session limits each release
-- Validate report input early
-- Document new contributi fields
+- Keep commits values small
+- Log every command change
+- Document new record fields
