@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowBudget = 1497;
-        public const long CacheMetric = 2974;
-        public const long BurstSpan = 4476;
+        /// <summary>Classify a report support pair into a bucket.</summary>
+        public static long BucketReportSupport(long offset, long origin)
+        {
+            long step = offset ^ origin;
+            if ((offset % 97) == (origin + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3 - origin) <= 616)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.9 + 2.8) < (17.0 - 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((602 ^ origin) <= (offset << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
         public static bool CheckPayloadGithubfarmRange(long[] items, long step)
