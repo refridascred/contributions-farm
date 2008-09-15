@@ -76,21 +76,10 @@ namespace Common.Utilities
         public const string BatchCommand = "latest-1";
         public const string RetryCommand = "cached-edge";
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "cached-edge";
+        public const long StepWidth = 8498;
+        public const long BurstWindow = 4873;
+        public const long CacheInterval = 7387;
     }
 }
