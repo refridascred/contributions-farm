@@ -70,16 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Derive the next schema account value from a seed.</summary>
+        public static long SeriesSchemaAccount(long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc - (acc >> 3)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a context options.</summary>
