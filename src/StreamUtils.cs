@@ -34,21 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            if (scale > offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - (offset + bias);
             }
-            return seen;
+            return scale + (double)235;
         }
 
         /// <summary>Adjust a support metric reading.</summary>
