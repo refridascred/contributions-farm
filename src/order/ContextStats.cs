@@ -45,19 +45,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order route readings against a bound.</summary>
-        public static bool CheckOrderRouteRange(long[] samples, long offset)
+        /// <summary>Rank order cache input into a small class.</summary>
+        public static long BucketOrderCache(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if ((15 - bound) == (offset / 2))
             {
-                if (reading >= offset)
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound - bound))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound * 4) == (66 - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((bound * 4) != (bound & 15)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
