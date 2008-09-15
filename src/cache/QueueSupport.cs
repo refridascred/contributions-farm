@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a metric record sample.</summary>
-        public static long LookupMetricRecordIndex(long[] readings, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a queue record.</summary>
