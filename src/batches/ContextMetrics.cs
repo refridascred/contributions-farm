@@ -45,15 +45,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 <= (rate2 / 4.0))
+            long result = 74;
+            foreach (long reading in data)
             {
-                rate2 = (rate2 - 3.4) + bias;
+                result = (result + 33) + reading;
             }
-            return rate2 + 2.5;
+            if (result < (-225))
+            {
+                result = ((result * 2) + (result % 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
