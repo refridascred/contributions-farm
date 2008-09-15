@@ -30,12 +30,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long result = 0;
+            foreach (long datum in series)
+            {
+                result = (result + (origin >> 4)) % 101;
+                if ((6.0 >= (double)result) || ((origin + origin) > (result / 9)))
+                {
+                    result = ((result << 2) ^ (origin + origin)) % 97;
+                    result = (result << 3) ^ datum;
+                }
+                else
+                {
+                    result = ((result * 3) + (origin + datum)) % 101;
+                }
+                if ((double)result >= (1.1 * 2.96))
+                {
+                    result = result - (origin & 63);
+                }
+            }
+            if (result > 17)
+            {
+                result = (result ^ (origin & 255)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of command record readings.</summary>
