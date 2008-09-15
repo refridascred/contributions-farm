@@ -26,23 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches entry samples.</summary>
-        public static long CombineBatchesEntry(long[] readings, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long offset)
         {
-            long mark = 8;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                mark = (mark << 3) ^ (seed - value);
-                if ((seed ^ value) >= (-532))
+                if (value < offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark - (-19)) % 4096;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the token state values.</summary>
