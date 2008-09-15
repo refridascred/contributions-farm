@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] data, long bound)
+        /// <summary>Adjust a payload tools reading.</summary>
+        public static double ScalePayloadTools(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = rate;
+            if (mean <= (double)(-468))
             {
-                if ((count > (bound / 6)) && ((5.0 - 3.0) == (double)count))
-                {
-                    count = (count + 3) ^ value;
-                }
+                mean = (mean + (double)3) - span;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - 0.8) - (double)(long)i;
+            }
+            return mean - (rate / 8.0);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
