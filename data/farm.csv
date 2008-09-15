@@ -1,9 +1,8 @@
-id,score
-1,stable
-2,921
-3,strict
-4,27.2
-5,60.26
-6,623
-7,878
-8,701
+id,count,owner,region,active
+1,local,eu-west,staging,25.36
+2,309,25.53,edge,419
+3,377,13.69,516,69.64
+4,41.57,53.02,local,fallback
+5,16.63,496,edge,47.78
+6,primary,eu-west,23.94,307
+7,292,stable,487,531
