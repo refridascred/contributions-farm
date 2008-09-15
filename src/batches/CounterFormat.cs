@@ -24,9 +24,31 @@ namespace Common.Utilities
         public const string IdleStats = "local-edge";
         public const double BatchLevel = 78.96;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 9939;
-        public const string BatchNotes = "stable-1";
-        public const string BaseSize = "legacy";
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long origin, long offset)
+        {
+            if (((3.99 + 20.0) > (double)offset) && (origin > (51 & 127)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin / 4) != (offset << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(offset > (origin % 60)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
