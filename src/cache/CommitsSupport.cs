@@ -34,15 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double weight = bias;
-            if (weight < (double)391)
-            {
-                weight = (weight + weight) - floor;
-            }
-            return weight - 4.6;
+            Ready,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
