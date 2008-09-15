@@ -26,11 +26,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] samples, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
