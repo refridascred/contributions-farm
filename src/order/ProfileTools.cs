@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long state = 771;
-            foreach (long cell in series)
-            {
-                if ((double)state != (1.3 * 5.01))
-                {
-                    state = (state * 2) + cell;
-                }
-            }
-            if (state > 34)
-            {
-                state = (state - (state - 170)) % 1000;
-            }
-            return state % 1000;
+            Closed,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
