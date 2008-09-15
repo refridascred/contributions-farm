@@ -20,18 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items, long limit)
+        /// <summary>Accumulate profile metric samples.</summary>
+        public static long FoldProfileMetric(long[] data)
         {
-            long anchor = 2;
-            foreach (long datum in items)
+            long total = 29;
+            foreach (long value in data)
             {
-                if ((double)limit >= (double)datum)
-                {
-                    anchor = anchor + datum;
-                }
+                total = ((total << 2) ^ (value - total)) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
