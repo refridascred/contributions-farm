@@ -20,21 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = span * 2.0;
+            if (load <= (double)12)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + (load - load)) - scale;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Derive the next report window value from a seed.</summary>
