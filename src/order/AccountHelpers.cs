@@ -57,11 +57,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 4240;
-        public const double BurstSize = 3.6;
-        public const long StepScore = 5278;
-        public const long DefaultPayload = 4610;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
