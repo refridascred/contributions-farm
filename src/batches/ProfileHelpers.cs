@@ -47,23 +47,19 @@ namespace Common.Utilities
         public const double MinGithubfarm = 5.56;
         public const long SoftGithubfarm = 6329;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items, long limit)
         {
-            long mix = 327;
-            foreach (long datum in levels)
+            long mark = 167;
+            foreach (long reading in items)
             {
-                if ((limit & 127) > (datum >> 2))
-                {
-                    mix = mix - 7;
-                }
-                mix = mix ^ (datum >> 3);
+                mark = ((mark + (mark + 984)) % 101) ^ reading;
             }
-            if (mix < 14)
+            if (mark < 65)
             {
-                mix = (mix ^ mix) % 1000;
+                mark = mark ^ ((-91) + limit);
             }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
