@@ -56,22 +56,37 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long bound)
         {
-            if (origin <= target)
+            long cur = step - bound;
+            if ((cur + cur) < (cur << 3))
             {
                 return 4;
             }
             else
             {
-                if ((double)origin == (6.39 / 4.0))
+                if ((bound - step) < (step - step))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 7;
+                    if ((7 % 12) >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (18.0 > (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
