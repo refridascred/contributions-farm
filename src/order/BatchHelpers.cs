@@ -22,25 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            long delta = seed + bound;
-            if (((bound + delta) >= (243 + 4)) && ((double)delta > (19.0 - 2.0)))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.4 * 5.66) <= (double)delta)
+                if ((1.77 + 19.0) < (double)seen)
                 {
-                    return 4;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a entry payload counter forward.</summary>
