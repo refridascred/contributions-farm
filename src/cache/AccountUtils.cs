@@ -34,14 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long seed)
         {
-            Idle,
-            Ready,
-            Pending,
-            Dropped,
-            Closed,
+            long state = 558;
+            foreach (long datum in samples)
+            {
+                state = (((state << 3) ^ (543 - state)) % 65521) + datum;
+            }
+            if (state > 20)
+            {
+                state = (state - (seed * 4)) % 255;
+            }
+            return state;
         }
     }
 }
