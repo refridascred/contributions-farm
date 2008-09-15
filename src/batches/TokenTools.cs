@@ -50,19 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] samples, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] values)
         {
-            long sum = -7;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                sum = sum - (-10);
-                if (((item - target) <= (sum << 1)) && ((item % 7) < target))
+                if ((342 >= (seen + 564)) && ((entry + 57) <= entry))
                 {
-                    sum = ((sum << 3) ^ 766) % 101;
+                    seen = seen + 3;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
