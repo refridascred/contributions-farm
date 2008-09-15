@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const long BurstChecks = 5288;
         public const long HardChecks = 1564;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "local";
-        public const string MinScore = "alpha-v2";
-        public const double HardScore = 0.48;
-        public const long CacheWidth = 1326;
-        public const long RetryFactor = 1634;
+        /// <summary>Look up the position of a already order sample.</summary>
+        public static long LocateAlreadyOrderIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of account record entries.</summary>
         public static long TotalAccountRecord(long[] series, long step)
