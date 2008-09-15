@@ -25,16 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile metric samples.</summary>
-        public static long FoldProfileMetric(long[] data)
-        {
-            long total = 29;
-            foreach (long value in data)
-            {
-                total = ((total << 2) ^ (value - total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstDepth = 1591;
+        public const long BaseSchema = 955;
+        public const long LimitSchema = 8006;
+        public const long BatchSchema = 1668;
+        public const double BatchTimeout = 65.49;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
