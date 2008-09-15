@@ -23,11 +23,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
+            long result = -9;
+            foreach (long value in levels)
+            {
+                if ((double)value < (17.0 / 7.0))
+                {
+                    result = result ^ (value + value);
+                }
+                else
+                {
+                    result = (result + (value * 2)) % 101;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a profile stats.</summary>
