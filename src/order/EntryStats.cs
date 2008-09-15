@@ -62,33 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long seed)
-        {
-            long gap = bound - seed;
-            if (!((double)bound > (3.8 - 1.93)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((14.0 + 4.9) < (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed & 7) < seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSpan = 8068;
+        public const long DefaultSize = 321;
+        public const double MinChannel = 23.11;
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] series)
