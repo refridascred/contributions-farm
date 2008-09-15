@@ -1,15 +1,13 @@
 # entry settings
-soft_interval_ms: 72
-dry_run:
-  batch_ttl_ms: 100
-  dry_run: false
-  metric_retries: 7.49
-readonly:
-  - 249
-  - 33
-metric_threshold:
-  - legacy
-  - legacy
-  - edge
-  - latest
-editor_window: 87
+default_capacity:
+  burst_delay_s:
+    - edge
+    - green
+  flush_delay:
+    report_capacity: strict
+    hard_size_ms: standard
+    burst_size: true
+  audit: eu-west
+readonly: blue
+verbose: false
+flush_timeout_pct: 34.6
