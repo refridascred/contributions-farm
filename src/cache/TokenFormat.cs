@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double bias)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double drift = (rate - 18.0) + (double)6;
-            if (drift < (double)45)
-            {
-                drift = (drift + 18.0) - bias;
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            return drift + (0.3 + rate);
+            Closed,
+            Dropped,
+            Done,
+            Retry,
         }
     }
 }
