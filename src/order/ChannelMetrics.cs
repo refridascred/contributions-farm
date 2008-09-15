@@ -36,20 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((limit + (long)i) < limit))
-                {
-                    score = score - (6 + score);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
