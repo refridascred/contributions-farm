@@ -36,13 +36,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRatio = 82.26;
+        public const long CacheRoute = 9724;
+        public const long MinLevel = 9180;
+        public const string IdleRoute = "strict-1";
+        public const double HardCount = 98.84;
 
         /// <summary>Scale a context commits figure with a bias.</summary>
         public static double SmoothContextCommits(double ratio, double bias)
