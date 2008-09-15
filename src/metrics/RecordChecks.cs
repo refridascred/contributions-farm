@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "alpha";
-        public const double CacheInterval = 18.79;
-        public const string SoftWidth = "primary-edge";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items, long target)
+        {
+            long sum = 684;
+            foreach (long sample in items)
+            {
+                sum = ((sum - (sum ^ 634)) ^ sample) + target;
+            }
+            if (sum > 452)
+            {
+                sum = ((sum << 3) ^ (sum << 3)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BaseSize = 23.66;
