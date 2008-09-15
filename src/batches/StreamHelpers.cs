@@ -58,17 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics batches entries.</summary>
-        public static long TotalMetricsBatches(long[] samples)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long offset)
         {
-            long mark = 1;
-            foreach (long item in samples)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                mark = mark ^ (item * 3);
-                if ((double)mark != (double)item)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = (mark + 58) % 4096;
+                    mark = (mark + (264 & 3)) - (long)i2;
                 }
+                mark = ((mark * 5) + ((long)i - (-37))) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
