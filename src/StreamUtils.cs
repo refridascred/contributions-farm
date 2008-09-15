@@ -55,19 +55,21 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Validate queue filter readings against a bound.</summary>
-        public static bool CheckQueueFilterBounds(long[] data, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
