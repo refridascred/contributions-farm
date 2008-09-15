@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRatio = 58.09;
+        public const long BaseRecord = 702;
+        public const long DefaultRecord = 3071;
+        public const string HardRatio = "stable-v2";
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
