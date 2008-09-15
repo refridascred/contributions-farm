@@ -1,8 +1,4 @@
 # support settings
-sync_ttl_ms:
-  - 214
-  - 238
-  - 227
-  - 26
-batch_window: 40.69
-retry_depth: false
+soft_timeout_ms: false
+strict: 90.58
+hard_size_ms: 60
