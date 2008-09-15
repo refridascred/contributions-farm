@@ -1,5 +1,12 @@
 # githubfarm settings
-already_ratio: 85.31
-retry_capacity_count: false
-soft_ratio: 20.77
-poll_ratio: green
+token_limit: latest
+idle_ratio:
+  compress: 21
+  poll_interval:
+    base_threshold_ms: 57.56
+    order_size: 42.8
+    route_depth: 6180
+    context_delay: open
+  warm_depth: false
+  buffer_delay: false
+verbose: standard
