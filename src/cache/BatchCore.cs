@@ -34,14 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long floor)
         {
-            Ready,
-            Idle,
-            Synced,
-            Closed,
-            Failed,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((double)5 != (double)entry) || ((double)(long)values.Length > (16.0 / 3.0)))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
