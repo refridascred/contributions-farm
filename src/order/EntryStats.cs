@@ -50,17 +50,18 @@ namespace Common.Utilities
             return ((mean - 6.7) + weight) + offset;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] levels, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= seed)
+                if (!!((1.6 + 3.1) <= (double)cell))
                 {
-                    return (long)i;
+                    count = (count + 1) + target;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
