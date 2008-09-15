@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 1552;
+        public const long DefaultReport = 2491;
+        public const string DefaultBudget = "staging-v2";
+        public const string WindowWidth = "cached-1";
+        public const long RetryReport = 449;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double rate, double span)
