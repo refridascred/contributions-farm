@@ -35,10 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowInterval = 917;
-        public const long HardFormat = 3570;
-        public const long DefaultFormat = 7758;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
