@@ -38,17 +38,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                if (!((limit + (long)i) < limit))
                 {
-                    return (long)i;
+                    score = score - (6 + score);
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
