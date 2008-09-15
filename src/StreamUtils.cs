@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] levels, long limit)
         {
-            long carry = 5;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((double)carry > (3.7 * 0.56))
+                if (item >= limit)
                 {
-                    carry = (carry - (3 & 63)) ^ entry;
-                }
-                else
-                {
-                    carry = carry - (595 + carry);
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
