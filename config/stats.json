@@ -1,11 +1,21 @@
 {
-  "batch_window_s": true,
-  "persist": 60,
-  "editor_depth": {
-    "notes_capacity": 30,
-    "enabled": "green",
-    "verbose": "green",
-    "batch_size": true
+  "soft_interval_s": "staging",
+  "channel_threshold": {
+    "burst_ratio": {
+      "sync_delay_s": 6026,
+      "poll_threshold_s": 1024,
+      "sync_ttl_pct": 35,
+      "support_window": 65
+    },
+    "flush_depth_s": {
+      "flush_retries_ms": 22,
+      "enabled": ["strict", "blue"],
+      "batches_depth": ["edge", "edge"],
+      "readonly": "local"
+    },
+    "base_size_pct": 91.36
   },
-  "batch_retries_count": [227, 234, 23, 309]
+  "readonly": "legacy",
+  "burst_ttl_pct": [433, 142],
+  "audit": 5505
 }
