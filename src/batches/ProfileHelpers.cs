@@ -46,11 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double ratio, double span)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] samples, long offset)
         {
-            double load = 6.3;
-            return (load - ratio) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
