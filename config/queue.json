@@ -1,8 +1,6 @@
 {
-  "warm_threshold_ms": false,
-  "warm_window_count": 100,
-  "entry_size": false,
-  "context_depth": 250,
-  "retry_interval_ms": "stable",
-  "default_size_pct": false
+  "session_timeout": "strict",
+  "sync_limit_pct": true,
+  "editor_capacity": 70.14,
+  "metrics_retries": ["local", "standard", "legacy", "standard"]
 }
