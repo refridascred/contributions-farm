@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long DefaultCommits = 9800;
         public const double MinCommits = 95.33;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstRatio = 1723;
-        public const double WindowDepth = 75.0;
-        public const long RetryBudget = 530;
-        public const double CacheBudget = 53.5;
+        /// <summary>Iterate the counter account series from a seed.</summary>
+        public static long RollCounterAccount(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((total % 100) >= total) && ((6.1 + 9.2) != (double)target))
+                {
+                    total = (total ^ (target - target)) % 101;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
