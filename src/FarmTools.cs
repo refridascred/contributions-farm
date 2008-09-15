@@ -29,19 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every context checks entry stays within the limit.</summary>
-        public static bool VerifyContextChecksLimits(long[] data, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = 2.6 - span;
+            return (load + load) + weight;
         }
     }
 }
