@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item * 3) >= (tally & 127))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Pending,
         }
     }
 }
