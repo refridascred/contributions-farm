@@ -26,18 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Locate a batches farm reading by value.</summary>
+        public static long LookupBatchesFarmIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value > (14.0 / 4.0))
+                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
