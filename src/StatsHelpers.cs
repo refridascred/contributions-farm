@@ -13,24 +13,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] values, long seed)
         {
-            long mark = 7;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark ^ ((-73) - 718);
-                mark = ((mark << 2) ^ (mark ^ mark)) % 4096;
-                if (((3.13 - 3.0) == (double)mark) && (cell <= 95))
+                if ((values[i] < seed) && ((values[i] % 3) != 0))
                 {
-                    mark = ((mark << 2) ^ (678 % 5)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
