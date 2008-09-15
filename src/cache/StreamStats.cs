@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const double BaseDepth = 50.41;
         public const string CacheDepth = "stable-1";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            Stale,
-            New,
-            Queued,
-            Pending,
-            Locked,
+            long total = 45;
+            foreach (long cell in samples)
+            {
+                total = (total ^ (cell >> 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Blend two graph measurements.</summary>
