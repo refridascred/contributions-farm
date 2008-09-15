@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate queue already readings against a bound.</summary>
-        public static bool CheckQueueAlreadyRange(long[] readings, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            if (!(offset >= (origin - 50)))
             {
-                if (reading <= step)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset >= (4.0 + 2.51)) || ((offset + origin) < (origin + offset)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((origin % 60) >= (origin >> 2)) || ((origin % 60) > (origin + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
