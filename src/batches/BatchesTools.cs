@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= step)
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
