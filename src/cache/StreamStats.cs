@@ -13,39 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long step, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long span = step + origin;
-            if ((span >> 5) != (span >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (double)span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - step) >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((span - span) < 74))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
