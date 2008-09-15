@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - count) != (entry + entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleCount = 9838;
+        public const long WindowSize = 3947;
+        public const long IdleQueue = 3600;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
