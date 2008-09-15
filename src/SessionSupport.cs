@@ -14,20 +14,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long mark = 420;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 3) ^ (mark >> 2)) % 4096;
-                mark = ((mark << 3) ^ (datum << 3)) % 4096;
-                if ((1.3 * 1.15) == (double)datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ mark;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
