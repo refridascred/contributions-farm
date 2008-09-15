@@ -41,25 +41,17 @@ namespace Common.Utilities
         public const double IdleRoute = 92.47;
         public const long CacheRoute = 2151;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values, long target)
+        /// <summary>Roll a githubfarm commits counter forward.</summary>
+        public static long StepGithubfarmCommits(long origin)
         {
-            long sum = 825;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((584 - reading) <= 90))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = sum - 6;
-                    sum = ((sum << 2) ^ 1) % 1000;
+                    sum = (((sum << 3) ^ (origin << 1)) % 255) + (long)i2;
                 }
-                if ((sum & 15) != (target - target))
-                {
-                    sum = sum - (target + target);
-                }
-                if (((double)sum <= (8.0 - 2.0)) && ((target * 2) < (target >> 1)))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
             return sum;
         }
