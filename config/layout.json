@@ -1,5 +1,12 @@
 {
-  "enabled": true,
-  "record_threshold": 78.26,
-  "sync_ttl": 55.32
+  "cache_size": ["latest", "primary"],
+  "dry_run": false,
+  "githubfarm_ttl": {
+    "max_depth_s": "local",
+    "poll_depth_count": true,
+    "batch_threshold_s": 80.22,
+    "verbose": 53.63
+  },
+  "min_delay": 91.37,
+  "idle_window": true
 }
