@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels, long floor)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)seen > (4.56 * 17.0))
+                {
+                    seen = ((seen + 1) + entry) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
