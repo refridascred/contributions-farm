@@ -42,13 +42,10 @@ namespace Common.Utilities
         public const long BurstSize = 8079;
         public const string RetryNotes = "legacy-1";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryWidth = "fallback";
+        public const string CacheTimeout = "legacy-edge";
+        public const double WindowStats = 50.37;
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double bias, double bias2)
