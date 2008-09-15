@@ -63,11 +63,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSize = 2607;
-        public const long RetryOrder = 1475;
-        public const long BaseInterval = 8357;
-        public const double MaxBudget = 73.67;
-        public const string BurstBudget = "fallback";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleDepth = "fallback";
+        public const string HardWindow = "primary-edge";
+        public const long IdleWindow = 3470;
     }
 }
