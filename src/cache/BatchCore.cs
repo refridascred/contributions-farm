@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = 69;
-            foreach (long sample in items)
-            {
-                if ((double)sample <= (6.0 + 6.1))
-                {
-                    mix = (mix ^ (77 * 2)) % 1000;
-                }
-            }
-            if (mix > 86)
-            {
-                mix = ((mix * 4) + (mix / 3)) % 255;
-            }
-            return mix;
+            Ready,
+            Failed,
+            Queued,
+            Retry,
+            Pending,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
