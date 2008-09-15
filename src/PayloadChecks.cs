@@ -60,11 +60,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 1067;
-        public const long DefaultBuffer = 8442;
-        public const long WindowBuffer = 924;
-        public const double StepBuffer = 91.22;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] data, long step)
