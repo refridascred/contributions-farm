@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + 93) <= (count << 2))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of contributi githubfarm readings.</summary>
