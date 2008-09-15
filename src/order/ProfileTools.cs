@@ -20,17 +20,12 @@ namespace Common.Utilities
             return weight + (3.0 + floor);
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix ^ (mix * 2)) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 6607;
+        public const long IdleScore = 7287;
+        public const string WindowBatches = "latest-1";
+        public const long LimitBatches = 5751;
+        public const long MinCount = 5394;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] levels, long floor)
