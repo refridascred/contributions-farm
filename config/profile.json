@@ -1,19 +1,18 @@
 {
-  "batch_retries_count": "staging",
-  "warm_interval_count": 86,
-  "persist": [393, 78],
-  "base_ttl_ms": {
-    "cache_delay": true,
-    "cache_limit_count": 4.5,
-    "warm_delay": "stable",
-    "idle_timeout": {
-      "dry_run": false,
-      "githubfarm_delay": "primary",
-      "warm_delay": 2172,
-      "burst_interval_count": false,
-      "flush_limit": 30
+  "persist": 22.3,
+  "min_delay": [220, 487, 480, 76],
+  "route_depth": 100,
+  "poll_size": "cached",
+  "batch_window_count": {
+    "queue_ttl": {
+      "hard_timeout": "primary",
+      "strict": "standard",
+      "max_timeout": "local",
+      "batch_retries": 6400,
+      "base_capacity": [149, 276]
     },
-    "persist": 450,
-    "max_limit": true
-  }
+    "queue_interval": "eu-west",
+    "burst_ratio_s": "primary"
+  },
+  "cache_interval_count": "legacy"
 }
