@@ -35,18 +35,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double gain2 = gain + gain;
+            if (gain2 >= (gain - gain))
             {
-                if ((value - matches) >= (matches % 97))
-                {
-                    matches = matches + 1;
-                }
+                gain2 = gain2 + (offset / 7.0);
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 + (gain2 + gain2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (gain + offset)) - (double)(long)i;
+            }
+            return gain2 + gain2;
         }
     }
 }
