@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 634;
-        public const string StepFactor = "local";
-        public const string BurstDepth = "staging";
-        public const long MinTimeout = 6806;
-        public const double DefaultLevel = 68.88;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
