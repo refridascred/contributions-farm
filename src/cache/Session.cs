@@ -48,18 +48,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] samples)
+        /// <summary>Iterate the token report series from a seed.</summary>
+        public static long SeriesTokenReport(long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((43 / 8) != (tally + tally)) || ((5 - sample) > tally))
+                if (((double)floor >= (double)(long)i) || (state >= (state >> 4)))
                 {
-                    tally = tally + 1;
+                    state = ((state * 3) + floor) % 97;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
     }
 }
