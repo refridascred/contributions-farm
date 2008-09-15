@@ -20,12 +20,32 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFactor = 78.99;
-        public const long BatchFarm = 7081;
-        public const string MaxCount = "primary-1";
-        public const long BaseCount = 9608;
-        public const long LimitInterval = 8549;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long step)
+        {
+            if ((double)37 != (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)step >= (5.0 - 0.6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (4.1 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine payload filter values into a single score.</summary>
         public static long ScorePayloadFilter(long[] samples)
