@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Draft,
-            Idle,
-            Dropped,
-            Active,
-            Ready,
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
