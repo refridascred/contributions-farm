@@ -45,11 +45,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
