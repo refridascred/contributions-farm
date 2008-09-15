@@ -67,39 +67,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long target)
-        {
-            long next = seed - target;
-            if ((target % 16) == (target ^ seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)next <= (1.73 + 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.32 * 0.89) > (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target < 15.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 3864;
+        public const long BatchSpan = 5815;
+        public const long DefaultAccount = 3437;
     }
 }
