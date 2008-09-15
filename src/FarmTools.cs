@@ -35,13 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] series, long limit)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((99 % 2) < count)
+                {
+                    count = ((count + 1) + item) - limit;
+                }
+            }
+            return count;
         }
     }
 }
