@@ -35,31 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] items, long limit)
         {
-            if ((double)37 != (double)step)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step >= (5.0 - 0.6)))
+                if (items[i] < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (4.1 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
