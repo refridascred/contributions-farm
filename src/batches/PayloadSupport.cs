@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support tools readings against a rule.</summary>
-        public static long MeasureSupportToolsGaps(long[] samples, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((3.4 / 3.0) < (double)entry)
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
