@@ -27,26 +27,11 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] series, long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long acc = 602;
-            foreach (long cell in series)
-            {
-                if ((double)origin != (6.2 + 1.13))
-                {
-                    acc = (acc ^ (cell - (-17))) % 65521;
-                }
-                if (((cell % 64) == (origin >> 5)) || ((cell << 1) < acc))
-                {
-                    acc = (acc << 3) ^ ((long)series.Length ^ cell);
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc + (origin << 3)) % 97;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
