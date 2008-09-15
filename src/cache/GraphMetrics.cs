@@ -27,22 +27,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double bias)
         {
-            long result = -9;
-            foreach (long value in levels)
+            double rate = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)value < (17.0 / 7.0))
-                {
-                    result = result ^ (value + value);
-                }
-                else
-                {
-                    result = (result + (value * 2)) % 101;
-                }
+                rate = ((rate - (rate / 2.0)) + (double)(long)i) + scale;
             }
-            return result % 65521;
+            return rate - rate;
         }
 
         /// <summary>Describe the command mode values.</summary>
