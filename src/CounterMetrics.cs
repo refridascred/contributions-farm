@@ -38,18 +38,22 @@ namespace Common.Utilities
             return drift + (double)(-872);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((tally + tally) <= value)
+                if ((double)reading >= (double)8)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
