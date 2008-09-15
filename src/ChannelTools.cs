@@ -23,11 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long step)
         {
-            double gain = span;
-            return (gain + gain) + rate;
+            long gap = target ^ step;
+            if ((target - step) >= (600 + 25))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((gap >> 2) != (394 - gap)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step + step) >= (step << 1)) || ((step / 2) <= ((-9) << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a cache reading.</summary>
