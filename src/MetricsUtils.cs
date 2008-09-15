@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            long total = 3;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!(datum > ((-676) ^ total)))
+                if ((entry + entry) < (seen & 15))
                 {
-                    total = (total ^ 89) % 1000;
-                }
-                if ((total >> 3) <= total)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (total < (-57))
-            {
-                total = (total << 2) ^ (total >> 3);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
