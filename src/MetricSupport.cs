@@ -28,17 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] levels, long origin)
+        /// <summary>Measure how many session stream samples are out of range.</summary>
+        public static long AuditSessionStreamHits(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] == origin)
+                if (seed <= (value / 9))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate commits route samples.</summary>
