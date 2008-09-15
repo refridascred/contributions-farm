@@ -28,15 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Fold a list of channel contributi readings.</summary>
+        public static long TotalChannelContributi(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            long acc = 20;
+            foreach (long entry in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc - (acc + 966)) - (long)i) + entry;
+                }
+                acc = acc ^ acc;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Roll a record counter forward.</summary>
