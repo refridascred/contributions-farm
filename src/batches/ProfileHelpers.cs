@@ -66,14 +66,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long bound)
         {
-            Closed,
-            Draft,
-            Locked,
-            Retry,
-            New,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
