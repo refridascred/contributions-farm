@@ -51,18 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long score = 125;
+            foreach (long item in readings)
             {
-                if ((double)reading > 7.0)
+                if (((score / 9) <= (item % 7)) && ((score * 2) > (score << 1)))
                 {
-                    seen = seen + 2;
+                    score = ((score * 2) + (item - score)) % 101;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
