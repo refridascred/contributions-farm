@@ -21,18 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many context filter samples are out of range.</summary>
-        public static long AuditContextFilterMatches(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (9.25 <= (double)seen)
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Check that every report command entry stays within the limit.</summary>
