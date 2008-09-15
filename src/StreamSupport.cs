@@ -12,38 +12,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] series, long target)
         {
-            if (((step + origin) != (5 + step)) && ((step / 7) >= (step >> 3)))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((33 * 4) <= (origin & 7)) || (origin > (origin >> 4)))
+                if (cell > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (14.0 < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step < (71 << 2)) || ((origin + step) <= origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Classify a window payload pair into a bucket.</summary>
