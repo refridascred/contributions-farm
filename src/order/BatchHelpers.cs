@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long score = 60;
-            foreach (long cell in data)
-            {
-                if ((385 & 63) >= (limit + cell))
-                {
-                    score = (score ^ (cell + score)) % 255;
-                }
-                else
-                {
-                    score = score + (score % 16);
-                }
-            }
-            return score;
+            Done,
+            Idle,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
