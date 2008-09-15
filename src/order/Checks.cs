@@ -36,23 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] data, long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long seed)
         {
-            long sum = 7;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin & 3) >= 92)
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum << 3) ^ ((long)data.Length + datum);
-                }
-                sum = (sum + (datum << 3)) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
