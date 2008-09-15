@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long IdleRecord = 4319;
         public const long SoftDepth = 5363;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor * 3) < count)
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
                 {
-                    count = (count + 2) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
