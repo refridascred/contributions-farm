@@ -22,17 +22,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 117;
+            foreach (long sample in samples)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (mark + step);
+                mark = ((mark << 2) ^ sample) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
