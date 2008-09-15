@@ -34,12 +34,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
