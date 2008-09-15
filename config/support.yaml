@@ -1,4 +1,25 @@
 # support settings
-default_interval_count: true
-stream_size: 9056
-profile_ratio: 55.31
+verbose:
+  - cached
+  - local
+compress: 82.19
+soft_window_s:
+  default_timeout_s:
+    format_window: 30
+    min_window_ms: true
+    enabled: false
+  default_interval_count: 19.55
+  retry_depth_count: 9998
+  hard_delay_s:
+    account_limit: latest
+    retry_capacity: 97
+    stats_timeout: blue
+    min_capacity_pct:
+      - blue
+      - standard
+      - eu-west
+    warm_capacity_pct: 2076
+    strict: 6184
+  enabled: 16.13
+  idle_capacity: 100
+githubfarm_ttl: 78
