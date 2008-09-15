@@ -1,12 +1,13 @@
 {
-  "farm_retries": 49,
-  "burst_delay": "legacy",
-  "idle_size_s": {
-    "context_capacity": 22,
-    "soft_depth_count": "legacy",
-    "route_size": 48.2,
-    "queue_delay": [108, 86]
+  "batch_window_pct": [272, 368, 401],
+  "dry_run": {
+    "audit": 71.85,
+    "dry_run": "edge",
+    "commits_retries": {
+      "contributi_ttl": 3790,
+      "persist": 7.58,
+      "poll_depth": 250
+    }
   },
-  "audit": 7948,
-  "cluster_interval": "fallback"
+  "default_threshold_ms": 30
 }
