@@ -1,8 +1,6 @@
 # entry settings
-verbose: 24.22
-audit: stable
-batch_retries: open
-burst_delay_s:
-  default_threshold_s: 100
-  hard_size_s: legacy
-  min_retries_s: open
+max_size: false
+batch_interval:
+  - staging
+  - legacy
+burst_ttl_ms: primary
