@@ -1,21 +1,4 @@
 # support settings
-route_retries: strict
-base_delay_count:
-  - 484
-  - 136
-  - 341
-  - 35
-base_ratio: latest
-burst_depth_pct: 60
-idle_window_s:
-  max_interval_s:
-    audit: 15
-    idle_ratio: 250
-    strict: 68
-    poll_retries_count: green
-  burst_timeout: true
-  max_retries_pct: edge
-  min_depth_ms: stable
-  min_delay_pct: false
-  compress: 2282
-graph_threshold: 500
+default_interval_count: true
+stream_size: 9056
+profile_ratio: 55.31
