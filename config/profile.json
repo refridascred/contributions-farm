@@ -1,7 +1,5 @@
 {
-  "enabled": [106, 164],
-  "max_depth_s": 90.04,
-  "base_ratio": 500,
-  "readonly": 100,
-  "min_timeout": 91
+  "default_ttl_pct": true,
+  "metrics_timeout": 27.16,
+  "base_ratio_ms": "standard"
 }
