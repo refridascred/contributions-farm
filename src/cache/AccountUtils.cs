@@ -25,13 +25,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Classify a contributi token pair into a bucket.</summary>
+        public static long GradeContributiToken(long bound, long target)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
+            if ((target & 127) != (68 - 32))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target >= (2.0 * 8.81))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((14.0 - 3.9) >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound <= (bound / 9)) && ((target + (-94)) == (385 + target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
