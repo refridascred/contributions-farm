@@ -42,19 +42,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = 17;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = ((anchor * 2) + (long)i2) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                carry = (((carry * 4) + seed) % 101) - value;
             }
-            return anchor;
+            return carry;
         }
     }
 }
