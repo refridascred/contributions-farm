@@ -32,13 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (double)seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema kind values.</summary>
