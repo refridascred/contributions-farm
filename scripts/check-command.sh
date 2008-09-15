@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging primary cached; do
+COMMAND_LIMIT=38
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge fallback local cached; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-blue}"
 case "${mode}" in
-    latest)
+    legacy)
         log "fast path"
         ;;
     *)
