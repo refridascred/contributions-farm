@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] readings, long offset)
         {
-            double weight = floor;
-            if (weight > bias)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                weight = weight - (bias - floor);
+                if (((offset & 63) < (cell - matches)) && (((matches % 16) >= (cell << 3)) && ((double)cell > 8.1)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (double)36;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
