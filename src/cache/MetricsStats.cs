@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long total = 575;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.7 / 4.0) <= (double)total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total << 2) ^ (bound * 2)) % 65521) ^ reading;
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
