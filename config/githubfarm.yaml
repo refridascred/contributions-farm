@@ -1,15 +1,23 @@
 # githubfarm settings
-warm_ttl_pct:
-  - 449
-  - 223
-  - 337
-  - 217
-max_threshold_ms: latest
-base_ttl_pct:
-  buffer_depth: primary
-  warm_retries_pct: true
-  poll_retries:
-    - 137
-    - 128
-  checks_threshold: false
-  verbose: false
+base_size_count: true
+record_limit:
+  default_ratio_ms: 71.38
+  payload_timeout:
+    burst_delay_s: cached
+    dry_run: 9198
+    contributi_ratio:
+      - 269
+      - 398
+      - 97
+    retry_size_s: true
+  graph_interval: primary
+  compress:
+    - 47
+    - 394
+    - 71
+    - 208
+sync_delay: false
+queue_interval: 38.69
+verbose:
+  - 162
+  - 100
