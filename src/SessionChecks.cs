@@ -39,38 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long origin, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] items, long bound)
         {
-            if (((double)origin >= (7.48 * 1.3)) && ((bound / 5) > (origin << 3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((13 / 2) > bound)
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound > (bound % 24))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (bound - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
