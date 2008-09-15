@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series)
         {
-            double ratio2 = span;
-            if (ratio2 >= 16.0)
+            long sum = -848;
+            foreach (long entry in series)
             {
-                ratio2 = (ratio2 - (span + span)) - ratio;
+                sum = (sum << 2) ^ (sum + entry);
+                if (((622 - sum) > 483) && ((sum % 8) >= entry))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)12;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + 19.0) + (double)(long)i;
-            }
-            return ratio2 - span;
+            return sum;
         }
 
         /// <summary>Hold a session stats.</summary>
