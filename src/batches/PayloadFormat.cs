@@ -22,21 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark << 3) ^ ((long)i / 2)) % 65521;
-                if ((double)step > 3.0)
-                {
-                    mark = (mark << 2) ^ (2 + mark);
-                    mark = ((mark * 4) + (step & 31)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
