@@ -1,13 +1,6 @@
 # entry settings
-default_capacity:
-  burst_delay_s:
-    - edge
-    - green
-  flush_delay:
-    report_capacity: strict
-    hard_size_ms: standard
-    burst_size: true
-  audit: eu-west
-readonly: blue
-verbose: false
-flush_timeout_pct: 34.6
+max_interval_pct: 87
+schema_depth: 9007
+compress: latest
+base_ratio_pct: 500
+flush_window: 50
