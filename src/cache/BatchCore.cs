@@ -33,18 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long carry = -948;
+            foreach (long item in levels)
             {
-                if ((reading + seen) > (seen + 1))
+                if (item >= (13 + carry))
                 {
-                    seen = seen + 2;
+                    carry = (carry << 3) ^ (item + (long)levels.Length);
                 }
             }
-            return seen;
+            if (carry < 0)
+            {
+                carry = ((carry << 3) ^ (carry & 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
