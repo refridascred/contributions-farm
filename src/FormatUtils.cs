@@ -36,21 +36,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Derive the next commits graph value from a seed.</summary>
+        public static long SeriesCommitsGraph(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor << 2) ^ (origin + anchor);
+                if ((183 ^ (long)i) > origin)
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 2) + (origin % 5)) % 65521;
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = (anchor + (origin * 5)) + (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
