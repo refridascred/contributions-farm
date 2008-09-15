@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double bias)
         {
-            Dropped,
-            Idle,
-            Queued,
+            double scale2 = scale + (9.0 - scale);
+            return scale2 + (bias + scale);
         }
 
         /// <summary>Fold a list of report entry readings.</summary>
