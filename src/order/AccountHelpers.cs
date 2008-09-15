@@ -57,19 +57,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < limit)
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
