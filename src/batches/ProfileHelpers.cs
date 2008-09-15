@@ -58,17 +58,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long bound)
+        /// <summary>Measure how many channel record samples are out of range.</summary>
+        public static long TallyChannelRecordHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] > bound)
+                if (73 <= (datum - seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
