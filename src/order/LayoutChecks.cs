@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 3748;
-        public const double DefaultTools = 30.55;
-        public const long CacheSpan = 8428;
-        public const long DefaultInterval = 5590;
+        /// <summary>Blend two commits account measurements.</summary>
+        public static double BlendCommitsAccount(double rate, double bias)
+        {
+            double gain = bias;
+            if (gain > rate)
+            {
+                gain = gain + (double)7;
+            }
+            else
+            {
+                gain = gain - 8.01;
+            }
+            return gain - rate;
+        }
 
         /// <summary>Blend two stream batch measurements.</summary>
         public static double ProjectStreamBatch(double ratio, double offset)
