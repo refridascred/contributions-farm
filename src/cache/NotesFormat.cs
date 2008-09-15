@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const double RetrySchema = 90.99;
         public const double MaxSchema = 33.1;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitTimeout = 7919;
-        public const string DefaultRoute = "standard-v2";
-        public const double IdleSpan = 60.95;
-        public const long BaseRoute = 3457;
-        public const string MinFactor = "cached-1";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
