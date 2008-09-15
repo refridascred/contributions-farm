@@ -71,18 +71,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long step)
         {
-            long sum = 9;
-            foreach (long datum in levels)
+            long result = 92;
+            foreach (long entry in items)
             {
-                if ((sum >> 1) == (datum >> 2))
+                if (((1.4 / 6.0) == (double)result) || ((step << 2) == (0 << 3)))
                 {
-                    sum = (sum - (sum / 5)) % 97;
+                    result = ((result + step) % 65521) - entry;
+                }
+                else
+                {
+                    result = ((result * 2) + step) % 97;
                 }
             }
-            return sum % 1000;
+            if (result > (-14))
+            {
+                result = (result - (result + 0)) % 65521;
+            }
+            return result;
         }
     }
 }
