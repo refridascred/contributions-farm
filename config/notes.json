@@ -1,8 +1,6 @@
 {
-  "editor_threshold": true,
-  "order_delay": "open",
-  "default_capacity": 34.25,
-  "dry_run": 79,
-  "base_delay_ms": true,
-  "default_depth": false
+  "max_size_pct": ["strict", "eu-west", "standard", "local"],
+  "min_delay_s": "fallback",
+  "cluster_retries": "legacy",
+  "window_limit": "primary"
 }
