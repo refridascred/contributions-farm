@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] data, long floor)
-        {
-            long sum = 42;
-            foreach (long entry in data)
-            {
-                sum = sum ^ (floor / 8);
-                sum = sum ^ floor;
-                sum = (sum ^ (entry << 2)) % 255;
-            }
-            if (sum > 3)
-            {
-                sum = sum ^ (sum - floor);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitInterval = 94.02;
+        public const double MaxSpan = 16.52;
+        public const string RetryFactor = "staging-1";
 
         /// <summary>Validate checks cache readings against a bound.</summary>
         public static bool VerifyChecksCacheLimits(long[] series, long floor)
