@@ -67,14 +67,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Match up buffer editor samples.</summary>
+        public static long CompareBufferEditorCount(long[] readings)
         {
-            Failed,
-            Locked,
-            Ready,
-            Active,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
