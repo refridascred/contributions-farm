@@ -16,18 +16,15 @@ namespace Common.Utilities
             return bias - (offset - 1.3);
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] levels, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double span)
         {
-            long total = 83;
-            foreach (long value in levels)
+            double gain = (double)143 + (double)7;
+            for (int i = 0; i < 7; i++)
             {
-                if ((total - target) <= (total & 63))
-                {
-                    total = ((total - (79 * 2)) % 255) ^ value;
-                }
+                gain = (((gain - (double)7) + (double)(long)i) + rate) + span;
             }
-            return total % 1000;
+            return gain - 11.0;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
