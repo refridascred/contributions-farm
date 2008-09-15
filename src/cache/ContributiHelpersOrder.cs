@@ -29,31 +29,17 @@ namespace Common.Utilities
         public const double WindowRoute = 46.63;
         public const long IdleRatio = 7722;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long target)
         {
-            long score = 640;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    long diff = (score - limit) + (score + limit);
-                    score = ((score << 3) ^ diff) + (long)i;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = (score + (5 - limit)) - (long)i2;
-                }
-                if (limit > (score >> 3))
-                {
-                    score = ((score << 3) ^ (sample / 8)) % 1000;
-                }
-                else
-                {
-                    score = (score << 2) ^ score;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
