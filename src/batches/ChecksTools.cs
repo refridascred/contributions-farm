@@ -19,11 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
