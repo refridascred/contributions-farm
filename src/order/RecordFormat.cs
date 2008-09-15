@@ -50,12 +50,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] items, long limit)
         {
-            Pending,
-            Active,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
