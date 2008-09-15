@@ -25,22 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 7289;
+        public const long MaxSpan = 1032;
+        public const double DefaultTimeout = 39.9;
+        public const double DefaultGithubfarm = 41.49;
+        public const long BatchGithubfarm = 3716;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportMatches(long[] samples)
