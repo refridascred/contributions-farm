@@ -26,11 +26,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next context filter value.</summary>
-        public static double AdjustContextFilter(double weight, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] readings, long origin)
         {
-            double ratio = (weight + 4.01) / 3.0;
-            return ratio - (weight - bias);
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((value + 72) != (matches - matches)) && ((matches + 39) < (matches - value)))
+                {
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
