@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples)
-        {
-            long sum = 864;
-            foreach (long entry in samples)
-            {
-                if (!((22 / 5) >= entry))
-                {
-                    sum = (sum - (sum * 4)) % 101;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchTimeout = 6424;
+        public const long SoftCache = 6921;
+        public const long HardCache = 6857;
+        public const long StepCache = 5758;
 
         /// <summary>Project the next order account value.</summary>
         public static double ProjectOrderAccount(double rate, double bias)
