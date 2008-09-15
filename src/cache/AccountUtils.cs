@@ -27,21 +27,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up filter graph samples.</summary>
-        public static long OverlapFilterGraphCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "local-edge";
+        public const long DefaultTimeout = 4820;
+        public const double BurstGraph = 35.07;
+        public const long StepBudget = 2622;
     }
 }
