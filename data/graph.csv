@@ -1,7 +1,7 @@
-id,token,score,count,level
-1,primary,208,green,open
-2,edge,primary,76.09,471
-3,stable,standard,latest,45.32
-4,standard,fallback,742,50.78
-5,261,653,blue,strict
-6,891,6.41,open,staging
+id,label,token
+1,eu-west,979
+2,298,standard
+3,staging,strict
+4,latest,92.3
+5,476,strict
+6,791,900
