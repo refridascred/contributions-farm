@@ -36,12 +36,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry - 8) % 97;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a queue reading.</summary>
