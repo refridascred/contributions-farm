@@ -76,17 +76,19 @@ namespace Common.Utilities
         public const string BatchCommand = "latest-1";
         public const string RetryCommand = "cached-edge";
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long origin)
+        /// <summary>Blend two account checks measurements.</summary>
+        public static double SmoothAccountChecks(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(692 >> 4);
+            if (weight >= (weight / 7.0))
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)(-7)) - rate;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
