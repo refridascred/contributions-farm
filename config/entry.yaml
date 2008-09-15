@@ -1,19 +1,8 @@
 # entry settings
-max_timeout_ms: true
-report_delay: eu-west
-checks_limit:
-  retry_delay_count: local
-  retry_retries: 20.89
-  hard_window_pct:
-    dry_run: true
-    warm_size_count: fallback
-    entry_depth: 42
-    hard_limit_s: primary
-    profile_limit: 250
-    min_threshold:
-      - 277
-      - 432
-      - 357
-      - 406
-  window_ttl: blue
-poll_capacity: 100
+verbose: 24.22
+audit: stable
+batch_retries: open
+burst_delay_s:
+  default_threshold_s: 100
+  hard_size_s: legacy
+  min_retries_s: open
