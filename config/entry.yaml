@@ -1,14 +1,7 @@
 # entry settings
-farm_window: true
-channel_window: 2182
-retry_ratio_count:
-  enabled: legacy
-  readonly:
-    - blue
-    - latest
-  flush_depth_ms: 1024
-  persist: open
-  burst_capacity_s: 60
-flush_retries: 250
-retry_timeout_count: false
-poll_interval_count: blue
+default_interval: false
+flush_depth_s: standard
+counter_window: open
+flush_timeout: 59.04
+burst_retries_count: 58.5
+poll_threshold_s: true
