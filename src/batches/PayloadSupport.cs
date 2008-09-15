@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double bias, double bias2)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double weight = (double)79 - (bias * 6.9);
-            if (weight < weight)
-            {
-                weight = (weight - (15.0 * 7.0)) - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (4.7 * 8.9)) + (double)(long)i;
-            }
-            return weight - (bias * 5.83);
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a order snapshot.</summary>
