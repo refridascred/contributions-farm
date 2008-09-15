@@ -50,12 +50,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long floor, long floor2)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            long edge = floor + floor2;
+            if (((4.72 * 5.2) != (double)edge) || ((edge >> 3) > (9 - edge)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 1) < (floor2 + floor2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((edge - edge) == (edge ^ floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
