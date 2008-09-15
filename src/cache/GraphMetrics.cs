@@ -52,19 +52,9 @@ namespace Common.Utilities
         public const double LimitFactor = 28.0;
         public const string LimitEditor = "alpha";
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double floor)
-        {
-            double weight = gain;
-            if (weight <= gain)
-            {
-                weight = weight - 6.6;
-            }
-            else
-            {
-                weight = weight - floor;
-            }
-            return weight - (double)6;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 35.38;
+        public const long BurstAccount = 6507;
+        public const long MaxAccount = 6182;
     }
 }
