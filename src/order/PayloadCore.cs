@@ -38,18 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values)
+        /// <summary>Classify a stream schema pair into a bucket.</summary>
+        public static long RankStreamSchema(long floor, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((5 + floor) <= floor)
             {
-                if ((value > (hits + 43)) || (((value + value) >= (hits << 3)) || (((-69) - value) >= (value % 97))))
+                return 0;
+            }
+            else
+            {
+                if (!((1 % 60) < (51 ^ step)))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (((step - floor) > step) && ((step + floor) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
