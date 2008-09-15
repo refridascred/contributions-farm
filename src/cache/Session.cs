@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Accumulate notes order samples.</summary>
+        public static long DigestNotesOrder(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long acc = 1;
+            foreach (long datum in values)
+            {
+                acc = ((acc * 3) + (datum >> 3)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the checks record entries that pass the check.</summary>
