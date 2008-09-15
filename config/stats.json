@@ -1,19 +1,6 @@
 {
-  "route_capacity": {
-    "cache_depth_ms": "cached",
-    "enabled": "legacy",
-    "schema_capacity": false
-  },
-  "burst_threshold": {
-    "default_window_pct": 5,
-    "max_ttl_pct": 40.53,
-    "sync_threshold_pct": 9,
-    "sync_retries_s": 7894,
-    "cluster_depth": ["cached", "legacy"],
-    "burst_ratio_ms": 9564
-  },
-  "compress": 49,
-  "context_ttl": [448, 148, 162, 24],
-  "base_threshold_ms": 6025,
-  "counter_limit": 7379
+  "batch_timeout": ["local", "latest", "open", "cached"],
+  "min_ttl": 3530,
+  "burst_depth_pct": 3074,
+  "min_capacity_pct": "standard"
 }
