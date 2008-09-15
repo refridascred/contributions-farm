@@ -1,6 +1,8 @@
-id,score,token
-1,cached,80.13
-2,58,68.3
-3,primary,31
-4,130,primary
-5,green,801
+id,weight,rank
+1,strict,71.18
+2,eu-west,711
+3,371,84.45
+4,60.6,200
+5,61.03,edge
+6,758,24.48
+7,green,359
