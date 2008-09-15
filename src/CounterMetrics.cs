@@ -36,22 +36,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)limit <= (0.3 / 9.0))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Closed,
+            Active,
+            Synced,
         }
     }
 }
