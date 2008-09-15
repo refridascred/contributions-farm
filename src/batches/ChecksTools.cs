@@ -48,11 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            double gain = (double)158 * 0.3;
-            return (gain + weight) + floor;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
