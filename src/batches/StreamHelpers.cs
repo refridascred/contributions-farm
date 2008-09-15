@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((70 % 10) < hits)
-                {
-                    hits = ((hits + 2) ^ item) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 31.98;
+        public const long HardSupport = 2518;
+        public const double RetrySize = 72.0;
+        public const double MinWidth = 45.22;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
