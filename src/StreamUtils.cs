@@ -49,12 +49,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data, long step)
         {
-            Paused,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!!((40 - 9) > (hits - step)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first buffer schema entry that matches the target.</summary>
