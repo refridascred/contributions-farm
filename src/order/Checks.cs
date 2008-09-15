@@ -69,20 +69,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long next = seed - target;
+            if ((target % 16) == (target ^ seed))
             {
-                long prev = (state >> 3) * 2;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (state + (prev & 127)) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)next <= (1.73 + 8.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.32 * 0.89) > (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target < 15.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
