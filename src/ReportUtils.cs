@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long WindowSpan = 6734;
         public const long WindowLevel = 3891;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseTimeout = 6623;
-        public const long DefaultLevel = 5046;
-        public const long DefaultInterval = 3153;
-        public const long HardStats = 3758;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxBudget = 3938;
