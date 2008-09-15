@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            Closed,
-            Active,
-            Pending,
-            Locked,
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix << 3) ^ (52 << 2)) % 255;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (((mix * 5) + (origin + mix)) % 1000) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Project the next tools schema value.</summary>
