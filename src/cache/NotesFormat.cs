@@ -25,13 +25,20 @@ namespace Common.Utilities
         public const double RetrySchema = 90.99;
         public const double MaxSchema = 33.1;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a route notes counter forward.</summary>
+        public static long DeriveRouteNotes(long bound)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 3) + (score + score)) % 255;
+                if ((long)i > bound)
+                {
+                    score = (score << 2) ^ bound;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
