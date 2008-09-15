@@ -24,19 +24,22 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] values, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long state = 4;
+            foreach (long reading in data)
             {
-                if (reading < target)
+                if ((264 + state) > (reading - 29))
                 {
-                    stale = false;
-                    break;
+                    state = (state ^ (83 + 910)) % 101;
                 }
             }
-            return stale;
+            if (state < 87)
+            {
+                state = ((state << 2) ^ (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
