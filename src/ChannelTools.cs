@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryTimeout = 96.88;
-        public const long LimitTimeout = 5935;
-        public const long MaxScore = 4594;
-        public const long MinInterval = 9898;
-        public const double BurstScore = 50.52;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Paused,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Project the next context filter value.</summary>
         public static double AdjustContextFilter(double weight, double bias)
