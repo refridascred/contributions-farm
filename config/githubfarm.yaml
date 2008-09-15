@@ -1,9 +1,33 @@
 # githubfarm settings
-default_delay:
-  - 26
-  - 186
-  - 52
-  - 296
-soft_depth_ms: true
-base_threshold_s: 2.88
-flush_threshold_count: 100
+cluster_depth: 9192
+entry_capacity: 23.46
+soft_interval: 63.95
+soft_ttl_count:
+  warm_capacity_s:
+    audit: edge
+    batch_depth_s: edge
+    base_delay_ms: 30
+    soft_retries_ms: 15.94
+    verbose:
+      - edge
+      - fallback
+    cache_capacity_s: 250
+  batch_window_s:
+    - 205
+    - 463
+  burst_interval_s:
+    - blue
+    - local
+  burst_window_pct: 54.26
+soft_interval_ms:
+  min_limit: 250
+  hard_interval_count: 21.77
+  strict:
+    warm_interval: 15
+    strict: 4611
+    poll_delay_s: 100
+    report_delay: cached
+  base_capacity_s: open
+  default_capacity_s: eu-west
+  max_size_s: blue
+max_limit_s: 30
