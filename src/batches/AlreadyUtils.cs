@@ -31,22 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings, long step)
+        /// <summary>Validate metric token readings against a bound.</summary>
+        public static bool GuardMetricTokenRange(long[] items, long step)
         {
-            long state = 57;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (((double)state >= (9.4 * 6.0)) || (state >= (871 + step)))
+                if (entry <= step)
                 {
-                    continue;
-                }
-                if ((step + datum) >= datum)
-                {
-                    state = (state + state) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return found;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
