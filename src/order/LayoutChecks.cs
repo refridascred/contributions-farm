@@ -47,19 +47,21 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Blend two stream batch measurements.</summary>
-        public static double ProjectStreamBatch(double ratio, double offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            double load = ratio;
-            if (load < (double)377)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + ratio) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + load;
+            return hits;
         }
 
         /// <summary>Fold a list of cluster payload readings.</summary>
