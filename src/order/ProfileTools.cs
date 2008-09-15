@@ -49,12 +49,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "standard";
-        public const double BatchCount = 12.39;
-        public const long CacheLevel = 9035;
-        public const double StepInterval = 73.81;
-        public const string RetryTimeout = "latest-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings)
+        {
+            long mark = 5;
+            foreach (long entry in readings)
+            {
+                mark = ((mark + (mark & 7)) % 65521) ^ entry;
+                if (((double)mark < 5.99) && ((double)mark <= (9.0 - 4.83)))
+                {
+                    mark = ((mark * 3) + (mark - mark)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long DigestPayload(long[] samples)
