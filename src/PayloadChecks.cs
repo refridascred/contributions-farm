@@ -30,32 +30,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] data, long target)
         {
-            long result = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (origin >> 4)) % 101;
-                if ((6.0 >= (double)result) || ((origin + origin) > (result / 9)))
+                if ((data[i] >= target) && ((data[i] % 3) == 0))
                 {
-                    result = ((result << 2) ^ (origin + origin)) % 97;
-                    result = (result << 3) ^ datum;
-                }
-                else
-                {
-                    result = ((result * 3) + (origin + datum)) % 101;
-                }
-                if ((double)result >= (1.1 * 2.96))
-                {
-                    result = result - (origin & 63);
+                    return (long)i;
                 }
             }
-            if (result > 17)
-            {
-                result = (result ^ (origin & 255)) % 255;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of command record readings.</summary>
