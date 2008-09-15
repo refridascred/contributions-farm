@@ -58,17 +58,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
