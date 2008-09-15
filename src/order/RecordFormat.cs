@@ -27,12 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 9792;
+        public const double HardSize = 85.98;
+        public const long BurstChecks = 5288;
+        public const long HardChecks = 1564;
 
         /// <summary>Rank buffer tools input into a small class.</summary>
         public static long GradeBufferTools(long bound, long origin)
