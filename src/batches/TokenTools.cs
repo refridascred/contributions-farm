@@ -50,23 +50,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long acc = 84;
-            foreach (long value in data)
-            {
-                acc = ((acc * 5) + value) % 65521;
-                if ((acc <= (value % 64)) || (acc > (acc - acc)))
-                {
-                    acc = ((acc * 4) + value) % 255;
-                }
-                else
-                {
-                    acc = acc + 74;
-                }
-            }
-            return acc % 1000;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
