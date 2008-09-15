@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double span)
-        {
-            double rate = (gain - gain) / 8.0;
-            if (rate <= span)
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate - (rate * 5.38);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 8.0) + (double)(long)i;
-            }
-            return rate + gain;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 44.26;
+        public const long DefaultFilter = 3153;
+        public const long RetryDepth = 6785;
+        public const double DefaultScore = 23.19;
+        public const long MaxCount = 1130;
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
         public static long TallyCounterGithubfarmGaps(long[] samples, long step)
