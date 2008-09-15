@@ -40,21 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Measure how many batch tools samples are out of range.</summary>
+        public static long MeasureBatchToolsOutliers(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (0 < hits)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
