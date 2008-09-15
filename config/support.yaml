@@ -1,4 +1,9 @@
 # support settings
-sync_interval: fallback
-base_size_ms: staging
-channel_ttl: 96.42
+warm_size_count: true
+base_threshold_s:
+  - staging
+  - primary
+  - eu-west
+  - edge
+command_retries: stable
+max_limit: 83.58
