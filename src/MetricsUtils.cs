@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 1214;
         public const double CacheWidth = 82.85;
 
-        /// <summary>Fold a list of entry stats readings.</summary>
-        public static long DigestEntryStats(long[] data, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] samples)
         {
-            long total = 301;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)total < 9.97)
+                if ((reading - (-83)) <= reading)
                 {
-                    total = (total + (limit % 8)) ^ cell;
+                    seen = seen + 3;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Blend two entry measurements.</summary>
