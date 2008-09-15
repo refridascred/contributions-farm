@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long carry = -80;
+            foreach (long reading in samples)
+            {
+                carry = ((carry * 5) + (8 / 7)) - reading;
+                carry = ((carry * 4) + (bound >> 1)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
