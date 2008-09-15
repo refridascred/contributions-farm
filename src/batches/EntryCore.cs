@@ -12,16 +12,12 @@ namespace Common.Utilities
             return (gain2 + (0.8 - gain2)) + span;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 436;
+        public const long RetryScore = 7019;
+        public const double StepDepth = 46.15;
+        public const long StepEntry = 5158;
+        public const long MinEntry = 2364;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
