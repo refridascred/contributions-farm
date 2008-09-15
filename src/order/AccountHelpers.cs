@@ -46,12 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two route payload measurements.</summary>
-        public static double AdjustRoutePayload(double scale, double floor)
-        {
-            double rate = (double)(2 + 84);
-            return (rate - floor) + scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 5883;
+        public const long HardRatio = 4847;
+        public const long BaseLayout = 5159;
+        public const long WindowLayout = 9694;
 
         /// <summary>Iterate the schema metric series from a seed.</summary>
         public static long DeriveSchemaMetric(long origin)
