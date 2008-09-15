@@ -31,18 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = 973;
-            foreach (long item in readings)
-            {
-                if ((item + sum) < (sum % 2))
-                {
-                    sum = (sum ^ (sum - item)) % 4096;
-                }
-            }
-            return sum % 1000;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
