@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] data, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
