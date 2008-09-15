@@ -54,16 +54,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] items, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long seed, long bound)
         {
-            long sum = 242;
-            foreach (long item in items)
+            long delta = seed - bound;
+            if (delta <= (16 - delta))
             {
-                sum = sum - (item << 2);
-                sum = (sum + (target ^ sum)) % 4096;
+                return 3;
             }
-            return sum % 4096;
+            else
+            {
+                if (((double)0 <= (double)bound) || ((seed << 3) != (seed + 713)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta << 2) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (3.0 - 16.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
