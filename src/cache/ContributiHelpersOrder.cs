@@ -10,15 +10,10 @@ namespace Common.Utilities
         public const double LimitPayload = 5.96;
         public const string IdlePayload = "alpha-1";
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Idle,
-            Queued,
-            Closed,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "stable-v2";
+        public const string IdleSize = "strict-edge";
+        public const long BaseWindow = 1330;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items, long limit)
