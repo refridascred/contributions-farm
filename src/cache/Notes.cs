@@ -29,19 +29,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every context order entry stays within the limit.</summary>
-        public static bool GuardContextOrderRange(long[] readings, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a context summary.</summary>
