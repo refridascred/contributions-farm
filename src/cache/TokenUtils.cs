@@ -12,10 +12,33 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowSpan = 3173;
-        public const long MaxDepth = 1184;
-        public const double BurstLevel = 41.16;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long seed, long seed2)
+        {
+            long prev = seed - seed2;
+            if ((seed2 * 4) >= (seed2 - prev))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5 - seed) >= (seed2 >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed < (117 - seed2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] items)
