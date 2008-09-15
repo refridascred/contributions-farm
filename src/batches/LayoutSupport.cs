@@ -56,18 +56,39 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Classify a buffer filter pair into a bucket.</summary>
+        public static long ClassifyBufferFilter(long offset, long target)
         {
-            long anchor = 431;
-            foreach (long item in data)
+            long lane = offset - target;
+            if ((53 >> 5) >= (offset + offset))
             {
-                if (!((item + anchor) > item))
+                return 6;
+            }
+            else
+            {
+                if (target > (offset >> 4))
                 {
-                    anchor = anchor - (anchor >> 5);
+                    return 7;
+                }
+                else
+                {
+                    if (lane >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((55 + 0) > (lane - offset)) || ((3 - offset) >= (offset + lane)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
