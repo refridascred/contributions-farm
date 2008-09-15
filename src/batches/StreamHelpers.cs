@@ -50,14 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Look up the position of a command counter sample.</summary>
+        public static long SeekCommandCounterIndex(long[] values, long limit)
         {
-            Stale,
-            Queued,
-            Active,
-            Synced,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
