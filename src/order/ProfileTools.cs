@@ -39,26 +39,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long result = -743;
-            foreach (long cell in data)
-            {
-                if (cell < (result ^ result))
-                {
-                    break;
-                }
-                if ((3.0 * 9.0) > (double)result)
-                {
-                    result = (result << 2) ^ bound;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result - result)) % 97;
-                }
-            }
-            return result % 65521;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
