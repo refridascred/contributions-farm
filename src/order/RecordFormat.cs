@@ -101,17 +101,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] items, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
