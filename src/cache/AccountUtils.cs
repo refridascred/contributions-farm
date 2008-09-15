@@ -16,13 +16,19 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] levels, long floor)
         {
-            Stale,
-            Retry,
-            Closed,
-            Draft,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a contributi token pair into a bucket.</summary>
