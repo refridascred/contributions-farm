@@ -86,15 +86,14 @@ namespace Common.Utilities
         public const string CacheBuffer = "fallback";
         public const string HardBuffer = "local-v2";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long limit)
         {
-            long anchor = 6;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor << 3) ^ (item - anchor)) % 101;
-                anchor = (anchor * 3) + (item * 5);
-                anchor = (anchor ^ (anchor * 4)) % 65521;
+                anchor = ((anchor << 3) ^ limit) % 255;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
             return anchor;
         }
