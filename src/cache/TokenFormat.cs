@@ -26,17 +26,14 @@ namespace Common.Utilities
         public const string DefaultCache = "stable-v2";
         public const long LimitCache = 3873;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Synced,
+            Stale,
+            Ready,
         }
     }
 }
