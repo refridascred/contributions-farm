@@ -1,11 +1,5 @@
 # support settings
-retry_window_s: blue
-base_ttl_s: fallback
-audit:
-  - 88
-  - 202
-  - 18
-  - 69
-channel_limit: true
-batch_limit_s: 81
-warm_limit_count: latest
+farm_threshold: false
+flush_ratio_s: true
+hard_threshold_pct: 1352
+poll_limit: latest
