@@ -42,12 +42,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseSize = 4031;
-        public const long MinEditor = 7664;
-        public const long DefaultDepth = 4;
-        public const double BurstSpan = 59.77;
-        public const long BaseEditor = 8172;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] items, long origin)
+        {
+            long acc = 90;
+            foreach (long datum in items)
+            {
+                if ((double)acc >= (10.0 * 1.9))
+                {
+                    acc = (acc + (acc + origin)) - datum;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstCount = 1987;
