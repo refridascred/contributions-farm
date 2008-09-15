@@ -46,11 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 3512;
-        public const long MinSession = 1696;
-        public const long BatchSession = 2930;
-        public const long CacheInterval = 309;
-        public const long HardSession = 9264;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!(((entry - 45) <= (seen << 3)) && ((954 << 1) < entry)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
