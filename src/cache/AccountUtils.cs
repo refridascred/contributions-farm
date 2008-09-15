@@ -34,18 +34,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long origin, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (origin > (origin + origin))
             {
-                if (!((offset ^ 580) == (datum + 672)) || ((offset / 8) <= (64 * 4)))
+                return 3;
+            }
+            else
+            {
+                if (((double)bound != (double)origin) || ((origin >> 4) < (origin / 9)))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (((bound + 9) < 546) && ((122 * 4) <= (origin ^ bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((bound >> 5) >= 7) && ((double)948 == (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
