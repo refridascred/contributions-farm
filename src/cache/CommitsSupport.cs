@@ -28,10 +28,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleWidth = 8245;
-        public const long BurstSize = 8079;
-        public const string RetryNotes = "legacy-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 5268;
+        public const long DefaultReport = 2287;
+        public const double BaseInterval = 96.58;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] readings, long target)
