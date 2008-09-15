@@ -15,10 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 22.27;
-        public const long HardFactor = 5595;
-        public const long MaxFormat = 7338;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
         public static long RankSchemaGithubfarm(long offset, long origin)
