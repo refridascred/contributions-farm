@@ -49,11 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            Active,
+            Retry,
+            Draft,
+            Ready,
         }
     }
 }
