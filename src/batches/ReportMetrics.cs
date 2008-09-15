@@ -14,18 +14,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long gap = floor + origin;
+            if ((10.0 * 8.81) < (double)floor)
             {
-                if ((sample - tally) != (sample >> 3))
+                return 1;
+            }
+            else
+            {
+                if (gap < (floor % 24))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batches header.</summary>
