@@ -33,10 +33,18 @@ namespace Common.Utilities
         public const long BurstSize = 8079;
         public const string RetryNotes = "legacy-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryWidth = "fallback";
-        public const string CacheTimeout = "legacy-edge";
-        public const double WindowStats = 50.37;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double bias, double bias2)
