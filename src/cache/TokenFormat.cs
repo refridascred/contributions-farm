@@ -23,13 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
+            Done,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the account status values.</summary>
