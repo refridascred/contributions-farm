@@ -1,23 +1,8 @@
 {
-  "audit": 8622,
-  "batch_ttl": {
-    "report_delay": {
-      "default_ttl_ms": "green",
-      "idle_threshold_ms": 46.76,
-      "editor_delay": "stable",
-      "strict": 9749,
-      "batch_threshold": "green",
-      "compress": 9549
-    },
-    "dry_run": {
-      "verbose": 39.77,
-      "hard_interval_ms": 46.07,
-      "min_delay": "strict",
-      "dry_run": 73.71,
-      "sync_limit": 71.95
-    },
-    "buffer_ratio": "cached",
-    "readonly": 47
-  },
-  "cache_retries": 15.99
+  "idle_retries": 20,
+  "base_capacity": 7065,
+  "poll_capacity": [49, 143, 266, 407],
+  "max_threshold_ms": ["strict", "eu-west"],
+  "audit": "fallback",
+  "hard_ttl_pct": true
 }
