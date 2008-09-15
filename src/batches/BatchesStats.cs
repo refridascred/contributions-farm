@@ -20,14 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            Failed,
-            Idle,
-            Closed,
-            Synced,
-            Dropped,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length - 5) < (item + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
