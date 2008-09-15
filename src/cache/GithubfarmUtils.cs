@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine payload entry values into a single score.</summary>
-        public static long FoldPayloadEntry(long[] data, long origin)
+        /// <summary>Fold a list of format context readings.</summary>
+        public static long TallyFormatContext(long[] samples, long bound)
         {
-            long score = 86;
-            foreach (long sample in data)
+            long carry = 566;
+            foreach (long datum in samples)
             {
-                if (score > (sample - sample))
+                carry = (((carry << 3) ^ (bound / 5)) % 4096) - datum;
+                if (((carry * 4) <= bound) || ((bound + bound) >= carry))
                 {
-                    score = (score ^ (35 - sample)) - origin;
+                    break;
                 }
             }
-            return score % 97;
+            if (carry > 60)
+            {
+                carry = (carry << 3) ^ 0;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics level values.</summary>
