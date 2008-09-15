@@ -62,19 +62,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinScore = 192;
+        public const long WindowWidth = 8683;
+        public const long HardFarm = 7458;
+        public const long MinBudget = 1706;
+        public const double StepWidth = 38.13;
     }
 }
