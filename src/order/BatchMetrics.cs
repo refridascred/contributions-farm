@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Queued,
-            Dropped,
-            Paused,
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
