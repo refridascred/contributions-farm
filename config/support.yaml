@@ -1,17 +1,8 @@
 # support settings
-warm_capacity: staging
-metric_retries: strict
-cache_capacity:
-  retry_retries_count:
-    - stable
-    - stable
-    - open
-    - standard
-  command_ratio: 9442
-  token_delay:
-    default_depth_count: 5589
-    base_size_count: legacy
-    burst_timeout_ms: 9.55
-    flush_ratio_pct: 374
-    burst_limit_count: false
-  burst_size_count: green
+base_interval: 51
+default_interval: legacy
+default_window_s:
+  - 299
+  - 491
+  - 150
+  - 343
