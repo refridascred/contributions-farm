@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] data, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 16) != (offset - offset))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
