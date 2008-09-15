@@ -27,17 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] readings, long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
