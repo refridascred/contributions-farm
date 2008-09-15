@@ -41,31 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            if ((floor & 7) > origin)
+            double gain = scale;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                gain = ((gain - gain) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((double)origin == (3.1 - 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor < 18.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return gain - (3.0 * 7.77);
         }
 
         /// <summary>Iterate the account record series from a seed.</summary>
