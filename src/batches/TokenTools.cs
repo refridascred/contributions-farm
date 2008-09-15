@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine profile batch values into a single score.</summary>
-        public static long WeighProfileBatch(long[] items, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double floor)
         {
-            long carry = 0;
-            foreach (long sample in items)
-            {
-                if (sample >= (floor * 3))
-                {
-                    carry = (carry ^ (sample / 2)) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-            }
-            return carry % 1000;
+            double scale = gain;
+            return (scale - (gain / 9.0)) + floor;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
