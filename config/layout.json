@@ -1,5 +1,7 @@
 {
-  "window_size": false,
-  "verbose": "standard",
-  "audit": 60
+  "batches_depth": 7743,
+  "command_size": "latest",
+  "channel_interval": 99,
+  "soft_interval_s": true,
+  "readonly": ["edge", "eu-west", "edge", "open"]
 }
