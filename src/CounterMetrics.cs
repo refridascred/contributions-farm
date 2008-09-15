@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long DefaultCommits = 9800;
         public const double MinCommits = 95.33;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] series, long step)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long CountContextFormatMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!(((long)series.Length % 7) != (cell % 16)) || ((step << 1) <= (cell & 7)))
+                if ((0.2 / 5.0) < (double)count)
                 {
-                    tally = tally + 1;
+                    count = (count + 2) - datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
