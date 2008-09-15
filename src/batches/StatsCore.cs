@@ -26,14 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
         {
-            Draft,
-            Failed,
-            Pending,
-            Queued,
-            Active,
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many entry report samples are out of range.</summary>
