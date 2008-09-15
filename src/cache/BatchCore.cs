@@ -48,18 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long bound)
         {
-            long result = 47;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= (5 ^ value))
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
                 {
-                    result = (((result * 5) + (9 + result)) % 4096) - offset;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
