@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data, long seed)
         {
-            double ratio2 = bias;
-            if (ratio2 > (9.0 + 7.0))
+            long acc = 0;
+            foreach (long datum in data)
             {
-                ratio2 = ratio2 - (double)394;
+                if ((datum >> 4) > (seed - datum))
+                {
+                    acc = acc + (acc >> 2);
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 + (double)5;
+            return acc % 97;
         }
 
         /// <summary>Describe the entry mode values.</summary>
