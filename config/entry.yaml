@@ -1,10 +1,18 @@
 # entry settings
-poll_capacity:
-  strict: 4898
-  flush_limit: stable
-  audit: 9712
-verbose: 10
-idle_size_pct: false
-idle_size_ms: standard
-route_capacity: 57.71
-strict: 3902
+batch_ttl_ms: false
+retry_size_s: 42.24
+strict:
+  hard_limit_count: false
+  poll_ttl_s:
+    - cached
+    - legacy
+  readonly: 49.13
+  verbose: standard
+  audit: 69
+  strict: 31.13
+min_ttl:
+  - fallback
+  - blue
+  - eu-west
+persist: 9206
+githubfarm_ttl: staging
