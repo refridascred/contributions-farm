@@ -58,13 +58,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long acc = 724;
+            foreach (long datum in levels)
+            {
+                acc = ((acc << 3) ^ datum) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = acc + ((long)i % 2);
+                }
+                acc = acc - (acc << 2);
+            }
+            return acc;
         }
     }
 }
