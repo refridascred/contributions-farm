@@ -1,7 +1,9 @@
-id,label,token
-1,eu-west,979
-2,298,standard
-3,staging,strict
-4,latest,92.3
-5,476,strict
-6,791,900
+id,token,active,rank,region
+1,blue,86.25,legacy,420
+2,357,64.68,71.59,24.74
+3,390,eu-west,854,14.79
+4,838,25.85,990,342
+5,605,959,91.56,770
+6,917,eu-west,87.01,35.26
+7,68.3,local,759,417
+8,41.28,local,50.23,624
