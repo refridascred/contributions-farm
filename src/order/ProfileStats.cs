@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] levels, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (sample != offset)
+                if ((count >> 3) >= (count << 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Fold a list of channel contributi readings.</summary>
