@@ -22,19 +22,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long FoldFormatChannel(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long carry = 748;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry + value) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 18)
-            {
-                carry = (carry - 99) % 4096;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
