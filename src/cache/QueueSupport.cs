@@ -23,15 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric checks readings.</summary>
-        public static long TallyMetricChecks(long[] data)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long total = -64;
-            foreach (long cell in data)
-            {
-                total = ((total * 4) + (total % 64)) + cell;
-            }
-            return total % 65521;
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of order farm readings.</summary>
