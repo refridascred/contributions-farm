@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] series, long step)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
