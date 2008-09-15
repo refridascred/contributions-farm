@@ -52,18 +52,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            long result = -7;
-            foreach (long sample in items)
+            long offset = seed + floor;
+            if (((seed - offset) > (513 << 2)) || ((floor ^ 84) == (seed ^ 41)))
             {
-                if ((result + sample) >= (result * 5))
+                return 2;
+            }
+            else
+            {
+                if ((floor - offset) <= (floor / 3))
                 {
-                    result = result - sample;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return result;
         }
     }
 }
