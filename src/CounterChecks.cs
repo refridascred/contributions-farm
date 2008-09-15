@@ -58,39 +58,18 @@ namespace Common.Utilities
         public const string LimitSize = "latest";
         public const long BurstBudget = 765;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
-            long cur = step - bound;
-            if ((cur + cur) < (cur << 3))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - step) < (step - step))
+                if ((matches - 37) > matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 % 12) >= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (18.0 > (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
     }
 }
