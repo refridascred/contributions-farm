@@ -48,10 +48,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseDepth = 2408;
-        public const double BatchWidth = 45.69;
-        public const string BatchQueue = "primary";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (bound % 24)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long seed, long offset)
