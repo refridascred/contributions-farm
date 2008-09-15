@@ -29,11 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long mix = 5;
+            foreach (long cell in readings)
+            {
+                mix = (mix + cell) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
