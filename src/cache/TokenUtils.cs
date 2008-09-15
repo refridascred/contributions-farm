@@ -22,11 +22,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long mark = 676;
+            foreach (long cell in items)
+            {
+                if ((cell + mark) >= mark)
+                {
+                    mark = mark ^ cell;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark - 85)) % 255;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
