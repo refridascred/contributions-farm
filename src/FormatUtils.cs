@@ -51,10 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSize = 2551;
-        public const double RetryWidth = 75.6;
-        public const string MinLayout = "latest-edge";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
