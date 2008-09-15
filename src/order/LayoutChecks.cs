@@ -48,14 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            Stale,
-            Idle,
-            Paused,
-            Closed,
-            Dropped,
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
