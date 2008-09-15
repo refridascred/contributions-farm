@@ -75,12 +75,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long offset)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
