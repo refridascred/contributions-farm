@@ -15,11 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long step)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            long edge = origin - step;
+            if ((double)83 == (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)edge <= 5.42) || ((108 + step) >= (step + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of format stream readings.</summary>
