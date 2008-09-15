@@ -26,19 +26,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] samples, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long seed)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if ((3 << 2) > (bound * 4))
             {
-                if (cell >= seed)
+                return 7;
+            }
+            else
+            {
+                if (!((-122) < seed))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
