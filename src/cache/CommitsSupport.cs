@@ -33,19 +33,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] series, long bound)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long TallyProfileAccountMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= bound)
+                if (entry < (count << 2))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
