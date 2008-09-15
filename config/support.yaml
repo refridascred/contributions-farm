@@ -1,10 +1,4 @@
 # support settings
-max_depth_s: legacy
-sync_delay_ms: fallback
-verbose:
-  - strict
-  - strict
-  - primary
-  - staging
-enabled: eu-west
-base_ratio_count: 3806
+idle_interval_s: strict
+retry_capacity_ms: 21.07
+account_interval: blue
