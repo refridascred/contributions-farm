@@ -41,11 +41,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Locate a command reading by value.</summary>
