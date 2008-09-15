@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            Synced,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value > (hits + 43)) || (((value + value) >= (hits << 3)) || (((-69) - value) >= (value % 97))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a order counter forward.</summary>
