@@ -47,18 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((long)series.Length >= (hits + item))
+                if (item > limit)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
