@@ -1,14 +1,15 @@
 # entry settings
-retry_interval:
-  soft_ratio_s: 30
-  poll_depth_s: 9682
-  base_size_pct: false
-  cache_ttl_pct: 9046
-  commits_window:
-    - 217
-    - 297
-    - 317
-  soft_ratio: primary
-payload_size: latest
-strict: 3.06
-poll_window_count: 1024
+cache_limit: 2320
+batches_ratio: cached
+flush_depth_pct: 60
+dry_run: local
+layout_ttl:
+  burst_capacity: 4660
+  cache_window_count: 250
+  min_ratio: 24
+  sync_threshold_count:
+    - 467
+    - 213
+    - 415
+    - 268
+batches_ttl: 88.93
