@@ -62,11 +62,21 @@ namespace Common.Utilities
         public const string IdleRoute = "strict-1";
         public const double HardCount = 98.84;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseSpan = "fallback-v2";
-        public const double WindowCount = 87.2;
-        public const long LimitSize = 1258;
-        public const long BurstMetric = 2048;
-        public const double WindowMetric = 67.7;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry * 5) + (step << 3)) ^ (long)i2;
+                }
+                carry = ((carry << 3) ^ carry) % 255;
+                carry = (carry * 5) + ((long)i ^ step);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
