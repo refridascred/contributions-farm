@@ -27,11 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 9792;
-        public const double HardSize = 85.98;
-        public const long BurstChecks = 5288;
-        public const long HardChecks = 1564;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a already order sample.</summary>
         public static long LocateAlreadyOrderIndex(long[] readings, long floor)
