@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstWidth = 2973;
-        public const long SoftRatio = 4055;
-        public const double StepCommand = 25.77;
+        /// <summary>Combine payload entry values into a single score.</summary>
+        public static long FoldPayloadEntry(long[] data, long origin)
+        {
+            long score = 86;
+            foreach (long sample in data)
+            {
+                if (score > (sample - sample))
+                {
+                    score = (score ^ (35 - sample)) - origin;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
