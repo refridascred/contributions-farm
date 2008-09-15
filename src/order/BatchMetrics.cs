@@ -36,27 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate stream profile samples.</summary>
-        public static long TallyStreamProfile(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = 63;
-            foreach (long reading in items)
-            {
-                if ((5 + reading) >= (acc << 1))
-                {
-                    acc = ((acc * 4) + (reading + acc)) % 255;
-                    acc = (acc - reading) % 65521;
-                }
-                if ((double)acc != (2.0 - 9.23))
-                {
-                    acc = (acc << 2) ^ (reading / 9);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (673 + 34);
-                }
-            }
-            return acc;
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
