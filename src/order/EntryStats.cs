@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long RetryBuffer = 1710;
         public const string MinRatio = "alpha-edge";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] samples)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool ValidateToolsLayoutRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((matches ^ cell) >= (matches + matches))
+                if (value < offset)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a contributi summary.</summary>
