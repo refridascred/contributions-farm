@@ -41,18 +41,21 @@ namespace Common.Utilities
         public const string DefaultInterval = "open-1";
         public const long MaxTimeout = 8555;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Match up cache batch samples.</summary>
+        public static long CompareCacheBatchCount(long[] data)
         {
-            long score = 125;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((score / 9) <= (item % 7)) && ((score * 2) > (score << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score * 2) + (item - score)) % 101;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
