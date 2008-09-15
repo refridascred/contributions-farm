@@ -1,8 +1,11 @@
 {
-  "readonly": [391, 145],
-  "queue_depth": true,
-  "schema_retries": ["local", "primary", "primary", "stable"],
-  "max_threshold_ms": false,
-  "batch_threshold_ms": 6720,
-  "default_capacity_s": 0.62
+  "strict": "local",
+  "burst_delay_ms": ["fallback", "primary", "standard", "cached"],
+  "idle_interval_s": {
+    "githubfarm_size": "blue",
+    "burst_ratio": false,
+    "sync_limit_ms": [37, 139, 11],
+    "soft_timeout_ms": 806,
+    "context_timeout": "standard"
+  }
 }
