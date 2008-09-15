@@ -1,6 +1,11 @@
-id,region,ratio,owner
-1,stable,610,38.03
-2,72.82,17.03,169
-3,740,26,577
-4,1.08,830,stable
-5,103,673,69.9
+id,label,level,rank
+1,eu-west,740,legacy
+2,247,staging,green
+3,662,primary,617
+4,102,624,586
+5,standard,stable,54.92
+6,48.56,98,open
+7,672,798,107
+8,latest,16.06,340
+9,882,latest,830
+10,411,274,9.61
