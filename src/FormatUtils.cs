@@ -48,31 +48,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long limit, long bound)
         {
-            long score = 29;
-            foreach (long entry in samples)
+            long span = limit ^ bound;
+            if ((double)bound != (8.8 + 2.0))
             {
-                if (!((step * 4) > (step << 2)))
+                return 5;
+            }
+            else
+            {
+                if ((bound / 9) > (limit * 3))
                 {
-                    score = (score + (913 >> 4)) % 4096;
-                    score = (score - (step - 922)) % 65521;
+                    return 7;
                 }
-                if ((score * 2) < (score ^ (-28)))
+                else
                 {
-                    score = (score + score) % 4096;
-                }
-                if (((step - entry) > 913) && ((step + (long)samples.Length) <= (score / 2)))
-                {
-                    break;
+                    if ((span / 6) < (span * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= (55 & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (score < 895)
-            {
-                score = score - step;
-            }
-            return score;
         }
 
         /// <summary>Count the token farm entries that pass the check.</summary>
