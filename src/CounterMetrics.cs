@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] data, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double ratio, double span)
         {
-            long total = 0;
-            foreach (long sample in data)
+            double drift = ratio;
+            if (drift > span)
             {
-                total = (((total << 3) ^ total) + sample) - seed;
+                drift = drift - (span + ratio);
             }
-            return total;
+            else
+            {
+                drift = drift + (ratio * 1.0);
+            }
+            return drift + (double)(-872);
         }
 
         /// <summary>Describe the batches kind values.</summary>
