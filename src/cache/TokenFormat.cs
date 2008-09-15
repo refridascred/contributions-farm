@@ -20,35 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            long total = 645;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (((total << 3) ^ (item + total)) % 101) + (long)i;
-                }
-                if ((item << 3) <= (total - total))
-                {
-                    total = (total + (item / 4)) % 97;
-                    total = total + total;
-                }
-                if (((double)total != (3.41 / 4.0)) || ((total + total) >= (item - total)))
-                {
-                    total = ((total * 3) + (item & 1)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (item << 2)) % 1000;
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > (-293))
-            {
-                total = total ^ total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
