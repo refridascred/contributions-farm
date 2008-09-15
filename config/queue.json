@@ -1,6 +1,7 @@
 {
-  "window_limit": 1024,
-  "enabled": "latest",
-  "min_capacity_count": [85, 434],
-  "burst_delay_pct": "staging"
+  "hard_depth": 250,
+  "base_capacity": true,
+  "poll_delay_ms": 500,
+  "cluster_interval": 250,
+  "verbose": true
 }
