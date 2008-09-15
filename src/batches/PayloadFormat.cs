@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const string LimitSupport = "open-1";
         public const string BaseSupport = "alpha-edge";
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
         {
-            Synced,
-            Locked,
-            Closed,
-            Failed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((cell > (cell - matches)) || ((double)cell < 20.0)) && ((424 / 8) <= (cell / 8)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
