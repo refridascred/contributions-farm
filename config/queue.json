@@ -1,8 +1,5 @@
 {
-  "poll_depth_s": 85,
-  "persist": 82,
-  "compress": [214, 418, 154],
-  "base_limit_pct": ["edge", "local", "local"],
-  "tools_threshold": 39.49,
-  "route_capacity": [184, 496, 251, 55]
+  "retry_ratio_pct": 6601,
+  "enabled": 69,
+  "stats_interval": 6834
 }
