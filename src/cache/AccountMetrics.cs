@@ -42,17 +42,15 @@ namespace Common.Utilities
         public const string CacheTimeout = "open";
         public const long LimitCounter = 2025;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] data, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 2;
+            foreach (long entry in values)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (carry + carry)) - entry;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate buffer schema readings against a bound.</summary>
