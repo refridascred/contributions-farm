@@ -24,14 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            Paused,
-            Synced,
-            Ready,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (tally < (value ^ value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
