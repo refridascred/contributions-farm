@@ -14,12 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowWidth = 81.11;
-        public const string IdleGraph = "alpha-edge";
-        public const string BaseGraph = "local-v2";
-        public const long LimitInterval = 7007;
-        public const long HardGraph = 963;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterBounds(long[] data, long target)
