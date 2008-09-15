@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every editor cache entry stays within the limit.</summary>
+        public static bool GuardEditorCacheLimits(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two queue measurements.</summary>
