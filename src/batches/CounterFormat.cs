@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue schema entry that matches the target.</summary>
-        public static long LocateQueueSchemaIndex(long[] samples, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] > target)
+                if ((tally - tally) != ((long)series.Length + sample))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
