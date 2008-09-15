@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Audit buffer order readings against a rule.</summary>
-        public static long MeasureBufferOrderHits(long[] levels, long seed)
+        /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
+        public static long CompareContributiQueueCount(long[] series)
         {
             long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count >= (seed - 91))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) + item;
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
