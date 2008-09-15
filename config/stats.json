@@ -1,22 +1,7 @@
 {
-  "compress": {
-    "default_window_count": 1024,
-    "verbose": 1024,
-    "hard_size_s": 6.03,
-    "cluster_ratio": false,
-    "metrics_capacity": 3019,
-    "base_size": 2
-  },
-  "hard_limit": {
-    "strict": "fallback",
-    "poll_delay_s": {
-      "strict": 1024,
-      "sync_interval_s": false,
-      "stats_depth": "standard",
-      "verbose": 68.12,
-      "audit": "latest"
-    },
-    "enabled": 82.68
-  },
-  "burst_ttl_pct": "primary"
+  "route_ttl": 18.45,
+  "sync_limit": "local",
+  "idle_size_pct": 4714,
+  "min_retries_count": 11,
+  "cache_threshold_count": true
 }
