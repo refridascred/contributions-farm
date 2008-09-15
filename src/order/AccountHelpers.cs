@@ -72,12 +72,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 3721;
+        public const double DefaultScore = 5.92;
+        public const string BatchCommand = "latest-1";
+        public const string RetryCommand = "cached-edge";
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] readings)
