@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats route reading.</summary>
-        public static double AdjustStatsRoute(double bias, double bias2)
+        /// <summary>Iterate the counter session series from a seed.</summary>
+        public static long SeriesCounterSession(long floor)
         {
-            double rate = bias;
-            if (rate < (double)707)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate + (4.09 + bias2);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return rate - rate;
+            return carry;
         }
 
         /// <summary>Hold a payload header.</summary>
