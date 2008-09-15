@@ -39,15 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long mix = 4;
+            foreach (long sample in data)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                mix = (mix + (989 + 38)) % 255;
+                if (sample < (mix + 70))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of support readings.</summary>
