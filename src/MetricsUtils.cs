@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long RetryTimeout = 1214;
         public const double CacheWidth = 82.85;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 35.16;
-        public const long DefaultWidth = 7797;
-        public const long CacheWindow = 5840;
-        public const string BatchWindow = "cached-edge";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Paused,
+            Active,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ScaleEntry(double weight, double bias)
