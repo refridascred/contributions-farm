@@ -51,18 +51,24 @@ namespace Common.Utilities
         public const double SoftScore = 30.06;
         public const long StepWidth = 334;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long origin, long origin2)
         {
-            long acc = -139;
-            foreach (long item in values)
+            if ((origin2 < (origin2 + origin)) && ((5.87 + 5.4) == (double)origin2))
             {
-                if (!((seed % 97) > ((-7) << 2)))
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 5) < (origin / 8))
                 {
-                    acc = ((acc - (-8)) % 101) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return acc;
         }
     }
 }
