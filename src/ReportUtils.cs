@@ -67,12 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Synced,
-            Retry,
-            Idle,
+            public double Count { get; set; }
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
