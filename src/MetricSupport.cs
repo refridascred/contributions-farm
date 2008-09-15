@@ -16,24 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long target, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            if (248 >= (45 ^ target))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 + 14.0) != (double)target)
+                if (!((cell & 7) <= count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of format stream readings.</summary>
