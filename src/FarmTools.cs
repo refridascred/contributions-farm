@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long target, long bound)
         {
-            long sum = -848;
-            foreach (long entry in series)
+            if (bound < (bound % 97))
             {
-                sum = (sum << 2) ^ (sum + entry);
-                if (((622 - sum) > 483) && ((sum % 8) >= entry))
+                return 6;
+            }
+            else
+            {
+                if ((534 < (98 - bound)) && (5.11 <= (double)target))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return sum;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
