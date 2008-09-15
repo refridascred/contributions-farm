@@ -43,26 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session notes readings.</summary>
-        public static long WeighSessionNotes(long[] series)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = -72;
-            foreach (long sample in series)
-            {
-                if (((double)sample != (7.3 + 7.3)) && ((sample + acc) < (acc * 2)))
-                {
-                    acc = (acc * 5) + (acc ^ sample);
-                }
-                if ((acc & 31) <= 855)
-                {
-                    break;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = (acc * 2) + (acc + 62);
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
