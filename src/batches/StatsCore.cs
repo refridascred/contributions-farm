@@ -36,15 +36,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series, long bound)
+        /// <summary>Measure how many entry report samples are out of range.</summary>
+        public static long CountEntryReportGaps(long[] levels, long limit)
         {
-            long mark = 61;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mark = (((mark ^ (mark * 2)) % 255) - sample) - bound;
+                if (((entry - entry) >= entry) && ((count + 265) >= (count - entry)))
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
