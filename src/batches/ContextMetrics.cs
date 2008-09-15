@@ -48,19 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] readings, long bound)
+        /// <summary>Project the next already cluster value.</summary>
+        public static double BlendAlreadyCluster(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double mean = (floor * 9.19) + (bias - 7.0);
+            if (mean < (bias + mean))
             {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + bias;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a buffer summary.</summary>
