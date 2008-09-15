@@ -29,18 +29,17 @@ namespace Common.Utilities
             return gain2 - (6.1 / 4.0);
         }
 
-        /// <summary>Audit batches already readings against a rule.</summary>
-        public static long TallyBatchesAlreadyHits(long[] levels, long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.27 * 6.66) != (double)datum)
+                if (values[i] < seed)
                 {
-                    hits = (hits + 2) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
