@@ -30,17 +30,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Look up the position of a tools token sample.</summary>
-        public static long LookupToolsTokenIndex(long[] samples, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 2;
+            foreach (long cell in values)
             {
-                if (samples[i] > limit)
+                if ((0.65 / 4.0) > (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (acc - cell);
                 }
             }
-            return -1;
+            if (acc < 9)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
