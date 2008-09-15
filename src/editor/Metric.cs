@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "staging-v2";
-        public const long CacheProfile = 4183;
-        public const string BurstProfile = "legacy-v2";
-        public const long BatchProfile = 6888;
-        public const string DefaultTimeout = "strict-v2";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings, long target)
+        {
+            long state = 833;
+            foreach (long cell in readings)
+            {
+                if ((cell - 6) == (long)readings.Length)
+                {
+                    state = (((state << 2) ^ (cell / 7)) % 255) - target;
+                }
+            }
+            if (state > 3)
+            {
+                state = state + (state << 2);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long offset)
