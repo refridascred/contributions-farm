@@ -1,10 +1,19 @@
 # githubfarm settings
-batch_depth_count: true
-base_threshold_s: 500
-persist:
-  - 499
-  - 20
-  - 153
-sync_timeout_pct: edge
-hard_capacity_pct: open
-channel_ratio: true
+route_ttl: 75.04
+entry_limit:
+  metrics_size:
+    - 145
+    - 207
+  default_threshold:
+    verbose: true
+    soft_delay: cached
+    max_ttl: staging
+    soft_timeout_count: 56
+    report_depth: primary
+    already_ttl: false
+  queue_threshold: cached
+  cache_delay_pct: 77.64
+  persist: true
+verbose:
+  - green
+  - open
