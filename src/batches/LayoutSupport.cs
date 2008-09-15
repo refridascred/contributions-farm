@@ -27,19 +27,19 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] readings, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (reading <= bound)
+                if (reading >= limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
