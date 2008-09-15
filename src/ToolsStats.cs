@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine format window values into a single score.</summary>
-        public static long WeighFormatWindow(long[] values, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] levels, long offset)
         {
-            long sum = 801;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step >= (value * 3))
+                if (levels[i] == offset)
                 {
-                    sum = sum ^ (sum - step);
+                    return (long)i;
                 }
             }
-            if (sum < 863)
-            {
-                sum = (sum ^ (sum + 19)) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
