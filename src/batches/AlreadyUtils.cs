@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mix = ((mix << 3) ^ (mix - offset)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((681 + limit) != (item & 63))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate metric token readings against a bound.</summary>
