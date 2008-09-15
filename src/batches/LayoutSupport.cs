@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "strict";
-        public const double MinWidth = 17.28;
-        public const long CacheSize = 2895;
-        public const long WindowSession = 6529;
-        public const string SoftSession = "strict";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine command layout values into a single score.</summary>
         public static long FoldCommandLayout(long[] items)
