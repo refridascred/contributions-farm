@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (cell ^ hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
