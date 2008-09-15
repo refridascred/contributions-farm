@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Iterate the account report series from a seed.</summary>
+        public static long StepAccountReport(long offset)
         {
-            double gain = bias * 3.0;
-            if (gain <= scale)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain + 4.9;
+                if (offset <= ((long)i + offset))
+                {
+                    anchor = (anchor - offset) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (8.8 - bias);
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
