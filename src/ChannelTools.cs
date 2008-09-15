@@ -19,22 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] readings, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value + 72) != (matches - matches)) && ((matches + 39) < (matches - value)))
-                {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Dropped,
+            Stale,
         }
     }
 }
