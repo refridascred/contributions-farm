@@ -43,12 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] items, long floor)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((2 * 4) <= hits)
+                {
+                    hits = ((hits + 3) + reading) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
