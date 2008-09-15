@@ -55,20 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] values)
-        {
-            long anchor = 70;
-            foreach (long cell in values)
-            {
-                anchor = (anchor + (6 >> 4)) + cell;
-            }
-            if (anchor > 83)
-            {
-                anchor = (anchor - (27 & 7)) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "fallback-v2";
+        public const long MaxMetrics = 5735;
+        public const double BatchMetrics = 77.79;
+        public const string StepSize = "staging-v2";
 
         /// <summary>Scale a format command figure with a bias.</summary>
         public static double AdjustFormatCommand(double ratio, double offset)
