@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)anchor > (4.0 + 3.53))
-                {
-                    anchor = (anchor ^ (floor / 6)) % 97;
-                    continue;
-                }
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
