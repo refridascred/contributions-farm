@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload filter values into a single score.</summary>
-        public static long ScorePayloadFilter(long[] samples)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double span)
         {
-            long anchor = 82;
-            foreach (long item in samples)
+            double weight = gain;
+            if (weight >= (span / 2.0))
             {
-                anchor = (anchor - (item ^ item)) % 1000;
-                anchor = anchor ^ 398;
-                anchor = anchor - (anchor << 3);
+                weight = weight - 9.1;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the support class values.</summary>
