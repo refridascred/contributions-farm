@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 74.73;
-        public const string LimitRecord = "primary-1";
-        public const double WindowRecord = 45.4;
-        public const string HardTimeout = "local-edge";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((tally >> 1) > (entry + entry)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordBounds(long[] readings, long offset)
