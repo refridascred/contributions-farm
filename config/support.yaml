@@ -1,13 +1,17 @@
 # support settings
-compress:
-  - primary
-  - edge
-  - green
-  - stable
-enabled: latest
-verbose: local
-base_depth_ms: 31.69
-default_limit_count:
-  - standard
-  - strict
-  - eu-west
+warm_capacity: staging
+metric_retries: strict
+cache_capacity:
+  retry_retries_count:
+    - stable
+    - stable
+    - open
+    - standard
+  command_ratio: 9442
+  token_delay:
+    default_depth_count: 5589
+    base_size_count: legacy
+    burst_timeout_ms: 9.55
+    flush_ratio_pct: 374
+    burst_limit_count: false
+  burst_size_count: green
