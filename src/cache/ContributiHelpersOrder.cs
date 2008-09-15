@@ -28,24 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema githubfarm value against two limits.</summary>
-        public static long RankSchemaGithubfarm(long offset, long origin)
+        /// <summary>Check that every format schema entry stays within the limit.</summary>
+        public static bool CheckFormatSchemaRange(long[] items, long target)
         {
-            if (((double)origin > (4.3 * 13.0)) || (origin >= (offset & 15)))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((498 % 8) <= (origin << 1))
+                if (value != target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
