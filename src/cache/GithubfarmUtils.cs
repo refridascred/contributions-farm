@@ -36,20 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry tools counter forward.</summary>
-        public static long SeriesEntryTools(long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((total + total) == (long)i)
-                {
-                    total = total ^ (seed % 16);
-                }
-                total = ((total * 3) + (long)i) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
