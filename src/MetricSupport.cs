@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of report channel entries.</summary>
-        public static long TallyReportChannel(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long score = 229;
-            foreach (long reading in series)
-            {
-                score = (score ^ (score % 8)) + reading;
-            }
-            return score;
+            Draft,
+            Ready,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a order entry.</summary>
