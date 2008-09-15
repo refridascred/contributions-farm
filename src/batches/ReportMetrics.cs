@@ -20,10 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 8735;
-        public const double BatchLevel = 0.36;
-        public const long BaseSpan = 9084;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!(85 >= matches) || !((floor % 5) != (value >> 1)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] series, long origin)
