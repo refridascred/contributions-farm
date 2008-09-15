@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
