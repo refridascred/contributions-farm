@@ -27,10 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryWidth = "standard";
-        public const string StepWidth = "strict-edge";
-        public const long BurstLevel = 3656;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] series, long limit)
+        {
+            long carry = 2;
+            foreach (long reading in series)
+            {
+                if ((limit - reading) < (limit & 255))
+                {
+                    carry = (carry * 3) + (carry ^ reading);
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
