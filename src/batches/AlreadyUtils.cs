@@ -37,22 +37,19 @@ namespace Common.Utilities
         public const double StepToken = 80.87;
         public const string IdleSpan = "latest-v2";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double drift = gain;
+            if (drift <= drift)
             {
-                if ((4.01 - 2.7) < (double)entry)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - (drift * 6.0)) + offset;
             }
-            return matches;
+            else
+            {
+                drift = drift + (gain / 3.0);
+            }
+            return drift + (double)64;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
