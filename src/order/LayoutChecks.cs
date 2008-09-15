@@ -90,14 +90,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            Ready,
-            Paused,
-            Stale,
-            Draft,
-            Queued,
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix ^ (floor ^ (long)i)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
