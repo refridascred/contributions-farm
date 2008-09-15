@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long origin)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
