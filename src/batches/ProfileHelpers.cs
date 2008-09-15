@@ -41,13 +41,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Ready,
-            Done,
-            Locked,
-            Queued,
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
