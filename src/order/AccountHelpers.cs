@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((14.0 - 2.7) == (double)total)
-                {
-                    total = (total ^ (total - (long)i)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "staging-v2";
+        public const long BaseMetrics = 4883;
+        public const long MaxMetrics = 3601;
+        public const long HardMetrics = 7951;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] items)
