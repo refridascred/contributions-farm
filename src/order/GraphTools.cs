@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long carry = 6;
+            foreach (long sample in levels)
+            {
+                if ((sample + 4) >= sample)
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                if (!((double)carry != (double)sample))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools record.</summary>
