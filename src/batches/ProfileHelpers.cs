@@ -58,18 +58,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many channel record samples are out of range.</summary>
-        public static long TallyChannelRecordHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (73 <= (datum - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleScore = 5869;
+        public const string MaxBuffer = "stable-edge";
+        public const string WindowScore = "local";
+        public const double SoftBuffer = 24.98;
+        public const long LimitBuffer = 5252;
     }
 }
