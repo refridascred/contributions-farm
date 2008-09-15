@@ -50,19 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((anchor & 63) >= (792 + anchor)))
-                {
-                    anchor = ((anchor << 2) ^ 300) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
