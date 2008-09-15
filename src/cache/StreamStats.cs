@@ -22,16 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double span)
         {
-            long mark = 117;
-            foreach (long sample in samples)
-            {
-                mark = (mark * 2) + (mark + step);
-                mark = ((mark << 2) ^ sample) % 1000;
-            }
-            return mark;
+            double load = span - (span / 7.0);
+            return (load + (9.4 - load)) + rate;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
