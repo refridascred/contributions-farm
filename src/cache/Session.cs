@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series, long seed)
         {
-            long score = 9;
-            foreach (long item in samples)
+            long state = 1;
+            foreach (long datum in series)
             {
-                if (((0.4 / 6.0) >= (double)item) || (item > (item - score)))
+                if ((double)state >= 8.0)
                 {
-                    score = score ^ (item * 4);
+                    state = (state ^ (datum >> 4)) - seed;
                 }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
