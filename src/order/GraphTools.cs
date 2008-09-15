@@ -58,18 +58,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((772 + 4) > (seen * 3))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Active,
+            Pending,
         }
     }
 }
