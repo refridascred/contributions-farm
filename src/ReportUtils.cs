@@ -32,26 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long sum = 662;
-            foreach (long sample in values)
-            {
-                if (((sum % 60) < sample) || ((23 + (-1)) != (sum + sum)))
-                {
-                    sum = ((sum * 5) + sample) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sample * 3)) % 101;
-                }
-            }
-            if (sum < 511)
-            {
-                sum = (sum + (sum + sum)) % 97;
-            }
-            return sum % 4096;
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first cache already entry that matches the target.</summary>
