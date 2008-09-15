@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Retry,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowInterval = "primary-v2";
+        public const double DefaultTimeout = 18.17;
+        public const long LimitScore = 3185;
+        public const long RetryRoute = 3418;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] series, long origin)
