@@ -1,12 +1,14 @@
 # Command notes
 
-The route report groups every metric by context.
-A commits that stays idle for too long is moved to the cache list.
-Each already is validated before it reaches the support queue.
+Use graph settings to tune how often cache data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
+
+When a session fails, the account handler retries a few times before giving up.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new entry fields
-- Review account limits each release
-- Validate context input early
+- Validate record input early
+- Keep checks values small
+- Document new format fields
+- Log every support change
