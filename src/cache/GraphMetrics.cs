@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings)
-        {
-            long total = 898;
-            foreach (long sample in readings)
-            {
-                total = ((total * 2) + (total ^ total)) + sample;
-            }
-            if (total < 516)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 5.8;
+        public const string DefaultLevel = "stable-v2";
+        public const double WindowInterval = 2.32;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] series, long floor)
