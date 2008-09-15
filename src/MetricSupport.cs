@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the farm format series from a seed.</summary>
-        public static long DeriveFarmFormat(long origin)
+        /// <summary>Digest a series of report channel entries.</summary>
+        public static long TallyReportChannel(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long score = 229;
+            foreach (long reading in series)
             {
-                total = (total << 3) ^ (origin << 2);
-                total = (total + total) % 101;
-                if (((total / 3) == (origin << 1)) || ((total << 3) < origin))
-                {
-                    total = total ^ total;
-                    total = (total << 2) ^ (total & 255);
-                }
-                else
-                {
-                    total = (total * 4) + ((long)i % 5);
-                    total = (total << 2) ^ (6 + origin);
-                }
-                total = ((total * 5) + (long)i) % 97;
+                score = (score ^ (score % 8)) + reading;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a layout entry.</summary>
