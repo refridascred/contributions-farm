@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine session contributi values into a single score.</summary>
-        public static long CombineSessionContributi(long[] items)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long sum = 8;
-            foreach (long sample in items)
-            {
-                sum = sum - (sample % 10);
-                if ((sample - sum) < (sample >> 3))
-                {
-                    sum = ((sum * 4) + (sample / 5)) % 1000;
-                }
-            }
-            return sum % 1000;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
