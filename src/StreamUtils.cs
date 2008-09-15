@@ -59,18 +59,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long CountStatsClusterGaps(long[] samples)
+        /// <summary>Rank layout context input into a small class.</summary>
+        public static long GradeLayoutContext(long target, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if ((target >> 4) > target)
             {
-                if ((count - 8) > 39)
+                return 6;
+            }
+            else
+            {
+                if ((target >> 3) <= (bound / 9))
                 {
-                    count = (count + 1) + value;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
