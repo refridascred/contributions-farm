@@ -31,20 +31,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultTimeout = 1167;
+        public const long BaseSpan = 491;
+        public const long DefaultFormat = 4414;
+        public const double DefaultDepth = 14.41;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowHits(long[] levels, long target)
