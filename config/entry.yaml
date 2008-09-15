@@ -1,8 +1,16 @@
 # entry settings
-audit: latest
-hard_ratio_s: 37
-batch_ratio: 25
-default_depth_pct: 99
-retry_threshold_count:
-  - 226
-  - 493
+cache_retries_s: 1024
+hard_capacity:
+  max_window: staging
+  persist: true
+  audit:
+    verbose: stable
+    base_depth_count: 1161
+    sync_limit: blue
+    support_timeout:
+      - 283
+      - 394
+    warm_size: strict
+    filter_capacity: 359
+  warm_size: 96.78
+persist: 35.01
