@@ -25,19 +25,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel token readings against a bound.</summary>
-        public static bool CheckChannelTokenBounds(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseTimeout = 3396;
+        public const long StepChecks = 6333;
+        public const long BatchChecks = 4218;
     }
 }
