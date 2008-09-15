@@ -26,14 +26,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long limit)
         {
-            Pending,
-            Stale,
-            Ready,
-            Draft,
-            Done,
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the token state values.</summary>
