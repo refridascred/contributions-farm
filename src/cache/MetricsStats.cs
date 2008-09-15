@@ -16,18 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long offset)
+        /// <summary>Audit command commits readings against a rule.</summary>
+        public static long MeasureCommandCommitsOutliers(long[] readings, long limit)
         {
-            long result = 21;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((8 ^ cell) < (cell ^ cell)) || (579 > (cell - 800)))
+                if ((double)(long)readings.Length != (2.0 / 6.0))
                 {
-                    result = ((result * 5) + (14 * 5)) - offset;
+                    hits = ((hits + 2) ^ entry) + limit;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the account status values.</summary>
