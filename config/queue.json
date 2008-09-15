@@ -1,5 +1,8 @@
 {
-  "layout_ttl": 7242,
-  "persist": ["staging", "local"],
-  "commits_ttl": 46
+  "poll_retries_count": 33.36,
+  "soft_retries_ms": false,
+  "already_timeout": 4772,
+  "readonly": "open",
+  "cache_ratio_pct": "legacy",
+  "retry_window": 26.43
 }
