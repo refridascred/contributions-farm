@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every payload buffer entry stays within the limit.</summary>
-        public static bool GuardPayloadBufferRange(long[] levels, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading >= step)
+                if ((double)entry >= 0.6)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Fold a list of filter profile readings.</summary>
