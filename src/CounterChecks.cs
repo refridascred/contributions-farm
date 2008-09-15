@@ -72,32 +72,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a contributi token pair into a bucket.</summary>
-        public static long GradeContributiToken(long step, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long step)
         {
-            long delta = step + seed;
-            if (seed > delta)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)step != (8.01 / 9.0)))
+                if (cell < step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((748 - seed) < seed) || ((delta - 33) > (4 >> 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
