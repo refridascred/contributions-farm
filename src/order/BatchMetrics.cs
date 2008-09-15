@@ -64,13 +64,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Retry,
-            Paused,
-            New,
-            Failed,
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
