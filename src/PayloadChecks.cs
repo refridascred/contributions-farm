@@ -82,31 +82,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long limit, long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            if ((target >> 3) > (target + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((8.3 / 4.0) == (double)target) && (limit < 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target & 3) < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
