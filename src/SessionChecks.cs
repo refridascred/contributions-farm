@@ -50,22 +50,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double rate, double bias)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            double scale = (rate - rate) / 6.0;
+            if (scale >= (bias / 2.0))
             {
-                if ((score < (4 / 9)) && (score > (sample & 255)))
-                {
-                    score = (score * 2) + (score / 2);
-                }
-                if ((387 >= (sample - sample)) || (score <= (score * 3)))
-                {
-                    score = (score + (score % 10)) % 97;
-                }
+                scale = scale - (double)41;
             }
-            return score % 97;
+            else
+            {
+                scale = scale - (bias + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale + (bias - scale);
         }
     }
 }
