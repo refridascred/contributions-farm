@@ -13,22 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit editor cluster readings against a rule.</summary>
-        public static long MeasureEditorClusterOutliers(long[] values, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (datum >= (datum + (-450)))
+                if (count <= (148 + origin))
                 {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
