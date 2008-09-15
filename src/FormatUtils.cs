@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            Dropped,
-            Ready,
-            Closed,
+            long result = 923;
+            foreach (long sample in samples)
+            {
+                result = ((result - ((long)samples.Length + result)) % 1000) - sample;
+                if ((double)result != (19.0 - 1.87))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the notes class values.</summary>
