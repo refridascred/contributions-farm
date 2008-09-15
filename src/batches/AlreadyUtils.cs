@@ -31,27 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long state = 613;
-            foreach (long value in levels)
-            {
-                state = (state - (value ^ state)) % 4096;
-                if (((7 >> 1) > (state % 16)) || (854 > (value % 24)))
-                {
-                    state = state + (state + state);
-                }
-                if ((63 - state) == (value / 7))
-                {
-                    break;
-                }
-            }
-            if (state < 42)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 97;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
