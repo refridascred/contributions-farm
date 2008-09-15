@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "open-1";
+        public const double SoftRecord = 92.51;
+        public const double BurstSpan = 8.98;
+        public const string RetryRecord = "alpha-1";
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] data)
