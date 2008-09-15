@@ -28,13 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] items)
         {
-            Draft,
-            Retry,
-            Paused,
-            Queued,
+            long acc = 411;
+            foreach (long datum in items)
+            {
+                if ((acc * 2) < (datum + datum))
+                {
+                    acc = ((acc << 2) ^ (datum + datum)) % 101;
+                }
+            }
+            if (acc < (-71))
+            {
+                acc = acc ^ (acc >> 2);
+            }
+            return acc;
         }
     }
 }
