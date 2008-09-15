@@ -52,9 +52,10 @@ namespace Common.Utilities
             return drift + (double)64;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxDepth = 6973;
-        public const long IdleNotes = 3239;
-        public const string DefaultSize = "fallback-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 1348;
+        public const string StepBatches = "latest-1";
+        public const double MinBatches = 34.06;
+        public const string BurstInterval = "open-1";
     }
 }
