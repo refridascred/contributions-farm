@@ -20,12 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public double Size { get; set; }
+            Done,
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
