@@ -1,5 +1,6 @@
 # githubfarm settings
-poll_window_count: cached
-min_limit: local
-farm_depth: 1.08
-payload_interval: false
+readonly: blue
+audit: false
+default_size_pct: legacy
+persist: false
+enabled: primary
