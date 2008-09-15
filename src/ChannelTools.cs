@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double scale = (double)(62 - 879);
+            if (scale >= scale)
             {
-                if ((tally << 2) < (tally ^ 0))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = ((scale - (6.0 - 3.8)) + bias) - bias2;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Rank format input into a small class.</summary>
