@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long CacheMetric = 2974;
         public const long BurstSpan = 4476;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
+        public static bool CheckPayloadGithubfarmRange(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < step)
                 {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Locate a command report reading by value.</summary>
