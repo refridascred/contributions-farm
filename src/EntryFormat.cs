@@ -32,11 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
