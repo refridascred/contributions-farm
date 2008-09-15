@@ -48,40 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long limit, long bound)
-        {
-            long span = limit ^ bound;
-            if ((double)bound != (8.8 + 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 9) > (limit * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((span / 6) < (span * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= (55 & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleBudget = "primary-1";
+        public const long WindowInterval = 3544;
+        public const long SoftFactor = 6199;
+        public const long HardAlready = 1593;
+        public const long SoftBudget = 4727;
 
         /// <summary>Count the token farm entries that pass the check.</summary>
         public static long CountTokenFarmGaps(long[] samples, long offset)
