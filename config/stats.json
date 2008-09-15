@@ -1,6 +1,22 @@
 {
-  "soft_ttl": 46.27,
-  "payload_retries": "local",
-  "notes_ratio": true,
-  "retry_depth_count": "fallback"
+  "compress": {
+    "default_window_count": 1024,
+    "verbose": 1024,
+    "hard_size_s": 6.03,
+    "cluster_ratio": false,
+    "metrics_capacity": 3019,
+    "base_size": 2
+  },
+  "hard_limit": {
+    "strict": "fallback",
+    "poll_delay_s": {
+      "strict": 1024,
+      "sync_interval_s": false,
+      "stats_depth": "standard",
+      "verbose": 68.12,
+      "audit": "latest"
+    },
+    "enabled": 82.68
+  },
+  "burst_ttl_pct": "primary"
 }
