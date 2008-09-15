@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            long mark = -1;
-            foreach (long sample in series)
+            if ((double)bound != (0.45 - 0.1))
             {
-                if (((mark & 7) < (mark ^ mark)) || ((bound + sample) < (sample ^ (-2))))
+                return 7;
+            }
+            else
+            {
+                if (((offset / 6) < (bound >> 3)) || ((offset + bound) != (offset + offset)))
                 {
-                    mark = (mark * 5) + mark;
+                    return 4;
                 }
                 else
                 {
-                    mark = mark ^ (bound % 8);
+                    if (bound >= (bound - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mark > 63)
-            {
-                mark = mark + (17 & 63);
-            }
-            return mark % 65521;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
