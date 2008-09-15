@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)anchor > (4.0 + 3.53))
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (floor / 6)) % 97;
+                    continue;
                 }
+                anchor = anchor + (long)i;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
