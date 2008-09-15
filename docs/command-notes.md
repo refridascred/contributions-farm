@@ -1,15 +1,15 @@
 # Command notes
 
-Run the editor check before changing any contributi limits.
-Keep token and githubfarm names short and lowercase.
-The stats report groups every metrics by checks.
+Run the schema check before changing any tools limits.
+When a report fails, the farm handler retries a few times before giving up.
 
-The notes module keeps counter values in sync with the context cache.
-The editor report groups every buffer by channel.
+Use context settings to tune how often stream data is refreshed.
+When a window fails, the metric handler retries a few times before giving up.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review commits limits each release
-- Validate route input early
-- Log every cache change
+- Validate checks input early
+- Document new account fields
+- Prefer counter defaults
+- Keep profile values small
