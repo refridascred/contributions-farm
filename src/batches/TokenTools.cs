@@ -25,12 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
