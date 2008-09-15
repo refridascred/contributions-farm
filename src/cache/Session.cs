@@ -16,21 +16,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up route schema samples.</summary>
-        public static long PairRouteSchemaCount(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 20)
+                    if ((levels[i] - levels[j]) == 18)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
