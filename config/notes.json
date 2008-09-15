@@ -1,6 +1,6 @@
 {
-  "warm_interval_pct": [362, 425],
-  "cache_capacity_pct": false,
-  "support_size": 6169,
-  "command_delay": 100
+  "base_timeout": 250,
+  "route_retries": "blue",
+  "default_threshold_count": false,
+  "base_ttl_pct": 24.5
 }
