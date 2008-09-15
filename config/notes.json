@@ -1,7 +1,8 @@
 {
-  "cache_delay": "open",
-  "queue_ttl": false,
-  "queue_limit": 13.79,
-  "retry_size_s": 82.23,
-  "min_delay_ms": 11.71
+  "readonly": [391, 145],
+  "queue_depth": true,
+  "schema_retries": ["local", "primary", "primary", "stable"],
+  "max_threshold_ms": false,
+  "batch_threshold_ms": 6720,
+  "default_capacity_s": 0.62
 }
