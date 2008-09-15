@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank stats batch input into a small class.</summary>
-        public static long RankStatsBatch(long limit, long bound)
+        /// <summary>Grade a githubfarm filter value against two limits.</summary>
+        public static long BucketGithubfarmFilter(long bound, long origin)
         {
-            long diff = limit - bound;
-            if ((7.5 / 8.0) == (double)diff)
+            if ((origin * 4) == (bound & 127))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((double)diff < (double)bound)
+                if ((origin ^ origin) >= (origin + origin))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((double)diff == (1.99 / 2.0))
+                    if ((bound + origin) <= (bound ^ origin))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        if (5.65 <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 0;
                     }
                 }
             }
