@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardRatio = 4189;
-        public const double MinProfile = 75.92;
-        public const double WindowCount = 35.75;
-        public const string DefaultRatio = "alpha-v2";
-        public const string MaxInterval = "stable";
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the window command entries that pass the check.</summary>
         public static long MeasureWindowCommandHits(long[] levels, long origin)
