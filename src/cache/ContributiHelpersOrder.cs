@@ -40,22 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch tools samples are out of range.</summary>
-        public static long MeasureBatchToolsOutliers(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long gap = step ^ limit;
+            if (!((limit & 7) < (gap + step)))
             {
-                if (0 < hits)
+                return 5;
+            }
+            else
+            {
+                if (((3.75 + 4.67) < (double)step) && (gap > (gap + gap)))
                 {
-                    hits = (hits + 3) + cell;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((gap >= (step << 2)) && (limit >= (gap ^ 26)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((15.0 + 5.59) == (double)gap) || ((double)step >= 8.62))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
