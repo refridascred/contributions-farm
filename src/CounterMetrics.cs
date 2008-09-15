@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank profile route input into a small class.</summary>
-        public static long RankProfileRoute(long origin, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data, long seed)
         {
-            if ((double)origin >= (20.0 / 4.0))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 31) > (origin % 3))
+                if ((6.64 >= (double)seed) || !(matches <= ((-36) + 3)))
                 {
-                    return 7;
+                    matches = (matches + 1) + sample;
                 }
                 else
                 {
-                    if (((228 + floor) < (floor * 3)) && ((1.81 / 2.0) >= (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
