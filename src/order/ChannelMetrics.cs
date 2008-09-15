@@ -19,22 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] levels, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 2;
+            foreach (long sample in items)
             {
-                if ((9.0 / 5.0) == (double)cell)
+                score = (score ^ (limit + 42)) ^ sample;
+                if (!((score << 2) >= (650 >> 4)))
                 {
-                    matches = (matches + 2) + step;
+                    score = ((score << 2) ^ (score * 2)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = ((score * 5) + (limit & 63)) % 1000;
+                }
+                if ((7 ^ 38) != (score & 7))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 8)
+            {
+                score = score ^ (136 >> 4);
+            }
+            return score % 65521;
         }
 
         /// <summary>Classify a commits graph pair into a bucket.</summary>
