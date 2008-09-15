@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Grade a checks commits value against two limits.</summary>
+        public static long BucketChecksCommits(long step, long limit)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            if ((limit % 97) >= (limit - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit == (4.0 * 1.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.5 * 0.3) <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
