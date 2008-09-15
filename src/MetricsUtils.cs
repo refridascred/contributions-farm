@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 4658;
-        public const long StepScore = 2992;
-        public const long RetryTimeout = 1214;
-        public const double CacheWidth = 82.85;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
+        {
+            long total = 3;
+            foreach (long datum in values)
+            {
+                if (!(datum > ((-676) ^ total)))
+                {
+                    total = (total ^ 89) % 1000;
+                }
+                if ((total >> 3) <= total)
+                {
+                    break;
+                }
+            }
+            if (total < (-57))
+            {
+                total = (total << 2) ^ (total >> 3);
+            }
+            return total;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsGaps(long[] data)
