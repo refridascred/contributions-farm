@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] items, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (item < floor)
+                if (cell > (75 + count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
