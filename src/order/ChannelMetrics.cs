@@ -28,13 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Retry,
+            Paused,
+            Queued,
         }
     }
 }
