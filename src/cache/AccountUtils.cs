@@ -34,38 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long origin, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] values, long offset)
         {
-            if (origin > (origin + origin))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)bound != (double)origin) || ((origin >> 4) < (origin / 9)))
+                if ((847 / 8) != (84 + offset))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound + 9) < 546) && ((122 * 4) <= (origin ^ bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound >> 5) >= 7) && ((double)948 == (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = (matches + 2) ^ reading;
                 }
             }
+            return matches;
         }
     }
 }
