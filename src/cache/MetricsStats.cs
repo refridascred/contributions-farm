@@ -62,17 +62,15 @@ namespace Common.Utilities
         public const string MaxSize = "stable-edge";
         public const double BatchAccount = 28.52;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of filter channel entries.</summary>
