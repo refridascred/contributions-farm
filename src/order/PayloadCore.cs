@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next token channel value.</summary>
-        public static double AdjustTokenChannel(double rate, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long target)
         {
-            double bias2 = bias;
-            if (bias2 < (rate + bias2))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                bias2 = bias2 + bias2;
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (5.77 + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias / 5.0)) - (double)(long)i;
-            }
-            return bias2 - (bias / 5.0);
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
