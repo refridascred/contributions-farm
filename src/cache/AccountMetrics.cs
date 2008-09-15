@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] values, long target)
         {
             long matches = 0;
-            foreach (long cell in data)
+            foreach (long entry in values)
             {
-                if (!((matches + 163) == (matches + cell)))
+                if (!((10.0 - 2.0) <= (double)(long)values.Length) || ((396 - matches) >= (target + target)))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
