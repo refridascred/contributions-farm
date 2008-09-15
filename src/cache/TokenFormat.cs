@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result + 2;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter record.</summary>
