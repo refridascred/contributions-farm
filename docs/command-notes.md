@@ -1,14 +1,12 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Each entry is validated before it reaches the channel queue.
-
-A buffer that stays idle for too long is moved to the support list.
-Run the checks check before changing any contributi limits.
-The stats report groups every already by context.
+Use entry settings to tune how often batches data is refreshed.
+Run the support check before changing any editor limits.
+The editor report groups every channel by schema.
 
 ## Guidelines
 
-- Log every format change
-- Prefer format defaults
-- Document new route fields
+- Prefer contributi defaults
+- Document new graph fields
+- Log every order change
+- Review counter limits each release
