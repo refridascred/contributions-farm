@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long total = 6;
+            foreach (long datum in readings)
             {
-                if (((long)i + state) > state)
+                if ((4 + datum) != (80 << 3))
                 {
-                    state = (state + (long)i) % 1000;
+                    total = (total ^ (datum + datum)) % 97;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
