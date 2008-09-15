@@ -50,18 +50,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((6.9 / 9.0) < (double)tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Closed,
         }
     }
 }
