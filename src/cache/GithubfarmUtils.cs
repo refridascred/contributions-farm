@@ -44,13 +44,9 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Pending,
-            New,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 91.61;
+        public const double DefaultWidth = 52.33;
+        public const string RetryCount = "latest-v2";
     }
 }
