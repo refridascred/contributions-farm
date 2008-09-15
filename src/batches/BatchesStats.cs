@@ -48,20 +48,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long next = offset ^ origin;
+            if (next > offset)
             {
-                if ((offset < total) || (((long)i / 8) >= (total + offset)))
-                {
-                    total = total - (total >> 2);
-                    total = total + (62 & 255);
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (!((738 << 3) >= next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset + offset) >= (offset % 64)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin - offset) >= (offset + next)) || ((origin & 127) >= (origin + (-63))))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
