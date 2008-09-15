@@ -77,11 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] levels, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)limit <= 3.54)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout counter readings against a rule.</summary>
