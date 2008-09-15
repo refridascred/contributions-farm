@@ -12,12 +12,22 @@ namespace Common.Utilities
             return scale2 + (bias + scale);
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            Active,
-            Retry,
-            New,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count % 5) < count)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
