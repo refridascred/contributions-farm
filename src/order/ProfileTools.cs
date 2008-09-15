@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(0.8 >= (double)(long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark * 3) + (bound >> 4);
-                    mark = (mark * 4) + (562 / 9);
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
