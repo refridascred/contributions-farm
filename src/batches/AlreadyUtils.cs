@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two cache commits measurements.</summary>
-        public static double ProjectCacheCommits(double rate, double bias)
+        /// <summary>Classify a batch profile pair into a bucket.</summary>
+        public static long SortBatchProfile(long seed, long origin)
         {
-            double ratio = (double)(10 >> 1);
-            for (int i = 0; i < 8; i++)
+            if ((double)origin < 9.3)
             {
-                ratio = (((ratio + 1.9) - (double)(long)i) - rate) - bias;
+                return 4;
             }
-            return ratio + (ratio / 4.0);
+            else
+            {
+                if ((4.3 + 1.02) < (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
