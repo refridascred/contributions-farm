@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] readings, long offset)
         {
-            Retry,
-            Active,
-            Queued,
-            Failed,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen * 4) >= 7)
+                {
+                    seen = ((seen + 2) ^ cell) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate tools samples.</summary>
