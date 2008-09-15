@@ -47,22 +47,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long target)
         {
-            long carry = 43;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((carry & 3) < (881 % 2)) && ((reading - carry) >= (reading / 2)))
+                if ((readings[i] < target) && ((readings[i] % 2) != 0))
                 {
-                    carry = (carry ^ carry) % 97;
-                }
-                else
-                {
-                    carry = carry ^ (carry << 1);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
