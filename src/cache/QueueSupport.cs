@@ -34,11 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
