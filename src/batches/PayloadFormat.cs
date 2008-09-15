@@ -50,18 +50,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell > (cell - matches)) || ((double)cell < 20.0)) && ((424 / 8) <= (cell / 8)))
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
