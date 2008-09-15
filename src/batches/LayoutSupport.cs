@@ -31,19 +31,14 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mix = 43;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ (mix << 1)) + item;
-            }
-            if (mix > 215)
-            {
-                mix = (mix ^ (limit / 3)) % 4096;
-            }
-            return mix;
+            Locked,
+            Closed,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
