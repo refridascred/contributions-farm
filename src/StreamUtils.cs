@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account support samples.</summary>
-        public static long ScoreAccountSupport(long[] items)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long floor)
         {
-            long acc = 54;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc + (acc ^ acc)) % 4096) - reading;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
