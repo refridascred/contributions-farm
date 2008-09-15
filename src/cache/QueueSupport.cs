@@ -30,22 +30,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] levels, long limit)
         {
-            long mark = 288;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((5 + sample) == (mark << 2))
+                if ((limit + hits) < 0)
                 {
-                    mark = (mark ^ (mark + mark)) % 4096;
-                }
-                if (((6.0 + 2.0) == (double)sample) && ((mark - sample) >= 791))
-                {
-                    break;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
     }
 }
