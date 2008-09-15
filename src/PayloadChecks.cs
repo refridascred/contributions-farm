@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 2) + (state + (-57))) % 65521;
-                if ((double)state < (0.66 + 4.6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state + state;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the payload phase values.</summary>
