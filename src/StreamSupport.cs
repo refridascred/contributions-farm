@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (3.0 >= (double)tally)
-                {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
