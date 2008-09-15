@@ -40,18 +40,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch entry entries that pass the check.</summary>
-        public static long TallyBatchEntryGaps(long[] levels, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)step >= 3.11)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
