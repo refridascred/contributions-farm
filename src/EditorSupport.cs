@@ -41,32 +41,18 @@ namespace Common.Utilities
             return load + (load / 5.0);
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long limit)
         {
-            long slot = target ^ step;
-            if ((1.41 + 5.42) > (double)target)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ 653) > slot)
+                if ((item << 3) < item)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.43 / 7.0) > (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 2) + limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
