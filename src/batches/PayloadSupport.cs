@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Audit support tools readings against a rule.</summary>
+        public static long MeasureSupportToolsGaps(long[] samples, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                long gap = (acc >> 5) + (target / 6);
-                acc = ((acc << 3) ^ (gap << 2)) % 101;
-                gap = (gap - ((long)i + acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((3.4 / 3.0) < (double)entry)
+                {
+                    tally = (tally + 3) - step;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
