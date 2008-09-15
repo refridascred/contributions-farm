@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double ratio, double span)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double drift = ratio;
-            if (drift > span)
-            {
-                drift = drift - (span + ratio);
-            }
-            else
-            {
-                drift = drift + (ratio * 1.0);
-            }
-            return drift + (double)(-872);
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
