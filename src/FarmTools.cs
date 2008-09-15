@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] values, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((double)target <= (double)carry) || (carry < ((long)i ^ target)))
+                if (entry < floor)
                 {
-                    carry = carry + ((long)i + 4);
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
