@@ -1,19 +1,5 @@
 {
-  "buffer_ratio": true,
-  "farm_threshold": 20.05,
-  "schema_ratio": {
-    "flush_timeout_pct": "legacy",
-    "burst_interval": 10,
-    "dry_run": 44.67,
-    "cache_limit_pct": 51.74,
-    "flush_threshold": {
-      "readonly": [363, 138],
-      "idle_threshold_pct": 62.33,
-      "contributi_capacity": "cached",
-      "idle_ttl_count": 55
-    }
-  },
-  "layout_capacity": "standard",
-  "verbose": 79.14,
-  "stream_retries": 97
+  "audit": ["cached", "blue", "staging", "primary"],
+  "readonly": 30,
+  "default_window_ms": 85.45
 }
