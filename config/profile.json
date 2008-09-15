@@ -1,18 +1,15 @@
 {
-  "persist": 22.3,
-  "min_delay": [220, 487, 480, 76],
-  "route_depth": 100,
-  "poll_size": "cached",
-  "batch_window_count": {
-    "queue_ttl": {
-      "hard_timeout": "primary",
-      "strict": "standard",
-      "max_timeout": "local",
-      "batch_retries": 6400,
-      "base_capacity": [149, 276]
-    },
-    "queue_interval": "eu-west",
-    "burst_ratio_s": "primary"
+  "batch_window_s": {
+    "window_limit": true,
+    "warm_timeout_pct": "blue",
+    "counter_size": "staging",
+    "context_interval": 3781
   },
-  "cache_interval_count": "legacy"
+  "poll_ttl_ms": {
+    "default_size_count": false,
+    "retry_timeout_pct": true,
+    "max_threshold_pct": "stable"
+  },
+  "warm_ratio_count": "strict",
+  "sync_delay_s": 500
 }
