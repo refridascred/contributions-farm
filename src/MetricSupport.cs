@@ -16,12 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long target, long floor)
         {
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            if (248 >= (45 ^ target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.0 + 14.0) != (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate commits route samples.</summary>
