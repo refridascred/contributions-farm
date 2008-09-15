@@ -48,19 +48,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] samples, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (value > step)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc - origin) % 255) ^ (long)i2;
+                    acc = acc + (origin + origin);
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
     }
 }
