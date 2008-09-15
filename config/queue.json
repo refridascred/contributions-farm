@@ -1,8 +1,7 @@
 {
-  "hard_interval": 60,
-  "enabled": 6068,
-  "poll_retries_s": 60,
-  "retry_capacity_pct": 3426,
-  "poll_ttl_s": 7473,
-  "account_retries": 56.11
+  "cache_window": [263, 318, 272],
+  "default_limit_s": [187, 292],
+  "retry_timeout_pct": 6,
+  "schema_limit": true,
+  "flush_timeout_pct": 9655
 }
