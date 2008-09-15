@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mean + (double)(-68);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] values, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a token stats.</summary>
