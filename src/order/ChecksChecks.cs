@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryFactor = 2430;
-        public const long IdleLevel = 6418;
-        public const double LimitNotes = 26.21;
-        public const string StepNotes = "local-edge";
-        public const long MinCount = 3991;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total ^ (total - step);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] levels)
