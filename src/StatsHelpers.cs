@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every order command entry stays within the limit.</summary>
+        public static bool ValidateOrderCommandRange(long[] series, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
