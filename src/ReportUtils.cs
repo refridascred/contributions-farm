@@ -64,18 +64,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long total = 43;
-            foreach (long item in items)
-            {
-                if (((offset << 1) >= (offset - offset)) || (offset <= (offset - item)))
-                {
-                    total = (total * 4) + offset;
-                }
-            }
-            return total % 4096;
+            Dropped,
+            Active,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a entry info.</summary>
