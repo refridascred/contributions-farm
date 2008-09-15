@@ -52,13 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Closed,
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
