@@ -58,21 +58,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Validate farm graph readings against a bound.</summary>
+        public static bool ValidateFarmGraphBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < offset)
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
