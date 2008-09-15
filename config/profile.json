@@ -1,11 +1,7 @@
 {
-  "max_capacity": {
-    "poll_capacity": ["fallback", "stable", "green"],
-    "sync_size": "standard",
-    "default_timeout_count": true
-  },
-  "readonly": 4074,
-  "enabled": 96.65,
-  "flush_ratio_ms": 82.85,
-  "poll_limit_pct": false
+  "buffer_capacity": false,
+  "sync_timeout_count": "stable",
+  "base_threshold_s": 500,
+  "already_ratio": [219, 386],
+  "strict": "open"
 }
