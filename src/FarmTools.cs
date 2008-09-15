@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double span)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double bias = span * 13.0;
+            if (bias > span)
             {
-                if ((9 + 5) == (sample - offset))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias - scale;
             }
-            return hits;
+            return bias + (double)(-3);
         }
     }
 }
