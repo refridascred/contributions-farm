@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] series)
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)value == (double)seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cache already entry that matches the target.</summary>
