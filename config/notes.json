@@ -1,5 +1,8 @@
 {
-  "soft_ttl": "stable",
-  "metric_size": "open",
-  "channel_threshold": [74, 290]
+  "editor_threshold": true,
+  "order_delay": "open",
+  "default_capacity": 34.25,
+  "dry_run": 79,
+  "base_delay_ms": true,
+  "default_depth": false
 }
