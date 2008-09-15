@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((681 + limit) != (item & 63))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
