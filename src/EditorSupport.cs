@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            Synced,
-            New,
-            Draft,
-            Queued,
-            Stale,
+            double load = (double)(3 * 5);
+            if (load <= (gain + bias))
+            {
+                load = load + (gain / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + gain) - (double)(long)i;
+            }
+            return load + (load / 5.0);
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
