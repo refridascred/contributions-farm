@@ -29,15 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mix = 5;
-            foreach (long cell in readings)
-            {
-                mix = (mix + cell) % 4096;
-            }
-            return mix % 4096;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
