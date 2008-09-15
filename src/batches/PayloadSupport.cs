@@ -19,23 +19,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double bias, double floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] series, long floor)
         {
-            double weight = 4.9 - (bias / 3.0);
-            if (weight < (floor + bias))
+            long tally = 0;
+            foreach (long value in series)
             {
-                weight = weight - (bias * 7.91);
+                if ((floor * 2) == (value - 493))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (floor * 7.8);
+            return tally;
         }
     }
 }
