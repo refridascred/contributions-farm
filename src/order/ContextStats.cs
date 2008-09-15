@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long floor)
+        /// <summary>Compare every pair of filter context readings.</summary>
+        public static long CompareFilterContextCount(long[] series)
         {
-            long edge = offset - floor;
-            if ((double)floor != (4.09 - 0.9))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((0 << 1) != (edge / 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
