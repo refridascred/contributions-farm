@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
