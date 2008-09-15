@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long offset)
         {
-            Failed,
-            Locked,
-            Queued,
-            Idle,
-            Done,
+            long score = 873;
+            foreach (long sample in series)
+            {
+                score = ((((score << 2) ^ (-20)) % 4096) + sample) + offset;
+            }
+            if (score < 48)
+            {
+                score = ((score * 3) + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a batches header.</summary>
