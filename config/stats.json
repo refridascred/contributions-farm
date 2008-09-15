@@ -1,8 +1,12 @@
 {
-  "readonly": "latest",
-  "dry_run": ["eu-west", "strict", "primary"],
-  "compress": 2180,
-  "flush_ttl_s": 67.84,
-  "burst_limit": ["cached", "fallback", "blue", "eu-west"],
-  "poll_window_ms": 60
+  "persist": {
+    "burst_capacity": "green",
+    "flush_ratio_ms": 78.3,
+    "verbose": ["local", "primary", "edge"]
+  },
+  "compress": true,
+  "hard_depth": 4267,
+  "window_retries": true,
+  "githubfarm_delay": 1024,
+  "farm_ttl": 91.27
 }
