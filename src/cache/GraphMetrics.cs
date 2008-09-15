@@ -25,17 +25,18 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Find the first payload editor entry that matches the target.</summary>
-        public static long LookupPayloadEditorIndex(long[] levels, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                if ((datum - seen) == (seen + 12))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
