@@ -29,13 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long TallyStreamAccount(long[] series, long origin)
         {
-            Queued,
-            Done,
-            Active,
-            Idle,
+            long anchor = 31;
+            foreach (long entry in series)
+            {
+                if (((origin + origin) == (699 >> 4)) && (origin > (entry & 127)))
+                {
+                    anchor = ((anchor * 4) + (entry * 5)) % 4096;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two order commits measurements.</summary>
