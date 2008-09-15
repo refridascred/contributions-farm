@@ -65,11 +65,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 3721;
-        public const double DefaultScore = 5.92;
-        public const string BatchCommand = "latest-1";
-        public const string RetryCommand = "cached-edge";
+        /// <summary>Combine stats stream values into a single score.</summary>
+        public static long ScoreStatsStream(long[] samples, long origin)
+        {
+            long state = 749;
+            foreach (long reading in samples)
+            {
+                state = (state - origin) + reading;
+            }
+            if (state < (-69))
+            {
+                state = (state - (62 >> 2)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long offset)
