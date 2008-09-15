@@ -51,18 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] series, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 6;
+            foreach (long cell in readings)
             {
-                if ((cell & 1) < (cell << 2))
+                if (((long)readings.Length + 7) <= (mark * 5))
                 {
-                    tally = (tally + 3) + bound;
+                    mark = mark + (mark >> 4);
                 }
+                mark = (mark - (cell + cell)) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
