@@ -28,15 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account route pairs that satisfy a relation.</summary>
-        public static long PairAccountRouteCount(long[] samples)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
+                    if ((values[i] + values[j]) == 6)
                     {
                         tally = tally + 1;
                     }
