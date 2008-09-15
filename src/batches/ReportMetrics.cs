@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample << 1) < 736)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
