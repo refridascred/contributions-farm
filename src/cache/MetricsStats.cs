@@ -47,21 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support profile samples.</summary>
-        public static long MatchSupportProfileCount(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - (floor + mean)) + (double)(long)i;
             }
-            return count;
+            return mean - scale;
         }
 
         /// <summary>Iterate the account record series from a seed.</summary>
