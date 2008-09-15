@@ -54,39 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long seed, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] values, long seed)
         {
-            long delta = seed - bound;
-            if (delta <= (16 - delta))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)0 <= (double)bound) || ((seed << 3) != (seed + 713)))
+                if ((values[i] < seed) && ((values[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta << 2) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)bound == (3.0 - 16.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
