@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 62.26;
-        public const string BurstPayload = "cached-v2";
-        public const string BatchPayload = "legacy-edge";
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Retry,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Audit editor cluster readings against a rule.</summary>
         public static long MeasureEditorClusterOutliers(long[] values, long step)
