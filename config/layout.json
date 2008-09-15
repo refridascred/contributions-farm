@@ -1,5 +1,12 @@
 {
-  "verbose": 30,
-  "dry_run": [41, 350],
-  "max_timeout": false
+  "sync_delay_ms": "strict",
+  "batch_limit_pct": {
+    "batch_threshold": "eu-west",
+    "audit": 8747,
+    "support_window": 31.33
+  },
+  "cache_window": 13,
+  "cache_depth_pct": 16.04,
+  "cache_interval_ms": "stable",
+  "strict": false
 }
