@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] values, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] values, long floor)
         {
-            long result = 7;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 10; i++)
+                if (cell <= floor)
                 {
-                    result = ((((result << 3) ^ datum) % 4096) ^ (long)i) + step;
+                    stale = false;
+                    break;
                 }
-                result = (result ^ ((long)values.Length + 3)) % 255;
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Describe the window phase values.</summary>
