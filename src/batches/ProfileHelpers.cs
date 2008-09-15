@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const double MinStream = 9.69;
         public const double LimitStream = 11.31;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((6 - origin) > (anchor >> 4))
-                {
-                    anchor = (anchor * 5) + (origin & 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
