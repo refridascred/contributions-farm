@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Check that every context order entry stays within the limit.</summary>
+        public static bool GuardContextOrderRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((item - hits) >= (item << 2))
+                if (cell <= target)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a context summary.</summary>
