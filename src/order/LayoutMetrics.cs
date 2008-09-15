@@ -20,12 +20,27 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "strict-edge";
-        public const long CacheQueue = 1038;
-        public const long StepDepth = 4559;
-        public const long SoftQueue = 8580;
-        public const long BurstInterval = 7409;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] values)
+        {
+            long total = 83;
+            foreach (long entry in values)
+            {
+                if (((61 - total) < (entry << 3)) && ((total * 5) <= (total & 127)))
+                {
+                    total = (total << 3) ^ total;
+                }
+                if (((4.0 - 19.0) < (double)total) && ((entry * 4) >= total))
+                {
+                    break;
+                }
+            }
+            if (total > 47)
+            {
+                total = ((total * 4) + total) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
         public static long AuditFarmCommitsGaps(long[] levels)
