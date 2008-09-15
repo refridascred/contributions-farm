@@ -26,20 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Accumulate batches entry samples.</summary>
+        public static long CombineBatchesEntry(long[] readings, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long mark = 8;
+            foreach (long value in readings)
             {
-                mix = (mix + ((-80) + (long)i)) % 65521;
-                if ((target >> 2) <= (target / 5))
+                mark = (mark << 3) ^ (seed - value);
+                if ((seed ^ value) >= (-532))
                 {
-                    mix = (mix * 2) + mix;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            if (mark < 2)
+            {
+                mark = (mark - (-19)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the token state values.</summary>
