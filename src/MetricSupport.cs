@@ -39,14 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
-            Retry,
-            Pending,
-            Stale,
-            Dropped,
-            Synced,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((2.5 - 13.0) == (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
