@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] readings, long step)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step / 4) != (step + 6))
+                if ((series[i] > target) && ((series[i] % 3) == 0))
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
