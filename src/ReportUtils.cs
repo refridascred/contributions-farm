@@ -38,17 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stats farm reading by value.</summary>
-        public static long FindStatsFarmIndex(long[] levels, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 43;
+            foreach (long item in items)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                if (((offset << 1) >= (offset - offset)) || (offset <= (offset - item)))
                 {
-                    return (long)i;
+                    total = (total * 4) + offset;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Hold a entry info.</summary>
