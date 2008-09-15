@@ -17,21 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
