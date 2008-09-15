@@ -1,14 +1,15 @@
 # Command notes
 
-Use stream settings to tune how often stats data is refreshed.
-A format that stays idle for too long is moved to the profile list.
+Run the editor check before changing any contributi limits.
+Keep token and githubfarm names short and lowercase.
+The stats report groups every metrics by checks.
 
-Keep cluster and commits names short and lowercase.
-Defaults for window live in the config folder and can be overridden per environment.
-Use session settings to tune how often layout data is refreshed.
+The notes module keeps counter values in sync with the context cache.
+The editor report groups every buffer by channel.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Document new tools fields
-- Log every tools change
+- Prefer channel defaults
+- Review commits limits each release
+- Validate route input early
+- Log every cache change
