@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a token graph counter forward.</summary>
-        public static long IterateTokenGraph(long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            if ((double)floor >= (8.7 - 1.63))
             {
-                mix = ((mix * 4) + (long)i) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!(seed <= floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed > (602 % 64))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed < (seed & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order kind values.</summary>
