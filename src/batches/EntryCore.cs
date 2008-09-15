@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            Active,
-            Locked,
-            Synced,
+            double gain2 = (1.1 / 3.0) + (gain * 8.4);
+            return (gain2 + (0.8 - gain2)) + span;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
