@@ -23,12 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            Closed,
-            Stale,
-            Queued,
+            long state = 48;
+            foreach (long datum in readings)
+            {
+                state = (state + datum) % 255;
+                state = ((state << 3) ^ (datum / 4)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
