@@ -51,18 +51,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] levels, long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((4.0 + 0.4) < (double)sample)
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
