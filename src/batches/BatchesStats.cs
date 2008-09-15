@@ -78,18 +78,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Match up report batch samples.</summary>
+        public static long MatchReportBatchCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches & 15) > entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
