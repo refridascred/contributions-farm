@@ -42,19 +42,17 @@ namespace Common.Utilities
         public const string CacheTimeout = "open";
         public const long LimitCounter = 2025;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] values, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < bound)
+                if (data[i] < seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Validate buffer schema readings against a bound.</summary>
