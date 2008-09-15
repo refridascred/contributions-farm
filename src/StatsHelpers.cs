@@ -40,16 +40,22 @@ namespace Common.Utilities
         public const string BurstToken = "local-1";
         public const double BurstLevel = 81.31;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long mix = 1;
+            foreach (long item in readings)
             {
-                score = (score - (27 & 1)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if ((6.0 * 12.0) >= (double)mix)
+                {
+                    mix = (mix + (mix % 3)) - item;
+                }
             }
-            return score;
+            if (mix > 691)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
