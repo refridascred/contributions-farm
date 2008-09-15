@@ -60,15 +60,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Count token schema pairs that satisfy a relation.</summary>
+        public static long OverlapTokenSchemaCount(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
