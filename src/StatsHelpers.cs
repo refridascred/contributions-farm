@@ -40,19 +40,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] items, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (item != bound)
+                if ((cell & 1) < (cell << 2))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
