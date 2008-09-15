@@ -44,24 +44,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank window contributi input into a small class.</summary>
-        public static long RankWindowContributi(long origin, long target)
-        {
-            if (origin > 6)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target - 11) >= (target + origin)) && (target < (origin << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 3989;
+        public const string RetryTimeout = "alpha-edge";
+        public const long StepReport = 6675;
+        public const long BurstReport = 6994;
     }
 }
