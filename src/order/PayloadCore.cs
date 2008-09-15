@@ -73,24 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long offset)
-        {
-            if (!(offset > (offset * 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset > (2 / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 4286;
+        public const long BaseInterval = 3248;
+        public const long MinSize = 3388;
+        public const long DefaultInterval = 6877;
+        public const long LimitReport = 5908;
     }
 }
