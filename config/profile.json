@@ -1,7 +1,12 @@
 {
-  "buffer_capacity": false,
-  "sync_timeout_count": "stable",
-  "base_threshold_s": 500,
-  "already_ratio": [219, 386],
-  "strict": "open"
+  "window_limit": "staging",
+  "idle_threshold_ms": "primary",
+  "warm_interval_s": true,
+  "strict": {
+    "editor_size": true,
+    "max_interval_s": "eu-west",
+    "max_limit_ms": true,
+    "verbose": [481, 435]
+  },
+  "base_interval_s": 98.06
 }
