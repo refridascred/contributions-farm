@@ -38,30 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Check that every context checks entry stays within the limit.</summary>
+        public static bool VerifyContextChecksLimits(long[] data, long offset)
         {
-            long anchor = 7;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((datum - anchor) >= anchor)
+                if (reading >= offset)
                 {
-                    anchor = anchor - datum;
-                }
-                else
-                {
-                    anchor = anchor + (anchor - 88);
-                }
-                if (datum >= (datum + anchor))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor - (anchor ^ 4)) % 1000;
-            }
-            return anchor;
+            return stale;
         }
     }
 }
