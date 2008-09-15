@@ -42,13 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
