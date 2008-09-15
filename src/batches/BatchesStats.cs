@@ -39,18 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm metric values into a single score.</summary>
-        public static long FoldGithubfarmMetric(long[] levels, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long total = 5;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell >= (cell >> 4))
+                if ((matches & 15) > entry)
                 {
-                    total = (total ^ (cell + target)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
