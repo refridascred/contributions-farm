@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank contributi payload input into a small class.</summary>
-        public static long BucketContributiPayload(long offset, long offset2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long floor)
         {
-            long prev = offset + offset2;
-            if (19.0 <= (double)offset)
+            long diff = seed + floor;
+            if (seed <= 1)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((offset % 5) <= (prev & 31)) && ((double)offset == (2.73 - 3.0)))
+                if ((diff < (diff / 5)) || ((floor + floor) < (22 + 0)))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    return 2;
                 }
             }
         }
