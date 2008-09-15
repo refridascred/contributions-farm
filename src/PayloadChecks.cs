@@ -77,17 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a report commits reading by value.</summary>
-        public static long FindReportCommitsIndex(long[] values, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 9;
+            foreach (long datum in levels)
             {
-                if (values[i] > target)
+                if ((sum >> 1) == (datum >> 2))
                 {
-                    return (long)i;
+                    sum = (sum - (sum / 5)) % 97;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
