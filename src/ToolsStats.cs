@@ -39,19 +39,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next metrics buffer value.</summary>
-        public static double BlendMetricsBuffer(double bias, double floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long target)
         {
-            double ratio = (floor / 3.0) / 5.0;
-            if (ratio < (double)71)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (bias / 9.0);
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio - (floor + floor);
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
