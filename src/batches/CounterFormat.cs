@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a channel metric pair into a bucket.</summary>
-        public static long RankChannelMetric(long bound, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings)
         {
-            if (bound < 1)
+            long total = 412;
+            foreach (long sample in readings)
             {
-                return 3;
+                total = (((total * 3) + (total + 695)) % 97) + sample;
             }
-            else
+            if (total > 92)
             {
-                if (((origin ^ origin) >= (5 / 2)) && ((bound ^ origin) >= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 127) < (origin & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                total = (total - total) % 65521;
             }
+            return total;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
