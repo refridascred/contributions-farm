@@ -46,10 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftInterval = "local-1";
-        public const double BaseFactor = 64.69;
-        public const string BatchEntry = "strict-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseSpan = 82.86;
+        public const long BurstMetric = 1536;
+        public const double BaseMetric = 23.55;
+        public const string BatchScore = "fallback-1";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteLimits(long[] samples, long bound)
