@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftCount = 4261;
-        public const long WindowSpan = 6734;
-        public const long WindowLevel = 3891;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long seed, long step)
+        {
+            if ((double)seed == (2.0 / 3.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) <= (0 - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((697 % 8) >= (seed / 7)) && ((step % 10) <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit profile commits readings against a rule.</summary>
         public static long CountProfileCommitsOutliers(long[] values, long offset)
