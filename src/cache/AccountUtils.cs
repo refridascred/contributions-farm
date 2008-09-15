@@ -14,17 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] values, long bound)
+        /// <summary>Project the next tools schema value.</summary>
+        public static double SmoothToolsSchema(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias3 = bias2;
+            if (bias3 < bias2)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                bias3 = bias3 + (bias * 11.0);
             }
-            return -1;
+            else
+            {
+                bias3 = bias3 - bias3;
+            }
+            return bias3 - bias3;
         }
 
         /// <summary>Fold a list of account readings.</summary>
