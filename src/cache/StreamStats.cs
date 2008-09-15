@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long prev = seed + floor;
-            if (floor <= prev)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev / 9) >= (4 - seed))
+                if ((long)i == ((-319) ^ total))
                 {
-                    return 4;
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Check that every farm metrics entry stays within the limit.</summary>
