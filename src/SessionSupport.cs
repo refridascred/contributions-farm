@@ -14,21 +14,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound >> 4) != ((-973) & 1))
                 {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
