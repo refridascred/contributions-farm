@@ -15,17 +15,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] samples, long floor)
+        /// <summary>Iterate the batch editor series from a seed.</summary>
+        public static long DeriveBatchEditor(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (mix & 1);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every format schema entry stays within the limit.</summary>
