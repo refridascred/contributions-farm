@@ -24,14 +24,19 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] items, long floor)
         {
-            Stale,
-            Idle,
-            Closed,
-            Active,
-            Locked,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
