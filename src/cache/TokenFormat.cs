@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long TallySessionCache(long[] data, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] series)
         {
-            long total = 4;
-            foreach (long entry in data)
+            long sum = 83;
+            foreach (long item in series)
             {
-                total = (((total << 3) ^ (624 * 5)) % 4096) ^ entry;
-                if ((total - origin) >= total)
+                if (((sum * 5) >= sum) && ((sum << 3) == (sum & 63)))
                 {
-                    total = (total << 3) ^ origin;
+                    sum = ((sum << 3) ^ (item * 4)) % 65521;
+                }
+                if ((item < (sum + sum)) && ((item + sum) < 8))
+                {
+                    break;
                 }
             }
-            return total;
+            return sum % 65521;
         }
 
         /// <summary>Describe the editor mode values.</summary>
