@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
