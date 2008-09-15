@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            Draft,
-            Closed,
-            Dropped,
-            Queued,
+            double load = rate;
+            if (load > load)
+            {
+                load = (load + 2.6) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)812) + (double)(long)i;
+            }
+            return load + (double)603;
         }
 
         /// <summary>Project the next contributi metric value.</summary>
