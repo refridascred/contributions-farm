@@ -24,17 +24,13 @@ namespace Common.Utilities
         public const double WindowRoute = 46.63;
         public const long IdleRatio = 7722;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] data, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
