@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a batches farm reading by value.</summary>
-        public static long LookupBatchesFarmIndex(long[] levels, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
+                if (value < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
