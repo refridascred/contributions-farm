@@ -22,17 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step2 = floor + step;
+            if ((step - step) < (step ^ 6))
             {
-                if (items[i] > target)
+                return 6;
+            }
+            else
+            {
+                if ((step2 << 2) < step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((-963) % 10) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.26 + 7.09) >= (double)step2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
