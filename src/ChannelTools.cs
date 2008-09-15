@@ -27,23 +27,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine window support values into a single score.</summary>
-        public static long TotalWindowSupport(long[] values)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long sum = 4;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ reading) % 255;
-                if ((double)reading > (0.1 - 8.26))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum * 4) + (sum & 63)) % 97;
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 83)
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
