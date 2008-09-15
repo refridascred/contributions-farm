@@ -20,19 +20,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] data, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long step)
         {
-            long sum = 89;
-            foreach (long item in data)
+            if (floor <= (floor % 97))
             {
-                sum = ((sum - (46 / 8)) % 1000) + item;
+                return 2;
             }
-            if (sum < 269)
+            else
             {
-                sum = (sum + (step + sum)) % 255;
+                if (((5.34 + 13.0) >= (double)step) && ((step % 97) == (1 - 997)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return sum;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
