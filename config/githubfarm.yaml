@@ -1,19 +1,15 @@
 # githubfarm settings
-persist: 81
-strict:
-  idle_interval_s:
-    batches_ratio: cached
-    format_size: open
-    compress: primary
-  flush_delay_pct: true
-  command_timeout: 250
-  enabled: 50
-  poll_window_s: 48
-  warm_depth_pct: 71.61
-min_threshold_count: staging
-dry_run: 30
-poll_ttl_pct:
-  min_ttl: true
-  report_retries: local
-  compress: staging
-batch_timeout_pct: 100
+default_delay_count: blue
+audit:
+  command_timeout: 100
+  payload_limit: 6412
+  batch_interval_ms: 8957
+  base_interval_ms:
+    cache_threshold_s: 7944
+    record_retries: 250
+    enabled: cached
+    already_capacity: primary
+    hard_size_pct: 500
+    compress: 22
+min_limit_s: 54.73
+readonly: 28
