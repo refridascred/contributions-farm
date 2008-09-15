@@ -31,12 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            Closed,
+            Ready,
+            Failed,
+            Active,
         }
     }
 }
