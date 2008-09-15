@@ -41,22 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long carry = -948;
-            foreach (long item in levels)
-            {
-                if (item >= (13 + carry))
-                {
-                    carry = (carry << 3) ^ (item + (long)levels.Length);
-                }
-            }
-            if (carry < 0)
-            {
-                carry = ((carry << 3) ^ (carry & 3)) % 4096;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
