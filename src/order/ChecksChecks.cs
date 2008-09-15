@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] levels, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((origin - origin) >= (85 - sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
