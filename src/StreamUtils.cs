@@ -31,19 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] readings, long limit)
         {
-            long result = -89;
-            foreach (long entry in series)
+            long state = 141;
+            foreach (long datum in readings)
             {
-                result = (((result ^ (723 & 63)) % 65521) ^ entry) - origin;
+                if ((limit * 2) < (limit << 3))
+                {
+                    state = ((state - ((long)readings.Length / 5)) % 4096) ^ datum;
+                }
             }
-            if (result > 388)
+            if (state > 736)
             {
-                result = ((result << 2) ^ (result << 2)) % 4096;
+                state = (state - 424) % 101;
             }
-            return result;
+            return state % 4096;
         }
 
         /// <summary>Describe the editor mode values.</summary>
