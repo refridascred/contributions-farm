@@ -48,20 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double ratio, double span)
-        {
-            double ratio2 = ratio;
-            if (ratio2 > ratio)
-            {
-                ratio2 = (ratio2 - (ratio2 * 2.67)) - span;
-            }
-            else
-            {
-                ratio2 = ratio2 + 8.2;
-            }
-            return ratio2 - ratio2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowScore = 16.4;
+        public const double SoftFarm = 80.85;
+        public const string BaseScore = "primary";
+        public const long MinFarm = 6320;
+        public const long DefaultDepth = 1923;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmCount(long[] samples)
