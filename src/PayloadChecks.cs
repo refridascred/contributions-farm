@@ -43,18 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command record readings.</summary>
-        public static long TallyCommandRecord(long[] items, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = 97;
-            foreach (long item in items)
-            {
-                if (((offset - carry) > ((long)items.Length / 3)) && (carry <= (offset + (long)items.Length)))
-                {
-                    carry = ((carry - (offset & 7)) % 97) - item;
-                }
-            }
-            return carry;
+            Idle,
+            Retry,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the entry kind values.</summary>
