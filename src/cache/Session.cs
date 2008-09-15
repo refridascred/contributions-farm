@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const long MaxSpan = 6126;
         public const long HardSpan = 9480;
 
-        /// <summary>Scale a token metric figure with a bias.</summary>
-        public static double SmoothTokenMetric(double weight, double offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double drift = 9.0;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift + (double)69) + (double)(long)i) + offset;
-            }
-            return drift + weight;
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Check that every window contributi entry stays within the limit.</summary>
