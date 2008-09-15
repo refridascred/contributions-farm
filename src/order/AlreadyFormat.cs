@@ -17,22 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mix = 23;
-            foreach (long item in levels)
-            {
-                if ((mix + mix) < (mix >> 2))
-                {
-                    mix = (mix - (item + 269)) % 255;
-                }
-            }
-            if (mix > 904)
-            {
-                mix = ((mix * 5) + (mix + mix)) % 65521;
-            }
-            return mix;
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
