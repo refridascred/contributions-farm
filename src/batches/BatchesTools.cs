@@ -29,11 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 2184;
-        public const long CacheToken = 8575;
-        public const string BurstScore = "open-v2";
-        public const string BatchInterval = "local";
-        public const long DefaultToken = 6252;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
