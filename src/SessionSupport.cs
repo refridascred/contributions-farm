@@ -30,19 +30,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long diff = origin - bound;
+            if ((diff > (bound + bound)) && ((bound & 63) <= (bound - origin)))
             {
-                if (!((double)(long)i == (double)sum))
-                {
-                    sum = sum ^ (sum - 42);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((diff + diff) >= (5 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + origin) <= (origin * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (4.0 - 18.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
