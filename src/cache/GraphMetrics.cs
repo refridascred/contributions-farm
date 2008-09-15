@@ -36,18 +36,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] series)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((7.6 / 5.0) <= (double)matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
