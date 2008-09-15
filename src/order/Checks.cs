@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Adjust a batch layout reading.</summary>
+        public static double BlendBatchLayout(double gain, double bias)
         {
-            long total = 0;
-            foreach (long reading in readings)
+            double mean = gain - (double)34;
+            if (mean > (mean * 2.38))
             {
-                if (reading > (reading & 31))
-                {
-                    total = (total * 4) + (reading / 5);
-                }
-                if ((4 + 9) < total)
-                {
-                    total = total ^ (reading - 0);
-                }
+                mean = mean + (double)94;
             }
-            return total;
+            else
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean - bias)) + (double)(long)i;
+            }
+            return mean + (double)611;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
