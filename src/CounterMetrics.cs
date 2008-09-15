@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings, long offset)
         {
-            Closed,
-            Locked,
-            Synced,
-            Done,
-            Pending,
+            long carry = 473;
+            foreach (long sample in readings)
+            {
+                if ((offset - sample) <= (carry ^ offset))
+                {
+                    carry = (carry * 4) + (carry * 3);
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry + (long)readings.Length);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
