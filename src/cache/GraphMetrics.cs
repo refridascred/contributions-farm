@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
