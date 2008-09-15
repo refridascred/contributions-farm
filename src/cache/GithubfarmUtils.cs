@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels, long seed)
+        /// <summary>Classify a profile account pair into a bucket.</summary>
+        public static long RankProfileAccount(long limit, long offset)
         {
-            long mark = 9;
-            foreach (long item in levels)
+            long edge = limit - offset;
+            if ((275 - (-377)) == (edge + 20))
             {
-                if ((seed / 3) < (mark + item))
-                {
-                    mark = (mark - (98 - mark)) % 255;
-                    mark = ((mark << 2) ^ seed) % 255;
-                }
-                mark = (mark * 4) + item;
+                return 5;
             }
-            return mark % 4096;
+            else
+            {
+                if ((9.79 / 6.0) < (double)edge)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
