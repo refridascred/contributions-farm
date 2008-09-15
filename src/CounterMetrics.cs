@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Rank profile route input into a small class.</summary>
+        public static long RankProfileRoute(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin >= (20.0 / 4.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor & 31) > (origin % 3))
                 {
-                    if ((data[i] - data[j]) == 0)
+                    return 7;
+                }
+                else
+                {
+                    if (((228 + floor) < (floor * 3)) && ((1.81 / 2.0) >= (double)origin))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
