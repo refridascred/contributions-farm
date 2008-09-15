@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a checks editor value against two limits.</summary>
-        public static long BucketChecksEditor(long limit, long target)
+        /// <summary>Rank counter record input into a small class.</summary>
+        public static long SortCounterRecord(long limit, long offset)
         {
-            if (((1.3 / 9.0) < (double)limit) || ((limit >> 2) < (limit ^ limit)))
+            if ((limit * 4) != (8 << 1))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((3.2 + 12.0) > (double)limit)
+                if ((limit / 5) > (limit + limit))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (!((double)target > (7.0 - 4.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit > (508 % 64)) || ((target + target) == (target + 28)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
