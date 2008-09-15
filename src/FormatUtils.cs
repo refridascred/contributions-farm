@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
+            Done,
             Retry,
-            Failed,
-            Ready,
-            New,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Accumulate layout samples.</summary>
