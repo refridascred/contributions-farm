@@ -24,13 +24,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Synced,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
