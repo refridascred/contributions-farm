@@ -52,25 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] items, long bound)
         {
-            long offset = seed + floor;
-            if (((seed - offset) > (513 << 2)) || ((floor ^ 84) == (seed ^ 41)))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - offset) <= (floor / 3))
+                if (item != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
