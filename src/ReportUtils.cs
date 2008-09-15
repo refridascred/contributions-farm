@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string HardTools = "cached-1";
         public const long MinTimeout = 7770;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((double)value == (double)seen)
+                if (item < origin)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Find the first cache already entry that matches the target.</summary>
