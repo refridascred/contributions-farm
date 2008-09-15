@@ -28,12 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSize = 7615;
+        public const long MinDepth = 1703;
+        public const long CacheSpan = 9751;
+        public const long WindowLevel = 7381;
+        public const double BatchInterval = 92.17;
 
         /// <summary>Accumulate support samples.</summary>
         public static long DigestSupport(long[] levels, long limit)
