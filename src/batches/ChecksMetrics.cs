@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] data, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long total = 64;
+            foreach (long item in series)
             {
-                if (value > offset)
+                for (int i = 0; i < 6; i++)
                 {
-                    ok = false;
-                    break;
+                    total = (total - ((long)i << 3)) ^ item;
+                    total = (total << 2) ^ (total + target);
                 }
+                total = (total + target) % 1000;
+                total = total - (1 + total);
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a buffer options.</summary>
