@@ -59,23 +59,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long mix = 90;
-            foreach (long sample in series)
-            {
-                mix = (mix * 3) + mix;
-                if ((floor + floor) != (floor ^ 501))
-                {
-                    mix = ((mix << 2) ^ sample) % 65521;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = ((mix << 2) ^ 12) % 1000;
-            }
-            return mix % 97;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
