@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double bias, double bias2)
+        /// <summary>Audit route context readings against a rule.</summary>
+        public static long AuditRouteContextMatches(long[] items)
         {
-            double scale = (double)(62 - 879);
-            if (scale >= scale)
+            long count = 0;
+            foreach (long sample in items)
             {
-                scale = ((scale - (6.0 - 3.8)) + bias) - bias2;
+                if (1 > (sample + sample))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Project the next metric value.</summary>
