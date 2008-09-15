@@ -31,19 +31,13 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mark = 42;
-            foreach (long datum in samples)
-            {
-                mark = ((mark ^ 94) % 1000) + datum;
-            }
-            if (mark < 50)
-            {
-                mark = (mark - (0 << 1)) % 255;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
