@@ -13,18 +13,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long floor)
         {
-            long state = 1;
-            foreach (long datum in series)
+            long cur = seed + floor;
+            if (!((cur - floor) < (cur << 1)))
             {
-                if ((double)state >= 8.0)
+                return 1;
+            }
+            else
+            {
+                if (((double)cur < (7.8 + 11.0)) || (7.1 >= (double)cur))
                 {
-                    state = (state ^ (datum >> 4)) - seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 3) != (cur % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
