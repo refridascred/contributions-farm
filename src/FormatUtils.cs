@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 4432;
+        public const double RetryWidth = 16.1;
+        public const long MinSupport = 9740;
+        public const double RetrySupport = 60.19;
+        public const long SoftSupport = 8524;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] items, long step)
