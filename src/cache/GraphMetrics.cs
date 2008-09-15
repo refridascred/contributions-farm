@@ -60,18 +60,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= (double)3)
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 7799;
+        public const double MinNotes = 16.47;
+        public const long MaxScore = 7897;
     }
 }
