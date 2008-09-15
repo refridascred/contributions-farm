@@ -48,20 +48,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate farm graph readings against a bound.</summary>
-        public static bool ValidateFarmGraphBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 5725;
+        public const long SoftCommits = 6288;
+        public const double BurstBudget = 72.07;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long RankOrder(long limit, long target)
