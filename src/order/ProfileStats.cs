@@ -51,12 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Done,
-            Pending,
-            Active,
+            Synced,
+            Retry,
+            Ready,
         }
     }
 }
