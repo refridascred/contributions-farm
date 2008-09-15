@@ -1,19 +1,7 @@
 {
-  "readonly": 60,
-  "batch_size": {
-    "contributi_retries": "cached",
-    "dry_run": 1,
-    "verbose": "stable",
-    "flush_depth_s": "edge",
-    "graph_depth": {
-      "contributi_window": 5881,
-      "idle_threshold": 71.61,
-      "stream_ratio": "legacy",
-      "cache_retries": "open"
-    }
-  },
-  "max_ratio_count": "strict",
-  "channel_interval": 19.57,
-  "soft_delay_s": 100,
-  "audit": 8893
+  "cache_delay": "open",
+  "queue_ttl": false,
+  "queue_limit": 13.79,
+  "retry_size_s": 82.23,
+  "min_delay_ms": 11.71
 }
