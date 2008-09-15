@@ -23,12 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Roll a stream githubfarm counter forward.</summary>
+        public static long SeriesStreamGithubfarm(long offset)
         {
-            Locked,
-            Ready,
-            New,
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark - ((long)i << 2)) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
