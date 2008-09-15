@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long step)
         {
-            double weight = (double)(17 % 7);
-            if (weight < (double)(-2))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - (double)27) - scale;
+                if ((values[i] == step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + 19.0) - (double)(long)i;
-            }
-            return weight + floor;
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
