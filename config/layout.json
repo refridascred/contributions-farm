@@ -1,14 +1,7 @@
 {
-  "order_interval": false,
-  "compress": 75,
-  "order_limit": "legacy",
-  "channel_interval": true,
-  "poll_delay_count": "stable",
-  "max_ttl_pct": {
-    "metrics_window": 3248,
-    "farm_capacity": 4,
-    "flush_retries": "blue",
-    "session_ratio": "green",
-    "hard_depth_pct": false
-  }
+  "burst_limit": "cached",
+  "persist": 7835,
+  "compress": "green",
+  "poll_timeout_s": false,
+  "batch_threshold": false
 }
