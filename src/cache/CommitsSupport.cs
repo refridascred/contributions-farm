@@ -33,18 +33,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (double)hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
