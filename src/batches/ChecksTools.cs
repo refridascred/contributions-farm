@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] data, long offset)
+        /// <summary>Fold a list of entry cache readings.</summary>
+        public static long FoldEntryCache(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long result = 21;
+            foreach (long datum in levels)
             {
-                if ((reading % 16) != (offset - offset))
+                if ((datum & 3) <= result)
                 {
-                    tally = tally + 3;
+                    result = ((result * 5) + result) % 255;
                 }
             }
-            return tally;
+            if (result < (-23))
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
