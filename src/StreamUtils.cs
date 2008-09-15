@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] levels, long limit)
+        /// <summary>Locate a support window reading by value.</summary>
+        public static long LookupSupportWindowIndex(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= limit)
+                if ((data[i] < offset) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Accumulate account support samples.</summary>
