@@ -20,32 +20,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            long gap = target ^ step;
-            if ((target - step) >= (600 + 25))
+            double scale = bias;
+            if (scale < (double)537)
             {
-                return 6;
+                scale = (scale + bias) + bias2;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((gap >> 2) != (394 - gap)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step + step) >= (step << 1)) || ((step / 2) <= ((-9) << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                scale = scale - (double)(long)i;
             }
+            return scale - bias;
         }
 
         /// <summary>Adjust a cache reading.</summary>
