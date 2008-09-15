@@ -38,13 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Idle,
-            Locked,
-            Synced,
-            Failed,
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
