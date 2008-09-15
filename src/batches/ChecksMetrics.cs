@@ -61,13 +61,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            New,
-            Retry,
-            Ready,
-            Synced,
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
