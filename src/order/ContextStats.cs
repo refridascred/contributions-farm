@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long floor)
         {
-            New,
-            Retry,
-            Paused,
-            Idle,
+            long edge = offset - floor;
+            if ((double)floor != (4.09 - 0.9))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((0 << 1) != (edge / 6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
