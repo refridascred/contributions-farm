@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
