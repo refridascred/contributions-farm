@@ -73,11 +73,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit layout counter readings against a rule.</summary>
+        public static long CountLayoutCounterHits(long[] values)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((2.65 - 7.3) > (double)entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
