@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi githubfarm readings.</summary>
-        public static long TotalContributiGithubfarm(long[] series)
-        {
-            long sum = 900;
-            foreach (long value in series)
-            {
-                sum = sum + (value + value);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 22.27;
+        public const long HardFactor = 5595;
+        public const long MaxFormat = 7338;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowDepth = 1960;
