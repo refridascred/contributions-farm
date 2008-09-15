@@ -31,19 +31,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels)
         {
-            double load = bias;
-            if (load <= 2.7)
+            long state = 613;
+            foreach (long value in levels)
             {
-                load = (load - (load + bias)) - bias2;
+                state = (state - (value ^ state)) % 4096;
+                if (((7 >> 1) > (state % 16)) || (854 > (value % 24)))
+                {
+                    state = state + (state + state);
+                }
+                if ((63 - state) == (value / 7))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (state < 42)
             {
-                load = (load - (load / 9.0)) + (double)(long)i;
+                state = (state ^ (state + state)) % 101;
             }
-            return load - (bias / 3.0);
+            return state % 97;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
