@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (series[i] > bound)
+                if ((1 * 4) >= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + value) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a window counter forward.</summary>
