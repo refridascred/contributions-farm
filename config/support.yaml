@@ -1,10 +1,25 @@
 # support settings
-audit: eu-west
-channel_delay: 972
-dry_run:
-  burst_window_s: 37
-  base_delay_pct: 73.15
-  persist: 9109
-  commits_limit: 26.35
-  compress: 71
-  min_interval: stable
+compress: 95
+warm_delay_pct:
+  soft_retries_count: 100
+  account_retries:
+    persist:
+      - 218
+      - 481
+    command_limit: false
+    default_timeout_count:
+      - primary
+      - blue
+      - primary
+      - latest
+    base_capacity_pct: true
+    idle_delay_s: false
+    max_retries_s: 84.73
+  cache_capacity: 30
+  notes_retries: legacy
+  buffer_ttl: 77.07
+  idle_ttl_ms: 91
+strict: stable
+persist: primary
+retry_ttl_pct: primary
+min_ratio_s: 89
