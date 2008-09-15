@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Active,
-            Retry,
-            Locked,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
