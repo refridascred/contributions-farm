@@ -29,10 +29,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 683;
-        public const string DefaultInterval = "open-1";
-        public const long MaxTimeout = 8555;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long target, long seed)
+        {
+            if (seed < (seed >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (2.34 + 7.6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long origin)
