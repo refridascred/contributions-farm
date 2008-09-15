@@ -17,12 +17,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long mix = 23;
+            foreach (long item in levels)
+            {
+                if ((mix + mix) < (mix >> 2))
+                {
+                    mix = (mix - (item + 269)) % 255;
+                }
+            }
+            if (mix > 904)
+            {
+                mix = ((mix * 5) + (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate format payload readings against a bound.</summary>
