@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long floor)
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            if ((origin >> 4) >= floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.25 + 0.1) <= 6.5)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
