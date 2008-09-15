@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank counter record input into a small class.</summary>
-        public static long SortCounterRecord(long limit, long offset)
+        /// <summary>Classify a channel metric pair into a bucket.</summary>
+        public static long RankChannelMetric(long bound, long origin)
         {
-            if ((limit * 4) != (8 << 1))
+            if (bound < 1)
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((limit / 5) > (limit + limit))
+                if (((origin ^ origin) >= (5 / 2)) && ((bound ^ origin) >= origin))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 1;
+                    if ((bound & 127) < (origin & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
