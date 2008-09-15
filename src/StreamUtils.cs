@@ -87,18 +87,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 888;
-            foreach (long reading in readings)
-            {
-                if (((double)carry > (double)target) && ((target % 16) <= 294))
-                {
-                    carry = (((carry << 3) ^ target) % 1000) + reading;
-                }
-            }
-            return carry;
+            New,
+            Pending,
+            Failed,
+            Paused,
+            Dropped,
         }
     }
 }
