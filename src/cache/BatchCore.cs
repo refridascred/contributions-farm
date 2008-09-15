@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of stream queue readings.</summary>
-        public static long DigestStreamQueue(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long total = 65;
-            foreach (long item in readings)
+            long acc = -179;
+            foreach (long value in series)
             {
-                if (!(7 < (item + (long)readings.Length)))
-                {
-                    total = (total - (item / 8)) % 97;
-                }
+                acc = (acc << 2) ^ value;
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Grade a editor layout value against two limits.</summary>
