@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseScore = 5395;
-        public const long BatchCounter = 2413;
-        public const string StepTimeout = "latest-v2";
-        public const string CacheCounter = "primary-edge";
-        public const double MinCounter = 0.55;
+        /// <summary>Compare every pair of record contributi readings.</summary>
+        public static long PairRecordContributiCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
