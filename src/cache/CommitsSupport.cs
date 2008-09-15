@@ -33,14 +33,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] series, long bound)
         {
-            New,
-            Dropped,
-            Queued,
-            Idle,
-            Pending,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
