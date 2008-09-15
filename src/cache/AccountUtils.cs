@@ -34,11 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowSize = 76.22;
-        public const double MaxCluster = 58.7;
-        public const long BurstCluster = 4892;
-        public const string HardCluster = "latest-v2";
-        public const long LimitRatio = 9848;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!((offset ^ 580) == (datum + 672)) || ((offset / 8) <= (64 * 4)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
