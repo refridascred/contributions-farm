@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
