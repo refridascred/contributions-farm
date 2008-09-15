@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] series)
+        /// <summary>Combine schema metric values into a single score.</summary>
+        public static long WeighSchemaMetric(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 42;
+            foreach (long datum in items)
             {
-                if (seen >= (sample << 2))
+                if ((anchor << 2) <= 631)
                 {
-                    seen = seen + 1;
+                    anchor = (anchor ^ (datum << 1)) - seed;
+                }
+                if ((557 << 3) > datum)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate record samples.</summary>
