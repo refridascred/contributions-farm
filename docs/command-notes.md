@@ -1,12 +1,11 @@
 # Command notes
 
-Use entry settings to tune how often batches data is refreshed.
-Run the support check before changing any editor limits.
-The editor report groups every channel by schema.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Document new graph fields
-- Log every order change
-- Review counter limits each release
+- Review cache limits each release
+- Log every entry change
+- Document new already fields
+- Keep buffer values small
