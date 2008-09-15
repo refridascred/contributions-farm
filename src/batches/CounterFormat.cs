@@ -34,17 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] levels, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Stale,
         }
     }
 }
