@@ -18,19 +18,39 @@ namespace Common.Utilities
         public const long CacheCount = 7914;
         public const long StepEntry = 2256;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long bound)
         {
-            long total = 4;
-            foreach (long value in values)
+            long span = floor + bound;
+            if (bound <= (829 << 1))
             {
-                total = (((total * 5) + (284 & 255)) % 101) ^ value;
+                return 8;
             }
-            if (total < 47)
+            else
             {
-                total = (total - total) % 97;
+                if ((double)262 < (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((span + floor) != (span ^ span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor % 100) <= (83 - span)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Describe the checks level values.</summary>
