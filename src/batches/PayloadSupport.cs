@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 2546;
+        public const double CacheReport = 53.98;
+        public const long BurstReport = 4136;
+        public const long BaseDepth = 7653;
+        public const string LimitReport = "standard-edge";
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] values, long seed)
