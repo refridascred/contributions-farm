@@ -1,5 +1,8 @@
 {
-  "sync_interval": 70.45,
-  "githubfarm_threshold": ["local", "green", "staging"],
-  "enabled": "staging"
+  "already_retries": 6907,
+  "warm_threshold_pct": "latest",
+  "persist": 1024,
+  "poll_threshold": "legacy",
+  "base_timeout_count": "stable",
+  "tools_delay": 27.54
 }
