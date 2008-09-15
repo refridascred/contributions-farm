@@ -12,18 +12,38 @@ namespace Common.Utilities
             return (gain2 + (0.8 - gain2)) + span;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values, long step)
+        /// <summary>Classify a queue window pair into a bucket.</summary>
+        public static long ClassifyQueueWindow(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if (!(floor > (floor2 + floor)))
             {
-                if (!(step > (matches >> 2)))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor2 > (double)floor2)
                 {
-                    matches = (matches + 1) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) > (floor % 12))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (1.1 - 2.81))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a filter record.</summary>
