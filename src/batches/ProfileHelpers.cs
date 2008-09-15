@@ -67,13 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] data, long offset)
         {
-            Failed,
-            Pending,
-            Active,
-            New,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((offset + 165) < (offset >> 4))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
