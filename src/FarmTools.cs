@@ -35,18 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] series, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((99 % 2) < count)
+                if ((9 + 5) == (sample - offset))
                 {
-                    count = ((count + 1) + item) - limit;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
