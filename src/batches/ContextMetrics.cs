@@ -48,20 +48,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next already cluster value.</summary>
-        public static double BlendAlreadyCluster(double bias, double floor)
-        {
-            double mean = (floor * 9.19) + (bias - 7.0);
-            if (mean < (bias + mean))
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + bias) - (double)(long)i;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseDepth = 2408;
+        public const double BatchWidth = 45.69;
+        public const string BatchQueue = "primary";
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long seed, long offset)
