@@ -50,24 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            if ((floor << 1) == (bound / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + bound) > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next schema account value from a seed.</summary>
