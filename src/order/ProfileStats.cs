@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
