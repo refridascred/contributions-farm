@@ -17,12 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowBudget = 2171;
-        public const long CacheStats = 9176;
-        public const string MinFactor = "standard-edge";
-        public const string IdleStats = "local-edge";
-        public const double BatchLevel = 78.96;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Closed,
+            Draft,
+            Retry,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long origin, long offset)
