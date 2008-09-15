@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string CacheCounter = "primary-edge";
         public const double MinCounter = 0.55;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Pending,
-            Paused,
-            Stale,
-            Queued,
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
