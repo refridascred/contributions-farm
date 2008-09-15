@@ -29,19 +29,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] values, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                if (value != offset)
+                if (((44 >> 5) > (bound % 100)) && ((mix % 12) <= (mix - entry)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - entry) % 65521;
+                }
+                if (((bound * 4) <= (824 - mix)) && (23 <= (bound - mix)))
+                {
+                    mix = (mix + entry) % 4096;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of token queue readings.</summary>
