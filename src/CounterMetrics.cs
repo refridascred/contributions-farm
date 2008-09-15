@@ -37,12 +37,15 @@ namespace Common.Utilities
             return drift + (double)(-872);
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Derive the next order buffer value from a seed.</summary>
+        public static long SeriesOrderBuffer(long step)
         {
-            Queued,
-            Dropped,
-            Retry,
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a token snapshot.</summary>
