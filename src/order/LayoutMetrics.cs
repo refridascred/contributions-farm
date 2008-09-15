@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long limit, long offset)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long delta = limit + offset;
+            if (((offset >> 5) > (89 & 63)) || ((8 ^ delta) == (offset & 7)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((17.0 - 1.89) != (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset << 3) < (delta - limit)) && ((limit % 12) > (33 & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
