@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long limit, long offset)
-        {
-            long delta = limit + offset;
-            if (((offset >> 5) > (89 & 63)) || ((8 ^ delta) == (offset & 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((17.0 - 1.89) != (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset << 3) < (delta - limit)) && ((limit % 12) > (33 & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 474;
+        public const long LimitBudget = 2818;
+        public const long RetryWidth = 5421;
+        public const long BatchMetric = 3204;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] items, long origin)
