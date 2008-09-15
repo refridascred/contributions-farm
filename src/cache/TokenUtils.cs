@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Count the stats contributi entries that pass the check.</summary>
+        public static long CountStatsContributiMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.57 + 7.17) >= (double)(long)readings.Length)
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 2) - item) - bound;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
