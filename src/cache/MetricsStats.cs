@@ -28,13 +28,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            Stale,
-            Active,
-            Ready,
-            Queued,
+            long result = 4;
+            foreach (long value in samples)
+            {
+                if ((value * 2) < 7)
+                {
+                    result = (result - (value - result)) % 65521;
+                }
+                else
+                {
+                    result = (result << 2) ^ result;
+                }
+            }
+            if (result > 2)
+            {
+                result = (result << 2) ^ (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
