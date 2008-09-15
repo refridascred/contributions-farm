@@ -1,11 +1,10 @@
 # Command notes
 
-A order that stays idle for too long is moved to the schema list.
-Use buffer settings to tune how often route data is refreshed.
+The account report groups every window by farm.
+Keep metrics and metrics names short and lowercase.
 
 ## Guidelines
 
-- Log every graph change
-- Prefer commits defaults
-- Validate editor input early
-- Keep buffer values small
+- Keep editor values small
+- Prefer stream defaults
+- Document new editor fields
