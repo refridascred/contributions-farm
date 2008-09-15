@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Synced,
-            Queued,
-            Locked,
-            Closed,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
