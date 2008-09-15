@@ -28,19 +28,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate metrics farm readings against a bound.</summary>
-        public static bool GuardMetricsFarmRange(long[] samples, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            if (((bound >> 2) < (80 / 7)) && ((floor >> 5) < (bound & 1)))
             {
-                if (datum >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((floor - floor) < (bound + 3))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(floor < 83))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
