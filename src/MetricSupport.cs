@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            long mark = 0;
-            foreach (long value in data)
+            double weight = floor;
+            if (weight > bias)
             {
-                mark = (((mark << 2) ^ (mark ^ mark)) % 101) + value;
+                weight = weight - (bias - floor);
             }
-            return mark % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (double)36;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
