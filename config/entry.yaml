@@ -1,5 +1,8 @@
 # entry settings
-poll_depth: legacy
-cache_window: 60
-soft_delay: 2696
-base_interval_pct: blue
+audit: latest
+hard_ratio_s: 37
+batch_ratio: 25
+default_depth_pct: 99
+retry_threshold_count:
+  - 226
+  - 493
