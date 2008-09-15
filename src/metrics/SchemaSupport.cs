@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 38.4;
-        public const long MinContext = 8525;
-        public const long DefaultContext = 9361;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor - (anchor * 3)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of contributi channel readings.</summary>
         public static long TotalContributiChannel(long[] readings, long bound)
