@@ -37,14 +37,18 @@ namespace Common.Utilities
         public const double LimitDepth = 14.78;
         public const long BurstRatio = 9750;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] data, long limit)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Idle,
-            Queued,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((11.0 / 2.0) < (double)cell)
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
     }
 }
