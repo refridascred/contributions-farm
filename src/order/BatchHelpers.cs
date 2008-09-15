@@ -23,33 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long step2)
-        {
-            long span = step ^ step2;
-            if ((span & 3) >= (span % 16))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + span) < (span / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((514 & 31) != (step + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 2429;
+        public const long SoftGraph = 4362;
+        public const string MaxGraph = "stable-1";
+        public const long DefaultTimeout = 3011;
+        public const double BaseGraph = 26.33;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
