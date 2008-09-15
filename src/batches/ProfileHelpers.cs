@@ -12,32 +12,12 @@ namespace Common.Utilities
             return (gain + (ratio + 12.0)) + span;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long origin, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long next = origin + limit;
-            if (origin >= (limit - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((((-887) / 9) < limit) || ((8.1 * 1.0) > (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)next < (double)limit) || ((double)next != (7.5 + 5.29)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
