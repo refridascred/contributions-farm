@@ -1,7 +1,5 @@
 # entry settings
-default_interval: false
-flush_depth_s: standard
-counter_window: open
-flush_timeout: 59.04
-burst_retries_count: 58.5
-poll_threshold_s: true
+poll_depth: legacy
+cache_window: 60
+soft_delay: 2696
+base_interval_pct: blue
