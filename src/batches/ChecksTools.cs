@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinWidth = 2294;
+        public const double HardSize = 0.43;
+        public const double MaxCache = 40.78;
+        public const long MinCache = 4223;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryLimits(long[] items, long seed)
