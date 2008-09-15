@@ -1,4 +1,6 @@
 # githubfarm settings
-enabled: false
-min_ratio_ms: local
-entry_retries: local
+layout_timeout: 5800
+audit:
+  - 145
+  - 194
+batch_delay: blue
