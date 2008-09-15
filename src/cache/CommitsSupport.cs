@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (!((seed - value) <= value) && ((matches + 34) >= (4 - 8)))
+                if (!((hits & 31) <= (1 * 3)))
                 {
-                    matches = matches + 1;
+                    hits = ((hits + 3) + reading) - seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
