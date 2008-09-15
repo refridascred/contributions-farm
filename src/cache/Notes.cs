@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const long StepCache = 8822;
         public const double MaxCache = 91.13;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Retry,
-            Paused,
-            Active,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 886;
+        public const double MinStream = 49.94;
+        public const long IdleStream = 2713;
+        public const double WindowStream = 7.96;
+        public const long LimitStream = 9002;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
