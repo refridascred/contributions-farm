@@ -91,21 +91,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter payload value from a seed.</summary>
-        public static long DeriveFilterPayload(long floor)
+        /// <summary>Iterate the account record series from a seed.</summary>
+        public static long RollAccountRecord(long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(floor >= (acc ^ floor)))
+                sum = sum - sum;
+                if (!(origin < (origin - 39)))
                 {
-                    acc = (acc + (1 + acc)) % 97;
-                    acc = (acc ^ (acc + floor)) % 255;
+                    sum = ((sum * 2) + (origin ^ sum)) % 101;
                 }
-                acc = acc ^ (floor >> 5);
-                acc = ((acc * 4) + (long)i) % 97;
+                else
+                {
+                    sum = sum - sum;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
     }
 }
