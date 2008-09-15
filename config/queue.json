@@ -1,19 +1,7 @@
 {
-  "cache_threshold_pct": 71.96,
-  "soft_ttl_s": "staging",
-  "dry_run": true,
-  "sync_threshold_ms": {
-    "hard_capacity_pct": true,
-    "default_timeout": {
-      "flush_timeout_s": 60,
-      "audit": "staging",
-      "batch_interval": 10,
-      "dry_run": [464, 435, 287, 117],
-      "verbose": true,
-      "strict": "staging"
-    },
-    "compress": "stable"
-  },
-  "verbose": 7011,
-  "batch_limit": "fallback"
+  "metrics_retries": 6.57,
+  "counter_capacity": [453, 473, 165],
+  "idle_ttl_count": "standard",
+  "contributi_depth": "green",
+  "poll_depth_s": 6685
 }
