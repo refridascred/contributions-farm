@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long step)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            long next = seed + step;
+            if ((seed - seed) > (step ^ next))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step == (1.4 * 3.2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((next ^ (-63)) == (next % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate graph payload readings against a bound.</summary>
