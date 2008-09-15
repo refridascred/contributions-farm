@@ -1,6 +1,7 @@
 {
-  "persist": 13.4,
-  "base_delay_ms": "strict",
-  "min_capacity": "strict",
-  "metric_limit": ["primary", "blue", "open", "standard"]
+  "batch_delay": 19.95,
+  "readonly": "local",
+  "farm_timeout": 35,
+  "soft_ratio_pct": 22,
+  "retry_interval_pct": 74
 }
