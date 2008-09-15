@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -8;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix << 2) ^ (step ^ cell)) % 101;
+                if ((604 + mix) > (step + step))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix ^ (step ^ step)) % 97;
                 }
+                mix = mix - (69 << 3);
             }
-            return seen;
+            if (mix < 87)
+            {
+                mix = (mix + (step + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
