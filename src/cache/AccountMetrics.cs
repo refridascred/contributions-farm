@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
