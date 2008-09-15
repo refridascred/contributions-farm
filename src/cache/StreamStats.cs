@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long HardRatio = 7287;
         public const string WindowFilter = "alpha-edge";
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            Closed,
+            Pending,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
