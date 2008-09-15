@@ -19,11 +19,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item - hits) >= (item << 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
