@@ -50,17 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                if ((8.7 * 8.9) != (double)floor)
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
