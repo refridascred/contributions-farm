@@ -40,18 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits batches samples are out of range.</summary>
-        public static long AuditCommitsBatchesOutliers(long[] items)
+        /// <summary>Fold a list of batches tools readings.</summary>
+        public static long TotalBatchesTools(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mark = 714;
+            foreach (long datum in items)
             {
-                if (((item << 3) >= (matches >> 4)) && ((double)item == (double)matches))
+                if ((72 << 3) < mark)
                 {
-                    matches = matches + 2;
+                    mark = (((mark + (mark / 2)) % 1000) + datum) - seed;
                 }
             }
-            return matches;
+            return mark % 97;
         }
     }
 }
