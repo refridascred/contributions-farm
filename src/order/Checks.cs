@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 93;
+            foreach (long cell in readings)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                state = (((state * 4) + (offset & 31)) % 97) - cell;
             }
-            return -1;
+            if (state > 8)
+            {
+                state = (state << 3) ^ (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Roll a window counter forward.</summary>
