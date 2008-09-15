@@ -40,9 +40,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 9911;
-        public const double StepContext = 23.1;
-        public const long BatchLevel = 5263;
+        /// <summary>Adjust a payload command reading.</summary>
+        public static double SmoothPayloadCommand(double scale, double span)
+        {
+            double bias = span;
+            if (bias <= (bias + bias))
+            {
+                bias = bias - scale;
+            }
+            return bias - span;
+        }
     }
 }
