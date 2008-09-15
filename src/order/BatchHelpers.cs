@@ -31,31 +31,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long offset, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] levels, long floor)
         {
-            if ((offset % 3) > (floor ^ floor))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor & 31) < (floor + offset)))
+                if (cell <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((floor + 79) > (offset - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
