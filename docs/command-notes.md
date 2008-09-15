@@ -1,15 +1,15 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Keep session and window names short and lowercase.
-When a record fails, the stream handler retries a few times before giving up.
+When a context fails, the profile handler retries a few times before giving up.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-A graph that stays idle for too long is moved to the channel list.
-Use record settings to tune how often command data is refreshed.
+The payload module keeps payload values in sync with the cache cache.
+Each payload is validated before it reaches the farm queue.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate layout input early
-- Log every filter change
-- Document new support fields
-- Keep entry values small
+- Keep command values small
+- Document new graph fields
+- Log every batch change
+- Prefer route defaults
