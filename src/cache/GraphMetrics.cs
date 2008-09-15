@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many entry filter samples are out of range.</summary>
-        public static long CountEntryFilterMatches(long[] samples, long origin)
+        /// <summary>Locate a batch context reading by value.</summary>
+        public static long FindBatchContextIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen / 9) != (origin + seen))
+                if (items[i] <= origin)
                 {
-                    seen = (seen + 2) - item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
