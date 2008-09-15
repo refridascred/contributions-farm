@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 97.11;
-        public const string SoftBudget = "standard";
-        public const string HardBudget = "legacy-1";
-        public const long BurstFilter = 3732;
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long MeasureChannelBatchMatches(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) < (long)readings.Length)
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsBounds(long[] values, long offset)
