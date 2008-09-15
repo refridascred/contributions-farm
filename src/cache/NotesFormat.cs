@@ -25,32 +25,13 @@ namespace Common.Utilities
         public const double RetrySchema = 90.99;
         public const double MaxSchema = 33.1;
 
-        /// <summary>Rank context report input into a small class.</summary>
-        public static long BucketContextReport(long bound, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long step = bound + limit;
-            if (((bound + bound) > ((-75) - step)) && ((limit / 3) <= (bound & 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - bound) != (2 & 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 % 100) <= (bound / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
