@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const long HardFactor = 5595;
         public const long MaxFormat = 7338;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] values, long seed)
         {
-            Failed,
-            Idle,
-            Closed,
-            Ready,
-            Active,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
