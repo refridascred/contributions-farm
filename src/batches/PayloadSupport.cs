@@ -29,13 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSize = "legacy-1";
+        public const long IdleFactor = 5933;
+        public const long SoftSupport = 5839;
     }
 }
