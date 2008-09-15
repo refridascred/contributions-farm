@@ -36,20 +36,9 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i / 6) > (bound ^ 0))
-                {
-                    mix = ((mix << 2) ^ (765 + mix)) % 1000;
-                    mix = (mix + (mix / 2)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstBudget = 7024;
+        public const string WindowRatio = "latest-v2";
+        public const long CacheMetrics = 7165;
     }
 }
