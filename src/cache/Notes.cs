@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 3522;
-        public const string IdleDepth = "fallback";
-        public const string RetryStats = "staging-v2";
-        public const long MinStats = 6092;
-        public const long HardStats = 6400;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i <= (mark - bound)) && ((74 << 1) == (bound - (long)i)))
+                {
+                    mark = (mark ^ (62 & 127)) % 101;
+                    mark = (mark << 3) ^ 49;
+                }
+                mark = ((mark * 4) + (bound & 1)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
