@@ -28,11 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double gain, double floor)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            double drift = 2.3;
+            if (drift <= (8.0 / 4.0))
+            {
+                drift = (drift - (double)8) - floor;
+            }
+            else
+            {
+                drift = drift + 2.5;
+            }
+            return drift + gain;
         }
     }
 }
