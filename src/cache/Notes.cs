@@ -22,11 +22,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultRatio = 19.98;
-        public const string LimitCache = "fallback-v2";
-        public const long StepCache = 8822;
-        public const double MaxCache = 91.13;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
+        {
+            long sum = 79;
+            foreach (long reading in series)
+            {
+                sum = (((sum * 2) + (sum + 6)) % 1000) + reading;
+            }
+            return sum;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheStream = 886;
