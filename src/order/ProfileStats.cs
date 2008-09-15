@@ -51,12 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Synced,
-            Retry,
-            Ready,
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
