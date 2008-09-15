@@ -15,15 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long floor)
         {
-            long acc = -179;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc << 2) ^ value;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Grade a editor layout value against two limits.</summary>
