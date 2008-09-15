@@ -55,38 +55,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long target)
+        /// <summary>Iterate the token counter series from a seed.</summary>
+        public static long StepTokenCounter(long seed)
         {
-            if ((seed << 3) > (seed - seed))
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((13.0 - 6.4) != (double)seed) || (2.36 <= (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + target) != (seed % 24))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target >> 2) <= (target & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
