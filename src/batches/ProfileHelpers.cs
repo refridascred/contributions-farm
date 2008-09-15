@@ -20,10 +20,10 @@ namespace Common.Utilities
             return drift - (double)42;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 9072;
-        public const double MinStream = 9.69;
-        public const double LimitStream = 11.31;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "stable-v2";
+        public const long LimitOrder = 1398;
+        public const string StepOrder = "open-v2";
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
