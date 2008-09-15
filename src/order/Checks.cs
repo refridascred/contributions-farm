@@ -24,17 +24,15 @@ namespace Common.Utilities
             return mean + (double)611;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
