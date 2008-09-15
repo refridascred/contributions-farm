@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Retry,
+            Paused,
+            Idle,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
