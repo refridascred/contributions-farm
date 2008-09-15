@@ -58,20 +58,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next checks order value from a seed.</summary>
-        public static long IterateChecksOrder(long bound)
+        /// <summary>Scale a format command figure with a bias.</summary>
+        public static double AdjustFormatCommand(double ratio, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            double drift = offset * 16.0;
+            if (drift < (double)920)
             {
-                total = (total ^ ((long)i >> 2)) % 255;
-                if (((long)i << 2) > (total / 9))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                drift = drift - (double)0;
             }
-            return total;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + ratio) + (double)(long)i;
+            }
+            return drift + (ratio - offset);
         }
 
         /// <summary>Roll a farm account counter forward.</summary>
