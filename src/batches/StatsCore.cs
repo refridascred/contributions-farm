@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseSpan = 7250;
+        public const string CacheRecord = "alpha-v2";
+        public const long BatchRecord = 3069;
+        public const double CacheRatio = 75.19;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] data)
