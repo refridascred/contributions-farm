@@ -32,18 +32,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] values, long origin)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)seen < (4.1 / 3.0))
-                {
-                    seen = ((seen + 3) ^ entry) - origin;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
