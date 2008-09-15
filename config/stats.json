@@ -1,13 +1,8 @@
 {
-  "batch_window_pct": [272, 368, 401],
-  "dry_run": {
-    "audit": 71.85,
-    "dry_run": "edge",
-    "commits_retries": {
-      "contributi_ttl": 3790,
-      "persist": 7.58,
-      "poll_depth": 250
-    }
-  },
-  "default_threshold_ms": 30
+  "readonly": "latest",
+  "dry_run": ["eu-west", "strict", "primary"],
+  "compress": 2180,
+  "flush_ttl_s": 67.84,
+  "burst_limit": ["cached", "fallback", "blue", "eu-west"],
+  "poll_window_ms": 60
 }
