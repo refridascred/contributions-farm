@@ -36,13 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            Locked,
-            Paused,
-            Pending,
-            Active,
+            double mean = rate;
+            if (mean < mean)
+            {
+                mean = (mean + mean) + floor;
+            }
+            return mean - 7.49;
         }
 
         /// <summary>Define route limits and defaults.</summary>
