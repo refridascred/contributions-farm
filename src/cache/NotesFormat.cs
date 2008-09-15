@@ -14,19 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the notes farm entries that pass the check.</summary>
-        public static long AuditNotesFarmGaps(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (0.9 <= (double)value)
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstCount = 1392;
+        public const double StepCount = 47.39;
+        public const long WindowScore = 6603;
+        public const double IdleTimeout = 81.7;
+        public const long IdleProfile = 3556;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
