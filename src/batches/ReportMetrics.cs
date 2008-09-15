@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] data, long target)
         {
-            long score = 25;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (datum > (score ^ 1))
+                if (item < target)
                 {
-                    score = (score << 3) ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return valid;
         }
     }
 }
