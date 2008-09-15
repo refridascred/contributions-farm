@@ -72,39 +72,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a buffer filter pair into a bucket.</summary>
-        public static long ClassifyBufferFilter(long offset, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            long lane = offset - target;
-            if ((53 >> 5) >= (offset + offset))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (target > (offset >> 4))
+                if ((double)hits < (double)sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (lane >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((55 + 0) > (lane - offset)) || ((3 - offset) >= (offset + lane)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
