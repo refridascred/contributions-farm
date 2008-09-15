@@ -13,17 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] data, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
