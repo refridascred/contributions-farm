@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long origin)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
