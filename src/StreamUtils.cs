@@ -34,15 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double scale = offset;
-            if (scale > offset)
-            {
-                scale = scale - (offset + bias);
-            }
-            return scale + (double)235;
+            Retry,
+            New,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Adjust a support metric reading.</summary>
