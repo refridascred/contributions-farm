@@ -47,11 +47,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two order commits measurements.</summary>
-        public static double ProjectOrderCommits(double gain, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            double bias = gain;
-            return (bias - (double)4) + span;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
