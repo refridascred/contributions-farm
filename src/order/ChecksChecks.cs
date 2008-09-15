@@ -12,23 +12,14 @@ namespace Common.Utilities
         public const string StepNotes = "local-edge";
         public const long MinCount = 3991;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long carry = 2;
-            foreach (long cell in samples)
-            {
-                carry = carry - carry;
-                if (!(seed > (carry - carry)))
-                {
-                    carry = carry - (cell - carry);
-                }
-            }
-            if (carry > 1)
-            {
-                carry = ((carry * 4) + seed) % 255;
-            }
-            return carry;
+            Done,
+            Draft,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
