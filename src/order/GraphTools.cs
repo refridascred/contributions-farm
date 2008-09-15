@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample + 4) >= sample)
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                if (!((double)carry != (double)sample))
-                {
-                    break;
-                }
+                result = result ^ result;
+                result = (result - (step << 1)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Roll a stream githubfarm counter forward.</summary>
