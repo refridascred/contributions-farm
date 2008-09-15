@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] values, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (cell <= floor)
+                if (sample >= floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the window phase values.</summary>
