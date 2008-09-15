@@ -23,18 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter token samples are out of range.</summary>
-        public static long AuditCounterTokenOutliers(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (!((hits & 63) < 492))
+                if (reading <= origin)
                 {
-                    hits = (hits + 3) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
