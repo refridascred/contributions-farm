@@ -29,38 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a contributi token pair into a bucket.</summary>
-        public static long GradeContributiToken(long bound, long target)
+        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
+        public static bool GuardGithubfarmQueueBounds(long[] values, long origin)
         {
-            if ((target & 127) != (68 - 32))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (2.0 * 8.81))
+                if (reading > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((14.0 - 3.9) >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound <= (bound / 9)) && ((target + (-94)) == (385 + target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
