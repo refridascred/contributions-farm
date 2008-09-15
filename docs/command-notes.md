@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-A window that stays idle for too long is moved to the queue list.
-
-Run the order check before changing any metrics limits.
-Run the farm check before changing any report limits.
+The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for command live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Validate window input early
-- Document new format fields
-- Review profile limits each release
+- Document new metrics fields
+- Keep filter values small
+- Prefer payload defaults
+- Log every queue change
