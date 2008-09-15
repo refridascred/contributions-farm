@@ -58,12 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleBudget = "primary-1";
-        public const long WindowInterval = 3544;
-        public const long SoftFactor = 6199;
-        public const long HardAlready = 1593;
-        public const long SoftBudget = 4727;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSize = 2551;
+        public const double RetryWidth = 75.6;
+        public const string MinLayout = "latest-edge";
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
