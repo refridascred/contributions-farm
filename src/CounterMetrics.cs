@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of stream channel readings.</summary>
-        public static long ScoreStreamChannel(long[] samples)
+        /// <summary>Locate a support session reading by value.</summary>
+        public static long FindSupportSessionIndex(long[] data, long limit)
         {
-            long score = 71;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score + score) % 255) - reading;
+                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 786)
-            {
-                score = (score * 4) + (score << 1);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
