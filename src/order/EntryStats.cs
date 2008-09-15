@@ -31,10 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSpan = 8068;
-        public const long DefaultSize = 321;
-        public const double MinChannel = 23.11;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] series, long bound)
