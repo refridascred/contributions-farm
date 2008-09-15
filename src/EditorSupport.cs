@@ -61,23 +61,24 @@ namespace Common.Utilities
         public const double BatchMetrics = 77.79;
         public const string StepSize = "staging-v2";
 
-        /// <summary>Scale a format command figure with a bias.</summary>
-        public static double AdjustFormatCommand(double ratio, double offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long offset)
         {
-            double drift = offset * 16.0;
-            if (drift < (double)920)
+            if ((double)offset != (4.9 + 12.0))
             {
-                drift = drift - (double)0;
+                return 8;
             }
             else
             {
-                drift = drift + drift;
+                if ((offset ^ offset) <= (1 ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift + (ratio - offset);
         }
 
         /// <summary>Roll a farm account counter forward.</summary>
