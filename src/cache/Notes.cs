@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double mean = weight;
-            if (mean <= (8.0 / 7.0))
-            {
-                mean = (mean - mean) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean + weight;
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
