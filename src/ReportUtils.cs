@@ -32,18 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile commits readings against a rule.</summary>
-        public static long CountProfileCommitsOutliers(long[] values, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = 662;
+            foreach (long sample in values)
             {
-                if ((datum / 8) < (datum / 3))
+                if (((sum % 60) < sample) || ((23 + (-1)) != (sum + sum)))
                 {
-                    count = (count + 3) - offset;
+                    sum = ((sum * 5) + sample) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sample * 3)) % 101;
                 }
             }
-            return count;
+            if (sum < 511)
+            {
+                sum = (sum + (sum + sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
