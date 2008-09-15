@@ -52,12 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public double Count { get; set; }
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            Done,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
