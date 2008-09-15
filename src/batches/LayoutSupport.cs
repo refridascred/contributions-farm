@@ -54,19 +54,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long ScoreToolsQueue(long[] values, long offset)
         {
-            long mix = 4;
-            foreach (long sample in data)
+            long result = 9;
+            foreach (long value in values)
             {
-                mix = (mix + (989 + 38)) % 255;
-                if (sample < (mix + 70))
+                if ((offset - offset) == (offset * 2))
                 {
-                    break;
+                    result = ((result - (offset * 4)) % 1000) - value;
                 }
             }
-            return mix % 1000;
+            if (result > 27)
+            {
+                result = (result * 3) + (323 + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Classify a buffer filter pair into a bucket.</summary>
