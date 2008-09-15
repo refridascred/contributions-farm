@@ -1,11 +1,14 @@
 # Command notes
 
-Each graph is validated before it reaches the payload queue.
-Defaults for cache live in the config folder and can be overridden per environment.
-When a channel fails, the contributi handler retries a few times before giving up.
+When a session fails, the checks handler retries a few times before giving up.
+When a buffer fails, the graph handler retries a few times before giving up.
+
+Keep command and window names short and lowercase.
+Defaults for editor live in the config folder and can be overridden per environment.
+The command module keeps support values in sync with the layout cache.
 
 ## Guidelines
 
-- Document new command fields
-- Validate already input early
-- Review session limits each release
+- Keep profile values small
+- Validate token input early
+- Log every window change
