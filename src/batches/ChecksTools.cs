@@ -30,13 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] items, long seed)
         {
-            Paused,
-            Draft,
-            Locked,
-            Failed,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
