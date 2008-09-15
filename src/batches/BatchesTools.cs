@@ -29,19 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] levels, long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
