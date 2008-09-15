@@ -21,18 +21,31 @@ namespace Common.Utilities
         public const double StepCount = 95.38;
         public const double SoftDepth = 17.41;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] data)
+        /// <summary>Classify a window payload pair into a bucket.</summary>
+        public static long SortWindowPayload(long floor, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if ((floor - target) <= target)
             {
-                if ((seen - (long)data.Length) <= (reading << 3))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor <= (10.0 * 6.0))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((3.0 / 3.0) != (double)floor) || ((double)target == (double)(-32)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
