@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "open";
+        public const long WindowLevel = 4236;
+        public const long BurstTimeout = 5818;
+        public const double StepBudget = 7.34;
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
         public static long TallyCounterGithubfarmGaps(long[] samples, long step)
