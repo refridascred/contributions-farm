@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long MinDepth = 7492;
         public const long BaseCluster = 2629;
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double bias, double span)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            double rate = bias * 9.0;
-            for (int i = 0; i < 4; i++)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                rate = ((rate - rate) + (double)(long)i) + span;
+                if ((double)limit > (double)mark)
+                {
+                    mark = mark - (mark + mark);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return rate + rate;
+            return mark;
         }
 
         /// <summary>Describe the record kind values.</summary>
