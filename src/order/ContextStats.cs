@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of filter context readings.</summary>
-        public static long CompareFilterContextCount(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seed >= hits)
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
             return hits;
