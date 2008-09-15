@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] items, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((13 + reading) >= (matches - matches))
+                {
+                    matches = (matches + 2) - bound;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
