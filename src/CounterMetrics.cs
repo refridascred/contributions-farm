@@ -42,19 +42,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] items, long origin)
+        /// <summary>Digest a series of metric cluster entries.</summary>
+        public static long TallyMetricCluster(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long carry = 9;
+            foreach (long value in items)
             {
-                if (entry >= origin)
+                if (carry >= (value << 2))
                 {
-                    ready = false;
-                    break;
+                    carry = carry + (629 >> 3);
                 }
             }
-            return ready;
+            if (carry > 268)
+            {
+                carry = (carry ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
