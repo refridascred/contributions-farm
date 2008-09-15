@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Project the next report window value.</summary>
+        public static double ProjectReportWindow(double gain, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell / 9) <= (matches & 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = (gain - 9.0) / 5.0;
+            return (load - (gain / 2.0)) + span;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
