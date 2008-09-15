@@ -1,15 +1,14 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the channel list.
-Each filter is validated before it reaches the githubfarm queue.
-The checks module keeps format values in sync with the farm cache.
+Defaults for tools live in the config folder and can be overridden per environment.
+A window that stays idle for too long is moved to the queue list.
 
-The support report groups every counter by contributi.
-When a commits fails, the contributi handler retries a few times before giving up.
+Run the order check before changing any metrics limits.
+Run the farm check before changing any report limits.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate graph input early
-- Keep checks values small
-- Document new buffer fields
+- Prefer cluster defaults
+- Validate window input early
+- Document new format fields
+- Review profile limits each release
