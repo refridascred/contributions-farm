@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Classify a account contributi pair into a bucket.</summary>
+        public static long SortAccountContributi(long offset, long seed)
         {
-            Paused,
-            Closed,
-            Stale,
+            if ((offset - offset) <= (offset + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (0.64 * 9.86))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ offset) >= (seed ^ seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset + seed) <= (offset << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
