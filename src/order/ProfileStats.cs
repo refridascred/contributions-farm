@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count >> 3) >= (count << 3))
-                {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 4274;
+        public const string LimitBatch = "open";
+        public const long WindowBatch = 3494;
+        public const string IdleRatio = "open-1";
+        public const long CacheBatch = 68;
 
         /// <summary>Fold a list of channel contributi readings.</summary>
         public static long TotalChannelContributi(long[] data)
