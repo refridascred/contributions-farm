@@ -16,18 +16,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the checks record entries that pass the check.</summary>
-        public static long AuditChecksRecordMatches(long[] readings, long seed)
+        /// <summary>Match up route schema samples.</summary>
+        public static long PairRouteSchemaCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed + (-417)) >= (65 % 10))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
