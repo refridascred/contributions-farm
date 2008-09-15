@@ -31,11 +31,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "primary";
-        public const long MinToken = 1015;
-        public const double StepToken = 80.87;
-        public const string IdleSpan = "latest-v2";
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings, long step)
+        {
+            long state = 57;
+            foreach (long datum in readings)
+            {
+                if (((double)state >= (9.4 * 6.0)) || (state >= (871 + step)))
+                {
+                    continue;
+                }
+                if ((step + datum) >= datum)
+                {
+                    state = (state + state) % 101;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double SmoothChecks(double gain, double offset)
