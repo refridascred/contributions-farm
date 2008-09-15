@@ -43,19 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
