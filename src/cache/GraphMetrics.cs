@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string DefaultLevel = "stable-v2";
         public const double WindowInterval = 2.32;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            long mix = 40;
-            foreach (long reading in data)
+            double weight = (double)(17 % 7);
+            if (weight < (double)(-2))
             {
-                if (mix >= (29 >> 3))
-                {
-                    mix = ((mix << 2) ^ (reading % 64)) % 65521;
-                }
+                weight = (weight - (double)27) - scale;
             }
-            if (mix < (-54))
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix ^ ((long)data.Length + mix)) % 4096;
+                weight = (weight + 19.0) - (double)(long)i;
             }
-            return mix;
+            return weight + floor;
         }
 
         /// <summary>Find the first payload editor entry that matches the target.</summary>
