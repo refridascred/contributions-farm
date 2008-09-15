@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardCount = 2441;
+        public const long DefaultContext = 1825;
+        public const long StepContext = 6355;
+        public const double SoftDepth = 62.47;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long offset)
