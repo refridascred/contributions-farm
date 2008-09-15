@@ -51,17 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command counter sample.</summary>
-        public static long SeekCommandCounterIndex(long[] values, long limit)
+        /// <summary>Digest a series of metrics batches entries.</summary>
+        public static long TotalMetricsBatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 1;
+            foreach (long item in samples)
             {
-                if (values[i] == limit)
+                mark = mark ^ (item * 3);
+                if ((double)mark != (double)item)
                 {
-                    return (long)i;
+                    mark = (mark + 58) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
