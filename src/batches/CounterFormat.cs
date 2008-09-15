@@ -20,15 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double bias, double floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double mean = bias;
-            if (mean >= (mean + 1.3))
-            {
-                mean = (mean + (double)657) + floor;
-            }
-            return mean - 16.0;
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
