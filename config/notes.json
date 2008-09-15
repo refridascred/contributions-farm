@@ -1,5 +1,5 @@
 {
-  "checks_threshold": "cached",
-  "hard_ttl_pct": 8045,
-  "queue_interval": [131, 300, 221, 454]
+  "retry_retries_ms": "local",
+  "counter_threshold": false,
+  "dry_run": 250
 }
