@@ -43,21 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count queue session pairs that satisfy a relation.</summary>
-        public static long PairQueueSessionCount(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
