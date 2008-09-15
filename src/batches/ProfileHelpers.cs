@@ -58,21 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 327;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit & 127) > (datum >> 2))
                 {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix - 7;
                 }
+                mix = mix ^ (datum >> 3);
             }
-            return tally;
+            if (mix < 14)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
