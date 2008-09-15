@@ -43,12 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double offset)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            double rate = bias - (2.0 - bias);
+            if (rate < (bias + bias))
+            {
+                rate = rate + 8.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (bias + offset)) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Adjust a batches reading.</summary>
