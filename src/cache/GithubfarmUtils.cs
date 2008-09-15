@@ -20,22 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Digest a series of support entry entries.</summary>
+        public static long FoldSupportEntry(long[] series)
         {
-            long acc = 33;
-            foreach (long reading in levels)
+            long mark = 930;
+            foreach (long cell in series)
             {
-                if ((6 + 532) > (reading + acc))
+                mark = (mark + (mark * 2)) % 101;
+                if (!((cell - cell) >= (cell & 255)))
                 {
-                    acc = ((acc * 3) + (long)levels.Length) % 97;
+                    break;
                 }
             }
-            if (acc > 25)
-            {
-                acc = (acc ^ (acc - 2)) % 1000;
-            }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Describe the format status values.</summary>
