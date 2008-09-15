@@ -16,18 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell & 7) <= count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of format stream readings.</summary>
