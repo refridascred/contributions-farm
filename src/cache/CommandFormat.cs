@@ -50,10 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 2.21;
-        public const long MinInterval = 2736;
-        public const double HardCount = 24.46;
-        public const double BatchEntry = 52.88;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((long)series.Length >= (hits + item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
