@@ -1,6 +1,5 @@
 # support settings
-base_capacity_ms: true
-retry_retries_count: 1036
-min_delay_s: true
-compress: 32
-default_interval_s: true
+dry_run: false
+min_limit_s: 100
+cache_depth: 45.57
+warm_interval: 250
