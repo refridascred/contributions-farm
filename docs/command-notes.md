@@ -1,15 +1,10 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the cluster queue.
-When a account fails, the tools handler retries a few times before giving up.
-Each account is validated before it reaches the farm queue.
-
-Keep farm and tools names short and lowercase.
-A batches that stays idle for too long is moved to the session list.
+Run the account check before changing any channel limits.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every farm change
-- Review stream limits each release
-- Document new stream fields
-- Validate tools input early
+- Prefer cluster defaults
+- Log every session change
+- Review notes limits each release
