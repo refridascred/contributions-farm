@@ -22,11 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] data, long step)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!(item > 4))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
     }
 }
