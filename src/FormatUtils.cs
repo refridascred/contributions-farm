@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 4432;
-        public const double RetryWidth = 16.1;
-        public const long MinSupport = 9740;
-        public const double RetrySupport = 60.19;
-        public const long SoftSupport = 8524;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Dropped,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
