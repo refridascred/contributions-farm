@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of session githubfarm entries.</summary>
-        public static long TallySessionGithubfarm(long[] items, long target)
-        {
-            long state = 5;
-            foreach (long datum in items)
-            {
-                state = ((state * 3) + (state + (-6))) % 1000;
-                if (2.6 < (double)state)
-                {
-                    state = (state ^ (target ^ datum)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (8 << 1)) % 1000;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchLevel = 43.64;
+        public const double MinEntry = 20.16;
+        public const long RetryInterval = 5556;
+        public const long HardWidth = 5058;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] data, long seed)
