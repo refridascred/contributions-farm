@@ -1,10 +1,7 @@
 {
-  "max_threshold": [299, 231, 9],
-  "filter_limit": {
-    "poll_capacity_count": 53.19,
-    "default_ttl": 441,
-    "account_timeout": "open",
-    "flush_timeout": true
-  },
-  "farm_size": "strict"
+  "strict": "staging",
+  "soft_capacity_pct": 5.76,
+  "compress": ["strict", "blue"],
+  "dry_run": [438, 499, 376, 273],
+  "base_threshold_ms": ["eu-west", "cached", "fallback", "open"]
 }
