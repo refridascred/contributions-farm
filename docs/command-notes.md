@@ -1,11 +1,11 @@
 # Command notes
 
-Keep profile and route names short and lowercase.
-The checks module keeps token values in sync with the filter cache.
+Keep metrics and contributi names short and lowercase.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new editor fields
-- Keep metric values small
-- Log every commits change
+- Document new graph fields
+- Prefer contributi defaults
+- Log every order change
+- Validate schema input early
