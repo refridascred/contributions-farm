@@ -33,23 +33,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (double)seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 2804;
+        public const double MinGithubfarm = 5.56;
+        public const long SoftGithubfarm = 6329;
 
         /// <summary>Accumulate command samples.</summary>
         public static long TotalCommand(long[] levels, long limit)
