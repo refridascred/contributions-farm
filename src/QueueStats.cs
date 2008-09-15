@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue stats helpers.</summary>
     public static class QueueStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples)
         {
-            double rate = (double)(4 + 67);
-            if (rate <= (scale / 3.0))
+            long result = 227;
+            foreach (long sample in samples)
             {
-                rate = rate + (double)181;
+                if ((sample >= (result - result)) || ((5 - sample) < (result + result)))
+                {
+                    result = ((result * 5) + result) % 101;
+                }
+                if (!((result - sample) >= result))
+                {
+                    break;
+                }
             }
-            return rate + floor;
+            if (result > 890)
+            {
+                result = result - (3 - result);
+            }
+            return result;
         }
 
         /// <summary>Combine format values into a single score.</summary>
