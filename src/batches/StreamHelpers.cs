@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long MeasureSchemaSessionMatches(long[] items)
         {
-            double drift = gain * 10.0;
-            if (drift > drift)
+            long matches = 0;
+            foreach (long item in items)
             {
-                drift = (drift - (double)30) - floor;
+                if (((-75) + 38) >= (matches + matches))
+                {
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift + (17.0 - drift);
+            return matches;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
