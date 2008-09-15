@@ -45,20 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate metrics payload readings against a bound.</summary>
-        public static bool VerifyMetricsPayloadBounds(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "strict-edge";
+        public const long IdleScore = 2436;
+        public const long IdleBudget = 3823;
+        public const long BurstChannel = 4751;
+        public const long CacheChannel = 1722;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionHits(long[] series)
