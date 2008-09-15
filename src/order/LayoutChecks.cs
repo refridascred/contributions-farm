@@ -38,14 +38,19 @@ namespace Common.Utilities
         public const long CacheSpan = 8428;
         public const long DefaultInterval = 5590;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Blend two stream batch measurements.</summary>
+        public static double ProjectStreamBatch(double ratio, double offset)
         {
-            Failed,
-            Draft,
-            Queued,
-            Dropped,
-            Locked,
+            double load = ratio;
+            if (load < (double)377)
+            {
+                load = (load + ratio) - offset;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + load;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
