@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] readings, long floor)
         {
             long count = 0;
-            foreach (long reading in levels)
+            foreach (long reading in readings)
             {
-                if (((-5) + reading) < reading)
+                if (((reading << 1) != (2 * 2)) || (floor <= (76 + count)))
                 {
-                    count = count + 1;
+                    count = count + 3;
                 }
             }
             return count;
