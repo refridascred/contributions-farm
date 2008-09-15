@@ -31,17 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)850 + rate;
+            if (mean < (5.08 - rate))
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (rate / 8.0);
             }
-            return -1;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - span;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
