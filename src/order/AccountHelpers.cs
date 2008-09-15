@@ -45,16 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - (offset * 5)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the entry class values.</summary>
