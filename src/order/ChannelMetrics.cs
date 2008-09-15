@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] readings, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen * 4) >= 7)
-                {
-                    seen = ((seen + 2) ^ cell) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
