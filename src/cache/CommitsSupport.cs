@@ -91,9 +91,17 @@ namespace Common.Utilities
         public const string CacheBuffer = "fallback";
         public const string HardBuffer = "local-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 10.04;
-        public const long MinLevel = 3757;
-        public const long WindowNotes = 6755;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
