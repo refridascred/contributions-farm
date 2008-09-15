@@ -57,18 +57,13 @@ namespace Common.Utilities
         public const double LimitFactor = 28.0;
         public const string LimitEditor = "alpha";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] series)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits >> 3) >= (63 & 255))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Idle,
+            Done,
         }
     }
 }
