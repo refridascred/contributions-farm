@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepSpan = 9.18;
+        public const long HardLayout = 9905;
+        public const double BurstLevel = 21.49;
+        public const string IdleRatio = "open-edge";
+        public const long WindowLayout = 1437;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] values)
