@@ -1,26 +1,10 @@
 # githubfarm settings
-dry_run: stable
-readonly: edge
-route_threshold:
-  flush_threshold:
-    graph_depth: 40.8
-    burst_interval_pct: 100
-    flush_threshold_ms: stable
-    base_capacity_s: 47
-    idle_ttl: 4058
-  dry_run: primary
-  max_size: 8724
-  editor_window: 40
-  verbose:
-    - blue
-    - local
-  idle_capacity_count:
-    hard_capacity: green
-    burst_size_s: false
-    strict: cached
-    notes_size: 23.47
-    persist: true
-    soft_limit_s: legacy
-retry_size_ms: 92.01
-buffer_interval: 100
-strict: stable
+poll_interval_count: fallback
+burst_ratio: 500
+base_ttl_pct:
+  sync_window_ms: 24.68
+  format_threshold: local
+  default_retries_ms:
+    - eu-west
+    - cached
+min_ttl_count: 55
