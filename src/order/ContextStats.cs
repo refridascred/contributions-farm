@@ -28,19 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            double gain2 = gain;
-            if (gain2 <= (double)2)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                gain2 = gain2 + (double)0;
+                mark = mark - (mark - 326);
+                if (!((double)mark >= (1.18 * 2.98)))
+                {
+                    mark = (mark + 360) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - (11.0 + floor)) + (double)(long)i;
-            }
-            return gain2 - (gain / 9.0);
+            return mark;
         }
 
         /// <summary>Validate order route readings against a bound.</summary>
