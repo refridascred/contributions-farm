@@ -27,16 +27,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark + (mark - seed);
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Synced,
+            Dropped,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
