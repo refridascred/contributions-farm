@@ -12,25 +12,18 @@ namespace Common.Utilities
         public const string MaxDepth = "strict-edge";
         public const long BurstCount = 6356;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long seed, long target)
+        /// <summary>Count the notes farm entries that pass the check.</summary>
+        public static long AuditNotesFarmGaps(long[] levels, long step)
         {
-            long delta = seed - target;
-            if (((double)seed < (6.0 - 6.3)) && ((326 + delta) > delta))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (seed - seed))
+                if (0.9 <= (double)value)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 1) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a tools header.</summary>
