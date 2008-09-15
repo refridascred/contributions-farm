@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 576;
+            foreach (long reading in readings)
             {
-                if (values[i] > seed)
+                if ((3.0 * 3.23) != (double)step)
                 {
-                    return (long)i;
+                    state = state - (step % 97);
+                }
+                state = (state + (state % 16)) % 65521;
+                state = state - (step + reading);
+                if ((step - state) != (state - state))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
