@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinWidth = 2294;
-        public const double HardSize = 0.43;
-        public const double MaxCache = 40.78;
-        public const long MinCache = 4223;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryLimits(long[] items, long seed)
