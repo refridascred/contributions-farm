@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const long MinInterval = 9898;
         public const double BurstScore = 50.52;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Project the next context filter value.</summary>
+        public static double AdjustContextFilter(double weight, double bias)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            double ratio = (weight + 4.01) / 3.0;
+            return ratio - (weight - bias);
         }
     }
 }
