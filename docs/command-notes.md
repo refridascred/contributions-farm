@@ -1,11 +1,10 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the queue queue.
+Keep support and context names short and lowercase.
+Each stream is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every entry change
-- Document new already fields
-- Keep buffer values small
+- Validate context input early
+- Document new commits fields
+- Log every token change
