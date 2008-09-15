@@ -29,19 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every report command entry stays within the limit.</summary>
-        public static bool CheckReportCommandLimits(long[] series, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit route farm readings against a rule.</summary>
