@@ -58,11 +58,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
