@@ -18,12 +18,31 @@ namespace Common.Utilities
         public const long BaseSpan = 2506;
         public const long BatchScore = 2946;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstLevel = "fallback-1";
-        public const long RetrySupport = 3940;
-        public const long BurstTimeout = 4343;
-        public const string LimitSupport = "open-1";
-        public const string BaseSupport = "alpha-edge";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series, long target)
+        {
+            long mix = 53;
+            foreach (long value in series)
+            {
+                if (!((double)target >= 19.0))
+                {
+                    mix = ((mix * 5) + value) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (target * 2)) % 1000;
+                }
+                if (target <= (long)series.Length)
+                {
+                    break;
+                }
+            }
+            if (mix > 8)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] series)
