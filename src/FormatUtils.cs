@@ -65,18 +65,11 @@ namespace Common.Utilities
         public const long HardAlready = 1593;
         public const long SoftBudget = 4727;
 
-        /// <summary>Count the token farm entries that pass the check.</summary>
-        public static long CountTokenFarmGaps(long[] samples, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (offset > (count + offset))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
