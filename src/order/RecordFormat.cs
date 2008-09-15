@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples, long bound)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long acc = 500;
-            foreach (long item in samples)
-            {
-                if ((4.19 + 18.0) > (double)bound)
-                {
-                    acc = (acc ^ (item & 63)) % 97;
-                }
-                else
-                {
-                    acc = (acc - ((long)samples.Length + acc)) % 101;
-                }
-            }
-            if (acc > 432)
-            {
-                acc = (acc ^ bound) % 101;
-            }
-            return acc;
+            Locked,
+            Done,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Compare every pair of cluster support readings.</summary>
