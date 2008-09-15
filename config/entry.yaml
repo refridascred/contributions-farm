@@ -1,6 +1,31 @@
 # entry settings
-max_interval_pct: 87
-schema_depth: 9007
-compress: latest
-base_ratio_pct: 500
-flush_window: 50
+buffer_ttl: 7.4
+strict: fallback
+compress:
+  - primary
+  - primary
+  - open
+  - stable
+max_window: 6.89
+min_threshold_s:
+  idle_retries_s: 6292
+  stats_delay: 89.42
+  flush_depth_ms:
+    idle_ratio_pct: true
+    queue_capacity: false
+    account_delay: blue
+    default_ttl_ms:
+      - blue
+      - local
+      - eu-west
+    enabled: 5773
+  buffer_capacity: false
+audit:
+  cache_depth: local
+  compress: 61
+  base_ttl_s: false
+  stats_delay:
+    - cached
+    - edge
+    - staging
+  route_interval: 54
