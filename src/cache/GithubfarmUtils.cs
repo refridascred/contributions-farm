@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long step)
         {
-            Queued,
-            Active,
-            Stale,
+            long result = 877;
+            foreach (long value in items)
+            {
+                result = ((result << 3) ^ value) % 1000;
+            }
+            if (result < 233)
+            {
+                result = (result + (359 + step)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
