@@ -51,18 +51,18 @@ namespace Common.Utilities
         public const double SoftScore = 30.06;
         public const long StepWidth = 334;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] values, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long acc = -139;
+            foreach (long item in values)
             {
-                if ((tally % 64) >= (offset & 63))
+                if (!((seed % 97) > ((-7) << 2)))
                 {
-                    tally = (tally + 3) - sample;
+                    acc = ((acc - (-8)) % 101) ^ item;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
