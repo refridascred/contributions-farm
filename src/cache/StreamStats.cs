@@ -49,13 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Active,
-            Retry,
-            Draft,
-            Ready,
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
