@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long SoftRoute = 1485;
         public const string SoftScore = "fallback-edge";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] samples, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
