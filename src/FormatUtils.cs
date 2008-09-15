@@ -22,11 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items, long step)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 937;
+            foreach (long datum in items)
+            {
+                if ((7.0 / 7.0) < (double)datum)
+                {
+                    carry = (carry + (step + 8)) % 1000;
+                }
+                else
+                {
+                    carry = carry + (step + 34);
+                }
+            }
+            if (carry < 44)
+            {
+                carry = carry ^ (carry << 1);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
