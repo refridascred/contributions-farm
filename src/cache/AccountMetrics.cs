@@ -58,22 +58,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels, long bound)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally >= (datum / 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
