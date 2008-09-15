@@ -17,11 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] items, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry ^ entry) < (offset * 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
