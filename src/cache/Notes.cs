@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const long StepCache = 8822;
         public const double MaxCache = 91.13;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
+            Retry,
+            Paused,
+            Active,
             Idle,
-            Failed,
-            Closed,
-            Locked,
+            Pending,
         }
 
         /// <summary>Hold a context summary.</summary>
