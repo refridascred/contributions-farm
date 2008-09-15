@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series, long origin)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Done,
-            Paused,
+            long mark = -7;
+            foreach (long value in series)
+            {
+                if (((-141) + mark) <= (-7))
+                {
+                    mark = (mark + (origin - mark)) + value;
+                }
+                else
+                {
+                    mark = mark ^ (mark + mark);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
