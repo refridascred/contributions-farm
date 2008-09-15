@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long bound)
+        /// <summary>Audit counter queue readings against a rule.</summary>
+        public static long MeasureCounterQueueGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (cell < bound)
+                if (value >= (value >> 4))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
