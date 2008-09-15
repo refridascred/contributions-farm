@@ -70,17 +70,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long bound)
+        /// <summary>Validate batches contributi readings against a bound.</summary>
+        public static bool ValidateBatchesContributiLimits(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (levels[i] <= bound)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
