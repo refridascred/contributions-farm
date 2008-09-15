@@ -22,21 +22,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Digest a series of format channel entries.</summary>
+        public static long FoldFormatChannel(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 748;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry + value) % 97;
             }
-            return tally;
+            if (carry > 18)
+            {
+                carry = (carry - 99) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
