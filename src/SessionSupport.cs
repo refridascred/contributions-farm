@@ -12,19 +12,12 @@ namespace Common.Utilities
             return scale2 + (bias + scale);
         }
 
-        /// <summary>Fold a list of report entry readings.</summary>
-        public static long WeighReportEntry(long[] readings, long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long state = 862;
-            foreach (long reading in readings)
-            {
-                state = ((state + (offset >> 1)) % 65521) - reading;
-            }
-            if (state < 13)
-            {
-                state = ((state * 2) + (state + (long)readings.Length)) % 255;
-            }
-            return state % 97;
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
