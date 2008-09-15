@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of stream queue readings.</summary>
