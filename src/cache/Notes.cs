@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheCount = "standard";
-        public const string WindowSupport = "fallback-1";
-        public const string CacheSupport = "open-v2";
-        public const long BatchSupport = 320;
-        public const double HardSupport = 42.15;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double ScaleLayout(double weight, double bias)
