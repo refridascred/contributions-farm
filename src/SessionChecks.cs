@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Compare every pair of githubfarm batches readings.</summary>
+        public static long OverlapGithubfarmBatchesCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stream status values.</summary>
