@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long diff = offset - origin;
-            if ((diff - diff) >= (3 + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + origin) <= (diff * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + 50) <= (offset & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate tools samples.</summary>
