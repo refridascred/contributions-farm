@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] readings, long bound)
         {
-            Closed,
-            Done,
-            New,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((4.86 / 5.0) >= (double)sample)
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
