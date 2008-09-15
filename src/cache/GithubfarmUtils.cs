@@ -36,31 +36,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long bound, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            if (bound > (step + bound))
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.5 - 8.62) > (double)bound)
+                if (((long)i / 6) > (bound ^ 0))
                 {
-                    return 6;
+                    mix = ((mix << 2) ^ (765 + mix)) % 1000;
+                    mix = (mix + (mix / 2)) % 97;
                 }
-                else
-                {
-                    if ((double)bound < (5.14 + 15.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
+            return mix;
         }
     }
 }
