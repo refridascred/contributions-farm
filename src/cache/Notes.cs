@@ -40,11 +40,12 @@ namespace Common.Utilities
         public const double WindowStream = 7.96;
         public const long LimitStream = 9002;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
