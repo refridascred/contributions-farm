@@ -21,19 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Measure how many context filter samples are out of range.</summary>
+        public static long AuditContextFilterMatches(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((8.5 - 3.1) > (double)floor)
+                if (9.25 <= (double)seen)
                 {
-                    anchor = ((anchor * 4) + (floor * 5)) % 255;
+                    seen = (seen + 1) - reading;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every report command entry stays within the limit.</summary>
