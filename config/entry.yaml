@@ -1,16 +1,9 @@
 # entry settings
-cache_retries_s: 1024
-hard_capacity:
-  max_window: staging
-  persist: true
-  audit:
-    verbose: stable
-    base_depth_count: 1161
-    sync_limit: blue
-    support_timeout:
-      - 283
-      - 394
-    warm_size: strict
-    filter_capacity: 359
-  warm_size: 96.78
-persist: 35.01
+route_delay: 2446
+max_capacity: 40.62
+idle_timeout_pct: 66
+dry_run:
+  - 415
+  - 52
+  - 70
+  - 206
