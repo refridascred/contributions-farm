@@ -19,39 +19,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long seed)
         {
-            long diff = origin - bound;
-            if ((diff > (bound + bound)) && ((bound & 63) <= (bound - origin)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff + diff) >= (5 + origin))
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + origin) <= (origin * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (4.0 - 18.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
