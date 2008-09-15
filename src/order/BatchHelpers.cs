@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 4617;
-        public const long CacheOrder = 5330;
-        public const long BaseOrder = 571;
-        public const string IdleRatio = "local-v2";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] items)
+        {
+            long score = 23;
+            foreach (long sample in items)
+            {
+                score = ((score * 4) + (sample * 4)) % 65521;
+                score = (score << 3) ^ (sample % 3);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
