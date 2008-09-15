@@ -1,5 +1,5 @@
 {
-  "account_size": "edge",
-  "dry_run": "blue",
-  "poll_size_pct": 65.8
+  "verbose": false,
+  "audit": 16.29,
+  "report_size": 5134
 }
