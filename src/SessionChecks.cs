@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const double HardRatio = 75.88;
         public const string BatchNotes = "fallback-v2";
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] items, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
