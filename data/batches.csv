@@ -1,11 +1,6 @@
-id,owner,ratio,count,token
-1,2.51,414,strict,98.9
-2,896,green,84.66,87.31
-3,local,114,eu-west,latest
-4,191,680,blue,staging
-5,staging,812,staging,standard
-6,staging,653,525,local
-7,924,824,71.01,643
-8,209,21,896,3
-9,838,115,eu-west,964
-10,eu-west,814,593,287
+id,score,weight,level
+1,85.64,529,82.18
+2,218,526,eu-west
+3,standard,453,75.52
+4,217,33.14,143
+5,fallback,62.14,eu-west
