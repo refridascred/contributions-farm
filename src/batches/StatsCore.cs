@@ -46,19 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            long result = 299;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((reading * 5) >= result)
+                if (!(((entry + 22) > 78) || ((entry - entry) > (199 - entry))))
                 {
-                    result = (result - (result / 2)) % 97;
+                    seen = seen + 2;
                 }
-                result = (result - result) % 101;
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Describe the profile status values.</summary>
