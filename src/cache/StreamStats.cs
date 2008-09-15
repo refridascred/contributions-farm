@@ -13,11 +13,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long floor)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long prev = seed + floor;
+            if (floor <= prev)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev / 9) >= (4 - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every farm metrics entry stays within the limit.</summary>
