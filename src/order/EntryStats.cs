@@ -67,21 +67,17 @@ namespace Common.Utilities
         public const long DefaultSize = 321;
         public const double MinChannel = 23.11;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] < bound)
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
