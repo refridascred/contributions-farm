@@ -22,14 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Ready,
-            Retry,
-            Pending,
-            New,
-            Failed,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the account level values.</summary>
