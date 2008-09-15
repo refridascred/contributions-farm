@@ -20,24 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long target, long target2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings, long target)
         {
-            if ((double)target > (double)target2)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) <= (target2 + target))
+                if ((941 << 3) > (tally - datum))
                 {
-                    return 2;
+                    tally = (tally + 1) - target;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
