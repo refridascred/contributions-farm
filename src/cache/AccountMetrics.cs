@@ -50,32 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long floor, long floor2)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long edge = floor + floor2;
-            if (((4.72 * 5.2) != (double)edge) || ((edge >> 3) > (9 - edge)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 1) < (floor2 + floor2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge - edge) == (edge ^ floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
