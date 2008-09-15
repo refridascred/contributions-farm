@@ -22,11 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a cluster info.</summary>
