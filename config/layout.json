@@ -1,6 +1,20 @@
 {
-  "retry_interval_count": "blue",
-  "audit": "cached",
-  "report_ttl": 36,
-  "hard_timeout_s": 6066
+  "verbose": 23,
+  "burst_timeout_ms": 5.77,
+  "window_ttl": 23,
+  "retry_delay": {
+    "warm_delay": {
+      "sync_capacity": "latest",
+      "format_retries": 100,
+      "flush_interval": "cached",
+      "schema_depth": [434, 409, 21, 341],
+      "already_depth": 967,
+      "order_retries": "edge"
+    },
+    "batch_retries": 4295,
+    "min_size_ms": 24,
+    "burst_ttl_ms": 9525
+  },
+  "enabled": 57.18,
+  "compress": [424, 456, 89, 262]
 }
