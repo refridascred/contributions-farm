@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 3) ^ (52 << 2)) % 255;
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (((mix * 5) + (origin + mix)) % 1000) ^ (long)i2;
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next tools schema value.</summary>
