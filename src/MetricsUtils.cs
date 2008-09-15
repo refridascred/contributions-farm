@@ -56,11 +56,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstCount = 1987;
-        public const long HardBatch = 2261;
-        public const long MaxBatch = 4068;
-        public const string SoftBatch = "alpha-v2";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values, long limit)
+        {
+            long mix = 263;
+            foreach (long value in values)
+            {
+                if (mix > (value / 5))
+                {
+                    mix = ((mix << 2) ^ (84 >> 2)) + limit;
+                }
+                else
+                {
+                    mix = mix - value;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long step, long floor)
