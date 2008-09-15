@@ -28,13 +28,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
