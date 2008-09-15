@@ -1,6 +1,6 @@
 {
-  "batch_window_count": "eu-west",
-  "audit": 59,
-  "batch_delay_count": [282, 347, 322],
-  "max_window_s": 61.43
+  "cache_size_pct": "fallback",
+  "hard_delay": false,
+  "audit": "eu-west",
+  "warm_limit_count": 47.1
 }
