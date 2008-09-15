@@ -71,14 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long seed)
         {
-            Active,
-            Done,
-            Stale,
-            New,
-            Locked,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
