@@ -57,21 +57,13 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Accumulate checks samples.</summary>
