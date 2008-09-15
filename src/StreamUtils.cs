@@ -31,23 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] readings, long limit)
-        {
-            long state = 141;
-            foreach (long datum in readings)
-            {
-                if ((limit * 2) < (limit << 3))
-                {
-                    state = ((state - ((long)readings.Length / 5)) % 4096) ^ datum;
-                }
-            }
-            if (state > 736)
-            {
-                state = (state - 424) % 101;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 487;
+        public const string LimitScore = "open";
+        public const long WindowContributi = 9799;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyHits(long[] data, long step)
