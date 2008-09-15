@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitBudget = 95.19;
+        public const double BaseScore = 23.12;
+        public const long DefaultSize = 4955;
+        public const string WindowToken = "legacy-1";
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] items, long bound)
