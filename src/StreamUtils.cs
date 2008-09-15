@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 995;
-        public const long WindowSize = 2105;
-        public const long IdleReport = 1266;
-        public const string RetryReport = "standard-1";
-        public const long WindowReport = 3518;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Pending,
+            Stale,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
