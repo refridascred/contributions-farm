@@ -34,11 +34,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] samples, long limit)
         {
-            double weight = rate;
-            return (weight - (double)20) + bias;
+            long carry = 4;
+            foreach (long sample in samples)
+            {
+                if ((double)limit > (double)carry)
+                {
+                    carry = ((carry ^ (carry + carry)) % 255) ^ sample;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
