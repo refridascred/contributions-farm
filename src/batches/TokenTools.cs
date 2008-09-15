@@ -21,13 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long MeasurePayloadToolsHits(long[] data)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 4) < (4 * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
