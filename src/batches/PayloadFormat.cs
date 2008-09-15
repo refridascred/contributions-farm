@@ -49,38 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            if ((double)step != (9.2 - 20.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound / 4) <= (bound + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-193) + step) > ((-82) & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step & 255) == (242 + step)) && ((82 ^ step) > step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
