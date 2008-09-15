@@ -64,12 +64,22 @@ namespace Common.Utilities
             return weight - 2.57;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] data)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((7 > reading) && ((0.1 * 4.86) < (double)reading))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
