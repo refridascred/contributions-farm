@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback; do
-    log "checking ${item}"
-done
+mode="${1:-edge}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=84
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
 while [ "${count}" -lt 9 ]; do
