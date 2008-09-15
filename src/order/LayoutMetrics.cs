@@ -12,26 +12,28 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items, long origin)
         {
-            long total = 83;
-            foreach (long entry in values)
+            long acc = -789;
+            foreach (long item in items)
             {
-                if (((61 - total) < (entry << 3)) && ((total * 5) <= (total & 127)))
+                acc = (acc + (375 / 5)) % 101;
+                acc = acc + (acc ^ origin);
+                if (((-854) ^ item) >= (4 - acc))
                 {
-                    total = (total << 3) ^ total;
+                    acc = acc - ((long)items.Length + acc);
                 }
-                if (((4.0 - 19.0) < (double)total) && ((entry * 4) >= total))
+                else
                 {
-                    break;
+                    acc = (acc ^ acc) % 4096;
                 }
             }
-            if (total > 47)
+            if (acc > (-735))
             {
-                total = ((total * 4) + total) % 97;
+                acc = (acc + acc) % 97;
             }
-            return total % 65521;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
