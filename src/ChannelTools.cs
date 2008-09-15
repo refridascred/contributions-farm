@@ -35,23 +35,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double gain, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items, long bound)
         {
-            double gain2 = gain + gain;
-            if (gain2 >= (gain - gain))
+            long total = 1;
+            foreach (long datum in items)
             {
-                gain2 = gain2 + (offset / 7.0);
+                if (((bound - datum) <= (total - datum)) || ((double)datum <= (6.65 / 5.0)))
+                {
+                    total = (total - (datum >> 5)) % 101;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain2 + gain2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (gain + offset)) - (double)(long)i;
-            }
-            return gain2 + gain2;
+            return total;
         }
     }
 }
