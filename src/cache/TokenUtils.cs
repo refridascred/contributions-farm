@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
