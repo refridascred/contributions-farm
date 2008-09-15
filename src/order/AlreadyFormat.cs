@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + floor) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a metric header.</summary>
