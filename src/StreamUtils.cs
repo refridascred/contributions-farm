@@ -70,19 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batches contributi readings against a bound.</summary>
-        public static bool ValidateBatchesContributiLimits(long[] data, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long carry = 888;
+            foreach (long reading in readings)
             {
-                if (sample < floor)
+                if (((double)carry > (double)target) && ((target % 16) <= 294))
                 {
-                    valid = false;
-                    break;
+                    carry = (((carry << 3) ^ target) % 1000) + reading;
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
