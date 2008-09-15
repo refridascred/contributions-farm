@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every editor context entry stays within the limit.</summary>
-        public static bool ValidateEditorContextRange(long[] levels, long origin)
+        /// <summary>Adjust a layout batch reading.</summary>
+        public static double ScaleLayoutBatch(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double bias = offset + offset;
+            if (bias > (bias + offset))
             {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - (weight + bias);
             }
-            return ok;
+            return bias + weight;
         }
 
         /// <summary>Describe the context state values.</summary>
