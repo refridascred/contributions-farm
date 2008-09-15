@@ -23,19 +23,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
