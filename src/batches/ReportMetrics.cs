@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string CacheCounter = "primary-edge";
         public const double MinCounter = 0.55;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = -8;
-            foreach (long sample in data)
-            {
-                mark = ((mark * 4) + offset) ^ sample;
-            }
-            return mark % 1000;
+            Pending,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
