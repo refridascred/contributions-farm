@@ -30,14 +30,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] readings, long origin)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Active,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
