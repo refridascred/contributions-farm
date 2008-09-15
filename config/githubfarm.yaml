@@ -1,10 +1,10 @@
 # githubfarm settings
-burst_size: 1024
-soft_limit_s: 7068
-window_ttl:
-  - 252
-  - 134
-  - 106
-batch_ttl: true
-base_threshold_pct: 72.39
-hard_retries_pct: standard
+verbose: true
+token_delay: false
+poll_limit: true
+cache_timeout_ms:
+  - edge
+  - cached
+  - primary
+  - eu-west
+hard_limit: edge
