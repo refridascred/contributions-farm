@@ -38,9 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 9734;
-        public const long BaseLayout = 7495;
-        public const long HardLayout = 155;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Synced,
+            Paused,
+            Draft,
+            New,
+            Stale,
+        }
     }
 }
