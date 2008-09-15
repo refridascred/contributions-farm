@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] levels, long step)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.0 / 5.0) == (double)cell)
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a commits graph pair into a bucket.</summary>
