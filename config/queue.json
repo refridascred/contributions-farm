@@ -1,14 +1,7 @@
 {
-  "persist": {
-    "channel_limit": "strict",
-    "soft_depth_s": ["local", "local", "edge", "standard"],
-    "queue_limit": false,
-    "max_capacity_s": "latest",
-    "cache_depth": 2
-  },
-  "poll_delay_s": 19.87,
-  "default_interval_count": ["cached", "legacy", "stable"],
-  "stream_threshold": "cached",
-  "compress": true,
-  "already_threshold": 80
+  "sync_interval_s": 86.42,
+  "format_ratio": false,
+  "filter_depth": "standard",
+  "soft_ratio_ms": false,
+  "retry_threshold_count": false
 }
