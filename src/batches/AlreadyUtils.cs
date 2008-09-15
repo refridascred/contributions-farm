@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a batch profile pair into a bucket.</summary>
-        public static long SortBatchProfile(long seed, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels, long bound)
         {
-            if ((double)origin < 9.3)
+            long carry = 83;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.3 + 1.02) < (double)origin)
+                if (!((item + item) < item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    carry = ((carry + (item + carry)) % 255) + bound;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a schema info.</summary>
