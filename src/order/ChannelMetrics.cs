@@ -23,17 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] samples, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] < seed)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + (mix / 7)) % 255) ^ (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
