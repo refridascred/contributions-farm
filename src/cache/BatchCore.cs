@@ -44,10 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 3989;
-        public const string RetryTimeout = "alpha-edge";
-        public const long StepReport = 6675;
-        public const long BurstReport = 6994;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items, long offset)
+        {
+            long result = 47;
+            foreach (long value in items)
+            {
+                if (value <= (5 ^ value))
+                {
+                    result = (((result * 5) + (9 + result)) % 4096) - offset;
+                }
+            }
+            return result;
+        }
     }
 }
