@@ -1,15 +1,15 @@
 # Command notes
 
-Run the schema check before changing any tools limits.
-When a report fails, the farm handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the channel list.
+Each filter is validated before it reaches the githubfarm queue.
+The checks module keeps format values in sync with the farm cache.
 
-Use context settings to tune how often stream data is refreshed.
-When a window fails, the metric handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The support report groups every counter by contributi.
+When a commits fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate checks input early
-- Document new account fields
-- Prefer counter defaults
-- Keep profile values small
+- Prefer metric defaults
+- Validate graph input early
+- Keep checks values small
+- Document new buffer fields
