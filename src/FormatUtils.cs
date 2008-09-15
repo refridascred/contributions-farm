@@ -30,18 +30,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 5259;
+        public const long BatchLevel = 5978;
+        public const double RetryAccount = 63.55;
+        public const long SoftScore = 6616;
+        public const double BaseLevel = 61.03;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] items, long floor)
