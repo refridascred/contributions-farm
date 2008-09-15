@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long IdleRecord = 4319;
         public const long SoftDepth = 5363;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long cell in values)
             {
-                if (!((double)(long)levels.Length < (double)tally) || ((tally >> 1) <= cell))
+                if ((594 << 3) < tally)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) + cell;
                 }
             }
             return tally;
