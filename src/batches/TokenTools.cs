@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long floor)
         {
-            long anchor = 705;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                anchor = (((anchor << 3) ^ anchor) % 101) ^ datum;
-                anchor = (anchor << 2) ^ (9 - 699);
-                anchor = (anchor + (long)items.Length) % 1000;
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Locate a batches farm reading by value.</summary>
