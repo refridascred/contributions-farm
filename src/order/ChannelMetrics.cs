@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
-            Paused,
-            Ready,
-            Done,
-            Stale,
-            Idle,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((5.7 + 4.8) >= (double)entry) || ((18.0 / 2.0) == (double)entry))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
