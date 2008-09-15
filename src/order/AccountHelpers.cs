@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const long MaxMetrics = 3601;
         public const long HardMetrics = 7951;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((95 % 60) > offset2)
             {
-                if (5 <= item)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset != (8.0 + 15.0))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (597 >= (offset2 / 6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(offset2 > (offset2 - offset2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
