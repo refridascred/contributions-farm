@@ -20,32 +20,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long limit)
+        /// <summary>Compare every pair of stats tools readings.</summary>
+        public static long PairStatsToolsCount(long[] items)
         {
-            long edge = step + limit;
-            if (!((edge << 1) > (step / 9)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (63 <= (limit / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit + step) >= (step & 31)) && ((step - edge) <= (step * 3)))
+                    if ((items[i] ^ items[j]) == 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
