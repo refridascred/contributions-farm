@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] data, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
     }
 }
