@@ -34,19 +34,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            long result = 877;
-            foreach (long value in items)
+            long acc = 33;
+            foreach (long reading in levels)
             {
-                result = ((result << 3) ^ value) % 1000;
+                if ((6 + 532) > (reading + acc))
+                {
+                    acc = ((acc * 3) + (long)levels.Length) % 97;
+                }
             }
-            if (result < 233)
+            if (acc > 25)
             {
-                result = (result + (359 + step)) % 255;
+                acc = (acc ^ (acc - 2)) % 1000;
             }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
