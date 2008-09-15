@@ -1,10 +1,9 @@
 # githubfarm settings
-batch_delay_count:
-  audit: 4058
-  metrics_timeout: 52
-  default_limit_count: 95.55
-  max_timeout: strict
-min_window: 73
-retry_timeout_count:
-  - staging
-  - local
+cache_timeout_ms:
+  - 99
+  - 364
+cache_retries_pct: local
+entry_retries: 7615
+tools_interval: 68
+min_retries: 30
+base_limit: 30.33
