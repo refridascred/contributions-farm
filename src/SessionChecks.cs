@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
-        public static bool CheckPayloadGithubfarmRange(long[] items, long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Stale,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Iterate the token counter series from a seed.</summary>
