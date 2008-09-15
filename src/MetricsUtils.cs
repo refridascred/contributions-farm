@@ -20,19 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long state = 9;
+            foreach (long cell in series)
             {
-                if (reading >= limit)
+                if ((559 >> 2) >= (cell * 3))
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 2) + state) % 65521;
+                }
+                else
+                {
+                    state = (state ^ seed) % 65521;
                 }
             }
-            return ok;
+            if (state < 14)
+            {
+                state = ((state * 4) + seed) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
