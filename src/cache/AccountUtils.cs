@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] items, long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((offset / 6) != (offset + 4))
+                if (datum <= limit)
                 {
-                    count = (count + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Match up filter graph samples.</summary>
