@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long step)
+        /// <summary>Compare every pair of contributi batches readings.</summary>
+        public static long MatchContributiBatchesCount(long[] values)
         {
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
