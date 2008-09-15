@@ -23,15 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] levels, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] series)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long entry in series)
             {
-                if ((295 + bound) == (19 + 3))
+                if (!((1.2 + 4.1) != (double)entry))
                 {
-                    matches = (matches + 3) + reading;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
