@@ -14,19 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((1.4 + 8.65) == (double)datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftSize = 49.59;
+        public const double MinDepth = 47.16;
+        public const long SoftQueue = 798;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
