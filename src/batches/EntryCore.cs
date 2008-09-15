@@ -32,26 +32,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] values, long origin)
         {
-            long score = 1;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)seen < (4.1 / 3.0))
                 {
-                    score = ((score * 2) + (score - (long)i)) % 97;
-                }
-                if (!((9.0 - 4.58) <= (double)bound))
-                {
-                    score = ((score * 4) + (bound + item)) % 1000;
-                }
-                if ((8.14 - 8.8) == (double)item)
-                {
-                    score = ((score << 2) ^ (8 - bound)) % 65521;
+                    seen = ((seen + 3) ^ entry) - origin;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
