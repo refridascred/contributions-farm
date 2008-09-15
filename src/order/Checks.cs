@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a batch layout reading.</summary>
-        public static double BlendBatchLayout(double gain, double bias)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long target)
         {
-            double mean = gain - (double)34;
-            if (mean > (mean * 2.38))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (double)94;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean - bias)) + (double)(long)i;
-            }
-            return mean + (double)611;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
