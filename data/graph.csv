@@ -1,10 +1,7 @@
-id,ratio,score
-1,146,85.26
-2,primary,3.93
-3,60.4,151
-4,69,96.92
-5,690,615
-6,18.37,open
-7,165,blue
-8,420,72.87
-9,409,794
+id,token,score,count,level
+1,primary,208,green,open
+2,edge,primary,76.09,471
+3,stable,standard,latest,45.32
+4,standard,fallback,742,50.78
+5,261,653,blue,strict
+6,891,6.41,open,staging
