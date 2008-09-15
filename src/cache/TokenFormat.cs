@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] items, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((tally + tally) > sample)
+                if (seen >= (sample << 2))
                 {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate record samples.</summary>
