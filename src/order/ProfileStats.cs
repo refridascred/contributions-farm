@@ -37,13 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every commits batches entry stays within the limit.</summary>
+        public static bool CheckCommitsBatchesRange(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a record counter forward.</summary>
