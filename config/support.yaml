@@ -1,9 +1,13 @@
 # support settings
-warm_size_count: true
-base_threshold_s:
-  - staging
+compress:
   - primary
-  - eu-west
   - edge
-command_retries: stable
-max_limit: 83.58
+  - green
+  - stable
+enabled: latest
+verbose: local
+base_depth_ms: 31.69
+default_limit_count:
+  - standard
+  - strict
+  - eu-west
