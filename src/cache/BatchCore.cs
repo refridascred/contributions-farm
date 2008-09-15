@@ -28,31 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor layout value against two limits.</summary>
-        public static long BucketEditorLayout(long step, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data)
         {
-            if ((floor ^ step) != (floor & 7))
+            long carry = 177;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 * 4.5) <= (double)floor)
+                if (carry <= (item + carry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (6 & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = ((carry << 2) ^ (carry - carry)) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the account status values.</summary>
