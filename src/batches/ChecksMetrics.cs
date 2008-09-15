@@ -57,22 +57,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] readings, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data, long seed)
         {
-            long state = 54;
-            foreach (long datum in readings)
+            long score = 69;
+            foreach (long item in data)
             {
-                if (((1 ^ 38) != (datum - 6)) || ((step - state) > step))
-                {
-                    state = (state - state) % 255;
-                }
+                score = (score + (item / 4)) + seed;
             }
-            if (state < 58)
-            {
-                state = (state << 3) ^ (819 - step);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the token level values.</summary>
