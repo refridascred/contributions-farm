@@ -35,19 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format payload readings against a bound.</summary>
-        public static bool ValidateFormatPayloadRange(long[] series, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long total = 4;
+            foreach (long value in values)
             {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total * 5) + (284 & 255)) % 101) ^ value;
             }
-            return ready;
+            if (total < 47)
+            {
+                total = (total - total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the checks level values.</summary>
