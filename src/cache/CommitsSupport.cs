@@ -45,11 +45,20 @@ namespace Common.Utilities
             return weight - 4.6;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 1281;
-        public const long MaxCluster = 254;
-        public const string LimitCluster = "fallback-edge";
-        public const string BatchCluster = "latest-1";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
