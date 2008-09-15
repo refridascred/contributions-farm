@@ -33,22 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 2;
+            foreach (long entry in readings)
             {
-                if ((((double)count > (13.0 / 6.0)) || ((double)count < (3.6 + 9.8))) && !((count & 1) >= count))
+                if ((entry % 100) > (entry / 5))
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc * 2) + (entry - entry);
                 }
             }
-            return count;
+            if (acc > 251)
+            {
+                acc = ((acc * 4) + 5) % 101;
+            }
+            return acc;
         }
     }
 }
