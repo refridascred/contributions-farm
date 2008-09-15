@@ -46,11 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxBudget = 3938;
-        public const string MaxScore = "alpha-1";
-        public const long BurstBudget = 960;
-        public const string MaxMetrics = "latest";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((3.0 * 8.5) == (double)seed) && (((seed + hits) > (hits << 1)) || ((double)hits >= 16.0)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteLimits(long[] samples, long bound)
