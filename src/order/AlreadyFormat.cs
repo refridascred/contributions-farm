@@ -40,14 +40,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Closed,
+            Synced,
+            Pending,
+            Retry,
             Active,
-            Done,
-            Locked,
-            Paused,
         }
 
         /// <summary>Adjust a context reading.</summary>
