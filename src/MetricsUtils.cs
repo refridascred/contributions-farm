@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            long acc = 3;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ (acc + floor)) % 65521;
-                acc = acc ^ (97 - floor);
-                if ((acc + acc) > cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc * 3) + (8 + 6);
-                }
-                else
-                {
-                    acc = acc + acc;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
