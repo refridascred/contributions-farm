@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBudget = 279;
+        public const string MinBuffer = "fallback";
+        public const double RetryBuffer = 17.98;
+        public const string HardBudget = "fallback-1";
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
