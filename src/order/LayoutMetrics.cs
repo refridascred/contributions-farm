@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 9044;
-        public const long BatchSchema = 356;
-        public const long MinCount = 4257;
+        /// <summary>Audit buffer order readings against a rule.</summary>
+        public static long MeasureBufferOrderHits(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (count >= (seed - 91))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] series, long bound)
