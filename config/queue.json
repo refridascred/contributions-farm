@@ -1,5 +1,23 @@
 {
-  "default_limit_s": "cached",
-  "poll_depth_count": 100,
-  "cache_ttl_pct": "latest"
+  "schema_delay": {
+    "hard_interval": 51.01,
+    "poll_retries": 13.09,
+    "hard_size_count": false,
+    "burst_timeout_s": 30
+  },
+  "sync_ttl": {
+    "order_window": "strict",
+    "readonly": "staging",
+    "idle_window_pct": ["open", "open"],
+    "burst_size_pct": false,
+    "burst_depth_count": {
+      "graph_size": "strict",
+      "verbose": ["strict", "stable"],
+      "payload_ttl": "local",
+      "cluster_limit": 6.62,
+      "dry_run": 13.39
+    }
+  },
+  "soft_interval_count": 500,
+  "compress": "stable"
 }
