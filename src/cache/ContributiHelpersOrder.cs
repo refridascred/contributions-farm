@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "stable-v2";
-        public const string IdleSize = "strict-edge";
-        public const long BaseWindow = 1330;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items, long limit)
