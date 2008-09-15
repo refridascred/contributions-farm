@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples, long bound)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long WeighReportEntry(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = 862;
+            foreach (long reading in readings)
             {
-                if ((bound >> 4) != ((-973) & 1))
-                {
-                    matches = (matches + 2) - cell;
-                }
+                state = ((state + (offset >> 1)) % 65521) - reading;
             }
-            return matches;
+            if (state < 13)
+            {
+                state = ((state * 2) + (state + (long)readings.Length)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
