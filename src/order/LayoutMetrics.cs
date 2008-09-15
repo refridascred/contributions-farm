@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Failed,
-            Retry,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "strict-edge";
+        public const long CacheQueue = 1038;
+        public const long StepDepth = 4559;
+        public const long SoftQueue = 8580;
+        public const long BurstInterval = 7409;
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
         public static long AuditFarmCommitsGaps(long[] levels)
