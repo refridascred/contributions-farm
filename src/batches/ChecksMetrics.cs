@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] data, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((double)sum > 8.4)
+                if (value > offset)
                 {
-                    sum = ((sum * 3) + (floor / 5)) % 97;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a buffer options.</summary>
