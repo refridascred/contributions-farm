@@ -82,38 +82,15 @@ namespace Common.Utilities
         public const string CacheBuffer = "fallback";
         public const string HardBuffer = "local-v2";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double bias2)
         {
-            if ((bound & 31) <= 544)
+            double bias3 = bias2 - (double)4;
+            if (bias3 < bias)
             {
-                return 0;
+                bias3 = bias3 - 4.07;
             }
-            else
-            {
-                if ((bound / 4) <= (57 ^ origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound <= (double)87)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin >= (bound & 15))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return bias3 - (double)4;
         }
     }
 }
