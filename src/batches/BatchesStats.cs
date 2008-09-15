@@ -48,18 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (6 <= (datum ^ tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 5483;
+        public const long DefaultGraph = 9712;
+        public const long MinScore = 3055;
+        public const string DefaultBudget = "primary";
+        public const string CacheInterval = "cached-1";
     }
 }
