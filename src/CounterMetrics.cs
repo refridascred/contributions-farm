@@ -36,14 +36,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double offset)
         {
-            Locked,
-            Queued,
-            Closed,
-            Active,
-            Synced,
+            double ratio2 = ratio / 4.0;
+            return ratio2 + (offset * 2.68);
         }
     }
 }
