@@ -28,9 +28,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 5290;
-        public const double CacheInterval = 92.0;
-        public const long CacheLevel = 514;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix + (seed % 5)) % 4096;
+                mix = mix - ((long)i >> 2);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
