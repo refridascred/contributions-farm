@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] values, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a metric record.</summary>
