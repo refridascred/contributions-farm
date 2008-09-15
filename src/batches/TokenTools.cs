@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long offset, long floor)
+        /// <summary>Grade a context batches value against two limits.</summary>
+        public static long GradeContextBatches(long offset, long offset2)
         {
-            long edge = offset ^ floor;
-            if (((offset - floor) < floor) || (floor <= (0 * 5)))
+            long lane = offset + offset2;
+            if ((473 << 1) >= (offset2 & 7))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((edge + 52) == (edge - edge))
+                if ((192 - offset) <= (lane + offset2))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((floor % 5) > (offset + 424))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)edge != (3.6 - 9.2)) || (floor < (floor % 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
