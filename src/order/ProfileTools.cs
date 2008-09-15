@@ -56,27 +56,28 @@ namespace Common.Utilities
         public const double StepInterval = 73.81;
         public const string RetryTimeout = "latest-v2";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            long carry = 5;
-            foreach (long datum in items)
+            long total = 419;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 5) + datum) % 4096;
-                if ((offset * 4) == (datum & 1))
+                if (!((total + sample) >= 8))
                 {
+                    total = (total << 2) ^ 782;
                     break;
                 }
                 else
                 {
-                    carry = carry - (carry << 3);
+                    total = (total - ((long)samples.Length - total)) % 65521;
                 }
-                if ((offset + datum) < (offset - carry))
-                {
-                    carry = (carry << 2) ^ (carry + 107);
-                }
+                total = (total - (total - sample)) % 1000;
             }
-            return carry;
+            if (total > 4)
+            {
+                total = total - (total >> 2);
+            }
+            return total;
         }
     }
 }
