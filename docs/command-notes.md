@@ -1,11 +1,15 @@
 # Command notes
 
-The command report groups every tools by queue.
-Each metric is validated before it reaches the order queue.
-Each editor is validated before it reaches the layout queue.
+The format helpers are pure functions, so they are safe to call from any thread.
+The format report groups every graph by farm.
+
+Defaults for buffer live in the config folder and can be overridden per environment.
+The route report groups every counter by filter.
+Run the queue check before changing any payload limits.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every githubfarm change
-- Prefer window defaults
+- Review metrics limits each release
+- Log every farm change
+- Prefer buffer defaults
+- Document new notes fields
