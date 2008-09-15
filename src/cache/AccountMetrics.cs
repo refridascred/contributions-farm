@@ -40,31 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] values, long bound)
         {
-            if (!((target * 2) >= 84))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target - target) < origin))
+                if (datum < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 2) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
