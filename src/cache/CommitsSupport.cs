@@ -75,15 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double bias2)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double bias3 = bias2 - (double)4;
-            if (bias3 < bias)
-            {
-                bias3 = bias3 - 4.07;
-            }
-            return bias3 - (double)4;
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
