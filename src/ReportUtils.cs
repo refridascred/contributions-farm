@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long seed)
         {
-            New,
-            Stale,
-            Ready,
-            Synced,
+            long cur = floor ^ seed;
+            if (!((cur + seed) >= cur))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed != (8.09 - 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((8.33 + 8.0) < (double)cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
