@@ -26,11 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstSize = 1648;
-        public const double MinMetrics = 91.16;
-        public const double BatchMetrics = 92.65;
-        public const long DefaultMetrics = 4337;
-        public const long BurstMetrics = 7385;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double span)
+        {
+            double gain = (double)(999 << 2);
+            if (gain > 4.2)
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain - (ratio / 6.0);
+        }
     }
 }
