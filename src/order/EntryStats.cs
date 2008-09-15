@@ -53,13 +53,17 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] levels, long seed)
         {
-            Idle,
-            Closed,
-            Paused,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
