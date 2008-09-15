@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long limit, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long step)
         {
-            long cur = limit ^ seed;
-            if (limit <= cur)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.91 - 2.0) != (double)cur)
+                long slot = (9 + (long)i) + ((long)i - acc);
+                if ((213 - acc) > slot)
                 {
-                    return 3;
+                    acc = (acc ^ ((long)i << 3)) % 101;
+                    continue;
                 }
-                else
-                {
-                    if (seed > (cur % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit > (limit >> 5)) && ((19.0 - 0.65) == (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
