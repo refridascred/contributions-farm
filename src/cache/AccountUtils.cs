@@ -20,19 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((double)tally >= 3.0))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 6311;
+        public const long SoftSpan = 7338;
+        public const double StepInterval = 31.99;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long FoldOrder(long[] samples, long seed)
