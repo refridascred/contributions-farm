@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long SoftSize = 5589;
         public const long MaxDepth = 8662;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double scale = bias;
-            if (scale < (double)537)
-            {
-                scale = (scale + bias) + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - bias;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
