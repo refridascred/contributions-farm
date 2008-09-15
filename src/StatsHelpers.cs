@@ -35,21 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already record samples.</summary>
-        public static long CompareAlreadyRecordCount(long[] samples)
+        /// <summary>Digest a series of stream cluster entries.</summary>
+        public static long CombineStreamCluster(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 405;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((7.0 / 9.0) < (double)floor) || ((double)state >= (5.9 / 6.0)))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + (3 + entry);
+                }
+                else
+                {
+                    state = (state + (61 >> 1)) % 1000;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a context notes sample.</summary>
