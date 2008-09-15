@@ -37,12 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                if ((series[i] > step) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
