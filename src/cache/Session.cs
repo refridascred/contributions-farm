@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetryInterval = 5556;
         public const long HardWidth = 5058;
 
-        /// <summary>Adjust a metric session reading.</summary>
-        public static double BlendMetricSession(double gain, double span)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double ratio = (double)(70 / 7);
-            if (ratio < (gain * 7.5))
-            {
-                ratio = (ratio - (double)688) - span;
-            }
-            else
-            {
-                ratio = ratio - 8.0;
-            }
-            return ratio - (double)18;
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
