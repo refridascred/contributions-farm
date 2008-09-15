@@ -30,13 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] samples)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 9) > (matches + 48))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
