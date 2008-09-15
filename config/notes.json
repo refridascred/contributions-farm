@@ -1,17 +1,5 @@
 {
-  "flush_window": 10.4,
-  "min_ratio": "cached",
-  "retry_timeout_ms": {
-    "cache_interval": {
-      "cache_interval": 60,
-      "min_ttl_s": true,
-      "filter_interval": false
-    },
-    "default_ttl_ms": 85.07,
-    "metrics_delay": 81.97,
-    "min_interval_ms": ["edge", "blue", "fallback", "local"],
-    "max_threshold_pct": "eu-west"
-  },
-  "soft_ttl": "strict",
-  "window_limit": [135, 108, 462]
+  "max_size": 60,
+  "retry_limit_ms": 3971,
+  "metric_window": ["edge", "latest"]
 }
