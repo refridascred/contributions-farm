@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 3.37;
+            if (rate < scale)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + (span * 8.0);
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (scale / 6.0)) + (double)(long)i;
+            }
+            return rate + (rate - rate);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
