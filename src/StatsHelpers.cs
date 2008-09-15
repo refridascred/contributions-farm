@@ -35,23 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Match up already record samples.</summary>
+        public static long CompareAlreadyRecordCount(long[] samples)
         {
-            double bias2 = rate;
-            if (bias2 >= (0.94 * 8.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + (double)28) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (rate + bias2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 + (6.9 - bias2);
+            return count;
         }
 
         /// <summary>Look up the position of a context notes sample.</summary>
