@@ -35,13 +35,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the payload checks entries that pass the check.</summary>
+        public static long CountPayloadChecksMatches(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((limit + 492) >= (limit >> 5))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
     }
 }
