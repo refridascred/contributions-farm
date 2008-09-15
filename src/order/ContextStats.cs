@@ -23,12 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 5767;
-        public const long BaseLevel = 5134;
-        public const long WindowCluster = 6808;
-        public const long MinDepth = 7492;
-        public const long BaseCluster = 2629;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            New,
+            Locked,
+            Active,
+            Idle,
+            Done,
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long IterateCommand(long limit)
