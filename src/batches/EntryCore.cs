@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long step)
+        /// <summary>Combine session contributi values into a single score.</summary>
+        public static long CombineSessionContributi(long[] items)
         {
-            long total = 81;
-            foreach (long reading in series)
+            long sum = 8;
+            foreach (long sample in items)
             {
-                total = ((total << 3) ^ (total ^ total)) % 1000;
-                if ((double)step < (1.6 / 6.0))
+                sum = sum - (sample % 10);
+                if ((sample - sum) < (sample >> 3))
                 {
-                    total = (total - (reading & 31)) % 4096;
+                    sum = ((sum * 4) + (sample / 5)) % 1000;
                 }
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Scale a entry already figure with a bias.</summary>
