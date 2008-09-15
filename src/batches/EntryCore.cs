@@ -56,19 +56,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] levels, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (cell < target)
+                if (value <= (hits ^ value))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
