@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long total = 64;
-            foreach (long item in series)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((seed ^ seed) != ((long)i * 5))
                 {
-                    total = (total - ((long)i << 3)) ^ item;
-                    total = (total << 2) ^ (total + target);
+                    state = ((state << 3) ^ (seed + state)) % 101;
+                    state = (state - (state % 97)) % 101;
+                    continue;
                 }
-                total = (total + target) % 1000;
-                total = total - (1 + total);
+                else
+                {
+                    state = (state ^ 3) % 255;
+                    state = (state - (seed % 64)) % 255;
+                }
+                state = state - (state << 3);
+                state = ((state * 3) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a buffer options.</summary>
