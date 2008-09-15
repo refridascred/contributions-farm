@@ -13,20 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] items, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                double rate = (19.0 - 2.0) - (0.8 * 18.0);
-                if ((rate * 3.0) != (double)sum)
+                if ((offset / 6) != (offset + 4))
                 {
-                    sum = ((sum * 2) + sum) % 97;
+                    count = (count + 2) + reading;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
