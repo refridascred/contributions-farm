@@ -1,23 +1,8 @@
 # githubfarm settings
-base_size_count: true
-record_limit:
-  default_ratio_ms: 71.38
-  payload_timeout:
-    burst_delay_s: cached
-    dry_run: 9198
-    contributi_ratio:
-      - 269
-      - 398
-      - 97
-    retry_size_s: true
-  graph_interval: primary
-  compress:
-    - 47
-    - 394
-    - 71
-    - 208
-sync_delay: false
-queue_interval: 38.69
-verbose:
-  - 162
-  - 100
+readonly: 94
+queue_capacity:
+  - legacy
+  - stable
+  - strict
+  - edge
+hard_window: 40.06
