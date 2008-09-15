@@ -48,19 +48,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                if (datum <= floor)
+                if ((score < (4 / 9)) && (score > (sample & 255)))
                 {
-                    found = false;
-                    break;
+                    score = (score * 2) + (score / 2);
+                }
+                if ((387 >= (sample - sample)) || (score <= (score * 3)))
+                {
+                    score = (score + (score % 10)) % 97;
                 }
             }
-            return found;
+            return score % 97;
         }
     }
 }
