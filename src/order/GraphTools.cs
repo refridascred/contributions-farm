@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Roll a support notes counter forward.</summary>
+        public static long DeriveSupportNotes(long bound)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine payload filter values into a single score.</summary>
