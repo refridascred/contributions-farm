@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTimeout = 6209;
-        public const string HardTools = "cached-1";
-        public const long MinTimeout = 7770;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            New,
+            Stale,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] samples, long seed)
