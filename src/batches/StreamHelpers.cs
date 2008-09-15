@@ -23,16 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long seed)
         {
-            long state = 48;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + datum) % 255;
-                state = ((state << 3) ^ (datum / 4)) % 65521;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
