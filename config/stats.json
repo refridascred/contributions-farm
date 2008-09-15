@@ -1,11 +1,6 @@
 {
-  "sync_limit_s": 6641,
-  "default_size": {
-    "compress": "cached",
-    "format_interval": "cached",
-    "burst_ratio": 4617
-  },
-  "base_timeout": ["edge", "local", "legacy"],
-  "soft_depth_s": 86.69,
-  "idle_delay": "cached"
+  "soft_ratio_pct": ["cached", "cached"],
+  "default_window": "eu-west",
+  "notes_timeout": "fallback",
+  "sync_window_ms": false
 }
