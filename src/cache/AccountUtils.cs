@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
