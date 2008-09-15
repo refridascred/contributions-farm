@@ -25,39 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long floor, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long span = floor + bound;
-            if (bound <= (829 << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)262 < (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span + floor) != (span ^ span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor % 100) <= (83 - span)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Define route limits and defaults.</summary>
