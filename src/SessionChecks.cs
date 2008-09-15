@@ -48,10 +48,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchFactor = 76.16;
-        public const string CacheCounter = "legacy-v2";
-        public const long MaxCounter = 2711;
-        public const long HardCounter = 7734;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
