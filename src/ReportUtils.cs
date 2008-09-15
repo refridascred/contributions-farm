@@ -70,11 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long state = 33;
+            foreach (long sample in data)
+            {
+                state = (state ^ (state + state)) + sample;
+            }
+            return state % 65521;
         }
     }
 }
