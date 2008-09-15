@@ -1,7 +1,10 @@
-id,rank,ratio,region
-1,open,primary,42.97
-2,94.61,71.89,51.11
-3,primary,14.19,632
-4,14.62,fallback,537
-5,4.25,eu-west,281
-6,22.17,481,731
+id,active,rank,owner
+1,blue,758,44.95
+2,48.28,fallback,165
+3,706,39.48,23.75
+4,40.56,latest,77.09
+5,eu-west,local,strict
+6,284,75.88,979
+7,14.12,258,485
+8,956,latest,310
+9,cached,eu-west,63.4
