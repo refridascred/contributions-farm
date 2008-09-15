@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema filter samples.</summary>
-        public static long TotalSchemaFilter(long[] data)
-        {
-            long state = 43;
-            foreach (long value in data)
-            {
-                if (value >= 445)
-                {
-                    state = (state << 2) ^ (value >> 1);
-                }
-            }
-            if (state > 5)
-            {
-                state = (state - (state + state)) % 255;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "open-v2";
+        public const long StepCounter = 2829;
+        public const long MaxCounter = 9111;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long RollAccount(long origin)
