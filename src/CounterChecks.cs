@@ -58,18 +58,12 @@ namespace Common.Utilities
         public const string LimitSize = "latest";
         public const long BurstBudget = 765;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches - 37) > matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
