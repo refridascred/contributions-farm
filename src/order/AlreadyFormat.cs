@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate token session samples.</summary>
+        public static long WeighTokenSession(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long total = 90;
+            foreach (long sample in values)
+            {
+                if (sample <= (total * 3))
+                {
+                    total = total ^ sample;
+                }
+            }
+            if (total > 35)
+            {
+                total = total - (origin + total);
+            }
+            return total;
         }
 
         /// <summary>Locate a context tools reading by value.</summary>
