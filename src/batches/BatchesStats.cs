@@ -41,18 +41,20 @@ namespace Common.Utilities
         public const double LimitDepth = 14.78;
         public const long BurstRatio = 9750;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] data, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((11.0 / 2.0) < (double)cell)
+                if ((offset < total) || (((long)i / 8) >= (total + offset)))
                 {
-                    hits = (hits + 2) - limit;
+                    total = total - (total >> 2);
+                    total = total + (62 & 255);
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
