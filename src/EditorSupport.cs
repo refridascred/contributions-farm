@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "alpha-v2";
         public const string MaxInterval = "stable";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchRatio = "cached-1";
-        public const long MaxSize = 1274;
-        public const double HardEditor = 74.59;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((double)tally >= (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the cache graph series from a seed.</summary>
         public static long RollCacheGraph(long origin)
