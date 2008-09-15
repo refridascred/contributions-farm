@@ -54,31 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long seed, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long seed)
         {
-            if ((offset + offset) > (seed << 2))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (seed - offset))
+                if (sample < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.0 * 3.21) >= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
