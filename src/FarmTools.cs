@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSize = 5428;
-        public const string StepStream = "strict";
-        public const string WindowRatio = "open-v2";
-        public const long BurstSize = 4432;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] data, long step)
+        {
+            long sum = 89;
+            foreach (long item in data)
+            {
+                sum = ((sum - (46 / 8)) % 1000) + item;
+            }
+            if (sum < 269)
+            {
+                sum = (sum + (step + sum)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] data)
