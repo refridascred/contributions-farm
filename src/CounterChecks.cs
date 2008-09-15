@@ -71,26 +71,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Classify a contributi token pair into a bucket.</summary>
+        public static long GradeContributiToken(long step, long seed)
         {
-            long mark = 816;
-            foreach (long cell in readings)
+            long delta = step + seed;
+            if (seed > delta)
             {
-                if ((mark + mark) > (mark >> 3))
+                return 8;
+            }
+            else
+            {
+                if (!((double)step != (8.01 / 9.0)))
                 {
-                    mark = ((mark << 2) ^ (mark << 2)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    mark = (mark ^ (cell + mark)) % 4096;
+                    if (((748 - seed) < seed) || ((delta - 33) > (4 >> 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < 791)
-            {
-                mark = ((mark << 2) ^ mark) % 97;
-            }
-            return mark;
         }
     }
 }
