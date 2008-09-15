@@ -48,11 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 5483;
-        public const long DefaultGraph = 9712;
-        public const long MinScore = 3055;
-        public const string DefaultBudget = "primary";
-        public const string CacheInterval = "cached-1";
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Queued,
+            Paused,
+            Locked,
+            New,
+            Ready,
+        }
     }
 }
