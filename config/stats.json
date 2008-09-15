@@ -1,18 +1,8 @@
 {
-  "cache_threshold": {
-    "strict": "eu-west",
-    "batch_depth": 90,
-    "stream_threshold": 250,
-    "persist": "blue",
-    "compress": 7.31
-  },
-  "sync_size_pct": "fallback",
-  "burst_threshold_pct": 60,
-  "idle_capacity": 97,
-  "retry_ratio_s": true,
-  "filter_interval": {
-    "report_ratio": 2406,
-    "burst_capacity_s": 40.64,
-    "metric_window": 48
-  }
+  "hard_capacity_count": 16.09,
+  "batch_size": "fallback",
+  "metrics_retries": 5659,
+  "strict": false,
+  "flush_retries_s": 57.67,
+  "burst_interval_pct": "fallback"
 }
