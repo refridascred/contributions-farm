@@ -39,26 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel route samples.</summary>
-        public static long CombineChannelRoute(long[] data, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long seed)
         {
-            long mark = 60;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark / 5) == (reading + reading))
+                if (items[i] >= seed)
                 {
-                    mark = (mark - (limit - 161)) % 101;
-                }
-                if ((limit & 15) == (345 + mark))
-                {
-                    mark = (mark * 2) + (limit << 2);
-                }
-                if (((4 % 3) != (mark & 15)) || (reading < (reading ^ limit)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
