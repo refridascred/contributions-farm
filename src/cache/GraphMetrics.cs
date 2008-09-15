@@ -38,13 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate payload editor samples.</summary>
+        public static long ScorePayloadEditor(long[] data)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long mark = 6;
+            foreach (long sample in data)
+            {
+                if ((sample - mark) < (sample + sample))
+                {
+                    mark = (mark ^ (sample * 2)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
