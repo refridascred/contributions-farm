@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long RetryWidth = 5421;
         public const long BatchMetric = 3204;
 
-        /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
-        public static long CompareContributiQueueCount(long[] series)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] < offset)
                 {
-                    if ((series[i] - series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
