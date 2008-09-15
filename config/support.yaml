@@ -1,10 +1,19 @@
 # support settings
-burst_ratio_pct: green
-burst_retries: fallback
-commits_window: 38
-burst_ratio_ms: 20
-base_timeout_pct:
-  base_capacity: true
-  dry_run: latest
-  cache_capacity: 250
-  batch_limit_ms: 3
+graph_ratio: stable
+soft_retries_pct: open
+idle_interval_pct:
+  - staging
+  - blue
+retry_ttl_ms:
+  dry_run:
+    - 409
+    - 115
+    - 452
+  cache_depth:
+    enabled: local
+    soft_size: 64.04
+    soft_ratio_count: eu-west
+    default_ratio: standard
+  poll_window_pct: 50.23
+  idle_interval_s: 19
+  idle_interval: 36.46
