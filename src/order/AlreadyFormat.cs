@@ -23,17 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a context tools reading by value.</summary>
-        public static long FindContextToolsIndex(long[] values, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
