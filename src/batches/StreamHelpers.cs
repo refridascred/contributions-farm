@@ -48,18 +48,14 @@ namespace Common.Utilities
         public const long DefaultFormat = 4414;
         public const double DefaultDepth = 14.41;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((7.27 - 12.0) != (double)tally) && (((-51) - tally) > (target - tally)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
