@@ -38,22 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((28 - cell) > seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Locked,
+            Paused,
         }
     }
 }
