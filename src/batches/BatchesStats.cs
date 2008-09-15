@@ -39,26 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Look up the position of a format window sample.</summary>
+        public static long LocateFormatWindowIndex(long[] data, long origin)
         {
-            long anchor = 6;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (anchor >= (item - item))
+                if (data[i] <= origin)
                 {
-                    anchor = (anchor ^ (item % 16)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                if (item <= (anchor % 8))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
