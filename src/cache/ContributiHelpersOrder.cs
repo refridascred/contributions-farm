@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 6.11;
+        public const long BatchMetric = 731;
+        public const long HardMetric = 8597;
 
         /// <summary>Fold a list of contributi githubfarm readings.</summary>
         public static long TotalContributiGithubfarm(long[] series)
