@@ -74,11 +74,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double bias, double span)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            double gain = span + (bias / 6.0);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - (double)71;
         }
     }
 }
