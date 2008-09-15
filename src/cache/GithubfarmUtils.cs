@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long TotalMetricsEditor(long[] levels, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            long score = 98;
+            foreach (long datum in levels)
+            {
+                score = (score - datum) % 4096;
+                if ((offset + score) > (offset + datum))
+                {
+                    break;
+                }
+            }
+            if (score < 698)
+            {
+                score = (score << 3) ^ (score & 15);
+            }
+            return score;
         }
 
         /// <summary>Hold a batches options.</summary>
