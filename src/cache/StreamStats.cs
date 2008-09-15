@@ -29,17 +29,10 @@ namespace Common.Utilities
             return gain2 - (6.1 / 4.0);
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "staging-v2";
+        public const long SoftSpan = 4352;
+        public const long BaseMetric = 1795;
+        public const double IdleMetric = 68.2;
     }
 }
