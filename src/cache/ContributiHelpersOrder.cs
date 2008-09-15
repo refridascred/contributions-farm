@@ -20,19 +20,24 @@ namespace Common.Utilities
         public const long HardFactor = 5595;
         public const long MaxFormat = 7338;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] values, long seed)
+        /// <summary>Grade a schema githubfarm value against two limits.</summary>
+        public static long RankSchemaGithubfarm(long offset, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if (((double)origin > (4.3 * 13.0)) || (origin >= (offset & 15)))
             {
-                if (item >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((498 % 8) <= (origin << 1))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
     }
 }
