@@ -45,13 +45,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            double mean = (double)95 - (rate * 6.15);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the payload class values.</summary>
