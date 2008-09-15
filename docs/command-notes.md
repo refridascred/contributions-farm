@@ -1,16 +1,12 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Run the context check before changing any entry limits.
-The route report groups every order by window.
-
-Each schema is validated before it reaches the route queue.
-The support module keeps filter values in sync with the schema cache.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
+Defaults for session live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Validate session input early
-- Document new queue fields
-- Prefer order defaults
-- Log every counter change
+- Log every buffer change
+- Review record limits each release
+- Validate entry input early
+- Keep already values small
