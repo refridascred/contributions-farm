@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 4.6;
+            if (weight < (double)279)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight + (double)79) - floor;
             }
-            return tally;
+            return weight - rate;
         }
 
         /// <summary>Project the next tools schema value.</summary>
