@@ -1,33 +1,5 @@
 # githubfarm settings
-readonly: 30
-poll_limit_ms:
-  batch_interval: 63
-  min_threshold_ms:
-    idle_delay_pct: 47
-    strict: 88
-    cache_ttl: local
-    min_ttl_ms:
-      - 35
-      - 277
-      - 275
-      - 200
-    default_size_pct: 46
-  burst_ttl:
-    readonly: 45.41
-    contributi_timeout:
-      - 66
-      - 385
-    hard_depth_ms: standard
-    persist: 84
-  support_limit: 90
-  poll_size: true
-  max_limit:
-    - stable
-    - edge
-    - primary
-min_depth_count:
-  - local
-  - primary
-  - edge
-warm_interval_ms: true
-editor_retries: true
+poll_window_count: cached
+min_limit: local
+farm_depth: 1.08
+payload_interval: false
