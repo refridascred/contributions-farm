@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const double BaseDepth = 50.41;
         public const string CacheDepth = "stable-1";
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Closed,
-            Pending,
-            Paused,
-            Active,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 7509;
+        public const string DefaultRatio = "strict-edge";
+        public const long LimitFactor = 1086;
+        public const string IdleChecks = "latest";
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double ScaleAccount(double rate, double span)
