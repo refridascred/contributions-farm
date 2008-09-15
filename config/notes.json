@@ -1,7 +1,5 @@
 {
-  "sync_depth_ms": 2900,
-  "dry_run": [119, 247],
-  "readonly": 18,
-  "enabled": 3433,
-  "hard_depth_pct": "primary"
+  "soft_ttl": "stable",
+  "metric_size": "open",
+  "channel_threshold": [74, 290]
 }
