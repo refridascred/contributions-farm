@@ -11,33 +11,11 @@ namespace Common.Utilities
         public const long HardCache = 6857;
         public const long StepCache = 5758;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long floor)
-        {
-            long prev = limit - floor;
-            if ((floor ^ prev) < (floor + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev & 3) >= (prev + prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)prev <= (12.0 * 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryCount = "cached-v2";
+        public const double HardLevel = 24.35;
+        public const long BurstScore = 6682;
+        public const double LimitSchema = 48.01;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] readings)
