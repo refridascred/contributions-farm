@@ -35,22 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi metric pairs that satisfy a relation.</summary>
-        public static long CompareContributiMetricCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowInterval = 917;
+        public const long HardFormat = 3570;
+        public const long DefaultFormat = 7758;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
