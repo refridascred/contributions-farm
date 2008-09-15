@@ -3,13 +3,13 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
     active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new',
-    region TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT,
     level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
 
-INSERT INTO layout_items (owner, active, state, region, level) VALUES ('standard', 80, 'staging', 'primary', 37);
-INSERT INTO layout_items (owner, active, state, region, level) VALUES ('fallback', 12, 'blue', 'latest', 15);
-INSERT INTO layout_items (owner, active, state, region, level) VALUES ('stable', 84, 'local', 'legacy', 95);
+INSERT INTO layout_items (owner, active, score, token, level) VALUES ('cached', 52, 65.15, 'blue', 16);
+INSERT INTO layout_items (owner, active, score, token, level) VALUES ('local', 10, 41.35, 'primary', 88);
+INSERT INTO layout_items (owner, active, score, token, level) VALUES ('stable', 38, 62.91, 'standard', 27);
