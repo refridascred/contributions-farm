@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            double weight = 14.0 * 0.9;
+            if (weight > (double)(-5))
+            {
+                weight = (weight - weight) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (offset * 18.0)) + (double)(long)i;
+            }
+            return weight + (offset * 5.0);
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
