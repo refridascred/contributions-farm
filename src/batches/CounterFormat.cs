@@ -24,10 +24,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleTimeout = 5248;
-        public const long BaseBuffer = 1170;
-        public const long WindowRatio = 1591;
-        public const string CacheInterval = "staging";
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Failed,
+            Locked,
+            Stale,
+            Paused,
+            New,
+        }
     }
 }
