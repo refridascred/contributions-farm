@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchTimeout = 6424;
-        public const long SoftCache = 6921;
-        public const long HardCache = 6857;
-        public const long StepCache = 5758;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Idle,
+            Synced,
+            Done,
+            Locked,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string RetryCount = "cached-v2";
