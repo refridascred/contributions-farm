@@ -24,22 +24,19 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] values, long target)
         {
-            long mix = 47;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((sample - mix) <= (mix % 8))
+                if (reading < target)
                 {
-                    mix = ((mix * 4) + (688 + sample)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > (-269))
-            {
-                mix = ((mix * 5) + mix) % 1000;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Look up the position of a entry metrics sample.</summary>
