@@ -26,10 +26,17 @@ namespace Common.Utilities
         public const string BurstToken = "local-1";
         public const double BurstLevel = 81.31;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstInterval = 7529;
-        public const string HardOrder = "alpha-edge";
-        public const double StepOrder = 82.51;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score - (27 & 1)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] items)
