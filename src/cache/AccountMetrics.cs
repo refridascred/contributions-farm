@@ -89,24 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)offset < 7.15) || ((996 + offset) <= offset))
-                {
-                    mark = mark - (offset << 1);
-                }
-                else
-                {
-                    mark = (mark + offset) % 97;
-                }
-                mark = (mark * 5) + 5;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Paused,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
