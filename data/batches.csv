@@ -1,8 +1,9 @@
-id,state,active,level
-1,strict,13.0,467
-2,blue,eu-west,eu-west
-3,8,primary,strict
-4,225,standard,local
-5,528,569,strict
-6,598,primary,35.8
-7,737,blue,162
+id,rank,token,active
+1,6.97,553,329
+2,70.66,882,latest
+3,8.41,eu-west,719
+4,542,fallback,stable
+5,blue,192,8.48
+6,349,590,89.94
+7,419,43.14,895
+8,eu-west,11.25,open
