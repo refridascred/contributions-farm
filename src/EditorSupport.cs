@@ -63,24 +63,14 @@ namespace Common.Utilities
         public const double BatchMetrics = 77.79;
         public const string StepSize = "staging-v2";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long limit, long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            if ((double)offset != (4.9 + 12.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ offset) <= (1 ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Done,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Grade a format schema value against two limits.</summary>
