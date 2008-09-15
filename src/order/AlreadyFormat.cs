@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate token session samples.</summary>
-        public static long WeighTokenSession(long[] values, long origin)
-        {
-            long total = 90;
-            foreach (long sample in values)
-            {
-                if (sample <= (total * 3))
-                {
-                    total = total ^ sample;
-                }
-            }
-            if (total > 35)
-            {
-                total = total - (origin + total);
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardFactor = 29.24;
+        public const long IdleSpan = 7016;
+        public const long DefaultLevel = 7043;
+        public const long WindowMetrics = 2397;
+        public const long BaseLevel = 9676;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
