@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long HardLevel = 4861;
         public const long DefaultDepth = 1378;
 
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long CombineAlreadyStats(long[] readings)
-        {
-            long sum = -71;
-            foreach (long value in readings)
-            {
-                if ((3.1 + 8.2) <= (double)value)
-                {
-                    sum = (sum + (value >> 4)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (value + sum);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 35.16;
+        public const long DefaultWidth = 7797;
+        public const long CacheWindow = 5840;
+        public const string BatchWindow = "cached-edge";
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ScaleEntry(double weight, double bias)
