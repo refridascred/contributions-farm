@@ -22,23 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Audit stream command readings against a rule.</summary>
+        public static long MeasureStreamCommandOutliers(long[] items, long floor)
         {
-            long total = 2;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                total = ((total ^ (total + 5)) % 1000) + reading;
-                if (!(90 >= (total ^ 56)))
+                if ((floor < (reading * 2)) && (count <= (reading % 100)))
                 {
-                    total = ((total << 2) ^ (total >> 5)) % 101;
-                }
-                else
-                {
-                    total = ((total * 2) + (total + 817)) % 65521;
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
