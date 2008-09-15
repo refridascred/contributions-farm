@@ -53,10 +53,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "strict-edge";
-        public const string LimitSize = "latest";
-        public const long BurstBudget = 765;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double gain, double floor)
+        {
+            double weight = (floor - 3.36) / 4.0;
+            if (weight >= weight)
+            {
+                weight = (weight - weight) - gain;
+            }
+            return weight - 2.57;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
