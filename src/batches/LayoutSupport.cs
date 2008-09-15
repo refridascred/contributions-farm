@@ -45,18 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((entry - entry) >= (seen / 3)) || !((entry >> 3) >= (2 % 24)))
+                if (datum > origin)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Fold a list of support readings.</summary>
