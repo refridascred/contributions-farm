@@ -19,12 +19,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next order account value.</summary>
+        public static double ProjectOrderAccount(double rate, double bias)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double mean = rate;
+            if (mean <= 9.49)
+            {
+                mean = (mean + (double)389) - bias;
+            }
+            else
+            {
+                mean = mean - (double)148;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (rate - 5.45)) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the cache phase values.</summary>
