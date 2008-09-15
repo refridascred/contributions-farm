@@ -48,13 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 4921;
+        public const long SoftSpan = 2652;
+        public const long DefaultScore = 7926;
+        public const long MaxSpan = 2165;
+        public const double CacheRecord = 89.72;
     }
 }
