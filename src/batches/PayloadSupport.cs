@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the session cluster series from a seed.</summary>
-        public static long DeriveSessionCluster(long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double bias, double bias2)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            double weight = (double)79 - (bias * 6.9);
+            if (weight < weight)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                weight = (weight - (15.0 * 7.0)) - bias2;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (4.7 * 8.9)) + (double)(long)i;
+            }
+            return weight - (bias * 5.83);
         }
 
         /// <summary>Hold a order snapshot.</summary>
