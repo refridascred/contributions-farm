@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings, long origin)
         {
-            Closed,
-            Done,
-            Locked,
-            Pending,
+            long mark = 324;
+            foreach (long datum in readings)
+            {
+                mark = ((((mark << 2) ^ (mark + (long)readings.Length)) % 1000) ^ datum) + origin;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
