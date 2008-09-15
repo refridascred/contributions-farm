@@ -34,38 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            if ((offset + step) > 3)
+            long mix = 98;
+            foreach (long item in levels)
             {
-                return 8;
+                mix = (mix ^ (item + item)) % 65521;
             }
-            else
-            {
-                if ((0.6 < (double)step) && ((offset + step) < offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - offset) <= 48)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the batch phase values.</summary>
