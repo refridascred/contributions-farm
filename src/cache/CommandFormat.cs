@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Synced,
-            Done,
-            Locked,
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
