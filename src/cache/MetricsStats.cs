@@ -30,17 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a already buffer reading by value.</summary>
-        public static long LookupAlreadyBufferIndex(long[] readings, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
