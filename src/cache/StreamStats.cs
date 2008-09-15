@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 6611;
-        public const double WindowBudget = 70.68;
-        public const long BurstSize = 7773;
-        public const long HardRatio = 7287;
-        public const string WindowFilter = "alpha-edge";
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
