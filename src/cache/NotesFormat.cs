@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitSpan = 5670;
-        public const double MinLayout = 68.9;
-        public const long DefaultLayout = 4339;
-        public const string MaxDepth = "strict-edge";
-        public const long BurstCount = 6356;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Paused,
+            Ready,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Count the notes farm entries that pass the check.</summary>
         public static long AuditNotesFarmGaps(long[] levels, long step)
