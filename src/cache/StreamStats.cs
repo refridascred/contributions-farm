@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] readings, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((4.86 / 5.0) >= (double)sample)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every farm metrics entry stays within the limit.</summary>
