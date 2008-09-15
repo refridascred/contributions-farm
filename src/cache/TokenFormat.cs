@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long CountAccountStatsGaps(long[] items, long limit)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double drift = bias;
+            if (drift < (bias / 6.0))
             {
-                if (1 > (matches << 3))
-                {
-                    matches = ((matches + 3) + reading) + limit;
-                }
+                drift = drift - drift;
             }
-            return matches;
+            else
+            {
+                drift = drift - (rate * 0.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (bias / 9.0)) + (double)(long)i;
+            }
+            return drift - (8.15 * 5.6);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
