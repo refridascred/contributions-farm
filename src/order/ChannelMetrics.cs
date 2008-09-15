@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double gain, double floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double gain2 = floor;
-            return (gain2 + floor) + gain;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a commits graph pair into a bucket.</summary>
