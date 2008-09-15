@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowInterval = 5878;
+        public const long CacheTimeout = 2469;
+        public const double BurstRoute = 3.28;
+        public const double WindowRoute = 46.63;
+        public const long IdleRatio = 7722;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] items, long limit)
