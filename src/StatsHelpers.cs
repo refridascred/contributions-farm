@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const string CacheScore = "alpha";
         public const long MaxMetrics = 4876;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
