@@ -1,5 +1,4 @@
 # githubfarm settings
-max_ttl_ms: 88.98
-flush_capacity: primary
-stream_retries: false
-flush_size_count: latest
+hard_delay_ms: open
+idle_limit_s: 17.55
+counter_capacity: stable
