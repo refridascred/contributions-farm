@@ -45,10 +45,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftLevel = 3183;
-        public const long BurstPayload = 8508;
-        public const long BurstInterval = 198;
-        public const double WindowSpan = 70.95;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long limit, long seed)
+        {
+            if ((limit >> 5) <= (seed + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit > (seed & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed <= (20.0 / 4.0)) && (seed >= (seed - seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed * 2) < (limit & 31))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
