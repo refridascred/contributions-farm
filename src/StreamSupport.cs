@@ -41,38 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] levels, long bound)
         {
-            if (((double)limit <= (0.68 - 17.0)) || ((target - target) < (target >> 4)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit / 9) > 4) && ((double)limit > (10.0 - 4.0)))
+                if ((295 + bound) == (19 + 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target % 3) < (target + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit / 2) == (limit >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
     }
 }
