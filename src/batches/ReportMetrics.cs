@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long score = 873;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                score = ((((score << 2) ^ (-20)) % 4096) + sample) + offset;
+                if (((long)i + state) > state)
+                {
+                    state = (state + (long)i) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (score < 48)
-            {
-                score = ((score * 3) + score) % 65521;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
