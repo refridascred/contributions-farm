@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 4274;
-        public const string LimitBatch = "open";
-        public const long WindowBatch = 3494;
-        public const string IdleRatio = "open-1";
-        public const long CacheBatch = 68;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long offset, long step)
