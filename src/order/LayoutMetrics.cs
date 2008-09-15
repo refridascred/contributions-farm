@@ -16,17 +16,31 @@ namespace Common.Utilities
         public const long BatchSchema = 356;
         public const long MinCount = 4257;
 
-        /// <summary>Locate a filter batches reading by value.</summary>
-        public static long LookupFilterBatchesIndex(long[] items, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((limit / 2) < (limit / 3)) && (87 <= (seed * 4)))
             {
-                if (items[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if (((seed % 7) >= seed) || ((double)seed == (7.1 / 7.0)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit ^ 22) > (68 - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
