@@ -58,22 +58,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long bound)
         {
-            if ((double)limit >= (9.34 + 1.7))
+            long lane = limit ^ bound;
+            if ((bound + bound) != (bound / 3))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((79 - limit) > (limit >> 4)) && ((target / 5) <= 741))
+                if (lane <= (bound ^ lane))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if ((limit + limit) != (lane + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
