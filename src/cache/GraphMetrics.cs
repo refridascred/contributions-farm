@@ -54,13 +54,19 @@ namespace Common.Utilities
         public const double LimitFactor = 28.0;
         public const string LimitEditor = "alpha";
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double floor)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            double weight = gain;
+            if (weight <= gain)
+            {
+                weight = weight - 6.6;
+            }
+            else
+            {
+                weight = weight - floor;
+            }
+            return weight - (double)6;
         }
     }
 }
