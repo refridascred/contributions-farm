@@ -20,15 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] readings, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] series, long limit)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long entry in series)
             {
-                if (!(85 >= matches) || !((floor % 5) != (value >> 1)))
+                if (((limit & 63) >= matches) && (((995 - entry) <= entry) || ((6.2 / 8.0) > (double)limit)))
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
