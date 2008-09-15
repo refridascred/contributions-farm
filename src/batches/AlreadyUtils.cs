@@ -39,31 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm queue value against two limits.</summary>
-        public static long RankFarmQueue(long target, long target2)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double bias)
         {
-            if ((target << 3) >= (target - target2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.6 - 7.4) < (double)target2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target2 < 9.8)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double weight = rate;
+            return (weight - (double)20) + bias;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
