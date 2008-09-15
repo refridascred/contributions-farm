@@ -1,9 +1,11 @@
 # entry settings
-sync_timeout_count: 23.69
-layout_timeout: blue
-notes_ttl:
-  enabled: primary
-  batch_limit: 4671
-  burst_interval_ms: 1024
-  max_interval_pct: eu-west
-  sync_threshold: 30
+flush_threshold_count: 825
+retry_limit: 4599
+min_delay: blue
+min_threshold: 17.95
+route_delay: 4534
+layout_limit:
+  dry_run: open
+  strict: 1901
+  checks_threshold: false
+  already_delay: 33.21
