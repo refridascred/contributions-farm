@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const long LimitFactor = 1086;
         public const string IdleChecks = "latest";
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double span)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            double load = span - (span / 7.0);
-            return (load + (9.4 - load)) + rate;
+            double gain2 = floor - (gain - floor);
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (double)17) + (double)(long)i;
+            }
+            return gain2 - (6.1 / 4.0);
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
