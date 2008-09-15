@@ -56,18 +56,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long TallyBatchesWindowHits(long[] series, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double load = (double)3 - weight;
+            if (load <= (double)939)
             {
-                if ((85 + seen) != (target * 3))
-                {
-                    seen = (seen + 3) - datum;
-                }
+                load = load - (weight + weight);
             }
-            return seen;
+            return load - (span + span);
         }
     }
 }
