@@ -29,22 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (cell >= (cell + cell))
+                if ((sample >> 1) >= (sample - 9))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) - target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
