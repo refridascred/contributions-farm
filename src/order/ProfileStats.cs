@@ -33,15 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] values, long limit)
         {
-            long mix = 98;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mix = (mix ^ (item + item)) % 65521;
+                if (limit >= (count << 2))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
