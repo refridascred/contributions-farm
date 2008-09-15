@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] readings, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items, long step)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long item in items)
             {
-                if (!((hits & 31) <= (1 * 3)))
+                if (((7.0 * 9.5) != (double)(long)items.Length) && ((hits >= (hits + 380)) || ((item ^ 29) <= 627)))
                 {
-                    hits = ((hits + 3) + reading) - seed;
+                    hits = (hits + 1) + step;
                 }
             }
             return hits;
