@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Accumulate schema filter samples.</summary>
+        public static long TotalSchemaFilter(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = 43;
+            foreach (long value in data)
             {
-                if (((5.7 + 4.8) >= (double)entry) || ((18.0 / 2.0) == (double)entry))
+                if (value >= 445)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state << 2) ^ (value >> 1);
                 }
             }
-            return seen;
+            if (state > 5)
+            {
+                state = (state - (state + state)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
