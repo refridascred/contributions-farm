@@ -37,18 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] values)
+        /// <summary>Roll a entry payload counter forward.</summary>
+        public static long DeriveEntryPayload(long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((842 >> 2) <= (count >> 3))
-                {
-                    count = (count + 2) ^ sample;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
