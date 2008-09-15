@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            long mark = 676;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((cell + mark) >= mark)
+                if ((matches >= (reading >> 1)) && ((reading * 2) > (5 * 2)))
                 {
-                    mark = mark ^ cell;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark - 85)) % 255;
+                    matches = matches + 2;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
