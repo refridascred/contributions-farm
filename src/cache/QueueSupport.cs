@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
