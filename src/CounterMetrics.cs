@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a support session reading by value.</summary>
-        public static long FindSupportSessionIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultScore = 5171;
+        public const double MaxScore = 66.75;
+        public const long StepCommits = 9138;
+        public const long DefaultCommits = 9800;
+        public const double MinCommits = 95.33;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstRatio = 1723;
