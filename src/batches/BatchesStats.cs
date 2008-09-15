@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "open-1";
-        public const double SoftRecord = 92.51;
-        public const double BurstSpan = 8.98;
-        public const string RetryRecord = "alpha-1";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Paused,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
