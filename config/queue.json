@@ -1,5 +1,12 @@
 {
-  "retry_ratio_pct": 6601,
-  "enabled": 69,
-  "stats_interval": 6834
+  "audit": "strict",
+  "base_threshold_pct": 82.57,
+  "order_capacity": 81.29,
+  "min_retries": true,
+  "default_delay_ms": "legacy",
+  "readonly": {
+    "cache_delay_count": "staging",
+    "burst_delay_count": 8876,
+    "metrics_threshold": 27
+  }
 }
