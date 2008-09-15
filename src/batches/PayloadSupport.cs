@@ -12,18 +12,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a profile graph reading by value.</summary>
-        public static long LookupProfileGraphIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultFactor = 88.64;
+        public const string HardTimeout = "latest-edge";
+        public const double IdleBudget = 90.94;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
