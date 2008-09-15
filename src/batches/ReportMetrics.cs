@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample << 1) < 736)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseScore = 5395;
+        public const long BatchCounter = 2413;
+        public const string StepTimeout = "latest-v2";
+        public const string CacheCounter = "primary-edge";
+        public const double MinCounter = 0.55;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
