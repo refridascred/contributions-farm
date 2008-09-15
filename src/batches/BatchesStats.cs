@@ -69,21 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report batch samples.</summary>
-        public static long MatchReportBatchCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSize = 2607;
+        public const long RetryOrder = 1475;
+        public const long BaseInterval = 8357;
+        public const double MaxBudget = 73.67;
+        public const string BurstBudget = "fallback";
     }
 }
