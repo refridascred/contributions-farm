@@ -77,19 +77,15 @@ namespace Common.Utilities
         public const string BatchCommand = "latest-1";
         public const string RetryCommand = "cached-edge";
 
-        /// <summary>Blend two account checks measurements.</summary>
-        public static double SmoothAccountChecks(double rate, double span)
+        /// <summary>Iterate the session layout series from a seed.</summary>
+        public static long SeriesSessionLayout(long step)
         {
-            double weight = (double)(692 >> 4);
-            if (weight >= (weight / 7.0))
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                weight = (weight + (double)(-7)) - rate;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight + weight;
+            return mark;
         }
     }
 }
