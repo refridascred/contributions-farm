@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long offset)
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long CountAccountStatsGaps(long[] items, long limit)
         {
-            if (((double)offset < (0.2 / 7.0)) || ((target << 3) > (offset ^ offset)))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target << 2) < (offset + target))
+                if (1 > (matches << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset << 1) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = ((matches + 3) + reading) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
