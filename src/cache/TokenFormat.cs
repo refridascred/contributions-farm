@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] values, long seed)
         {
-            double weight2 = (6.0 * 1.91) + 7.5;
-            if (weight2 < floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight2 = weight2 - (weight + floor);
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - 7.3;
+            return -1;
         }
 
         /// <summary>Combine session cache values into a single score.</summary>
