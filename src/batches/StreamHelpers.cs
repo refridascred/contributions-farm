@@ -56,15 +56,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double load = (double)3 - weight;
-            if (load <= (double)939)
-            {
-                load = load - (weight + weight);
-            }
-            return load - (span + span);
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
