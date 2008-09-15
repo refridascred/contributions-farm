@@ -47,15 +47,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double gain, double floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            double weight = (floor - 3.36) / 4.0;
-            if (weight >= weight)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                weight = (weight - weight) - gain;
+                state = (state ^ (limit + limit)) % 255;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return weight - 2.57;
+            return state;
         }
 
         /// <summary>Hold a format record.</summary>
