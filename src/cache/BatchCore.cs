@@ -20,17 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long floor)
+        /// <summary>Classify a stats notes pair into a bucket.</summary>
+        public static long SortStatsNotes(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = limit - floor;
+            if (62 >= (next << 3))
             {
-                if (data[i] >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((next + limit) != (next + (-129)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
