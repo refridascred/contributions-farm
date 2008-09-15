@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            Closed,
-            Paused,
-            Draft,
-            Done,
-            Synced,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + hits) > value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine report stream values into a single score.</summary>
