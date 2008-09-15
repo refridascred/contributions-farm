@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long seed)
+        /// <summary>Audit route entry readings against a rule.</summary>
+        public static long TallyRouteEntryHits(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                if ((seen >> 4) >= (seen % 60))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ value) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
