@@ -57,22 +57,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many farm commits samples are out of range.</summary>
-        public static long AuditFarmCommitsGaps(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((double)datum >= 6.0) && (datum < tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
