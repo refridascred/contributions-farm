@@ -60,19 +60,12 @@ namespace Common.Utilities
         public const double IdleRoute = 92.47;
         public const long CacheRoute = 2151;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
