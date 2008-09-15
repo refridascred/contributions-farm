@@ -1,8 +1,10 @@
 # support settings
-sync_window_ms:
-  - primary
-  - standard
-  - local
-  - green
-notes_window: local
-batch_limit_count: 86.26
+burst_ratio_pct: green
+burst_retries: fallback
+commits_window: 38
+burst_ratio_ms: 20
+base_timeout_pct:
+  base_capacity: true
+  dry_run: latest
+  cache_capacity: 250
+  batch_limit_ms: 3
