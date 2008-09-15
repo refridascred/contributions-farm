@@ -36,18 +36,31 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] readings, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long bound, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if (bound > (step + bound))
             {
-                if ((900 + bound) <= 37)
+                return 2;
+            }
+            else
+            {
+                if ((4.5 - 8.62) > (double)bound)
                 {
-                    hits = (hits + 2) + item;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < (5.14 + 15.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
