@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels, long origin)
         {
-            double weight = 4.6;
-            if (weight < (double)279)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                weight = (weight + (double)79) - floor;
+                if (((tally & 31) < (tally / 9)) && ((double)value >= (double)(long)levels.Length))
+                {
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight - rate;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
