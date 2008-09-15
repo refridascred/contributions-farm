@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm filter readings against a rule.</summary>
-        public static long MeasureFarmFilterMatches(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = -264;
+            foreach (long datum in items)
             {
-                if ((double)item > (9.9 - 15.0))
+                if (!((59 & 3) > anchor))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor ^ datum) - seed;
                 }
             }
-            return tally;
+            if (anchor < (-8))
+            {
+                anchor = ((anchor << 3) ^ 3) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a stream schema pair into a bucket.</summary>
