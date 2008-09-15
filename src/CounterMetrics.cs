@@ -38,16 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry - 8) % 97;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Adjust a queue reading.</summary>
