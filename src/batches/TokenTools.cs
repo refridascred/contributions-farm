@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheRatio = 8482;
+        public const double CacheSession = 69.63;
+        public const long BaseSession = 910;
+        public const string MaxSession = "open-1";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileGaps(long[] values)
