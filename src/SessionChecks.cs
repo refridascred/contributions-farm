@@ -32,12 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            Locked,
-            Closed,
-            New,
+            long carry = 2;
+            foreach (long sample in readings)
+            {
+                carry = (carry * 4) + (sample ^ 58);
+            }
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
