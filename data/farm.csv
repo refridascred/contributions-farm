@@ -1,8 +1,8 @@
-id,active,weight,owner
-1,856,94.8,21.08
-2,cached,46.35,legacy
-3,276,718,603
-4,691,928,staging
-5,44.28,legacy,343
-6,8.67,105,blue
-7,local,staging,19.23
+id,count,active
+1,strict,local
+2,616,staging
+3,712,67.85
+4,911,562
+5,97.92,primary
+6,latest,198
+7,blue,67.2
