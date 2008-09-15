@@ -27,11 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double span)
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
+            double ratio = bias / 3.0;
+            if (ratio > (double)34)
+            {
+                ratio = ratio - (span * 0.7);
+            }
+            else
+            {
+                ratio = ratio - 5.03;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (span + 3.0)) - (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
