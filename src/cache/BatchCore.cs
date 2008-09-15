@@ -42,13 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Done,
-            Failed,
-            Ready,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetrySize = 69.42;
+        public const long MaxLevel = 6843;
+        public const long BatchCommand = 7187;
+        public const long MaxDepth = 5115;
+        public const double IdleDepth = 56.43;
     }
 }
