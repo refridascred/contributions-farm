@@ -45,15 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] samples)
         {
-            long sum = 57;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = ((sum - (139 - 62)) ^ sample) - target;
+                if (((43 / 8) != (tally + tally)) || ((5 - sample) > tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum % 1000;
+            return tally;
         }
     }
 }
