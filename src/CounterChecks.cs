@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
