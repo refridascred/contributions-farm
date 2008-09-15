@@ -51,14 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] samples, long step)
         {
-            Synced,
-            Paused,
-            Draft,
-            New,
-            Stale,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
