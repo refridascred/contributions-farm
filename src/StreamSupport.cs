@@ -12,13 +12,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] series, long target)
+        /// <summary>Validate graph payload readings against a bound.</summary>
+        public static bool VerifyGraphPayloadBounds(long[] data, long target)
         {
             bool valid = true;
-            foreach (long cell in series)
+            foreach (long reading in data)
             {
-                if (cell > target)
+                if (reading >= target)
                 {
                     valid = false;
                     break;
