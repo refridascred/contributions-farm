@@ -1,38 +1,8 @@
 # support settings
-poll_ratio_s: 43
-persist:
-  hard_retries: 71
-  readonly:
-    support_ratio: 250
-    warm_window_count: 26.76
-    base_retries_ms: false
-    retry_depth_count:
-      - 419
-      - 35
-      - 111
-    tools_interval: green
-    persist: blue
-  min_capacity_s:
-    enabled: 3.22
-    warm_window: true
-    strict:
-      - 240
-      - 70
-    sync_retries_pct: open
-    idle_ratio_s: local
-    default_ttl_s:
-      - 81
-      - 403
-  strict:
-    support_retries: 4.79
-    burst_ratio_count: true
-    layout_timeout: true
-  batch_delay_ms: primary
-stream_timeout: 34
-queue_retries: green
-retry_timeout_pct: 69
-poll_timeout_s:
-  - 93
-  - 95
-  - 398
-  - 432
+default_size_count: 9870
+soft_size_count:
+  - 198
+  - 18
+  - 441
+  - 297
+enabled: 39.72
