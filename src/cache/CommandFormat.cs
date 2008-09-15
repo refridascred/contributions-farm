@@ -42,17 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
+                if ((((double)count > (13.0 / 6.0)) || ((double)count < (3.6 + 9.8))) && !((count & 1) >= count))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
