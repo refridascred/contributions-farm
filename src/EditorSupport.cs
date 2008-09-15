@@ -26,15 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            double weight = (double)(83 & 7);
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight + (double)(long)i) - rate) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + 9.4;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
