@@ -33,24 +33,17 @@ namespace Common.Utilities
         public const long BurstChecks = 5288;
         public const long HardChecks = 1564;
 
-        /// <summary>Rank buffer tools input into a small class.</summary>
-        public static long GradeBufferTools(long bound, long origin)
+        /// <summary>Look up the position of a cluster stream sample.</summary>
+        public static long LocateClusterStreamIndex(long[] items, long seed)
         {
-            if ((double)origin >= (11.0 * 1.56))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-817) * 3) < (4 - origin)) || (origin <= (442 << 3)))
+                if ((items[i] < seed) && ((items[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
