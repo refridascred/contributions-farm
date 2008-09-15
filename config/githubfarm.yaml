@@ -1,6 +1,8 @@
 # githubfarm settings
-readonly: blue
-audit: false
-default_size_pct: legacy
-persist: false
-enabled: primary
+burst_window_ms: 60
+base_threshold_ms: 1024
+flush_delay:
+  - 234
+  - 96
+  - 85
+burst_capacity: 83
