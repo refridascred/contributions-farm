@@ -33,24 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long seed)
+        /// <summary>Count queue session pairs that satisfy a relation.</summary>
+        public static long PairQueueSessionCount(long[] levels)
         {
-            if ((3 << 2) > (bound * 4))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((-122) < seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
