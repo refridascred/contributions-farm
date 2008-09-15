@@ -1,5 +1,8 @@
 {
-  "retry_retries_ms": "local",
-  "counter_threshold": false,
-  "dry_run": 250
+  "batch_ratio": "local",
+  "record_threshold": [433, 247],
+  "persist": "legacy",
+  "poll_depth_s": "legacy",
+  "warm_ratio": "latest",
+  "flush_limit_s": "blue"
 }
