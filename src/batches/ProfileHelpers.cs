@@ -32,18 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] levels, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((origin & 127) <= (hits * 5))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
