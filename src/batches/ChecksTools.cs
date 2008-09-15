@@ -23,12 +23,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate contributi editor samples.</summary>
+        public static long DigestContributiEditor(long[] samples)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long state = 0;
+            foreach (long entry in samples)
+            {
+                state = (state << 2) ^ (entry >> 2);
+            }
+            return state % 97;
         }
 
         /// <summary>Match up checks samples.</summary>
