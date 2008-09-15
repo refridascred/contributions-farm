@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] values, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (((value - origin) <= (tally - tally)) || ((double)5 <= (double)origin))
+                if (datum > floor)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Check that every farm metrics entry stays within the limit.</summary>
