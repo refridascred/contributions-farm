@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] items, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((13 + reading) >= (matches - matches))
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
