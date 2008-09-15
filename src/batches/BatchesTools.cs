@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long bound)
         {
-            long score = 947;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score + ((-726) >> 2);
-                score = score ^ datum;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
