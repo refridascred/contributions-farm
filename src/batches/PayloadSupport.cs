@@ -29,12 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Dropped,
-            Queued,
-            Stale,
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
