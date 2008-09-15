@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long HardRatio = 7287;
         public const string WindowFilter = "alpha-edge";
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] values, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Paused,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate filter samples.</summary>
