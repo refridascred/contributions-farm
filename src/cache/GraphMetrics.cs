@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels, long floor)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 9;
+            foreach (long datum in levels)
+            {
+                mark = ((mark + floor) % 255) - datum;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
