@@ -34,32 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long offset)
-        {
-            long gap = target + offset;
-            if (((double)offset <= 7.6) && ((gap ^ target) >= (gap + offset)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target >= (9.28 + 8.4)) || ((target << 1) > (831 / 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((5.38 / 8.0) != (double)offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowSize = 76.22;
+        public const double MaxCluster = 58.7;
+        public const long BurstCluster = 4892;
+        public const string HardCluster = "latest-v2";
+        public const long LimitRatio = 9848;
     }
 }
