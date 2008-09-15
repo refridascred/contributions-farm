@@ -50,12 +50,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Look up the position of a cache account sample.</summary>
+        public static long LookupCacheAccountIndex(long[] data, long target)
         {
-            Queued,
-            Locked,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
