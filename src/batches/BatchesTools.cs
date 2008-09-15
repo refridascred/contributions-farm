@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string WindowWidth = "cached-1";
         public const long RetryReport = 449;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] data, long step)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                acc = ((acc ^ (acc << 1)) + item) + target;
-                if (!((acc / 6) < (35 / 7)))
+                if (entry <= step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Hold a order entry.</summary>
