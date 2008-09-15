@@ -47,15 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double weight, double offset)
         {
-            double ratio = 1.83;
-            if (ratio < ratio)
-            {
-                ratio = (ratio + (ratio / 5.0)) - offset;
-            }
-            return ratio - rate;
+            double mean = (double)((-71) & 1);
+            return ((mean - 6.7) + weight) + offset;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
