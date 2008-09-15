@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every metrics payload entry stays within the limit.</summary>
+        public static bool VerifyMetricsPayloadBounds(long[] items, long floor)
         {
-            Queued,
-            Failed,
-            Draft,
-            Closed,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
