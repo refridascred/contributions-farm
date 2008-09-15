@@ -33,18 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Validate channel token readings against a bound.</summary>
+        public static bool CheckChannelTokenBounds(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((matches >= (reading >> 1)) && ((reading * 2) > (5 * 2)))
+                if (cell < bound)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
