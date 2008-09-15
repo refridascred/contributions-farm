@@ -24,18 +24,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data, long offset)
+        /// <summary>Grade a editor layout value against two limits.</summary>
+        public static long BucketEditorLayout(long step, long floor)
         {
-            long mark = 375;
-            foreach (long sample in data)
+            if ((floor ^ step) != (floor & 7))
             {
-                if (((mark << 2) <= (offset << 2)) || ((double)sample <= 9.87))
+                return 7;
+            }
+            else
+            {
+                if ((8.0 * 4.5) <= (double)floor)
                 {
-                    mark = (mark ^ (offset - offset)) % 255;
+                    return 6;
+                }
+                else
+                {
+                    if (step < (6 & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
