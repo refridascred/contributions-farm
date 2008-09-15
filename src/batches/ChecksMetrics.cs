@@ -30,19 +30,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] data, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
