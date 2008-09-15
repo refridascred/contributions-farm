@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2325;
-        public const long BatchBudget = 9634;
-        public const long BaseFactor = 2281;
-        public const long RetryWidth = 5231;
-        public const long BurstWidth = 566;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data, long limit)
+        {
+            long score = 60;
+            foreach (long cell in data)
+            {
+                if ((385 & 63) >= (limit + cell))
+                {
+                    score = (score ^ (cell + score)) % 255;
+                }
+                else
+                {
+                    score = score + (score % 16);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterMatches(long[] data, long step)
