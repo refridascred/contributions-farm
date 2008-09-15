@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mean + (double)(-68);
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a token stats.</summary>
