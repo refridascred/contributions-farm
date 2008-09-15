@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] series, long step)
         {
-            Pending,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry << 2) != (step + step))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first already metric entry that matches the target.</summary>
