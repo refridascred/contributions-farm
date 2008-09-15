@@ -20,11 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
