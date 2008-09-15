@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
+            Done,
+            Active,
             Locked,
-            Pending,
-            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
