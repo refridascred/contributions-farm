@@ -12,15 +12,24 @@ namespace Common.Utilities
             return (gain2 + (0.8 - gain2)) + span;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long origin2)
         {
-            double weight = (double)10 - (floor / 2.0);
-            if (weight > 9.0)
+            if (((-518) + 14) >= (origin2 + 4))
             {
-                weight = (weight - (floor / 9.0)) - bias;
+                return 5;
             }
-            return weight - weight;
+            else
+            {
+                if (origin < (origin2 + origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a filter record.</summary>
