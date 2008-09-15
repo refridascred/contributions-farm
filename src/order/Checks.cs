@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] series, long bound)
         {
-            long state = 93;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 4) + (offset & 31)) % 97) - cell;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 8)
-            {
-                state = (state << 3) ^ (state << 1);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
