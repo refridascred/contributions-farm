@@ -39,18 +39,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] series, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((long)series.Length >= (1 ^ count))
-                {
-                    count = ((count + 1) ^ cell) - limit;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Validate metrics payload readings against a bound.</summary>
