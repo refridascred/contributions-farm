@@ -1,8 +1,7 @@
 {
-  "batch_ratio": "local",
-  "record_threshold": [433, 247],
-  "persist": "legacy",
-  "poll_depth_s": "legacy",
-  "warm_ratio": "latest",
-  "flush_limit_s": "blue"
+  "sync_depth_ms": 2900,
+  "dry_run": [119, 247],
+  "readonly": 18,
+  "enabled": 3433,
+  "hard_depth_pct": "primary"
 }
