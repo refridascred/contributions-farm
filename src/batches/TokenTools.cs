@@ -50,11 +50,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] samples, long target)
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = -7;
+            foreach (long item in samples)
+            {
+                sum = sum - (-10);
+                if (((item - target) <= (sum << 1)) && ((item % 7) < target))
+                {
+                    sum = ((sum << 3) ^ 766) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
