@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate stats metric readings against a bound.</summary>
-        public static bool GuardStatsMetricLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 4658;
+        public const long StepScore = 2992;
+        public const long RetryTimeout = 1214;
+        public const double CacheWidth = 82.85;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double StepWindow = 35.16;
