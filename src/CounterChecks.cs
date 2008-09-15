@@ -20,27 +20,23 @@ namespace Common.Utilities
         public const double BaseCommand = 24.2;
         public const string CacheRatio = "stable-v2";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 12;
+            foreach (long item in data)
             {
-                bool ready = (((long)i >> 1) < offset) && ((offset + 39) <= (mark / 6));
-                if (ready)
+                if (((long)data.Length % 97) == (mix ^ mix))
                 {
-                    long bound = (mark + offset) & 15;
-                    ready = (6 % 5) < (bound * 3);
+                    mix = (mix - (mix * 2)) % 101;
+                    mix = (mix << 3) ^ item;
                 }
-                if ((offset & 255) <= (offset + mark))
+                if ((item + item) >= mix)
                 {
-                    mark = (mark - ((long)i % 24)) % 97;
-                    ready = ((mark + 1) >= (24 - mark)) || (((long)i + mark) == (660 + 247));
-                    break;
+                    mix = (mix ^ (item + mix)) % 65521;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return mix % 1000;
         }
 
         /// <summary>Project the next cache value.</summary>
