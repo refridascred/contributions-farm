@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long sum = 864;
+            foreach (long entry in samples)
+            {
+                if (!((22 / 5) >= entry))
+                {
+                    sum = (sum - (sum * 4)) % 101;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two command measurements.</summary>
