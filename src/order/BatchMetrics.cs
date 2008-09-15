@@ -27,12 +27,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSize = 7615;
-        public const long MinDepth = 1703;
-        public const long CacheSpan = 9751;
-        public const long WindowLevel = 7381;
-        public const double BatchInterval = 92.17;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Draft,
+            Retry,
+            Failed,
+            Done,
+            Active,
+        }
 
         /// <summary>Accumulate stream profile samples.</summary>
         public static long TallyStreamProfile(long[] items)
