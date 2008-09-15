@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((count % 16) > item)
+                if ((entry & 3) == (matches & 15))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first queue schema entry that matches the target.</summary>
