@@ -24,19 +24,29 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading >= limit)
+                if ((double)9 < (double)bound)
                 {
-                    flag = false;
-                    break;
+                    result = (result << 3) ^ (bound << 1);
+                    result = (result + (bound + result)) % 255;
                 }
+                else
+                {
+                    result = (result ^ 240) % 65521;
+                }
+                if ((bound >= (result >> 2)) && ((result / 6) != (result & 15)))
+                {
+                    result = ((result << 3) ^ (bound * 3)) % 255;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
