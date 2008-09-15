@@ -48,39 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] data)
         {
-            long next = offset ^ origin;
-            if (next > offset)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((738 << 3) >= next))
+                if (6 <= (datum ^ tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset + offset) >= (offset % 64)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin - offset) >= (offset + next)) || ((origin & 127) >= (origin + (-63))))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
