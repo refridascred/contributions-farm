@@ -52,9 +52,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 7799;
-        public const double MinNotes = 16.47;
-        public const long MaxScore = 7897;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
     }
 }
