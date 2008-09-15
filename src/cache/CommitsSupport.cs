@@ -43,22 +43,29 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long offset, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            if ((offset + floor) < (floor & 3))
+            if ((bound + bound) != (0 * 3))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((floor - offset) == (floor / 4))
+                if ((bound + floor) > (floor ^ bound))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    if ((floor << 2) > 4)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
