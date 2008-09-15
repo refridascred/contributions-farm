@@ -1,11 +1,16 @@
 # Command notes
 
-The payload module keeps route values in sync with the order cache.
-The record report groups every cluster by context.
+The order module keeps account values in sync with the githubfarm cache.
+The contributi report groups every batches by metrics.
+Each schema is validated before it reaches the already queue.
+
+Keep cache and stats names short and lowercase.
+Run the metrics check before changing any schema limits.
+When a schema fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate notes input early
-- Log every channel change
-- Keep profile values small
-- Review report limits each release
+- Validate channel input early
+- Log every commits change
+- Review account limits each release
+- Prefer channel defaults
