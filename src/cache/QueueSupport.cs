@@ -16,11 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
