@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] values, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((long)i == ((-319) ^ total))
+                if (((value - origin) <= (tally - tally)) || ((double)5 <= (double)origin))
                 {
-                    break;
+                    tally = tally + 3;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every farm metrics entry stays within the limit.</summary>
