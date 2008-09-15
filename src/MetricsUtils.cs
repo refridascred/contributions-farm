@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 1214;
         public const double CacheWidth = 82.85;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Fold a list of entry stats readings.</summary>
+        public static long DigestEntryStats(long[] data, long limit)
         {
-            Paused,
-            Active,
-            Closed,
-            Ready,
+            long total = 301;
+            foreach (long cell in data)
+            {
+                if ((double)total < 9.97)
+                {
+                    total = (total + (limit % 8)) ^ cell;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two entry measurements.</summary>
