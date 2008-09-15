@@ -1,12 +1,8 @@
 {
-  "command_retries": 2952,
-  "layout_size": "strict",
-  "editor_delay": {
-    "soft_delay": ["legacy", "strict", "primary", "local"],
-    "batch_interval": 84,
-    "soft_window_count": 2120,
-    "burst_timeout_pct": "open",
-    "soft_capacity_s": "strict"
-  },
-  "already_size": "edge"
+  "default_window_s": 7,
+  "min_depth": 100,
+  "context_delay": ["fallback", "staging"],
+  "route_window": "blue",
+  "burst_ttl_ms": 18.88,
+  "min_delay_s": false
 }
