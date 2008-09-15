@@ -61,20 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc ^ (acc % 2)) - (long)i2;
-                    acc = acc + origin;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Failed,
+            Ready,
+            Active,
         }
     }
 }
