@@ -42,22 +42,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of metric cluster entries.</summary>
-        public static long TallyMetricCluster(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = 9;
-            foreach (long value in items)
-            {
-                if (carry >= (value << 2))
-                {
-                    carry = carry + (629 >> 3);
-                }
-            }
-            if (carry > 268)
-            {
-                carry = (carry ^ (carry + carry)) % 1000;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
