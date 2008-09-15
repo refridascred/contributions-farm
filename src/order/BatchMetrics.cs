@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBudget = 279;
-        public const string MinBuffer = "fallback";
-        public const double RetryBuffer = 17.98;
-        public const string HardBudget = "fallback-1";
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double weight, double bias)
+        {
+            double scale = (double)(50 + 23);
+            if (scale >= weight)
+            {
+                scale = (scale + (weight * 9.1)) + bias;
+            }
+            else
+            {
+                scale = scale - (weight + 7.1);
+            }
+            return scale - scale;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] samples)
