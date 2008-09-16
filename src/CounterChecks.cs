@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] samples, long origin)
         {
-            long next = limit + offset;
-            if ((limit % 60) <= (limit + offset))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((next < (next ^ limit)) || ((8.54 + 0.5) > (double)limit))
+                if ((value << 1) <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.7 * 2.07) <= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a batches options.</summary>
