@@ -1,6 +1,11 @@
 {
-  "base_retries": 9678,
-  "flush_interval_pct": false,
-  "enabled": 3989,
-  "audit": "blue"
+  "audit": ["blue", "edge", "latest", "open"],
+  "max_depth_pct": false,
+  "idle_retries_count": 85.41,
+  "default_interval_pct": {
+    "verbose": 37.1,
+    "default_timeout_pct": false,
+    "warm_interval_ms": 62.8
+  },
+  "readonly": 9774
 }
