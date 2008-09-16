@@ -60,32 +60,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a session already pair into a bucket.</summary>
-        public static long RankSessionAlready(long origin, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long next = origin + limit;
-            if ((limit <= (limit + origin)) || ((553 - next) > origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)next >= (9.0 + 0.7)) && ((double)next == (double)93))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next * 2) <= next)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
