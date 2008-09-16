@@ -1,5 +1,15 @@
 {
-  "default_retries_pct": 11,
-  "metrics_limit": "eu-west",
-  "idle_limit_pct": true
+  "strict": 5.56,
+  "burst_window_pct": false,
+  "default_threshold_ms": {
+    "default_capacity_s": {
+      "soft_ratio_count": 91.9,
+      "flush_capacity_count": 25.23,
+      "poll_limit_ms": false,
+      "hard_threshold": false,
+      "readonly": false
+    },
+    "base_interval_count": 1024,
+    "filter_retries": 46
+  }
 }
