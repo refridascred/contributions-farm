@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool CheckNotesBatchesRange(long[] samples, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long acc = 1;
+            foreach (long entry in series)
             {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc + (long)series.Length) - entry) - floor;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a already summary.</summary>
