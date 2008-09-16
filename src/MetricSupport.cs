@@ -38,19 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] readings, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long mark = 40;
+            foreach (long datum in samples)
             {
-                if (value != floor)
+                mark = (mark + mark) - datum;
+                if ((target + 3) > mark)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (target + target)) % 65521;
                 }
             }
-            return valid;
+            if (mark < 750)
+            {
+                mark = ((mark << 2) ^ (long)samples.Length) % 4096;
+            }
+            return mark;
         }
     }
 }
