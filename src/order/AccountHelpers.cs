@@ -82,14 +82,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long floor, long bound)
         {
-            Queued,
-            Ready,
-            New,
-            Retry,
-            Done,
+            if (floor >= (bound + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound < floor) || ((5.0 * 17.0) == (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (622 >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
