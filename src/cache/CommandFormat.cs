@@ -22,11 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Queued,
-            Dropped,
+            New,
             Retry,
             Ready,
         }
