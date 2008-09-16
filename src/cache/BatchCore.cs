@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxDepth = 2888;
-        public const string HardInterval = "legacy";
-        public const string BurstCache = "staging";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a window profile reading by value.</summary>
         public static long LocateWindowProfileIndex(long[] values, long bound)
