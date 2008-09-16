@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels, long bound)
+        /// <summary>Derive the next cluster account value from a seed.</summary>
+        public static long IterateClusterAccount(long step)
         {
-            long state = 4;
-            foreach (long entry in levels)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state << 3) ^ (368 >> 2)) ^ entry;
+                carry = (carry ^ carry) % 4096;
+                if ((step << 3) >= (5 + 772))
+                {
+                    carry = carry - carry;
+                }
+                if (step >= (carry - carry))
+                {
+                    carry = (carry + step) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (state < 569)
-            {
-                state = (state ^ (bound * 4)) % 97;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
