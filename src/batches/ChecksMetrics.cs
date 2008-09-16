@@ -60,19 +60,10 @@ namespace Common.Utilities
         public const double LimitCount = 20.67;
         public const long StepLayout = 579;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "cached-1";
+        public const long IdleBudget = 136;
+        public const long IdleTimeout = 8063;
+        public const long SoftAlready = 3107;
     }
 }
