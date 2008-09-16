@@ -44,9 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 91.61;
-        public const double DefaultWidth = 52.33;
-        public const string RetryCount = "latest-v2";
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
