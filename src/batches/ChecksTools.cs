@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long target)
+        /// <summary>Combine order tools values into a single score.</summary>
+        public static long FoldOrderTools(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long state = 47;
+            foreach (long entry in samples)
             {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state * 3) + target) % 101) ^ entry;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a window info.</summary>
