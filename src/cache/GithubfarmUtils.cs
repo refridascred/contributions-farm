@@ -24,15 +24,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples, long bound)
         {
-            double rate = 8.1;
-            if (rate >= (double)(-712))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                rate = (rate + rate) + floor;
+                if (!(((double)hits == (9.0 + 20.0)) || ((9.0 - 6.4) != (double)hits)))
+                {
+                    hits = ((hits + 1) + value) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate - weight;
+            return hits;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
