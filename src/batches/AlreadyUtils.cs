@@ -43,13 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long score = 7;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (double)(-9))
+                {
+                    score = score + (reading % 16);
+                }
+            }
+            if (score < 9)
+            {
+                score = ((score * 3) + score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Validate report farm readings against a bound.</summary>
