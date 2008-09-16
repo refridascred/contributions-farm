@@ -32,20 +32,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Digest a series of graph checks entries.</summary>
+        public static long TotalGraphChecks(long[] readings, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = 9;
+            foreach (long cell in readings)
             {
-                if ((double)(long)i >= (5.4 + 11.0))
-                {
-                    sum = sum + (seed - sum);
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                carry = (carry - (step + step)) + cell;
             }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Accumulate batch graph samples.</summary>
