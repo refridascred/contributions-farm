@@ -23,23 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of token cache readings.</summary>
-        public static long TotalTokenCache(long[] items)
-        {
-            long total = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >= (192 + total)) || ((reading + reading) == (reading & 31)))
-                {
-                    total = total - (reading + reading);
-                }
-            }
-            if (total < 789)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftFactor = 1991;
+        public const long MinScore = 4571;
+        public const double WindowCommand = 75.41;
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] series)
