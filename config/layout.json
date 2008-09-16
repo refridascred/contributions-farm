@@ -1,5 +1,8 @@
 {
-  "retry_size": [105, 123, 192],
-  "schema_window": 38,
-  "dry_run": "strict"
+  "base_limit_s": "strict",
+  "readonly": 500,
+  "context_size": "edge",
+  "cache_ttl": 1898,
+  "record_capacity": "legacy",
+  "cache_ratio_s": 32.33
 }
