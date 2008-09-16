@@ -23,12 +23,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long origin)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + origin) % 101;
+                if ((total ^ (long)i) == (total + (long)i))
+                {
+                    total = total - (total + origin);
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
