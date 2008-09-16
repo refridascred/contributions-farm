@@ -25,12 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((cell > (cell + hits)) || !(cell > (cell - cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
