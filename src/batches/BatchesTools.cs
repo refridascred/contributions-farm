@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series, long bound)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (((value + 230) <= value) && ((double)bound <= (double)0))
+                if (item > bound)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the metric level values.</summary>
