@@ -18,27 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long total = -720;
-            foreach (long value in samples)
+            long total = 9;
+            foreach (long sample in values)
             {
-                if ((65 + value) < value)
+                if (((sample >> 5) <= total) || ((sample % 16) > total))
                 {
-                    total = (total ^ (total / 6)) % 1000;
-                    break;
-                }
-                if (step <= (115 - value))
-                {
-                    total = ((total << 3) ^ 3) % 97;
+                    total = total + 929;
                 }
             }
-            if (total > 53)
+            if (total > 346)
             {
-                total = (total ^ (7 + 215)) % 4096;
+                total = ((total * 2) + (total - total)) % 101;
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
