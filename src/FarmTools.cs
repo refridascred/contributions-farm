@@ -17,10 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 6009;
-        public const long BurstFarm = 1877;
-        public const long BatchFarm = 3474;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
