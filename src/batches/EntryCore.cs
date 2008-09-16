@@ -19,27 +19,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i + total) >= 947)
-                {
-                    break;
-                }
-                if (((double)total <= (3.02 * 9.23)) || ((total >> 4) < (target - total)))
-                {
-                    total = (total << 3) ^ (target + 81);
-                }
-                else
-                {
-                    total = ((total * 4) + (target & 127)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
