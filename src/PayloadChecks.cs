@@ -76,18 +76,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] levels, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin ^ 8) <= (origin + origin))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            New,
+            Paused,
+            Retry,
+            Draft,
         }
     }
 }
