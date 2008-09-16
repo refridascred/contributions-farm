@@ -25,20 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate route profile readings against a bound.</summary>
-        public static bool GuardRouteProfileRange(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 770;
+        public const double HardBatch = 75.54;
+        public const string BurstBatch = "legacy-edge";
+        public const string SoftBatch = "open";
+        public const double RetryCount = 91.97;
 
         /// <summary>Count batch format pairs that satisfy a relation.</summary>
         public static long PairBatchFormatCount(long[] levels)
