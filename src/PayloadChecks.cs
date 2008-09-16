@@ -54,18 +54,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Count the channel command entries that pass the check.</summary>
+        public static long AuditChannelCommandOutliers(long[] series, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((tally - tally) >= (offset & 255)))
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
