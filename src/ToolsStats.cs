@@ -23,17 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data)
-        {
-            long score = 158;
-            foreach (long cell in data)
-            {
-                score = ((score << 3) ^ (cell + score)) % 65521;
-                score = ((score * 4) + (20 + score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxSize = 1073;
+        public const double BurstDepth = 45.76;
+        public const string SoftSize = "latest-edge";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] data)
