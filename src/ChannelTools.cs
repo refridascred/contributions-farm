@@ -12,17 +12,30 @@ namespace Common.Utilities
             return (weight2 + 3.8) + weight;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] readings, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 22;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= limit)
+                if ((0.57 - 13.0) != (double)cell)
                 {
-                    return (long)i;
+                    continue;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score & 3);
+                }
+                if ((double)9 == (double)score)
+                {
+                    score = (score - (cell + 27)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score << 2)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine already values into a single score.</summary>
