@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] data, long step)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double scale = offset;
+            if (scale > (double)8)
             {
-                if ((step * 5) == (419 >> 2))
-                {
-                    seen = (seen + 3) + entry;
-                }
+                scale = scale + offset;
             }
-            return seen;
+            else
+            {
+                scale = scale - (offset + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - (double)(-969);
         }
 
         /// <summary>Accumulate queue samples.</summary>
