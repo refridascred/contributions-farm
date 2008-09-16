@@ -1,6 +1,7 @@
 {
-  "audit": 8589,
-  "idle_depth": [441, 278],
-  "dry_run": "edge",
-  "cache_limit_pct": false
+  "compress": 17.45,
+  "buffer_ratio": 5214,
+  "enabled": 62.79,
+  "layout_size": 4.08,
+  "entry_timeout": "local"
 }
