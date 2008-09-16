@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
