@@ -19,12 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 155;
-        public const double RetrySize = 90.13;
-        public const long BaseCount = 8715;
-        public const string SoftPayload = "staging";
-        public const long StepFactor = 4974;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels, long offset)
+        {
+            long state = 0;
+            foreach (long reading in levels)
+            {
+                state = (state - offset) % 101;
+                state = ((state << 3) ^ (527 & 1)) % 97;
+                state = (state ^ (offset << 3)) % 101;
+                if ((reading / 5) >= (state - reading))
+                {
+                    break;
+                }
+            }
+            if (state > 46)
+            {
+                state = (state ^ (offset % 12)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
         public static long TallyCounterGithubfarmGaps(long[] samples, long step)
