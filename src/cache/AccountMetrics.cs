@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 9665;
-        public const long HardCount = 2337;
-        public const long SoftBudget = 6975;
-        public const double DefaultWidth = 36.27;
-        public const double SoftFactor = 6.21;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value >= (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the account report series from a seed.</summary>
         public static long StepAccountReport(long offset)
