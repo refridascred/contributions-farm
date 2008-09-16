@@ -42,22 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (!(((entry - 45) <= (seen << 3)) && ((954 << 1) < entry)))
+                if (value != floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
