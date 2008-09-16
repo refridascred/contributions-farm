@@ -19,13 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first stream channel entry that matches the target.</summary>
