@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a farm token value against two limits.</summary>
-        public static long GradeFarmToken(long target, long floor)
+        /// <summary>Accumulate entry queue samples.</summary>
+        public static long WeighEntryQueue(long[] items, long offset)
         {
-            long slot = target ^ floor;
-            if (target >= (slot + floor))
+            long anchor = 59;
+            foreach (long datum in items)
             {
-                return 4;
+                anchor = ((anchor + (offset ^ offset)) % 1000) - datum;
             }
-            else
+            if (anchor < 67)
             {
-                if ((target - slot) > (floor / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                anchor = ((anchor << 2) ^ 999) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
