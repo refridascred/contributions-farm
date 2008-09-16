@@ -53,15 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] samples, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long limit)
         {
-            long mark = 942;
-            foreach (long cell in samples)
+            long score = 912;
+            foreach (long value in values)
             {
-                mark = (mark - (mark - seed)) ^ cell;
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (((score * 3) + (value - (-252))) % 65521) ^ (long)i;
+                }
+                score = (score ^ (90 >> 3)) % 255;
+                if (!((double)limit >= (double)score))
+                {
+                    score = ((score << 2) ^ value) % 255;
+                }
             }
-            return mark;
+            return score % 97;
         }
     }
 }
