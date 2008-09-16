@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell > (cell + hits)) || !(cell > (cell - cell)))
+                if ((items[i] == bound) && ((items[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
