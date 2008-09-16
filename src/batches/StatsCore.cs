@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank cache farm input into a small class.</summary>
-        public static long SortCacheFarm(long seed, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] series, long limit)
         {
-            long delta = seed - offset;
-            if (!((7.4 - 2.2) != (double)delta))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed > (182 / 3))
+                if ((3 - limit) < count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 63) != (delta >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (294 <= (delta << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
