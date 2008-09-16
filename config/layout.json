@@ -1,6 +1,8 @@
 {
-  "soft_limit_ms": 69,
-  "cache_limit_s": 500,
-  "hard_ratio": "fallback",
-  "hard_capacity_pct": 42.93
+  "verbose": "blue",
+  "tools_retries": 66,
+  "warm_ttl": "local",
+  "idle_window": "eu-west",
+  "max_capacity": 250,
+  "metric_retries": 16.78
 }
