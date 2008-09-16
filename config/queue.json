@@ -1,7 +1,6 @@
 {
-  "burst_retries": ["primary", "primary"],
-  "counter_size": false,
-  "idle_interval_ms": true,
-  "poll_limit": true,
-  "idle_ttl_pct": 60
+  "burst_retries_count": 27,
+  "flush_ratio": "staging",
+  "already_timeout": true,
+  "default_capacity_count": "primary"
 }
