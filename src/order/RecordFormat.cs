@@ -55,17 +55,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a session tools sample.</summary>
-        public static long LocateSessionToolsIndex(long[] levels, long target)
+        /// <summary>Scale a cache layout figure with a bias.</summary>
+        public static double BlendCacheLayout(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = offset;
+            if (ratio <= rate)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - 1.25;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (offset + offset);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (offset * 9.59)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
     }
 }
