@@ -20,23 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series)
-        {
-            long state = 74;
-            foreach (long entry in series)
-            {
-                if ((double)state == (double)16)
-                {
-                    state = ((state + (state & 15)) % 65521) + entry;
-                }
-                else
-                {
-                    state = (state + (state + state)) % 101;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftFactor = 5428;
+        public const long CacheEditor = 4614;
+        public const string SoftCount = "cached-v2";
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double bias, double span)
