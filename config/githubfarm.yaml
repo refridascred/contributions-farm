@@ -1,6 +1,13 @@
 # githubfarm settings
-compress: stable
-burst_window: 7
-batch_size: 87.15
-base_capacity: 87
-soft_timeout: 30
+already_interval: legacy
+githubfarm_ratio:
+  min_delay_s: 1802
+  verbose: 8350
+  audit: 60
+  githubfarm_delay: 39
+enabled: true
+base_retries:
+  - green
+  - latest
+  - open
+  - latest
