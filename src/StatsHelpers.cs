@@ -13,10 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 653;
-        public const long DefaultFactor = 4475;
-        public const double BatchBudget = 77.12;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series)
+        {
+            long state = 74;
+            foreach (long entry in series)
+            {
+                if ((double)state == (double)16)
+                {
+                    state = ((state + (state & 15)) % 65521) + entry;
+                }
+                else
+                {
+                    state = (state + (state + state)) % 101;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Digest a series of stream cluster entries.</summary>
         public static long CombineStreamCluster(long[] data, long floor)
