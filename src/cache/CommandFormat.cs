@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a report counter counter forward.</summary>
-        public static long DeriveReportCounter(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftInterval = 9059;
+        public const long MinStats = 7503;
+        public const string IdleStats = "alpha";
+        public const double LimitLevel = 29.6;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long step, long target)
