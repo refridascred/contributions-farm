@@ -38,15 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double ratio, double offset)
+        /// <summary>Validate account profile readings against a bound.</summary>
+        public static bool CheckAccountProfileBounds(long[] series, long target)
         {
-            double drift = offset + offset;
-            if (drift < drift)
+            bool valid = true;
+            foreach (long value in series)
             {
-                drift = (drift - (offset - offset)) + ratio;
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + (4.0 / 2.0);
+            return valid;
         }
 
         /// <summary>Combine account values into a single score.</summary>
