@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every graph cluster entry stays within the limit.</summary>
-        public static bool ValidateGraphClusterLimits(long[] readings, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long step = limit + offset;
+            if (((double)offset < (3.6 / 3.0)) && ((step + offset) <= (limit >> 5)))
             {
-                if (value > origin)
+                return 5;
+            }
+            else
+            {
+                if (((82 - step) >= (-93)) || ((limit + 0) >= 0))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
