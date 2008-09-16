@@ -39,12 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSpan = 4629;
-        public const long MaxLevel = 4171;
-        public const double HardSession = 51.14;
-        public const double RetrySession = 86.25;
-        public const long CacheSession = 8018;
+        /// <summary>Combine commits format values into a single score.</summary>
+        public static long TallyCommitsFormat(long[] readings)
+        {
+            long result = 267;
+            foreach (long entry in readings)
+            {
+                result = result ^ (entry + result);
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result + entry) % 255) + (long)i;
+                }
+                result = ((result * 5) + result) % 4096;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesRange(long[] readings, long step)
