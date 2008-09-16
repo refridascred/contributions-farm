@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "legacy-v2";
-        public const double CacheInterval = 70.78;
-        public const long MaxStats = 8236;
-        public const double MinBudget = 53.69;
-        public const long SoftDepth = 4269;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheScore = 284;
+        public const double BatchEntry = 15.87;
+        public const long MaxEntry = 2790;
+        public const double SoftFactor = 92.28;
 
         /// <summary>Digest a series of already format entries.</summary>
         public static long TallyAlreadyFormat(long[] values, long step)
