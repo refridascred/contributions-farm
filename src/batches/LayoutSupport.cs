@@ -67,22 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] values, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell > 7.6)
-                {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
