@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            Queued,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!(9.15 > (double)seen))
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
