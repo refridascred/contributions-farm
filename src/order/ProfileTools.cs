@@ -41,21 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state << 2) ^ bound) % 65521;
-                if (((bound << 2) < 68) || ((bound * 4) == (bound << 2)))
-                {
-                    state = state ^ (state + (long)i);
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Draft,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
