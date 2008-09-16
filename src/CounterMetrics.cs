@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value * 2) < 150)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate format editor samples.</summary>
