@@ -27,15 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Accumulate counter batches samples.</summary>
+        public static long CombineCounterBatches(long[] samples, long floor)
         {
-            double gain2 = floor - (gain - floor);
-            for (int i = 0; i < 8; i++)
+            long score = 2;
+            foreach (long reading in samples)
             {
-                gain2 = (gain2 + (double)17) + (double)(long)i;
+                if ((floor >> 4) <= floor)
+                {
+                    score = (score * 5) + (reading * 2);
+                }
+                if ((long)samples.Length < (floor % 7))
+                {
+                    score = (score * 2) + (840 ^ reading);
+                }
             }
-            return gain2 - (6.1 / 4.0);
+            if (score < 1)
+            {
+                score = (score + (score * 2)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
