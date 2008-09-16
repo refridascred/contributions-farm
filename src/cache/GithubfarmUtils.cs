@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of format context readings.</summary>
-        public static long TallyFormatContext(long[] samples, long bound)
+        /// <summary>Measure how many entry token samples are out of range.</summary>
+        public static long MeasureEntryTokenGaps(long[] series, long limit)
         {
-            long carry = 566;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                carry = (((carry << 3) ^ (bound / 5)) % 4096) - datum;
-                if (((carry * 4) <= bound) || ((bound + bound) >= carry))
+                if ((407 - cell) == (limit & 3))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (carry > 60)
-            {
-                carry = (carry << 3) ^ 0;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
