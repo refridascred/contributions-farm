@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm batch readings against a bound.</summary>
-        public static bool CheckFarmBatchBounds(long[] values, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
