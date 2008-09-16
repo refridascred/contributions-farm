@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] levels, long bound)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((bound / 9) != (2 << 2))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
