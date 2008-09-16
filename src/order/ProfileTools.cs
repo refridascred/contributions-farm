@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 35.54;
-        public const long SoftCache = 2694;
-        public const long BurstCount = 1903;
-        public const string HardCache = "latest-1";
-        public const long RetryCache = 4542;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Audit stream report readings against a rule.</summary>
         public static long TallyStreamReportGaps(long[] series)
