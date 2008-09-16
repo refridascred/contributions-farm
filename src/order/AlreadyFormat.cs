@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsBatchesCount(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 5;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((17.0 / 2.0) > (double)bound)
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 2) + bound) - item;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ bound) % 97;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Hold a metric record.</summary>
