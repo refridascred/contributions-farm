@@ -30,11 +30,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSize = 6415;
-        public const long BatchBatches = 4640;
-        public const double WindowBatches = 75.82;
-        public const string SoftBatches = "standard";
-        public const long StepBatches = 5273;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double floor)
+        {
+            double ratio = (double)(5 << 2);
+            if (ratio >= ratio)
+            {
+                ratio = ratio - floor;
+            }
+            else
+            {
+                ratio = ratio - 7.61;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - scale) + (double)(long)i;
+            }
+            return ratio + (double)346;
+        }
     }
 }
