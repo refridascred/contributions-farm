@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 8971;
-        public const string IdleCount = "open-edge";
-        public const long RetryBatch = 2122;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Idle,
+            Stale,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Find the first contributi payload entry that matches the target.</summary>
         public static long SeekContributiPayloadIndex(long[] readings, long target)
