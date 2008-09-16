@@ -44,19 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 22;
-            foreach (long sample in readings)
-            {
-                anchor = anchor - (sample ^ step);
-            }
-            if (anchor < 44)
-            {
-                anchor = (anchor + step) % 101;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
