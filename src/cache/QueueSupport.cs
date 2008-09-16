@@ -13,20 +13,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long anchor = -522;
-            foreach (long item in samples)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor << 2) ^ (bound - bound)) ^ item;
-                anchor = (anchor + ((long)samples.Length ^ 47)) % 101;
+                result = (result << 3) ^ (limit - (long)i);
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (anchor > 42)
-            {
-                anchor = anchor - (bound + bound);
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
