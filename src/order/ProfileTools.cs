@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 207;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = mix + (cell + mix);
+                mix = (mix ^ (mix + cell)) % 1000;
             }
-            return seen;
+            if (mix > 466)
+            {
+                mix = (mix * 2) + (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Combine order values into a single score.</summary>
