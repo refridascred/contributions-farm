@@ -52,12 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] readings, long bound)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
