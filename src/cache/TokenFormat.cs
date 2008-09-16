@@ -23,18 +23,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit already channel readings against a rule.</summary>
-        public static long TallyAlreadyChannelMatches(long[] values, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double gain = floor;
+            if (gain > (gain * 3.1))
             {
-                if ((4.6 - 11.0) <= (double)count)
-                {
-                    count = ((count + 1) ^ sample) + bound;
-                }
+                gain = gain + gain;
             }
-            return count;
+            else
+            {
+                gain = gain - (6.8 * 16.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (bias - bias)) - (double)(long)i;
+            }
+            return gain - (bias * 6.3);
         }
 
         /// <summary>Project the next batch value.</summary>
