@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            if ((limit % 8) < (limit - 5))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 - 8.7) > (double)floor)
+                if ((hits < (hits - value)) && (((value + value) < (hits % 60)) || ((hits & 63) <= (hits >> 2))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit >= (1.0 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
