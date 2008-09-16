@@ -43,11 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 85.37;
-        public const string LimitBudget = "standard-1";
-        public const double BaseRecord = 46.66;
-        public const double SoftDepth = 49.72;
-        public const long HardRecord = 3536;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Queued,
+            Locked,
+            Paused,
+        }
     }
 }
