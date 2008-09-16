@@ -32,14 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Synced,
-            Queued,
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor << 2) ^ (target - target)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
