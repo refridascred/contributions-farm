@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples)
-        {
-            long anchor = 887;
-            foreach (long value in samples)
-            {
-                anchor = (anchor - (390 / 2)) % 65521;
-                if (((4.0 / 2.0) != (double)anchor) || ((6 * 2) == (value + (long)samples.Length)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultLevel = "staging-v2";
+        public const long DefaultDepth = 8216;
+        public const double CacheDepth = 52.41;
+        public const string BaseGithubfarm = "legacy";
+        public const long MaxGithubfarm = 4312;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long target)
