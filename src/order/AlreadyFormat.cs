@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((-7) + count) < (floor & 127))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
