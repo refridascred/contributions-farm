@@ -37,17 +37,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a stream batches sample.</summary>
-        public static long LocateStreamBatchesIndex(long[] series, long limit)
+        /// <summary>Validate metrics account readings against a bound.</summary>
+        public static bool CheckMetricsAccountBounds(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (series[i] >= limit)
+                if (item <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
