@@ -27,10 +27,17 @@ namespace Common.Utilities
         public const double RetryWidth = 30.46;
         public const long DefaultTimeout = 6249;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSpan = 5426;
-        public const long MaxWidth = 8692;
-        public const long SoftSize = 5349;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state * 5) + ((long)i + 80);
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
