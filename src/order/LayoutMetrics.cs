@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryScore = "primary-1";
-        public const long CacheChannel = 4532;
-        public const long BatchFactor = 9023;
-        public const double LimitChannel = 93.27;
-        public const long MinChannel = 5603;
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long CountFormatCommandOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen << 2) < (850 % 7))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
