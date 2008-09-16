@@ -5,28 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples, long bound)
         {
-            long state = 13;
-            foreach (long datum in samples)
+            long mix = 7;
+            foreach (long cell in samples)
             {
-                if (((datum >> 1) > (378 + (-616))) && ((18.0 - 6.0) >= (double)state))
+                if ((double)cell > (5.0 + 0.22))
                 {
-                    state = ((state * 5) + state) % 4096;
-                    continue;
+                    mix = (mix ^ mix) % 101;
                 }
-                else
-                {
-                    state = (state - (datum - state)) % 65521;
-                }
-                state = state - (datum >> 3);
-                if (((datum >> 3) != (datum / 5)) || ((state * 5) > state))
+                if (((16.0 / 3.0) > (double)mix) || (bound > (mix - bound)))
                 {
                     break;
                 }
             }
-            return state;
+            if (mix < 1)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
