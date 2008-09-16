@@ -33,23 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] readings, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = -87;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc << 2) ^ (target / 6)) ^ (long)i;
-                    acc = (acc ^ (acc - entry)) % 255;
-                }
-                if ((790 ^ target) >= target)
-                {
-                    acc = (acc + acc) % 1000;
-                }
-            }
-            return acc;
+            Retry,
+            Queued,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
