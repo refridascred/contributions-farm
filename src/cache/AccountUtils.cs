@@ -40,19 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double gain, double bias)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long seed)
         {
-            double drift = gain * 0.8;
-            if (drift > drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - gain) + bias;
+                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
     }
 }
