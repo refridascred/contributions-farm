@@ -39,17 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Fold a list of schema route readings.</summary>
+        public static long DigestSchemaRoute(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 99;
+            foreach (long datum in readings)
             {
-                if (samples[i] > origin)
+                if (((832 / 7) == (datum << 1)) && ((mark % 2) <= origin))
                 {
-                    return (long)i;
+                    mark = mark - mark;
                 }
             }
-            return -1;
+            if (mark < 75)
+            {
+                mark = mark ^ (47 + mark);
+            }
+            return mark;
         }
     }
 }
