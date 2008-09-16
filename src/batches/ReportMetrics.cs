@@ -16,23 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double span)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double drift = (double)8 + (double)20;
-            if (drift >= span)
-            {
-                drift = (drift - span) - scale;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 3.3) + (double)(long)i;
-            }
-            return drift - (drift - 1.62);
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
