@@ -1,9 +1,7 @@
-id,region,state,label,count
-1,37,458,edge,edge
-2,408,409,local,59.54
-3,80,green,311,252
-4,950,10.53,756,93.77
-5,green,open,staging,484
-6,latest,933,strict,699
-7,fallback,482,fallback,64.36
-8,stable,207,183,green
+id,level,weight
+1,staging,9.62
+2,15.33,723
+3,448,193
+4,8.72,edge
+5,fallback,577
+6,70,859
