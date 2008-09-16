@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            Done,
-            Retry,
-            Dropped,
-            Locked,
+            double rate = 9.9;
+            if (rate <= (ratio + offset))
+            {
+                rate = rate - (double)8;
+            }
+            else
+            {
+                rate = rate - 0.1;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (offset - ratio)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
