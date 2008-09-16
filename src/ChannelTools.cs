@@ -27,19 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double ratio, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings, long offset)
         {
-            double gain = ratio;
-            if (gain <= (ratio / 2.0))
+            long sum = 9;
+            foreach (long cell in readings)
             {
-                gain = (gain - (0.5 * 7.77)) - offset;
+                sum = (((sum << 2) ^ (long)readings.Length) ^ cell) - offset;
             }
-            else
-            {
-                gain = gain + (double)77;
-            }
-            return gain + (double)301;
+            return sum;
         }
     }
 }
