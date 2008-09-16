@@ -82,11 +82,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitLevel = "primary-edge";
-        public const double IdleCommits = 31.14;
-        public const string MaxDepth = "cached-edge";
-        public const string HardBudget = "open";
-        public const long IdleFactor = 6023;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
