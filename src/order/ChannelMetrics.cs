@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] items, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a account stats.</summary>
