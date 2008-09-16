@@ -31,19 +31,21 @@ namespace Common.Utilities
         public const double MinBatch = 42.85;
         public const string WindowBatch = "legacy-1";
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Count cache entry pairs that satisfy a relation.</summary>
+        public static long MatchCacheEntryCount(long[] items)
         {
-            double rate = weight / 3.0;
-            if (rate >= 1.4)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - (rate - weight);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
