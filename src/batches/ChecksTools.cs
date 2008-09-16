@@ -52,15 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double scale, double offset)
+        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
+        public static bool ValidateContributiCommitsRange(long[] items, long offset)
         {
-            double ratio = scale - scale;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                ratio = ((ratio - (scale + scale)) + (double)(long)i) + offset;
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio - (ratio + 0.48);
+            return flag;
         }
     }
 }
