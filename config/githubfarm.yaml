@@ -1,15 +1,9 @@
 # githubfarm settings
-retry_ratio_pct: 5
-default_size_pct:
-  - 104
-  - 282
-  - 354
-  - 241
-audit: 2.97
-max_ratio_pct: 33
-farm_capacity: fallback
-token_depth:
-  - 434
-  - 399
-  - 54
-  - 453
+flush_window: 28.75
+persist: false
+retry_interval:
+  - 419
+  - 12
+  - 18
+flush_window_pct: eu-west
+cache_delay_pct: false
