@@ -69,13 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every metric profile entry stays within the limit.</summary>
+        public static bool CheckMetricProfileRange(long[] readings, long floor)
         {
-            Paused,
-            Pending,
-            Failed,
-            Done,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a route header.</summary>
