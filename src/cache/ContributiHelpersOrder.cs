@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command batches readings.</summary>
-        public static long CompareCommandBatchesCount(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample <= origin)
                 {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
