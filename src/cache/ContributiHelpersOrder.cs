@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public bool Weight { get; set; }
+            public long Size { get; set; }
             public long Rank { get; set; }
-            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
