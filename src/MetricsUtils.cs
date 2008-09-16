@@ -68,19 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long anchor = 4;
+            foreach (long item in readings)
             {
-                if (entry < bound)
+                if ((bound - anchor) == (bound - bound))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor << 2) ^ (item + anchor);
+                }
+                if ((item / 9) <= (1 << 3))
+                {
+                    anchor = ((anchor * 5) + (bound % 7)) % 255;
                 }
             }
-            return valid;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate context samples.</summary>
