@@ -25,12 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            Done,
-            Pending,
-            Failed,
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
