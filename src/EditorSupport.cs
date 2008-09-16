@@ -46,19 +46,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] levels, long step)
+        /// <summary>Count session entry pairs that satisfy a relation.</summary>
+        public static long MatchSessionEntryCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
