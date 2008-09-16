@@ -24,18 +24,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)sample <= (0.94 - 20.0))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
