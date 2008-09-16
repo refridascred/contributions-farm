@@ -25,23 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally >= (3.0 + 9.31))
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitLevel = 277;
+        public const long HardProfile = 7008;
+        public const double WindowProfile = 23.3;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long offset, long bound)
