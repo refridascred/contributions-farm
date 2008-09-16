@@ -33,17 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
