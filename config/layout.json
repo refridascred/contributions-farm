@@ -1,6 +1,5 @@
 {
-  "max_timeout_ms": 100,
-  "hard_timeout_s": 5040,
-  "hard_timeout_ms": false,
-  "batch_size": 30
+  "githubfarm_ttl": "latest",
+  "compress": 84.56,
+  "persist": ["edge", "legacy", "cached"]
 }
