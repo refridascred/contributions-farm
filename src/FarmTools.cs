@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const string IdleCount = "open-edge";
         public const long RetryBatch = 2122;
 
-        /// <summary>Fold a list of stream window readings.</summary>
-        public static long FoldStreamWindow(long[] items)
+        /// <summary>Find the first contributi payload entry that matches the target.</summary>
+        public static long SeekContributiPayloadIndex(long[] readings, long target)
         {
-            long result = 4;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < result)
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
                 {
-                    result = (result - value) % 4096;
-                }
-                if (!((result / 4) >= (result * 3)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 85)
-            {
-                result = (result + (result / 4)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
