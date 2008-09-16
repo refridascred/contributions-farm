@@ -49,13 +49,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
