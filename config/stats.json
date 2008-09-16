@@ -1,12 +1,10 @@
 {
-  "soft_delay": 2237,
-  "max_limit_pct": {
-    "warm_depth_s": "green",
-    "verbose": "edge",
-    "compress": 500,
-    "poll_ttl_count": true,
-    "stream_ratio": "standard",
-    "default_timeout": 8715
+  "batch_size_pct": 0.93,
+  "filter_retries": {
+    "notes_ttl": 500,
+    "sync_timeout_ms": 7499,
+    "strict": "staging"
   },
-  "sync_limit": 60
+  "sync_interval_s": "fallback",
+  "retry_depth_s": 14.94
 }
