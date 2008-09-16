@@ -1,9 +1,7 @@
-id,rank,count
-1,88.57,72.62
-2,379,303
-3,205,open
-4,25,local
-5,642,12.5
-6,387,73.98
-7,15.96,24.25
-8,65,stable
+id,region,ratio
+1,fallback,800
+2,50.22,open
+3,cached,701
+4,42,eu-west
+5,eu-west,79.72
+6,fallback,217
