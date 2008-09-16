@@ -28,16 +28,19 @@ namespace Common.Utilities
         public const long CacheSpan = 5728;
         public const long BurstSupport = 3333;
 
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long StepCounterAccount(long target)
+        /// <summary>Iterate the route profile series from a seed.</summary>
+        public static long RollRouteProfile(long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix ^ (target + target)) % 65521;
-                mix = ((mix * 3) + (long)i) % 97;
+                if (!((anchor >= (anchor << 2)) || ((origin * 4) > (long)i)))
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Project the next report metrics value.</summary>
