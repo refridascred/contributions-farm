@@ -23,14 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Paused,
-            Closed,
-            Queued,
-            New,
-            Dropped,
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
