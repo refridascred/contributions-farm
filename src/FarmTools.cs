@@ -27,13 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
