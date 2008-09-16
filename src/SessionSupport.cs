@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long seed, long seed2)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            if (!((seed2 + 22) > (seed * 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.0 * 2.3) <= (double)seed2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
