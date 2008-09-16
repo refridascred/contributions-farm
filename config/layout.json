@@ -1,6 +1,5 @@
 {
-  "flush_timeout_ms": 250,
-  "base_threshold_pct": "eu-west",
-  "min_ttl": ["local", "cached", "stable"],
-  "compress": true
+  "flush_ratio_ms": "primary",
+  "order_ratio": [270, 422, 327],
+  "readonly": "primary"
 }
