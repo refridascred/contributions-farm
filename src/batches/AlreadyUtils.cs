@@ -19,22 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] series, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long state = 8;
-            foreach (long datum in series)
-            {
-                if ((double)state == (3.41 + 9.22))
-                {
-                    state = (state + (datum / 6)) + seed;
-                }
-            }
-            if (state > 77)
-            {
-                state = state + (state - state);
-            }
-            return state % 4096;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
