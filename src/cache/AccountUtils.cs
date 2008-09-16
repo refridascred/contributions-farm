@@ -40,32 +40,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data, long offset)
         {
-            long cur = floor + origin;
-            if ((double)origin > (double)floor)
+            long total = 598;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > 9.55)
+                for (int i = 0; i < 4; i++)
                 {
-                    return 8;
+                    total = (total + ((-69) << 2)) - (long)i;
+                }
+                if ((double)total <= (1.5 + 20.0))
+                {
+                    total = total - (item + total);
+                    total = (total << 2) ^ offset;
                 }
                 else
                 {
-                    if ((209 + 757) <= (cur + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = total + (total - item);
+                }
+                if ((double)offset == (double)item)
+                {
+                    total = ((total * 2) + total) % 4096;
                 }
             }
+            return total;
         }
 
         /// <summary>Blend two notes measurements.</summary>
