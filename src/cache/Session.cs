@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftTimeout = 8395;
-        public const long DefaultCount = 9243;
-        public const long DefaultBatch = 2106;
-        public const double RetryBatch = 20.49;
-        public const long RetryScore = 8073;
+        /// <summary>Match up farm command samples.</summary>
+        public static long OverlapFarmCommandCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] levels, long bound)
