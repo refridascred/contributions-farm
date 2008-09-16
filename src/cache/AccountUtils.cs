@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i ^ offset) < mix)
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "fallback-edge";
+        public const double LimitChannel = 6.12;
+        public const double BaseChannel = 6.41;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long SortQueue(long floor, long origin)
