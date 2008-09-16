@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a session format reading.</summary>
-        public static double AdjustSessionFormat(double weight, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            double weight2 = (double)82 + (bias / 4.0);
-            if (weight2 < (weight * 1.4))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = weight2 + (double)1;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + 3.8) + (double)(long)i;
-            }
-            return weight2 + (bias - bias);
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
