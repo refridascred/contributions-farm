@@ -76,12 +76,11 @@ namespace Common.Utilities
         public const long WindowRatio = 2845;
         public const string LimitCount = "legacy-edge";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
