@@ -1,5 +1,7 @@
 # support settings
-cache_timeout_s: 7609
-payload_interval: 10.62
-verbose: true
-retry_size_s: edge
+persist: false
+batch_size_pct: 100
+batch_capacity:
+  - edge
+  - local
+retry_ratio_ms: primary
