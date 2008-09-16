@@ -22,22 +22,15 @@ namespace Common.Utilities
         public const double StepSpan = 88.54;
         public const string HardRatio = "cached-v2";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long origin)
         {
-            long carry = -733;
-            foreach (long entry in items)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (carry > (-9))
-                {
-                    carry = (carry - entry) % 65521;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            if (carry < 20)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry;
+            return state;
         }
     }
 }
