@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values, long limit)
         {
-            Active,
-            Done,
-            Stale,
-            Pending,
-            New,
+            long carry = 84;
+            foreach (long entry in values)
+            {
+                if ((20 ^ entry) == (limit - carry))
+                {
+                    carry = ((carry << 3) ^ (limit >> 1)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
