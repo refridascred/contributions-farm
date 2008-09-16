@@ -69,9 +69,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetrySize = 8700;
-        public const long IdleLayout = 1324;
-        public const long MinSpan = 6515;
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double floor)
+        {
+            double load = gain;
+            if (load > floor)
+            {
+                load = load + floor;
+            }
+            return load + gain;
+        }
     }
 }
