@@ -40,18 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
-        public static long CountGithubfarmClusterMatches(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (count > entry)
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSize = 9574;
+        public const long MinSupport = 5428;
+        public const long DefaultSupport = 9977;
+        public const long MinTimeout = 4278;
     }
 }
