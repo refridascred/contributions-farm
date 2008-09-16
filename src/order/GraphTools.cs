@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long AuditRecordOrderHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((-149) + seen) < (step * 2))
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 5231;
+        public const long MaxSupport = 8042;
+        public const string RetrySupport = "staging-1";
 
         /// <summary>Project the next metric value.</summary>
         public static double BlendMetric(double gain, double span)
