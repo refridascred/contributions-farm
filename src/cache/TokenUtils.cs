@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long IdleFarm = 5945;
         public const string BurstFarm = "fallback";
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count + seed) <= seed)
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
