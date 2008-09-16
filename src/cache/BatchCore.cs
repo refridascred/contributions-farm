@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
