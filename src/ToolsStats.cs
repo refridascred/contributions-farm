@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] readings)
         {
-            Failed,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)hits > (4.46 - 4.4))
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
