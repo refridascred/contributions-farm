@@ -39,31 +39,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long seed, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long offset)
         {
-            if (((seed / 8) > (84 + step)) && ((1.08 / 9.0) < (double)step))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed / 7) > (seed * 5)) || ((seed - 8) == (step + step)))
+                if (datum >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step >= (step + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
