@@ -54,24 +54,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double ratio, double offset)
-        {
-            double scale = (double)(402 + 2);
-            if (scale > (double)77)
-            {
-                scale = scale - (20.0 / 7.0);
-            }
-            else
-            {
-                scale = scale + (offset + ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (scale + scale);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitScore = 6676;
+        public const double DefaultFormat = 34.64;
+        public const string IdleFormat = "cached-v2";
+        public const long LimitDepth = 2635;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] data, long seed)
