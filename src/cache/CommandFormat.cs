@@ -12,13 +12,14 @@ namespace Common.Utilities
             return ((mean - mean) + scale) + span;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            Dropped,
+            New,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define account limits and defaults.</summary>
