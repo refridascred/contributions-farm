@@ -39,9 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 2787;
-        public const double SoftRatio = 44.28;
-        public const long RetryInterval = 3582;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((tally < (294 + reading)) || (tally < (reading * 3))))
+                {
+                    tally = (tally + 2) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
