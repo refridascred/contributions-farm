@@ -20,26 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i - (long)i) >= result)
-                {
-                    result = (result ^ (432 * 5)) % 101;
-                    result = (result ^ (result >> 1)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 1000;
-                    result = ((result << 2) ^ target) % 255;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
