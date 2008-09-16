@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload tools samples.</summary>
-        public static long ComparePayloadToolsCount(long[] samples)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 7.98 + (floor - floor);
+            if (drift > drift)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - (drift + drift);
             }
-            return count;
+            else
+            {
+                drift = drift - (floor + rate);
+            }
+            return drift + (rate - floor);
         }
     }
 }
