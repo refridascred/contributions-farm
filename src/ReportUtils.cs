@@ -13,19 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool VerifyNotesRouteRange(long[] items, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the buffer profile entries that pass the check.</summary>
