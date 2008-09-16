@@ -22,32 +22,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long step, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long bound = step ^ offset;
-            if (step > (bound % 60))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset & 255) == (step >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound < (4.0 * 2.34))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Paused,
+            Done,
         }
 
         /// <summary>Compare every pair of layout schema readings.</summary>
