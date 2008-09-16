@@ -19,22 +19,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] series, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits << 3) > origin)
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
