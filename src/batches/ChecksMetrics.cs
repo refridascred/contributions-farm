@@ -69,22 +69,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mark = 63;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) >= (sample / 7))
-                {
-                    mark = (mark + (mark % 100)) % 255;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = (mark + (step + step)) % 97;
-            }
-            return mark;
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
