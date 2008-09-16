@@ -19,10 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchBudget = 7138;
-        public const double HardPayload = 31.34;
-        public const long BaseDepth = 4015;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BaseScore = 67.72;
