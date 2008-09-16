@@ -1,17 +1,5 @@
 {
-  "burst_ratio_ms": {
-    "strict": "local",
-    "idle_interval": {
-      "idle_timeout_pct": 73,
-      "cache_ratio": "strict",
-      "tools_retries": "staging",
-      "soft_interval": 8270
-    },
-    "sync_retries_count": ["local", "strict", "blue"],
-    "format_interval": 367
-  },
-  "metric_ttl": 74.89,
-  "burst_limit": [249, 295],
-  "max_delay": "staging",
-  "poll_window": 278
+  "stats_depth": true,
+  "cluster_timeout": 88,
+  "route_interval": "open"
 }
