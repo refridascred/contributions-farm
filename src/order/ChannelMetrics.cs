@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Dropped,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinBudget = 3824;
+        public const long StepRecord = 7408;
+        public const long MinRecord = 4055;
+        public const long MaxDepth = 1999;
+        public const double DefaultScore = 10.44;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
