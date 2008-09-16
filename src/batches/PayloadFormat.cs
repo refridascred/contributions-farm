@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 58;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((-8) >= (step + step))
                 {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 3) ^ (393 - cell);
                 }
             }
-            return hits;
+            if (state < 618)
+            {
+                state = (state << 3) ^ (state << 2);
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate queue samples.</summary>
