@@ -13,12 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7138;
-        public const double CacheMetrics = 9.07;
-        public const long RetryMetrics = 8698;
-        public const long BurstInterval = 6386;
-        public const string BaseInterval = "latest-v2";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long FoldProfile(long[] readings, long offset)
