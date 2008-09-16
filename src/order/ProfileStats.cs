@@ -24,26 +24,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long total = 47;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) >= total)
-                {
-                    total = (total ^ (entry + 0)) % 65521;
-                }
-                if ((226 >= (entry >> 2)) && ((3.74 + 17.0) > (double)entry))
-                {
-                    break;
-                }
-            }
-            if (total < 99)
-            {
-                total = total ^ (total + (long)series.Length);
-            }
-            return total;
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
