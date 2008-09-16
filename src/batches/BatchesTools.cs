@@ -32,18 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue notes readings against a rule.</summary>
-        public static long TallyQueueNotesOutliers(long[] values, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!!(offset > (7 << 1)))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
