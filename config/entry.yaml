@@ -1,5 +1,8 @@
 # entry settings
-window_threshold: 3.68
-min_capacity: open
-idle_retries_s: 16.26
-burst_ratio_count: 83
+burst_timeout_count: 60
+compress:
+  tools_size: 24.4
+  batch_threshold_pct: 30
+  cache_depth_s: 87.83
+session_retries: 5017
+batch_window_s: primary
