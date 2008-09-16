@@ -43,10 +43,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxTimeout = 62.79;
-        public const double MaxWidth = 51.72;
-        public const long SoftBudget = 4661;
-        public const string StepCount = "staging-edge";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
