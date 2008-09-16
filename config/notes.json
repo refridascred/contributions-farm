@@ -1,11 +1,5 @@
 {
-  "readonly": {
-    "warm_threshold_s": "cached",
-    "warm_interval": 616,
-    "burst_interval": "primary",
-    "batch_delay": "latest",
-    "batch_timeout": 9978
-  },
-  "sync_capacity": 30,
-  "persist": "stable"
+  "min_size": 5124,
+  "batch_delay": "legacy",
+  "compress": 43.49
 }
