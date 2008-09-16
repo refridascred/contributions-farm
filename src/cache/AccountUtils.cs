@@ -28,19 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Draft,
+            Paused,
         }
     }
 }
