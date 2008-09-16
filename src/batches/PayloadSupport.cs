@@ -35,15 +35,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long FoldFarmQueue(long[] series, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = 162;
+            foreach (long sample in series)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((sample & 255) == (sample ^ limit))
+                {
+                    mix = mix + (sample ^ sample);
+                }
+                if (mix >= (limit >> 3))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix < (-4))
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix;
         }
     }
 }
