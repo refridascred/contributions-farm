@@ -32,10 +32,20 @@ namespace Common.Utilities
         public const string SoftBatch = "open";
         public const double RetryCount = 91.97;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCount = 2292;
-        public const string BaseCounter = "standard";
-        public const string HardInterval = "stable-v2";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values)
+        {
+            long carry = 3;
+            foreach (long entry in values)
+            {
+                carry = carry ^ (entry + entry);
+            }
+            if (carry > 6)
+            {
+                carry = carry + (730 + carry);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 8196;
