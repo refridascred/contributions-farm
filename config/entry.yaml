@@ -1,15 +1,9 @@
 # entry settings
-cache_interval_s: 17
-contributi_capacity:
-  enabled: 250
-  order_timeout: 59.34
-  hard_size: 79
-  sync_delay_count: green
-batches_retries: primary
-warm_retries_count: 1024
-compress: 64.13
-flush_threshold_s:
-  - strict
-  - fallback
-  - green
-  - green
+soft_window_s: staging
+burst_capacity: latest
+dry_run: false
+entry_size:
+  - 394
+  - 499
+  - 440
+  - 196
