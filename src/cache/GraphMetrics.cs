@@ -23,21 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
