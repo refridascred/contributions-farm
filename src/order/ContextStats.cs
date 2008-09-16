@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] readings, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
