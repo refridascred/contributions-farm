@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseSpan = "open-edge";
-        public const long CacheToken = 6450;
-        public const long IdleLevel = 4620;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double scale, double span)
+        {
+            double gain = span;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain + (span / 4.0)) + (double)(long)i) + scale;
+            }
+            return gain - (double)10;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] values)
