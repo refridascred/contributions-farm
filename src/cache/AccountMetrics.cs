@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleCount = 7245;
-        public const long MinGithubfarm = 6532;
-        public const long CacheSpan = 9413;
-        public const long WindowFactor = 5398;
-        public const long IdleWidth = 1313;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] values)
