@@ -41,22 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload profile readings against a rule.</summary>
-        public static long AuditPayloadProfileHits(long[] items, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((sample + target) <= (long)items.Length)
+                if (sample > step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Rank format input into a small class.</summary>
