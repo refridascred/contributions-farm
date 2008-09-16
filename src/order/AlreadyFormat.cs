@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSpan = 3310;
+        public const double BaseBudget = 27.36;
+        public const string BurstContributi = "cached-1";
 
         /// <summary>Check that every window notes entry stays within the limit.</summary>
         public static bool CheckWindowNotesLimits(long[] samples, long origin)
