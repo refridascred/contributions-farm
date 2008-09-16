@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const long IdleWindow = 8498;
         public const double HardFactor = 29.82;
 
-        /// <summary>Validate metric support readings against a bound.</summary>
-        public static bool ValidateMetricSupportLimits(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinDepth = 60.85;
+        public const long BatchCache = 8728;
+        public const long MaxScore = 161;
+        public const double LimitFactor = 79.16;
+        public const double HardCount = 90.64;
     }
 }
