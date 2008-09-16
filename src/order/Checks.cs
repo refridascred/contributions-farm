@@ -51,12 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            Failed,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) <= (8 << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
