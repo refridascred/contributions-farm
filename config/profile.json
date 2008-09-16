@@ -1,6 +1,8 @@
 {
-  "route_limit": "latest",
-  "min_window_ms": 83.11,
-  "poll_window": "latest",
-  "burst_delay_ms": 100
+  "audit": 21.81,
+  "cache_interval_pct": ["eu-west", "eu-west"],
+  "min_size_pct": 16.78,
+  "default_interval": true,
+  "max_capacity_pct": "eu-west",
+  "flush_interval_ms": false
 }
