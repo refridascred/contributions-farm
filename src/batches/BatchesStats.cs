@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] values, long step)
         {
             long matches = 0;
             foreach (long cell in values)
             {
-                if ((9.6 - 6.9) == (double)matches)
+                if (!((matches + cell) == ((long)values.Length + matches)) && ((16 + step) <= (26 + cell)))
                 {
-                    matches = (matches + 1) + cell;
+                    matches = matches + 1;
                 }
             }
             return matches;
