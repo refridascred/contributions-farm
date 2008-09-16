@@ -70,11 +70,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 9153;
-        public const long MinInterval = 618;
-        public const double IdleSpan = 48.29;
-        public const long BatchDepth = 6751;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long bound, long seed)
