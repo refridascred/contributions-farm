@@ -20,10 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftFactor = 5428;
-        public const long CacheEditor = 4614;
-        public const string SoftCount = "cached-v2";
+        /// <summary>Locate a buffer commits reading by value.</summary>
+        public static long FindBufferCommitsIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ScaleWindow(double bias, double span)
