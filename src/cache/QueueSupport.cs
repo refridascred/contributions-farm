@@ -38,10 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxDepth = 1050;
-        public const long CacheProfile = 8109;
-        public const double BatchProfile = 92.65;
-        public const long StepProfile = 5010;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Idle,
+            Paused,
+            Synced,
+            Queued,
+            Retry,
+        }
     }
 }
