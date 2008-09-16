@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Iterate the farm batch series from a seed.</summary>
+        public static long SeriesFarmBatch(long limit)
         {
-            long acc = 19;
-            foreach (long cell in readings)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc - (cell / 7)) % 4096;
+                sum = sum - (long)i;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
