@@ -55,12 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long MeasureMetricsGraphOutliers(long[] levels, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen >= (0.92 * 9.54))
+                {
+                    seen = ((seen + 2) ^ value) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
