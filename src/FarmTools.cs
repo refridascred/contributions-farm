@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((268 & 63) == (matches + 500))
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
