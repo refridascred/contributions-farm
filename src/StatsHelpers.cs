@@ -20,15 +20,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] series, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long target)
         {
-            long acc = 1;
-            foreach (long entry in series)
+            if (((double)seed != (double)target) && (9 < (target / 9)))
             {
-                acc = ((acc + (long)series.Length) - entry) - floor;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((target * 4) == (target ^ target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((401 + seed) < (seed + 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed / 3) > (target / 4)) || ((target ^ target) < (seed << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already summary.</summary>
