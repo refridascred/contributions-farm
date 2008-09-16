@@ -31,19 +31,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
-        {
-            double scale = bias - bias;
-            if (scale > (double)39)
-            {
-                scale = scale + (span / 7.0);
-            }
-            else
-            {
-                scale = scale + (4.68 / 4.0);
-            }
-            return scale + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleLevel = "standard-v2";
+        public const long BaseTools = 6034;
+        public const double BaseSpan = 35.81;
     }
 }
