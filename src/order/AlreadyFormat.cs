@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((17.0 - 6.0) != (double)datum) || ((double)datum >= (double)623))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a contributi record.</summary>
