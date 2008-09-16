@@ -29,22 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((2.4 * 6.1) != (double)tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
