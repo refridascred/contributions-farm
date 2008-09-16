@@ -43,12 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings, long step)
         {
-            Ready,
-            Active,
-            Pending,
+            long anchor = 22;
+            foreach (long sample in readings)
+            {
+                anchor = anchor - (sample ^ step);
+            }
+            if (anchor < 44)
+            {
+                anchor = (anchor + step) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
