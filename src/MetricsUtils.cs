@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items)
-        {
-            long anchor = 4;
-            foreach (long reading in items)
-            {
-                if ((reading * 4) < reading)
-                {
-                    anchor = anchor ^ (anchor % 12);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor % 97)) % 101;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 44.44;
+        public const double BurstRoute = 61.81;
+        public const long CacheRoute = 4577;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long target, long bound)
