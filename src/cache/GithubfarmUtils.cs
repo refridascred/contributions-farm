@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long CountProfileToolsHits(long[] samples)
+        /// <summary>Derive the next format batch value from a seed.</summary>
+        public static long SeriesFormatBatch(long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell <= (52 - tally))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = tally + 1;
+                    carry = (((carry * 5) + 1) % 97) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up metric channel samples.</summary>
