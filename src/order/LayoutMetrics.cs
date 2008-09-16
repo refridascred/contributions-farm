@@ -40,11 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items)
         {
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            long state = 67;
+            foreach (long sample in items)
+            {
+                state = state - (sample ^ sample);
+                if ((8.31 * 4.78) <= (double)state)
+                {
+                    state = ((state * 2) + (sample - state)) % 101;
+                }
+            }
+            return state % 65521;
         }
     }
 }
