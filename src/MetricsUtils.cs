@@ -83,19 +83,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
