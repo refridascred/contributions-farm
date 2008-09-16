@@ -1,15 +1,5 @@
 # support settings
-soft_depth: 4813
-cache_size_pct: latest
-flush_size_pct: true
-idle_window:
-  burst_ratio_ms: 5872
-  payload_ttl: staging
-  warm_retries_ms:
-    persist: edge
-    retry_timeout: 48
-    default_limit_ms: eu-west
-    poll_ttl: legacy
-    context_capacity: 100
-  flush_delay_ms: true
-burst_limit: local
+cache_timeout_s: 7609
+payload_interval: 10.62
+verbose: true
+retry_size_s: edge
