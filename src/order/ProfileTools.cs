@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every record command entry stays within the limit.</summary>
-        public static bool GuardRecordCommandBounds(long[] readings, long limit)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
