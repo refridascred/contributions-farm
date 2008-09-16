@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of support session readings.</summary>
-        public static long ScoreSupportSession(long[] items)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long total = 3;
-            foreach (long value in items)
-            {
-                if (total > value)
-                {
-                    total = total ^ (14 + total);
-                }
-                else
-                {
-                    total = (total ^ (value >> 5)) % 255;
-                }
-            }
-            return total;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
