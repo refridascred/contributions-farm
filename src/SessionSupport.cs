@@ -46,16 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                total = (total - ((long)i << 2)) % 65521;
-                total = ((total * 3) + (long)i) % 101;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
