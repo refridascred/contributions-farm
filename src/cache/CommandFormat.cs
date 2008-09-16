@@ -45,13 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] items)
         {
-            Draft,
-            New,
-            Ready,
-            Stale,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((12.0 - 17.0) <= (double)count)
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
     }
 }
