@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long MaxSupport = 8042;
         public const string RetrySupport = "staging-1";
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] items, long bound)
         {
-            double gain2 = (double)(253 - (-846));
-            if (gain2 <= span)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                gain2 = gain2 + gain;
+                if (32 < tally)
+                {
+                    tally = ((tally + 3) + reading) - bound;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + (gain2 / 2.0);
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
