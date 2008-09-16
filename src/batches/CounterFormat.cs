@@ -24,14 +24,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Failed,
-            Locked,
-            Stale,
-            Paused,
-            New,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
