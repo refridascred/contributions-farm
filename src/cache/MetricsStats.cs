@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the token payload entries that pass the check.</summary>
