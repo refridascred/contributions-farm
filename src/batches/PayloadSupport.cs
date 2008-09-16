@@ -13,12 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of commits already readings.</summary>
+        public static long ScoreCommitsAlready(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long acc = 123;
+            foreach (long entry in data)
+            {
+                if (((6.6 / 8.0) <= (double)acc) || ((acc % 64) == (0 / 2)))
+                {
+                    acc = (acc + (498 + acc)) + entry;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a support summary.</summary>
