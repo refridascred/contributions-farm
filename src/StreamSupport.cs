@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph payload readings against a bound.</summary>
-        public static bool VerifyGraphPayloadBounds(long[] data, long target)
+        /// <summary>Combine account queue values into a single score.</summary>
+        public static long TotalAccountQueue(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long anchor = -2;
+            foreach (long datum in readings)
             {
-                if (reading >= target)
+                if ((long)readings.Length == (anchor >> 3))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - anchor) ^ datum;
                 }
             }
-            return valid;
+            if (anchor < 99)
+            {
+                anchor = (anchor + (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a window payload pair into a bucket.</summary>
