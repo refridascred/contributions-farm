@@ -42,12 +42,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long StepCounterAccount(long target)
         {
-            Draft,
-            Synced,
-            Active,
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ (target + target)) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next report metrics value.</summary>
