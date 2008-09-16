@@ -5,31 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long offset)
+        /// <summary>Digest a series of batches editor entries.</summary>
+        public static long TotalBatchesEditor(long[] items)
         {
-            if (((offset + floor) != (floor + offset)) && ((floor ^ offset) == (offset * 4)))
+            long carry = 74;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 3) > offset)
+                if (!((carry / 7) < reading))
                 {
-                    return 1;
+                    carry = (carry ^ (reading >> 5)) % 255;
+                    continue;
                 }
                 else
                 {
-                    if ((700 >> 2) == (floor - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = ((carry * 5) + (78 >> 4)) % 101;
+                    carry = (carry << 3) ^ (reading >> 1);
+                }
+                if (((10 >> 2) <= carry) || (8 < (reading ^ carry)))
+                {
+                    carry = ((carry * 4) + (reading + reading)) % 101;
                 }
             }
+            if (carry > 34)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
