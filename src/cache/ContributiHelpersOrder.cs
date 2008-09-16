@@ -13,39 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a editor record value against two limits.</summary>
-        public static long RankEditorRecord(long target, long origin)
+        /// <summary>Validate format payload readings against a bound.</summary>
+        public static bool CheckFormatPayloadBounds(long[] values, long offset)
         {
-            long lane = target ^ origin;
-            if ((29 >> 5) < (lane - origin))
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (origin ^ origin))
+                if (sample > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin == (4.11 + 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((lane << 1) > 152))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
