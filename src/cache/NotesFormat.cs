@@ -29,12 +29,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Failed,
-            Ready,
-            Draft,
+            Closed,
+            Locked,
             Paused,
         }
     }
