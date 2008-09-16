@@ -31,12 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 1136;
+        public const string HardCommits = "staging-1";
+        public const long BatchWidth = 4203;
     }
 }
