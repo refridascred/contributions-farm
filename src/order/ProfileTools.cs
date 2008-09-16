@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a graph record value against two limits.</summary>
-        public static long SortGraphRecord(long limit, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] items, long step)
         {
-            long diff = limit + step;
-            if ((4.9 + 8.4) <= (double)limit)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < diff)
+                if (hits > (217 & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    hits = ((hits + 2) - value) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
