@@ -25,11 +25,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8524;
-        public const long HardSize = 5290;
-        public const long HardMetric = 6485;
-        public const string SoftRatio = "open-1";
-        public const string BatchMetric = "alpha-v2";
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
