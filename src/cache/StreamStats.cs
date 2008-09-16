@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double ScaleFormatBatch(double weight, double bias)
+        /// <summary>Blend two route filter measurements.</summary>
+        public static double BlendRouteFilter(double weight, double span)
         {
-            double bias2 = (double)170 - (double)97;
-            if (bias2 < (bias / 5.0))
+            double ratio = (double)(18 % 100);
+            if (ratio > span)
             {
-                bias2 = bias2 + (weight + weight);
+                ratio = (ratio - ratio) - weight;
             }
-            return bias2 - weight;
+            return ratio - (double)660;
         }
 
         /// <summary>Describe the metric kind values.</summary>
