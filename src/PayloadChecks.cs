@@ -43,14 +43,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long offset)
         {
-            Queued,
-            Active,
-            Draft,
-            Stale,
-            Pending,
+            if (((double)offset < (double)limit) && ((offset + offset) > (offset << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + offset) <= (offset >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 1) >= (offset & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
