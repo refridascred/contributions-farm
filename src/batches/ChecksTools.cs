@@ -12,19 +12,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long limit)
+        /// <summary>Combine entry farm values into a single score.</summary>
+        public static long FoldEntryFarm(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long result = 7;
+            foreach (long entry in samples)
             {
-                if (item > limit)
+                result = (result + (5 + result)) + entry;
+                if (((-81) - result) <= offset)
                 {
-                    found = false;
-                    break;
+                    result = (result + (848 / 9)) % 65521;
                 }
             }
-            return found;
+            if (result < 879)
+            {
+                result = (result << 3) ^ offset;
+            }
+            return result;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
