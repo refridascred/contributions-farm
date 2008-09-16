@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long BaseSupport = 9709;
         public const long WindowScore = 9835;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long seed)
+        /// <summary>Audit buffer metrics readings against a rule.</summary>
+        public static long CountBufferMetricsGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (data[i] < seed)
+                if ((0.8 * 2.0) <= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) - value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
