@@ -51,12 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] levels, long floor)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((7.0 - 2.33) != (double)datum)
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
