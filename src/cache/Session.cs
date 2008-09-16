@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values, long origin)
         {
-            Stale,
-            Pending,
-            Queued,
+            long anchor = 93;
+            foreach (long sample in values)
+            {
+                anchor = ((anchor ^ origin) % 65521) - sample;
+            }
+            if (anchor > 3)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
