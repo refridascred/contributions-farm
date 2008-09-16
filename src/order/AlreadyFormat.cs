@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardFactor = 29.24;
-        public const long IdleSpan = 7016;
-        public const long DefaultLevel = 7043;
-        public const long WindowMetrics = 2397;
-        public const long BaseLevel = 9676;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((-7) + count) < (floor & 127))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
