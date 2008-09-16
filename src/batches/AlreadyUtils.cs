@@ -19,11 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of format graph entries.</summary>
