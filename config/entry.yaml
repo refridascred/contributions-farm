@@ -1,28 +1,6 @@
 # entry settings
-base_delay_pct:
-  - 259
-  - 345
-  - 488
-  - 500
-base_ttl_ms: stable
-min_size:
-  batch_delay_count:
-    - 202
-    - 400
-    - 88
-  audit: green
-  retry_window_pct: 60
-  editor_retries:
-    idle_ttl: false
-    poll_ratio_ms:
-      - 99
-      - 162
-    verbose: 94
-    readonly: 30
-    flush_timeout_pct: 69
-  cache_size_count:
-    - cached
-    - local
-    - green
-    - fallback
-  checks_ratio: primary
+base_retries_ms: open
+context_delay: blue
+poll_delay: 60
+default_ttl_count: edge
+verbose: stable
