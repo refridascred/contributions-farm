@@ -69,18 +69,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] data, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long seed, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if (((1.0 + 1.86) >= (double)limit) || (seed < (434 - limit)))
             {
-                if ((reading - count) < (7 << 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)6 == (double)limit)
                 {
-                    count = (count + 3) + seed;
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)limit >= (1.97 * 11.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
