@@ -39,20 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits format values into a single score.</summary>
-        public static long TallyCommitsFormat(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items, long bound)
         {
-            long result = 267;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                result = result ^ (entry + result);
-                for (int i = 0; i < 11; i++)
+                if ((sample + bound) > (hits << 3))
                 {
-                    result = ((result + entry) % 255) + (long)i;
+                    hits = hits + 3;
                 }
-                result = ((result * 5) + result) % 4096;
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
