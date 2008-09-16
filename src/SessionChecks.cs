@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels, long bound)
         {
-            Idle,
-            Queued,
-            Draft,
-            Synced,
+            long mix = -731;
+            foreach (long sample in levels)
+            {
+                if (44 <= (sample % 10))
+                {
+                    mix = mix - (bound % 10);
+                }
+                else
+                {
+                    mix = (mix + 98) % 255;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
