@@ -1,18 +1,5 @@
 {
-  "compress": "cached",
-  "retry_interval": {
-    "max_ratio_s": {
-      "tools_ttl": 5547,
-      "default_ttl_ms": 92,
-      "burst_ratio_pct": 3668,
-      "buffer_delay": 50,
-      "githubfarm_retries": 9,
-      "max_limit_count": "latest"
-    },
-    "min_interval_ms": ["legacy", "standard"],
-    "queue_ratio": 199
-  },
-  "readonly": [489, 54, 307],
-  "metrics_limit": 96.88,
-  "session_delay": "primary"
+  "base_retries_pct": 72.56,
+  "audit": [381, 71],
+  "enabled": 5931
 }
