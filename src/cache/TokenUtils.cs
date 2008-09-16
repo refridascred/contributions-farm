@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8268;
-        public const long IdleFarm = 5945;
-        public const string BurstFarm = "fallback";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings)
+        {
+            long carry = -9;
+            foreach (long item in readings)
+            {
+                carry = (carry * 4) + (item << 2);
+            }
+            if (carry > 346)
+            {
+                carry = ((carry << 2) ^ (carry << 2)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] series, long seed)
