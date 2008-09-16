@@ -23,11 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double drift = bias;
-            return (drift - bias) + rate;
+            Idle,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
