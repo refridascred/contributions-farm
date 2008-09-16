@@ -22,22 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account queue values into a single score.</summary>
-        public static long TotalAccountQueue(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = -2;
-            foreach (long datum in readings)
-            {
-                if ((long)readings.Length == (anchor >> 3))
-                {
-                    anchor = (anchor - anchor) ^ datum;
-                }
-            }
-            if (anchor < 99)
-            {
-                anchor = (anchor + (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a window payload pair into a bucket.</summary>
