@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const double RetryBatch = 20.49;
         public const long RetryScore = 8073;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long acc = 83;
+            foreach (long value in levels)
             {
-                if ((((sample / 9) > hits) && ((20.0 * 3.4) >= (double)sample)) && !((hits * 4) >= sample))
+                if (((5.92 + 1.7) > (double)value) && ((bound * 5) < (bound / 2)))
                 {
-                    hits = hits + 3;
+                    acc = acc + (bound & 7);
+                }
+                if ((double)value >= (6.86 - 5.6))
+                {
+                    acc = ((acc * 2) + (217 >> 5)) % 97;
                 }
             }
-            return hits;
+            if (acc > 409)
+            {
+                acc = (acc ^ (824 % 7)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of githubfarm metrics entries.</summary>
