@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long floor)
         {
-            long sum = 95;
-            foreach (long entry in values)
+            if (((double)offset <= 6.7) && ((offset & 63) >= offset))
             {
-                sum = (sum ^ (sum >> 1)) % 1000;
-                if (entry < (203 + 2))
+                return 3;
+            }
+            else
+            {
+                if (!((offset - offset) != (28 * 3)))
                 {
-                    sum = (sum << 2) ^ sum;
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor / 3) < (offset + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
