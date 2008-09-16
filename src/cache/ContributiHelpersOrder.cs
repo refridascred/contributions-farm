@@ -13,19 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((2 + entry) >= 773)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchRatio = "local-1";
+        public const double DefaultCache = 39.14;
+        public const long MaxCache = 3259;
+        public const double SoftCache = 43.86;
+        public const string BurstCache = "open-1";
 
         /// <summary>Check that every format schema entry stays within the limit.</summary>
         public static bool CheckFormatSchemaRange(long[] items, long target)
