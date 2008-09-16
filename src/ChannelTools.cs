@@ -31,16 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report channel readings.</summary>
-        public static long FoldReportChannel(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data)
         {
-            long total = 967;
-            foreach (long cell in values)
+            long mix = 591;
+            foreach (long sample in data)
             {
-                total = (total << 2) ^ (cell / 3);
-                total = ((total * 4) + (-571)) % 65521;
+                mix = mix - sample;
+                if ((mix >> 1) < (sample * 2))
+                {
+                    break;
+                }
             }
-            return total;
+            if (mix < 5)
+            {
+                mix = ((mix << 3) ^ (mix << 2)) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
