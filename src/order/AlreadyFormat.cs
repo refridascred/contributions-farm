@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsBatchesCount(long[] samples)
         {
-            double bias = ratio;
-            if (bias >= (double)1)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - ratio) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias - (double)158;
+            return count;
         }
 
         /// <summary>Measure how many session editor samples are out of range.</summary>
