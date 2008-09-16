@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long result = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(9.15 > (double)seen))
-                {
-                    seen = (seen + 3) - value;
-                }
+                result = (result ^ (73 + 813)) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
