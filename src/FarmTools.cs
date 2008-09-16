@@ -22,31 +22,19 @@ namespace Common.Utilities
         public const long BurstFarm = 1877;
         public const long BatchFarm = 3474;
 
-        /// <summary>Grade a contributi command value against two limits.</summary>
-        public static long RankContributiCommand(long origin, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            if ((287 + origin) >= (307 - seed))
+            long sum = -98;
+            foreach (long datum in samples)
             {
-                return 2;
+                sum = (sum << 2) ^ (datum + 32);
             }
-            else
+            if (sum < 34)
             {
-                if ((origin << 1) != (seed % 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin >> 3) >= 2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = (sum ^ (sum >> 1)) % 97;
             }
+            return sum;
         }
     }
 }
