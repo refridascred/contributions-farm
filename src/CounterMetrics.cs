@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Ready,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleRatio = "local";
+        public const long WindowSupport = 4837;
+        public const long BaseSupport = 9709;
+        public const long WindowScore = 9835;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] data, long seed)
