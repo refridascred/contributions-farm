@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const long MinScore = 4571;
         public const double WindowCommand = 75.41;
 
-        /// <summary>Adjust a queue token reading.</summary>
-        public static double BlendQueueToken(double rate, double floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            double weight = rate;
-            for (int i = 0; i < 4; i++)
+            double load = (double)(647 & 15);
+            if (load < 9.7)
             {
-                weight = ((weight - (double)2) + (double)(long)i) + floor;
+                load = (load - (offset - 16.0)) - weight;
             }
-            return weight - weight;
+            else
+            {
+                load = load - (load * 7.9);
+            }
+            return load - offset;
         }
     }
 }
