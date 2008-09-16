@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] series, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 - limit) < count)
+                if (samples[i] > bound)
                 {
-                    count = (count + 2) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up profile samples.</summary>
