@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] values, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (bound << 1)) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
