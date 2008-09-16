@@ -23,11 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of token command entries.</summary>
+        public static long FoldTokenCommand(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long score = 469;
+            foreach (long datum in samples)
+            {
+                score = (score + (datum + score)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a schema stats.</summary>
