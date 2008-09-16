@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] data, long bound)
         {
-            Closed,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the route kind values.</summary>
