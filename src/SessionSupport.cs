@@ -25,25 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long diff = offset - floor;
-            if ((diff + (-269)) >= (3 % 5))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor / 6) >= floor) && ((offset ^ floor) >= (offset << 1)))
+                if ((double)tally >= (3.0 + 9.31))
                 {
-                    return 2;
+                    tally = (tally + 2) + sample;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
