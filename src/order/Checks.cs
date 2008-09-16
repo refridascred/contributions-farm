@@ -79,15 +79,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format notes series from a seed.</summary>
-        public static long IterateFormatNotes(long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Dropped,
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
