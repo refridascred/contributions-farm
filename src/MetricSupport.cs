@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout stats samples are out of range.</summary>
-        public static long MeasureLayoutStatsGaps(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading < tally)
-                {
-                    tally = (tally + 2) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 60.69;
+        public const string CacheInterval = "legacy";
+        public const string MaxScore = "standard";
+        public const long BurstCount = 7171;
+        public const string CacheBudget = "fallback-edge";
 
         /// <summary>Look up the position of a stream queue sample.</summary>
         public static long LookupStreamQueueIndex(long[] samples, long origin)
