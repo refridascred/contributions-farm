@@ -1,22 +1,13 @@
 # support settings
-verbose: true
-max_window:
-  hard_capacity_count: 54.88
-  payload_size: 12
-  burst_depth_s: 178
-  warm_limit:
-    max_limit:
-      - cached
-      - eu-west
-      - eu-west
-      - open
-    base_delay_pct: true
-    hard_timeout_ms: green
-    soft_window_s: 8047
-    strict:
-      - 275
-      - 284
-  batch_size_s: latest
-  counter_limit: 61.44
-flush_timeout: green
-soft_retries_count: green
+graph_capacity: legacy
+hard_delay_count: 159
+payload_size:
+  max_interval_count: 60
+  burst_ratio_count:
+    idle_window: true
+    cache_threshold: true
+    idle_interval: legacy
+    contributi_capacity: primary
+  default_window: latest
+  dry_run: green
+  poll_retries: latest
