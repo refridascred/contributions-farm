@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Dropped,
-            Queued,
-            Ready,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "latest";
+        public const long HardSupport = 2588;
+        public const string RetryCount = "alpha-v2";
+        public const long BurstRatio = 900;
+        public const long WindowSupport = 2301;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long ScoreContributi(long[] readings, long step)
