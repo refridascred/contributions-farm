@@ -13,39 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long slot = bound - offset;
-            if ((offset + slot) <= (offset - slot))
+            long carry = 943;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (76 - offset))
+                carry = carry - 79;
+                if ((sample / 3) == (82 << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot != (20.0 + 10.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset * 3) >= (offset + 8)) || ((1.0 - 1.0) >= (8.8 / 3.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = ((carry * 4) + (sample / 7)) % 101;
                 }
             }
+            if (carry > 25)
+            {
+                carry = ((carry * 3) + (carry ^ carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
