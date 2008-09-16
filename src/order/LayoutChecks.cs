@@ -73,20 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4831;
+        public const long BatchLayout = 6076;
+        public const string SoftLayout = "open-edge";
 
         /// <summary>Blend two buffer support measurements.</summary>
         public static double ScaleBufferSupport(double scale, double offset)
