@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "open";
-        public const long CacheSize = 165;
-        public const double SoftSupport = 27.31;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((146 * 2) > datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a token stats sample.</summary>
         public static long FindTokenStatsIndex(long[] items, long step)
