@@ -14,13 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            New,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSpan = 4629;
+        public const long MaxLevel = 4171;
+        public const double HardSession = 51.14;
+        public const double RetrySession = 86.25;
+        public const long CacheSession = 8018;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryTimeout = 4880;
