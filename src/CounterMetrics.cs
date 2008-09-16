@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardRatio = "cached-v2";
-        public const long MinDepth = 3960;
-        public const long BatchDepth = 5299;
-        public const string LimitReport = "open-edge";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Rank { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
