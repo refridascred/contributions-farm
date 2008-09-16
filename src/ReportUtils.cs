@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const long LimitSupport = 4911;
         public const double CacheSupport = 96.94;
 
-        /// <summary>Match up buffer editor samples.</summary>
-        public static long PairBufferEditorCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheRatio = 4556;
+        public const long StepInterval = 3481;
+        public const string DefaultFarm = "stable-edge";
+        public const double SoftFarm = 61.31;
+        public const string IdleFarm = "standard";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
