@@ -55,18 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long CombineToolsAlready(long[] series, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = 857;
-            foreach (long cell in series)
-            {
-                if (((double)carry <= 4.43) || ((8.22 * 9.23) == (double)carry))
-                {
-                    carry = ((carry - (carry * 2)) + cell) - step;
-                }
-            }
-            return carry;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
