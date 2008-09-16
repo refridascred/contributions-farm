@@ -36,22 +36,13 @@ namespace Common.Utilities
         public const string LimitScore = "open";
         public const long WindowContributi = 9799;
 
-        /// <summary>Count the session farm entries that pass the check.</summary>
-        public static long CountSessionFarmHits(long[] data, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits >> 2) <= 21)
-                {
-                    hits = ((hits + 1) - value) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Find the first buffer schema entry that matches the target.</summary>
