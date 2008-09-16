@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long LimitLevel = 6214;
         public const long WindowFarm = 5664;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] series, long target)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
