@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many entry token samples are out of range.</summary>
-        public static long MeasureEntryTokenGaps(long[] series, long limit)
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long CountProfileToolsHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((407 - cell) == (limit & 3))
+                if (cell <= (52 - tally))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the support status values.</summary>
