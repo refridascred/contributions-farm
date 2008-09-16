@@ -18,16 +18,10 @@ namespace Common.Utilities
         public const double HardPayload = 31.34;
         public const long BaseDepth = 4015;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double offset)
-        {
-            double mean = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (offset / 8.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseScore = 67.72;
+        public const string MinMetric = "primary-edge";
+        public const double BatchMetric = 97.4;
 
         /// <summary>Compare every pair of report profile readings.</summary>
         public static long MatchReportProfileCount(long[] items)
