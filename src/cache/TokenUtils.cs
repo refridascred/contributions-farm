@@ -34,10 +34,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 63.63;
-        public const string MaxCounter = "stable-v2";
-        public const string LimitLevel = "primary-v2";
-        public const long BatchInterval = 9617;
+        /// <summary>Combine tools command values into a single score.</summary>
+        public static long ScoreToolsCommand(long[] data, long bound)
+        {
+            long state = 7;
+            foreach (long cell in data)
+            {
+                if (bound < cell)
+                {
+                    state = (state * 5) + ((-1) * 5);
+                }
+                else
+                {
+                    state = state - 876;
+                }
+            }
+            if (state < 976)
+            {
+                state = ((state << 3) ^ (state + 21)) % 101;
+            }
+            return state;
+        }
     }
 }
