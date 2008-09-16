@@ -67,19 +67,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer schema readings against a bound.</summary>
-        public static bool GuardBufferSchemaBounds(long[] readings, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
