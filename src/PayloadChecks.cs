@@ -18,12 +18,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Locked,
-            Dropped,
-            Synced,
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Rank report input into a small class.</summary>
