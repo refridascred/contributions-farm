@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            long hits = 0;
+            long state = 13;
             foreach (long datum in samples)
             {
-                if ((8 ^ datum) != (hits * 3))
+                if (((datum >> 1) > (378 + (-616))) && ((18.0 - 6.0) >= (double)state))
                 {
-                    hits = hits + 3;
+                    state = ((state * 5) + state) % 4096;
+                    continue;
+                }
+                else
+                {
+                    state = (state - (datum - state)) % 65521;
+                }
+                state = state - (datum >> 3);
+                if (((datum >> 3) != (datum / 5)) || ((state * 5) > state))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
