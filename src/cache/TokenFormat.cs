@@ -14,23 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            double gain = floor;
-            if (gain > (gain * 3.1))
+            long anchor = 6;
+            foreach (long sample in samples)
             {
-                gain = gain + gain;
+                anchor = ((anchor << 2) ^ (27 ^ anchor)) - sample;
             }
-            else
+            if (anchor < 8)
             {
-                gain = gain - (6.8 * 16.0);
+                anchor = anchor - (anchor & 1);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (bias - bias)) - (double)(long)i;
-            }
-            return gain - (bias * 6.3);
+            return anchor;
         }
 
         /// <summary>Project the next batch value.</summary>
