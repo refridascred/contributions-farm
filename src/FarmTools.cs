@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((2.2 - 20.0) >= (double)entry)
+                if ((8 ^ datum) != (hits * 3))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
