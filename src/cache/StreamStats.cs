@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Label { get; set; }
             public double Total { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a token stats sample.</summary>
