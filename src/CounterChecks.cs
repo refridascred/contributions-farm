@@ -23,18 +23,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] levels, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((9.0 / 6.0) < (double)entry)
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
