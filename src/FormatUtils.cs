@@ -33,21 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Digest a series of graph context entries.</summary>
+        public static long TallyGraphContext(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark + value) - bound;
+                if (mark <= (0 << 3))
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + (mark - value);
+                }
+                if (value <= (mark + mark))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Describe the counter class values.</summary>
