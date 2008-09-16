@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] samples, long floor)
         {
             long tally = 0;
-            foreach (long item in levels)
+            foreach (long value in samples)
             {
-                if ((tally > (tally - item)) && !((double)item < 6.97))
+                if (((value % 3) < floor) || ((8.2 + 4.69) >= (double)tally))
                 {
                     tally = tally + 2;
                 }
