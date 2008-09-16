@@ -54,11 +54,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitRatio = 1734;
-        public const long CacheReport = 1109;
-        public const string DefaultReport = "open-edge";
-        public const string SoftReport = "alpha";
-        public const long IdleBudget = 6035;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples, long floor)
+        {
+            long result = 43;
+            foreach (long item in samples)
+            {
+                if ((6.0 * 4.55) >= (double)result)
+                {
+                    result = (((result << 2) ^ (item + item)) % 65521) + floor;
+                }
+            }
+            if (result < 921)
+            {
+                result = result + result;
+            }
+            return result;
+        }
     }
 }
