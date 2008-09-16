@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate stats route samples.</summary>
+        public static long TallyStatsRoute(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long state = 178;
+            foreach (long value in values)
+            {
+                if ((2.92 / 6.0) == (double)state)
+                {
+                    state = ((((state << 2) ^ 758) % 255) - value) - origin;
+                }
+            }
+            if (state < 15)
+            {
+                state = (state - (state >> 2)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
