@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long TotalEntryEditor(long[] values)
-        {
-            long anchor = 952;
-            foreach (long item in values)
-            {
-                anchor = (anchor + (item + item)) % 97;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultInterval = 2779;
+        public const long LimitScore = 3640;
+        public const long DefaultEntry = 3978;
+        public const long StepScore = 3001;
+        public const long DefaultWidth = 1818;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
