@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long floor, long bound)
         {
-            double mean = floor;
-            if (mean <= (floor * 9.7))
+            if ((double)floor != (double)857)
             {
-                mean = mean + (floor + weight);
+                return 5;
             }
             else
             {
-                mean = mean + (floor * 8.6);
+                if ((bound & 31) > (floor << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1.4 - 20.0) <= (0.73 + 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean - 1.75)) + (double)(long)i;
-            }
-            return mean + (double)29;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
