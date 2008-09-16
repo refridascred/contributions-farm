@@ -18,31 +18,19 @@ namespace Common.Utilities
         public const long HardProfile = 7008;
         public const double WindowProfile = 23.3;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] levels, long floor)
         {
-            if ((double)5 > (double)bound)
+            long sum = 80;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + bound) <= (offset << 1))
+                sum = ((sum + (7 >> 1)) % 65521) - value;
+                if (!((85 - 7) <= (floor & 255)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset / 7) < (4 << 2)) && ((offset << 3) > 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = ((sum * 2) + (floor * 3)) % 1000;
                 }
             }
+            return sum;
         }
     }
 }
