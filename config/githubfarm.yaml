@@ -1,30 +1,26 @@
 # githubfarm settings
-base_threshold_pct:
-  - 85
-  - 176
-  - 253
-  - 146
-idle_ratio_ms: 41.39
-cluster_timeout:
-  burst_ttl: false
-  persist: 81
-  default_ttl_s: 500
-  compress:
-    batch_depth_count: 100
-    command_ttl:
-      - 47
-      - 51
-      - 275
-      - 464
-    dry_run: false
-    cache_timeout_s: eu-west
-    max_capacity_ms: 88.86
-  idle_interval_pct: staging
-  report_size: legacy
-readonly:
-  default_delay: 3369
-  editor_limit: 18.21
-  retry_window_s: 51.26
-  cache_ratio_count: cached
-hard_window: false
-base_window: 30
+retry_threshold_ms: 1857
+enabled: 46
+sync_ttl_s:
+  retry_limit_count:
+    soft_window: false
+    sync_size: open
+    min_size: 100
+    account_capacity: standard
+    readonly: 500
+    burst_threshold_ms: fallback
+  burst_window:
+    - fallback
+    - primary
+  min_size_count: edge
+  base_ttl_count: staging
+  cache_threshold: standard
+  verbose:
+    - legacy
+    - latest
+token_capacity: 5458
+max_ttl_pct:
+  - staging
+  - legacy
+  - eu-west
+poll_capacity_ms: 500
