@@ -20,24 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double ratio, double bias)
-        {
-            double bias2 = ratio / 6.0;
-            if (bias2 < ratio)
-            {
-                bias2 = bias2 - (bias2 / 4.0);
-            }
-            else
-            {
-                bias2 = bias2 + (double)7;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias2 / 9.0)) + (double)(long)i;
-            }
-            return bias2 + bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowDepth = 1813;
+        public const long MaxFactor = 1681;
+        public const long SoftScore = 881;
+        public const double StepSpan = 88.54;
+        public const string HardRatio = "cached-v2";
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
