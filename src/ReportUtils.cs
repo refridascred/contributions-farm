@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = -88;
+            foreach (long reading in data)
             {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (((total * 3) + total) % 4096) + reading;
             }
-            return ok;
+            if (total < 2)
+            {
+                total = ((total * 3) + ((-81) + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank format input into a small class.</summary>
