@@ -38,10 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 3431;
-        public const double SoftSession = 56.28;
-        public const long BurstSession = 7775;
-        public const long IdleSession = 3934;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Ready,
+            Pending,
+            Active,
+            Paused,
+        }
     }
 }
