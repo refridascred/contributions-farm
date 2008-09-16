@@ -35,23 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double span)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double rate = span;
-            if (rate >= rate)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 7.5) + (double)(long)i;
-            }
-            return rate + (double)5;
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many order batches samples are out of range.</summary>
