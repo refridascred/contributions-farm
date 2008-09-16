@@ -36,17 +36,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long limit, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (23 > (limit % 100))
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((step * 4) > limit)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
