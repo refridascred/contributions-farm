@@ -22,18 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long total = -99;
+            foreach (long reading in values)
             {
-                if (!((19.0 / 5.0) > (double)tally) || ((7.6 * 2.9) != (double)reading))
+                if ((241 >> 1) == (total + reading))
                 {
-                    tally = tally + 2;
+                    total = (total * 5) + (reading + 8);
+                }
+                else
+                {
+                    total = (total << 3) ^ (total + limit);
                 }
             }
-            return tally;
+            if (total < 0)
+            {
+                total = (total ^ (total * 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a tools header.</summary>
