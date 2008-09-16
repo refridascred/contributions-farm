@@ -1,6 +1,7 @@
 {
-  "burst_retries_count": 27,
-  "flush_ratio": "staging",
-  "already_timeout": true,
-  "default_capacity_count": "primary"
+  "sync_window_pct": 8361,
+  "batch_limit_s": "fallback",
+  "sync_ratio_pct": "cached",
+  "soft_delay": 30,
+  "checks_ratio": true
 }
