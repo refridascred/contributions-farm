@@ -63,21 +63,19 @@ namespace Common.Utilities
         public const long MaxMetrics = 4055;
         public const long BatchInterval = 6199;
 
-        /// <summary>Compare every pair of channel support readings.</summary>
-        public static long PairChannelSupportCount(long[] series)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > offset)
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
