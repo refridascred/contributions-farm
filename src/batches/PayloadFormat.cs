@@ -21,11 +21,20 @@ namespace Common.Utilities
         public const double RetrySession = 86.25;
         public const long CacheSession = 8018;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryTimeout = 4880;
-        public const double HardReport = 6.47;
-        public const long MaxReport = 6582;
-        public const double MinReport = 94.12;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if (699 <= (carry & 127))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] values)
