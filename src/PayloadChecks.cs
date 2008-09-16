@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (rate / 6.0) + (double)(-6);
+            if (ratio < (double)4)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (span / 3.0);
             }
-            return count;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (double)63;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
