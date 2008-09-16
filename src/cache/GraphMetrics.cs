@@ -51,31 +51,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long seed, long seed2)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long target)
         {
-            long span = seed ^ seed2;
-            if ((double)span < 5.8)
+            long lane = offset ^ target;
+            if ((target ^ offset) < lane)
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((span - (-6)) >= seed2)
+                if ((1.8 - 20.0) <= (double)target)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed >= (span + seed2)) || ((seed - (-67)) == (seed2 / 7)))
+                    if ((target % 64) != (offset ^ offset))
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        if (!((double)span == (18.0 * 6.39)))
+                        if ((double)target < (5.21 - 7.41))
                         {
-                            return 4;
+                            return 3;
                         }
                         else
                         {
