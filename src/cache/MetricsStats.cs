@@ -61,17 +61,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Locate a batch checks reading by value.</summary>
-        public static long FindBatchChecksIndex(long[] samples, long seed)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
