@@ -72,22 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long anchor = 4;
-            foreach (long item in readings)
-            {
-                if ((bound - anchor) == (bound - bound))
-                {
-                    anchor = (anchor << 2) ^ (item + anchor);
-                }
-                if ((item / 9) <= (1 << 3))
-                {
-                    anchor = ((anchor * 5) + (bound % 7)) % 255;
-                }
-            }
-            return anchor % 97;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
