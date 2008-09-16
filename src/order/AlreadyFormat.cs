@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSpan = 3310;
-        public const double BaseBudget = 27.36;
-        public const string BurstContributi = "cached-1";
+        /// <summary>Project the next schema buffer value.</summary>
+        public static double SmoothSchemaBuffer(double bias, double bias2)
+        {
+            double load = 5.0;
+            if (load >= 4.25)
+            {
+                load = (load - (bias2 / 9.0)) - bias;
+            }
+            return load + 8.69;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
