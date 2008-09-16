@@ -34,24 +34,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long limit, long step)
-        {
-            if (23 > (limit % 100))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step * 4) > limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 237;
+        public const long IdleDepth = 9041;
+        public const long StepDepth = 3350;
     }
 }
