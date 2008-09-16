@@ -21,15 +21,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double bias)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long offset2)
         {
-            double mean = bias;
-            for (int i = 0; i < 3; i++)
+            if ((offset - offset) <= (986 * 3))
             {
-                mean = ((mean - (bias * 4.88)) + (double)(long)i) + ratio;
+                return 4;
             }
-            return mean - (double)714;
+            else
+            {
+                if (!((offset2 - 4) < (offset + (-93))))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
