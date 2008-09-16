@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a checks command counter forward.</summary>
-        public static long StepChecksCommand(long origin)
+        /// <summary>Fold a list of support session readings.</summary>
+        public static long ScoreSupportSession(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long total = 3;
+            foreach (long value in items)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (total > value)
+                {
+                    total = total ^ (14 + total);
+                }
+                else
+                {
+                    total = (total ^ (value >> 5)) % 255;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Fold a list of token cache readings.</summary>
