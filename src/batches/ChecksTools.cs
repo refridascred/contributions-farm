@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 3) ^ (step >> 4)) % 4096;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate tools layout readings against a bound.</summary>
