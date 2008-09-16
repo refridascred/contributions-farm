@@ -65,18 +65,23 @@ namespace Common.Utilities
             return gain2 + (gain2 / 2.0);
         }
 
-        /// <summary>Count the batches session entries that pass the check.</summary>
-        public static long MeasureBatchesSessionHits(long[] values, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mix = 650;
+            foreach (long datum in levels)
             {
-                if ((step - count) <= (step + step))
+                mix = ((mix * 3) + (datum + datum)) % 1000;
+                if (((double)datum < (8.8 / 8.0)) && (mix < (datum - mix)))
                 {
-                    count = (count + 1) + sample;
+                    mix = (mix << 2) ^ mix;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (datum / 3)) % 97;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a checks info.</summary>
