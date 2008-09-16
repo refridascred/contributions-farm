@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
-        public static long MeasureBufferGithubfarmGaps(long[] items)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!(datum > (67 / 7)) || ((matches > (matches + matches)) || ((matches ^ matches) > (datum >> 5))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double bias2 = (bias - 1.0) / 9.0;
+            return (bias2 + 3.3) + offset;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
