@@ -1,5 +1,5 @@
 {
-  "readonly": true,
-  "soft_size_pct": false,
-  "poll_retries_count": 28.56
+  "token_interval": 100,
+  "sync_threshold_s": false,
+  "idle_depth_count": 5892
 }
