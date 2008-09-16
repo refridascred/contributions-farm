@@ -28,19 +28,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] items, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] levels)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long item in levels)
             {
-                if ((double)count <= (3.85 * 0.9))
+                if ((count & 15) <= (count - (-7)))
                 {
-                    count = ((count + 1) + value) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + item;
                 }
             }
             return count;
