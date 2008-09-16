@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 76.11;
-        public const long BurstTimeout = 1890;
-        public const long WindowSize = 7892;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double span)
+        {
+            double mean = (double)(182 % 3);
+            return ((mean - mean) + scale) + span;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] values)
