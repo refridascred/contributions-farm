@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result + (step - step)) % 101;
-                result = (result << 2) ^ step;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Locked,
+            Queued,
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
