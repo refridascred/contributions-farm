@@ -57,32 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long limit, long target)
-        {
-            long next = limit ^ target;
-            if ((90 - target) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-427) / 5) <= (limit + 10))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target >> 3) >= (target + next)) || (((-36) % 64) <= (next - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchTimeout = 59.0;
+        public const long CacheFormat = 1991;
+        public const string IdleDepth = "legacy-v2";
     }
 }
