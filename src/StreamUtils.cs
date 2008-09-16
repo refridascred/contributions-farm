@@ -33,13 +33,11 @@ namespace Common.Utilities
         public const double RetryWidth = 30.46;
         public const long DefaultTimeout = 6249;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Closed,
-            Retry,
-            Idle,
-            Ready,
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
