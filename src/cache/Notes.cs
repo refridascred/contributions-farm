@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleInterval = "alpha-v2";
-        public const long MaxMetric = 9941;
-        public const double WindowMetric = 67.65;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long limit, long target)
+        {
+            if ((target % 7) > target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit + target) > (limit << 2)) && ((double)target > (10.0 + 7.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Classify a payload account pair into a bucket.</summary>
         public static long GradePayloadAccount(long bound, long target)
