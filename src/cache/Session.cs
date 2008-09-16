@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] series, long origin)
+        /// <summary>Fold a list of queue graph readings.</summary>
+        public static long CombineQueueGraph(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mix = 56;
+            foreach (long entry in series)
             {
-                if (reading != origin)
+                if (((long)series.Length == (entry / 4)) || ((double)8 != (double)entry))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + (mix ^ mix)) % 65521;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a checks entry.</summary>
