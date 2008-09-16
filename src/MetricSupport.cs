@@ -38,19 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command schema entry stays within the limit.</summary>
-        public static bool ValidateCommandSchemaLimits(long[] items, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= limit)
+                if (samples[i] > origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
