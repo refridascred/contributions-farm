@@ -1,4 +1,13 @@
 # githubfarm settings
-sync_retries_count: 1024
-burst_capacity: open
-max_size_ms: 33.19
+dry_run: stable
+cache_size: green
+readonly:
+  sync_window_s: 21
+  hard_window: 100
+  soft_interval: false
+  strict:
+    idle_limit_ms: 5990
+    burst_capacity: 1024
+    warm_threshold_pct: 3806
+    persist: true
+    soft_ratio_ms: true
