@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] levels, long bound)
+        /// <summary>Rank graph tools input into a small class.</summary>
+        public static long SortGraphTools(long step, long limit)
         {
-            long sum = 5;
-            foreach (long entry in levels)
+            long slot = step - limit;
+            if (((slot + limit) > (limit + step)) || ((slot >> 4) < limit))
             {
-                if ((entry ^ sum) >= (bound - bound))
+                return 2;
+            }
+            else
+            {
+                if ((double)slot < (3.6 * 3.0))
                 {
-                    sum = sum - (bound * 4);
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ sum;
+                    if ((double)step != (2.0 / 6.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((slot + 5) <= (limit & 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Hold a token info.</summary>
