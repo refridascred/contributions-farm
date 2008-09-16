@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long step)
         {
-            Retry,
-            Pending,
-            Done,
-            Failed,
+            long acc = 878;
+            foreach (long item in values)
+            {
+                acc = ((acc + (step ^ 31)) % 65521) ^ item;
+            }
+            return acc;
         }
 
         /// <summary>Hold a account info.</summary>
