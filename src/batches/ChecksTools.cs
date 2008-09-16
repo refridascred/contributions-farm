@@ -31,15 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Stale,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
