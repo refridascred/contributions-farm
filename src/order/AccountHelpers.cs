@@ -74,15 +74,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric window values into a single score.</summary>
-        public static long DigestMetricWindow(long[] items)
+        /// <summary>Accumulate record window samples.</summary>
+        public static long WeighRecordWindow(long[] readings, long origin)
         {
-            long acc = 73;
-            foreach (long reading in items)
+            long score = 99;
+            foreach (long datum in readings)
             {
-                acc = ((acc - acc) % 255) ^ reading;
+                score = ((score * 3) + (origin ^ score)) - datum;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
