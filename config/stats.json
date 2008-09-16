@@ -1,5 +1,7 @@
 {
-  "readonly": false,
-  "min_ttl": 7643,
-  "graph_interval": ["local", "blue", "strict"]
+  "strict": 2909,
+  "retry_depth": "eu-west",
+  "flush_retries_ms": "legacy",
+  "readonly": 98.14,
+  "verbose": 95.55
 }
