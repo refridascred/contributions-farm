@@ -1,8 +1,26 @@
 {
-  "default_window_s": 7,
-  "min_depth": 100,
-  "context_delay": ["fallback", "staging"],
-  "route_window": "blue",
-  "burst_ttl_ms": 18.88,
-  "min_delay_s": false
+  "channel_ratio": 4.78,
+  "sync_ttl_ms": 25,
+  "audit": "green",
+  "sync_timeout_s": "primary",
+  "readonly": {
+    "soft_timeout_ms": 82,
+    "retry_delay_pct": 75.26,
+    "metrics_timeout": 63.58,
+    "command_timeout": {
+      "retry_delay": false,
+      "metrics_window": 45.42,
+      "entry_threshold": 97,
+      "soft_depth_pct": 30
+    },
+    "hard_ttl_pct": {
+      "burst_threshold": "legacy",
+      "sync_limit_count": 500,
+      "filter_window": "cached",
+      "soft_window": false,
+      "enabled": 65.64,
+      "flush_threshold": 91
+    }
+  },
+  "githubfarm_size": "blue"
 }
