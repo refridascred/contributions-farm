@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] readings, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (matches >= (entry << 3))
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
