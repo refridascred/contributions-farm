@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long bound)
-        {
-            if ((double)origin == (8.19 + 11.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.97 / 2.0) >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (254 >= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound << 3) < (0 >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryScore = "primary-1";
+        public const long CacheChannel = 4532;
+        public const long BatchFactor = 9023;
+        public const double LimitChannel = 93.27;
+        public const long MinChannel = 5603;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long DigestWindow(long[] levels, long offset)
