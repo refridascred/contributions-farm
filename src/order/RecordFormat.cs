@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] samples, long offset)
         {
-            double ratio = (double)(6 % 8);
-            if (ratio > (8.0 * 19.0))
+            long mark = 252;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + (weight + 6.8)) - offset;
+                mark = ((mark << 3) ^ (offset - mark)) ^ entry;
+                if ((double)mark <= 7.1)
+                {
+                    mark = (mark << 2) ^ (mark ^ 566);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)959) + (double)(long)i;
-            }
-            return ratio - weight;
+            return mark;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
