@@ -86,12 +86,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            New,
-            Idle,
-            Failed,
+            long carry = 884;
+            foreach (long sample in items)
+            {
+                if ((carry << 3) == (sample << 2))
+                {
+                    carry = (carry + 3) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ limit) % 97;
+                }
+            }
+            if (carry > 126)
+            {
+                carry = carry + (95 * 3);
+            }
+            return carry % 1000;
         }
     }
 }
