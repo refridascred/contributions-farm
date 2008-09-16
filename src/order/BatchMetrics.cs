@@ -54,18 +54,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] levels, long limit)
         {
-            long acc = 62;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((double)bound == (double)value) || ((bound + 671) <= 852))
+                if (!(3 < count))
                 {
-                    acc = (acc * 2) + (value % 100);
+                    count = ((count + 2) + sample) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
