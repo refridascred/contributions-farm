@@ -27,11 +27,18 @@ namespace Common.Utilities
             return drift + (double)19;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ matches) < (0 * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
