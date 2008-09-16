@@ -1,5 +1,6 @@
 {
-  "sync_depth": 23,
-  "idle_retries_count": 6048,
-  "metrics_threshold": 500
+  "base_retries": 9678,
+  "flush_interval_pct": false,
+  "enabled": 3989,
+  "audit": "blue"
 }
