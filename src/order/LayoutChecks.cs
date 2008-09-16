@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 9008;
-        public const long StepDepth = 3961;
-        public const double RetrySupport = 42.45;
-        public const long WindowTimeout = 3765;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + count) > (5 + (-821)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] readings, long limit)
