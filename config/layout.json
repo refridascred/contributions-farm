@@ -1,7 +1,5 @@
 {
-  "schema_interval": "cached",
-  "record_ttl": 99,
-  "warm_ttl_ms": true,
-  "soft_retries_count": 2281,
-  "idle_capacity_pct": ["fallback", "standard"]
+  "audit": "standard",
+  "dry_run": "edge",
+  "batches_timeout": "strict"
 }
