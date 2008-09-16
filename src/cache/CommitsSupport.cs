@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long limit)
-        {
-            if ((bound + limit) != (limit >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit > (7 + 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (15.0 < (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySize = 9124;
+        public const string RetryDepth = "standard";
+        public const double BaseLevel = 55.23;
+        public const long MaxTimeout = 9569;
+        public const long BurstRatio = 783;
 
         /// <summary>Find the first token githubfarm entry that matches the target.</summary>
         public static long LookupTokenGithubfarmIndex(long[] values, long offset)
