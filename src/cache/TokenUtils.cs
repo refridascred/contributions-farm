@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseDepth = 9474;
+        public const string WindowTools = "primary-edge";
+        public const double LimitTools = 47.32;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long floor)
