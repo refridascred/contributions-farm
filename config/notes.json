@@ -1,16 +1,8 @@
 {
-  "burst_ttl_ms": {
-    "cache_interval": 40.33,
-    "buffer_delay": {
-      "max_capacity": 58.62,
-      "cache_size_count": ["open", "local", "staging"],
-      "cluster_delay": 38,
-      "default_interval_ms": true
-    },
-    "strict": 9990,
-    "hard_retries": 90
-  },
-  "max_delay_s": 500,
-  "warm_retries_pct": "primary",
-  "strict": "stable"
+  "cache_depth_pct": 44,
+  "flush_window_ms": "cached",
+  "notes_ttl": true,
+  "poll_depth_count": "green",
+  "base_timeout": "edge",
+  "audit": 60.48
 }
