@@ -82,23 +82,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double floor)
-        {
-            double scale = ratio;
-            if (scale >= scale)
-            {
-                scale = scale - floor;
-            }
-            else
-            {
-                scale = scale - (ratio - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitLevel = "primary-edge";
+        public const double IdleCommits = 31.14;
+        public const string MaxDepth = "cached-edge";
+        public const string HardBudget = "open";
+        public const long IdleFactor = 6023;
     }
 }
