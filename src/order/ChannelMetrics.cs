@@ -14,12 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
