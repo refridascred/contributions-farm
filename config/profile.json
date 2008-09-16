@@ -1,18 +1,8 @@
 {
-  "audit": ["eu-west", "fallback"],
-  "cache_ratio_ms": false,
-  "persist": 1717,
-  "poll_ttl": {
-    "entry_ratio": {
-      "base_interval_ms": "local",
-      "support_limit": "stable",
-      "min_delay_s": ["primary", "open"],
-      "queue_limit": "local",
-      "batch_ratio_pct": "blue"
-    },
-    "cache_ratio": 9,
-    "default_timeout_count": 6942
-  },
-  "burst_threshold_ms": 17.15,
-  "hard_depth_pct": "staging"
+  "metrics_capacity": [260, 234, 398],
+  "already_limit": 13.49,
+  "max_size": 47,
+  "enabled": 78,
+  "dry_run": false,
+  "base_capacity_count": 75
 }
