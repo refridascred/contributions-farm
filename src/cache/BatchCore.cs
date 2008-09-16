@@ -20,25 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a stats notes pair into a bucket.</summary>
-        public static long SortStatsNotes(long limit, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            long next = limit - floor;
-            if (62 >= (next << 3))
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((next + limit) != (next + (-129)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
