@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first graph profile entry that matches the target.</summary>
-        public static long FindGraphProfileIndex(long[] levels, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] == origin)
+                if ((4.9 - 8.49) <= (6.0 * 18.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
