@@ -1,13 +1,6 @@
 {
-  "warm_retries_ms": "green",
-  "soft_limit_ms": {
-    "githubfarm_ttl": "legacy",
-    "idle_ttl": 500,
-    "tools_depth": [76, 242],
-    "warm_delay": "latest",
-    "cache_retries_s": ["standard", "blue", "strict"],
-    "cache_ratio_s": "strict"
-  },
-  "batch_timeout": false,
-  "cache_threshold": 6671
+  "flush_interval": "legacy",
+  "checks_interval": "legacy",
+  "cache_size_pct": 100,
+  "enabled": 500
 }
