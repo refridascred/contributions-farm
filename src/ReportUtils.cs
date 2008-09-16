@@ -27,12 +27,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheRatio = 4556;
-        public const long StepInterval = 3481;
-        public const string DefaultFarm = "stable-edge";
-        public const double SoftFarm = 61.31;
-        public const string IdleFarm = "standard";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
