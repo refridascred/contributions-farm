@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Active,
-            Locked,
-            Stale,
-            Synced,
-            Paused,
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of filter profile readings.</summary>
