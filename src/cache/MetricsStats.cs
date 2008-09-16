@@ -45,14 +45,11 @@ namespace Common.Utilities
         public const long CacheRatio = 7008;
         public const long IdleProfile = 5644;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            New,
-            Draft,
-            Stale,
-            Pending,
-            Queued,
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
