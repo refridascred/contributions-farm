@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleTimeout = 60;
+        public const double IdleSize = 69.9;
+        public const double MaxRoute = 37.29;
+        public const long MinBudget = 208;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] levels, long origin)
