@@ -35,11 +35,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double bias = weight;
-            return (bias - weight) + offset;
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Roll a cache notes counter forward.</summary>
