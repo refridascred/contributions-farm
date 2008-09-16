@@ -23,16 +23,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long origin, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long lane = origin + offset;
+            if (!((origin + lane) == (lane + lane)))
             {
-                result = result + (floor + (long)i);
-                result = ((result * 4) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((offset * 5) != (origin - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - 0) == (origin + lane)) && (1.1 <= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + origin) == (85 + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache header.</summary>
