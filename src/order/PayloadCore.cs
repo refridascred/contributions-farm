@@ -56,13 +56,22 @@ namespace Common.Utilities
         public const string MaxContext = "local";
         public const double BaseDepth = 76.36;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] data, long target)
         {
-            Queued,
-            Ready,
-            Locked,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry + entry) < tally))
+                {
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
