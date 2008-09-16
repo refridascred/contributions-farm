@@ -42,15 +42,15 @@ namespace Common.Utilities
         public const string CacheTimeout = "open";
         public const long LimitCounter = 2025;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long carry = 2;
-            foreach (long entry in values)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry + (carry + carry)) - entry;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Validate buffer schema readings against a bound.</summary>
