@@ -42,18 +42,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long CountProfileStreamMatches(long[] levels, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((16.0 - 6.32) == (double)origin) || (sample < (count << 1)))
+                if (!(8.0 <= (double)tally) && (value < (tally ^ (long)data.Length)))
                 {
-                    count = count + 3;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
