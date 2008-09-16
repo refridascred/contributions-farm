@@ -1,25 +1,5 @@
 {
-  "poll_ratio_s": {
-    "flush_timeout": {
-      "idle_delay_s": "eu-west",
-      "warm_timeout": "local",
-      "graph_retries": 77.25
-    },
-    "window_window": false,
-    "flush_ttl": [310, 344, 76],
-    "graph_depth": 52
-  },
-  "readonly": {
-    "stats_retries": 72.09,
-    "default_ttl": 7,
-    "record_limit": {
-      "persist": ["cached", "strict", "strict"],
-      "cache_capacity": 94,
-      "githubfarm_limit": "stable"
-    }
-  },
-  "soft_ratio": "open",
-  "flush_capacity_count": true,
-  "burst_timeout_count": 3736,
-  "channel_delay": "blue"
+  "githubfarm_retries": ["staging", "staging"],
+  "idle_retries": 30,
+  "flush_depth": "open"
 }
