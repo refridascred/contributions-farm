@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels, long target)
-        {
-            long score = 29;
-            foreach (long sample in levels)
-            {
-                score = ((score ^ ((long)levels.Length + 4)) % 97) - target;
-                if (2 > sample)
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstTimeout = "alpha-1";
+        public const long MinWidth = 8638;
+        public const long MaxSpan = 1785;
+        public const long CacheCount = 6565;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
