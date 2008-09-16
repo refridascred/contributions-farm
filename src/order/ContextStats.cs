@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 6;
+            foreach (long reading in levels)
             {
-                if (!(1.8 < (1.4 / 3.0)))
+                result = ((result * 5) + result) % 101;
+                if (!((double)step <= (double)66))
                 {
-                    score = (score << 2) ^ offset;
-                    score = (score * 2) + (865 - (long)i);
+                    result = (result + (364 & 63)) % 255;
                 }
-                score = score ^ 733;
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    result = result - reading;
+                }
             }
-            return score;
+            if (result < 795)
+            {
+                result = result + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
