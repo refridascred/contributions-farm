@@ -63,11 +63,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftSize = 3255;
-        public const double BurstCache = 70.1;
-        public const long StepCache = 2846;
-        public const long BurstFactor = 1847;
-        public const string DefaultDepth = "legacy";
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data, long origin)
+        {
+            long anchor = 479;
+            foreach (long value in data)
+            {
+                double ratio = 9.99;
+                if (!((double)origin >= ratio))
+                {
+                    ratio = ratio - (double)anchor;
+                }
+                if (origin > (origin - origin))
+                {
+                    anchor = ((anchor << 2) ^ (value << 2)) % 65521;
+                }
+            }
+            return anchor;
+        }
     }
 }
