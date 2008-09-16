@@ -33,12 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long TallyStreamTools(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long sum = 496;
+            foreach (long reading in readings)
+            {
+                if ((double)sum > (8.0 + 2.3))
+                {
+                    sum = sum ^ reading;
+                }
+                else
+                {
+                    sum = sum - (235 / 5);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
