@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long mark = 942;
+            foreach (long cell in samples)
+            {
+                mark = (mark - (mark - seed)) ^ cell;
+            }
+            return mark;
         }
     }
 }
