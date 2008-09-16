@@ -17,18 +17,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data, long limit)
+        /// <summary>Fold a list of stream window readings.</summary>
+        public static long FoldStreamWindow(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = 4;
+            foreach (long value in items)
             {
-                if (((double)seen <= (double)sample) || ((1 % 12) != (seen * 2)))
+                if (value < result)
                 {
-                    seen = (seen + 1) - limit;
+                    result = (result - value) % 4096;
+                }
+                if (!((result / 4) >= (result * 3)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 85)
+            {
+                result = (result + (result / 4)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the token level values.</summary>
