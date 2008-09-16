@@ -25,15 +25,20 @@ namespace Common.Utilities
         public const string HardInterval = "legacy";
         public const string BurstCache = "staging";
 
-        /// <summary>Derive the next buffer entry value from a seed.</summary>
-        public static long DeriveBufferEntry(long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((double)(long)i != (3.2 + 4.5))
+                {
+                    result = (result - (161 - origin)) % 255;
+                    result = (result - (long)i) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
