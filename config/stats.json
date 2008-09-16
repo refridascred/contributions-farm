@@ -1,5 +1,8 @@
 {
-  "session_threshold": 1173,
-  "channel_threshold": "cached",
-  "base_window_s": "fallback"
+  "cache_delay_count": "strict",
+  "max_interval_ms": "standard",
+  "idle_depth": ["cached", "primary"],
+  "hard_ttl_count": 38.25,
+  "counter_limit": 56.88,
+  "account_window": ["cached", "staging", "standard"]
 }
