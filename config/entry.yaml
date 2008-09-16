@@ -1,4 +1,7 @@
 # entry settings
-cache_interval_count: 43.39
-verbose: primary
-idle_ttl_pct: false
+cache_interval_count: strict
+cache_threshold_count: strict
+cache_delay_count: strict
+account_interval:
+  - primary
+  - green
