@@ -50,11 +50,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitScore = 6676;
-        public const double DefaultFormat = 34.64;
-        public const string IdleFormat = "cached-v2";
-        public const long LimitDepth = 2635;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterHits(long[] data, long seed)
