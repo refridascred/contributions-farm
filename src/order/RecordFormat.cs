@@ -44,11 +44,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstRatio = 64.83;
-        public const double HardDepth = 38.73;
-        public const double LimitGraph = 40.13;
-        public const long MinGraph = 2111;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long target)
+        {
+            long total = 813;
+            foreach (long entry in readings)
+            {
+                total = (total ^ entry) - target;
+                if ((double)total >= (double)(-52))
+                {
+                    total = (total ^ (330 & 31)) % 1000;
+                }
+                else
+                {
+                    total = (total + (entry & 7)) % 97;
+                }
+                if (total >= entry)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a session tools sample.</summary>
         public static long LocateSessionToolsIndex(long[] levels, long target)
