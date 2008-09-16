@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (16.0 >= (double)reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
