@@ -36,11 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "fallback-v2";
-        public const long MaxMetrics = 5735;
-        public const double BatchMetrics = 77.79;
-        public const string StepSize = "staging-v2";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Failed,
+            Active,
+            Done,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadLimits(long[] levels, long step)
