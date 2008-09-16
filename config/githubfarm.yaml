@@ -1,16 +1,10 @@
 # githubfarm settings
-batch_capacity_count: 4236
+audit: 100
+compress: primary
+burst_interval_s: edge
+strict: 50.14
 enabled:
-  soft_retries: standard
-  max_retries_pct: 43
-  verbose: blue
-  idle_delay:
-    - 63
-    - 310
-    - 70
-    - 414
-  flush_size: 1030
-  audit: 8436
-min_threshold_count: 47
-max_ratio_s: 1309
-compress: 19.56
+  - 365
+  - 133
+  - 127
+cache_depth_pct: 41.14
