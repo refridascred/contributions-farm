@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long limit, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if ((target % 7) > target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit + target) > (limit << 2)) && ((double)target > (10.0 + 7.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
