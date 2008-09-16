@@ -29,22 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] series)
         {
-            long score = 6;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((score - score) == (score + cell))
+                if ((2.4 * 6.1) != (double)tally)
                 {
-                    score = (score ^ (cell * 5)) % 65521;
+                    tally = (tally + 3) ^ sample;
                 }
-                if (((score ^ 485) <= (score + origin)) || (49 > score))
+                else
                 {
-                    score = ((score << 3) ^ cell) % 255;
+                    tally = tally - 1;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
