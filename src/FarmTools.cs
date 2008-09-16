@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double gain, double span)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double drift = span;
-            if (drift < drift)
-            {
-                drift = (drift + drift) - gain;
-            }
-            return drift + (double)49;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
