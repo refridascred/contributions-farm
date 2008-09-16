@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 96;
+            foreach (long sample in readings)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if (((6.19 * 2.0) < (double)sample) && ((double)limit != (8.0 * 4.01)))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ carry;
+                }
+                else
+                {
+                    carry = (carry ^ (sample + carry)) % 65521;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a entry entry.</summary>
