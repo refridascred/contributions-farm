@@ -48,15 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
