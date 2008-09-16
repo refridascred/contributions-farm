@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
