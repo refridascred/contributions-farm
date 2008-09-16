@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a buffer stream counter forward.</summary>
-        public static long IterateBufferStream(long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
