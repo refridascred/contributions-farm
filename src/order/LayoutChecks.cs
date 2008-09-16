@@ -46,16 +46,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long seed, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            if (((seed / 8) > (84 + step)) && ((1.08 / 9.0) < (double)step))
             {
-                mark = (mark ^ (long)i) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (((seed / 7) > (seed * 5)) || ((seed - 8) == (step + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(step >= (step + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
