@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items, long bound)
+        /// <summary>Check that every record command entry stays within the limit.</summary>
+        public static bool GuardRecordCommandBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (!((double)tally >= 3.02))
+                if (value != limit)
                 {
-                    tally = ((tally + 2) ^ sample) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
