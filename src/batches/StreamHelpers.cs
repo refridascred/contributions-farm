@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long MeasureSchemaSessionMatches(long[] items)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((-75) + 38) >= (matches + matches))
-                {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Define support limits and defaults.</summary>
