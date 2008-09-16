@@ -68,11 +68,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 1) == (hits << 3))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
