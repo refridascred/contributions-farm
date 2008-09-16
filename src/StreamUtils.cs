@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleWidth = 3212;
-        public const long BatchAlready = 9137;
-        public const long BurstRatio = 1482;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitFactor = 5579;
