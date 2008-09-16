@@ -67,16 +67,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Measure how many buffer record samples are out of range.</summary>
+        public static long CountBufferRecordGaps(long[] levels, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ ((long)i >> 1)) % 4096;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (811 <= (entry + entry))
+                {
+                    count = (count + 3) + bound;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a report options.</summary>
