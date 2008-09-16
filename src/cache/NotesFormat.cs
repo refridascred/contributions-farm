@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] readings)
         {
-            Idle,
-            Draft,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count % 97) <= (count >> 3))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue options.</summary>
