@@ -31,23 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = 591;
-            foreach (long sample in data)
-            {
-                mix = mix - sample;
-                if ((mix >> 1) < (sample * 2))
-                {
-                    break;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = ((mix << 3) ^ (mix << 2)) % 4096;
-            }
-            return mix % 97;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
