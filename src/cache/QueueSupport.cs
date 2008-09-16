@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long state = 5;
-            foreach (long value in data)
-            {
-                if (state > (state >> 5))
-                {
-                    state = (state * 2) + value;
-                }
-                else
-                {
-                    state = (state << 2) ^ (state ^ value);
-                }
-            }
-            return state % 4096;
+            Done,
+            Paused,
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
