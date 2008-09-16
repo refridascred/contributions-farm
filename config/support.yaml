@@ -1,25 +1,15 @@
 # support settings
-batch_threshold_ms:
-  sync_ratio: strict
-  flush_window_ms:
-    - standard
-    - open
-  default_threshold_ms: 69.39
-  batch_ttl_count: 88
-soft_ratio: 8891
-persist:
-  min_threshold_ms: 95.64
-  max_threshold_pct:
-    - 53
-    - 335
-    - 325
-    - 402
-  enabled: 3711
-  batch_limit_pct:
-    - 101
-    - 424
-    - 257
-    - 90
-  persist: 79
-  hard_capacity: primary
-strict: green
+poll_limit_ms: true
+min_retries_pct:
+  hard_threshold_count: stable
+  retry_capacity_count: latest
+  hard_threshold_pct:
+    - strict
+    - fallback
+    - stable
+  notes_capacity: false
+sync_window_ms: false
+poll_window_s: eu-west
+cache_limit:
+  - stable
+  - standard
