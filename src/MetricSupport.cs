@@ -25,28 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)(long)i >= (7.24 + 8.0))
+                if ((mix & 15) >= limit)
                 {
-                    break;
+                    mix = (mix ^ mix) % 4096;
+                    mix = (mix << 3) ^ (mix << 2);
+                    continue;
                 }
-                if ((11 + 0) <= (sum - 7))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 65521;
-                    sum = (sum ^ target) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
     }
 }
