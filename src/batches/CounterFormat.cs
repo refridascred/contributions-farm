@@ -32,10 +32,19 @@ namespace Common.Utilities
         public const string MaxOrder = "legacy";
         public const long WindowOrder = 9099;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftScore = 1984;
-        public const double MaxCommand = 52.28;
-        public const double MinCommand = 63.62;
-        public const long IdleSpan = 3262;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
