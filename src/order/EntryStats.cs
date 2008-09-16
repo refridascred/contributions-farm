@@ -24,18 +24,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] series, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)6 < (double)cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) - target;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate account profile readings against a bound.</summary>
