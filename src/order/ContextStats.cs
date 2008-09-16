@@ -22,28 +22,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long target)
         {
-            if ((floor << 1) < (floor + origin))
+            long slot = step + target;
+            if ((slot - target) >= (step - 9))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((5.0 - 1.3) == (double)floor)
+                if (((step % 16) == (step << 1)) || ((slot >> 4) < ((-820) - slot)))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((floor - 2) > (0 + origin))
+                    if ((step - step) <= (47 ^ target))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
