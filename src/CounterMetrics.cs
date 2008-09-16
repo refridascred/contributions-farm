@@ -23,18 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record schema readings against a rule.</summary>
-        public static long TallyRecordSchemaMatches(long[] readings)
+        /// <summary>Audit channel commits readings against a rule.</summary>
+        public static long MeasureChannelCommitsHits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((5.36 - 2.1) >= (double)value)
+                if ((datum & 31) >= (185 * 2))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
