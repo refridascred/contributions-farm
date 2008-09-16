@@ -41,19 +41,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] values, long limit)
         {
-            long state = 67;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                state = state - (sample ^ sample);
-                if ((8.31 * 4.78) <= (double)state)
+                if (datum <= limit)
                 {
-                    state = ((state * 2) + (sample - state)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
     }
 }
