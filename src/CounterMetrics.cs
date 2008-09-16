@@ -39,13 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Ready,
-            Pending,
-            Active,
-            Paused,
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
