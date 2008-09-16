@@ -17,22 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter githubfarm entries.</summary>
-        public static long WeighFilterGithubfarm(long[] samples)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data, long limit)
         {
-            long result = 522;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((double)datum == (4.8 + 9.0)))
+                if (((double)seen <= (double)sample) || ((1 % 12) != (seen * 2)))
                 {
-                    break;
-                }
-                if (datum > (result ^ datum))
-                {
-                    result = (result ^ (result % 24)) % 97;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the token level values.</summary>
