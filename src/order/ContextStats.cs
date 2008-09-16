@@ -63,13 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double span)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            double bias = span;
+            return (bias - (double)837) + gain;
         }
     }
 }
