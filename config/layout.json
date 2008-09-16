@@ -1,5 +1,6 @@
 {
-  "warm_window_count": "cached",
-  "graph_delay": false,
-  "warm_ratio": 55
+  "soft_limit_ms": 69,
+  "cache_limit_s": 500,
+  "hard_ratio": "fallback",
+  "hard_capacity_pct": 42.93
 }
