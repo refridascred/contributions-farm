@@ -1,5 +1,5 @@
 {
-  "soft_interval_pct": 60,
-  "base_window_s": 1024,
-  "poll_window_s": 76
+  "persist": ["standard", "blue"],
+  "hard_window": "local",
+  "report_timeout": "staging"
 }
