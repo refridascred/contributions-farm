@@ -45,13 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((double)tally != (8.9 / 6.0)))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
