@@ -1,18 +1,6 @@
 # githubfarm settings
-compress:
-  - primary
-  - cached
-context_delay: 51
-hard_retries_ms: true
-persist: fallback
-idle_interval_count:
-  flush_timeout_pct: 5881
-  min_size: 500
-  default_delay_s:
-    - edge
-    - standard
-  enabled:
-    base_limit_pct: 6074
-    warm_timeout_ms: 5.34
-    base_depth: true
-graph_timeout: 7515
+compress: stable
+burst_window: 7
+batch_size: 87.15
+base_capacity: 87
+soft_timeout: 30
