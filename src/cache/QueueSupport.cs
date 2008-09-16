@@ -38,23 +38,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double floor)
-        {
-            double ratio = (double)(5 << 2);
-            if (ratio >= ratio)
-            {
-                ratio = ratio - floor;
-            }
-            else
-            {
-                ratio = ratio - 7.61;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - scale) + (double)(long)i;
-            }
-            return ratio + (double)346;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 7438;
+        public const long MinLevel = 834;
+        public const long SoftEntry = 5306;
+        public const string MaxEntry = "legacy-edge";
     }
 }
