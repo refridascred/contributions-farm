@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                state = (state + (limit << 3)) % 1000;
-                state = ((state * 4) + (long)i) % 4093;
+                if (!(1.8 < (1.4 / 3.0)))
+                {
+                    score = (score << 2) ^ offset;
+                    score = (score * 2) + (865 - (long)i);
+                }
+                score = score ^ 733;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
