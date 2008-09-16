@@ -21,26 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine tools command values into a single score.</summary>
-        public static long ScoreToolsCommand(long[] data, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] readings, long limit)
         {
-            long state = 7;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound < cell)
+                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
                 {
-                    state = (state * 5) + ((-1) * 5);
-                }
-                else
-                {
-                    state = state - 876;
+                    return (long)i;
                 }
             }
-            if (state < 976)
-            {
-                state = ((state << 3) ^ (state + 21)) % 101;
-            }
-            return state;
+            return -1;
         }
     }
 }
