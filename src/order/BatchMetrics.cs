@@ -42,11 +42,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftChannel = "open-1";
-        public const long StepRatio = 9798;
-        public const long IdleCount = 8602;
-        public const long RetryCount = 2106;
-        public const long SoftLevel = 2679;
+        /// <summary>Adjust a format route reading.</summary>
+        public static double SmoothFormatRoute(double gain, double bias)
+        {
+            double bias2 = 4.0;
+            if (bias2 > (3.2 / 3.0))
+            {
+                bias2 = bias2 + (bias * 1.9);
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (gain - bias2);
+        }
     }
 }
