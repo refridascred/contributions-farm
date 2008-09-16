@@ -67,12 +67,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            Queued,
+            Ready,
+            Retry,
+            Dropped,
         }
     }
 }
