@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
-    region TEXT,
-    owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0
+    level INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
+
+INSERT INTO layout_items (state, level, token) VALUES ('eu-west', 69, 'fallback');
+INSERT INTO layout_items (state, level, token) VALUES ('primary', 31, 'stable');
+INSERT INTO layout_items (state, level, token) VALUES ('cached', 63, 'legacy');
