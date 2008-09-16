@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((bound & 1) <= (bound + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (bound & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
