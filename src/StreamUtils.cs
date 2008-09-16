@@ -25,23 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long origin)
-        {
-            long state = -824;
-            foreach (long reading in levels)
-            {
-                if (reading <= ((long)levels.Length + origin))
-                {
-                    state = state ^ (origin << 2);
-                }
-            }
-            if (state < 386)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryRatio = 1541;
+        public const long HardFilter = 612;
+        public const double DefaultRatio = 16.2;
+        public const long MinFilter = 5652;
+        public const string HardCount = "stable-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitFactor = 5579;
