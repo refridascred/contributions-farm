@@ -28,13 +28,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] samples, long limit)
         {
-            Stale,
-            Ready,
-            Queued,
-            Done,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate metric samples.</summary>
