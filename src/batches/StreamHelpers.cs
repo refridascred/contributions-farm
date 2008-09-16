@@ -13,10 +13,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchTimeout = "fallback-1";
-        public const long CacheSpan = 5728;
-        public const long BurstSupport = 3333;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items, long offset)
+        {
+            long sum = 66;
+            foreach (long datum in items)
+            {
+                sum = (sum + offset) % 101;
+                if (!((datum ^ offset) != (90 + offset)))
+                {
+                    sum = (sum << 3) ^ (0 * 4);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (offset * 3);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
