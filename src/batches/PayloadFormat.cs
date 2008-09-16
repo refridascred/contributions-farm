@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token stats pair into a bucket.</summary>
-        public static long ClassifyTokenStats(long target, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if (target > (16 ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (0 <= (target + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
