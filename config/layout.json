@@ -1,6 +1,5 @@
 {
-  "poll_depth_s": 3.6,
-  "route_size": "cached",
-  "min_limit_ms": [88, 464],
-  "checks_ratio": "staging"
+  "max_depth_pct": true,
+  "warm_threshold_pct": [58, 347],
+  "batches_ttl": 5267
 }
