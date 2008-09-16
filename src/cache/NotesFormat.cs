@@ -14,19 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
