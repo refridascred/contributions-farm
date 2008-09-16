@@ -62,13 +62,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 6622;
+        public const string LimitGraph = "open-edge";
+        public const long SoftGraph = 333;
+        public const double CacheLevel = 53.94;
     }
 }
