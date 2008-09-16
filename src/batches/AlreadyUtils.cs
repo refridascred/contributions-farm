@@ -42,22 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] samples, long offset)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading > (double)(-9))
+                if (samples[i] == offset)
                 {
-                    score = score + (reading % 16);
+                    return (long)i;
                 }
             }
-            if (score < 9)
-            {
-                score = ((score * 3) + score) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a entry entry.</summary>
