@@ -21,24 +21,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long offset2)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] series, long target)
         {
-            if ((offset - offset) <= (986 * 3))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset2 - 4) < (offset + (-93))))
+                if ((tally + target) >= value)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
