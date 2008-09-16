@@ -16,13 +16,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark * 2) + mark;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate batch channel readings against a bound.</summary>
