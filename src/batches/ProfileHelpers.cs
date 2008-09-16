@@ -42,19 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long limit)
+        /// <summary>Accumulate batch graph samples.</summary>
+        public static long ScoreBatchGraph(long[] levels, long seed)
         {
-            long mix = 5;
-            foreach (long reading in values)
+            long acc = 63;
+            foreach (long sample in levels)
             {
-                mix = (mix + reading) % 4096;
-                if ((mix / 6) >= (limit + reading))
-                {
-                    mix = (mix - (36 % 60)) % 97;
-                }
+                acc = ((acc ^ (acc - 7)) - sample) - seed;
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Hold a queue summary.</summary>
