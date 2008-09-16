@@ -38,18 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account batch entries.</summary>
-        public static long TallyAccountBatch(long[] samples)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long score = 404;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value * 4) >= 58)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score - (value % 5)) % 4096;
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
