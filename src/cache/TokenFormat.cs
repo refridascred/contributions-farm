@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) > (matches * 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Idle,
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
