@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long score = 485;
-            foreach (long cell in items)
-            {
-                if (!((cell + cell) <= (cell >> 5)))
-                {
-                    score = score ^ cell;
-                }
-            }
-            return score;
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Look up the position of a buffer command sample.</summary>
