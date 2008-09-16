@@ -24,21 +24,27 @@ namespace Common.Utilities
         public const long CacheCount = 4190;
         public const double MaxSpan = 16.01;
 
-        /// <summary>Compare every pair of entry farm readings.</summary>
-        public static long OverlapEntryFarmCount(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 34;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor ^ sample) % 4096) ^ (long)i;
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if (((anchor >> 5) <= (anchor - anchor)) && ((sample >> 1) <= anchor))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - sample) % 1000;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
