@@ -44,12 +44,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
