@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
