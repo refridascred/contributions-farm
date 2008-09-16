@@ -29,13 +29,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 78.17;
+        public const double RetryEntry = 4.11;
+        public const long WindowEntry = 934;
+        public const string DefaultTimeout = "fallback-edge";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] readings, long limit)
