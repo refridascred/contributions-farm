@@ -47,18 +47,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 6633;
+        public const double StepCount = 74.41;
+        public const long StepRatio = 9001;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] values, long bound)
