@@ -1,5 +1,6 @@
 {
-  "burst_size_s": "latest",
-  "batch_timeout_ms": false,
-  "base_limit_count": 39.44
+  "batch_ratio": 76.22,
+  "compress": 100,
+  "sync_retries_ms": 26,
+  "idle_size_s": "standard"
 }
