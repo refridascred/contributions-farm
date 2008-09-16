@@ -1,5 +1,5 @@
 {
-  "compress": 2442,
-  "strict": 2472,
-  "flush_interval_pct": "stable"
+  "min_ratio": [119, 256],
+  "warm_depth_s": false,
+  "burst_timeout_count": 59.59
 }
