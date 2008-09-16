@@ -23,10 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxSize = 1073;
-        public const double BurstDepth = 45.76;
-        public const string SoftSize = "latest-edge";
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] data)
