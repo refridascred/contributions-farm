@@ -57,25 +57,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long target, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] series, long bound)
         {
-            long prev = target - floor;
-            if ((target >> 1) != (prev + floor))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - prev) == (115 - target))
+                if (entry < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
