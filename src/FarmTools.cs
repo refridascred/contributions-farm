@@ -19,20 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long target, long target2)
         {
-            long sum = 7;
-            foreach (long datum in samples)
+            long next = target ^ target2;
+            if ((95 >> 3) > (target >> 1))
             {
-                sum = ((sum * 3) + (sum * 4)) ^ datum;
-                sum = sum ^ (sum << 2);
+                return 4;
             }
-            if (sum < 5)
+            else
             {
-                sum = sum ^ (sum - sum);
+                if ((0.05 / 6.0) > (double)target2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next + target) >= 2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.0 + 6.0) != (double)target2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
