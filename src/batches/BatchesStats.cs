@@ -23,13 +23,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long floor)
         {
-            New,
-            Retry,
-            Draft,
-            Locked,
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = result + (floor + (long)i);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a cache header.</summary>
