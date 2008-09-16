@@ -34,23 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series)
-        {
-            long state = 440;
-            foreach (long entry in series)
-            {
-                state = ((state << 2) ^ (state & 1)) % 255;
-                if (!((9.75 / 7.0) > (20.0 * 1.3)))
-                {
-                    state = (state - (state / 9)) % 255;
-                }
-                else
-                {
-                    state = (state << 2) ^ (84 - entry);
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxWidth = 9706;
+        public const double RetryFormat = 20.17;
+        public const long WindowFormat = 3267;
+        public const long MinLevel = 3498;
+        public const long DefaultInterval = 4289;
     }
 }
