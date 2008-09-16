@@ -19,25 +19,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next filter record value from a seed.</summary>
-        public static long IterateFilterRecord(long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long sum = 848;
+            foreach (long sample in values)
             {
-                if ((anchor - 57) != (seed & 63))
-                {
-                    anchor = (anchor - ((long)i % 60)) % 4096;
-                    break;
-                }
-                if (!(((anchor % 3) < (long)i) || ((seed / 7) == (anchor << 2))))
-                {
-                    anchor = (anchor - (anchor ^ seed)) % 1000;
-                    anchor = anchor - (seed + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                sum = (sum << 2) ^ (sample & 1);
             }
-            return anchor;
+            return sum;
         }
     }
 }
