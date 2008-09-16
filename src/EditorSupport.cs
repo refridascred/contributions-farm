@@ -54,14 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine entry metrics values into a single score.</summary>
+        public static long DigestEntryMetrics(long[] samples, long step)
         {
-            Active,
-            Closed,
-            Pending,
-            Stale,
-            Draft,
+            long mark = 963;
+            foreach (long cell in samples)
+            {
+                if ((mark + cell) >= mark)
+                {
+                    mark = (((mark << 2) ^ cell) % 1000) - step;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
