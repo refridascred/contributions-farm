@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a account contributi pair into a bucket.</summary>
-        public static long SortAccountContributi(long offset, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] samples, long offset)
         {
-            if ((offset - offset) <= (offset + offset))
+            long result = 7;
+            foreach (long value in samples)
             {
-                return 2;
+                result = (((result ^ (413 << 3)) % 255) - value) - offset;
             }
-            else
-            {
-                if ((double)seed <= (0.64 * 9.86))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ offset) >= (seed ^ seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset + seed) <= (offset << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
