@@ -55,19 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order already entry stays within the limit.</summary>
-        public static bool ValidateOrderAlreadyLimits(long[] values, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long state = 33;
+            foreach (long entry in items)
             {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state + (669 + entry)) % 97;
+                state = (state << 3) ^ entry;
             }
-            return ok;
+            if (state < 7)
+            {
+                state = (state + (state >> 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
