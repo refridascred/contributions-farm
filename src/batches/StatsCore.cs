@@ -26,15 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
