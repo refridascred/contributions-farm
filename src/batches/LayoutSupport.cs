@@ -74,15 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data, long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long state = 147;
-            foreach (long reading in data)
-            {
-                state = (((state * 5) + (reading ^ state)) % 65521) - origin;
-            }
-            return state;
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
