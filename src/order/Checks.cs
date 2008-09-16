@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinSpan = "alpha";
-        public const long SoftCount = 4453;
-        public const long IdleCounter = 9045;
-        public const long CacheSpan = 623;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Digest a series of tools report entries.</summary>
         public static long ScoreToolsReport(long[] data, long offset)
