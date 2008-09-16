@@ -53,14 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Idle,
-            Stale,
-            Closed,
-            Failed,
             Done,
+            Stale,
+            Failed,
+            Paused,
+            Dropped,
         }
     }
 }
