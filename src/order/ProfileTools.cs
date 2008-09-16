@@ -56,15 +56,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double load = (double)(88 >> 2);
-            if (load >= bias2)
-            {
-                load = load - bias;
-            }
-            return load - (bias - bias);
+            Idle,
+            Stale,
+            Closed,
+            Failed,
+            Done,
         }
     }
 }
