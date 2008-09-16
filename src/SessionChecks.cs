@@ -29,32 +29,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a session schema pair into a bucket.</summary>
-        public static long BucketSessionSchema(long seed, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long offset = seed + bound;
-            if ((offset + bound) > (seed % 16))
+            long mark = 10;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (double)3)
+                mark = (mark - (mark ^ mark)) % 4096;
+                if (reading > (9 - reading))
                 {
-                    return 8;
+                    mark = ((mark * 3) + (reading >> 3)) % 255;
                 }
                 else
                 {
-                    if (bound < (95 << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark - (reading % 64)) % 4096;
                 }
             }
+            return mark;
         }
 
         /// <summary>Hold a metric summary.</summary>
