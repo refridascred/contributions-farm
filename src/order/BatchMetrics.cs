@@ -27,10 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseBudget = 24.47;
-        public const string StepInterval = "strict-1";
-        public const double DefaultBudget = 83.38;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryScore = "primary-1";
+        public const double HardTimeout = 31.01;
+        public const double IdleNotes = 75.6;
+        public const string RetryNotes = "stable";
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
