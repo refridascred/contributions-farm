@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] series, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long next = limit + target;
+            if ((target > (next + next)) || ((limit ^ 509) <= next))
             {
-                if (((87 / 4) <= (reading - tally)) || ((double)tally < (2.6 * 1.3)))
+                return 4;
+            }
+            else
+            {
+                if (((9.12 * 18.0) > (double)limit) || ((next + limit) >= (target - target)))
                 {
-                    tally = (tally + 2) + step;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)target <= (6.5 - 7.08))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target < (target ^ target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
