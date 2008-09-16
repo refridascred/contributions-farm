@@ -66,31 +66,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long step, long step2)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long limit)
         {
-            if (step2 >= ((-3) - step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 24) < step)
+                if (data[i] > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step2 < 7.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
