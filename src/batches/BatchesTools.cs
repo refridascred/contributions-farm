@@ -27,24 +27,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a order channel pair into a bucket.</summary>
-        public static long RankOrderChannel(long bound, long bound2)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            if ((double)bound != (double)bound2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 5) == (bound2 - 381))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Stale,
+            Draft,
+            Synced,
+            Queued,
         }
     }
 }
