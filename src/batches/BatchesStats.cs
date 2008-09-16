@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepSpan = 9.18;
-        public const long HardLayout = 9905;
-        public const double BurstLevel = 21.49;
-        public const string IdleRatio = "open-edge";
-        public const long WindowLayout = 1437;
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double bias)
+        {
+            double scale = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (ratio + scale)) + (double)(long)i;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsOutliers(long[] data)
