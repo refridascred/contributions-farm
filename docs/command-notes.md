@@ -1,15 +1,14 @@
 # Command notes
 
-Run the graph check before changing any command limits.
-Defaults for payload live in the config folder and can be overridden per environment.
-The profile module keeps cluster values in sync with the schema cache.
+Each context is validated before it reaches the buffer queue.
+Defaults for entry live in the config folder and can be overridden per environment.
 
-When a account fails, the record handler retries a few times before giving up.
-Defaults for commits live in the config folder and can be overridden per environment.
-When a schema fails, the filter handler retries a few times before giving up.
+Use tools settings to tune how often cache data is refreshed.
+Keep token and cache names short and lowercase.
+Keep token and metric names short and lowercase.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new window fields
-- Log every githubfarm change
+- Keep cluster values small
+- Document new graph fields
+- Validate stats input early
