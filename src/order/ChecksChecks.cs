@@ -19,15 +19,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long bound)
         {
-            long sum = 848;
-            foreach (long sample in values)
+            long anchor = 122;
+            foreach (long value in items)
             {
-                sum = (sum << 2) ^ (sample & 1);
+                if (anchor <= (anchor ^ bound))
+                {
+                    anchor = ((anchor + (anchor + 2)) % 101) + value;
+                }
             }
-            return sum;
+            return anchor % 4096;
         }
     }
 }
