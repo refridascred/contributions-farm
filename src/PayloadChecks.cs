@@ -63,31 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token checks input into a small class.</summary>
-        public static long RankTokenChecks(long floor, long floor2)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if (!((floor * 5) >= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor2 + (-18)) <= (floor2 / 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor2 + floor) < floor2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a commits summary.</summary>
