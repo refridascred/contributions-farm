@@ -57,20 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series, long bound)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long carry = 94;
-            foreach (long value in series)
-            {
-                carry = ((carry ^ (bound * 5)) % 1000) ^ value;
-                carry = (carry << 2) ^ (3 + bound);
-            }
-            if (carry > (-18))
-            {
-                carry = ((carry * 3) + (bound >> 5)) % 1000;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
