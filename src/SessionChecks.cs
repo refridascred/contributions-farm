@@ -39,11 +39,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "latest-1";
-        public const long SoftDepth = 9854;
-        public const long HardStream = 726;
-        public const long BaseFactor = 4899;
-        public const long BaseStream = 8465;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
