@@ -14,12 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double rate, double bias)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            double mean = 4.84;
+            if (mean < (mean - bias))
+            {
+                mean = mean - (rate / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (4.3 * 2.86)) - (double)(long)i;
+            }
+            return mean + (bias + bias);
         }
 
         /// <summary>Digest a series of format entries.</summary>
