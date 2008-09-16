@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double MinBudget = 27.14;
         public const long BatchScore = 8358;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long score = 520;
-            foreach (long item in series)
-            {
-                if ((double)origin > (4.0 + 9.15))
-                {
-                    score = ((score << 3) ^ (item + score)) % 4096;
-                }
-            }
-            return score % 1000;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
