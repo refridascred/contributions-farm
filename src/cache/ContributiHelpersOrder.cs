@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Active,
-            Synced,
-            Closed,
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
