@@ -34,10 +34,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseBudget = 8617;
-        public const long SoftFormat = 4928;
-        public const double IdleRatio = 38.19;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double span)
+        {
+            double weight = bias / 2.0;
+            if (weight < (bias - span))
+            {
+                weight = weight - weight;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] series, long step)
