@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Failed,
-            Closed,
-            Synced,
             Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
