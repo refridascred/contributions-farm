@@ -35,21 +35,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double bias = weight;
+            return (bias - weight) + offset;
         }
 
         /// <summary>Roll a cache notes counter forward.</summary>
