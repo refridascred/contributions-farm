@@ -20,21 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next support window value from a seed.</summary>
-        public static long DeriveSupportWindow(long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (sum <= (sum - sum))
-                {
-                    sum = (sum * 3) + (sum - sum);
-                }
-                sum = (sum - sum) % 65521;
-                sum = (sum ^ ((-12) + offset)) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
