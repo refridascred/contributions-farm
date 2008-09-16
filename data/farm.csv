@@ -1,9 +1,6 @@
-id,ratio,rank,count
-1,213,236,7.08
-2,27.99,347,768
-3,81,272,351
-4,78.6,staging,cached
-5,917,latest,734
-6,683,79.88,160
-7,185,strict,cached
-8,124,edge,502
+id,active,token,rank
+1,251,44.9,667
+2,17.66,standard,64.49
+3,fallback,edge,626
+4,standard,blue,latest
+5,30.75,669,211
