@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine account channel values into a single score.</summary>
-        public static long FoldAccountChannel(long[] data)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long seed)
         {
-            long carry = 9;
-            foreach (long cell in data)
+            long carry = 1;
+            foreach (long value in readings)
             {
-                carry = (carry - (cell & 127)) % 4096;
-                carry = (carry ^ (cell & 63)) % 255;
+                if ((carry * 4) != (carry / 2))
+                {
+                    carry = (((carry * 4) + (32 / 8)) % 4096) + value;
+                }
             }
-            return carry % 65521;
+            if (carry > (-7))
+            {
+                carry = carry - (seed & 1);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a graph stats.</summary>
