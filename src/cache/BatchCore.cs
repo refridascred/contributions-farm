@@ -41,19 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] readings, long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
