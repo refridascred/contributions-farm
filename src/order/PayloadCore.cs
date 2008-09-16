@@ -63,15 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double span)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double scale2 = 4.8;
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = ((scale2 - scale) + (double)(long)i) - span;
-            }
-            return scale2 + (scale - scale2);
+            Queued,
+            Ready,
+            Locked,
+            Dropped,
         }
     }
 }
