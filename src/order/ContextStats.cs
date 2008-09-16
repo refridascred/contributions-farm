@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long limit)
         {
-            long result = 6;
-            foreach (long reading in levels)
+            if (((offset + offset) >= (limit ^ 7)) || ((limit ^ 79) > (offset ^ offset)))
             {
-                result = ((result * 5) + result) % 101;
-                if (!((double)step <= (double)66))
+                return 5;
+            }
+            else
+            {
+                if ((6.1 - 5.8) > (double)limit)
                 {
-                    result = (result + (364 & 63)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    result = result - reading;
+                    return 8;
                 }
             }
-            if (result < 795)
-            {
-                result = result + (result + result);
-            }
-            return result;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
