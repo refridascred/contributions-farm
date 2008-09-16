@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] data, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items, long bound)
         {
-            long total = 131;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                total = (((total - 4) % 255) + sample) - offset;
+                if ((double)658 < (double)(long)items.Length)
+                {
+                    hits = ((hits + 1) + datum) + bound;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
