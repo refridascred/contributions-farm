@@ -19,12 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Match up metric channel samples.</summary>
+        public static long CompareMetricChannelCount(long[] series)
         {
-            New,
-            Ready,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
