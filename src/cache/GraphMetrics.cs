@@ -62,24 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long step, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items, long limit)
         {
-            if (!(bound < (step / 8)))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step / 7) <= (step % 64))
+                if ((item ^ item) >= item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 1) + limit;
                 }
             }
+            return seen;
         }
     }
 }
