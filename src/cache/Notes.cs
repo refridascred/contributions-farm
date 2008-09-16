@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long floor)
         {
-            Paused,
-            Dropped,
-            Failed,
-            Draft,
+            if ((floor <= (seed << 1)) || ((seed & 127) >= (floor & 15)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed >= (seed % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor & 255) > (seed + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
