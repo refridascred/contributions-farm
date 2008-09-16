@@ -1,7 +1,12 @@
 {
-  "readonly": 8520,
-  "min_ratio_pct": 45.57,
-  "retry_window_count": "latest",
-  "poll_ttl_pct": 25,
-  "sync_interval_ms": 8462
+  "default_retries": 83,
+  "idle_limit": "primary",
+  "cache_delay_pct": 60,
+  "default_limit": {
+    "flush_capacity_ms": 80.52,
+    "default_window_count": false,
+    "hard_depth_pct": 4600,
+    "base_depth_pct": 3011,
+    "flush_window": [285, 346]
+  }
 }
