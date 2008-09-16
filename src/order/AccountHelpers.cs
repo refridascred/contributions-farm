@@ -56,18 +56,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] items, long step)
+        /// <summary>Roll a queue githubfarm counter forward.</summary>
+        public static long RollQueueGithubfarm(long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((15.0 / 7.0) < (double)reading)
-                {
-                    hits = (hits + 1) + step;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine stats stream values into a single score.</summary>
