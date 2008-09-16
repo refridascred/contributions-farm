@@ -19,20 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + origin) % 101;
-                if ((total ^ (long)i) == (total + (long)i))
-                {
-                    total = total - (total + origin);
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
