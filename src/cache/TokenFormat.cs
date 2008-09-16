@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Queued,
-            Pending,
-            Failed,
-            Ready,
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
