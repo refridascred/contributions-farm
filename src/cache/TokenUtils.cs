@@ -22,26 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order context readings.</summary>
-        public static long FoldOrderContext(long[] samples)
+        /// <summary>Audit channel order readings against a rule.</summary>
+        public static long TallyChannelOrderMatches(long[] levels)
         {
-            long acc = -7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((acc & 255) <= entry)
+                if (matches >= (5 + 945))
                 {
-                    acc = acc + (80 >> 5);
+                    matches = (matches + 1) ^ datum;
                 }
                 else
                 {
-                    acc = (acc - (entry % 24)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (acc < 55)
-            {
-                acc = acc - (acc ^ acc);
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
