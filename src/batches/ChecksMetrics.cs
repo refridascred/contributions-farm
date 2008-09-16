@@ -61,18 +61,18 @@ namespace Common.Utilities
         public const long MaxMetrics = 4055;
         public const long BatchInterval = 6199;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] series, long origin)
+        /// <summary>Count the report command entries that pass the check.</summary>
+        public static long CountReportCommandGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)87 >= (double)sample)
+                if (!(((matches % 100) <= (6 + value)) || ((value << 3) <= (value - 787))))
                 {
-                    count = (count + 1) - origin;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
