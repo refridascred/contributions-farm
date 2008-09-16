@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel command entry stays within the limit.</summary>
-        public static bool CheckChannelCommandBounds(long[] items, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double drift = floor;
+            if (drift < floor)
             {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - (floor - scale);
             }
-            return valid;
+            return drift + (double)19;
         }
 
         /// <summary>Hold a already options.</summary>
