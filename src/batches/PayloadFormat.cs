@@ -23,38 +23,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long target, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if ((8.7 + 7.0) <= (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((bound - target) <= (target << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < 5.98)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target ^ bound) == (target - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
