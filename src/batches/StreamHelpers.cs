@@ -19,19 +19,21 @@ namespace Common.Utilities
         public const long CacheSpan = 5728;
         public const long BurstSupport = 3333;
 
-        /// <summary>Iterate the route profile series from a seed.</summary>
-        public static long RollRouteProfile(long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((anchor >= (anchor << 2)) || ((origin * 4) > (long)i)))
+                total = (total << 2) ^ ((long)i >> 1);
+                total = (total + 3) % 255;
+                if ((target >> 4) <= total)
                 {
-                    anchor = (anchor * 4) + anchor;
+                    continue;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Project the next report metrics value.</summary>
