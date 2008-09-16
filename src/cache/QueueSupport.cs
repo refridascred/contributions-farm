@@ -25,21 +25,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Fold a list of session record readings.</summary>
+        public static long TotalSessionRecord(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 661;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = result + (result + entry);
+                result = (result ^ result) % 1000;
+                if ((double)result >= 1.2)
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
