@@ -19,17 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm githubfarm sample.</summary>
-        public static long LocateFarmGithubfarmIndex(long[] data, long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
