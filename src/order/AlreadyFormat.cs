@@ -55,18 +55,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long MeasureMetricsGraphOutliers(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen >= (0.92 * 9.54))
-                {
-                    seen = ((seen + 2) ^ value) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultCount = 88.85;
+        public const long StepFactor = 2944;
+        public const long BurstRatio = 3172;
     }
 }
