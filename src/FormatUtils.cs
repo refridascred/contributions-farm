@@ -62,18 +62,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels, long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item & 1) == (hits << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - offset;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
