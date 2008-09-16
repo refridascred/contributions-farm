@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] levels, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit % 8) < (limit - 5))
             {
-                if (levels[i] < origin)
+                return 5;
+            }
+            else
+            {
+                if ((4.0 - 8.7) > (double)floor)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (1.0 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
