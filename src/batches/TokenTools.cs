@@ -19,39 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long target, long seed)
+        /// <summary>Fold a list of filter cluster readings.</summary>
+        public static long WeighFilterCluster(long[] readings)
         {
-            long cur = target - seed;
-            if ((seed + target) == (234 >> 5))
+            long result = 7;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((cur * 4) <= target) && ((15.0 * 3.55) < (3.0 + 6.48)))
+                if ((372 + cell) > (cell << 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((cur << 2) > (seed + cur)) && ((cur + cur) != ((-5) / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target < 6.0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = (result - (result + 78)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
