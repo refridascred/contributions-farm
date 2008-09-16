@@ -62,21 +62,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Match up editor checks samples.</summary>
-        public static long PairEditorChecksCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 9;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc << 3) ^ (acc + 270)) + datum) + origin;
             }
-            return seen;
+            if (acc > 572)
+            {
+                acc = ((acc * 3) + (acc + acc)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
