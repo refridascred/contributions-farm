@@ -28,12 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Idle,
-            Draft,
-            Paused,
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
