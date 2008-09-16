@@ -29,12 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            Failed,
-            Active,
-            New,
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
