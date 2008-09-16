@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data, long limit)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mark = 887;
-            foreach (long item in data)
-            {
-                mark = ((((mark * 5) + (78 & 1)) % 65521) ^ item) - limit;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue entries.</summary>
