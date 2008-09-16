@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((double)bound == (0.15 * 2.0)) || ((double)value == (0.4 / 8.0)))
+                if ((step * 5) == (419 >> 2))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate queue samples.</summary>
