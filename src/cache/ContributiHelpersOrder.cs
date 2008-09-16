@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            double gain = offset;
-            return (gain - 6.9) + rate;
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
