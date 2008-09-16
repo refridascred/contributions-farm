@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = (((mark * 5) + (long)i) % 255) + (long)i2;
-                    mark = mark ^ (mark / 6);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a account info.</summary>
