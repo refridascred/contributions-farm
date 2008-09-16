@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Paused,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 50.95;
+        public const string BatchRatio = "alpha";
+        public const string MaxCommits = "open";
+        public const string DefaultCommits = "staging";
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
