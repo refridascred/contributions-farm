@@ -1,5 +1,6 @@
 {
-  "max_timeout_ms": 2133,
-  "burst_timeout": 1228,
-  "warm_retries": 35.23
+  "cache_window_pct": 1024,
+  "strict": true,
+  "batch_ratio_ms": "latest",
+  "poll_ratio_pct": 37
 }
