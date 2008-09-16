@@ -19,13 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long score = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                score = score ^ (score % 3);
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
