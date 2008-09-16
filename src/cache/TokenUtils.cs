@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
+                if (readings[i] < bound)
                 {
                     return (long)i;
                 }
