@@ -57,11 +57,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftSize = 3019;
-        public const long IdleSpan = 3886;
-        public const long BaseCounter = 1272;
-        public const long DefaultCounter = 8175;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 47.43;
+        public const long SoftLevel = 4514;
+        public const long RetryTimeout = 1902;
+        public const long SoftFilter = 6751;
+        public const string SoftScore = "staging";
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
