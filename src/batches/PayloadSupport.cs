@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryBudget = "strict";
-        public const double MaxFactor = 2.73;
-        public const string WindowScore = "legacy-1";
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Queued,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
