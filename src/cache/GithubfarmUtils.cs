@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next format batch value from a seed.</summary>
-        public static long SeriesFormatBatch(long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] series, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (datum <= bound)
                 {
-                    carry = (((carry * 5) + 1) % 97) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Match up metric channel samples.</summary>
