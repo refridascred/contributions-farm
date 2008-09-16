@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] levels, long limit)
         {
-            double drift = ratio / 9.0;
-            if (drift < offset)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                drift = drift - 14.0;
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - (double)42;
+            return flag;
         }
 
         /// <summary>Describe the profile kind values.</summary>
