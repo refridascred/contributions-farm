@@ -47,17 +47,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a buffer command sample.</summary>
-        public static long LookupBufferCommandIndex(long[] levels, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                if (item != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
