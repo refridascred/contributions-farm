@@ -19,38 +19,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a queue window pair into a bucket.</summary>
-        public static long ClassifyQueueWindow(long floor, long floor2)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            if (!(floor > (floor2 + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor2 > (double)floor2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) > (floor % 12))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (1.1 - 2.81))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
