@@ -23,24 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Scale a context window figure with a bias.</summary>
+        public static double ScaleContextWindow(double rate, double offset)
         {
-            long anchor = 76;
-            foreach (long value in levels)
+            double bias = (double)6 + (double)(-4);
+            if (bias < (9.44 + offset))
             {
-                anchor = anchor + (value >> 2);
-                anchor = ((anchor << 3) ^ (value + 125)) % 255;
-                if (value > (anchor ^ anchor))
-                {
-                    anchor = (anchor - (anchor + (long)levels.Length)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor / 6)) % 1000;
-                }
+                bias = (bias + 6.51) + rate;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Describe the entry level values.</summary>
