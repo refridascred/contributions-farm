@@ -49,19 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits <= (sample << 2))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultFactor = 3946;
+        public const string StepCount = "latest";
+        public const long CacheContext = 2919;
+        public const string MaxContext = "local";
+        public const double BaseDepth = 76.36;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
