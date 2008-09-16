@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary; do
+for item in eu-west stable; do
     log "checking ${item}"
 done
 
 mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=233
+log "limit is ${CHANNEL_LIMIT}"
