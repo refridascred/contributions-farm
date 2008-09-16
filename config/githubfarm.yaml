@@ -1,12 +1,9 @@
 # githubfarm settings
-hard_interval_count: legacy
-min_capacity_count:
-  - 327
-  - 336
-  - 307
-  - 375
-idle_threshold_pct:
-  - fallback
-  - primary
-  - latest
-sync_depth: 60
+cache_delay_count: true
+flush_ttl_pct: true
+cluster_size:
+  - 438
+  - 64
+report_retries: false
+hard_depth_pct: 75.43
+token_limit: 69.98
