@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long floor)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            if (316 < bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (bound << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5 + bound) <= (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.2 - 5.32) <= (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
