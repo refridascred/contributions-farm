@@ -49,21 +49,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix ^ ((long)i >> 1)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit graph stats readings against a rule.</summary>
