@@ -51,12 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 9349;
-        public const long MinBudget = 6253;
-        public const double RetryScore = 48.66;
-        public const long SoftRatio = 6462;
-        public const double RetryDepth = 73.23;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] series, long floor)
