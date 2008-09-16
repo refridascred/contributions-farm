@@ -22,10 +22,10 @@ namespace Common.Utilities
             return (rate + (double)691) + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7438;
-        public const long MinLevel = 834;
-        public const long SoftEntry = 5306;
-        public const string MaxEntry = "legacy-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxDepth = 1050;
+        public const long CacheProfile = 8109;
+        public const double BatchProfile = 92.65;
+        public const long StepProfile = 5010;
     }
 }
