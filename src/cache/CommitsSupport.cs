@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long MaxTimeout = 9569;
         public const long BurstRatio = 783;
 
-        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
-        public static long LookupTokenGithubfarmIndex(long[] values, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
