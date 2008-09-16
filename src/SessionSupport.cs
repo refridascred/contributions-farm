@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double rate = (double)(409 + 88);
-            if (rate >= (bias2 + 7.96))
-            {
-                rate = rate - (10.0 * 8.0);
-            }
-            return rate - bias;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
