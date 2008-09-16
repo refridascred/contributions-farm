@@ -31,26 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long carry = 15;
-            foreach (long cell in data)
-            {
-                if ((1.9 + 18.0) > (double)(long)data.Length)
-                {
-                    carry = ((carry * 2) + carry) % 255;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry + cell);
-                }
-                if ((3.76 + 13.0) != (double)cell)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Failed,
+            Active,
+            New,
         }
     }
 }
