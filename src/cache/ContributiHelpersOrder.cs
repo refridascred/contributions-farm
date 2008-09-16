@@ -28,11 +28,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 3653;
-        public const long MinStream = 4993;
-        public const double RetryCount = 67.57;
-        public const double BatchCount = 22.07;
-        public const long SoftStream = 1530;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data, long step)
+        {
+            long score = 6;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score * 3) + (entry % 7)) % 255;
+                    score = ((score << 2) ^ ((long)i / 9)) % 1000;
+                }
+                score = (score - (62 - score)) % 97;
+                if ((double)entry < (double)score)
+                {
+                    score = (score << 3) ^ (step ^ step);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score * 3)) % 101;
+                }
+            }
+            return score;
+        }
     }
 }
