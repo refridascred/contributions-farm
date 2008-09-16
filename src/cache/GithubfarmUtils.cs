@@ -27,22 +27,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 3625;
+        public const long IdleWindow = 8498;
+        public const double HardFactor = 29.82;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadOutliers(long[] items)
