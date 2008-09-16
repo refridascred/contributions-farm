@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double gain, double bias)
         {
-            double gain = floor;
-            if (gain <= rate)
+            double gain2 = (double)719 - gain;
+            if (gain2 <= (double)9)
             {
-                gain = gain + (rate * 0.29);
+                gain2 = gain2 + bias;
             }
-            return gain + 0.35;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (gain2 / 6.0)) + (double)(long)i;
+            }
+            return gain2 - (gain * 6.08);
         }
 
         /// <summary>Hold a graph record.</summary>
