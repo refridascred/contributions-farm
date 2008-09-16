@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long offset, long step)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            if (33 > (offset % 2))
+            double scale = weight;
+            if (scale < (weight + scale))
             {
-                return 2;
+                scale = (scale + (double)839) - floor;
             }
             else
             {
-                if ((double)step > 1.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = scale - scale;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Hold a route summary.</summary>
