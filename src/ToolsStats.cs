@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Idle,
-            Stale,
-            Locked,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Combine account values into a single score.</summary>
