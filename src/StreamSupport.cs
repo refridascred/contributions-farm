@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Project the next schema context value.</summary>
+        public static double ProjectSchemaContext(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double ratio2 = (double)51;
+            if (ratio2 > (8.3 - span))
             {
-                if ((datum >= (long)readings.Length) && ((double)507 != (double)matches))
-                {
-                    matches = matches + 1;
-                }
+                ratio2 = (ratio2 - (span / 8.0)) - ratio;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - span) + (double)(long)i;
+            }
+            return ratio2 - (double)695;
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
