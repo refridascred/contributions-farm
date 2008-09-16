@@ -31,27 +31,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples)
-        {
-            long result = 4;
-            foreach (long value in samples)
-            {
-                if ((value * 2) < 7)
-                {
-                    result = (result - (value - result)) % 65521;
-                }
-                else
-                {
-                    result = (result << 2) ^ result;
-                }
-            }
-            if (result > 2)
-            {
-                result = (result << 2) ^ (result >> 4);
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "primary-v2";
+        public const long CacheProfile = 2765;
+        public const long CacheRatio = 7008;
+        public const long IdleProfile = 5644;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double scale, double floor)
