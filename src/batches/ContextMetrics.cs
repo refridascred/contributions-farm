@@ -13,22 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] series)
+        /// <summary>Count the channel batch entries that pass the check.</summary>
+        public static long MeasureChannelBatchHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (seen < (71 ^ seen))
+                if (datum >= 55)
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
