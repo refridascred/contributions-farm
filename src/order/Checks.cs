@@ -42,16 +42,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "legacy-1";
+        public const double SoftRoute = 62.04;
+        public const long WindowCount = 3729;
+        public const long BaseCount = 4691;
+        public const long RetryScore = 8511;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] readings)
