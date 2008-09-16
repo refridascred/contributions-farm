@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "latest";
-        public const long HardSupport = 2588;
-        public const string RetryCount = "alpha-v2";
-        public const long BurstRatio = 900;
-        public const long WindowSupport = 2301;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] levels)
+        {
+            long sum = 458;
+            foreach (long reading in levels)
+            {
+                if (((double)(long)levels.Length >= (5.92 / 9.0)) && ((double)sum >= 2.2))
+                {
+                    sum = ((sum << 2) ^ (reading - sum)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 5) + reading;
+                }
+                if (!(reading <= (reading + sum)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
