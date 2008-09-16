@@ -25,13 +25,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long sum = 93;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((entry >> 5) > (entry - entry))
+                {
+                    sum = (sum + (offset / 3)) % 101;
+                }
             }
             return sum;
         }
