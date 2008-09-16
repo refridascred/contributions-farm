@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] data, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = 0;
-            foreach (long value in data)
-            {
-                if ((double)bound < 6.91)
-                {
-                    mark = ((mark - 269) % 1000) + value;
-                }
-            }
-            if (mark < 761)
-            {
-                mark = mark - (bound / 4);
-            }
-            return mark % 4096;
+            Queued,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Adjust a graph reading.</summary>
