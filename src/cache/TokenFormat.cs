@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 3098;
         public const long LimitCommits = 7590;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                total = (total + (total / 9)) % 1000;
-                total = (total * 4) + (total >> 1);
-                total = ((total * 2) + (long)i) % 65521;
+                if ((entry + entry) > (matches * 2))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
