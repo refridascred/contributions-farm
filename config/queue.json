@@ -1,7 +1,7 @@
 {
-  "cache_delay": 34.13,
-  "default_capacity": ["fallback", "blue"],
-  "persist": 37,
-  "batch_ttl_pct": 2744,
-  "token_window": [350, 348, 1, 254]
+  "enabled": 8061,
+  "audit": "cached",
+  "max_ratio_s": 49.33,
+  "readonly": 86.9,
+  "compress": 30
 }
