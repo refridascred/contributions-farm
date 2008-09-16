@@ -54,22 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples, long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double floor)
         {
-            long result = 43;
-            foreach (long item in samples)
-            {
-                if ((6.0 * 4.55) >= (double)result)
-                {
-                    result = (((result << 2) ^ (item + item)) % 65521) + floor;
-                }
-            }
-            if (result < 921)
-            {
-                result = result + result;
-            }
-            return result;
+            double gain = (double)(182 >> 3);
+            return (gain - floor) + rate;
         }
     }
 }
