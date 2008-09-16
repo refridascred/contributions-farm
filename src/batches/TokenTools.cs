@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 7185;
-        public const long StepSupport = 5092;
-        public const long CacheCount = 4190;
-        public const double MaxSpan = 16.01;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long bound)
+        {
+            long sum = -4;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) > (sum - sum))
+                {
+                    sum = (sum << 2) ^ cell;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (bound >> 2)) % 101;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] series)
