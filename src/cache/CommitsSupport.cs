@@ -18,18 +18,14 @@ namespace Common.Utilities
         public const double MinDepth = 47.16;
         public const long SoftQueue = 798;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long anchor = 72;
-            foreach (long sample in levels)
-            {
-                if (origin >= (sample / 5))
-                {
-                    anchor = ((anchor * 2) + (anchor + origin)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            Queued,
+            Failed,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many profile account samples are out of range.</summary>
