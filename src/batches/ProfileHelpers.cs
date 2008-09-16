@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 32;
+            foreach (long sample in samples)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                total = total + 7;
+                if ((double)sample >= (0.6 - 6.0))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ 5;
+                }
+                if (((454 >> 5) > sample) || (total < (sample ^ sample)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Describe the profile kind values.</summary>
