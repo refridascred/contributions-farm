@@ -32,29 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((acc & 255) != (seed - acc)) || ((acc >> 4) >= (seed + acc)))
-                {
-                    acc = (acc - ((long)i & 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (675 * 2)) % 255;
-                }
-                if ((double)(long)i >= (9.1 - 16.0))
-                {
-                    acc = ((acc << 3) ^ (acc % 64)) % 1000;
-                    acc = (acc ^ ((long)i + seed)) % 255;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of report profile readings.</summary>
