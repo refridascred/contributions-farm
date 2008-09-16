@@ -13,11 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardScore = 5726;
-        public const double IdleBatches = 2.82;
-        public const long DefaultSpan = 5396;
-        public const long StepBatches = 4841;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchSpan = 10.87;
+        public const long BatchRatio = 4985;
+        public const long IdleEntry = 3954;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextHits(long[] items, long limit)
