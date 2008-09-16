@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepLevel = "cached-v2";
-        public const long DefaultCluster = 7942;
-        public const long StepTimeout = 8017;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Done,
+            Locked,
+            Closed,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Roll a support contributi counter forward.</summary>
         public static long RollSupportContributi(long target)
