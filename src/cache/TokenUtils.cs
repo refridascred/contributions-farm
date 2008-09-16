@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = offset;
+            return scale + gain;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
