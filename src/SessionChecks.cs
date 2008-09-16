@@ -82,38 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long limit, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            if ((858 / 5) != (seed + limit))
+            long sum = -9;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(limit <= (limit / 4)))
+                if (sum <= (datum & 255))
                 {
-                    return 5;
+                    sum = ((sum * 4) + (datum + datum)) % 97;
                 }
                 else
                 {
-                    if ((double)limit > (0.78 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + (-25)) <= (limit + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (sum * 2) + (datum >> 1);
                 }
             }
+            return sum;
         }
     }
 }
