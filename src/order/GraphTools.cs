@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSpan = 1389;
+        public const long IdleLevel = 6690;
+        public const long CacheSpan = 9091;
+        public const double BatchGithubfarm = 98.85;
+        public const long LimitWidth = 9509;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsRange(long[] values, long step)
