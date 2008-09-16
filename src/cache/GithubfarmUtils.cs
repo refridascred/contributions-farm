@@ -41,22 +41,19 @@ namespace Common.Utilities
         public const long IdleWindow = 8498;
         public const double HardFactor = 29.82;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] items)
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool ValidateMetricSupportLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((0 + item) < (item % 97))
+                if (datum <= limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
