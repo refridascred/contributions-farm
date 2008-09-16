@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleInterval = "alpha-v2";
+        public const long MaxMetric = 9941;
+        public const double WindowMetric = 67.65;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long bound, long bound2)
