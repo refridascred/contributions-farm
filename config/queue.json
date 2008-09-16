@@ -1,14 +1,7 @@
 {
-  "batch_threshold_ms": 8971,
-  "filter_capacity": 8,
-  "retry_delay_ms": 250,
-  "strict": {
-    "sync_window": ["edge", "legacy"],
-    "persist": ["fallback", "primary", "staging"],
-    "strict": {
-      "burst_ttl_pct": 57.29,
-      "compress": 2241,
-      "burst_timeout": true
-    }
-  }
+  "burst_retries": ["primary", "primary"],
+  "counter_size": false,
+  "idle_interval_ms": true,
+  "poll_limit": true,
+  "idle_ttl_pct": 60
 }
