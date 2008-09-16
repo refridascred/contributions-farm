@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
