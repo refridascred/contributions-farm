@@ -55,13 +55,12 @@ namespace Common.Utilities
             return drift + 5.07;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Retry,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 55.64;
+        public const long BaseScore = 6658;
+        public const long MinCommand = 1284;
+        public const long SoftBudget = 9659;
+        public const string BatchCommand = "alpha-edge";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
