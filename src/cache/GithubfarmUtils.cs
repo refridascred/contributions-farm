@@ -44,12 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] items)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((0 + item) < (item % 97))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
