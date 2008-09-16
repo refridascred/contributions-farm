@@ -1,48 +1,14 @@
 # entry settings
-base_depth_pct:
-  min_capacity: true
-  graph_interval: open
-  sync_limit_pct:
-    - 423
-    - 138
-    - 387
-    - 177
-  base_ratio_s:
-    default_delay: edge
-    cluster_size: eu-west
-    soft_threshold_s: 7630
-    retry_retries: true
-    token_retries: 30
-    poll_ratio_count: 14.32
-  strict: true
-  verbose: local
-burst_ratio:
-  - 475
-  - 176
-readonly: 30
-max_capacity_pct:
-  warm_ttl_pct: 4218
-  cache_interval_s:
-    hard_limit:
-      - 440
-      - 288
-      - 221
-    farm_limit: true
-    burst_retries_count: 303
-    sync_window: 82.15
-    base_timeout: local
-  soft_capacity:
-    default_delay_s: eu-west
-    metric_capacity:
-      - stable
-      - eu-west
-    min_threshold_ms: 1024
-    audit:
-      - 93
-      - 500
-      - 469
-      - 14
-burst_size_ms:
-  - 293
-  - 152
-cache_limit_count: 1024
+max_delay_s: 24.38
+warm_limit_count: false
+strict:
+  schema_retries:
+    audit: strict
+    sync_limit_count: eu-west
+    base_capacity_count:
+      - open
+      - edge
+    warm_depth: fallback
+    command_size: true
+  editor_ttl: eu-west
+  sync_timeout: 91.39
