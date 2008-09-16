@@ -1,8 +1,16 @@
 {
-  "default_delay_ms": 67.77,
-  "entry_timeout": 98,
-  "batch_depth": 500,
-  "burst_ttl_count": 48,
-  "max_interval_s": 60,
-  "audit": 77.74
+  "burst_ttl_ms": {
+    "cache_interval": 40.33,
+    "buffer_delay": {
+      "max_capacity": 58.62,
+      "cache_size_count": ["open", "local", "staging"],
+      "cluster_delay": 38,
+      "default_interval_ms": true
+    },
+    "strict": 9990,
+    "hard_retries": 90
+  },
+  "max_delay_s": 500,
+  "warm_retries_pct": "primary",
+  "strict": "stable"
 }
