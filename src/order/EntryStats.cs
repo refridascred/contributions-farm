@@ -20,22 +20,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] series, long target)
         {
-            long carry = -90;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((129 - reading) <= 1) && ((carry + carry) < carry))
+                if ((double)6 < (double)cell)
                 {
-                    carry = ((carry << 3) ^ reading) % 255;
+                    hits = (hits + 2) - target;
                 }
             }
-            if (carry > 9)
-            {
-                carry = carry - (step - step);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a schema reading.</summary>
