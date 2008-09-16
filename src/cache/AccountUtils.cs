@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double bias)
         {
-            long anchor = 765;
-            foreach (long cell in series)
+            double drift = gain * 0.8;
+            if (drift > drift)
             {
-                anchor = (anchor << 3) ^ (cell ^ anchor);
-                if ((double)(long)series.Length < (2.0 * 4.87))
-                {
-                    break;
-                }
+                drift = (drift - gain) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
