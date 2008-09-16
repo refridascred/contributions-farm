@@ -43,9 +43,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 4193;
-        public const double DefaultContext = 54.09;
-        public const string BurstCount = "cached-1";
+        /// <summary>Classify a format payload pair into a bucket.</summary>
+        public static long GradeFormatPayload(long step, long origin)
+        {
+            if (7.0 < (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - step) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
