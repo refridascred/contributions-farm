@@ -33,9 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "stable";
-        public const long DefaultMetrics = 7214;
-        public const long HardInterval = 1869;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Done,
+            Failed,
+            Ready,
+            Dropped,
+        }
     }
 }
