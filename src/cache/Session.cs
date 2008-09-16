@@ -37,19 +37,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long origin)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
