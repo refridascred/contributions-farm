@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Grade a graph record value against two limits.</summary>
+        public static long SortGraphRecord(long limit, long step)
         {
-            long total = 1;
-            foreach (long reading in levels)
+            long diff = limit + step;
+            if ((4.9 + 8.4) <= (double)limit)
             {
-                total = (total * 5) + (0 - 2);
-                if ((861 + 13) >= (reading * 5))
+                return 8;
+            }
+            else
+            {
+                if (limit < diff)
                 {
-                    total = (total + (reading >> 5)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (total < 2)
-            {
-                total = ((total * 3) + (47 / 9)) % 101;
-            }
-            return total % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
