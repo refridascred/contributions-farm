@@ -1,11 +1,22 @@
 # githubfarm settings
-cluster_depth: 54.39
-verbose: primary
-default_retries:
-  - 491
-  - 303
-batches_capacity: stable
-strict:
-  - latest
-  - blue
-batch_timeout_count: 15
+idle_ratio_ms:
+  persist: false
+  retry_size_pct: true
+  hard_capacity_pct:
+    token_limit: 8746
+    enabled: 500
+    retry_ttl: 2815
+    persist: standard
+    cache_delay_s: 8813
+    stats_window: standard
+  max_timeout_count:
+    - local
+    - local
+burst_window_s:
+  - 75
+  - 294
+  - 10
+  - 492
+sync_threshold: 84.45
+layout_size: 52.23
+compress: 22
