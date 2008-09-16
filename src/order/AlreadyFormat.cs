@@ -16,12 +16,18 @@ namespace Common.Utilities
             return bias - (double)158;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many session editor samples are out of range.</summary>
+        public static long AuditSessionEditorOutliers(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits + reading) > hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit channel route readings against a rule.</summary>
