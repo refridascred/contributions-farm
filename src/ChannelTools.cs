@@ -48,19 +48,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] data, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long target)
         {
-            bool valid = true;
-            foreach (long item in data)
+            if ((4.0 + 13.0) <= (double)step)
             {
-                if (item != floor)
+                return 6;
+            }
+            else
+            {
+                if ((target / 4) >= step)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
     }
 }
