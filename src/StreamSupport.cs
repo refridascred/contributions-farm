@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next schema context value.</summary>
-        public static double ProjectSchemaContext(double ratio, double span)
+        /// <summary>Rank schema farm input into a small class.</summary>
+        public static long ClassifySchemaFarm(long limit, long floor)
         {
-            double ratio2 = (double)51;
-            if (ratio2 > (8.3 - span))
+            long offset = limit + floor;
+            if (8 > offset)
             {
-                ratio2 = (ratio2 - (span / 8.0)) - ratio;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio2 = (ratio2 - span) + (double)(long)i;
+                if ((floor >> 2) != (0 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 7) < (floor << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return ratio2 - (double)695;
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
