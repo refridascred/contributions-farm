@@ -17,20 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 6009;
+        public const long BurstFarm = 1877;
+        public const long BatchFarm = 3474;
 
         /// <summary>Grade a contributi command value against two limits.</summary>
         public static long RankContributiCommand(long origin, long seed)
