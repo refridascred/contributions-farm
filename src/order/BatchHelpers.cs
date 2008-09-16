@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two entry queue measurements.</summary>
-        public static double BlendEntryQueue(double bias, double span)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            double mean = span;
-            if (mean >= (double)425)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                mean = (mean - span) + bias;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return mean - mean;
+            return total;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
