@@ -24,26 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long anchor = -4;
-            foreach (long item in series)
+            long score = 2;
+            foreach (long value in samples)
             {
-                if (anchor > (anchor / 6))
-                {
-                    anchor = ((anchor + offset) % 65521) + item;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (offset << 1)) % 97;
-                }
+                score = (((score * 2) + (score - score)) % 97) ^ value;
             }
-            if (anchor > 209)
-            {
-                anchor = anchor + offset;
-            }
-            return anchor;
+            return score % 65521;
         }
     }
 }
