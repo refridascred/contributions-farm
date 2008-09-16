@@ -36,23 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long mark = 40;
-            foreach (long datum in samples)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark + mark) - datum;
-                if ((target + 3) > mark)
-                {
-                    mark = (mark ^ (target + target)) % 65521;
-                }
+                anchor = anchor + (floor - (long)i);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (mark < 750)
-            {
-                mark = ((mark << 2) ^ (long)samples.Length) % 4096;
-            }
-            return mark;
+            return anchor;
         }
     }
 }
