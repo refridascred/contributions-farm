@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a window counter forward.</summary>
