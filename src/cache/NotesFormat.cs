@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Scale a report graph figure with a bias.</summary>
+        public static double ScaleReportGraph(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean <= gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (double)(-10);
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (gain / 4.0);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
