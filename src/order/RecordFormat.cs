@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long MinEditor = 6096;
         public const long IdleEditor = 8745;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
