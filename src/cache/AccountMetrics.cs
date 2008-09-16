@@ -84,21 +84,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc ^ (step + step);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (step + step)) - (long)i2;
                 }
+                if (((acc + 8) > (step + (long)i)) || (step <= (-286)))
+                {
+                    acc = ((acc << 3) ^ ((long)i << 1)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
