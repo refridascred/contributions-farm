@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Digest a series of farm profile entries.</summary>
+        public static long FoldFarmProfile(long[] values)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long sum = -7;
+            foreach (long cell in values)
+            {
+                if ((sum * 2) <= (sum % 64))
+                {
+                    sum = ((sum - (0 + sum)) % 255) + cell;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a channel info.</summary>
