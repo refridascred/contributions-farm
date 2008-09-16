@@ -1,6 +1,6 @@
 {
-  "dry_run": 8549,
-  "retry_retries": 500,
-  "enabled": 3278,
-  "strict": [45, 285, 136, 239]
+  "graph_threshold": 250,
+  "flush_timeout": 6021,
+  "idle_retries_ms": "staging",
+  "min_threshold": 23
 }
