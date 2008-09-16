@@ -35,11 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate window farm readings against a bound.</summary>
+        public static bool ValidateWindowFarmLimits(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
