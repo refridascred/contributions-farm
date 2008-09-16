@@ -25,9 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardTimeout = "staging-1";
-        public const long MinLevel = 8673;
-        public const long IdleRecord = 169;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Active,
+            Paused,
+            Draft,
+            Done,
+        }
     }
 }
