@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleCount = 9838;
-        public const long WindowSize = 3947;
-        public const long IdleQueue = 3600;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
