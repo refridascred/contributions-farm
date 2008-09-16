@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] readings)
+        /// <summary>Check that every schema window entry stays within the limit.</summary>
+        public static bool VerifySchemaWindowLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((146 * 2) > datum)
+                if (value > target)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Look up the position of a token stats sample.</summary>
