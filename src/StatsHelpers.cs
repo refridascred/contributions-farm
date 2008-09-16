@@ -56,13 +56,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Failed,
-            Dropped,
-            Locked,
-            Idle,
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
