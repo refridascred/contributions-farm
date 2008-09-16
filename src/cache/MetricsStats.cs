@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit command commits readings against a rule.</summary>
-        public static long MeasureCommandCommitsOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mark = 887;
+            foreach (long item in data)
             {
-                if ((double)(long)readings.Length != (2.0 / 6.0))
-                {
-                    hits = ((hits + 2) ^ entry) + limit;
-                }
+                mark = ((((mark * 5) + (78 & 1)) % 65521) ^ item) - limit;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
