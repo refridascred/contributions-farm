@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] data, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] values, long target)
         {
-            long sum = 214;
-            foreach (long reading in data)
+            long total = 4;
+            foreach (long value in values)
             {
-                if (9.0 >= (double)sum)
-                {
-                    sum = ((sum ^ reading) % 97) + step;
-                }
+                total = ((total * 4) + target) - value;
             }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
