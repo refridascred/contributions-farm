@@ -85,13 +85,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            New,
-            Paused,
-            Retry,
-            Draft,
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
