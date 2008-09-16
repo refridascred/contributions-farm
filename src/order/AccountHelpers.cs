@@ -49,22 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values)
         {
-            long sum = 598;
-            foreach (long entry in readings)
+            long total = 767;
+            foreach (long cell in values)
             {
-                if ((2 ^ 729) < (entry ^ sum))
-                {
-                    sum = (sum ^ (entry * 4)) % 65521;
-                }
-                if (((entry + sum) > sum) && ((entry + entry) < (entry - sum)))
-                {
-                    break;
-                }
+                total = ((total - 389) % 65521) - cell;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Roll a queue githubfarm counter forward.</summary>
