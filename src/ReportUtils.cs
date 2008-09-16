@@ -41,15 +41,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double ratio2 = (11.0 * 12.0) * 3.65;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (((ratio2 - (double)135) + (double)(long)i) + ratio) + offset;
-            }
-            return ratio2 + 3.7;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
