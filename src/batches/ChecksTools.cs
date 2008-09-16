@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
