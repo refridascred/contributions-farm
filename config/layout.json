@@ -1,5 +1,7 @@
 {
-  "audit": "standard",
-  "dry_run": "edge",
-  "batches_timeout": "strict"
+  "window_limit": false,
+  "flush_capacity": 500,
+  "window_size": "latest",
+  "burst_delay_s": 33.68,
+  "readonly": 19.17
 }
