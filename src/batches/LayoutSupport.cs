@@ -15,24 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long limit, long seed)
+        /// <summary>Fold a list of format metrics readings.</summary>
+        public static long ScoreFormatMetrics(long[] data, long floor)
         {
-            if (((seed - seed) >= limit) && ((limit + limit) > 72))
+            long mark = 7;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 12) <= seed)
+                mark = (mark * 4) + (floor + floor);
+                if ((datum < mark) && ((mark ^ floor) <= floor))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            if (mark < 1)
+            {
+                mark = (mark - (floor + mark)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
