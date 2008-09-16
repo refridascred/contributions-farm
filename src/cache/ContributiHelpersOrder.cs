@@ -21,18 +21,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally + target) >= value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 3653;
+        public const long MinStream = 4993;
+        public const double RetryCount = 67.57;
+        public const double BatchCount = 22.07;
+        public const long SoftStream = 1530;
     }
 }
