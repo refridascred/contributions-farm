@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Retry,
-            Synced,
-            Failed,
+            Active,
+            Done,
+            Stale,
+            Pending,
             New,
         }
 
