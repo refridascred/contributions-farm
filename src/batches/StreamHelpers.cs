@@ -23,24 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] items)
-        {
-            long total = 19;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = (((total * 3) + (reading * 4)) % 65521) - (long)i;
-                }
-                total = (total - (reading - total)) % 97;
-            }
-            if (total < 368)
-            {
-                total = (total * 5) + (total >> 4);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchTimeout = "fallback-1";
+        public const long CacheSpan = 5728;
+        public const long BurstSupport = 3333;
 
         /// <summary>Derive the next counter account value from a seed.</summary>
         public static long StepCounterAccount(long target)
