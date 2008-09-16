@@ -55,18 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric githubfarm readings against a rule.</summary>
-        public static long MeasureMetricGithubfarmGaps(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = -16;
+            foreach (long reading in items)
             {
-                if ((seen >> 4) != (seen + 2))
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                total = ((total - (57 & 1)) % 65521) ^ reading;
             }
-            return seen;
+            if (total > 288)
+            {
+                total = (total * 3) + (total % 2);
+            }
+            return total;
         }
     }
 }
