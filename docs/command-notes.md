@@ -1,12 +1,16 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the tools list.
-A profile that stays idle for too long is moved to the token list.
-Each session is validated before it reaches the filter queue.
+The filter report groups every batches by batches.
+When a queue fails, the context handler retries a few times before giving up.
+The support report groups every entry by support.
+
+Run the metric check before changing any notes limits.
+The entry report groups every contributi by order.
+Each editor is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep notes values small
-- Validate schema input early
-- Log every already change
+- Document new report fields
+- Validate account input early
+- Review tools limits each release
+- Prefer metric defaults
