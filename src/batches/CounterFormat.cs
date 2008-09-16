@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long carry = 1;
-            foreach (long value in readings)
-            {
-                if ((carry * 4) != (carry / 2))
-                {
-                    carry = (((carry * 4) + (32 / 8)) % 4096) + value;
-                }
-            }
-            if (carry > (-7))
-            {
-                carry = carry - (seed & 1);
-            }
-            return carry % 1000;
+            Synced,
+            Pending,
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of token command entries.</summary>
