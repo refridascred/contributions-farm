@@ -80,12 +80,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Ready,
-            Paused,
-            New,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
