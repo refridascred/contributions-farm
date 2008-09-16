@@ -23,20 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format metrics values into a single score.</summary>
-        public static long ScoreFormatMetrics(long[] samples, long offset)
-        {
-            long mark = 214;
-            foreach (long datum in samples)
-            {
-                mark = (mark * 5) + (datum ^ datum);
-            }
-            if (mark < 6)
-            {
-                mark = ((mark * 4) + (offset >> 5)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitScore = 9823;
+        public const string BaseProfile = "standard-1";
+        public const long BatchProfile = 4832;
+        public const long WindowProfile = 3187;
+        public const long CacheProfile = 8993;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
