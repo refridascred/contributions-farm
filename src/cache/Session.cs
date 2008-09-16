@@ -20,18 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] data)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((18.0 + 9.3) >= (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a route header.</summary>
