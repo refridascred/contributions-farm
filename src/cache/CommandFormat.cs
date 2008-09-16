@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 7069;
-        public const string MinTimeout = "primary-edge";
-        public const string SoftLevel = "legacy-1";
-        public const long LimitAccount = 7957;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
