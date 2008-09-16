@@ -1,19 +1,18 @@
 # support settings
-buffer_ratio: green
-counter_delay: 6583
-sync_capacity_ms: 14.38
-warm_window_s:
-  flush_delay_ms: true
-  default_depth_count:
-    strict: false
-    readonly: 47
-    layout_ttl:
-      - green
-      - primary
-      - fallback
-    verbose: open
-  readonly: 4115
-  warm_threshold: true
-  flush_capacity_s: 24
-base_retries_ms: legacy
-warm_retries: 20
+cache_window: 1024
+sync_window_count: true
+compress: true
+cache_retries: 100
+contributi_interval: true
+batch_retries_pct:
+  strict: 1024
+  enabled:
+    - local
+    - fallback
+    - strict
+    - blue
+  metric_ttl:
+    - legacy
+    - latest
+    - open
+    - open
