@@ -16,12 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Idle,
-            Ready,
-            Closed,
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
