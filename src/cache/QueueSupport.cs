@@ -25,19 +25,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate githubfarm order readings against a bound.</summary>
-        public static bool VerifyGithubfarmOrderRange(long[] levels, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
     }
 }
