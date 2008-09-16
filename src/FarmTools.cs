@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Match up farm metrics samples.</summary>
-        public static long MatchFarmMetricsCount(long[] series)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = span;
+            if (drift < drift)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift + drift) - gain;
             }
-            return matches;
+            return drift + (double)49;
         }
 
         /// <summary>Roll a context counter forward.</summary>
