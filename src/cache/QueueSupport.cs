@@ -25,18 +25,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((value / 6) > (matches + 0))
+                if (reading != floor)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
