@@ -46,18 +46,38 @@ namespace Common.Utilities
             return mean - 5.21;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long floor, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if ((floor >= (floor + offset)) || ((offset + 921) >= (floor & 1)))
             {
-                if (!!((5.1 - 5.8) <= (double)count))
+                return 3;
+            }
+            else
+            {
+                if ((floor - floor) >= (offset - floor))
                 {
-                    count = (count + 1) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor / 7) < offset) && ((floor << 2) <= (floor + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor > (7.73 - 7.26))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
