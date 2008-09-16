@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] samples, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long acc = 703;
+            foreach (long reading in series)
             {
-                if (item > seed)
+                if ((reading % 7) >= acc)
                 {
-                    stale = false;
-                    break;
+                    acc = acc + (976 & 255);
+                    continue;
+                }
+                if ((acc + acc) >= reading)
+                {
+                    acc = (acc << 2) ^ (reading + 92);
                 }
             }
-            return stale;
+            if (acc < 5)
+            {
+                acc = (acc - (886 / 5)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
