@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] samples, long limit)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long total = 5;
+            foreach (long datum in samples)
+            {
+                if (!((datum + total) < (limit * 3)))
+                {
+                    continue;
+                }
+                if (((7.9 * 11.0) != (double)datum) || ((datum - datum) >= (datum + total)))
+                {
+                    total = total ^ (9 ^ datum);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank token input into a small class.</summary>
