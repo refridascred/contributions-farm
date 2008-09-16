@@ -34,11 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "staging-v2";
-        public const string SoftWidth = "primary-v2";
-        public const long StepSize = 2355;
-        public const long HardSchema = 4787;
-        public const string IdleWidth = "local-1";
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
