@@ -36,31 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            if (((double)offset < (double)limit) && ((offset + offset) > (offset << 1)))
+            double drift = (double)(535 & 3);
+            if (drift > (rate + drift))
             {
-                return 8;
+                drift = drift + (bias * 4.0);
             }
             else
             {
-                if ((limit + offset) <= (offset >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 1) >= (offset & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                drift = drift - (double)0;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)56) - (double)(long)i;
+            }
+            return drift + 5.07;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
