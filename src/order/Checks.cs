@@ -49,12 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "legacy-1";
-        public const double SoftRoute = 62.04;
-        public const long WindowCount = 3729;
-        public const long BaseCount = 4691;
-        public const long RetryScore = 8511;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6852;
+        public const double LimitSpan = 10.74;
+        public const string BatchBuffer = "latest-v2";
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long seed)
