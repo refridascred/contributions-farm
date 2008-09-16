@@ -32,16 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double weight, double floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            double ratio = floor - (weight / 4.0);
+            if (ratio <= (6.01 - weight))
             {
-                mark = mark - (7 + origin);
-                mark = ((mark * 4) + (long)i) % 1000;
+                ratio = ratio - (weight - weight);
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)493) + (double)(long)i;
+            }
+            return ratio - (ratio / 3.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
