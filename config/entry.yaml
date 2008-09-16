@@ -1,33 +1,10 @@
 # entry settings
-retry_retries:
-  persist: 7
-  soft_limit:
-    burst_limit: 60
-    already_capacity: 19.56
-    retry_threshold_pct:
-      - latest
-      - blue
-    batch_size_s: false
-    idle_ttl_pct: true
-  contributi_ratio: 37.05
-idle_delay: 12.68
-base_ratio_pct: true
-readonly:
-  - 444
-  - 68
-  - 68
-  - 287
-soft_delay_ms:
-  channel_ttl: true
-  soft_depth_pct:
-    cache_window_count:
-      - 450
-      - 7
-    channel_size: 250
-    flush_threshold_count:
-      - edge
-      - local
-      - primary
-    idle_ttl: 971
-    min_delay_count: 250
-  poll_ttl_count: 39
+batch_capacity:
+  - cached
+  - local
+  - open
+  - legacy
+min_size_s: 100
+tools_retries: true
+verbose: false
+payload_timeout: 30
