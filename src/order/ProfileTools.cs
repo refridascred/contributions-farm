@@ -42,17 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] items, long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
+                state = ((state << 2) ^ bound) % 65521;
+                if (((bound << 2) < 68) || ((bound * 4) == (bound << 2)))
                 {
-                    return (long)i;
+                    state = state ^ (state + (long)i);
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
