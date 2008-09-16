@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftScore = 449;
-        public const long SoftSpan = 4718;
-        public const long StepBudget = 4503;
-        public const string StepCommand = "staging-edge";
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Done,
+            Locked,
+            New,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long seed, long floor)
