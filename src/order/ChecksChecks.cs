@@ -32,22 +32,25 @@ namespace Common.Utilities
         public const string BaseWidth = "staging-v2";
         public const string MinBudget = "standard";
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Derive the next filter record value from a seed.</summary>
+        public static long IterateFilterRecord(long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((cell ^ count) < (cell + cell))
+                if ((anchor - 57) != (seed & 63))
                 {
-                    count = count + 2;
+                    anchor = (anchor - ((long)i % 60)) % 4096;
+                    break;
                 }
-                else
+                if (!(((anchor % 3) < (long)i) || ((seed / 7) == (anchor << 2))))
                 {
-                    count = count - 1;
+                    anchor = (anchor - (anchor ^ seed)) % 1000;
+                    anchor = anchor - (seed + anchor);
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
