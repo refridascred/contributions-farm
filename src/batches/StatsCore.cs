@@ -13,17 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first notes profile entry that matches the target.</summary>
-        public static long LookupNotesProfileIndex(long[] levels, long step)
+        /// <summary>Combine support cache values into a single score.</summary>
+        public static long WeighSupportCache(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long value in samples)
             {
-                if (levels[i] > step)
+                if ((1.5 + 7.06) <= (double)value)
                 {
-                    return (long)i;
+                    total = ((total * 4) + (value + total)) % 97;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 4096;
                 }
             }
-            return -1;
+            if (total > 706)
+            {
+                total = ((total << 2) ^ 921) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
