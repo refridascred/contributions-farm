@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token command entries.</summary>
-        public static long FoldTokenCommand(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] readings)
         {
-            long score = 469;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                score = (score + (datum + score)) % 65521;
+                if ((sample - hits) >= 0)
+                {
+                    hits = hits + 3;
+                }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
