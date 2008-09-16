@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((((long)i & 255) > ((long)i + mix)) || ((2.56 - 7.4) > (double)step))
-                {
-                    mix = ((mix << 3) ^ ((long)i % 12)) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
