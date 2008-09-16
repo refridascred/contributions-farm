@@ -1,12 +1,4 @@
 # entry settings
-readonly: 75
-batch_timeout_pct:
-  min_capacity: staging
-  default_threshold_ms: 1.56
-  flush_ratio_s:
-    sync_window: legacy
-    compress: 37.0
-    burst_window_ms: true
-    hard_ratio: 100
-    editor_depth: staging
-audit: 100
+githubfarm_depth: 60
+batch_capacity_ms: legacy
+account_capacity: local
