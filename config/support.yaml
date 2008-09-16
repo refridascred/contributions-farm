@@ -1,6 +1,20 @@
 # support settings
-poll_interval: 27.4
-poll_timeout_ms:
-  - primary
-  - stable
-burst_limit: 500
+max_depth_pct:
+  max_threshold_s: 37
+  flush_interval_ms: standard
+  cache_ttl: 18.15
+  burst_size_count: local
+  max_limit_pct: 2519
+cache_limit: 8732
+retry_window: 73
+hard_interval_pct:
+  - 224
+  - 27
+  - 61
+poll_size_pct:
+  hard_capacity: eu-west
+  strict: true
+  max_interval_s: 500
+  max_window_ms: 7128
+  retry_capacity_ms: 5.92
+  retry_threshold_ms: 81.72
