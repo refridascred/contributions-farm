@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "alpha-v2";
-        public const double BatchWidth = 46.3;
-        public const string StepEditor = "cached";
-        public const long MinEditor = 6096;
-        public const long IdleEditor = 8745;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
