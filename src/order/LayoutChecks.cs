@@ -22,11 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
