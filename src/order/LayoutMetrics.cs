@@ -24,22 +24,15 @@ namespace Common.Utilities
             return weight2 + (bias - bias);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] levels, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double weight = 3.68;
+            if (weight < (scale / 7.0))
             {
-                if ((2.9 / 8.0) < (double)bound)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight - (double)13) + bias;
             }
-            return hits;
+            return weight + scale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
