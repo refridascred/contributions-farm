@@ -69,19 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metric profile entry stays within the limit.</summary>
-        public static bool CheckMetricProfileRange(long[] readings, long floor)
+        /// <summary>Fold a list of context command readings.</summary>
+        public static long ScoreContextCommand(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long result = 81;
+            foreach (long value in items)
             {
-                if (datum < floor)
+                result = ((result * 5) + (target + result)) + value;
+                if ((result % 97) >= result)
                 {
-                    ok = false;
-                    break;
+                    result = (result << 2) ^ (target + result);
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a route header.</summary>
