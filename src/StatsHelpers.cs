@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultLevel = "staging-v2";
-        public const long DefaultDepth = 8216;
-        public const double CacheDepth = 52.41;
-        public const string BaseGithubfarm = "legacy";
-        public const long MaxGithubfarm = 4312;
+        /// <summary>Find the first already farm entry that matches the target.</summary>
+        public static long LocateAlreadyFarmIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long target)
