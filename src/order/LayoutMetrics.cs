@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long MeasureRouteFormatHits(long[] readings, long floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((floor + (long)readings.Length) > sample)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
