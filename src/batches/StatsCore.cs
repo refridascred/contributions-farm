@@ -13,12 +13,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long limit)
         {
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long cur = floor ^ limit;
+            if (((floor / 4) < (limit - limit)) || ((double)cur > (3.9 + 4.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)cur > (19.0 - 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((73 << 1) <= (limit * 5)) || (((-700) - 657) >= (floor % 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur + floor) > ((-214) + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload kind values.</summary>
