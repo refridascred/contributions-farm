@@ -59,18 +59,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] values, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = -4;
+            foreach (long sample in series)
             {
-                if ((value - value) < 5)
+                if ((double)total > 0.1)
                 {
-                    seen = (seen + 2) - floor;
+                    total = (total - (78 + 92)) % 101;
+                    total = (total ^ total) % 255;
+                }
+                else
+                {
+                    total = (total + (total << 2)) % 97;
+                }
+                total = (total ^ total) % 97;
+                if (((total - sample) > (total >> 1)) && ((8.0 - 1.9) <= (double)sample))
+                {
+                    total = ((total << 2) ^ (sample << 3)) % 97;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (sample ^ total)) % 65521;
                 }
             }
-            return seen;
+            if (total > 98)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
     }
 }
