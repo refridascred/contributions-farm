@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] values, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (values[i] > origin)
+                if (item > seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
