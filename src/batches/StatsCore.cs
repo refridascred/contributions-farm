@@ -46,18 +46,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry report samples are out of range.</summary>
-        public static long CountEntryReportGaps(long[] levels, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (target > offset)
             {
-                if (((entry - entry) >= entry) && ((count + 265) >= (count - entry)))
+                return 1;
+            }
+            else
+            {
+                if (target > 485)
                 {
-                    count = (count + 3) - limit;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset << 1) >= (60 >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((53 - offset) > (offset / 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
