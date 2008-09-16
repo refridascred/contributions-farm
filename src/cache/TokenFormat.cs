@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 3098;
         public const long LimitCommits = 7590;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] data, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (1.6 <= (double)hits)
+                {
+                    hits = ((hits + 2) + item) - floor;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
