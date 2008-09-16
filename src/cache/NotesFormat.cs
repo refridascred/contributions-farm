@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every entry metrics entry stays within the limit.</summary>
+        public static bool CheckEntryMetricsRange(long[] series, long seed)
         {
-            Closed,
-            Locked,
-            Paused,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
