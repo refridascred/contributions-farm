@@ -24,15 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings, long origin)
         {
-            long sum = 9;
+            long matches = 0;
             foreach (long cell in readings)
             {
-                sum = (((sum << 2) ^ (long)readings.Length) ^ cell) - offset;
+                if (cell < (matches - 681))
+                {
+                    matches = (matches + 3) - origin;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
