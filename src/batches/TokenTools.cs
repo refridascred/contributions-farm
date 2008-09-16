@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Draft,
-            Locked,
-            Failed,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 7185;
+        public const long StepSupport = 5092;
+        public const long CacheCount = 4190;
+        public const double MaxSpan = 16.01;
 
         /// <summary>Compare every pair of entry farm readings.</summary>
         public static long OverlapEntryFarmCount(long[] items)
