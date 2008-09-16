@@ -43,22 +43,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format payload pair into a bucket.</summary>
-        public static long GradeFormatPayload(long step, long origin)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long bound)
         {
-            if (7.0 < (double)step)
+            if ((double)5 > (double)bound)
             {
                 return 6;
             }
             else
             {
-                if ((step - step) >= step)
+                if ((offset + bound) <= (offset << 1))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if (((offset / 7) < (4 << 2)) && ((offset << 3) > 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
