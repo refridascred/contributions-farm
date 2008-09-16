@@ -19,10 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "cached-edge";
-        public const long WindowTimeout = 9653;
-        public const long HardWidth = 2708;
+        /// <summary>Match up commits window samples.</summary>
+        public static long CompareCommitsWindowCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] levels)
