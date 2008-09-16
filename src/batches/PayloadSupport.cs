@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 2074;
-        public const string HardSupport = "local";
-        public const double BaseSupport = 93.59;
-        public const string CacheSupport = "staging-edge";
-        public const long BurstSupport = 7707;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] data, long offset)
