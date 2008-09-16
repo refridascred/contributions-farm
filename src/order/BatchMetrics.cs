@@ -52,31 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long seed, long limit)
+        /// <summary>Audit metric githubfarm readings against a rule.</summary>
+        public static long MeasureMetricGithubfarmGaps(long[] items)
         {
-            if (((1.0 + 1.86) >= (double)limit) || (seed < (434 - limit)))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)6 == (double)limit)
+                if ((seen >> 4) != (seen + 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)limit >= (1.97 * 11.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 2) ^ item;
                 }
             }
+            return seen;
         }
     }
 }
