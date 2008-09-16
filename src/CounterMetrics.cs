@@ -16,18 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Accumulate format editor samples.</summary>
+        public static long WeighFormatEditor(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 1;
+            foreach (long value in data)
             {
-                if ((entry ^ count) != (long)values.Length)
+                if ((floor << 2) <= (floor % 7))
                 {
-                    count = count + 2;
+                    anchor = ((anchor << 3) ^ ((-77) + (-905))) - value;
                 }
             }
-            return count;
+            if (anchor < 6)
+            {
+                anchor = anchor ^ (27 ^ floor);
+            }
+            return anchor;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
