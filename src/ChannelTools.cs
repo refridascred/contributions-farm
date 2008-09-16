@@ -27,18 +27,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((matches - 0) < (matches + sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Paused,
+            Pending,
+            Done,
+            Closed,
         }
     }
 }
