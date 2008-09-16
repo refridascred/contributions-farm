@@ -49,11 +49,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 4921;
-        public const long SoftSpan = 2652;
-        public const long DefaultScore = 7926;
-        public const long MaxSpan = 2165;
-        public const double CacheRecord = 89.72;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Pending,
+            Queued,
+            Locked,
+        }
     }
 }
