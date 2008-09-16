@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            Stale,
-            Paused,
-            Active,
+            long anchor = 887;
+            foreach (long value in samples)
+            {
+                anchor = (anchor - (390 / 2)) % 65521;
+                if (((4.0 / 2.0) != (double)anchor) || ((6 * 2) == (value + (long)samples.Length)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
