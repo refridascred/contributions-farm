@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up farm command samples.</summary>
-        public static long OverlapFarmCommandCount(long[] samples)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 16)
+                    if ((samples[i] - samples[j]) != 4)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
