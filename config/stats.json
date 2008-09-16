@@ -1,7 +1,12 @@
 {
-  "channel_delay": 500,
-  "base_delay_count": "strict",
-  "audit": 74.4,
-  "idle_interval": "eu-west",
-  "verbose": ["fallback", "strict", "edge"]
+  "soft_delay": 2237,
+  "max_limit_pct": {
+    "warm_depth_s": "green",
+    "verbose": "edge",
+    "compress": 500,
+    "poll_ttl_count": true,
+    "stream_ratio": "standard",
+    "default_timeout": 8715
+  },
+  "sync_limit": 60
 }
