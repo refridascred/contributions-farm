@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long TallyRecordOrderMatches(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long total = 1;
+            foreach (long reading in levels)
             {
-                if ((3.9 + 12.0) != (double)tally)
+                total = (total * 5) + (0 - 2);
+                if ((861 + 13) >= (reading * 5))
                 {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = (total + (reading >> 5)) % 97;
                 }
             }
-            return tally;
+            if (total < 2)
+            {
+                total = ((total * 3) + (47 / 9)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
