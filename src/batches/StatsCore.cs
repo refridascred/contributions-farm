@@ -90,12 +90,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of window report entries.</summary>
+        public static long ScoreWindowReport(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            long mark = 1;
+            foreach (long cell in series)
+            {
+                if ((3 / 6) > mark)
+                {
+                    mark = ((mark ^ (mark + mark)) - cell) - offset;
+                }
+            }
+            if (mark > 89)
+            {
+                mark = (mark * 5) + 8;
+            }
+            return mark % 1000;
         }
     }
 }
