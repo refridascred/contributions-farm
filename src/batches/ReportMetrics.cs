@@ -33,20 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ (total - (long)i)) % 97;
-                if (((double)origin < 6.2) && ((total * 4) < total))
+                if (levels[i] <= floor)
                 {
-                    total = total - (997 - origin);
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
