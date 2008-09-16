@@ -56,12 +56,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            Draft,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a tools entry.</summary>
