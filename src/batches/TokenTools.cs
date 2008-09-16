@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter cluster readings.</summary>
-        public static long WeighFilterCluster(long[] readings)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long result = 7;
-            foreach (long cell in readings)
-            {
-                if ((372 + cell) > (cell << 3))
-                {
-                    result = (result - (result + 78)) % 97;
-                }
-            }
-            return result;
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
