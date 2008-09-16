@@ -34,39 +34,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Rank githubfarm contributi input into a small class.</summary>
-        public static long RankGithubfarmContributi(long origin, long origin2)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long slot = origin + origin2;
-            if (((origin - origin2) > origin2) || ((origin * 2) <= slot))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((660 + slot) > (origin ^ origin2))
+                if ((double)value == (5.0 - 4.38))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((-74) + origin) <= (origin / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - origin2) < (origin + origin2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
