@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitDepth = 17.55;
-        public const long DefaultRatio = 9572;
-        public const double LimitBatch = 50.43;
-        public const double MinBatch = 42.85;
-        public const string WindowBatch = "legacy-1";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count cache entry pairs that satisfy a relation.</summary>
         public static long MatchCacheEntryCount(long[] items)
