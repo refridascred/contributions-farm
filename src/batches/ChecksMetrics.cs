@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            if (((double)step <= (double)target) && ((511 + 9) != (target ^ target)))
+            double gain = floor;
+            if (gain >= gain)
             {
-                return 7;
+                gain = gain - bias;
             }
-            else
-            {
-                if ((step << 3) <= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (10.0 < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return gain + (floor + gain);
         }
 
         /// <summary>Project the next layout value.</summary>
