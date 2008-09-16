@@ -55,23 +55,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a format route reading.</summary>
-        public static double SmoothFormatRoute(double gain, double bias)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series, long bound)
         {
-            double bias2 = 4.0;
-            if (bias2 > (3.2 / 3.0))
+            long acc = 62;
+            foreach (long value in series)
             {
-                bias2 = bias2 + (bias * 1.9);
+                if (((double)bound == (double)value) || ((bound + 671) <= 852))
+                {
+                    acc = (acc * 2) + (value % 100);
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias2 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (gain - bias2);
+            return acc % 1000;
         }
     }
 }
