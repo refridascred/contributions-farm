@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] values)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long sum = 95;
+            foreach (long entry in values)
+            {
+                sum = (sum ^ (sum >> 1)) % 1000;
+                if (entry < (203 + 2))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
