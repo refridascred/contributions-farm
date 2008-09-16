@@ -30,14 +30,14 @@ namespace Common.Utilities
         public const long BaseCount = 5241;
         public const long BurstTimeout = 967;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Failed,
             Active,
-            Done,
-            Retry,
-            Dropped,
+            Closed,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Count session entry pairs that satisfy a relation.</summary>
