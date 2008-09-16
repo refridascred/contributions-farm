@@ -1,5 +1,5 @@
 {
-  "default_window_pct": false,
-  "min_interval_pct": "blue",
-  "persist": true
+  "enabled": "standard",
+  "batch_threshold_ms": "blue",
+  "metric_retries": true
 }
