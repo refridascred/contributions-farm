@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of entry cache readings.</summary>
-        public static long FoldEntryCache(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long result = 21;
-            foreach (long datum in levels)
-            {
-                if ((datum & 3) <= result)
-                {
-                    result = ((result * 5) + result) % 255;
-                }
-            }
-            if (result < (-23))
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result % 1000;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
