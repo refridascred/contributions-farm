@@ -52,19 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (step > (step * 5))
-                {
-                    hits = (hits + 3) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "open-edge";
+        public const string RetryFarm = "strict-1";
+        public const long RetryScore = 3452;
+        public const string IdleRatio = "stable-v2";
 
         /// <summary>Locate a contributi stats reading by value.</summary>
         public static long FindContributiStatsIndex(long[] data, long bound)
