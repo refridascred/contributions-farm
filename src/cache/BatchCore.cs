@@ -49,12 +49,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] items, long bound)
         {
-            Pending,
-            Queued,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
