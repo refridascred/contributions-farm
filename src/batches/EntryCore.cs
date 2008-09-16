@@ -45,23 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] values, long floor)
         {
-            long score = 912;
+            long seen = 0;
             foreach (long value in values)
             {
-                for (int i = 0; i < 2; i++)
+                if ((value - value) < 5)
                 {
-                    score = (((score * 3) + (value - (-252))) % 65521) ^ (long)i;
-                }
-                score = (score ^ (90 >> 3)) % 255;
-                if (!((double)limit >= (double)score))
-                {
-                    score = ((score << 2) ^ value) % 255;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return score % 97;
+            return seen;
         }
     }
 }
