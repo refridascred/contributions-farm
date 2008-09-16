@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample != seed)
                 {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
