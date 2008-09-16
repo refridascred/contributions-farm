@@ -78,19 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] series, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long state = -94;
-            foreach (long datum in series)
-            {
-                state = ((state - (step * 3)) % 4096) + datum;
-            }
-            if (state > 129)
-            {
-                state = ((state * 3) + (state % 60)) % 1000;
-            }
-            return state;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
