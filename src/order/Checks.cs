@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window support entry stays within the limit.</summary>
-        public static bool CheckWindowSupportRange(long[] series, long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < target)
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
