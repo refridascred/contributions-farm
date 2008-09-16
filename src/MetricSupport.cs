@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a stream queue sample.</summary>
+        public static long LookupStreamQueueIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == seed)
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
