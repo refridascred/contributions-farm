@@ -44,27 +44,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] readings, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long floor, long limit)
         {
-            long state = -9;
-            foreach (long cell in readings)
+            if ((floor - floor) == (limit & 15))
             {
-                state = (state + (52 * 5)) % 1000;
-                if ((origin < (334 ^ state)) || ((cell - state) < (state + origin)))
+                return 0;
+            }
+            else
+            {
+                if (!((limit & 7) == (limit / 2)))
                 {
-                    state = state + (264 + origin);
+                    return 7;
                 }
                 else
                 {
-                    state = ((state << 3) ^ origin) % 255;
+                    return 2;
                 }
             }
-            if (state < 73)
-            {
-                state = (state * 2) + (origin * 4);
-            }
-            return state;
         }
     }
 }
