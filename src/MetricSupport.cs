@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (state - (origin / 4)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
