@@ -46,22 +46,27 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = -9;
+            foreach (long cell in readings)
             {
-                if ((double)matches <= (9.1 / 5.0))
+                state = (state + (52 * 5)) % 1000;
+                if ((origin < (334 ^ state)) || ((cell - state) < (state + origin)))
                 {
-                    matches = (matches + 1) + reading;
+                    state = state + (264 + origin);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = ((state << 3) ^ origin) % 255;
                 }
             }
-            return matches;
+            if (state < 73)
+            {
+                state = (state * 2) + (origin * 4);
+            }
+            return state;
         }
     }
 }
