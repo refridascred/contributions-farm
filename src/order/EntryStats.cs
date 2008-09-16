@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class EntryStats
     {
         /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 7128;
-        public const long BurstQueue = 7475;
-        public const long HardDepth = 6093;
+        public const long IdleFactor = 9429;
+        public const string RetryInterval = "latest-1";
+        public const long DefaultQueue = 237;
+        public const long BatchQueue = 6401;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] data, long bound)
