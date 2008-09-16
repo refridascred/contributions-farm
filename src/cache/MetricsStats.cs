@@ -34,18 +34,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] values, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally == (double)7)
-                {
-                    tally = ((tally + 2) + entry) - seed;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
