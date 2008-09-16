@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] items, long bound)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
