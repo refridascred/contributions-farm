@@ -1,9 +1,5 @@
 {
-  "payload_ratio": {
-    "verbose": true,
-    "cache_window_pct": 81,
-    "base_limit": "open"
-  },
-  "batch_interval": ["standard", "latest", "open", "standard"],
-  "cache_capacity": "primary"
+  "warm_limit_count": "open",
+  "counter_timeout": [234, 456, 363, 352],
+  "soft_timeout_count": true
 }
