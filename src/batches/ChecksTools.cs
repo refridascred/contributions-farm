@@ -16,22 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many format account samples are out of range.</summary>
-        public static long AuditFormatAccountMatches(long[] items, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (6 < (20 + floor))
+                if (item > limit)
                 {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Match up payload samples.</summary>
