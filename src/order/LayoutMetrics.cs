@@ -42,18 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((7.0 - 2.33) != (double)datum)
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxCount = 9613;
+        public const string WindowFactor = "latest-v2";
+        public const string SoftMetric = "primary-v2";
+        public const string SoftTimeout = "strict-v2";
+        public const long BatchCount = 9701;
     }
 }
