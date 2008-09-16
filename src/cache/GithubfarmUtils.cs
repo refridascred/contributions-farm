@@ -27,19 +27,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] samples, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
