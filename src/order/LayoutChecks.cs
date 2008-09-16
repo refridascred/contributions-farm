@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] readings, long limit)
         {
-            long result = 744;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (2.0 > (double)result)
+                if (value != limit)
                 {
-                    result = (result - (result ^ datum)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 0)
-            {
-                result = (result + 24) % 1000;
-            }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Hold a report snapshot.</summary>
