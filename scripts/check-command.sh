@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging local open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-staging}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=468
+log "limit is ${COMMAND_LIMIT}"
