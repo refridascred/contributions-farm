@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= bound)
                 {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate already samples.</summary>
