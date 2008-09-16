@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long offset)
         {
-            long mix = 7;
-            foreach (long datum in readings)
+            if (((offset + floor) != (floor + offset)) && ((floor ^ offset) == (offset * 4)))
             {
-                mix = ((mix * 3) + (mix + mix)) + datum;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((offset / 3) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((700 >> 2) == (floor - floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a token stats sample.</summary>
