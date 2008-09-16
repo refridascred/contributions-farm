@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                mark = ((mark << 3) ^ (step >> 4)) % 4096;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Hold a window info.</summary>
