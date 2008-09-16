@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const string SoftLevel = "legacy-1";
         public const long LimitAccount = 7957;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] items)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((12.0 - 17.0) <= (double)count)
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
