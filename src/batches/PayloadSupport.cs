@@ -18,20 +18,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long anchor = -200;
-            foreach (long sample in series)
-            {
-                long prev = (floor / 9) << 3;
-                anchor = ((anchor * 4) + (431 - prev)) % 97;
-                if (((4.2 - 6.0) < (double)floor) && ((double)sample == (7.5 + 6.0)))
-                {
-                    anchor = (anchor ^ (floor / 8)) % 101;
-                }
-            }
-            return anchor % 4096;
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
