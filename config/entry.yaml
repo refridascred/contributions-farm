@@ -1,10 +1,13 @@
 # entry settings
-batch_capacity:
-  - cached
-  - local
-  - open
-  - legacy
-min_size_s: 100
-tools_retries: true
-verbose: false
-payload_timeout: 30
+soft_ratio_pct: false
+strict:
+  burst_size_ms: legacy
+  soft_timeout_ms: false
+  dry_run: open
+  batch_depth_s:
+    - 163
+    - 234
+    - 409
+  batch_ratio: 36.4
+  persist: 66.51
+sync_size: 30
