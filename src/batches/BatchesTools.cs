@@ -19,10 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
             public long Count { get; set; }
         }
 
