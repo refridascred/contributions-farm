@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-TOKEN_LIMIT=153
-log "limit is ${TOKEN_LIMIT}"
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard legacy eu-west; do
-    log "checking ${item}"
-done
+TOKEN_LIMIT=439
+log "limit is ${TOKEN_LIMIT}"
