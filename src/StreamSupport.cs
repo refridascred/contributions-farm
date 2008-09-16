@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count batch token pairs that satisfy a relation.</summary>
-        public static long MatchBatchTokenCount(long[] levels)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (33 > (offset % 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)step > 1.0)
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
