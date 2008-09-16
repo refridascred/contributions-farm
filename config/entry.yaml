@@ -1,8 +1,14 @@
 # entry settings
-burst_timeout_count: 60
+warm_ratio_count: 29.62
+cache_capacity_pct: 60.23
+command_timeout: 30
+retry_size: false
 compress:
-  tools_size: 24.4
-  batch_threshold_pct: 30
-  cache_depth_s: 87.83
-session_retries: 5017
-batch_window_s: primary
+  hard_timeout_s: 500
+  idle_timeout_s: 297
+  strict: false
+batch_size_pct:
+  - local
+  - latest
+  - edge
+  - strict
