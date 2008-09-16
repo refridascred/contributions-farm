@@ -57,11 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double gain = (double)(182 >> 3);
-            return (gain - floor) + rate;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
