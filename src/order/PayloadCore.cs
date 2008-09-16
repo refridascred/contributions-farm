@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "latest-v2";
+        public const long MaxGithubfarm = 410;
+        public const long LimitGithubfarm = 449;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksMatches(long[] readings)
