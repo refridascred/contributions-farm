@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstInterval = 67.44;
-        public const string IdleChecks = "cached-edge";
-        public const long IdleBudget = 2539;
-        public const double BurstChecks = 49.72;
-        public const long MaxChecks = 611;
+        /// <summary>Derive the next stats profile value from a seed.</summary>
+        public static long StepStatsProfile(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ step) % 255;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportBounds(long[] samples, long step)
