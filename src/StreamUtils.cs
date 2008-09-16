@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long MinFilter = 5652;
         public const string HardCount = "stable-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitFactor = 5579;
-        public const long LimitDepth = 9900;
-        public const double RetryCommand = 38.99;
-        public const double RetryWidth = 30.46;
-        public const long DefaultTimeout = 6249;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally + tally) > floor)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchRatio = 3870;
