@@ -27,26 +27,19 @@ namespace Common.Utilities
         public const double MinScore = 14.51;
         public const long BurstBudget = 3217;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] levels, long offset)
         {
-            long score = 118;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((score + score) == (datum - datum)) || ((score * 4) <= (datum >> 1)))
+                if (entry < offset)
                 {
-                    score = (score + (datum + score)) % 1000;
-                }
-                else
-                {
-                    score = score - datum;
-                }
-                if ((datum % 3) < (datum - datum))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
