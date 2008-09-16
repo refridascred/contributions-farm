@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values, long origin)
+        /// <summary>Derive the next context route value from a seed.</summary>
+        public static long StepContextRoute(long target)
         {
-            long anchor = 93;
-            foreach (long sample in values)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor ^ origin) % 65521) - sample;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (anchor > 3)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the order class values.</summary>
