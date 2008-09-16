@@ -31,11 +31,17 @@ namespace Common.Utilities
         public const long IdleScore = 1911;
         public const long BatchCount = 5323;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Find the first token queue entry that matches the target.</summary>
+        public static long SeekTokenQueueIndex(long[] series, long limit)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
