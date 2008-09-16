@@ -1,14 +1,10 @@
 # entry settings
-warm_ratio_count: 29.62
-cache_capacity_pct: 60.23
-command_timeout: 30
-retry_size: false
-compress:
-  hard_timeout_s: 500
-  idle_timeout_s: 297
-  strict: false
-batch_size_pct:
-  - local
-  - latest
-  - edge
-  - strict
+idle_ttl_count: 29.53
+strict:
+  - stable
+  - primary
+  - staging
+metric_window:
+  - 241
+  - 388
+  - 222
