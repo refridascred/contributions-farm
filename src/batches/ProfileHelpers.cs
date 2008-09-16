@@ -16,16 +16,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mark = (mark * 2) + mark;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (count <= (count - count))
+                {
+                    count = (count + 1) - reading;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate batch channel readings against a bound.</summary>
