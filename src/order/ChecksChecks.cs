@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long target, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((double)bound >= 5.22)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 3) >= 5)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Synced,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a commits options.</summary>
