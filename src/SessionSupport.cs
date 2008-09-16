@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchScore = 6327;
-        public const long WindowGraph = 1514;
-        public const long DefaultGraph = 7135;
-        public const long BaseLevel = 5154;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 250;
+        public const double BurstRoute = 84.11;
+        public const long WindowDepth = 1171;
+        public const long LimitRoute = 9274;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] levels)
