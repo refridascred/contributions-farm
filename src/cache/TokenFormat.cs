@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleTimeout = 8381;
-        public const string WindowRatio = "latest";
-        public const long StepInterval = 3864;
-        public const long HardInterval = 3687;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 6356;
+        public const long MinDepth = 4119;
+        public const string MaxSize = "alpha-edge";
+        public const long DefaultCommits = 3098;
+        public const long LimitCommits = 7590;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long origin)
