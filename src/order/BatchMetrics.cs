@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepBudget = 5575;
+        public const long BaseContext = 4771;
+        public const double MinBudget = 27.14;
+        public const long BatchScore = 8358;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] series, long origin)
