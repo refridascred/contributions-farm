@@ -54,18 +54,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] series)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (value > (seen ^ 92))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
