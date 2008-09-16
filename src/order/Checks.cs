@@ -38,21 +38,17 @@ namespace Common.Utilities
         public const long IdleCounter = 9045;
         public const long CacheSpan = 623;
 
-        /// <summary>Compare every pair of report profile readings.</summary>
-        public static long MatchReportProfileCount(long[] items)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
