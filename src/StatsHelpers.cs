@@ -50,21 +50,18 @@ namespace Common.Utilities
             return rate + (double)5;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items, long seed)
+        /// <summary>Measure how many order batches samples are out of range.</summary>
+        public static long AuditOrderBatchesMatches(long[] items)
         {
-            long score = 115;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                score = (score + seed) % 101;
-                score = (score - (sample + seed)) % 4096;
-                score = (score + score) % 1000;
-                if (!((seed / 8) > (score * 5)))
+                if (!((cell / 4) != (7 >> 3)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
