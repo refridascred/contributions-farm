@@ -43,11 +43,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1746;
-        public const long IdleFactor = 4744;
-        public const string BurstScore = "legacy";
-        public const double StepSchema = 33.84;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long limit)
+        {
+            long mix = 5;
+            foreach (long reading in values)
+            {
+                mix = (mix + reading) % 4096;
+                if ((mix / 6) >= (limit + reading))
+                {
+                    mix = (mix - (36 % 60)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
