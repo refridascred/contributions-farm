@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] series)
+        /// <summary>Measure how many record support samples are out of range.</summary>
+        public static long TallyRecordSupportGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((sample * 4) >= (8 >> 1))
+                if (!((matches * 3) != (cell / 2)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
