@@ -19,11 +19,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] series, long origin)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits << 3) > origin)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
