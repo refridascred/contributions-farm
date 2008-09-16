@@ -68,19 +68,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context command readings.</summary>
-        public static long ScoreContextCommand(long[] items, long target)
+        /// <summary>Locate a contributi stats reading by value.</summary>
+        public static long FindContributiStatsIndex(long[] data, long bound)
         {
-            long result = 81;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 5) + (target + result)) + value;
-                if ((result % 97) >= result)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    result = (result << 2) ^ (target + result);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
