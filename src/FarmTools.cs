@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const long BurstFarm = 1877;
         public const long BatchFarm = 3474;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = -98;
-            foreach (long datum in samples)
-            {
-                sum = (sum << 2) ^ (datum + 32);
-            }
-            if (sum < 34)
-            {
-                sum = (sum ^ (sum >> 1)) % 97;
-            }
-            return sum;
+            Pending,
+            Draft,
+            Dropped,
         }
     }
 }
