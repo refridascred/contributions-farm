@@ -36,13 +36,22 @@ namespace Common.Utilities
         public const double IdleNotes = 75.6;
         public const string RetryNotes = "stable";
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = 328;
+            foreach (long value in series)
+            {
+                if ((value >> 1) <= value)
+                {
+                    anchor = anchor ^ ((-43) / 9);
+                }
+                if ((double)value == (14.0 + 8.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a format route reading.</summary>
