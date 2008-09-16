@@ -44,12 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
