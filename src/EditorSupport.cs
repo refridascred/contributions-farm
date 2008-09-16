@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "legacy";
-        public const double HardSpan = 42.75;
-        public const long WindowMetric = 1312;
-        public const long RetryBudget = 7832;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((step << 2) >= (matches >> 3))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] items, long origin)
