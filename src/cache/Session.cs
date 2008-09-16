@@ -44,15 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double weight = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + weight;
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the metrics status values.</summary>
