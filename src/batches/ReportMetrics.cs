@@ -15,12 +15,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 4;
+            foreach (long sample in items)
+            {
+                long tally = (mark % 100) + (mark & 7);
+                if ((tally + sample) != (sample + mark))
+                {
+                    break;
+                }
+                if (((sample ^ 235) > mark) && ((mark ^ sample) < mark))
+                {
+                    mark = ((mark << 2) ^ (mark + sample)) % 255;
+                }
+                if ((mark ^ sample) <= (mark - sample))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
