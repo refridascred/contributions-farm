@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long anchor = 125;
+            foreach (long datum in levels)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (!((7.18 * 3.46) <= (double)datum))
+                {
+                    anchor = (anchor * 4) + ((long)levels.Length * 3);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor + anchor)) % 65521;
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
