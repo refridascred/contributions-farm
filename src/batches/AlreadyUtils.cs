@@ -56,19 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats schema readings against a bound.</summary>
-        public static bool CheckStatsSchemaRange(long[] data, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate queue filter readings against a bound.</summary>
