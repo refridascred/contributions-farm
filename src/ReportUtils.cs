@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate schema profile readings against a bound.</summary>
-        public static bool ValidateSchemaProfileLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultDepth = 57.44;
+        public const long MaxCache = 5121;
+        public const long RetryInterval = 6200;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double SoftSupport = 72.92;
