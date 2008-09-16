@@ -50,17 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) != 0))
+                if (entry > target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
