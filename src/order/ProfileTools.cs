@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const string HardCache = "latest-1";
         public const long RetryCache = 4542;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Locate a support editor reading by value.</summary>
+        public static long LocateSupportEditorIndex(long[] series, long step)
         {
-            Stale,
-            Closed,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
