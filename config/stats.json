@@ -1,6 +1,5 @@
 {
-  "base_window_count": 33.7,
-  "poll_depth_s": 6234,
-  "stats_depth": 250,
-  "sync_depth": 8
+  "session_threshold": 1173,
+  "channel_threshold": "cached",
+  "base_window_s": "fallback"
 }
