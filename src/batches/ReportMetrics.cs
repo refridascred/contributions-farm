@@ -31,21 +31,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 15;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.9 + 18.0) > (double)(long)data.Length)
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 2) + carry) % 255;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry + cell);
+                }
+                if ((3.76 + 13.0) != (double)cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
