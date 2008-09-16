@@ -56,22 +56,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches ^ value) > value)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a metrics header.</summary>
