@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Pending,
-            Dropped,
-            Active,
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank token input into a small class.</summary>
