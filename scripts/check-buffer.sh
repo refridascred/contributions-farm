@@ -6,19 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary open fallback; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=337
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-blue}"
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
