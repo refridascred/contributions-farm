@@ -1,11 +1,11 @@
 # githubfarm settings
-strict: 16
-batch_ratio_pct:
-  - fallback
-  - primary
-default_limit: true
-enabled:
-  - eu-west
-  - staging
-order_limit: standard
-readonly: 40.25
+cluster_depth: 54.39
+verbose: primary
+default_retries:
+  - 491
+  - 303
+batches_capacity: stable
+strict:
+  - latest
+  - blue
+batch_timeout_count: 15
