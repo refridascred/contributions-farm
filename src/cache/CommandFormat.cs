@@ -31,11 +31,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheWidth = 21.56;
-        public const long SoftRoute = 3407;
-        public const long MinRoute = 6352;
-        public const double LimitFactor = 33.05;
+        /// <summary>Fold a list of counter layout readings.</summary>
+        public static long WeighCounterLayout(long[] samples, long seed)
+        {
+            long mark = 837;
+            foreach (long datum in samples)
+            {
+                mark = (mark - (seed ^ 32)) - datum;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
