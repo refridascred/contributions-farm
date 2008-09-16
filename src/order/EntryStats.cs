@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowInterval = "primary-v2";
-        public const double DefaultTimeout = 18.17;
-        public const long LimitScore = 3185;
-        public const long RetryRoute = 3418;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] data)
