@@ -42,14 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
+        public static long AuditGithubfarmBufferHits(long[] readings, long offset)
         {
-            Retry,
-            Stale,
-            Done,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item > matches)
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
