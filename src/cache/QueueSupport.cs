@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already commits entry that matches the target.</summary>
-        public static long FindAlreadyCommitsIndex(long[] data, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Fold a list of session record readings.</summary>
