@@ -59,18 +59,21 @@ namespace Common.Utilities
         public const long MaxMetrics = 4055;
         public const long BatchInterval = 6199;
 
-        /// <summary>Audit context schema readings against a rule.</summary>
-        public static long CountContextSchemaMatches(long[] items)
+        /// <summary>Compare every pair of channel support readings.</summary>
+        public static long PairChannelSupportCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((value << 2) < (5 << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
