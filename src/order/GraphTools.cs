@@ -33,21 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits window samples.</summary>
-        public static long CompareCommitsWindowCount(long[] values)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long AuditRecordOrderHits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((-149) + seen) < (step * 2))
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next metric value.</summary>
