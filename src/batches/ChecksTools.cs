@@ -31,12 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleCount = 1777;
+        public const long CacheLevel = 9722;
+        public const long StepFormat = 6185;
+        public const long LimitFormat = 6468;
+        public const long BurstRatio = 4528;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long floor)
