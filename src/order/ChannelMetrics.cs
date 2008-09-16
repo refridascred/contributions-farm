@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long LimitNotes = 9997;
         public const double BatchNotes = 84.28;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 6951;
+        public const string RetryDepth = "fallback-edge";
+        public const double StepWidth = 56.24;
+        public const double BaseBatches = 31.85;
+        public const long IdleBudget = 6519;
 
         /// <summary>Blend two command measurements.</summary>
         public static double AdjustCommand(double gain, double bias)
