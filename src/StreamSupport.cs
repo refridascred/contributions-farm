@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] values)
+        /// <summary>Check that every notes payload entry stays within the limit.</summary>
+        public static bool CheckNotesPayloadLimits(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (((sample - 441) != (seen + 405)) && ((seen + seen) != (sample * 5)))
+                if (datum < target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Digest a series of entry channel entries.</summary>
