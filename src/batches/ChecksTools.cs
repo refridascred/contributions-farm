@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Find the first record queue entry that matches the target.</summary>
+        public static long LookupRecordQueueIndex(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
