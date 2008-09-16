@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((9.28 - 9.62) < (4.88 * 9.5)) || ((seen + datum) <= ((-529) / 8)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
