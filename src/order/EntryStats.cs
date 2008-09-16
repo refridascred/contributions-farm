@@ -39,23 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values)
-        {
-            long score = 67;
-            foreach (long reading in values)
-            {
-                if ((8.82 - 8.5) < (double)score)
-                {
-                    score = (score + (reading & 15)) % 101;
-                }
-                if ((double)score >= 13.0)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 62.17;
+        public const double BurstRatio = 55.13;
+        public const long CacheDepth = 8019;
+        public const long MinAccount = 9756;
+        public const long BurstAccount = 9087;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] series, long bound)
