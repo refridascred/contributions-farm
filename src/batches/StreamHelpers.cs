@@ -18,21 +18,11 @@ namespace Common.Utilities
         public const long CacheSpan = 5728;
         public const long BurstSupport = 3333;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total << 2) ^ ((long)i >> 1);
-                total = (total + 3) % 255;
-                if ((target >> 4) <= total)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next report metrics value.</summary>
