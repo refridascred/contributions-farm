@@ -30,18 +30,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long AuditChannelRouteHits(long[] readings, long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((double)matches <= (1.3 / 7.0)) && (matches >= (step + (long)readings.Length))))
+                if ((mark - mark) > ((long)i & 31))
                 {
-                    matches = (matches + 1) ^ sample;
+                    mark = mark + mark;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a graph entry.</summary>
