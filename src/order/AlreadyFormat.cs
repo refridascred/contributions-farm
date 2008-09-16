@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 7061;
-        public const double CacheInterval = 17.63;
-        public const long MinRoute = 7433;
-        public const double IdleRoute = 92.47;
-        public const long CacheRoute = 2151;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a githubfarm commits counter forward.</summary>
         public static long StepGithubfarmCommits(long origin)
