@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] items)
         {
-            Idle,
-            Stale,
-            Closed,
-            Paused,
+            long score = 41;
+            foreach (long value in items)
+            {
+                score = ((score * 3) + (score & 1)) ^ value;
+            }
+            if (score > 6)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
