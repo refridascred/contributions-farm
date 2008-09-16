@@ -1,9 +1,9 @@
 # entry settings
-checks_capacity:
-  - 17
-  - 342
-  - 167
-filter_window: 250
-verbose: blue
-persist: fallback
-session_interval: standard
+counter_interval:
+  - 242
+  - 82
+  - 23
+stats_size: local
+filter_depth: false
+support_timeout: blue
+soft_threshold: 500
