@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] items, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long bound, long target)
         {
-            long mark = 9;
-            foreach (long reading in items)
+            if ((target & 3) != (bound << 3))
             {
-                if (mark <= (offset + mark))
+                return 0;
+            }
+            else
+            {
+                if ((bound & 15) != (bound - 9))
                 {
-                    mark = (mark << 3) ^ (reading % 97);
+                    return 7;
+                }
+                else
+                {
+                    if (((18 - target) >= (target << 2)) || (target > (target * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target % 100) != (target + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
