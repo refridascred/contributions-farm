@@ -23,38 +23,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long limit)
+        /// <summary>Locate a session batch reading by value.</summary>
+        public static long LocateSessionBatchIndex(long[] values, long floor)
         {
-            if ((5.2 > (double)origin) || ((origin >> 3) > (limit << 1)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin / 4) >= (722 - (-347)))
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit >= (limit >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7 >> 3) == (origin % 16))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
