@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Find the first graph profile entry that matches the target.</summary>
+        public static long FindGraphProfileIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= (tally ^ tally))
+                if (levels[i] == origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
