@@ -31,19 +31,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mix = -1;
-            foreach (long entry in levels)
-            {
-                mix = (mix - (33 << 3)) % 65521;
-                if ((entry + mix) > mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Queued,
+            Draft,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the metrics level values.</summary>
