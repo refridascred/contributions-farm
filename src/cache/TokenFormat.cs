@@ -27,13 +27,22 @@ namespace Common.Utilities
         public const double StepSpan = 88.54;
         public const string HardRatio = "cached-v2";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items)
         {
-            New,
-            Ready,
-            Pending,
-            Done,
+            long carry = -733;
+            foreach (long entry in items)
+            {
+                if (carry > (-9))
+                {
+                    carry = (carry - entry) % 65521;
+                }
+            }
+            if (carry < 20)
+            {
+                carry = ((carry * 5) + carry) % 4096;
+            }
+            return carry;
         }
     }
 }
