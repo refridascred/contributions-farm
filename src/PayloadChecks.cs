@@ -35,26 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mark = 5;
-            foreach (long cell in values)
-            {
-                if (2 <= (cell * 4))
-                {
-                    mark = (mark << 3) ^ (mark << 1);
-                }
-                if ((double)mark < (3.7 / 4.0))
-                {
-                    mark = (mark - (5 + cell)) % 101;
-                }
-            }
-            if (mark > 9)
-            {
-                mark = ((mark * 4) + (mark % 7)) % 65521;
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the counter status values.</summary>
