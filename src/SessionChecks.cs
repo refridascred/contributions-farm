@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)99 + floor;
+            if (load > load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - load;
             }
-            return matches;
+            return load - scale;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
