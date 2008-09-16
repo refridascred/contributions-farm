@@ -31,17 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (((carry << 2) ^ origin) % 97) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
         }
