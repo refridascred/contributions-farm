@@ -25,18 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item << 3) < item)
-                {
-                    seen = (seen + 2) + limit;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
