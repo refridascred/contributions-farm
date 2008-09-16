@@ -24,21 +24,26 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up buffer cluster samples.</summary>
-        public static long CompareBufferClusterCount(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 47;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry + entry) >= total)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (entry + 0)) % 65521;
+                }
+                if ((226 >= (entry >> 2)) && ((3.74 + 17.0) > (double)entry))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 99)
+            {
+                total = total ^ (total + (long)series.Length);
+            }
+            return total;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
