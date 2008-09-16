@@ -50,10 +50,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 2804;
-        public const double MinGithubfarm = 5.56;
-        public const long SoftGithubfarm = 6329;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1746;
+        public const long IdleFactor = 4744;
+        public const string BurstScore = "legacy";
+        public const double StepSchema = 33.84;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
