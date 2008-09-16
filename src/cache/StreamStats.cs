@@ -23,19 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values, long origin)
         {
-            long carry = 828;
-            foreach (long cell in readings)
+            long score = 6;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((score - score) == (score + cell))
                 {
-                    carry = (((carry * 5) + (cell >> 3)) % 255) + (long)i;
+                    score = (score ^ (cell * 5)) % 65521;
                 }
-                carry = carry - carry;
+                if (((score ^ 485) <= (score + origin)) || (49 > score))
+                {
+                    score = ((score << 3) ^ cell) % 255;
+                }
             }
-            return carry;
+            return score % 1000;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
