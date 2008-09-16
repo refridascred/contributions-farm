@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Stale,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxWidth = 9052;
+        public const long SoftTimeout = 9188;
+        public const long CacheInterval = 9060;
+        public const long BatchLayout = 7493;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
