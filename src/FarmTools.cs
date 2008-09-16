@@ -29,19 +29,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            long score = 6;
-            foreach (long cell in samples)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score * 2) + (cell & 63)) % 97;
+                if (limit >= (93 << 3))
+                {
+                    anchor = (anchor - (8 << 3)) % 101;
+                    anchor = ((anchor * 3) + (limit >> 2)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (score > 5)
-            {
-                score = ((score << 3) ^ (score ^ 2)) % 1000;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Blend two payload measurements.</summary>
