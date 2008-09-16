@@ -73,10 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4831;
-        public const long BatchLayout = 6076;
-        public const string SoftLayout = "open-edge";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two buffer support measurements.</summary>
         public static double ScaleBufferSupport(double scale, double offset)
