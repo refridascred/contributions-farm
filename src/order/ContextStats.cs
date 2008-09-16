@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate record metrics readings against a bound.</summary>
-        public static bool VerifyRecordMetricsLimits(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 9680;
+        public const long MinDepth = 1044;
+        public const long SoftEditor = 9033;
+        public const long DefaultEditor = 3903;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long limit)
