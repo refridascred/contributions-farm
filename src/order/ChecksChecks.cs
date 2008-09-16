@@ -25,32 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long step2)
-        {
-            if ((step / 8) >= (step2 % 100))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(step2 <= (step2 * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step ^ 9) <= (step2 >> 1)) && (step > (step2 * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 62.56;
+        public const long RetryWindow = 7068;
+        public const long CacheLevel = 4726;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] levels)
