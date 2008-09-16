@@ -62,12 +62,25 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long floor)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long span = origin + floor;
+            if ((double)span != (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor & 7) >= span))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
