@@ -19,17 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = target - seed;
+            if ((seed + target) == (234 >> 5))
             {
-                if ((data[i] > target) && ((data[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((cur * 4) <= target) && ((15.0 * 3.55) < (3.0 + 6.48)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((cur << 2) > (seed + cur)) && ((cur + cur) != ((-5) / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target < 6.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
