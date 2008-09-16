@@ -38,18 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] values, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long sum = 712;
+            foreach (long sample in samples)
             {
-                if ((220 < (bound % 3)) && (((bound / 3) < (bound + tally)) && ((datum % 8) >= (bound % 24))))
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = tally + 1;
+                    sum = ((sum ^ (70 >> 5)) + (long)i) - sample;
+                }
+                if (!((96 / 4) < floor))
+                {
+                    sum = (sum + (7 / 6)) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
