@@ -16,18 +16,22 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] values, long bound)
         {
-            long total = 1;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (6.0 > (double)total)
+                if (58 > bound)
                 {
-                    total = ((total ^ (6 * 5)) % 101) + cell;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
