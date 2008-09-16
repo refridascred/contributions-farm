@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long DefaultCommits = 1021;
         public const string SoftCommits = "standard";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] items, long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
