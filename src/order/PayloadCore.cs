@@ -63,17 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = 4.8;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                scale2 = ((scale2 - scale) + (double)(long)i) - span;
             }
-            return -1;
+            return scale2 + (scale - scale2);
         }
     }
 }
