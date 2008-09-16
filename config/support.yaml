@@ -1,10 +1,9 @@
 # support settings
-warm_retries_ms:
-  - fallback
-  - open
-  - cached
-  - eu-west
-context_delay: 55
-sync_limit:
-  - strict
-  - open
+default_interval_count: false
+burst_threshold_s:
+  - 302
+  - 270
+  - 283
+  - 435
+tools_threshold: true
+dry_run: cached
