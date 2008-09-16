@@ -61,21 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Digest a series of farm token entries.</summary>
+        public static long ScoreFarmToken(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -956;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)data.Length >= (state - value)) || ((value ^ state) < value))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state * 2) + (long)data.Length) % 65521;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
