@@ -34,22 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm already entries.</summary>
-        public static long TotalGithubfarmAlready(long[] levels)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long mark = 32;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((5.4 * 6.0) < (double)mark) && ((datum + 994) <= mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark << 3) ^ (17 - 299);
-                }
-                if (((424 >> 5) != (mark - (long)levels.Length)) && ((0.59 - 11.0) < (double)datum))
-                {
-                    mark = ((mark << 3) ^ (datum * 2)) % 1000;
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every contributi commits entry stays within the limit.</summary>
