@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate format payload readings against a bound.</summary>
-        public static bool CheckFormatPayloadBounds(long[] values, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long limit)
         {
             bool stale = true;
-            foreach (long sample in values)
+            foreach (long datum in samples)
             {
-                if (sample > offset)
+                if (datum <= limit)
                 {
                     stale = false;
                     break;
