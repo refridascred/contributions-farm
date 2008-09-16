@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Draft,
-            Paused,
-            Done,
+            Pending,
+            Failed,
+            Idle,
             Stale,
         }
 
