@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long target, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long lane = target + step;
+            if (((-4) - target) <= (lane >> 3))
             {
-                if (((long)readings.Length & 1) > 63)
+                return 1;
+            }
+            else
+            {
+                if (lane > step)
                 {
-                    hits = (hits + 3) + item;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
