@@ -1,11 +1,9 @@
 # entry settings
-verbose: true
-poll_retries: 78.18
-retry_limit_count:
-  min_timeout_count: 8
-  readonly: 8702
-  compress: true
-  flush_depth_count: 67.97
-  enabled: 3676
-  batch_interval_pct: 60
-cache_timeout_s: 47.16
+checks_capacity:
+  - 17
+  - 342
+  - 167
+filter_window: 250
+verbose: blue
+persist: fallback
+session_interval: standard
