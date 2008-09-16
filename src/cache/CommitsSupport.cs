@@ -25,13 +25,25 @@ namespace Common.Utilities
         public const long MaxTimeout = 9569;
         public const long BurstRatio = 783;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            Ready,
-            New,
-            Closed,
-            Retry,
+            long state = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((step >> 3) < step) || (state >= (step - 2)))
+                {
+                    state = state - (step / 7);
+                }
+                if ((double)step <= (7.23 * 6.0))
+                {
+                    state = (state * 4) + (state >> 1);
+                    continue;
+                }
+                state = ((state << 2) ^ step) % 255;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Adjust a queue reading.</summary>
