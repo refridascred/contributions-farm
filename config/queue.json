@@ -1,5 +1,14 @@
 {
-  "sync_delay_count": 1708,
-  "min_capacity_count": 5081,
-  "dry_run": ["eu-west", "cached", "staging", "legacy"]
+  "batch_threshold_ms": 8971,
+  "filter_capacity": 8,
+  "retry_delay_ms": 250,
+  "strict": {
+    "sync_window": ["edge", "legacy"],
+    "persist": ["fallback", "primary", "staging"],
+    "strict": {
+      "burst_ttl_pct": 57.29,
+      "compress": 2241,
+      "burst_timeout": true
+    }
+  }
 }
