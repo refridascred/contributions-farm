@@ -1,10 +1,10 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the report list.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every stats by checks.
+Each layout is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Document new report fields
-- Review buffer limits each release
+- Log every commits change
+- Prefer metric defaults
+- Review report limits each release
