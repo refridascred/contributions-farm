@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long seed)
+        /// <summary>Validate schema profile readings against a bound.</summary>
+        public static bool ValidateSchemaProfileLimits(long[] samples, long offset)
         {
-            long cur = floor ^ seed;
-            if (!((cur + seed) >= cur))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed != (8.09 - 6.0))
+                if (reading >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.33 + 8.0) < (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
