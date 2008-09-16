@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long DefaultCommits = 3098;
         public const long LimitCommits = 7590;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] data, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (1.6 <= (double)hits)
-                {
-                    hits = ((hits + 2) + item) - floor;
-                }
+                total = (total + (total / 9)) % 1000;
+                total = (total * 4) + (total >> 1);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
