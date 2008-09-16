@@ -1,22 +1,18 @@
 # githubfarm settings
-idle_ratio_ms:
-  persist: false
-  retry_size_pct: true
-  hard_capacity_pct:
-    token_limit: 8746
-    enabled: 500
-    retry_ttl: 2815
-    persist: standard
-    cache_delay_s: 8813
-    stats_window: standard
-  max_timeout_count:
-    - local
-    - local
-burst_window_s:
-  - 75
-  - 294
-  - 10
-  - 492
-sync_threshold: 84.45
-layout_size: 52.23
-compress: 22
+compress:
+  - primary
+  - cached
+context_delay: 51
+hard_retries_ms: true
+persist: fallback
+idle_interval_count:
+  flush_timeout_pct: 5881
+  min_size: 500
+  default_delay_s:
+    - edge
+    - standard
+  enabled:
+    base_limit_pct: 6074
+    warm_timeout_ms: 5.34
+    base_depth: true
+graph_timeout: 7515
