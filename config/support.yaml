@@ -1,9 +1,19 @@
 # support settings
-default_interval_count: false
-burst_threshold_s:
-  - 302
-  - 270
-  - 283
-  - 435
-tools_threshold: true
-dry_run: cached
+buffer_ratio: green
+counter_delay: 6583
+sync_capacity_ms: 14.38
+warm_window_s:
+  flush_delay_ms: true
+  default_depth_count:
+    strict: false
+    readonly: 47
+    layout_ttl:
+      - green
+      - primary
+      - fallback
+    verbose: open
+  readonly: 4115
+  warm_threshold: true
+  flush_capacity_s: 24
+base_retries_ms: legacy
+warm_retries: 20
