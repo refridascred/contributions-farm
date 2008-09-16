@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Use report settings to tune how often graph data is refreshed.
-A editor that stays idle for too long is moved to the queue list.
+Defaults for entry live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
 
-The report report groups every metrics by commits.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep cache and order names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the token handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new buffer fields
-- Log every route change
-- Validate graph input early
+- Review schema limits each release
+- Document new order fields
+- Prefer contributi defaults
