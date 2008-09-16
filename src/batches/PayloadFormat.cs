@@ -22,40 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long bound, long origin)
-        {
-            long diff = bound ^ origin;
-            if (bound < diff)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.2 * 3.8) == (double)diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin / 9) == (diff - origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - 52) < (bound + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryTimeout = 4880;
+        public const double HardReport = 6.47;
+        public const long MaxReport = 6582;
+        public const double MinReport = 94.12;
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] values)
