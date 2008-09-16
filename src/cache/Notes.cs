@@ -44,22 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long CountGraphFarmHits(long[] levels)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry <= ((long)levels.Length & 63))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
