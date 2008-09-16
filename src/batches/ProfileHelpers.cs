@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data)
         {
-            Stale,
-            Queued,
-            Pending,
+            long mix = 9;
+            foreach (long datum in data)
+            {
+                if (datum < mix)
+                {
+                    mix = (mix * 2) + (mix - mix);
+                }
+            }
+            if (mix > (-5))
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of graph checks entries.</summary>
