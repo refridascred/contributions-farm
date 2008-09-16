@@ -25,11 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultDepth = 651;
-        public const long DefaultTimeout = 9778;
-        public const string MaxOrder = "legacy";
-        public const long WindowOrder = 9099;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] values, long step)
