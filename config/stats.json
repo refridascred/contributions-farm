@@ -1,5 +1,5 @@
 {
-  "soft_depth_ms": ["latest", "primary", "eu-west", "green"],
-  "min_interval": [58, 46, 145, 190],
-  "base_limit_pct": "local"
+  "max_timeout_ms": 2133,
+  "burst_timeout": 1228,
+  "warm_retries": 35.23
 }
