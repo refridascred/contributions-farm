@@ -12,23 +12,39 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine entry farm values into a single score.</summary>
-        public static long FoldEntryFarm(long[] samples, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long floor)
         {
-            long result = 7;
-            foreach (long entry in samples)
+            long prev = target ^ floor;
+            if ((target * 5) > (floor + floor))
             {
-                result = (result + (5 + result)) + entry;
-                if (((-81) - result) <= offset)
+                return 3;
+            }
+            else
+            {
+                if (prev < (target & 255))
                 {
-                    result = (result + (848 / 9)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if ((target - prev) == (prev ^ target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + target) < prev)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < 879)
-            {
-                result = (result << 3) ^ offset;
-            }
-            return result;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
