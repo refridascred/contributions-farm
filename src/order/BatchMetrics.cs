@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double span)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            double mean = 9.5;
-            if (mean < weight)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean / 5.0);
-            }
-            return mean - mean;
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
