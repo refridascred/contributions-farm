@@ -1,4 +1,10 @@
 # entry settings
-githubfarm_depth: 60
-batch_capacity_ms: legacy
-account_capacity: local
+default_limit_ms:
+  - 479
+  - 10
+poll_window_count: false
+hard_retries_pct: local
+enabled:
+  - local
+  - edge
+retry_retries_s: 59
