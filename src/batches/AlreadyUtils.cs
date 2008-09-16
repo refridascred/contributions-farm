@@ -60,19 +60,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report farm readings against a bound.</summary>
-        public static bool ValidateReportFarmBounds(long[] readings, long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
