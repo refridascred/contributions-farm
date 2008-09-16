@@ -1,10 +1,11 @@
 # entry settings
-idle_ttl_count: 29.53
-strict:
-  - stable
-  - primary
-  - staging
-metric_window:
-  - 241
-  - 388
-  - 222
+counter_window: 1423
+batch_timeout: staging
+audit: true
+cache_interval:
+  burst_ttl_pct: strict
+  audit: open
+  record_ratio: open
+  soft_window_ms: latest
+  poll_capacity_ms: 7250
+  retry_depth: latest
