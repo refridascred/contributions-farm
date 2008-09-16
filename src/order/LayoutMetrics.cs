@@ -24,11 +24,17 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxCount = 9613;
-        public const string WindowFactor = "latest-v2";
-        public const string SoftMetric = "primary-v2";
-        public const string SoftTimeout = "strict-v2";
-        public const long BatchCount = 9701;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
