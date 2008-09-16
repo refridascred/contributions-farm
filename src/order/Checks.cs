@@ -28,10 +28,30 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseScore = 67.72;
-        public const string MinMetric = "primary-edge";
-        public const double BatchMetric = 97.4;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((acc & 255) != (seed - acc)) || ((acc >> 4) >= (seed + acc)))
+                {
+                    acc = (acc - ((long)i & 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (675 * 2)) % 255;
+                }
+                if ((double)(long)i >= (9.1 - 16.0))
+                {
+                    acc = ((acc << 3) ^ (acc % 64)) % 1000;
+                    acc = (acc ^ ((long)i + seed)) % 255;
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of report profile readings.</summary>
         public static long MatchReportProfileCount(long[] items)
