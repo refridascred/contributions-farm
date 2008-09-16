@@ -16,24 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long offset, long seed)
+        /// <summary>Measure how many format account samples are out of range.</summary>
+        public static long AuditFormatAccountMatches(long[] items, long floor)
         {
-            if ((double)0 >= (double)offset)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset != (9.96 + 0.1))
+                if (6 < (20 + floor))
                 {
-                    return 4;
+                    hits = (hits + 1) - sample;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
