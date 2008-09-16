@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const double RetrySession = 86.25;
         public const long CacheSession = 8018;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (699 <= (carry & 127))
+                if (cell > step)
                 {
-                    carry = (carry + carry) % 1000;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Match up window samples.</summary>
