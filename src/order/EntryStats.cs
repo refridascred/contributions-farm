@@ -43,11 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinFactor = 43.46;
-        public const double IdleContext = 61.62;
-        public const double BatchContext = 42.87;
-        public const double SoftFactor = 26.13;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Ready,
+            Active,
+            Pending,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelHits(long[] readings, long target)
