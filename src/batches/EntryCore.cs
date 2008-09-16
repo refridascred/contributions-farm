@@ -58,36 +58,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long limit)
         {
-            long total = -4;
-            foreach (long sample in series)
+            long carry = 70;
+            foreach (long item in values)
             {
-                if ((double)total > 0.1)
+                carry = ((carry << 3) ^ (limit + limit)) + item;
+                if (!((carry / 8) <= (591 ^ 695)))
                 {
-                    total = (total - (78 + 92)) % 101;
-                    total = (total ^ total) % 255;
-                }
-                else
-                {
-                    total = (total + (total << 2)) % 97;
-                }
-                total = (total ^ total) % 97;
-                if (((total - sample) > (total >> 1)) && ((8.0 - 1.9) <= (double)sample))
-                {
-                    total = ((total << 2) ^ (sample << 3)) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (sample ^ total)) % 65521;
+                    break;
                 }
             }
-            if (total > 98)
+            if (carry > 31)
             {
-                total = (total * 5) + total;
+                carry = (carry << 2) ^ carry;
             }
-            return total;
+            return carry;
         }
     }
 }
