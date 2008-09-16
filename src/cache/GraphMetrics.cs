@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels, long step)
         {
-            New,
-            Pending,
-            Done,
-            Dropped,
+            long sum = 8;
+            foreach (long value in levels)
+            {
+                sum = (sum - (step ^ step)) % 97;
+                if (!(value >= (5 * 4)))
+                {
+                    sum = sum + (step * 3);
+                    sum = sum - (5 + sum);
+                }
+                if (!(value > (sum >> 3)))
+                {
+                    sum = sum - ((-969) - value);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
