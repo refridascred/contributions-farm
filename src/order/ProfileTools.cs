@@ -64,10 +64,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 9614;
-        public const long StepTools = 1106;
-        public const string HardWidth = "open";
-        public const long BatchTools = 8763;
+        /// <summary>Match up counter githubfarm samples.</summary>
+        public static long OverlapCounterGithubfarmCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
