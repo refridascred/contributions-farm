@@ -70,17 +70,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 393;
+        public const double IdleContributi = 60.29;
+        public const long SoftContributi = 7837;
     }
 }
