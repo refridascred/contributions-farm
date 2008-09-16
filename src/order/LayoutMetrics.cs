@@ -49,9 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowRatio = 2693;
-        public const long CacheDepth = 3845;
-        public const string WindowBudget = "cached-1";
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long MeasureRouteFormatHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((floor + (long)readings.Length) > sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
