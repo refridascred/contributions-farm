@@ -28,9 +28,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 1136;
-        public const string HardCommits = "staging-1";
-        public const long BatchWidth = 4203;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items, long target)
+        {
+            long mark = -58;
+            foreach (long reading in items)
+            {
+                if (((-10) / 7) <= (mark >> 5))
+                {
+                    mark = (mark ^ (reading + (long)items.Length)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (target / 7)) % 65521;
+                }
+                if ((reading / 2) < (9 - target))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
