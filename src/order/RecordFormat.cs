@@ -44,14 +44,19 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long limit)
         {
-            Synced,
-            Queued,
-            Active,
-            Closed,
-            Done,
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a session tools sample.</summary>
