@@ -22,11 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double gain, double offset)
+        /// <summary>Fold a list of order context readings.</summary>
+        public static long FoldOrderContext(long[] samples)
         {
-            double scale = offset;
-            return scale + gain;
+            long acc = -7;
+            foreach (long entry in samples)
+            {
+                if ((acc & 255) <= entry)
+                {
+                    acc = acc + (80 >> 5);
+                }
+                else
+                {
+                    acc = (acc - (entry % 24)) % 4096;
+                }
+            }
+            if (acc < 55)
+            {
+                acc = acc - (acc ^ acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
