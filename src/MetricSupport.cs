@@ -33,21 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mix & 15) >= limit)
-                {
-                    mix = (mix ^ mix) % 4096;
-                    mix = (mix << 3) ^ (mix << 2);
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 62.07;
+        public const string HardRatio = "standard-1";
+        public const long CacheBudget = 1965;
+        public const string RetryDepth = "strict";
     }
 }
