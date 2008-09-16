@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] data, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - reading) >= reading)
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
