@@ -27,13 +27,11 @@ namespace Common.Utilities
             return drift + (double)19;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
