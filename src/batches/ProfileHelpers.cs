@@ -20,18 +20,11 @@ namespace Common.Utilities
             return drift - (double)42;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((1 + 0) <= (tally * 3))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            double gain = span;
+            return gain + (weight * 4.5);
         }
 
         /// <summary>Roll a filter counter forward.</summary>
