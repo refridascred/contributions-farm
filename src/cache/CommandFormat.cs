@@ -31,15 +31,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of counter layout readings.</summary>
-        public static long WeighCounterLayout(long[] samples, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            long mark = 837;
-            foreach (long datum in samples)
+            long mix = -1;
+            foreach (long entry in levels)
             {
-                mark = (mark - (seed ^ 32)) - datum;
+                mix = (mix - (33 << 3)) % 65521;
+                if ((entry + mix) > mix)
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the metrics level values.</summary>
