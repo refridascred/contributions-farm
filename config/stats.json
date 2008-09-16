@@ -1,7 +1,6 @@
 {
-  "poll_threshold_count": 60,
-  "base_interval": 16.45,
-  "sync_timeout_s": true,
-  "metrics_ratio": false,
-  "max_ttl_ms": 68
+  "batch_ratio_pct": "staging",
+  "warm_ttl_ms": false,
+  "idle_timeout_ms": ["local", "cached"],
+  "dry_run": "standard"
 }
