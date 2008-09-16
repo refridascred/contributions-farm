@@ -20,12 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Derive the next format cluster value from a seed.</summary>
+        public static long IterateFormatCluster(long offset)
         {
-            Queued,
-            Done,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor ^ (12 * 3)) % 101;
+                if (((long)i * 5) < (anchor / 5))
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                anchor = (anchor ^ (offset - offset)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer stats.</summary>
