@@ -1,17 +1,25 @@
 # support settings
-readonly: 60
-burst_ttl: green
-idle_threshold_pct:
-  base_retries_s: false
-  max_retries:
-    - edge
-    - blue
-  flush_threshold_ms:
-    - eu-west
-    - blue
-format_limit: 33.78
-soft_delay:
-  - 244
-  - 182
-  - 98
-compress: legacy
+batch_threshold_ms:
+  sync_ratio: strict
+  flush_window_ms:
+    - standard
+    - open
+  default_threshold_ms: 69.39
+  batch_ttl_count: 88
+soft_ratio: 8891
+persist:
+  min_threshold_ms: 95.64
+  max_threshold_pct:
+    - 53
+    - 335
+    - 325
+    - 402
+  enabled: 3711
+  batch_limit_pct:
+    - 101
+    - 424
+    - 257
+    - 90
+  persist: 79
+  hard_capacity: primary
+strict: green
