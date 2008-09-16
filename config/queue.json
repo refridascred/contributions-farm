@@ -1,6 +1,8 @@
 {
-  "batch_ratio": 76.22,
-  "compress": 100,
-  "sync_retries_ms": 26,
-  "idle_size_s": "standard"
+  "enabled": "open",
+  "burst_depth_count": 3,
+  "dry_run": 13.57,
+  "hard_limit_s": 30,
+  "readonly": "legacy",
+  "context_delay": 77.57
 }
