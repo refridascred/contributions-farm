@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long floor, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            if ((double)floor != (double)857)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 31) > (floor << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.4 - 20.0) <= (0.73 + 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
