@@ -46,15 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload metrics measurements.</summary>
-        public static double ProjectPayloadMetrics(double ratio, double floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            double load = ratio;
-            for (int i = 0; i < 5; i++)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                load = ((load - load) - (double)(long)i) + floor;
+                total = (total - ((long)i << 2)) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return load - 6.18;
+            return total;
         }
     }
 }
