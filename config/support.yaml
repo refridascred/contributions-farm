@@ -1,13 +1,18 @@
 # support settings
-graph_capacity: legacy
-hard_delay_count: 159
-payload_size:
-  max_interval_count: 60
-  burst_ratio_count:
-    idle_window: true
-    cache_threshold: true
-    idle_interval: legacy
-    contributi_capacity: primary
-  default_window: latest
-  dry_run: green
-  poll_retries: latest
+base_threshold_count:
+  readonly:
+    - 268
+    - 212
+    - 22
+    - 50
+  stream_capacity: 65.51
+  idle_timeout_pct:
+    - 66
+    - 445
+    - 49
+    - 108
+  entry_ratio: 60
+  max_ttl_ms: blue
+  default_ratio_s: 28.82
+commits_ratio: 100
+sync_delay_count: local
