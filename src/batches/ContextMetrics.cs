@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] samples, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (datum >= limit)
+                if ((double)matches >= (double)2)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
