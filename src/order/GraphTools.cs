@@ -71,22 +71,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema payload readings against a rule.</summary>
-        public static long CountSchemaPayloadMatches(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((sample + sample) < (hits ^ hits))
+                if (!(((long)data.Length == (entry << 2)) || ((62 + floor) >= (entry * 2))))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
