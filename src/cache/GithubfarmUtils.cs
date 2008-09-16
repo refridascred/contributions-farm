@@ -24,21 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count account channel pairs that satisfy a relation.</summary>
-        public static long OverlapAccountChannelCount(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = 8.1;
+            if (rate >= (double)(-712))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + rate) + floor;
             }
-            return count;
+            return rate - weight;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
