@@ -43,17 +43,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > bound)
+                if ((double)995 >= (double)state)
                 {
-                    return (long)i;
+                    state = (state + (state - state)) % 255;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
