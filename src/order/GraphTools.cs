@@ -75,22 +75,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] data, long floor)
+        /// <summary>Classify a session already pair into a bucket.</summary>
+        public static long RankSessionAlready(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long next = origin + limit;
+            if ((limit <= (limit + origin)) || ((553 - next) > origin))
             {
-                if (!(((long)data.Length == (entry << 2)) || ((62 + floor) >= (entry * 2))))
+                return 8;
+            }
+            else
+            {
+                if (((double)next >= (9.0 + 0.7)) && ((double)next == (double)93))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((next * 2) <= next)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
