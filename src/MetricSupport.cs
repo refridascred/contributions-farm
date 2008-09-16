@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of account route readings.</summary>
-        public static long DigestAccountRoute(long[] items)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long bound)
         {
-            long state = 856;
-            foreach (long sample in items)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state + 66) % 4096;
-                if (sample < (state << 1))
-                {
-                    continue;
-                }
-                if ((4.01 + 1.2) >= (double)state)
-                {
-                    state = ((state * 2) + state) % 4096;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Look up the position of a stream queue sample.</summary>
