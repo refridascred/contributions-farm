@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 56.89;
-        public const long CacheChecks = 185;
-        public const string WindowChecks = "standard-edge";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ProjectRecord(double scale, double floor)
