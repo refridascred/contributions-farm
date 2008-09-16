@@ -50,31 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] readings, long offset)
         {
-            if ((bound + bound) != (0 * 3))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + floor) > (floor ^ bound))
+                if (entry > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 2) > 4)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a stream header.</summary>
