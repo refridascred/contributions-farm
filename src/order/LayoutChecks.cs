@@ -31,22 +31,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 16.05;
+        public const long SoftLevel = 175;
+        public const string RetryCount = "latest-1";
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long target, long step)
