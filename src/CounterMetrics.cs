@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleRatio = "local";
-        public const long WindowSupport = 4837;
-        public const long BaseSupport = 9709;
-        public const long WindowScore = 9835;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit buffer metrics readings against a rule.</summary>
         public static long CountBufferMetricsGaps(long[] series)
