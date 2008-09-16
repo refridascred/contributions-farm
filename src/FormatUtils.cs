@@ -28,12 +28,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 5259;
-        public const long BatchLevel = 5978;
-        public const double RetryAccount = 63.55;
-        public const long SoftScore = 6616;
-        public const double BaseLevel = 61.03;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples, long step)
+        {
+            long state = 555;
+            foreach (long entry in samples)
+            {
+                if ((step - state) <= (entry << 2))
+                {
+                    state = ((state * 4) + (state / 7)) % 255;
+                }
+            }
+            if (state < 36)
+            {
+                state = ((state << 3) ^ (step >> 5)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Check that every farm notes entry stays within the limit.</summary>
         public static bool VerifyFarmNotesBounds(long[] series, long floor)
