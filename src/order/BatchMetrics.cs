@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double MinBudget = 27.14;
         public const long BatchScore = 8358;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
             public bool Owner { get; set; }
-            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
