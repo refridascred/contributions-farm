@@ -13,23 +13,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long origin)
         {
-            double mean = gain;
-            if (mean > (span - mean))
+            long cur = floor + origin;
+            if ((double)origin > (double)floor)
             {
-                mean = mean - gain;
+                return 5;
             }
             else
             {
-                mean = mean + 6.0;
+                if ((double)floor > 9.55)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((209 + 757) <= (cur + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - 5.21;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
