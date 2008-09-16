@@ -54,21 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value - (-23)) > (value + value))
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
