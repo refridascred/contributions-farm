@@ -52,19 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((value << 1) > 67) && !((seen >> 5) > seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "standard-v2";
+        public const long BatchProfile = 220;
+        public const long IdleBudget = 9887;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricLimits(long[] data, long floor)
