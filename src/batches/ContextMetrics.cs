@@ -23,14 +23,21 @@ namespace Common.Utilities
         public const long BurstRatio = 1124;
         public const string LimitRatio = "alpha-1";
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            Failed,
-            Draft,
-            Retry,
-            Locked,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
