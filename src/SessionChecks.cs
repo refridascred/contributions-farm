@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (!((double)target != (8.5 - 2.8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit >= (3.21 - 2.7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8 < (target ^ limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((12.0 + 12.0) > (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
