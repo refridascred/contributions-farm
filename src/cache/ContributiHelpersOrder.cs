@@ -13,12 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchRatio = "local-1";
-        public const double DefaultCache = 39.14;
-        public const long MaxCache = 3259;
-        public const double SoftCache = 43.86;
-        public const string BurstCache = "open-1";
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every format schema entry stays within the limit.</summary>
         public static bool CheckFormatSchemaRange(long[] items, long target)
