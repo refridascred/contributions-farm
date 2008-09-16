@@ -19,12 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool VerifyNotesRouteRange(long[] items, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a window snapshot.</summary>
