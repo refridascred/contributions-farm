@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const double SoftFarm = 61.31;
         public const string IdleFarm = "standard";
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
