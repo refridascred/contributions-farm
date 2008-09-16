@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            long total = 6;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((4 + datum) != (80 << 3))
-                {
-                    total = (total ^ (datum + datum)) % 97;
-                }
+                score = ((score * 4) + (bound << 1)) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
