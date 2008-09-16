@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long AuditEditorContributiGaps(long[] series, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (2.84 >= (double)seed)
+                if (item <= floor)
                 {
-                    seen = (seen + 2) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Validate buffer batches readings against a bound.</summary>
