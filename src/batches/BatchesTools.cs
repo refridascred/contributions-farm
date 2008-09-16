@@ -32,21 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Audit queue notes readings against a rule.</summary>
+        public static long TallyQueueNotesOutliers(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!(offset > (7 << 1)))
                 {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
