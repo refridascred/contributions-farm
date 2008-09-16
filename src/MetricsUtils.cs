@@ -72,11 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
