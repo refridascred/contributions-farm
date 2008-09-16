@@ -86,11 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            double rate = (double)(3 - 711);
+            if (rate <= (rate - weight))
+            {
+                rate = rate - (bias + weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + (weight + rate);
         }
     }
 }
