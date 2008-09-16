@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next cluster channel value.</summary>
-        public static double BlendClusterChannel(double scale, double offset)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long TallyRecordOrderMatches(long[] samples)
         {
-            double weight = scale + (offset / 6.0);
-            return weight - (double)3;
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((3.9 + 12.0) != (double)tally)
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
