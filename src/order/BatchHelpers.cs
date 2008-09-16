@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] series, long offset)
+        /// <summary>Roll a checks command counter forward.</summary>
+        public static long StepChecksCommand(long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((matches << 1) < (offset << 3)) && ((item & 127) == (item * 2))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Blend two entry queue measurements.</summary>
