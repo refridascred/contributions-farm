@@ -36,11 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Locate a layout payload reading by value.</summary>
+        public static long LocateLayoutPayloadIndex(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
