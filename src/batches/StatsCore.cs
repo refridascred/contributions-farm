@@ -13,26 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine support cache values into a single score.</summary>
-        public static long WeighSupportCache(long[] samples)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long total = 1;
-            foreach (long value in samples)
-            {
-                if ((1.5 + 7.06) <= (double)value)
-                {
-                    total = ((total * 4) + (value + total)) % 97;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 4096;
-                }
-            }
-            if (total > 706)
-            {
-                total = ((total << 2) ^ 921) % 1000;
-            }
-            return total % 65521;
+            Pending,
+            Draft,
+            Failed,
+            Idle,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
