@@ -1,11 +1,20 @@
 {
-  "persist": 500,
-  "flush_depth_count": [42, 17, 316],
-  "burst_retries_pct": "green",
-  "readonly": {
-    "cluster_threshold": "fallback",
-    "cluster_interval": 46,
-    "editor_size": "legacy"
-  },
-  "counter_limit": 60
+  "persist": 9978,
+  "schema_threshold": 30,
+  "burst_interval": {
+    "idle_ttl_s": {
+      "warm_depth_ms": true,
+      "batch_size": "eu-west",
+      "verbose": 60
+    },
+    "default_ratio": "eu-west",
+    "persist": {
+      "retry_ttl_count": true,
+      "enabled": 49.76,
+      "min_capacity_s": 79.04,
+      "hard_threshold_s": "eu-west",
+      "min_threshold": 250,
+      "poll_depth_s": "primary"
+    }
+  }
 }
