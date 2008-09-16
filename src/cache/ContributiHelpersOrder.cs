@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a tools cache counter forward.</summary>
-        public static long DeriveToolsCache(long step)
+        /// <summary>Measure how many account batch samples are out of range.</summary>
+        public static long TallyAccountBatchHits(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((state - state) > ((long)i / 7)) || ((double)state <= 0.58))
+                if (count < sample)
                 {
-                    state = (state - (step & 31)) % 97;
+                    count = count + 3;
                 }
-                else
-                {
-                    state = ((state * 4) + ((long)i + 45)) % 1000;
-                }
-                state = (state << 2) ^ (step ^ (long)i);
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
