@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Combine account values into a single score.</summary>
