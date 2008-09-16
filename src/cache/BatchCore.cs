@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings, long floor)
         {
-            Done,
-            Stale,
-            Closed,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((floor + matches) < (floor ^ matches))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches header.</summary>
