@@ -71,17 +71,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] < limit)
+                if ((double)87 >= (double)sample)
                 {
-                    return (long)i;
+                    count = (count + 1) - origin;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
