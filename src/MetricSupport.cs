@@ -26,22 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema route readings.</summary>
-        public static long DigestSchemaRoute(long[] readings, long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mark = 99;
-            foreach (long datum in readings)
-            {
-                if (((832 / 7) == (datum << 1)) && ((mark % 2) <= origin))
-                {
-                    mark = mark - mark;
-                }
-            }
-            if (mark < 75)
-            {
-                mark = mark ^ (47 + mark);
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
