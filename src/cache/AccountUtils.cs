@@ -68,9 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinSpan = 95.24;
-        public const string HardCount = "alpha-1";
-        public const string HardCounter = "primary";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series)
+        {
+            long anchor = 765;
+            foreach (long cell in series)
+            {
+                anchor = (anchor << 3) ^ (cell ^ anchor);
+                if ((double)(long)series.Length < (2.0 * 4.87))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
