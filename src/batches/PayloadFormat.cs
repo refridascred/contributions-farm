@@ -49,15 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two layout contributi measurements.</summary>
-        public static double ProjectLayoutContributi(double rate, double floor)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long limit)
         {
-            double rate2 = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = ((rate2 + (floor / 7.0)) - (double)(long)i) - rate;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + 20.0;
+            return -1;
         }
     }
 }
