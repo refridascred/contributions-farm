@@ -15,15 +15,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double span)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long limit, long seed)
         {
-            double load = weight;
-            if (load > (weight / 5.0))
+            if (((seed - seed) >= limit) && ((limit + limit) > 72))
             {
-                load = (load + (load + load)) + span;
+                return 1;
             }
-            return load - (1.1 / 5.0);
+            else
+            {
+                if ((seed % 12) <= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
