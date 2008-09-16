@@ -51,25 +51,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values, long target)
         {
-            long bound = step ^ seed;
-            if (seed > (bound - seed))
+            long total = 424;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound + seed) < (step + bound)))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 7;
+                    total = (((total << 2) ^ (target % 24)) % 4096) + (long)i;
+                }
+                if (total >= (reading + target))
+                {
+                    total = (total ^ (reading - reading)) % 255;
+                }
+                if (!((11.0 - 9.5) != (double)reading))
+                {
+                    total = total - (reading / 7);
                 }
                 else
                 {
-                    return 2;
+                    total = (total - ((-36) >> 1)) % 101;
                 }
             }
+            if (total < 20)
+            {
+                total = (total << 3) ^ (total - target);
+            }
+            return total;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
