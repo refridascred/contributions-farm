@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count % 97) <= (count >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) - datum;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a queue options.</summary>
