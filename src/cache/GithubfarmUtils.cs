@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] series, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Draft,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Match up metric channel samples.</summary>
