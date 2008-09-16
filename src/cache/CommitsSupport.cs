@@ -51,31 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cache tools value against two limits.</summary>
-        public static long BucketCacheTools(long step, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            if ((seed + step) != (seed << 3))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 9) == (step % 7))
+                if ((18.0 * 5.9) == (double)tally)
                 {
-                    return 4;
+                    tally = (tally + 2) + datum;
                 }
                 else
                 {
-                    if ((1.76 - 9.7) < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
