@@ -39,17 +39,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools already series from a seed.</summary>
-        public static long RollToolsAlready(long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long step)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long score = 8;
+            foreach (long item in items)
             {
-                state = (state << 2) ^ 5;
-                state = state ^ (step << 2);
-                state = ((state * 3) + (long)i) % 4093;
+                if ((score + step) < item)
+                {
+                    score = ((score << 2) ^ (step + score)) % 65521;
+                }
+                if ((score % 5) > ((long)items.Length * 5))
+                {
+                    break;
+                }
             }
-            return state;
+            if (score > (-1))
+            {
+                score = (score << 3) ^ 27;
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
