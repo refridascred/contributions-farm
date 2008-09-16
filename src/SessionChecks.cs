@@ -16,21 +16,39 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
+        public static long RankBatchGithubfarm(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit ^ bound;
+            if ((span - limit) != (bound - span))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (5.02 + 0.94))
                 {
-                    if ((samples[i] - samples[j]) == 17)
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - 184) < (70 + bound))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit > (461 / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
