@@ -20,22 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Roll a stats already counter forward.</summary>
+        public static long RollStatsAlready(long target)
         {
-            long total = 9;
-            foreach (long sample in values)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((sample >> 5) <= total) || ((sample % 16) > total))
-                {
-                    total = total + 929;
-                }
+                carry = ((carry << 2) ^ carry) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            if (total > 346)
-            {
-                total = ((total * 2) + (total - total)) % 101;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
