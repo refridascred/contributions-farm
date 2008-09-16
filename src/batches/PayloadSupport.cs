@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepInterval = 65.61;
-        public const long WindowCommits = 4082;
-        public const long DefaultScore = 4733;
-        public const long LimitCommits = 9168;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryBudget = "strict";
+        public const double MaxFactor = 2.73;
+        public const string WindowScore = "legacy-1";
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
