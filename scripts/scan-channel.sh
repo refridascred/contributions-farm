@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable; do
+for item in staging cached open stable; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=233
-log "limit is ${CHANNEL_LIMIT}"
