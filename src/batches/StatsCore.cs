@@ -68,20 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepDepth = 9639;
+        public const long WindowSpan = 2586;
+        public const long SoftWidth = 3312;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
