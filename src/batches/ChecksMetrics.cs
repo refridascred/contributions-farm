@@ -38,12 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseFactor = 8906;
-        public const long HardTimeout = 7038;
-        public const long LimitWidth = 1489;
-        public const long CacheWindow = 6389;
-        public const long BurstWindow = 5412;
+        /// <summary>Count batch format pairs that satisfy a relation.</summary>
+        public static long PairBatchFormatCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 8196;
