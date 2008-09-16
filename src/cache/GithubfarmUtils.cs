@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!(((double)hits == (9.0 + 20.0)) || ((9.0 - 6.4) != (double)hits)))
-                {
-                    hits = ((hits + 1) + value) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Locate a session reading by value.</summary>
