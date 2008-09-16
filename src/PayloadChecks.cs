@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double rate, double span)
-        {
-            double ratio = (rate / 6.0) + (double)(-6);
-            if (ratio < (double)4)
-            {
-                ratio = ratio + (span / 3.0);
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (double)63;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 679;
+        public const long LimitLevel = 6214;
+        public const long WindowFarm = 5664;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamRange(long[] series, long target)
