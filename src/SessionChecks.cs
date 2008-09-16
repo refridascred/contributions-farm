@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)target != (8.5 - 2.8)))
             {
-                if (items[i] == origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= (3.21 - 2.7))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (8 < (target ^ limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((12.0 + 12.0) > (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
