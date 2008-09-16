@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Accumulate buffer record samples.</summary>
+        public static long CombineBufferRecord(long[] samples)
         {
-            double scale = weight;
-            if (scale < (weight + scale))
+            long total = 98;
+            foreach (long item in samples)
             {
-                scale = (scale + (double)839) - floor;
+                total = total ^ (item % 8);
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + weight;
+            return total;
         }
 
         /// <summary>Hold a route summary.</summary>
