@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long offset)
+        /// <summary>Scale a window format figure with a bias.</summary>
+        public static double ProjectWindowFormat(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double scale2 = scale;
+            if (scale2 < (double)9)
             {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale2 = (scale2 + (4.0 / 3.0)) - floor;
             }
-            return stale;
+            return scale2 - scale;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
