@@ -1,8 +1,5 @@
 {
-  "layout_window": ["fallback", "latest"],
-  "hard_window_ms": 75.42,
-  "strict": "staging",
-  "idle_capacity_s": true,
-  "min_window_count": "staging",
-  "cache_window_pct": "standard"
+  "sync_timeout": false,
+  "already_depth": "legacy",
+  "githubfarm_timeout": 60.01
 }
