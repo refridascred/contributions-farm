@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultFactor = "latest";
-        public const long LimitContext = 8404;
-        public const long BaseContext = 9087;
-        public const long BurstContext = 9494;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long origin)
