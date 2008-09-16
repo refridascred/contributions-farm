@@ -53,12 +53,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseCount = 91.26;
-        public const double DefaultRatio = 89.37;
-        public const double MaxScore = 56.16;
-        public const double LimitCount = 20.67;
-        public const long StepLayout = 579;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((double)tally > (double)cell) && (tally < (target * 4)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] readings)
