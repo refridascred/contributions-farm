@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] values, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = 75;
+            foreach (long value in levels)
             {
-                if (((732 + step) > (step * 5)) || !((sample >> 1) == (step << 2)))
+                if (((5.69 / 5.0) > (double)mark) && ((value & 7) > (value << 2)))
                 {
-                    count = count + 3;
+                    mark = (mark - bound) % 4096;
+                    break;
+                }
+                mark = (mark * 2) + value;
+                if (76 > (mark - bound))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
