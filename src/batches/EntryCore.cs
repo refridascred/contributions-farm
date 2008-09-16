@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] data, long target)
         {
-            long mark = 54;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((step + step) >= (step / 3))
+                if (entry != target)
                 {
-                    mark = (mark ^ (cell * 5)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return flag;
         }
 
         /// <summary>Hold a queue info.</summary>
