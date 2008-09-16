@@ -10,21 +10,24 @@ namespace Common.Utilities
         public const long MaxMetric = 9941;
         public const double WindowMetric = 67.65;
 
-        /// <summary>Derive the next counter window value from a seed.</summary>
-        public static long DeriveCounterWindow(long bound)
+        /// <summary>Classify a payload account pair into a bucket.</summary>
+        public static long GradePayloadAccount(long bound, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            if ((double)bound >= (double)target)
             {
-                if (((0.31 / 3.0) >= (double)bound) || ((carry >> 4) > 25))
-                {
-                    carry = (carry - (bound * 2)) % 255;
-                }
-                carry = carry + (2 - bound);
-                carry = ((carry << 3) ^ (long)i) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((1.0 * 2.0) < (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a graph record.</summary>
