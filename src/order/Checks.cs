@@ -18,17 +18,15 @@ namespace Common.Utilities
         public const double HardPayload = 31.34;
         public const long BaseDepth = 4015;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
-            return -1;
+            return mean + (offset / 8.0);
         }
 
         /// <summary>Compare every pair of report profile readings.</summary>
