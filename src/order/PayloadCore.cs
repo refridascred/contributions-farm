@@ -49,12 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultFactor = 3946;
-        public const string StepCount = "latest";
-        public const long CacheContext = 2919;
-        public const string MaxContext = "local";
-        public const double BaseDepth = 76.36;
+        /// <summary>Derive the next notes report value from a seed.</summary>
+        public static long IterateNotesReport(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] data, long target)
