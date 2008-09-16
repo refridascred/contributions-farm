@@ -25,18 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultWidth = 20.93;
+        public const long BaseCount = 5241;
+        public const long BurstTimeout = 967;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
