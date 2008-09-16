@@ -6,19 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=420
-log "limit is ${COMMAND_LIMIT}"
-
-for item in edge strict legacy local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
