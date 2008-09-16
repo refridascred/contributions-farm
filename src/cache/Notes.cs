@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long state = 4;
+            foreach (long entry in levels)
             {
-                if (((long)i <= (mark - bound)) && ((74 << 1) == (bound - (long)i)))
-                {
-                    mark = (mark ^ (62 & 127)) % 101;
-                    mark = (mark << 3) ^ 49;
-                }
-                mark = ((mark * 4) + (bound & 1)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                state = ((state << 3) ^ (368 >> 2)) ^ entry;
             }
-            return mark;
+            if (state < 569)
+            {
+                state = (state ^ (bound * 4)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
