@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseSpan = "open-edge";
+        public const long CacheToken = 6450;
+        public const long IdleLevel = 4620;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] values)
