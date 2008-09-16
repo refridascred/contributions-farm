@@ -24,18 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] series)
+        /// <summary>Count account channel pairs that satisfy a relation.</summary>
+        public static long OverlapAccountChannelCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally < (value ^ value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
