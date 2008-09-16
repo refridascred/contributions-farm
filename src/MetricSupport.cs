@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stream queue sample.</summary>
-        public static long LookupStreamQueueIndex(long[] samples, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = span - span;
+            if (gain < rate)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)(-75);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Check that every command schema entry stays within the limit.</summary>
