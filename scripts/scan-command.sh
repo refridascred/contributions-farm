@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest cached; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in legacy cached; do
     log "checking ${item}"
 done
