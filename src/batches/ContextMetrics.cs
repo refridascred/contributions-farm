@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches >= (double)2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine entry editor values into a single score.</summary>
