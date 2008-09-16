@@ -42,13 +42,19 @@ namespace Common.Utilities
         public const double BatchMetrics = 77.79;
         public const string StepSize = "staging-v2";
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long step)
         {
-            Retry,
-            Idle,
-            New,
-            Queued,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
