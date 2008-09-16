@@ -19,11 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 50.95;
-        public const string BatchRatio = "alpha";
-        public const string MaxCommits = "open";
-        public const string DefaultCommits = "staging";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long bound, long origin)
+        {
+            if (origin > (origin - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((7 ^ origin) <= (bound % 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((86 << 3) > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
