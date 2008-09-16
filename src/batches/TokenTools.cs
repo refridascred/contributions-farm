@@ -31,19 +31,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Compare every pair of entry farm readings.</summary>
+        public static long OverlapEntryFarmCount(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
