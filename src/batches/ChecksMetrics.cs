@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long step)
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            if (((double)step <= (double)target) && ((511 + 9) != (target ^ target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step << 3) <= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (10.0 < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
