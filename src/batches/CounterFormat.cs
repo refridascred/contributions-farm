@@ -25,13 +25,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
