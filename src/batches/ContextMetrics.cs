@@ -23,21 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long TotalEntryEditor(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 952;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor + (item + item)) % 97;
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a route options.</summary>
