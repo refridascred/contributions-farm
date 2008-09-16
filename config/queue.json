@@ -1,7 +1,18 @@
 {
-  "enabled": 8061,
-  "audit": "cached",
-  "max_ratio_s": 49.33,
-  "readonly": 86.9,
-  "compress": 30
+  "strict": {
+    "burst_capacity_s": 1045,
+    "hard_ttl_s": {
+      "context_capacity": "strict",
+      "verbose": 68.76,
+      "commits_retries": [40, 498],
+      "default_depth_pct": "edge",
+      "enabled": "cached",
+      "compress": "stable"
+    },
+    "burst_retries_pct": "green",
+    "min_ttl_pct": ["standard", "local", "staging", "standard"]
+  },
+  "checks_ttl": "cached",
+  "min_retries_s": 250,
+  "burst_delay_count": 6811
 }
