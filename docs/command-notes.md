@@ -1,15 +1,12 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Use buffer settings to tune how often payload data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
-
-The checks report groups every route by stats.
-Run the record check before changing any checks limits.
-Run the contributi check before changing any token limits.
+A cluster that stays idle for too long is moved to the tools list.
+A profile that stays idle for too long is moved to the token list.
+Each session is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Log every payload change
-- Document new contributi fields
-- Keep stats values small
+- Document new graph fields
+- Keep notes values small
+- Validate schema input early
+- Log every already change
