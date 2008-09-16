@@ -56,19 +56,39 @@ namespace Common.Utilities
         public const long BaseCount = 4691;
         public const long RetryScore = 8511;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long seed)
         {
-            double mean = (ratio * 5.2) * 4.0;
-            if (mean < (ratio * 4.56))
+            long next = floor ^ seed;
+            if (((next - seed) >= (seed ^ floor)) && ((floor << 3) != (78 << 2)))
             {
-                mean = mean - 3.24;
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + span) + (double)(long)i;
+                if ((double)floor <= (3.0 + 7.98))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((seed / 6) > ((-765) + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((next ^ next) <= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mean + (mean - ratio);
         }
     }
 }
