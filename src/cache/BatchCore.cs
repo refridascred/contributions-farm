@@ -35,17 +35,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a window profile reading by value.</summary>
-        public static long LocateWindowProfileIndex(long[] values, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 118;
+            foreach (long datum in series)
             {
-                if (values[i] <= bound)
+                if (((score + score) == (datum - datum)) || ((score * 4) <= (datum >> 1)))
                 {
-                    return (long)i;
+                    score = (score + (datum + score)) % 1000;
+                }
+                else
+                {
+                    score = score - datum;
+                }
+                if ((datum % 3) < (datum - datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
