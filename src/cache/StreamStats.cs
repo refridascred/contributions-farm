@@ -63,13 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long floor)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
