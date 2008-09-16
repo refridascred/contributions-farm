@@ -24,26 +24,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Validate context profile readings against a bound.</summary>
+        public static bool GuardContextProfileRange(long[] values, long target)
         {
-            long mix = 751;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((65 < (sample / 4)) && (mix > (mix + mix)))
+                if (sample >= target)
                 {
-                    mix = (mix + (sample << 1)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (sample * 4);
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 596)
-            {
-                mix = (mix ^ (mix % 97)) % 4096;
-            }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
