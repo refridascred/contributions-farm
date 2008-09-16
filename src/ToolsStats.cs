@@ -35,31 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long total = 617;
+            foreach (long sample in data)
             {
-                if ((double)cell == (double)score)
+                if (sample > (total - 81))
                 {
-                    score = score ^ ((-62) + score);
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ (3 / 4);
-                }
-                if (score >= (score - cell))
-                {
-                    score = score + (cell ^ cell);
-                }
-                else
-                {
-                    score = (score * 4) + (963 << 1);
+                    total = (total - (sample * 5)) % 101;
                 }
             }
-            return score;
+            return total % 4096;
         }
 
         /// <summary>Hold a commits stats.</summary>
