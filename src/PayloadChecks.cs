@@ -55,12 +55,19 @@ namespace Common.Utilities
             return drift + 5.07;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 55.64;
-        public const long BaseScore = 6658;
-        public const long MinCommand = 1284;
-        public const long SoftBudget = 9659;
-        public const string BatchCommand = "alpha-edge";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((3 - item) > (item << 1)) && (89 > (item - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
