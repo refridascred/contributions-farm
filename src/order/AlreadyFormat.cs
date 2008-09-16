@@ -38,21 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout schema readings.</summary>
-        public static long OverlapLayoutSchemaCount(long[] values)
+        /// <summary>Derive the next tools entry value from a seed.</summary>
+        public static long SeriesToolsEntry(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor * 2) + (floor & 255);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
