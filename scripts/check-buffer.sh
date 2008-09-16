@@ -6,18 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=39
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in green legacy open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-strict}"
+mode="${1:-staging}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
