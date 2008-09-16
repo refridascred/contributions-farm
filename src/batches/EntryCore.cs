@@ -25,18 +25,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "fallback-v2";
+        public const long IdleBuffer = 5179;
+        public const long IdleScore = 1911;
+        public const long BatchCount = 5323;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
