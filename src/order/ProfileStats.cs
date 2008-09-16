@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every record counter entry stays within the limit.</summary>
-        public static bool VerifyRecordCounterLimits(long[] values, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long limit, long target)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long span = limit ^ target;
+            if (((limit + span) > span) || ((double)limit <= 7.38))
             {
-                if (sample >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((target + limit) < (limit + span))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((span + limit) <= (target >> 5)) && ((span >> 1) == (limit ^ 34)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.23 + 8.7) <= (6.82 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up token samples.</summary>
