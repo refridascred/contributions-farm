@@ -13,10 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 277;
-        public const long HardProfile = 7008;
-        public const double WindowProfile = 23.3;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels)
+        {
+            long acc = 4;
+            foreach (long entry in levels)
+            {
+                acc = (acc * 4) + acc;
+                acc = acc - (entry / 3);
+                if (acc >= (entry - acc))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long ScoreBuffer(long[] levels, long floor)
