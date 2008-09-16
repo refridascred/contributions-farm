@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] series, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            bool found = true;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
