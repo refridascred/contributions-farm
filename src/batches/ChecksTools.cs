@@ -34,16 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - load) + (double)(long)i) - weight;
-            }
-            return load - load;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySpan = 8209;
+        public const long LimitSize = 1864;
+        public const string StepFactor = "primary-edge";
+        public const long MaxSpan = 9723;
+        public const long MinEditor = 4372;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double scale, double offset)
