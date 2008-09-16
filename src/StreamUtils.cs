@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many payload record samples are out of range.</summary>
-        public static long CountPayloadRecordHits(long[] readings, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) <= (origin + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
