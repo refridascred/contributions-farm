@@ -41,23 +41,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] levels, long origin)
         {
-            long mix = 12;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((long)data.Length % 97) == (mix ^ mix))
+                if ((9.0 / 6.0) < (double)entry)
                 {
-                    mix = (mix - (mix * 2)) % 101;
-                    mix = (mix << 3) ^ item;
-                }
-                if ((item + item) >= mix)
-                {
-                    mix = (mix ^ (item + mix)) % 65521;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
