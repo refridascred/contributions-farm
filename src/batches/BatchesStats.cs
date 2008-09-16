@@ -58,22 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer stream readings against a rule.</summary>
-        public static long CountBufferStreamGaps(long[] readings, long origin)
+        /// <summary>Count channel editor pairs that satisfy a relation.</summary>
+        public static long CompareChannelEditorCount(long[] series)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((76 <= (seen + (long)readings.Length)) || !((item / 8) <= (item - seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
