@@ -25,38 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long bound, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if (origin > (origin - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((7 ^ origin) <= (bound % 10)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((86 << 3) > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
