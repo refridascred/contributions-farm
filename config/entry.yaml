@@ -1,14 +1,15 @@
 # entry settings
-max_delay_s: 24.38
-warm_limit_count: false
-strict:
-  schema_retries:
-    audit: strict
-    sync_limit_count: eu-west
-    base_capacity_count:
-      - open
-      - edge
-    warm_depth: fallback
-    command_size: true
-  editor_ttl: eu-west
-  sync_timeout: 91.39
+cache_interval_s: 17
+contributi_capacity:
+  enabled: 250
+  order_timeout: 59.34
+  hard_size: 79
+  sync_delay_count: green
+batches_retries: primary
+warm_retries_count: 1024
+compress: 64.13
+flush_threshold_s:
+  - strict
+  - fallback
+  - green
+  - green
