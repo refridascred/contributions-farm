@@ -34,19 +34,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 1073;
+        public const long BatchRecord = 8451;
+        public const string LimitRecord = "standard-1";
     }
 }
