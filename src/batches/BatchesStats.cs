@@ -58,13 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit buffer stream readings against a rule.</summary>
+        public static long CountBufferStreamGaps(long[] readings, long origin)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((76 <= (seen + (long)readings.Length)) || !((item / 8) <= (item - seen)))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
