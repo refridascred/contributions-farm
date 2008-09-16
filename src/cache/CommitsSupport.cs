@@ -51,15 +51,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Grade a cache tools value against two limits.</summary>
+        public static long BucketCacheTools(long step, long seed)
         {
-            double weight = bias / 2.0;
-            if (weight < (bias - span))
+            if ((seed + step) != (seed << 3))
             {
-                weight = weight - weight;
+                return 3;
             }
-            return weight + weight;
+            else
+            {
+                if ((step / 9) == (step % 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.76 - 9.7) < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
