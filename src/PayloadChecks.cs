@@ -60,11 +60,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleLevel = 6959;
-        public const double BaseMetrics = 69.4;
-        public const long WindowRatio = 2845;
-        public const string LimitCount = "legacy-edge";
+        /// <summary>Rank token checks input into a small class.</summary>
+        public static long RankTokenChecks(long floor, long floor2)
+        {
+            if (!((floor * 5) >= floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor2 + (-18)) <= (floor2 / 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor2 + floor) < floor2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
