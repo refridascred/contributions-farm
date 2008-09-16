@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long mix = 8;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 + sample) < mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix * 4) + (sample + mix)) % 97;
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
