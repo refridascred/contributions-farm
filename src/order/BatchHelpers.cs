@@ -19,19 +19,38 @@ namespace Common.Utilities
         public const long WindowProfile = 3187;
         public const long CacheProfile = 8993;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] readings, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if ((target + target) > 915)
             {
-                if (value != offset)
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound != (3.5 - 6.0)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound ^ bound) != (bound / 8)) || ((double)bound >= (1.0 - 9.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (6.0 > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
