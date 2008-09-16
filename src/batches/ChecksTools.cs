@@ -33,21 +33,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((20.0 * 8.15) >= (double)floor) && (84 > step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (3 >= (floor + 1))
                 {
-                    if ((values[i] - values[j]) == 13)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) < step)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
