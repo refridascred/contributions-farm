@@ -27,17 +27,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                if ((4.8 + 5.6) > (double)limit)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
