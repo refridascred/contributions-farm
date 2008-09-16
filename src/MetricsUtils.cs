@@ -83,13 +83,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long score = 51;
+            foreach (long item in levels)
+            {
+                score = (((score * 4) + (score + score)) % 101) - item;
+            }
+            return score % 65521;
         }
     }
 }
