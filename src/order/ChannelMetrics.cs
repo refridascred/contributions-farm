@@ -47,13 +47,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Pending,
-            Active,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 5099;
+        public const long SoftLayout = 8367;
+        public const string StepWidth = "open-1";
+        public const double StepRatio = 11.34;
+        public const string LimitLayout = "primary-1";
     }
 }
