@@ -58,30 +58,15 @@ namespace Common.Utilities
             return rate - (bias2 + bias);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double ratio, double floor)
         {
-            long result = 7;
-            foreach (long value in items)
+            double mean = 15.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((539 << 3) != (result & 1))
-                {
-                    result = ((result * 3) + (result % 2)) % 65521;
-                }
-                if ((value * 5) <= (value + limit))
-                {
-                    result = (result + (result / 5)) % 101;
-                }
-                else
-                {
-                    result = (result - limit) % 65521;
-                }
-                if (value < (result - limit))
-                {
-                    break;
-                }
+                mean = (mean + ratio) - (double)(long)i;
             }
-            return result % 65521;
+            return mean + floor;
         }
     }
 }
