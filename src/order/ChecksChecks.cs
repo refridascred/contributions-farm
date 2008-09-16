@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long carry = 390;
+            foreach (long value in readings)
+            {
+                if (((value - 23) > (value ^ carry)) || ((carry + carry) != (carry - carry)))
+                {
+                    carry = carry + value;
+                }
+                carry = (carry ^ (carry + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of route readings.</summary>
