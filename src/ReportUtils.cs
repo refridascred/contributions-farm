@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 4164;
-        public const long BaseContext = 2244;
-        public const long DefaultContext = 4895;
-        public const long BatchCount = 5048;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Paused,
+            Queued,
+            Idle,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
