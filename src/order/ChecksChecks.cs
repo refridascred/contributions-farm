@@ -59,12 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            Queued,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ count) < (cell + cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
