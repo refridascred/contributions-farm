@@ -23,12 +23,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Done,
-            Draft,
+            Paused,
             Closed,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Match up checks samples.</summary>
