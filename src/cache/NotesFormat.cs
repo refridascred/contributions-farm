@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values, long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + tally) < tally)
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context class values.</summary>
