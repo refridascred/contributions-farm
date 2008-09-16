@@ -26,12 +26,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Paused,
+            Retry,
+            Locked,
+            Stale,
+            Idle,
             Dropped,
-            Ready,
         }
 
         /// <summary>Hold a editor options.</summary>
