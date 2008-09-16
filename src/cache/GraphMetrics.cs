@@ -86,19 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double rate = (double)(3 - 711);
-            if (rate <= (rate - weight))
-            {
-                rate = rate - (bias + weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + (weight + rate);
+            New,
+            Idle,
+            Failed,
         }
     }
 }
