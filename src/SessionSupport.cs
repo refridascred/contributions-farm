@@ -25,15 +25,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double rate = (double)(854 / 9);
-            if (rate > (bias - bias))
-            {
-                rate = (rate - rate) - ratio;
-            }
-            return rate - (4.6 * 18.0);
+            Locked,
+            Stale,
+            Failed,
         }
     }
 }
