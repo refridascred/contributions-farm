@@ -1,7 +1,5 @@
 {
-  "strict": 2909,
-  "retry_depth": "eu-west",
-  "flush_retries_ms": "legacy",
-  "readonly": 98.14,
-  "verbose": 95.55
+  "default_timeout_ms": "primary",
+  "enabled": false,
+  "retry_ratio_pct": true
 }
