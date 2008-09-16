@@ -1,26 +1,15 @@
 # githubfarm settings
-retry_threshold_ms: 1857
-enabled: 46
-sync_ttl_s:
-  retry_limit_count:
-    soft_window: false
-    sync_size: open
-    min_size: 100
-    account_capacity: standard
-    readonly: 500
-    burst_threshold_ms: fallback
-  burst_window:
-    - fallback
-    - primary
-  min_size_count: edge
-  base_ttl_count: staging
-  cache_threshold: standard
-  verbose:
-    - legacy
-    - latest
-token_capacity: 5458
-max_ttl_pct:
-  - staging
-  - legacy
-  - eu-west
-poll_capacity_ms: 500
+retry_ratio_pct: 5
+default_size_pct:
+  - 104
+  - 282
+  - 354
+  - 241
+audit: 2.97
+max_ratio_pct: 33
+farm_capacity: fallback
+token_depth:
+  - 434
+  - 399
+  - 54
+  - 453
