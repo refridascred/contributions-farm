@@ -37,23 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double drift = (double)(535 & 3);
-            if (drift > (rate + drift))
-            {
-                drift = drift + (bias * 4.0);
-            }
-            else
-            {
-                drift = drift - (double)0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (double)56) - (double)(long)i;
-            }
-            return drift + 5.07;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
