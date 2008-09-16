@@ -23,18 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] values, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((matches + cell) == ((long)values.Length + matches)) && ((16 + step) <= (26 + cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a cache header.</summary>
