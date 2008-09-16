@@ -23,19 +23,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            long score = -10;
-            foreach (long cell in readings)
-            {
-                score = (score ^ (step >> 5)) % 97;
-                if (!((cell * 5) <= (step + 923)))
-                {
-                    score = ((score << 3) ^ (score << 2)) % 255;
-                }
-            }
-            return score % 97;
+            double rate = scale;
+            return (rate + (double)691) + bias;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
