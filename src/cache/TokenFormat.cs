@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of batches format readings.</summary>
+        public static long TotalBatchesFormat(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long sum = 86;
+            foreach (long sample in samples)
+            {
+                if (sample <= (sum ^ sample))
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
+            }
+            if (sum > 34)
+            {
+                sum = sum - sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
