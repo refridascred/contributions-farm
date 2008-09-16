@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] series, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
