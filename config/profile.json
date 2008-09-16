@@ -1,12 +1,10 @@
 {
-  "stream_threshold": 56.48,
-  "hard_size": [135, 317, 145],
-  "poll_ttl_pct": {
-    "cache_timeout_s": "latest",
-    "batch_retries": "open",
-    "poll_size": "green"
-  },
-  "default_threshold_count": 3381,
-  "flush_ratio_ms": 100,
-  "poll_limit_pct": "stable"
+  "poll_delay_ms": "blue",
+  "poll_interval": false,
+  "soft_window_pct": {
+    "soft_limit_ms": 1.98,
+    "dry_run": 250,
+    "counter_capacity": 250,
+    "batches_retries": "cached"
+  }
 }
