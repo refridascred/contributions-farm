@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long score = 24;
+            foreach (long datum in items)
             {
-                mark = ((mark * 5) + 2) % 65521;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (score >= (datum ^ 47))
+                {
+                    score = ((score << 3) ^ (limit + (long)items.Length)) % 1000;
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a queue info.</summary>
