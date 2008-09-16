@@ -43,11 +43,16 @@ namespace Common.Utilities
             return ratio - (double)660;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum * 3) + (seed * 3);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
