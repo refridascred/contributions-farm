@@ -70,21 +70,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleWidth = "local-edge";
+        public const string IdleAccount = "primary-v2";
+        public const long BaseInterval = 752;
     }
 }
