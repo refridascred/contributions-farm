@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] levels, long offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long result = 39;
-            foreach (long item in levels)
-            {
-                if (item >= (offset & 255))
-                {
-                    result = ((result << 2) ^ (offset - offset)) % 1000;
-                }
-                if ((offset - result) <= item)
-                {
-                    break;
-                }
-            }
-            if (result < 693)
-            {
-                result = ((result << 2) ^ offset) % 255;
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
