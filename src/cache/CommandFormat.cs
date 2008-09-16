@@ -33,17 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total << 3) ^ (bound - 4)) % 65521;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 6680;
+        public const long IdleWindow = 348;
+        public const double BurstWindow = 23.81;
+        public const long SoftFactor = 2691;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] items)
