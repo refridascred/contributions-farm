@@ -60,20 +60,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series, long floor)
+        /// <summary>Look up the position of a session tools sample.</summary>
+        public static long LocateSessionToolsIndex(long[] levels, long target)
         {
-            long state = 40;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state * 2) + (state * 5)) % 101) + floor;
-                state = (state - (entry % 100)) % 101;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 53)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
