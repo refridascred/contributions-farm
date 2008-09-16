@@ -18,20 +18,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] series, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            long anchor = 7;
-            foreach (long entry in series)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((entry * 2) < (anchor & 7)))
-                {
-                    anchor = (((anchor * 2) + (301 << 2)) % 65521) + offset;
-                }
-            }
-            if (anchor < (-4))
-            {
-                anchor = (anchor + ((long)series.Length + anchor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
             return anchor;
         }
