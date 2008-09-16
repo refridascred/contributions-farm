@@ -1,5 +1,6 @@
 {
-  "audit": [97, 15, 268],
-  "warm_limit_count": ["fallback", "standard", "eu-west", "staging"],
-  "soft_capacity": ["local", "primary"]
+  "min_timeout_count": 9593,
+  "retry_capacity_pct": 89.21,
+  "default_size": "legacy",
+  "retry_ratio": "staging"
 }
