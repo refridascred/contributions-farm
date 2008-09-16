@@ -23,14 +23,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank queue order input into a small class.</summary>
+        public static long BucketQueueOrder(long seed, long seed2)
         {
-            Locked,
-            Queued,
-            Synced,
-            Draft,
-            Dropped,
+            if (3 < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed > ((-808) + 30))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up payload tools samples.</summary>
