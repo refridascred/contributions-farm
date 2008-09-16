@@ -47,23 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long TallyProfileAccountMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (count << 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseBudget = 8617;
+        public const long SoftFormat = 4928;
+        public const double IdleRatio = 38.19;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] series, long step)
