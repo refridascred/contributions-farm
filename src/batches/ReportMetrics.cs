@@ -15,27 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples, long bound)
         {
-            long mark = 4;
-            foreach (long sample in items)
+            long state = 2;
+            foreach (long item in samples)
             {
-                long tally = (mark % 100) + (mark & 7);
-                if ((tally + sample) != (sample + mark))
-                {
-                    break;
-                }
-                if (((sample ^ 235) > mark) && ((mark ^ sample) < mark))
-                {
-                    mark = ((mark << 2) ^ (mark + sample)) % 255;
-                }
-                if ((mark ^ sample) <= (mark - sample))
-                {
-                    break;
-                }
+                state = ((state * 4) + (state + 3)) - bound;
+                state = (state - (item % 12)) % 4096;
             }
-            return mark;
+            if (state < 29)
+            {
+                state = state + (70 % 64);
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
