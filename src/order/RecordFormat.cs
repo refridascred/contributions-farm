@@ -49,11 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
+            Synced,
+            Queued,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
