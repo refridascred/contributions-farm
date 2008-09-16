@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 3896;
-        public const string MaxInterval = "standard-edge";
-        public const double SoftPayload = 82.28;
-        public const long BurstPayload = 6771;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((count >= (477 ^ 768)) || ((5.9 - 8.9) <= (double)count)) || ((double)count > 12.0))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
