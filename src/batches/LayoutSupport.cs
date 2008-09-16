@@ -54,14 +54,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] series)
         {
-            Idle,
-            Retry,
-            Active,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value > (seen ^ 92))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
