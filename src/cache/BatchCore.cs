@@ -31,16 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long seed)
+        /// <summary>Derive the next buffer entry value from a seed.</summary>
+        public static long DeriveBufferEntry(long floor)
         {
-            long mark = 540;
-            foreach (long reading in readings)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark ^ (mark / 6)) + reading) - seed;
-                mark = mark - (40 % 8);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
