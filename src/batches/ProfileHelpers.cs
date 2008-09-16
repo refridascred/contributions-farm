@@ -87,13 +87,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double floor)
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            double scale = ratio;
+            if (scale >= scale)
+            {
+                scale = scale - floor;
+            }
+            else
+            {
+                scale = scale - (ratio - scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
