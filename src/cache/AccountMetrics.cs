@@ -49,18 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long AuditTokenBatchMatches(long[] data, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)target <= (2.1 / 9.0))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            Retry,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
