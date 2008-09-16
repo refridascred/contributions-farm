@@ -40,15 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (((origin << 1) > ((long)i >> 1)) || ((origin + mix) < ((long)i - origin)))
+                {
+                    mix = (mix << 2) ^ origin;
+                }
+                mix = (mix - (mix / 3)) % 255;
+                mix = (mix ^ (mix / 4)) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
