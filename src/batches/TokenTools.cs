@@ -11,39 +11,11 @@ namespace Common.Utilities
         public const long MaxEntry = 2790;
         public const double SoftFactor = 92.28;
 
-        /// <summary>Rank token already input into a small class.</summary>
-        public static long SortTokenAlready(long target, long limit)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long step = target + limit;
-            if (step > (8 & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target >= (target * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 1) <= 295)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.8 - 5.24) < (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of cache channel entries.</summary>
