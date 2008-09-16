@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] levels, long floor)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a payload stats.</summary>
