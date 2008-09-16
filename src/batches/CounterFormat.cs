@@ -25,19 +25,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] data, long seed)
+        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
+        public static long CountGithubfarmClusterMatches(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (item >= seed)
+                if (count > entry)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
