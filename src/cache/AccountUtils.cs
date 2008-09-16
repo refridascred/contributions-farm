@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double span)
         {
-            Dropped,
-            Done,
-            Queued,
+            double mean = gain;
+            if (mean > (span - mean))
+            {
+                mean = mean - gain;
+            }
+            else
+            {
+                mean = mean + 6.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - 5.21;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
