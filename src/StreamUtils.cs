@@ -31,10 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 487;
-        public const string LimitScore = "open";
-        public const long WindowContributi = 9799;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 6785;
+        public const string CacheBatches = "cached-1";
+        public const double SoftBatches = 56.28;
+        public const long WindowBatches = 5287;
+        public const long StepSpan = 8936;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
