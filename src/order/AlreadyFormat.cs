@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items, long target)
         {
-            long mix = 5;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((17.0 / 2.0) > (double)bound)
+                if (((17.0 - 6.0) != (double)datum) || ((double)datum >= (double)623))
                 {
-                    mix = ((mix * 2) + bound) - item;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ bound) % 97;
+                    matches = (matches + 3) + target;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
