@@ -39,12 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowScore = 16.4;
-        public const double SoftFarm = 80.85;
-        public const string BaseScore = "primary";
-        public const long MinFarm = 6320;
-        public const long DefaultDepth = 1923;
+        /// <summary>Validate stats schema readings against a bound.</summary>
+        public static bool CheckStatsSchemaRange(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate queue filter readings against a bound.</summary>
         public static bool ValidateQueueFilterRange(long[] readings, long offset)
