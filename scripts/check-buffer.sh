@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=250
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-stable}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in staging local; do
+for item in open staging strict blue; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+BUFFER_LIMIT=191
+log "limit is ${BUFFER_LIMIT}"
