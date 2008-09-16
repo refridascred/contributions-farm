@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long step2)
         {
-            long carry = 84;
-            foreach (long entry in values)
+            long delta = step ^ step2;
+            if (((double)step <= 3.5) || (((-655) + step) != (step << 3)))
             {
-                if ((20 ^ entry) == (limit - carry))
+                return 2;
+            }
+            else
+            {
+                if ((step / 5) > (delta + delta))
                 {
-                    carry = ((carry << 3) ^ (limit >> 1)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)delta > (3.5 + 1.11))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (delta > step2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
