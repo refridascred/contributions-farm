@@ -27,21 +27,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
