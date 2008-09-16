@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long WindowMetric = 1312;
         public const long RetryBudget = 7832;
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool CheckMetricCommitsLimits(long[] series, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
