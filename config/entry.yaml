@@ -1,38 +1,28 @@
 # entry settings
-editor_retries: primary
-base_interval_s: strict
-verbose: edge
-token_interval:
-  hard_window_count:
-    - 68
-    - 211
-    - 494
-    - 75
-  schema_timeout: cached
-  max_retries_pct: 58.27
-  min_retries_ms: blue
-min_limit: 31
-default_size_count:
-  readonly: local
-  verbose: 48
-  hard_retries:
-    flush_delay_ms: true
-    route_ttl:
-      - eu-west
-      - open
-    cache_size: 500
-    audit: false
-    poll_ratio_pct: primary
-    entry_limit: local
-  batch_limit_pct: strict
-  githubfarm_capacity:
-    default_retries_ms:
-      - 100
-      - 381
-    retry_size: 64
-    stream_capacity:
-      - 482
-      - 426
-      - 407
-      - 446
-    min_interval_pct: 66.93
+base_delay_pct:
+  - 259
+  - 345
+  - 488
+  - 500
+base_ttl_ms: stable
+min_size:
+  batch_delay_count:
+    - 202
+    - 400
+    - 88
+  audit: green
+  retry_window_pct: 60
+  editor_retries:
+    idle_ttl: false
+    poll_ratio_ms:
+      - 99
+      - 162
+    verbose: 94
+    readonly: 30
+    flush_timeout_pct: 69
+  cache_size_count:
+    - cached
+    - local
+    - green
+    - fallback
+  checks_ratio: primary
