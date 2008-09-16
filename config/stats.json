@@ -1,6 +1,12 @@
 {
-  "batch_ratio_pct": "staging",
-  "warm_ttl_ms": false,
-  "idle_timeout_ms": ["local", "cached"],
-  "dry_run": "standard"
+  "poll_ratio_count": 60,
+  "verbose": 29,
+  "dry_run": true,
+  "warm_delay_pct": "stable",
+  "burst_ttl_count": {
+    "base_window_count": false,
+    "audit": 10.19,
+    "queue_ratio": 80.62
+  },
+  "buffer_size": 19
 }
