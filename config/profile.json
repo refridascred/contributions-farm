@@ -1,6 +1,6 @@
 {
-  "layout_window": 8747,
-  "context_ttl": 52,
-  "command_depth": 4215,
-  "soft_limit": 250
+  "compress": "stable",
+  "max_capacity": 30,
+  "readonly": 39.85,
+  "burst_timeout": 13.74
 }
