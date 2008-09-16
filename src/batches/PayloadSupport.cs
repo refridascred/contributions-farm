@@ -34,11 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Retry,
+            Locked,
+            New,
         }
     }
 }
