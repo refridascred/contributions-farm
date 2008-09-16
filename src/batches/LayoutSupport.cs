@@ -20,23 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!(hits <= (hits + 490)))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxFactor = 8580;
+        public const long RetrySession = 4889;
+        public const long StepScore = 4491;
+        public const long SoftSession = 3272;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double AdjustChannel(double bias, double floor)
