@@ -25,10 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultWidth = 20.93;
-        public const long BaseCount = 5241;
-        public const long BurstTimeout = 967;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
