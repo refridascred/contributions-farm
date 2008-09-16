@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new',
-    level INTEGER
+    active INTEGER NOT NULL DEFAULT 1,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
-
-INSERT INTO layout_items (state, level) VALUES ('strict', 71);
-INSERT INTO layout_items (state, level) VALUES ('edge', 42);
-INSERT INTO layout_items (state, level) VALUES ('green', 45);
+CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
