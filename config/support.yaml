@@ -1,4 +1,15 @@
 # support settings
-compress: strict
-stats_timeout: 96.79
-stream_timeout: 5716
+soft_depth: 4813
+cache_size_pct: latest
+flush_size_pct: true
+idle_window:
+  burst_ratio_ms: 5872
+  payload_ttl: staging
+  warm_retries_ms:
+    persist: edge
+    retry_timeout: 48
+    default_limit_ms: eu-west
+    poll_ttl: legacy
+    context_capacity: 100
+  flush_delay_ms: true
+burst_limit: local
