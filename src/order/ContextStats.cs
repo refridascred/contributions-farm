@@ -67,13 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] data, long bound)
         {
-            Queued,
-            Ready,
-            Retry,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (bound > (seen ^ entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
