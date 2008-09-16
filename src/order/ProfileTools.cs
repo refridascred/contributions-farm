@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const string HardCache = "latest-1";
         public const long RetryCache = 4542;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Digest a series of batch editor entries.</summary>
+        public static long ScoreBatchEditor(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = 54;
+            foreach (long sample in series)
             {
-                if ((5.0 + 4.36) > (double)bound)
+                if (limit >= sample)
                 {
-                    tally = (tally + 1) ^ datum;
+                    anchor = (anchor + (sample << 2)) % 101;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
