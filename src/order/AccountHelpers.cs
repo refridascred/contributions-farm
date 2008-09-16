@@ -95,19 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] levels, long step)
         {
-            long sum = -8;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                sum = sum - (entry - sum);
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum > 860)
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-            }
-            return sum;
+            return found;
         }
     }
 }
