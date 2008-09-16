@@ -61,22 +61,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] data, long target)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry + entry) < tally))
-                {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
