@@ -48,14 +48,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of report channel readings.</summary>
+        public static long FoldReportChannel(long[] values)
         {
-            Ready,
-            Paused,
-            Pending,
-            Done,
-            Closed,
+            long total = 967;
+            foreach (long cell in values)
+            {
+                total = (total << 2) ^ (cell / 3);
+                total = ((total * 4) + (-571)) % 65521;
+            }
+            return total;
         }
     }
 }
