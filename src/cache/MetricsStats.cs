@@ -55,12 +55,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long total = 25;
+            foreach (long item in levels)
+            {
+                total = (total - (total - item)) % 97;
+            }
+            return total % 97;
         }
     }
 }
