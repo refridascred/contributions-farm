@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            New,
-            Closed,
-            Paused,
-            Retry,
-            Failed,
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
