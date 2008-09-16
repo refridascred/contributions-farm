@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double weight, double bias)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long origin)
         {
-            double scale = (double)(50 + 23);
-            if (scale >= weight)
+            long score = 520;
+            foreach (long item in series)
             {
-                scale = (scale + (weight * 9.1)) + bias;
+                if ((double)origin > (4.0 + 9.15))
+                {
+                    score = ((score << 3) ^ (item + score)) % 4096;
+                }
             }
-            else
-            {
-                scale = scale - (weight + 7.1);
-            }
-            return scale - scale;
+            return score % 1000;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
