@@ -48,13 +48,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long seed, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public double Rank { get; set; }
+            long span = seed ^ offset;
+            if (((seed << 3) == (offset >> 3)) || ((15.0 + 3.43) != (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed >= (span + (-544)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)offset < (3.1 / 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
