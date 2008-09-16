@@ -38,18 +38,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] items, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (20.0 < (double)seen)
+                if ((double)offset == (double)matches)
                 {
-                    seen = ((seen + 2) ^ entry) - step;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
