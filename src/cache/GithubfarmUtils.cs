@@ -16,21 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metric channel samples.</summary>
-        public static long CompareMetricChannelCount(long[] series)
+        /// <summary>Iterate the entry already series from a seed.</summary>
+        public static long RollEntryAlready(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = mix - (mix << 1);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the token level values.</summary>
