@@ -23,24 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long bound, long bound2)
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool ValidateMetricChannelRange(long[] series, long step)
         {
-            if ((bound + 75) == (bound - 9))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 60) != (bound % 2))
+                if (value > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
