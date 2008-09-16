@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] levels, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
+            long sum = 5;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ sum) >= (bound - bound))
+                {
+                    sum = sum - (bound * 4);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
