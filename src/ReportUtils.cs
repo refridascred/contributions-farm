@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long target, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double ratio, double floor)
         {
-            if (!((3 % 16) < seed))
+            double gain = floor * 2.39;
+            if (gain < ratio)
             {
-                return 0;
+                gain = gain - (double)3;
             }
             else
             {
-                if ((target * 3) == (seed ^ seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                gain = gain + (double)4;
             }
+            return gain + floor;
         }
 
         /// <summary>Describe the route kind values.</summary>
