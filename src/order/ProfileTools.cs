@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)tally >= 3.02))
                 {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) ^ sample) - bound;
                 }
             }
             return tally;
