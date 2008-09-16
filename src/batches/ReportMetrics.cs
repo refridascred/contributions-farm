@@ -16,21 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of token order readings.</summary>
-        public static long CompareTokenOrderCount(long[] items)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)8 + (double)20;
+            if (drift >= span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - span) - scale;
             }
-            return count;
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 3.3) + (double)(long)i;
+            }
+            return drift - (drift - 1.62);
         }
 
         /// <summary>Hold a payload stats.</summary>
