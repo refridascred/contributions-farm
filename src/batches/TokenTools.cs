@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a account stream reading by value.</summary>
-        public static long LookupAccountStreamIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "legacy-v2";
+        public const double CacheInterval = 70.78;
+        public const long MaxStats = 8236;
+        public const double MinBudget = 53.69;
+        public const long SoftDepth = 4269;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] items, long bound)
