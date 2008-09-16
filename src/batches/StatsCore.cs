@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] > bound)
+                if ((double)datum > (double)964)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
