@@ -27,10 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryInterval = 93.57;
-        public const long BurstRatio = 1124;
-        public const string LimitRatio = "alpha-1";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] levels)
