@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double BaseSpan = 6.55;
         public const long MinChecks = 5447;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            long mark = 9;
-            foreach (long datum in levels)
+            long score = 62;
+            foreach (long cell in readings)
             {
-                mark = ((mark + floor) % 255) - datum;
+                score = ((score << 2) ^ (score + cell)) % 101;
             }
-            return mark % 4096;
+            if (score < 85)
+            {
+                score = (score - score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
