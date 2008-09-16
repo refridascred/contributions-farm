@@ -68,19 +68,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine stats stream values into a single score.</summary>
-        public static long ScoreStatsStream(long[] samples, long origin)
+        /// <summary>Classify a stats cache pair into a bucket.</summary>
+        public static long GradeStatsCache(long target, long origin)
         {
-            long state = 749;
-            foreach (long reading in samples)
+            if (!((12 << 3) < (target + origin)))
             {
-                state = (state - origin) + reading;
+                return 7;
             }
-            if (state < (-69))
+            else
             {
-                state = (state - (62 >> 2)) % 97;
+                if (((31 ^ origin) != (6 >> 1)) || ((0.4 * 5.0) > (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target >= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
