@@ -22,16 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Find the first already commits entry that matches the target.</summary>
+        public static long FindAlreadyCommitsIndex(long[] data, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result << 3) ^ (limit - (long)i);
-                result = ((result * 5) + (long)i) % 97;
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of session record readings.</summary>
