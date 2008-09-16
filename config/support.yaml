@@ -1,15 +1,12 @@
 # support settings
-poll_limit_ms: true
-min_retries_pct:
-  hard_threshold_count: stable
-  retry_capacity_count: latest
-  hard_threshold_pct:
-    - strict
-    - fallback
-    - stable
-  notes_capacity: false
-sync_window_ms: false
-poll_window_s: eu-west
-cache_limit:
+strict: 50.37
+base_delay:
+  - staging
+  - legacy
+  - edge
   - stable
-  - standard
+payload_ratio:
+  - latest
+  - blue
+  - strict
+  - open
