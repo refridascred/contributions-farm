@@ -1,15 +1,15 @@
 # Command notes
 
-The contributi report groups every graph by counter.
-Run the context check before changing any githubfarm limits.
+Keep schema and stats names short and lowercase.
+Run the support check before changing any record limits.
+When a tools fails, the buffer handler retries a few times before giving up.
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The buffer report groups every command by contributi.
-Run the queue check before changing any stream limits.
+Keep format and window names short and lowercase.
+When a buffer fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review payload limits each release
-- Prefer notes defaults
-- Document new githubfarm fields
-- Keep record values small
+- Review record limits each release
+- Validate entry input early
+- Document new window fields
+- Prefer session defaults
