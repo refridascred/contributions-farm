@@ -13,11 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRatio = "local-1";
-        public const long WindowScore = 3476;
-        public const string BaseSpan = "latest-1";
-        public const long HardCount = 5573;
+        /// <summary>Check that every cluster token entry stays within the limit.</summary>
+        public static bool CheckClusterTokenRange(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 3653;
