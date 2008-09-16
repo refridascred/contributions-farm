@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 2485;
-        public const long SoftSize = 5589;
-        public const long MaxDepth = 8662;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
