@@ -1,12 +1,15 @@
 # Command notes
 
-Each schema is validated before it reaches the channel queue.
-Keep format and support names short and lowercase.
-A support that stays idle for too long is moved to the cache list.
+The window helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often payload data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
+
+The checks report groups every route by stats.
+Run the record check before changing any checks limits.
+Run the contributi check before changing any token limits.
 
 ## Guidelines
 
-- Log every window change
-- Review order limits each release
-- Keep window values small
-- Validate report input early
+- Log every payload change
+- Document new contributi fields
+- Keep stats values small
