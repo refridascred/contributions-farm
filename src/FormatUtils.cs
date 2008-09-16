@@ -63,11 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
