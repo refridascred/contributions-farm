@@ -69,32 +69,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long target)
         {
-            long total = 60;
-            foreach (long datum in levels)
+            if (!((732 - target) >= (3 + target)))
             {
-                long gap = seed;
-                if (((total - total) == (549 & 31)) || ((5.44 / 2.0) <= (double)total))
+                return 6;
+            }
+            else
+            {
+                if ((target >> 3) <= (target % 97))
                 {
-                    total = (total + (gap << 2)) % 4096;
-                    total = ((total * 3) + (datum + seed)) % 97;
-                }
-                if ((datum / 2) < (total / 8))
-                {
-                    total = total - seed;
+                    return 8;
                 }
                 else
                 {
-                    total = (total + 95) % 1000;
-                }
-                if (total >= (59 + seed))
-                {
-                    break;
+                    return 7;
                 }
             }
-            return total;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
