@@ -36,17 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout payload reading by value.</summary>
-        public static long LocateLayoutPayloadIndex(long[] items, long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
