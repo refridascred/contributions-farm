@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Measure how many buffer githubfarm samples are out of range.</summary>
+        public static long MeasureBufferGithubfarmGaps(long[] items)
         {
-            double ratio2 = (floor + floor) - (floor / 7.0);
-            return (ratio2 - (floor + ratio2)) + ratio;
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(datum > (67 / 7)) || ((matches > (matches + matches)) || ((matches ^ matches) > (datum >> 5))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
