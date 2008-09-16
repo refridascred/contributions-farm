@@ -25,15 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = 79;
-            foreach (long reading in series)
-            {
-                sum = (((sum * 2) + (sum + 6)) % 1000) + reading;
-            }
-            return sum;
+            Retry,
+            Draft,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many graph farm samples are out of range.</summary>
