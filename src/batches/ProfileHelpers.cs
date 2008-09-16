@@ -49,13 +49,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long target)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit graph stats readings against a rule.</summary>
