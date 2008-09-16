@@ -28,19 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] levels, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (entry < offset)
+                if (((double)172 == (double)hits) || ((hits << 1) < hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + item;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
