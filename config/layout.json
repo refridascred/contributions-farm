@@ -1,5 +1,6 @@
 {
-  "min_ratio": [119, 256],
-  "warm_depth_s": false,
-  "burst_timeout_count": 59.59
+  "burst_delay": "green",
+  "order_ttl": 76.4,
+  "already_size": 39.08,
+  "token_retries": ["fallback", "stable"]
 }
