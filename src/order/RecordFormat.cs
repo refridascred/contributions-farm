@@ -37,17 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already order sample.</summary>
-        public static long LocateAlreadyOrderIndex(long[] readings, long floor)
+        /// <summary>Fold a list of account format readings.</summary>
+        public static long DigestAccountFormat(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 53;
+            foreach (long item in items)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (carry + carry)) % 1000) - item;
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of account record entries.</summary>
