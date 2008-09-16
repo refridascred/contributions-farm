@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const string HardCache = "latest-1";
         public const long RetryCache = 4542;
 
-        /// <summary>Locate a support editor reading by value.</summary>
-        public static long LocateSupportEditorIndex(long[] series, long step)
+        /// <summary>Audit stream report readings against a rule.</summary>
+        public static long TallyStreamReportGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] >= step) && ((series[i] % 3) != 0))
+                if ((entry + (-301)) < entry)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
