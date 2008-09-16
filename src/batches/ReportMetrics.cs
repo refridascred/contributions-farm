@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Locate a command schema reading by value.</summary>
+        public static long LocateCommandSchemaIndex(long[] series, long step)
         {
-            Ready,
-            Done,
-            Locked,
-            Stale,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of token order readings.</summary>
