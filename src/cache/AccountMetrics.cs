@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account report series from a seed.</summary>
-        public static long StepAccountReport(long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (offset <= ((long)i + offset))
-                {
-                    anchor = (anchor - offset) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
