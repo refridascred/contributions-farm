@@ -36,11 +36,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long offset)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((offset < (sum + (long)i)) || ((long)i != (offset / 4)))
+                {
+                    sum = (sum ^ (sum >> 2)) % 4096;
+                }
+                sum = ((sum << 3) ^ offset) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a order header.</summary>
