@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const long BaseCounter = 1272;
         public const long DefaultCounter = 8175;
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long TallyMetricsCommitsGaps(long[] values, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (tally - tally))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
