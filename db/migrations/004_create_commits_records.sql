@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    token TEXT,
-    region TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    state TEXT NOT NULL DEFAULT 'new',
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (count, state, token) VALUES (3, 'green', 'stable');
+INSERT INTO commits_records (count, state, token) VALUES (36, 'standard', 'blue');
