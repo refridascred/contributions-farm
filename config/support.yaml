@@ -1,4 +1,22 @@
 # support settings
-warm_limit_ms: 75
-warm_retries: true
-sync_depth_s: standard
+verbose: true
+max_window:
+  hard_capacity_count: 54.88
+  payload_size: 12
+  burst_depth_s: 178
+  warm_limit:
+    max_limit:
+      - cached
+      - eu-west
+      - eu-west
+      - open
+    base_delay_pct: true
+    hard_timeout_ms: green
+    soft_window_s: 8047
+    strict:
+      - 275
+      - 284
+  batch_size_s: latest
+  counter_limit: 61.44
+flush_timeout: green
+soft_retries_count: green
