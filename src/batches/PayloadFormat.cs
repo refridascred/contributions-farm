@@ -23,30 +23,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long bound)
         {
-            long mix = 53;
-            foreach (long value in series)
+            if ((8.7 + 7.0) <= (double)target)
             {
-                if (!((double)target >= 19.0))
+                return 6;
+            }
+            else
+            {
+                if (!((bound - target) <= (target << 1)))
                 {
-                    mix = ((mix * 5) + value) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix ^ (target * 2)) % 1000;
-                }
-                if (target <= (long)series.Length)
-                {
-                    break;
+                    if ((double)bound < 5.98)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target ^ bound) == (target - bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Match up window samples.</summary>
