@@ -20,11 +20,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 1278;
-        public const double BaseTimeout = 0.64;
-        public const string StepCache = "staging-1";
-        public const long RetryTimeout = 9605;
-        public const string RetryWidth = "fallback";
+        public const double StepCache = 35.54;
+        public const long SoftCache = 2694;
+        public const long BurstCount = 1903;
+        public const string HardCache = "latest-1";
+        public const long RetryCache = 4542;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] values, long bound)
