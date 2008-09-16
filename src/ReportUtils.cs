@@ -59,17 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleScore = "cached-1";
+        public const long MinOrder = 6439;
+        public const long LimitScore = 3608;
+        public const string HardSize = "fallback-1";
+        public const long StepScore = 157;
     }
 }
