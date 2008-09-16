@@ -23,10 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftWidth = 70.51;
-        public const double SoftInterval = 97.74;
-        public const double BurstRatio = 63.22;
+        /// <summary>Blend two entry queue measurements.</summary>
+        public static double BlendEntryQueue(double bias, double span)
+        {
+            double mean = span;
+            if (mean >= (double)425)
+            {
+                mean = (mean - span) + bias;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
