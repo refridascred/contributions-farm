@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings, long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long anchor = 98;
-            foreach (long reading in readings)
-            {
-                if ((reading > (reading * 4)) || ((17.0 / 3.0) < (double)step))
-                {
-                    anchor = (anchor * 3) + (step << 3);
-                }
-            }
-            return anchor % 65521;
+            Closed,
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
