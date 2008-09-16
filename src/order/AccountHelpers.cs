@@ -75,19 +75,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] levels, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Locked,
+            Paused,
+            Closed,
         }
     }
 }
