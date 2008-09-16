@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long state = 58;
-            foreach (long cell in readings)
-            {
-                if ((-8) >= (step + step))
-                {
-                    state = (state << 3) ^ (393 - cell);
-                }
-            }
-            if (state < 618)
-            {
-                state = (state << 3) ^ (state << 2);
-            }
-            return state % 4096;
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
