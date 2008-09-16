@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a layout already sample.</summary>
-        public static long FindLayoutAlreadyIndex(long[] readings, long offset)
+        /// <summary>Locate a account stream reading by value.</summary>
+        public static long LookupAccountStreamIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= offset)
+                if (levels[i] == offset)
                 {
                     return (long)i;
                 }
