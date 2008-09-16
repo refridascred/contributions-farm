@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long limit, long origin)
         {
-            long carry = 249;
-            foreach (long sample in data)
+            long prev = limit ^ origin;
+            if (prev < (limit & 255))
             {
-                if ((floor / 6) >= 7)
+                return 1;
+            }
+            else
+            {
+                if ((4.71 - 9.74) > (double)origin)
                 {
-                    carry = (carry ^ sample) % 97;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= (1.45 + 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry > 2)
-            {
-                carry = ((carry << 2) ^ (floor ^ carry)) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Scale a context window figure with a bias.</summary>
