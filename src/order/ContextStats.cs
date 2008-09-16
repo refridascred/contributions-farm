@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 9680;
-        public const long MinDepth = 1044;
-        public const long SoftEditor = 9033;
-        public const long DefaultEditor = 3903;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix * 4) + (mix * 3);
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long SeriesStream(long limit)
