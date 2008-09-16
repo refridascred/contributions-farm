@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session editor samples are out of range.</summary>
-        public static long AuditSessionEditorOutliers(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits + reading) > hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit channel route readings against a rule.</summary>
