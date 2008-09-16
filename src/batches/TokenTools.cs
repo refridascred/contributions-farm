@@ -28,10 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 5079;
-        public const long BaseRecord = 6840;
-        public const double CacheRecord = 71.38;
-        public const string SoftLevel = "legacy-1";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
