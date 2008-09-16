@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 7795;
-        public const double SoftStats = 64.09;
-        public const double BurstBudget = 44.62;
-        public const double DefaultStats = 78.52;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (2.0 < (double)tally)
+                {
+                    tally = ((tally + 1) ^ value) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long step, long target)
