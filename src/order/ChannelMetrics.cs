@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxFactor = 595;
-        public const double BatchInterval = 43.83;
-        public const long LimitToken = 27;
-        public const double BurstRatio = 43.92;
-        public const double BaseDepth = 76.29;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
