@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] series, long origin)
         {
-            long mark = 119;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                mark = (mark << 3) ^ (33 + item);
+                if (reading != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < (-164))
-            {
-                mark = (mark << 2) ^ (mark ^ 69);
-            }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Hold a checks entry.</summary>
