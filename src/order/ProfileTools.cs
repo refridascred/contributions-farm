@@ -29,13 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Draft,
-            Active,
-            Pending,
-            Dropped,
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
