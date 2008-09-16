@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long MaxMetric = 9941;
         public const double WindowMetric = 67.65;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long bound, long bound2)
+        /// <summary>Derive the next counter window value from a seed.</summary>
+        public static long DeriveCounterWindow(long bound)
         {
-            if ((double)bound2 >= (5.9 * 6.15))
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 % 100) < (9 ^ bound2))
+                if (((0.31 / 3.0) >= (double)bound) || ((carry >> 4) > 25))
                 {
-                    return 2;
+                    carry = (carry - (bound * 2)) % 255;
                 }
-                else
-                {
-                    if (bound >= (bound2 - 81))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound != (3.0 * 9.4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = carry + (2 - bound);
+                carry = ((carry << 3) ^ (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Hold a graph record.</summary>
