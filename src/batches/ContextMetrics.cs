@@ -29,13 +29,21 @@ namespace Common.Utilities
         public const long StepScore = 3001;
         public const long DefaultWidth = 1818;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
