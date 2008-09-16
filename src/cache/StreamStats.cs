@@ -43,12 +43,11 @@ namespace Common.Utilities
             return ratio - (double)660;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Done,
-            Failed,
-            Idle,
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
