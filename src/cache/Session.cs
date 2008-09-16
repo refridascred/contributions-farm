@@ -38,10 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5785;
-        public const double MinContributi = 97.39;
-        public const long StepContributi = 9017;
-        public const long MinRatio = 1773;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Stale,
+            New,
+            Done,
+            Closed,
+            Synced,
+        }
     }
 }
