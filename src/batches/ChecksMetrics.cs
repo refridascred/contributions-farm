@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] series, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= 0.6)
-                {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Fold a list of filter profile readings.</summary>
