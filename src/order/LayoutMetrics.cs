@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] items, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((9.0 * 1.12) < (double)count))
                 {
-                    sum = (((sum << 3) ^ 93) % 65521) - (long)i2;
+                    count = ((count + 3) ^ datum) + floor;
                 }
-                sum = sum - ((-303) + (long)i);
-                sum = (sum + ((long)i + (long)i)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
