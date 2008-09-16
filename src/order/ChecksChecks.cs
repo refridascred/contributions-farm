@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double span)
+        /// <summary>Count support session pairs that satisfy a relation.</summary>
+        public static long PairSupportSessionCount(long[] readings)
         {
-            double bias = (double)(1 - 39);
-            if (bias > 12.0)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - (gain - bias);
+            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
