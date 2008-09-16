@@ -64,12 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
