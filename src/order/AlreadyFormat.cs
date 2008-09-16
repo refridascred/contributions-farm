@@ -24,14 +24,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long AuditChannelRouteHits(long[] readings, long step)
         {
-            Dropped,
-            Active,
-            New,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!(((double)matches <= (1.3 / 7.0)) && (matches >= (step + (long)readings.Length))))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of layout schema readings.</summary>
