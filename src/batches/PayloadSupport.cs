@@ -34,26 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long FoldFarmQueue(long[] series, long limit)
-        {
-            long mix = 162;
-            foreach (long sample in series)
-            {
-                if ((sample & 255) == (sample ^ limit))
-                {
-                    mix = mix + (sample ^ sample);
-                }
-                if (mix >= (limit >> 3))
-                {
-                    break;
-                }
-            }
-            if (mix < (-4))
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "staging-v2";
+        public const string SoftWidth = "primary-v2";
+        public const long StepSize = 2355;
+        public const long HardSchema = 4787;
+        public const string IdleWidth = "local-1";
     }
 }
