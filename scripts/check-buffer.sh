@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=178
-log "limit is ${BUFFER_LIMIT}"
-
-for item in staging strict open local; do
+for item in eu-west primary local; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=81
+log "limit is ${BUFFER_LIMIT}"
