@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate buffer record samples.</summary>
-        public static long CombineBufferRecord(long[] samples)
-        {
-            long total = 98;
-            foreach (long item in samples)
-            {
-                total = total ^ (item % 8);
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 56.89;
+        public const long CacheChecks = 185;
+        public const string WindowChecks = "standard-edge";
 
         /// <summary>Adjust a record reading.</summary>
         public static double ProjectRecord(double scale, double floor)
