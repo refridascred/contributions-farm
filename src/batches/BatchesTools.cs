@@ -29,17 +29,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the queue tools series from a seed.</summary>
-        public static long StepQueueTools(long step)
+        /// <summary>Classify a order channel pair into a bucket.</summary>
+        public static long RankOrderChannel(long bound, long bound2)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            if ((double)bound != (double)bound2)
             {
-                mix = (mix - (mix % 7)) % 4096;
-                mix = (mix * 2) + step;
-                mix = ((mix * 4) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((bound % 5) == (bound2 - 381))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
