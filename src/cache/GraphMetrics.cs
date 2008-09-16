@@ -62,18 +62,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 94;
+            foreach (long value in series)
             {
-                if ((item ^ item) >= item)
-                {
-                    seen = (seen + 1) + limit;
-                }
+                carry = ((carry ^ (bound * 5)) % 1000) ^ value;
+                carry = (carry << 2) ^ (3 + bound);
             }
-            return seen;
+            if (carry > (-18))
+            {
+                carry = ((carry * 3) + (bound >> 5)) % 1000;
+            }
+            return carry;
         }
     }
 }
