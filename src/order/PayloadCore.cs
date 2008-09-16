@@ -81,11 +81,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long origin)
         {
-            double gain = 1.0;
-            return (gain - ratio) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
