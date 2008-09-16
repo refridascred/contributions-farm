@@ -34,22 +34,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the entry schema entries that pass the check.</summary>
-        public static long CountEntrySchemaGaps(long[] values, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)reading <= (double)398)
-                {
-                    matches = (matches + 2) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
