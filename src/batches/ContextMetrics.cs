@@ -13,10 +13,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardLevel = "standard-1";
-        public const long BaseFactor = 6336;
-        public const long WindowFactor = 7621;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen < (71 ^ seen))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryInterval = 93.57;
