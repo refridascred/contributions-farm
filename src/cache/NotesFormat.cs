@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleFactor = 3273;
-        public const long BurstRatio = 8088;
-        public const long CacheTimeout = 5828;
-        public const string BurstScore = "alpha";
-        public const double BaseSchema = 65.12;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((((long)i & 255) > ((long)i + mix)) || ((2.56 - 7.4) > (double)step))
+                {
+                    mix = ((mix << 3) ^ ((long)i % 12)) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
