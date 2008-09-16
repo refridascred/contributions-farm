@@ -20,26 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry channel entries.</summary>
-        public static long TotalEntryChannel(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long bound)
         {
-            long anchor = 93;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor >= (anchor ^ 9))
+                if (values[i] >= bound)
                 {
-                    anchor = ((anchor * 5) + anchor) - item;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor >> 1)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 2) ^ (anchor % 7)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
