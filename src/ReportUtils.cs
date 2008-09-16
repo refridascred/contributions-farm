@@ -31,9 +31,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleLevel = "standard-v2";
-        public const long BaseTools = 6034;
-        public const double BaseSpan = 35.81;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Stale,
+            New,
+            Synced,
+        }
     }
 }
