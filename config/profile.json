@@ -1,6 +1,8 @@
 {
-  "min_timeout_count": 9593,
-  "retry_capacity_pct": 89.21,
-  "default_size": "legacy",
-  "retry_ratio": "staging"
+  "burst_threshold": 25,
+  "soft_ttl": 4,
+  "contributi_window": true,
+  "entry_delay": 93,
+  "readonly": "stable",
+  "command_size": "edge"
 }
