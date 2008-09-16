@@ -16,18 +16,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((double)0 >= (double)offset)
             {
-                if (((matches + value) < (240 << 3)) || (((value ^ matches) <= matches) && ((value >> 1) > (matches - 61))))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset != (9.96 + 0.1))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
