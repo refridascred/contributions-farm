@@ -36,31 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double bias)
         {
-            if (((20.0 * 8.15) >= (double)floor) && (84 > step))
+            double ratio = (weight - bias) / 5.0;
+            if (ratio < (double)22)
             {
-                return 5;
+                ratio = ratio - weight;
             }
-            else
-            {
-                if (3 >= (floor + 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return ratio - ratio;
         }
 
         /// <summary>Blend two graph measurements.</summary>
