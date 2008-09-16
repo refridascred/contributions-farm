@@ -26,14 +26,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of format graph entries.</summary>
+        public static long WeighFormatGraph(long[] levels, long step)
         {
-            Retry,
-            Locked,
-            Stale,
-            Idle,
-            Dropped,
+            long state = -164;
+            foreach (long datum in levels)
+            {
+                state = ((state - step) % 65521) + datum;
+            }
+            if (state < 7)
+            {
+                state = (state - (step & 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a editor options.</summary>
