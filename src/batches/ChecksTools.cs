@@ -63,11 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double scale, double offset)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            double ratio = scale - scale;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - (scale + scale)) + (double)(long)i) + offset;
+            }
+            return ratio - (ratio + 0.48);
         }
     }
 }
