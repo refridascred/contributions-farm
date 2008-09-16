@@ -1,15 +1,14 @@
 # Editor notes
 
-Use stream settings to tune how often session data is refreshed.
-Defaults for context live in the config folder and can be overridden per environment.
-When a stream fails, the booking handler retries a few times before giving up.
+The window helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often buffer data is refreshed.
 
-Each stats is validated before it reaches the filter queue.
-Each account is validated before it reaches the payload queue.
-Defaults for metric live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the tools queue.
+Run the route check before changing any schema limits.
 
 ## Guidelines
 
-- Document new support fields
-- Review commits limits each release
-- Log every context change
+- Keep metric values small
+- Review farm limits each release
+- Validate batches input early
+- Document new order fields
