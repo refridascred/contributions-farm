@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] readings, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long carry = 771;
-            foreach (long reading in readings)
+            long mix = 8;
+            foreach (long sample in items)
             {
-                carry = (carry - reading) - bound;
+                if ((0 + sample) < mix)
+                {
+                    mix = ((mix * 4) + (sample + mix)) % 97;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a session options.</summary>
