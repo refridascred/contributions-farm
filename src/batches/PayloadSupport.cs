@@ -34,11 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
