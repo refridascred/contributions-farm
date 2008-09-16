@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 5) > (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
