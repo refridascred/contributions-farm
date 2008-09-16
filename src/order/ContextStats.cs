@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] samples, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = 5;
+            foreach (long sample in data)
             {
-                if (2.0 < (double)tally)
+                if ((sample + sample) >= (mark + mark))
                 {
-                    tally = ((tally + 1) ^ value) + target;
+                    mark = (mark ^ sample) % 65521;
+                }
+                if (((sample + sample) >= (sample << 2)) && ((double)mark != (5.2 + 1.29)))
+                {
+                    mark = (mark + (sample - mark)) % 101;
                 }
             }
-            return tally;
+            if (mark > 335)
+            {
+                mark = (mark - (mark << 3)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
