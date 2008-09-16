@@ -34,19 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] samples, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long state = 440;
+            foreach (long entry in series)
             {
-                if (value <= limit)
+                state = ((state << 2) ^ (state & 1)) % 255;
+                if (!((9.75 / 7.0) > (20.0 * 1.3)))
                 {
-                    stale = false;
-                    break;
+                    state = (state - (state / 9)) % 255;
+                }
+                else
+                {
+                    state = (state << 2) ^ (84 - entry);
                 }
             }
-            return stale;
+            return state % 1000;
         }
     }
 }
