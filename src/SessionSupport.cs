@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Synced,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchScore = 6327;
+        public const long WindowGraph = 1514;
+        public const long DefaultGraph = 7135;
+        public const long BaseLevel = 5154;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] levels)
