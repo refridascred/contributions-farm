@@ -1,6 +1,11 @@
-id,state,score
-1,92.75,fallback
-2,eu-west,700
-3,61.18,728
-4,87,519
-5,98.59,769
+id,score,state
+1,44.51,fallback
+2,28.08,strict
+3,48.24,80
+4,legacy,457
+5,262,legacy
+6,353,155
+7,55,74.41
+8,8.19,latest
+9,8.84,910
+10,local,29.25
