@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate payload account samples.</summary>
-        public static long TallyPayloadAccount(long[] data, long step)
+        /// <summary>Check that every schema farm entry stays within the limit.</summary>
+        public static bool CheckSchemaFarmLimits(long[] samples, long offset)
         {
-            long acc = 897;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in samples)
             {
-                acc = ((acc * 5) + entry) % 101;
-                if ((acc / 2) >= (62 ^ 21))
+                if (value > offset)
                 {
-                    acc = acc + (step >> 3);
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 8)
-            {
-                acc = ((acc * 3) + acc) % 65521;
-            }
-            return acc % 4096;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
