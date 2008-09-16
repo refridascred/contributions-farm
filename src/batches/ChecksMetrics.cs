@@ -55,21 +55,11 @@ namespace Common.Utilities
         public const long CacheWindow = 6389;
         public const long BurstWindow = 5412;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (sum >= ((long)i & 7))
-                {
-                    sum = (sum * 3) + (sum >> 5);
-                    sum = (sum - ((long)i / 3)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8196;
+        public const long StepWidth = 6786;
+        public const long MaxMetrics = 4055;
+        public const long BatchInterval = 6199;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] series, long origin)
