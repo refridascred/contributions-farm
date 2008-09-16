@@ -22,19 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload tools reading.</summary>
-        public static double ScalePayloadTools(double rate, double span)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            double mean = rate;
-            if (mean <= (double)(-468))
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean + (double)3) - span;
+                if (((long)i - (long)i) >= result)
+                {
+                    result = (result ^ (432 * 5)) % 101;
+                    result = (result ^ (result >> 1)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 1000;
+                    result = ((result << 2) ^ target) % 255;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - 0.8) - (double)(long)i;
-            }
-            return mean - (rate / 8.0);
+            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
