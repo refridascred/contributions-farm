@@ -50,18 +50,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double rate = span;
+            if (rate >= (rate + span))
             {
-                if ((reading / 9) < (hits * 4))
-                {
-                    hits = hits + 3;
-                }
+                rate = rate + 8.7;
             }
-            return hits;
+            return rate - (ratio / 4.0);
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
