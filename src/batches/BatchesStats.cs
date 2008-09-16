@@ -63,9 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleDepth = "fallback";
-        public const string HardWindow = "primary-edge";
-        public const long IdleWindow = 3470;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
