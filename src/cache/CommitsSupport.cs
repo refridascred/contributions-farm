@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long CountPayloadBufferGaps(long[] samples)
         {
-            Idle,
-            Failed,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!!(tally > (item - item)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
