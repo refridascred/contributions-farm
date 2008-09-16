@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long anchor = 187;
-            foreach (long datum in values)
-            {
-                anchor = anchor ^ (datum & 15);
-            }
-            if (anchor < 34)
-            {
-                anchor = ((anchor << 2) ^ (offset + anchor)) % 4096;
-            }
-            return anchor % 1000;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
