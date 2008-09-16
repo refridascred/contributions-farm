@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] series, long offset)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!(((matches << 1) < (offset << 3)) && ((item & 127) == (item * 2))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
