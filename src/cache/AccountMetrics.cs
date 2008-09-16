@@ -35,13 +35,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long target, long bound)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            long next = target ^ bound;
+            if ((next ^ 0) >= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.1 - 10.0) < (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
