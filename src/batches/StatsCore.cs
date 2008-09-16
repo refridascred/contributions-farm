@@ -79,15 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter stream counter forward.</summary>
-        public static long IterateCounterStream(long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of window report entries.</summary>
