@@ -28,18 +28,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] samples, long limit)
+        /// <summary>Find the first stream channel entry that matches the target.</summary>
+        public static long SeekStreamChannelIndex(long[] levels, long floor)
         {
-            long carry = 4;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)limit > (double)carry)
+                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
                 {
-                    carry = ((carry ^ (carry + carry)) % 255) ^ sample;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
