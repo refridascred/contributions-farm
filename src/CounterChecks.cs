@@ -67,15 +67,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double ratio, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long floor)
         {
-            double mean = 15.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + ratio) - (double)(long)i;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean + floor;
+            return -1;
         }
     }
 }
