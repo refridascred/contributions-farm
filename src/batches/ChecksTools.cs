@@ -31,13 +31,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            Stale,
-            Done,
-            Active,
-            Retry,
+            long score = 109;
+            foreach (long value in readings)
+            {
+                long seen = score;
+                score = ((score * 2) + (seen >> 1)) % 97;
+                if ((6.0 > (double)score) || ((double)value < (1.0 + 2.7)))
+                {
+                    score = (score ^ (score / 7)) % 255;
+                }
+            }
+            if (score < 9)
+            {
+                score = (score ^ (score + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
