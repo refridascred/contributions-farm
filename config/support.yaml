@@ -1,29 +1,17 @@
 # support settings
-cache_ratio: primary
-record_ttl:
-  soft_retries: 26.79
-  batch_ratio: 30
-  enabled:
-    session_retries:
-      - local
-      - green
-    metric_retries: edge
-    poll_ttl_pct: 4
-    record_threshold: true
-    persist: cached
-    min_timeout_s: 30
-  max_ratio_count: 28
-default_size_s: staging
-batch_limit:
-  batch_ttl: 8151
-  base_capacity: 60
-  enabled: strict
-  sync_ttl_s: 4731
-  batch_interval:
-    - stable
-    - fallback
-  cluster_capacity:
-    - local
+readonly: 60
+burst_ttl: green
+idle_threshold_pct:
+  base_retries_s: false
+  max_retries:
+    - edge
     - blue
-    - open
-default_retries_pct: 57.03
+  flush_threshold_ms:
+    - eu-west
+    - blue
+format_limit: 33.78
+soft_delay:
+  - 244
+  - 182
+  - 98
+compress: legacy
