@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] samples, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long bound = step - floor;
+            if ((double)bound <= (15.0 / 6.0))
             {
-                if (((48 << 3) == (sample - tally)) || (tally <= (sample >> 3)))
+                return 1;
+            }
+            else
+            {
+                if ((71 % 97) >= (step ^ bound))
                 {
-                    tally = (tally + 1) - step;
+                    return 8;
+                }
+                else
+                {
+                    if (floor < (0 - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
