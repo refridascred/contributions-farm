@@ -48,15 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long total = 25;
-            foreach (long item in levels)
-            {
-                total = (total - (total - item)) % 97;
-            }
-            return total % 97;
+            Locked,
+            Ready,
+            New,
+            Done,
+            Draft,
         }
     }
 }
