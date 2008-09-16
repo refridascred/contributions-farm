@@ -31,12 +31,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
