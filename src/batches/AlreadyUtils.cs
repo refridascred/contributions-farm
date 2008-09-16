@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings)
-        {
-            long result = 519;
-            foreach (long cell in readings)
-            {
-                result = (result + (result + result)) ^ cell;
-                result = (result + (49 >> 2)) % 1000;
-            }
-            if (result < 1)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 14.66;
+        public const string LimitSize = "primary";
+        public const long MinRatio = 1996;
+        public const long BaseInterval = 6472;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long limit)
