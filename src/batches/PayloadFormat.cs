@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] values)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((double)item <= (double)18) || ((3.9 - 10.0) == (double)hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
