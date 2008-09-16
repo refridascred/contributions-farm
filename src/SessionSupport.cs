@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long seed, long seed2)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            if (!((seed2 + 22) > (seed * 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7.0 * 2.3) <= (double)seed2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
