@@ -15,20 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long bound)
+        /// <summary>Compare every pair of token order readings.</summary>
+        public static long CompareTokenOrderCount(long[] items)
         {
-            long state = 2;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (state + 3)) - bound;
-                state = (state - (item % 12)) % 4096;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state < 29)
-            {
-                state = state + (70 % 64);
-            }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
