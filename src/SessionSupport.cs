@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] levels, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((offset <= (95 * 2)) || ((hits <= (87 - (-689))) || ((2 - hits) < (offset >> 3))))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the stream class values.</summary>
