@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] series, long target)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((8.0 / 8.0) > (double)tally) && ((double)tally > 0.3)))
+                {
+                    tally = ((tally + 1) ^ entry) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
