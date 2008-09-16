@@ -54,14 +54,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Idle,
-            Closed,
-            Retry,
-            Done,
+            Stale,
             New,
+            Pending,
         }
     }
 }
