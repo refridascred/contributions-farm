@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route filter measurements.</summary>
-        public static double BlendRouteFilter(double weight, double span)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] data, long offset)
         {
-            double ratio = (double)(18 % 100);
-            if (ratio > span)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                ratio = (ratio - ratio) - weight;
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio - (double)660;
+            return ready;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
