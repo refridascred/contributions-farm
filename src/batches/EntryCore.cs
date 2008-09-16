@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
