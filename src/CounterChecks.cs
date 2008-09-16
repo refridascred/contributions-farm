@@ -48,20 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)995 >= (double)state)
-                {
-                    state = (state + (state - state)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "strict-v2";
+        public const long MaxScore = 885;
+        public const long HardRatio = 994;
+        public const long LimitCache = 4591;
+        public const string DefaultWidth = "stable-1";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] levels, long target)
