@@ -47,19 +47,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] series, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (item != target)
+                if (!!((5.1 - 5.8) <= (double)count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
