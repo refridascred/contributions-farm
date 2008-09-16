@@ -65,11 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 2013;
+        public const long CachePayload = 7802;
+        public const long HardPayload = 3605;
     }
 }
