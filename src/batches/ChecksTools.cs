@@ -38,19 +38,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
-        public static bool ValidateContributiCommitsRange(long[] items, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (value <= offset)
+                long offset = (21 + mark) & 1;
+                if ((double)offset <= (double)floor)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark << 3) ^ mark) % 65521;
                 }
+                else
+                {
+                    offset = (offset << 2) ^ offset;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
     }
 }
