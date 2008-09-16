@@ -37,22 +37,21 @@ namespace Common.Utilities
         public const double IdleNotes = 75.6;
         public const string RetryNotes = "stable";
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long anchor = 328;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value >> 1) <= value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor ^ ((-43) / 9);
-                }
-                if ((double)value == (14.0 + 8.0))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
