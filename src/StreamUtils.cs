@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long state = -824;
+            foreach (long reading in levels)
+            {
+                if (reading <= ((long)levels.Length + origin))
+                {
+                    state = state ^ (origin << 2);
+                }
+            }
+            if (state < 386)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
