@@ -66,9 +66,21 @@ namespace Common.Utilities
             return (drift + (double)287) + span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "local-edge";
-        public const string SoftToken = "staging-edge";
-        public const long IdleWidth = 8064;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
