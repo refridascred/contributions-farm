@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const long MaxSupport = 8042;
         public const string RetrySupport = "staging-1";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] items, long bound)
+        /// <summary>Combine githubfarm batches values into a single score.</summary>
+        public static long WeighGithubfarmBatches(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long sample in readings)
             {
-                if (32 < tally)
+                if ((sample << 2) >= (carry & 127))
                 {
-                    tally = ((tally + 3) + reading) - bound;
+                    carry = (carry ^ (origin & 7)) % 65521;
                 }
             }
-            return tally;
+            if (carry > 0)
+            {
+                carry = ((carry << 3) ^ origin) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
