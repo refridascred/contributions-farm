@@ -61,12 +61,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count payload cache pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCacheCount(long[] data)
         {
-            Failed,
-            New,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a commits summary.</summary>
