@@ -26,19 +26,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((mark - mark) > ((long)i & 31))
+                if (!(item > hits) || ((9.71 / 4.0) == (double)item))
                 {
-                    mark = mark + mark;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
