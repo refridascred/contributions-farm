@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 9665;
+        public const long HardCount = 2337;
+        public const long SoftBudget = 6975;
+        public const double DefaultWidth = 36.27;
+        public const double SoftFactor = 6.21;
 
         /// <summary>Iterate the account report series from a seed.</summary>
         public static long StepAccountReport(long offset)
