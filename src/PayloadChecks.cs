@@ -26,15 +26,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
