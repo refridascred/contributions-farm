@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up stats profile samples.</summary>
-        public static long MatchStatsProfileCount(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < target)
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Rank queue order input into a small class.</summary>
