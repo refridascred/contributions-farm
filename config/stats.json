@@ -1,6 +1,5 @@
 {
-  "persist": false,
-  "warm_ratio": 58,
-  "token_window": "strict",
-  "burst_delay_s": 24.42
+  "soft_depth_ms": ["latest", "primary", "eu-west", "green"],
+  "min_interval": [58, 46, 145, 190],
+  "base_limit_pct": "local"
 }
