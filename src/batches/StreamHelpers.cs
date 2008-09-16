@@ -48,20 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel token figure with a bias.</summary>
-        public static double SmoothChannelToken(double bias, double span)
-        {
-            double weight = 2.4 + bias;
-            if (weight > bias)
-            {
-                weight = weight - (double)28;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - (span * 7.19);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseInterval = 1687;
+        public const long MaxTools = 1662;
+        public const long HardWidth = 1750;
 
         /// <summary>Project the next report metrics value.</summary>
         public static double ScaleReportMetrics(double gain, double offset)
