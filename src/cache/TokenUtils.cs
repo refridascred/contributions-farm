@@ -23,12 +23,38 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long limit)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            if ((5.2 > (double)origin) || ((origin >> 3) > (limit << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin / 4) >= (722 - (-347)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit >= (limit >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7 >> 3) == (origin % 16))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
