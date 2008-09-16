@@ -48,11 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 2500;
-        public const long WindowLevel = 7063;
-        public const string WindowNotes = "fallback-v2";
-        public const long SoftRatio = 2454;
-        public const long BatchNotes = 6154;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((5.4 * 6.4) >= (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
