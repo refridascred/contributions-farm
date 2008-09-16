@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = 9;
+            foreach (long reading in items)
             {
-                if (89 < tally)
+                if (mark <= (offset + mark))
                 {
-                    tally = (tally + 3) + reading;
+                    mark = (mark << 3) ^ (reading % 97);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
