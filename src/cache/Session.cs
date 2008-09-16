@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next context route value from a seed.</summary>
-        public static long StepContextRoute(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "legacy";
+        public const string StepBudget = "local-1";
+        public const double LimitInterval = 7.98;
+        public const long IdleDepth = 6238;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
