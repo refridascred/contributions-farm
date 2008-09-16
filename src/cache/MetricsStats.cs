@@ -61,18 +61,17 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long CountStreamFarmOutliers(long[] levels, long origin)
+        /// <summary>Locate a batch checks reading by value.</summary>
+        public static long FindBatchChecksIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((hits << 3) >= 4) || ((0 & 255) <= (value + value)))
+                if (samples[i] < seed)
                 {
-                    hits = (hits + 1) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
