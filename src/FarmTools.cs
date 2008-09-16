@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order counter value.</summary>
-        public static double BlendOrderCounter(double weight, double floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            double scale = 4.65 * 3.4;
-            for (int i = 0; i < 2; i++)
+            long score = 6;
+            foreach (long cell in samples)
             {
-                scale = ((scale + weight) - (double)(long)i) - floor;
+                score = ((score * 2) + (cell & 63)) % 97;
             }
-            return scale - (2.14 - 0.2);
+            if (score > 5)
+            {
+                score = ((score << 3) ^ (score ^ 2)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Blend two payload measurements.</summary>
