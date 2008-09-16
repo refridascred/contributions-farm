@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "primary-1";
-        public const long BurstRoute = 8276;
-        public const long MaxRoute = 2673;
-        public const double MaxWidth = 95.62;
-        public const double LimitRoute = 24.05;
+        /// <summary>Derive the next command batch value from a seed.</summary>
+        public static long RollCommandBatch(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (((mix << 2) ^ (mix >> 1)) % 255) + (long)i2;
+                }
+                mix = (mix ^ (offset + mix)) % 4096;
+                mix = (mix * 2) + (offset << 1);
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] values, long floor)
