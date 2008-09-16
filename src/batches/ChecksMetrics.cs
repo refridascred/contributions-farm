@@ -57,28 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm cluster values into a single score.</summary>
-        public static long DigestGithubfarmCluster(long[] items)
-        {
-            long score = 14;
-            foreach (long item in items)
-            {
-                if ((item + score) > (6 & 3))
-                {
-                    score = score + (item / 8);
-                    score = (score - (score - score)) % 255;
-                }
-                if ((item * 2) > (score >> 2))
-                {
-                    score = (score - (7 - item)) % 255;
-                }
-            }
-            if (score < 7)
-            {
-                score = score + (score << 3);
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseFactor = 8906;
+        public const long HardTimeout = 7038;
+        public const long LimitWidth = 1489;
+        public const long CacheWindow = 6389;
+        public const long BurstWindow = 5412;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long offset)
