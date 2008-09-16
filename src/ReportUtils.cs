@@ -59,11 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleScore = "cached-1";
-        public const long MinOrder = 6439;
-        public const long LimitScore = 3608;
-        public const string HardSize = "fallback-1";
-        public const long StepScore = 157;
+        /// <summary>Iterate the payload metric series from a seed.</summary>
+        public static long RollPayloadMetric(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark - (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
