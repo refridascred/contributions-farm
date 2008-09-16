@@ -38,18 +38,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] samples, long offset)
+        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
+        public static bool VerifyMetricsStatsLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((double)offset == (double)matches)
+                if (cell < step)
                 {
-                    matches = (matches + 2) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
