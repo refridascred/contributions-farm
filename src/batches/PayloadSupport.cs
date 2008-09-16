@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            long total = 791;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)origin > (8.29 + 0.7))
+                if ((cell * 5) > (seen + seen))
                 {
-                    total = (((total * 4) + (0 + total)) % 255) ^ value;
+                    seen = seen + 3;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
