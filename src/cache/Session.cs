@@ -34,22 +34,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of githubfarm metrics entries.</summary>
-        public static long FoldGithubfarmMetrics(long[] levels, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double gain, double floor)
         {
-            long mix = 911;
-            foreach (long entry in levels)
+            double weight = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if ((entry + 401) < entry)
-                {
-                    mix = (mix ^ entry) % 1000;
-                }
-                if ((mix >> 4) > target)
-                {
-                    break;
-                }
+                weight = (weight - gain) + (double)(long)i;
             }
-            return mix;
+            return weight + weight;
         }
 
         /// <summary>Describe the metrics status values.</summary>
