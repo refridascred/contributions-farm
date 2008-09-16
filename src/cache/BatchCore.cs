@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxDepth = 2888;
+        public const string HardInterval = "legacy";
+        public const string BurstCache = "staging";
 
         /// <summary>Derive the next buffer entry value from a seed.</summary>
         public static long DeriveBufferEntry(long floor)
