@@ -34,17 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long target)
+        /// <summary>Audit metric cluster readings against a rule.</summary>
+        public static long MeasureMetricClusterHits(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                if ((double)floor != (6.62 - 6.53))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the editor level values.</summary>
