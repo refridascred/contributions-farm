@@ -62,12 +62,19 @@ namespace Common.Utilities
         public const long SoftFilter = 6751;
         public const string SoftScore = "staging";
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double weight, double offset)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
+            double rate = 5.6;
+            if (rate > offset)
+            {
+                rate = (rate + (1.18 * 6.22)) - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)3;
         }
     }
 }
