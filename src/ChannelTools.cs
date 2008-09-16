@@ -39,24 +39,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long target)
         {
-            if ((4.0 + 13.0) <= (double)step)
+            long mark = 870;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target / 4) >= step)
+                if (((double)mark != (2.0 - 1.13)) && ((item << 3) >= ((long)samples.Length / 9)))
                 {
-                    return 3;
+                    mark = (mark ^ (item >> 1)) % 97;
                 }
                 else
                 {
-                    return 8;
+                    mark = ((mark << 3) ^ item) % 1000;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark ^ item) % 101) - (long)i;
+                }
+                if ((mark + item) == (target ^ item))
+                {
+                    mark = mark ^ (target + target);
                 }
             }
+            return mark % 4096;
         }
     }
 }
