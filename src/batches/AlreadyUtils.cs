@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchCount = 7615;
-        public const long LimitGraph = 8883;
-        public const double WindowGraph = 64.24;
-        public const long HardGraph = 3951;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings)
+        {
+            long result = 519;
+            foreach (long cell in readings)
+            {
+                result = (result + (result + result)) ^ cell;
+                result = (result + (49 >> 2)) % 1000;
+            }
+            if (result < 1)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result % 97;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long limit)
