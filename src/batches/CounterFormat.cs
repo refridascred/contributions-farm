@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long bound)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally * 5) < (bound + bound))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools options.</summary>
