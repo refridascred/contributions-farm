@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels, long floor)
-        {
-            long mark = 69;
-            foreach (long datum in levels)
-            {
-                if (((mark >> 3) >= (mark ^ mark)) && (floor < (mark - datum)))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark + floor) % 65521;
-                }
-                mark = (mark ^ floor) % 101;
-                if (((datum + datum) < (129 % 12)) && ((mark << 1) <= (45 % 8)))
-                {
-                    mark = (mark - ((-935) * 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 3) + (96 ^ 86);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchSize = 6027;
+        public const long SoftStats = 8604;
+        public const long LimitInterval = 2795;
+        public const long CacheStats = 2023;
+        public const long MinStats = 6384;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 6356;
