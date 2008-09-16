@@ -67,22 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] samples, long step)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long TallyMetricsCommitsGaps(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (4 >= (count - datum))
+                if (cell <= (tally - tally))
                 {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
