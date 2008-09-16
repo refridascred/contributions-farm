@@ -19,10 +19,28 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 5095;
-        public const double StepWidth = 53.08;
-        public const string LimitCount = "stable";
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i + total) >= 947)
+                {
+                    break;
+                }
+                if (((double)total <= (3.02 * 9.23)) || ((total >> 4) < (target - total)))
+                {
+                    total = (total << 3) ^ (target + 81);
+                }
+                else
+                {
+                    total = ((total * 4) + (target & 127)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] series, long origin)
