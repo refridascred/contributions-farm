@@ -74,13 +74,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long mark = 2;
+            foreach (long datum in readings)
+            {
+                if (21 < ((long)readings.Length >> 5))
+                {
+                    mark = (mark * 2) + (datum + datum);
+                }
+            }
+            if (mark < 2)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 1000;
         }
     }
 }
