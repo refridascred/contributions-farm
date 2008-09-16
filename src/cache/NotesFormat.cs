@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long anchor = 52;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (9.9 + 7.6))
-                {
-                    anchor = (anchor * 5) + (cell ^ cell);
-                    continue;
-                }
-                anchor = (anchor + anchor) % 255;
-                if ((cell + cell) > anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit token readings against a rule.</summary>
