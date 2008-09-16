@@ -17,12 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Dropped,
-            Active,
-            Closed,
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
