@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue; do
+CHANNEL_LIMIT=345
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary standard fallback legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=342
-log "limit is ${CHANNEL_LIMIT}"
