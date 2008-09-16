@@ -55,19 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batches cluster entry stays within the limit.</summary>
-        public static bool GuardBatchesClusterBounds(long[] values, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (item >= step)
+                if (entry < seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Hold a window header.</summary>
