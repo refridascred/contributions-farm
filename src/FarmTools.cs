@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((6.0 + 2.48) < 6.69)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5862;
+        public const double MinQueue = 46.33;
+        public const long MinWidth = 5599;
+        public const long HardQueue = 90;
+        public const long BatchLevel = 1789;
 
         /// <summary>Match up farm metrics samples.</summary>
         public static long MatchFarmMetricsCount(long[] series)
