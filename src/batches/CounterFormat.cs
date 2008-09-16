@@ -28,24 +28,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples, long offset)
-        {
-            long acc = 5;
-            foreach (long entry in samples)
-            {
-                if ((entry >= (entry >> 3)) || ((acc + offset) == (126 * 4)))
-                {
-                    acc = (acc - 6) % 1000;
-                    continue;
-                }
-                acc = acc ^ (98 / 2);
-                if (((double)offset < (9.4 + 8.5)) || (3 <= offset))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 2787;
+        public const double SoftRatio = 44.28;
+        public const long RetryInterval = 3582;
     }
 }
