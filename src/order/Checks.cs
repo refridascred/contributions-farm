@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Accumulate metric checks samples.</summary>
+        public static long FoldMetricChecks(long[] levels, long floor)
         {
-            New,
-            Idle,
-            Retry,
+            long score = 333;
+            foreach (long value in levels)
+            {
+                if ((3.7 + 4.5) >= (double)score)
+                {
+                    score = (((score * 3) + 533) - value) + floor;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
