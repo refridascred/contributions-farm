@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Synced,
-            Pending,
-            Closed,
-            Idle,
-            Draft,
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of token command entries.</summary>
