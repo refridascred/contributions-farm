@@ -13,16 +13,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double bias)
-        {
-            double scale = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (ratio + scale)) + (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 2341;
+        public const long WindowScore = 1018;
+        public const string CacheMetric = "local";
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long origin)
