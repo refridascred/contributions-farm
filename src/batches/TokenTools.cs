@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const long MaxEntry = 2790;
         public const double SoftFactor = 92.28;
 
-        /// <summary>Digest a series of already format entries.</summary>
-        public static long TallyAlreadyFormat(long[] values, long step)
-        {
-            long carry = 542;
-            foreach (long cell in values)
-            {
-                carry = ((((carry << 2) ^ carry) % 4096) + cell) + step;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardWidth = "fallback";
+        public const long MinDepth = 7241;
+        public const string StepSpan = "stable-v2";
 
         /// <summary>Digest a series of cache channel entries.</summary>
         public static long TotalCacheChannel(long[] data, long target)
