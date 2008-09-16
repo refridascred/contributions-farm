@@ -22,12 +22,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long offset)
         {
-            Locked,
-            Stale,
-            Failed,
+            long anchor = -4;
+            foreach (long item in series)
+            {
+                if (anchor > (anchor / 6))
+                {
+                    anchor = ((anchor + offset) % 65521) + item;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (offset << 1)) % 97;
+                }
+            }
+            if (anchor > 209)
+            {
+                anchor = anchor + offset;
+            }
+            return anchor;
         }
     }
 }
