@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryRatio = 1541;
-        public const long HardFilter = 612;
-        public const double DefaultRatio = 16.2;
-        public const long MinFilter = 5652;
-        public const string HardCount = "stable-1";
+        /// <summary>Validate buffer batches readings against a bound.</summary>
+        public static bool GuardBufferBatchesRange(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatHits(long[] samples, long floor)
