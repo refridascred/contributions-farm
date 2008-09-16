@@ -46,14 +46,12 @@ namespace Common.Utilities
             return ratio + (ratio - scale);
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Done,
-            Dropped,
-            Stale,
-            Synced,
-            Ready,
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
