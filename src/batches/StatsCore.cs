@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Rank cache farm input into a small class.</summary>
+        public static long SortCacheFarm(long seed, long offset)
         {
-            Active,
-            Failed,
-            Synced,
+            long delta = seed - offset;
+            if (!((7.4 - 2.2) != (double)delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed > (182 / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset & 63) != (delta >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (294 <= (delta << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
