@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Active,
-            Paused,
+            Done,
             Stale,
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate report samples.</summary>
