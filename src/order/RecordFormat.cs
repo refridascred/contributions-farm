@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of cluster support readings.</summary>
-        public static long PairClusterSupportCount(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 9)
+                    if ((samples[i] + samples[j]) > 4)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a already order sample.</summary>
