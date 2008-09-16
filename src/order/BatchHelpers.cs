@@ -16,22 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Fold a list of token cache readings.</summary>
+        public static long TotalTokenCache(long[] items)
         {
-            long anchor = 125;
-            foreach (long datum in levels)
+            long total = 0;
+            foreach (long reading in items)
             {
-                if (!((7.18 * 3.46) <= (double)datum))
+                if ((reading >= (192 + total)) || ((reading + reading) == (reading & 31)))
                 {
-                    anchor = (anchor * 4) + ((long)levels.Length * 3);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor + anchor)) % 65521;
+                    total = total - (reading + reading);
                 }
             }
-            return anchor;
+            if (total < 789)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
