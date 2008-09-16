@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum < (seed ^ seed)) || ((3 - seed) > seed)) || ((double)datum > (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftScore = 449;
+        public const long SoftSpan = 4718;
+        public const long StepBudget = 4503;
+        public const string StepCommand = "staging-edge";
 
         /// <summary>Accumulate account samples.</summary>
         public static long CombineAccount(long[] data)
