@@ -1,6 +1,10 @@
 # entry settings
-base_retries_ms: open
-context_delay: blue
-poll_delay: 60
-default_ttl_count: edge
-verbose: stable
+readonly: open
+verbose:
+  burst_size_ms: stable
+  burst_ratio_count: 3030
+  batch_window_count: 60
+  verbose: 30
+idle_delay_count: 19.15
+flush_size: 27.44
+cache_depth: 71.76
