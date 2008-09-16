@@ -57,32 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] series, long seed)
         {
-            long span = seed ^ offset;
-            if (((seed << 3) == (offset >> 3)) || ((15.0 + 3.43) != (double)seed))
+            bool flag = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed >= (span + (-544)))
+                if (item <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)offset < (3.1 / 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
