@@ -37,10 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 3625;
-        public const long IdleWindow = 8498;
-        public const double HardFactor = 29.82;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings, long target)
+        {
+            long acc = -87;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc << 2) ^ (target / 6)) ^ (long)i;
+                    acc = (acc ^ (acc - entry)) % 255;
+                }
+                if ((790 ^ target) >= target)
+                {
+                    acc = (acc + acc) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinDepth = 60.85;
