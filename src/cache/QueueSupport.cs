@@ -37,20 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session record readings.</summary>
-        public static long TotalSessionRecord(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] items, long step)
         {
-            long result = 661;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                result = result + (result + entry);
-                result = (result ^ result) % 1000;
-                if ((double)result >= 1.2)
+                if ((hits + datum) >= hits)
                 {
-                    break;
+                    hits = (hits + 3) + step;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
