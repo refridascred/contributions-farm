@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit account batches readings against a rule.</summary>
+        public static long TallyAccountBatchesHits(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches + floor) < 92)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of report channel readings.</summary>
