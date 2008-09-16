@@ -43,15 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph checks entries.</summary>
-        public static long TotalGraphChecks(long[] readings, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long carry = 9;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - (step + step)) + cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
