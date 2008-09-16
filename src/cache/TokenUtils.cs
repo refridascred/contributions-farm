@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Roll a buffer stream counter forward.</summary>
+        public static long IterateBufferStream(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
