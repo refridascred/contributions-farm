@@ -14,23 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long target)
         {
-            double ratio = gain;
-            if (ratio > (ratio / 8.0))
+            bool found = true;
+            foreach (long value in readings)
             {
-                ratio = ratio + (double)1;
+                if (value > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - span;
+            return found;
         }
 
         /// <summary>Fold a list of already readings.</summary>
