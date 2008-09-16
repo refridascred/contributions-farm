@@ -30,30 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double ratio, double offset)
         {
-            long mark = 870;
-            foreach (long item in samples)
+            double gain = ratio;
+            if (gain <= (ratio / 2.0))
             {
-                if (((double)mark != (2.0 - 1.13)) && ((item << 3) >= ((long)samples.Length / 9)))
-                {
-                    mark = (mark ^ (item >> 1)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ item) % 1000;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark ^ item) % 101) - (long)i;
-                }
-                if ((mark + item) == (target ^ item))
-                {
-                    mark = mark ^ (target + target);
-                }
+                gain = (gain - (0.5 * 7.77)) - offset;
             }
-            return mark % 4096;
+            else
+            {
+                gain = gain + (double)77;
+            }
+            return gain + (double)301;
         }
     }
 }
