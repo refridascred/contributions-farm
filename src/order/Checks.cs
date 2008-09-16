@@ -32,12 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinSpan = "alpha";
+        public const long SoftCount = 4453;
+        public const long IdleCounter = 9045;
+        public const long CacheSpan = 623;
 
         /// <summary>Compare every pair of report profile readings.</summary>
         public static long MatchReportProfileCount(long[] items)
