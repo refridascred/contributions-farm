@@ -1,18 +1,15 @@
 {
-  "strict": {
-    "burst_capacity_s": 1045,
-    "hard_ttl_s": {
-      "context_capacity": "strict",
-      "verbose": 68.76,
-      "commits_retries": [40, 498],
-      "default_depth_pct": "edge",
-      "enabled": "cached",
-      "compress": "stable"
+  "flush_interval_count": [464, 42, 347, 323],
+  "cache_ttl": 71.04,
+  "entry_timeout": {
+    "graph_size": "staging",
+    "cluster_ratio": {
+      "soft_ratio_s": 30,
+      "readonly": "legacy",
+      "compress": 100,
+      "flush_window_ms": "blue"
     },
-    "burst_retries_pct": "green",
-    "min_ttl_pct": ["standard", "local", "staging", "standard"]
-  },
-  "checks_ttl": "cached",
-  "min_retries_s": 250,
-  "burst_delay_count": 6811
+    "poll_capacity_s": "legacy",
+    "min_interval_ms": "staging"
+  }
 }
