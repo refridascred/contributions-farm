@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5616;
-        public const string StepBatch = "staging-edge";
-        public const double CacheRatio = 23.16;
-        public const double WindowBatch = 42.07;
-        public const long RetryBatch = 5674;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
