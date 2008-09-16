@@ -1,8 +1,7 @@
 {
-  "base_limit_s": "strict",
-  "readonly": 500,
-  "context_size": "edge",
-  "cache_ttl": 1898,
-  "record_capacity": "legacy",
-  "cache_ratio_s": 32.33
+  "schema_interval": "cached",
+  "record_ttl": 99,
+  "warm_ttl_ms": true,
+  "soft_retries_count": 2281,
+  "idle_capacity_pct": ["fallback", "standard"]
 }
