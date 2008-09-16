@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            Dropped,
+            Queued,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
