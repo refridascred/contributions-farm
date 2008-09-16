@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + floor) == (value / 8))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7576;
+        public const long BatchCount = 7749;
+        public const double MaxWidth = 2.53;
+        public const double StepRoute = 79.63;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepScore = 78.08;
