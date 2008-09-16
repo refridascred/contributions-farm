@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mean + (double)29;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
