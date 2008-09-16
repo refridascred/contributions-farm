@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] items, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 85;
+            foreach (long value in data)
             {
-                if ((2 < (item & 255)) || (((9.65 * 5.0) < (double)item) || ((limit + 8) >= (item / 4))))
+                sum = (sum << 2) ^ (value << 3);
+                if (target > sum)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the counter status values.</summary>
