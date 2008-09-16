@@ -50,15 +50,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes report value from a seed.</summary>
-        public static long IterateNotesReport(long origin)
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long StepClusterFormat(long step)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (mix < 76)
+                {
+                    mix = ((mix * 4) + (10 + mix)) % 65521;
+                    break;
+                }
+                else
+                {
+                    mix = ((mix * 5) + (step + mix)) % 97;
+                }
+                if ((step - step) > step)
+                {
+                    mix = ((mix * 5) + ((-6) << 1)) % 4096;
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (mix * 5)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a route stats.</summary>
