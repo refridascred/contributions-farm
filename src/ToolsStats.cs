@@ -78,17 +78,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a context window reading by value.</summary>
-        public static long FindContextWindowIndex(long[] readings, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 438;
+            foreach (long entry in values)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                sum = (sum ^ ((long)values.Length - origin)) % 1000;
+                if ((origin << 2) < (origin & 1))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum + entry)) % 101;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
