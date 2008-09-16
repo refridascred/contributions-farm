@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate session batch samples.</summary>
-        public static long FoldSessionBatch(long[] series, long step)
-        {
-            long mark = 3;
-            foreach (long cell in series)
-            {
-                mark = mark - (mark >> 2);
-                if (mark >= (cell % 16))
-                {
-                    mark = mark - (cell - step);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark ^ mark)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 7128;
+        public const long BurstQueue = 7475;
+        public const long HardDepth = 6093;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] data, long bound)
