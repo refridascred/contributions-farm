@@ -1,7 +1,6 @@
 {
-  "max_timeout_ms": 99,
-  "context_window": 60,
-  "retry_timeout_s": false,
-  "stats_ttl": false,
-  "tools_threshold": 8424
+  "retry_delay_pct": true,
+  "persist": false,
+  "idle_threshold": "open",
+  "verbose": 71.34
 }
