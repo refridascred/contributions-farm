@@ -1,18 +1,7 @@
 {
-  "persist": "primary",
-  "poll_depth_ms": {
-    "default_size_s": 3,
-    "max_depth_count": "fallback",
-    "poll_threshold_count": 100
-  },
-  "min_size": "primary",
-  "hard_delay_count": 20.72,
-  "soft_capacity_s": 8644,
-  "default_timeout_count": {
-    "cache_delay_count": 73.09,
-    "persist": 1024,
-    "account_capacity": true,
-    "min_ratio_s": "latest",
-    "cache_limit": 1699
-  }
+  "layout_delay": 48,
+  "min_retries_pct": "stable",
+  "default_window_s": 98.89,
+  "max_ratio": "edge",
+  "idle_ratio": "fallback"
 }
