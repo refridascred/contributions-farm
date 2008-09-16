@@ -22,26 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
         {
-            long acc = 83;
-            foreach (long value in levels)
+            long mark = 119;
+            foreach (long item in data)
             {
-                if (((5.92 + 1.7) > (double)value) && ((bound * 5) < (bound / 2)))
-                {
-                    acc = acc + (bound & 7);
-                }
-                if ((double)value >= (6.86 - 5.6))
-                {
-                    acc = ((acc * 2) + (217 >> 5)) % 97;
-                }
+                mark = (mark << 3) ^ (33 + item);
             }
-            if (acc > 409)
+            if (mark < (-164))
             {
-                acc = (acc ^ (824 % 7)) % 65521;
+                mark = (mark << 2) ^ (mark ^ 69);
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
