@@ -38,19 +38,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
-        public static bool VerifyMetricsStatsLimits(long[] values, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
