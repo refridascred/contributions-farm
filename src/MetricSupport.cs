@@ -36,16 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Check that every command schema entry stays within the limit.</summary>
+        public static bool ValidateCommandSchemaLimits(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                anchor = anchor + (floor - (long)i);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
