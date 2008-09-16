@@ -17,21 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((30 + (long)i) <= score)
+                if (16.0 >= (double)reading)
                 {
-                    score = score - origin;
-                    score = ((score * 3) + score) % 4096;
+                    hits = hits + 2;
                 }
-                score = (score + (origin / 2)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
