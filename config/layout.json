@@ -1,8 +1,7 @@
 {
-  "channel_timeout": true,
-  "idle_capacity_pct": false,
-  "flush_size": 7281,
-  "commits_ratio": true,
-  "tools_size": false,
-  "profile_depth": ["edge", "cached", "cached", "open"]
+  "warm_ratio_ms": "green",
+  "sync_delay_s": "strict",
+  "readonly": ["legacy", "primary", "blue"],
+  "persist": true,
+  "retry_interval_s": 6739
 }
