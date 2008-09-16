@@ -62,21 +62,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor << 2) ^ 62;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((offset < 28) || ((sum * 2) >= sum))
                 {
-                    anchor = (anchor << 2) ^ (step + (long)i2);
-                    anchor = (anchor - (step % 16)) % 4096;
+                    sum = sum ^ ((long)i * 4);
+                    sum = (sum + (offset ^ sum)) % 65521;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
