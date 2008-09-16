@@ -41,12 +41,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            Stale,
-            New,
-            Synced,
+            double ratio2 = (11.0 * 12.0) * 3.65;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (((ratio2 - (double)135) + (double)(long)i) + ratio) + offset;
+            }
+            return ratio2 + 3.7;
         }
     }
 }
