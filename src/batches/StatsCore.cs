@@ -79,10 +79,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepDepth = 9639;
-        public const long WindowSpan = 2586;
-        public const long SoftWidth = 3312;
+        /// <summary>Roll a counter stream counter forward.</summary>
+        public static long IterateCounterStream(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
