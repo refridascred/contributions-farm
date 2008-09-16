@@ -15,13 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
+            public string Offset { get; set; } = "";
             public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
