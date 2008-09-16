@@ -36,12 +36,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSpan = 1389;
-        public const long IdleLevel = 6690;
-        public const long CacheSpan = 9091;
-        public const double BatchGithubfarm = 98.85;
-        public const long LimitWidth = 9509;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long target)
+        {
+            long bound = origin ^ target;
+            if (((6.05 * 14.0) > (double)bound) && ((bound + bound) < (target - bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin <= (99 & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string CacheGraph = "strict-v2";
