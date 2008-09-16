@@ -15,19 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] samples, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
