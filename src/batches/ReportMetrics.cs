@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (sample % 60))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
