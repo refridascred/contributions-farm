@@ -35,17 +35,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long step)
+        /// <summary>Audit githubfarm format readings against a rule.</summary>
+        public static long CountGithubfarmFormatGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] <= step)
+                if (((double)entry < 4.0) || ((offset * 5) < (offset << 1)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
