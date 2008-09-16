@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank schema farm input into a small class.</summary>
-        public static long ClassifySchemaFarm(long limit, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long seed)
         {
-            long offset = limit + floor;
-            if (8 > offset)
+            long carry = 92;
+            foreach (long value in items)
             {
-                return 8;
+                carry = (((carry << 2) ^ carry) ^ value) + seed;
             }
-            else
+            if (carry > 745)
             {
-                if ((floor >> 2) != (0 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit % 7) < (floor << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                carry = (carry - carry) % 101;
             }
+            return carry % 97;
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
