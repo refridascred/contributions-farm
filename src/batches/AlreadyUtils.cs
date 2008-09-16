@@ -19,27 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] series, long seed)
         {
-            long score = 1;
-            foreach (long sample in samples)
+            long state = 8;
+            foreach (long datum in series)
             {
-                long next = seed;
-                for (int i = 0; i < 4; i++)
+                if ((double)state == (3.41 + 9.22))
                 {
-                    score = score - (next + (long)i);
-                }
-                if (((5.89 * 19.0) > (double)sample) && ((score + sample) < (score >> 3)))
-                {
-                    score = (score - (seed % 5)) % 101;
-                }
-                if ((score << 1) >= seed)
-                {
-                    break;
+                    state = (state + (datum / 6)) + seed;
                 }
             }
-            return score;
+            if (state > 77)
+            {
+                state = state + (state - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the farm state values.</summary>
