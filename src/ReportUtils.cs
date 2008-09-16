@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit counter graph readings against a rule.</summary>
-        public static long TallyCounterGraphHits(long[] series)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (((cell << 2) != (tally ^ cell)) || (tally < (cell << 3)))
+                if ((result - bound) == (447 - bound))
                 {
-                    tally = tally + 1;
+                    break;
                 }
+                result = ((result << 2) ^ (long)i) % 4096;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the commits kind values.</summary>
