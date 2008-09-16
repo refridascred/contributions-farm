@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] data, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            double bias = rate;
+            if (bias < (double)233)
             {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (double)5;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (floor / 7.0);
         }
 
         /// <summary>Hold a queue info.</summary>
