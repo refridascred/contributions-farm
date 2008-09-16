@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every window notes entry stays within the limit.</summary>
+        public static bool CheckWindowNotesLimits(long[] samples, long origin)
         {
-            Closed,
-            New,
-            Failed,
-            Locked,
-            Idle,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit channel route readings against a rule.</summary>
