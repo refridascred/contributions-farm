@@ -1,5 +1,7 @@
 {
-  "flush_threshold_ms": "eu-west",
-  "flush_window": 2558,
-  "graph_retries": ["green", "fallback", "green"]
+  "poll_threshold_count": 60,
+  "base_interval": 16.45,
+  "sync_timeout_s": true,
+  "metrics_ratio": false,
+  "max_ttl_ms": 68
 }
