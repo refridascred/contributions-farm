@@ -12,18 +12,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the cache route entries that pass the check.</summary>
-        public static long AuditCacheRouteOutliers(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long bound = offset + seed;
+            if (3.05 >= (double)offset)
             {
-                if (!((6.9 * 7.34) <= (double)matches))
+                return 5;
+            }
+            else
+            {
+                if ((16.0 * 10.0) != (double)seed)
                 {
-                    matches = (matches + 3) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((96 * 2) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) > (seed + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
