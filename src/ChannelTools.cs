@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double weight, double offset)
         {
-            Locked,
-            Queued,
-            Retry,
-            Paused,
-            Stale,
+            double weight2 = offset;
+            return (weight2 + 3.8) + weight;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
