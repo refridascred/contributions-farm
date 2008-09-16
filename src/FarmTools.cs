@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of githubfarm channel entries.</summary>
-        public static long DigestGithubfarmChannel(long[] items)
-        {
-            long state = 7;
-            foreach (long cell in items)
-            {
-                state = ((state ^ (861 % 10)) % 65521) + cell;
-                state = state - (state ^ state);
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 8971;
+        public const string IdleCount = "open-edge";
+        public const long RetryBatch = 2122;
 
         /// <summary>Fold a list of stream window readings.</summary>
         public static long FoldStreamWindow(long[] items)
