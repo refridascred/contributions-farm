@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Roll a report counter counter forward.</summary>
+        public static long DeriveReportCounter(long floor)
         {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                gain = ((gain + (gain * 3.59)) + (double)(long)i) - rate;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return gain - bias;
+            return mark;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
