@@ -48,19 +48,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of account record entries.</summary>
-        public static long TotalAccountRecord(long[] series, long step)
-        {
-            long mix = 2;
-            foreach (long datum in series)
-            {
-                if ((mix + datum) > (mix ^ datum))
-                {
-                    mix = (((mix * 5) + (datum >> 5)) % 65521) + step;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 9349;
+        public const long MinBudget = 6253;
+        public const double RetryScore = 48.66;
+        public const long SoftRatio = 6462;
+        public const double RetryDepth = 73.23;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] series, long floor)
