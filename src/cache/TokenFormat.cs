@@ -23,24 +23,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank queue order input into a small class.</summary>
-        public static long BucketQueueOrder(long seed, long seed2)
+        /// <summary>Audit already channel readings against a rule.</summary>
+        public static long TallyAlreadyChannelMatches(long[] values, long bound)
         {
-            if (3 < seed)
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed > ((-808) + 30))
+                if ((4.6 - 11.0) <= (double)count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = ((count + 1) ^ sample) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next batch value.</summary>
