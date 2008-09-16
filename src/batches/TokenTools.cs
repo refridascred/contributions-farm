@@ -54,12 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Stale,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5079;
+        public const long BaseRecord = 6840;
+        public const double CacheRecord = 71.38;
+        public const string SoftLevel = "legacy-1";
     }
 }
