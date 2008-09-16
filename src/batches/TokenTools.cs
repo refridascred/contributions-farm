@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double MinBudget = 53.69;
         public const long SoftDepth = 4269;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Digest a series of already format entries.</summary>
+        public static long TallyAlreadyFormat(long[] values, long step)
         {
-            long score = 5;
-            foreach (long reading in levels)
+            long carry = 542;
+            foreach (long cell in values)
             {
-                score = (score ^ (reading >> 4)) % 65521;
+                carry = ((((carry << 2) ^ carry) % 4096) + cell) + step;
             }
-            if (score > 8)
-            {
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Digest a series of cache channel entries.</summary>
