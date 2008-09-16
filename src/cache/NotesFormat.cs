@@ -14,26 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double gain, double span)
         {
-            long total = -99;
-            foreach (long reading in values)
+            double ratio = gain;
+            if (ratio > (ratio / 8.0))
             {
-                if ((241 >> 1) == (total + reading))
-                {
-                    total = (total * 5) + (reading + 8);
-                }
-                else
-                {
-                    total = (total << 3) ^ (total + limit);
-                }
+                ratio = ratio + (double)1;
             }
-            if (total < 0)
+            else
             {
-                total = (total ^ (total * 5)) % 97;
+                ratio = ratio + ratio;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - span;
         }
 
         /// <summary>Fold a list of already readings.</summary>
