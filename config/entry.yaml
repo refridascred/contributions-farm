@@ -1,10 +1,12 @@
 # entry settings
-sync_size_count:
-  - local
-  - blue
-  - stable
-batch_capacity_count: strict
-retry_limit: legacy
-default_timeout_s: standard
-max_ttl_count: open
-verbose: 42.35
+readonly: strict
+batch_depth_s: true
+enabled:
+  min_ratio_s: 66.22
+  flush_timeout_pct: true
+  batch_delay: standard
+  sync_threshold_ms:
+    burst_ratio_pct: 60
+    counter_delay: 4592
+    graph_window: eu-west
+    session_timeout: false
