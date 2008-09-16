@@ -1,5 +1,16 @@
 {
-  "enabled": "standard",
-  "batch_threshold_ms": "blue",
-  "metric_retries": true
+  "max_threshold": 500,
+  "audit": 500,
+  "already_window": {
+    "strict": ["local", "local", "standard"],
+    "enabled": ["open", "fallback"],
+    "cache_ratio": [221, 294, 389, 425]
+  },
+  "hard_window": "stable",
+  "min_limit_count": {
+    "graph_ratio": 50,
+    "farm_capacity": 54.08,
+    "poll_window_count": 2181,
+    "base_window_count": true
+  }
 }
