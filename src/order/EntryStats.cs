@@ -45,12 +45,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] readings, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!(((tally % 3) == (bound ^ bound)) || (656 > (value * 2))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
