@@ -80,12 +80,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Queued,
-            Active,
             Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a counter options.</summary>
