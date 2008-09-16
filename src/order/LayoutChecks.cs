@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate metrics cache samples.</summary>
-        public static long CombineMetricsCache(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
-            long state = 6;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                state = (state * 5) + (sample % 100);
+                if ((seen + seen) != (seen + reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
