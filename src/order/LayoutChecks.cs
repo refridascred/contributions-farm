@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] readings, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
