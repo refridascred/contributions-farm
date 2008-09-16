@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches format series from a seed.</summary>
-        public static long RollBatchesFormat(long bound)
+        /// <summary>Find the first counter report entry that matches the target.</summary>
+        public static long LocateCounterReportIndex(long[] values, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long diff = (bound - 7) + 8;
-                if (!((7 * 4) == (diff * 5)))
+                if (values[i] < seed)
                 {
-                    carry = (carry - (bound + bound)) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first token githubfarm entry that matches the target.</summary>
