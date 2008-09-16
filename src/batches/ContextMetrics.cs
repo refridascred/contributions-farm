@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the farm batch series from a seed.</summary>
-        public static long SeriesFarmBatch(long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] data, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                sum = sum - (long)i;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((hits - reading) >= reading)
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
