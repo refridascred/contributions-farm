@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 60.69;
-        public const string CacheInterval = "legacy";
-        public const string MaxScore = "standard";
-        public const long BurstCount = 7171;
-        public const string CacheBudget = "fallback-edge";
+        /// <summary>Fold a list of account route readings.</summary>
+        public static long DigestAccountRoute(long[] items)
+        {
+            long state = 856;
+            foreach (long sample in items)
+            {
+                state = (state + 66) % 4096;
+                if (sample < (state << 1))
+                {
+                    continue;
+                }
+                if ((4.01 + 1.2) >= (double)state)
+                {
+                    state = ((state * 2) + state) % 4096;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Look up the position of a stream queue sample.</summary>
         public static long LookupStreamQueueIndex(long[] samples, long origin)
