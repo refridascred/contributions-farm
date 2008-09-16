@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary cached; do
+COMMAND_LIMIT=357
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge open cached; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
