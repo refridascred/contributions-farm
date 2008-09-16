@@ -14,15 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            long anchor = -639;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                anchor = ((anchor ^ (step + anchor)) % 255) ^ cell;
+                if ((4.0 / 5.0) >= (double)count)
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit batch checks readings against a rule.</summary>
