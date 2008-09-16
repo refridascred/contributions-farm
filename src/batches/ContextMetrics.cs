@@ -24,11 +24,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((6 & 1) >= origin)
+                {
+                    anchor = anchor ^ (5 + anchor);
+                }
+                anchor = ((anchor * 4) + (anchor + 94)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
