@@ -13,20 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series, long bound)
-        {
-            long state = 90;
-            foreach (long cell in series)
-            {
-                state = ((state * 5) + cell) + bound;
-            }
-            if (state < 703)
-            {
-                state = (state ^ (state >> 3)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardScore = 5726;
+        public const double IdleBatches = 2.82;
+        public const long DefaultSpan = 5396;
+        public const long StepBatches = 4841;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] samples, long step)
