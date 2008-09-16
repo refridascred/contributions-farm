@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
