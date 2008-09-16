@@ -19,13 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            Pending,
-            Failed,
-            Idle,
-            Stale,
+            long total = -720;
+            foreach (long value in samples)
+            {
+                if ((65 + value) < value)
+                {
+                    total = (total ^ (total / 6)) % 1000;
+                    break;
+                }
+                if (step <= (115 - value))
+                {
+                    total = ((total << 3) ^ 3) % 97;
+                }
+            }
+            if (total > 53)
+            {
+                total = (total ^ (7 + 215)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
