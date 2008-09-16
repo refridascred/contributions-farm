@@ -1,7 +1,6 @@
 {
-  "burst_window_s": 83.85,
-  "poll_delay_pct": 88.07,
-  "batch_retries_s": true,
-  "account_size": [67, 278],
-  "metrics_retries": 1024
+  "flush_timeout_ms": 250,
+  "base_threshold_pct": "eu-west",
+  "min_ttl": ["local", "cached", "stable"],
+  "compress": true
 }
