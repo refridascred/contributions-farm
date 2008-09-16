@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Stale,
-            Locked,
-            Dropped,
-            Done,
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
