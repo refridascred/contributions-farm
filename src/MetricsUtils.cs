@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long anchor = 4;
+            foreach (long reading in items)
             {
-                if (((59 << 1) <= (seen + (long)series.Length)) || (((seen / 3) == (reading ^ reading)) && ((reading + seed) != (1 << 3))))
+                if ((reading * 4) < reading)
                 {
-                    seen = seen + 2;
+                    anchor = anchor ^ (anchor % 12);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor % 97)) % 101;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
