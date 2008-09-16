@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Roll a graph format counter forward.</summary>
+        public static long StepGraphFormat(long target)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of token order readings.</summary>
