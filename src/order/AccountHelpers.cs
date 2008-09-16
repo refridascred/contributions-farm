@@ -64,16 +64,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate record window samples.</summary>
-        public static long WeighRecordWindow(long[] readings, long origin)
-        {
-            long score = 99;
-            foreach (long datum in readings)
-            {
-                score = ((score * 3) + (origin ^ score)) - datum;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheFactor = 2.64;
+        public const long BurstSize = 1141;
+        public const string MaxProfile = "primary-1";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
