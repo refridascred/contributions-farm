@@ -50,12 +50,10 @@ namespace Common.Utilities
         public const double RetryWidth = 30.46;
         public const long DefaultTimeout = 6249;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSpan = "strict-v2";
+        public const string StepSupport = "fallback-v2";
+        public const long SoftDepth = 1319;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BatchFilter = 47.43;
