@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] samples, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)sample < (6.5 - 6.1))
+                {
+                    tally = (tally + 2) + floor;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
