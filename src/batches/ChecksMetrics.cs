@@ -66,11 +66,33 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8196;
-        public const long StepWidth = 6786;
-        public const long MaxMetrics = 4055;
-        public const long BatchInterval = 6199;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels, long seed)
+        {
+            long total = 60;
+            foreach (long datum in levels)
+            {
+                long gap = seed;
+                if (((total - total) == (549 & 31)) || ((5.44 / 2.0) <= (double)total))
+                {
+                    total = (total + (gap << 2)) % 4096;
+                    total = ((total * 3) + (datum + seed)) % 97;
+                }
+                if ((datum / 2) < (total / 8))
+                {
+                    total = total - seed;
+                }
+                else
+                {
+                    total = (total + 95) % 1000;
+                }
+                if (total >= (59 + seed))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] readings, long offset)
