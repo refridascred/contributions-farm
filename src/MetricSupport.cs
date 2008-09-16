@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long origin, long step)
-        {
-            if ((0.2 * 6.0) == (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + step) != (256 + 846))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchWidth = 9529;
+        public const string StepCount = "alpha-v2";
+        public const long BurstSchema = 6143;
+        public const string MinSchema = "stable-edge";
+        public const double DefaultWidth = 48.63;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LocateSessionIndex(long[] samples, long seed)
