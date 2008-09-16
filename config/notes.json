@@ -1,8 +1,8 @@
 {
-  "cache_depth_pct": 44,
-  "flush_window_ms": "cached",
-  "notes_ttl": true,
-  "poll_depth_count": "green",
-  "base_timeout": "edge",
-  "audit": 60.48
+  "layout_window": ["fallback", "latest"],
+  "hard_window_ms": 75.42,
+  "strict": "staging",
+  "idle_capacity_s": true,
+  "min_window_count": "staging",
+  "cache_window_pct": "standard"
 }
