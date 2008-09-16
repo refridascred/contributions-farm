@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const string HardCache = "latest-1";
         public const long RetryCache = 4542;
 
-        /// <summary>Digest a series of batch editor entries.</summary>
-        public static long ScoreBatchEditor(long[] series, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = 54;
-            foreach (long sample in series)
-            {
-                if (limit >= sample)
-                {
-                    anchor = (anchor + (sample << 2)) % 101;
-                }
-            }
-            return anchor % 97;
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
