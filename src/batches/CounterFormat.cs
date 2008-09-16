@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - hits) >= 0)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowFactor = 5.97;
+        public const string BurstReport = "local-1";
+        public const string HardDepth = "latest-1";
+        public const long HardInterval = 6735;
+        public const long StepInterval = 98;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSize = 9574;
