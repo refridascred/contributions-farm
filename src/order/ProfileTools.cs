@@ -19,18 +19,14 @@ namespace Common.Utilities
             return ratio + (ratio - scale);
         }
 
-        /// <summary>Audit stream report readings against a rule.</summary>
-        public static long TallyStreamReportGaps(long[] series)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + (-301)) < entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the profile kind values.</summary>
