@@ -1,11 +1,11 @@
 # Metric notes
 
-The queue module keeps channel values in sync with the buffer cache.
-The metrics report groups every metric by counter.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a tools fails, the already handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Validate report input early
-- Log every editor change
+- Review githubfarm limits each release
+- Validate commits input early
+- Keep stats values small
+- Log every contributi change
