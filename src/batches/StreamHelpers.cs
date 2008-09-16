@@ -65,18 +65,18 @@ namespace Common.Utilities
             return drift + (double)127;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] levels, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)limit <= 3.54)
+                if (tally <= (entry - entry))
                 {
-                    hits = (hits + 1) + reading;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit layout counter readings against a rule.</summary>
