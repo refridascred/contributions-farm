@@ -63,19 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] data, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != bound)
+                if (items[i] <= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
