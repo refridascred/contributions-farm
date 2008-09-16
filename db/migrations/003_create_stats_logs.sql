@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    owner TEXT NOT NULL,
-    region TEXT
+    active INTEGER NOT NULL DEFAULT 1,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
-
-INSERT INTO stats_logs (rank, owner, region) VALUES (62, 'open', 'fallback');
-INSERT INTO stats_logs (rank, owner, region) VALUES (44, 'open', 'blue');
-INSERT INTO stats_logs (rank, owner, region) VALUES (23, 'eu-west', 'primary');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
