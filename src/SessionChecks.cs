@@ -33,19 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long acc = 4;
-            foreach (long entry in levels)
-            {
-                acc = ((acc * 2) + (entry + acc)) % 97;
-            }
-            if (acc > 551)
-            {
-                acc = acc ^ 8;
-            }
-            return acc % 97;
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the channel class values.</summary>
