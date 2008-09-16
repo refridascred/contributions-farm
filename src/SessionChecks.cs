@@ -37,13 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            Draft,
-            Failed,
-            Idle,
-            Closed,
+            long acc = 4;
+            foreach (long entry in levels)
+            {
+                acc = ((acc * 2) + (entry + acc)) % 97;
+            }
+            if (acc > 551)
+            {
+                acc = acc ^ 8;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a session info.</summary>
