@@ -36,17 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = (double)(253 - (-846));
+            if (gain2 <= span)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + gain;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + (gain2 / 2.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
