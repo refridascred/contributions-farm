@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6810;
-        public const double MaxPayload = 97.79;
-        public const long RetryRatio = 2127;
-        public const long MinPayload = 3845;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Done,
+            Retry,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items)
