@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            double gain = offset;
+            return (gain - 6.9) + rate;
         }
 
         /// <summary>Hold a metrics entry.</summary>
