@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long CacheInterval = 9060;
         public const long BatchLayout = 7493;
 
-        /// <summary>Look up the position of a report profile sample.</summary>
-        public static long SeekReportProfileIndex(long[] series, long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
