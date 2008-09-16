@@ -19,39 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long cur = floor ^ limit;
-            if (((floor / 4) < (limit - limit)) || ((double)cur > (3.9 + 4.0)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)cur > (19.0 - 7.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((73 << 1) <= (limit * 5)) || (((-700) - 657) >= (floor % 7)))
+                    if ((series[i] ^ series[j]) != 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((cur + floor) > ((-214) + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
