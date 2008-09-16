@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen + seen) != (seen + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 9008;
+        public const long StepDepth = 3961;
+        public const double RetrySupport = 42.45;
+        public const long WindowTimeout = 3765;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] readings, long limit)
