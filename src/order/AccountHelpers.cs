@@ -60,19 +60,18 @@ namespace Common.Utilities
         public const double BatchQueue = 6.9;
         public const double WindowLevel = 80.98;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series, long origin)
         {
-            double rate = floor;
-            if (rate >= (rate - rate))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                rate = rate - (gain * 15.0);
+                if ((origin * 4) < (matches - matches))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate + gain)) + (double)(long)i;
-            }
-            return rate + (double)403;
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
