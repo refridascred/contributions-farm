@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long CacheInterval = 9060;
         public const long BatchLayout = 7493;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Look up the position of a report profile sample.</summary>
+        public static long SeekReportProfileIndex(long[] series, long limit)
         {
-            Queued,
-            Draft,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
