@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Check that every graph cluster entry stays within the limit.</summary>
+        public static bool ValidateGraphClusterLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (matches < (cell ^ 10))
+                if (value > origin)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
