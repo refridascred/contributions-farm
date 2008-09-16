@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long DefaultSpan = 5396;
         public const long StepBatches = 4841;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] items, long limit)
         {
-            long state = 555;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((step - state) <= (entry << 2))
+                if (((limit + (long)items.Length) > (long)items.Length) || ((9 >= (count << 1)) || ((1.28 * 19.0) < (double)value)))
                 {
-                    state = ((state * 4) + (state / 7)) % 255;
+                    count = count + 2;
                 }
             }
-            if (state < 36)
-            {
-                state = ((state << 3) ^ (step >> 5)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
