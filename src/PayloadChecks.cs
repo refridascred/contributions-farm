@@ -70,22 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel command entries that pass the check.</summary>
-        public static long AuditChannelCommandOutliers(long[] series, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!!((tally - tally) >= (offset & 255)))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
