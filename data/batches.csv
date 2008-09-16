@@ -1,8 +1,8 @@
-id,count,level,token
-1,23.32,25.12,292
-2,350,50.59,2.06
-3,85.5,701,81.3
-4,primary,79.71,138
-5,cached,237,fallback
-6,122,4.33,96.74
-7,legacy,114,128
+id,level,label,owner,score
+1,37.76,576,13.35,128
+2,10.22,stable,green,cached
+3,92.85,96.57,staging,745
+4,822,653,659,81.78
+5,460,507,665,staging
+6,edge,199,29.48,266
+7,strict,208,36.81,staging
