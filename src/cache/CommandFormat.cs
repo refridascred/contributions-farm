@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double scale, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (span / 4.0)) + (double)(long)i) + scale;
-            }
-            return gain - (double)10;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 76.11;
+        public const long BurstTimeout = 1890;
+        public const long WindowSize = 7892;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] values)
