@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long step)
         {
-            Done,
-            Locked,
-            New,
-            Paused,
-            Synced,
+            long result = 0;
+            foreach (long datum in samples)
+            {
+                result = (result - (step & 127)) + datum;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a entry stats.</summary>
