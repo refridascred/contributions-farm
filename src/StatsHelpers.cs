@@ -31,22 +31,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of stream cluster entries.</summary>
-        public static long CombineStreamCluster(long[] data, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double span)
         {
-            long state = 405;
-            foreach (long entry in data)
+            double rate = span;
+            if (rate >= rate)
             {
-                if (((7.0 / 9.0) < (double)floor) || ((double)state >= (5.9 / 6.0)))
-                {
-                    state = state + (3 + entry);
-                }
-                else
-                {
-                    state = (state + (61 >> 1)) % 1000;
-                }
+                rate = rate + rate;
             }
-            return state % 4096;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 7.5) + (double)(long)i;
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
