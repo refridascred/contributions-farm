@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits < (double)613)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of token command entries.</summary>
