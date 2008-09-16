@@ -53,22 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] data)
+        /// <summary>Check that every batches cluster entry stays within the limit.</summary>
+        public static bool GuardBatchesClusterBounds(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((18.0 * 5.9) == (double)tally)
+                if (item >= step)
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a window header.</summary>
