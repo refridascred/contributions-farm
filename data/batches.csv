@@ -1,7 +1,9 @@
-id,score,count,weight,ratio
-1,810,4.03,515,28.84
-2,49.82,966,91,6
-3,blue,66,74.87,52.69
-4,71.23,271,72.72,legacy
-5,staging,43.53,915,edge
-6,65.65,89,primary,standard
+id,region,rank,weight,active
+1,open,standard,stable,657
+2,staging,31.65,347,green
+3,25.84,732,legacy,398
+4,261,779,edge,4.4
+5,local,cached,896,862
+6,9.11,local,54,90.0
+7,blue,stable,116,8.73
+8,777,3.34,11,4.28
