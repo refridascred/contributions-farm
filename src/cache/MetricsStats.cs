@@ -27,18 +27,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the token payload entries that pass the check.</summary>
-        public static long TallyTokenPayloadOutliers(long[] levels, long seed)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!(((double)seed != (7.1 / 9.0)) || ((double)item >= (4.83 / 3.0))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
