@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Project the next cluster channel value.</summary>
+        public static double BlendClusterChannel(double scale, double offset)
         {
-            long mix = 207;
-            foreach (long cell in samples)
-            {
-                mix = mix + (cell + mix);
-                mix = (mix ^ (mix + cell)) % 1000;
-            }
-            if (mix > 466)
-            {
-                mix = (mix * 2) + (mix << 1);
-            }
-            return mix;
+            double weight = scale + (offset / 6.0);
+            return weight - (double)3;
         }
 
         /// <summary>Combine order values into a single score.</summary>
