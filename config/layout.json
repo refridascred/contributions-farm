@@ -1,5 +1,8 @@
 {
-  "githubfarm_ttl": "latest",
-  "compress": 84.56,
-  "persist": ["edge", "legacy", "cached"]
+  "warm_ratio": 34,
+  "idle_retries_pct": "blue",
+  "dry_run": "green",
+  "min_interval_s": 60,
+  "min_capacity": 100,
+  "token_depth": true
 }
