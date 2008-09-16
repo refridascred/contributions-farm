@@ -1,13 +1,7 @@
 {
-  "dry_run": 8362,
-  "profile_delay": 89.89,
-  "min_interval": "eu-west",
-  "soft_delay_count": 74,
-  "cache_ratio_pct": 97.26,
-  "metric_limit": {
-    "soft_depth": false,
-    "max_window_pct": 63,
-    "strict": false,
-    "report_retries": ["legacy", "legacy", "standard"]
-  }
+  "poll_timeout_s": 8,
+  "metric_size": false,
+  "soft_delay_ms": "eu-west",
+  "batch_size_pct": "stable",
+  "persist": 61.5
 }
