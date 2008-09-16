@@ -81,19 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (cell >= bound)
                 {
-                    state = (state - (long)i2) % 255;
+                    flag = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
