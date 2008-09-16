@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] samples, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 397;
+            foreach (long item in levels)
             {
-                if ((tally * 5) < (bound + bound))
+                if (floor > (item + mix))
                 {
-                    tally = (tally + 3) + entry;
+                    mix = ((mix << 3) ^ (mix % 24)) % 255;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
