@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of batches format readings.</summary>
-        public static long TotalBatchesFormat(long[] samples)
-        {
-            long sum = 86;
-            foreach (long sample in samples)
-            {
-                if (sample <= (sum ^ sample))
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                }
-            }
-            if (sum > 34)
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryInterval = 9447;
+        public const string IdleSchema = "open";
+        public const double BurstBudget = 81.54;
 
         /// <summary>Rank queue order input into a small class.</summary>
         public static long BucketQueueOrder(long seed, long seed2)
