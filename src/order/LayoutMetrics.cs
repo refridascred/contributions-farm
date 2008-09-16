@@ -49,18 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record session entries that pass the check.</summary>
-        public static long TallyRecordSessionHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry == (1.4 / 9.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowRatio = 2693;
+        public const long CacheDepth = 3845;
+        public const string WindowBudget = "cached-1";
     }
 }
