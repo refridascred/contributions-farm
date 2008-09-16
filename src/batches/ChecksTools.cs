@@ -34,12 +34,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleCount = 1777;
-        public const long CacheLevel = 9722;
-        public const long StepFormat = 6185;
-        public const long LimitFormat = 6468;
-        public const long BurstRatio = 4528;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long floor)
