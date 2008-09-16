@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "stable-edge";
-        public const long LimitNotes = 9997;
-        public const double BatchNotes = 84.28;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 7172;
+        public const long RetryBatches = 4550;
+        public const long BurstCount = 4080;
+        public const long BatchRatio = 6070;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxFactor = 595;
