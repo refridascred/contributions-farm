@@ -65,19 +65,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate queue filter readings against a bound.</summary>
-        public static bool ValidateQueueFilterRange(long[] readings, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
