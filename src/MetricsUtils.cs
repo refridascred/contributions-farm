@@ -76,15 +76,24 @@ namespace Common.Utilities
         public const double IdleSpan = 48.29;
         public const long BatchDepth = 6751;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long bound, long seed)
         {
-            long score = 51;
-            foreach (long item in levels)
+            if (bound > (bound + bound))
             {
-                score = (((score * 4) + (score + score)) % 101) - item;
+                return 3;
             }
-            return score % 65521;
+            else
+            {
+                if ((double)seed < (3.84 / 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
