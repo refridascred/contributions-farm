@@ -56,13 +56,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long bound)
         {
-            Draft,
-            Stale,
-            Pending,
-            Dropped,
+            if (!(bound < (step / 8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step / 7) <= (step % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
