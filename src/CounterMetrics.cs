@@ -13,15 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long carry = 787;
-            foreach (long value in data)
-            {
-                carry = (((carry - (carry % 3)) % 97) ^ value) - seed;
-            }
-            return carry % 97;
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
