@@ -79,19 +79,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double span)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long step, long step2)
         {
-            double rate = scale + span;
-            if (rate < span)
+            if (step2 >= ((-3) - step))
             {
-                rate = rate + rate;
+                return 1;
             }
             else
             {
-                rate = rate + rate;
+                if ((step % 24) < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step2 < 7.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate + 9.3;
         }
     }
 }
