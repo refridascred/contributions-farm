@@ -44,12 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
