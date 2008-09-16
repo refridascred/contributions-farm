@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long seed)
+        /// <summary>Match up stats profile samples.</summary>
+        public static long OverlapStatsProfileCount(long[] series)
         {
-            long delta = offset ^ seed;
-            if ((seed - seed) >= (offset << 2))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (9.0 > (double)delta)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit channel order readings against a rule.</summary>
