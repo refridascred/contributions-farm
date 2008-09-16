@@ -37,19 +37,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate metrics account readings against a bound.</summary>
-        public static bool CheckMetricsAccountBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 2456;
+        public const long CacheCommits = 8570;
+        public const long MaxTimeout = 5657;
+        public const long StepDepth = 8231;
+        public const long MaxCommits = 6590;
     }
 }
