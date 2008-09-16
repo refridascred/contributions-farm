@@ -68,11 +68,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinScore = 192;
-        public const long WindowWidth = 8683;
-        public const long HardFarm = 7458;
-        public const long MinBudget = 1706;
-        public const double StepWidth = 38.13;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftSize = 3255;
+        public const double BurstCache = 70.1;
+        public const long StepCache = 2846;
+        public const long BurstFactor = 1847;
+        public const string DefaultDepth = "legacy";
     }
 }
