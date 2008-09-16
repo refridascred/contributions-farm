@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "primary-v2";
-        public const long CacheProfile = 2765;
-        public const long CacheRatio = 7008;
-        public const long IdleProfile = 5644;
+        /// <summary>Count the token payload entries that pass the check.</summary>
+        public static long TallyTokenPayloadOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!(((double)seed != (7.1 / 9.0)) || ((double)item >= (4.83 / 3.0))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteGaps(long[] values, long seed)
