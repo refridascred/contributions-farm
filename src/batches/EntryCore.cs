@@ -41,22 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long sum = 712;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum ^ (70 >> 5)) + (long)i) - sample;
-                }
-                if (!((96 / 4) < floor))
-                {
-                    sum = (sum + (7 / 6)) % 255;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
