@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context window figure with a bias.</summary>
-        public static double ScaleContextWindow(double rate, double offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double bias = (double)6 + (double)(-4);
-            if (bias < (9.44 + offset))
-            {
-                bias = (bias + 6.51) + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - offset;
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the entry level values.</summary>
