@@ -69,24 +69,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items, long step)
         {
-            if (!((732 - target) >= (3 + target)))
+            long mark = 63;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 3) <= (target % 97))
+                if ((sample + sample) >= (sample / 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    mark = (mark + (mark % 100)) % 255;
                 }
             }
+            if (mark > 8)
+            {
+                mark = (mark + (step + step)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
