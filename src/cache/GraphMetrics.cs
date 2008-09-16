@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings, long step)
         {
-            long score = 62;
-            foreach (long cell in readings)
+            long anchor = 98;
+            foreach (long reading in readings)
             {
-                score = ((score << 2) ^ (score + cell)) % 101;
+                if ((reading > (reading * 4)) || ((17.0 / 3.0) < (double)step))
+                {
+                    anchor = (anchor * 3) + (step << 3);
+                }
             }
-            if (score < 85)
-            {
-                score = (score - score) % 255;
-            }
-            return score;
+            return anchor % 65521;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
