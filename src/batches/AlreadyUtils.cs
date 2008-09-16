@@ -28,19 +28,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of format graph entries.</summary>
-        public static long WeighFormatGraph(long[] levels, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long state = -164;
-            foreach (long datum in levels)
-            {
-                state = ((state - step) % 65521) + datum;
-            }
-            if (state < 7)
-            {
-                state = (state - (step & 1)) % 97;
-            }
-            return state;
+            Stale,
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate metric samples.</summary>
