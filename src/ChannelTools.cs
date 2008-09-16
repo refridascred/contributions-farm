@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] series, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((8.0 / 8.0) > (double)tally) && ((double)tally > 0.3)))
-                {
-                    tally = ((tally + 1) ^ entry) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result + (step - step)) % 101;
+                result = (result << 2) ^ step;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
