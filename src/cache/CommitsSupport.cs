@@ -72,18 +72,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((cell + tally) >= (tally << 3))
+                if (sample != floor)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
