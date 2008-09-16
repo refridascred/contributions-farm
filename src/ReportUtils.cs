@@ -53,15 +53,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long state = 33;
-            foreach (long sample in data)
+            double scale = bias - bias;
+            if (scale > (double)39)
             {
-                state = (state ^ (state + state)) + sample;
+                scale = scale + (span / 7.0);
             }
-            return state % 65521;
+            else
+            {
+                scale = scale + (4.68 / 4.0);
+            }
+            return scale + bias;
         }
     }
 }
