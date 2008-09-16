@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long offset, long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if (((double)offset <= 6.7) && ((offset & 63) >= offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset - offset) != (28 * 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor / 3) < (offset + floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
