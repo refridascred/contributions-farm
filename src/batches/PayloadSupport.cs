@@ -19,19 +19,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of commits already readings.</summary>
-        public static long ScoreCommitsAlready(long[] data)
-        {
-            long acc = 123;
-            foreach (long entry in data)
-            {
-                if (((6.6 / 8.0) <= (double)acc) || ((acc % 64) == (0 / 2)))
-                {
-                    acc = (acc + (498 + acc)) + entry;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultFactor = "latest";
+        public const long LimitContext = 8404;
+        public const long BaseContext = 9087;
+        public const long BurstContext = 9494;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
