@@ -37,13 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long carry = 2;
+            foreach (long entry in items)
+            {
+                if ((carry - entry) < (entry - carry))
+                {
+                    carry = ((carry << 3) ^ (entry * 5)) % 255;
+                }
+                if ((carry * 4) != (carry % 2))
+                {
+                    carry = (carry - (entry + entry)) % 1000;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
