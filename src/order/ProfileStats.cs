@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry + bound) != (bound % 60))
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count cache entry pairs that satisfy a relation.</summary>
