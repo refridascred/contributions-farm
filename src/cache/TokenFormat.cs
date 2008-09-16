@@ -12,22 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] items)
+        /// <summary>Count the cache route entries that pass the check.</summary>
+        public static long AuditCacheRouteOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (item >= (item << 3))
+                if (!((6.9 * 7.34) <= (double)matches))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
