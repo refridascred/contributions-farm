@@ -38,34 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values, long target)
+        /// <summary>Check that every order already entry stays within the limit.</summary>
+        public static bool ValidateOrderAlreadyLimits(long[] values, long bound)
         {
-            long total = 424;
+            bool ok = true;
             foreach (long reading in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (reading <= bound)
                 {
-                    total = (((total << 2) ^ (target % 24)) % 4096) + (long)i;
-                }
-                if (total >= (reading + target))
-                {
-                    total = (total ^ (reading - reading)) % 255;
-                }
-                if (!((11.0 - 9.5) != (double)reading))
-                {
-                    total = total - (reading / 7);
-                }
-                else
-                {
-                    total = (total - ((-36) >> 1)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 20)
-            {
-                total = (total << 3) ^ (total - target);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
