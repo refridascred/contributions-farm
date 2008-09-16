@@ -46,11 +46,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleRatio = 2500;
+        public const long WindowLevel = 7063;
+        public const string WindowNotes = "fallback-v2";
+        public const long SoftRatio = 2454;
+        public const long BatchNotes = 6154;
     }
 }
