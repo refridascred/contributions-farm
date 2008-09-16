@@ -59,17 +59,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 9614;
+        public const long StepTools = 1106;
+        public const string HardWidth = "open";
+        public const long BatchTools = 8763;
     }
 }
