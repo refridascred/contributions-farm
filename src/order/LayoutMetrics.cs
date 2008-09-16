@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a notes payload pair into a bucket.</summary>
-        public static long GradeNotesPayload(long limit, long target)
-        {
-            if ((6.0 / 3.0) != (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) >= (target << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit & 15) <= (target ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleScore = "primary";
+        public const long HardSpan = 3358;
+        public const long StepScore = 2519;
+        public const long StepFilter = 4081;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryFactor = 3389;
