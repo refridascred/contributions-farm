@@ -42,17 +42,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] series, long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Project the next report metrics value.</summary>
