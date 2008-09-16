@@ -69,13 +69,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Idle,
-            Active,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseCount = 91.26;
+        public const double DefaultRatio = 89.37;
+        public const double MaxScore = 56.16;
+        public const double LimitCount = 20.67;
+        public const long StepLayout = 579;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] readings, long offset)
