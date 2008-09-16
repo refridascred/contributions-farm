@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a graph format counter forward.</summary>
-        public static long StepGraphFormat(long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            Done,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
