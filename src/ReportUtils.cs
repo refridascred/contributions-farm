@@ -27,18 +27,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (value >= seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
