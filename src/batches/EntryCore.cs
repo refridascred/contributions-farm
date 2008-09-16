@@ -25,12 +25,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultInterval = "alpha-v2";
-        public const long HardCounter = 792;
-        public const long BatchLevel = 1898;
-        public const long LimitCounter = 4931;
-        public const long IdleCounter = 3896;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long GradeChannel(long floor, long bound)
