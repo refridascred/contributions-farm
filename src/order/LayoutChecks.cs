@@ -28,12 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long target)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
