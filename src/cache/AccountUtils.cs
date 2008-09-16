@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank notes graph input into a small class.</summary>
-        public static long SortNotesGraph(long origin, long origin2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] levels, long offset)
         {
-            if (((double)origin2 <= (2.87 * 0.87)) || (origin < ((-489) % 8)))
+            long result = 39;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - origin2) != (894 + origin2))
+                if (item >= (offset & 255))
                 {
-                    return 4;
+                    result = ((result << 2) ^ (offset - offset)) % 1000;
                 }
-                else
+                if ((offset - result) <= item)
                 {
-                    if ((origin + origin) != ((-721) - origin2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin2 >> 3) >= origin2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result < 693)
+            {
+                result = ((result << 2) ^ offset) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
