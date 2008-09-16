@@ -66,18 +66,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long score = 4;
-            foreach (long value in values)
-            {
-                if ((score + score) < (value * 2))
-                {
-                    score = ((score << 3) ^ (score - value)) % 97;
-                }
-            }
-            return score % 1000;
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
