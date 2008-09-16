@@ -1,9 +1,20 @@
 {
-  "filter_ttl": {
-    "warm_limit_count": 60,
-    "soft_threshold_pct": 3.28,
-    "retry_ttl_ms": 32.79
+  "graph_depth": 28.04,
+  "strict": ["staging", "latest"],
+  "default_threshold_pct": 1024,
+  "sync_window_ms": "green",
+  "soft_ratio": {
+    "burst_retries_pct": {
+      "context_interval": "staging",
+      "soft_depth_count": 92.53,
+      "strict": 54.2,
+      "poll_capacity_count": 79.08,
+      "warm_timeout_s": true,
+      "verbose": 39
+    },
+    "readonly": 6554,
+    "compress": "green",
+    "warm_window_s": 100
   },
-  "warm_capacity_ms": 38.43,
-  "report_delay": [12, 357]
+  "profile_ratio": 250
 }
