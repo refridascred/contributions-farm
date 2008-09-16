@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (((double)5 != (double)entry) || ((double)(long)values.Length > (16.0 / 3.0)))
+                if (sample >= origin)
                 {
-                    tally = (tally + 3) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
