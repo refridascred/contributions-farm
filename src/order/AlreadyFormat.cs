@@ -55,19 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm commits counter forward.</summary>
-        public static long StepGithubfarmCommits(long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (((sum << 3) ^ (origin << 1)) % 255) + (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
