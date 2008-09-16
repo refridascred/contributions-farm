@@ -22,22 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] data, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            long score = 32;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((14.0 + 3.0) == (double)score))
+                if (value >= seen)
                 {
-                    score = ((score * 3) + (score >> 1)) + entry;
+                    seen = seen + 1;
                 }
             }
-            if (score < 38)
-            {
-                score = score + (score + target);
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
