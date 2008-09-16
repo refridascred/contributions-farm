@@ -31,11 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total ^ (total - (long)i)) % 97;
+                if (((double)origin < 6.2) && ((total * 4) < total))
+                {
+                    total = total - (997 - origin);
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
