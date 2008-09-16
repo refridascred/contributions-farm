@@ -66,19 +66,9 @@ namespace Common.Utilities
             return (drift + (double)287) + span;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "local-edge";
+        public const string SoftToken = "staging-edge";
+        public const long IdleWidth = 8064;
     }
 }
