@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long carry = -9;
-            foreach (long item in readings)
-            {
-                carry = (carry * 4) + (item << 2);
-            }
-            if (carry > 346)
-            {
-                carry = ((carry << 2) ^ (carry << 2)) % 101;
-            }
-            return carry;
+            Locked,
+            Stale,
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
