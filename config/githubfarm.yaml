@@ -1,8 +1,11 @@
 # githubfarm settings
-hard_window_pct: staging
-batch_limit: edge
-record_threshold:
-  - open
-  - legacy
-warm_limit_pct: 60
-soft_interval_ms: standard
+strict: 16
+batch_ratio_pct:
+  - fallback
+  - primary
+default_limit: true
+enabled:
+  - eu-west
+  - staging
+order_limit: standard
+readonly: 40.25
