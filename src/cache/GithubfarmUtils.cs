@@ -27,12 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] samples, long seed)
         {
-            Locked,
-            Failed,
-            Pending,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
