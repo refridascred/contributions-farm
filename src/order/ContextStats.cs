@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long limit)
-        {
-            if (((offset + offset) >= (limit ^ 7)) || ((limit ^ 79) > (offset ^ offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.1 - 5.8) > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 7795;
+        public const double SoftStats = 64.09;
+        public const double BurstBudget = 44.62;
+        public const double DefaultStats = 78.52;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long step, long target)
