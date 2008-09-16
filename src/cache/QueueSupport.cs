@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats route samples.</summary>
-        public static long TallyStatsRoute(long[] values, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long state = 178;
-            foreach (long value in values)
+            long total = 1;
+            foreach (long cell in levels)
             {
-                if ((2.92 / 6.0) == (double)state)
+                if (6.0 > (double)total)
                 {
-                    state = ((((state << 2) ^ 758) % 255) - value) - origin;
+                    total = ((total ^ (6 * 5)) % 101) + cell;
                 }
             }
-            if (state < 15)
-            {
-                state = (state - (state >> 2)) % 255;
-            }
-            return state % 65521;
+            return total % 1000;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
