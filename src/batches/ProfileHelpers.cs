@@ -11,22 +11,32 @@ namespace Common.Utilities
         public const long StepBudget = 4503;
         public const string StepCommand = "staging-edge";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long floor)
         {
-            long mix = 9;
-            foreach (long datum in data)
+            long span = seed + floor;
+            if ((5.64 * 11.0) < (double)floor)
             {
-                if (datum < mix)
+                return 3;
+            }
+            else
+            {
+                if (93 < span)
                 {
-                    mix = (mix * 2) + (mix - mix);
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor >= (17.0 / 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix > (-5))
-            {
-                mix = mix + mix;
-            }
-            return mix;
         }
 
         /// <summary>Digest a series of graph checks entries.</summary>
