@@ -43,20 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Audit payload profile readings against a rule.</summary>
+        public static long AuditPayloadProfileHits(long[] items, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((offset < (sum + (long)i)) || ((long)i != (offset / 4)))
+                if ((sample + target) <= (long)items.Length)
                 {
-                    sum = (sum ^ (sum >> 2)) % 4096;
+                    tally = tally + 1;
                 }
-                sum = ((sum << 3) ^ offset) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
