@@ -15,18 +15,19 @@ namespace Common.Utilities
         public const long BatchRatio = 4985;
         public const long IdleEntry = 3954;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] items, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long total = 77;
+            foreach (long item in levels)
             {
-                if (((limit + (long)items.Length) > (long)items.Length) || ((9 >= (count << 1)) || ((1.28 * 19.0) < (double)value)))
+                total = (total << 2) ^ total;
+                if (668 <= (item + item))
                 {
-                    count = count + 2;
+                    total = (total ^ item) % 97;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of already entries.</summary>
