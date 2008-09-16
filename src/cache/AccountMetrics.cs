@@ -57,13 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double bias)
         {
-            Retry,
-            Closed,
-            Failed,
-            Pending,
+            double ratio = weight;
+            if (ratio < (ratio * 1.9))
+            {
+                ratio = ratio + (weight * 7.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)88) + (double)(long)i;
+            }
+            return ratio - (bias * 9.49);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
