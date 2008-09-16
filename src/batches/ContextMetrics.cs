@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryRatio = 8717;
+        public const long BurstDepth = 642;
+        public const string StepToken = "cached-1";
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
         public static long MeasureChannelBatchHits(long[] samples)
