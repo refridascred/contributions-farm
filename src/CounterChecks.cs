@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] samples, long origin)
+        /// <summary>Measure how many report profile samples are out of range.</summary>
+        public static long MeasureReportProfileMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((value << 1) <= origin)
+                if ((13.0 + 8.0) < (double)hits)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
