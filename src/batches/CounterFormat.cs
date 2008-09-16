@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long target, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            long lane = target + step;
-            if (((-4) - target) <= (lane >> 3))
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (lane > step)
+                long tally = mix;
+                if ((tally & 1) <= tally)
                 {
-                    return 8;
+                    mix = ((mix * 2) + (target << 3)) % 65521;
                 }
-                else
+                if (!((double)mix > (8.8 + 0.3)))
                 {
-                    return 7;
+                    mix = mix - ((long)i & 31);
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
