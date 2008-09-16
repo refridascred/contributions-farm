@@ -1,11 +1,15 @@
 {
-  "audit": ["blue", "edge", "latest", "open"],
-  "max_depth_pct": false,
-  "idle_retries_count": 85.41,
-  "default_interval_pct": {
-    "verbose": 37.1,
-    "default_timeout_pct": false,
-    "warm_interval_ms": 62.8
+  "format_ratio": "latest",
+  "editor_ratio": {
+    "burst_size_ms": {
+      "editor_interval": 11,
+      "report_ttl": "fallback",
+      "idle_ratio_ms": 10,
+      "cache_capacity": 2031,
+      "dry_run": ["latest", "blue"]
+    },
+    "flush_limit_pct": ["stable", "fallback"],
+    "warm_window_pct": [308, 106]
   },
-  "readonly": 9774
+  "default_window_s": "strict"
 }
