@@ -48,22 +48,13 @@ namespace Common.Utilities
         public const long MinAccount = 9756;
         public const long BurstAccount = 9087;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series, long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = -9;
-            foreach (long datum in series)
-            {
-                if ((8.1 - 11.0) < (double)bound)
-                {
-                    mark = (mark + (datum / 4)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 5) + (datum * 4);
-                }
-            }
-            return mark;
+            Ready,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
