@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] series, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double ratio = (double)(6 % 8);
+            if (ratio > (8.0 * 19.0))
             {
-                if ((double)tally != (3.0 * 5.3))
-                {
-                    tally = ((tally + 2) ^ entry) + offset;
-                }
+                ratio = (ratio + (weight + 6.8)) - offset;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)959) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Describe the report class values.</summary>
