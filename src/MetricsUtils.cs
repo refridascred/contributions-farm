@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] series, long bound)
+        /// <summary>Combine githubfarm payload values into a single score.</summary>
+        public static long TallyGithubfarmPayload(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = 7;
+            foreach (long value in readings)
             {
-                if (value <= bound)
+                if (!(value <= (value ^ total)))
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 2) ^ ((long)readings.Length >> 3)) % 101;
+                    total = (total << 2) ^ total;
+                }
+                if (((730 + 745) <= (value & 127)) || ((value ^ 143) > (limit / 4)))
+                {
+                    total = (total << 2) ^ (total % 16);
                 }
             }
-            return stale;
+            if (total < 60)
+            {
+                total = (total << 2) ^ (limit + limit);
+            }
+            return total;
         }
 
         /// <summary>Describe the editor phase values.</summary>
