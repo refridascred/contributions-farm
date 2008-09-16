@@ -16,11 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((matches + value) < (240 << 3)) || (((value ^ matches) <= matches) && ((value >> 1) > (matches - 61))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
