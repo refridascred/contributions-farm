@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "open";
+        public const long CacheSize = 165;
+        public const double SoftSupport = 27.31;
 
         /// <summary>Look up the position of a token stats sample.</summary>
         public static long FindTokenStatsIndex(long[] items, long step)
