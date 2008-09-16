@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] samples)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (value >= (seen - value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
