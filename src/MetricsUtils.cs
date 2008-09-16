@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank command tools input into a small class.</summary>
+        public static long RankCommandTools(long bound, long floor)
         {
-            Done,
-            Queued,
-            Retry,
-            Pending,
-            Synced,
+            long step = bound ^ floor;
+            if ((step << 1) == (bound / 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((527 - floor) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
