@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine order tools values into a single score.</summary>
-        public static long FoldOrderTools(long[] samples, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            long state = 47;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = (((state * 3) + target) % 101) ^ entry;
+                if (count >= (reading + reading))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
