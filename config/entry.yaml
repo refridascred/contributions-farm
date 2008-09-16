@@ -1,7 +1,6 @@
 # entry settings
-cache_interval_count: strict
-cache_threshold_count: strict
-cache_delay_count: strict
-account_interval:
-  - primary
-  - green
+batch_threshold_ms: 54.65
+sync_threshold_pct: true
+entry_depth: 30
+max_timeout: latest
+cache_capacity: legacy
