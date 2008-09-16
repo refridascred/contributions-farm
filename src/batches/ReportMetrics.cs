@@ -29,15 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
