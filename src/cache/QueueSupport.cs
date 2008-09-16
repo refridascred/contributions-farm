@@ -29,23 +29,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] readings)
-        {
-            long mark = 5;
-            foreach (long reading in readings)
-            {
-                mark = (mark ^ (reading / 5)) % 97;
-                if ((mark - reading) < (mark + mark))
-                {
-                    break;
-                }
-            }
-            if (mark > (-516))
-            {
-                mark = ((mark * 3) + (mark % 16)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardTimeout = "staging-1";
+        public const long MinLevel = 8673;
+        public const long IdleRecord = 169;
     }
 }
