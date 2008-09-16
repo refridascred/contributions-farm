@@ -1,12 +1,20 @@
 {
-  "burst_window_pct": [372, 327, 199, 118],
-  "retry_interval_ms": 12.12,
-  "batch_ttl": "local",
-  "command_size": {
-    "batch_size": 48,
-    "audit": 8723,
-    "schema_interval": ["green", "stable", "eu-west", "staging"]
+  "idle_limit_count": 8.14,
+  "commits_interval": {
+    "flush_depth_count": "eu-west",
+    "default_delay_pct": 5079,
+    "hard_capacity_pct": "staging",
+    "soft_limit_s": 1024
   },
-  "context_delay": "legacy",
-  "sync_ratio_ms": "green"
+  "queue_interval": {
+    "idle_ttl": "strict",
+    "audit": 1024,
+    "batch_limit": {
+      "layout_timeout": 72,
+      "graph_interval": 5.6,
+      "readonly": "green",
+      "window_window": ["primary", "cached"],
+      "sync_size": "local"
+    }
+  }
 }
