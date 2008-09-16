@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
-        public static long AuditGithubfarmBufferHits(long[] readings, long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item > matches)
-                {
-                    matches = (matches + 3) + offset;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Blend two window farm measurements.</summary>
