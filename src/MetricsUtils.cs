@@ -62,13 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long step)
         {
-            Closed,
-            Active,
-            Locked,
-            Done,
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor << 2) ^ 62;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (anchor << 2) ^ (step + (long)i2);
+                    anchor = (anchor - (step % 16)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
