@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const long WindowProfile = 3187;
         public const long CacheProfile = 8993;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Draft,
-            Failed,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 5024;
+        public const long HardSize = 7393;
+        public const long DefaultSpan = 9420;
+        public const long BatchRatio = 9964;
+        public const double DefaultPayload = 80.78;
     }
 }
