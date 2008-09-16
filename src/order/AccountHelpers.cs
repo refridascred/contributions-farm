@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftScore = 5658;
-        public const string BaseLayout = "primary-1";
-        public const long MaxLayout = 4932;
-        public const long BurstFactor = 187;
-        public const double MinTimeout = 68.91;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Pending,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long floor, long bound)
