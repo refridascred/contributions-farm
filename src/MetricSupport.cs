@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchWidth = 9529;
-        public const string StepCount = "alpha-v2";
-        public const long BurstSchema = 6143;
-        public const string MinSchema = "stable-edge";
-        public const double DefaultWidth = 48.63;
+        /// <summary>Measure how many layout stats samples are out of range.</summary>
+        public static long MeasureLayoutStatsGaps(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (reading < tally)
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LocateSessionIndex(long[] samples, long seed)
