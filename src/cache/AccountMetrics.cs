@@ -66,39 +66,19 @@ namespace Common.Utilities
             return ratio - (bias * 9.49);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long seed)
+        /// <summary>Validate buffer window readings against a bound.</summary>
+        public static bool GuardBufferWindowRange(long[] values, long step)
         {
-            long step = offset + seed;
-            if ((offset - 245) <= (351 * 3))
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((seed + seed) > (seed - 164)))
+                if (sample < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset <= ((-5) / 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step > (step ^ offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
