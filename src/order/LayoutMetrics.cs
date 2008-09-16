@@ -24,31 +24,22 @@ namespace Common.Utilities
             return weight2 + (bias - bias);
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] levels, long bound)
         {
-            if (!(7.9 >= (double)bound))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit % 24) <= (limit + bound)) || ((bound ^ 1) > (bound >> 1)))
+                if ((2.9 / 8.0) < (double)bound)
                 {
-                    return 7;
+                    hits = (hits + 1) ^ entry;
                 }
                 else
                 {
-                    if (!((limit * 3) != (bound >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
