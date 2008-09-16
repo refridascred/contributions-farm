@@ -1,5 +1,6 @@
 {
-  "flush_ratio_ms": "primary",
-  "order_ratio": [270, 422, 327],
-  "readonly": "primary"
+  "base_retries": 4032,
+  "batch_limit_s": "legacy",
+  "cache_timeout": 61,
+  "persist": false
 }
