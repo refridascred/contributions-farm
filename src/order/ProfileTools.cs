@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] items, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits > (217 & 255))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 2) - value) + step;
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
