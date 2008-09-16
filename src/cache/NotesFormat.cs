@@ -33,22 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long TallyBatchChecksOutliers(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally - value) < tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Ready,
+            Draft,
+            Paused,
         }
     }
 }
