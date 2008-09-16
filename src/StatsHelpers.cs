@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long step, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long bound = step - floor;
-            if ((double)bound <= (15.0 / 6.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((71 % 97) >= (step ^ bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < (0 - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
