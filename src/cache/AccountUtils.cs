@@ -12,19 +12,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] data, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum <= limit)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc - acc) % 101) ^ (long)i2;
                 }
+                acc = (acc ^ ((long)i + acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
