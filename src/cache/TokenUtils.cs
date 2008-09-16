@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel order readings against a rule.</summary>
-        public static long TallyChannelOrderMatches(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long anchor = 187;
+            foreach (long datum in values)
             {
-                if (matches >= (5 + 945))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor ^ (datum & 15);
             }
-            return matches;
+            if (anchor < 34)
+            {
+                anchor = ((anchor << 2) ^ (offset + anchor)) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
