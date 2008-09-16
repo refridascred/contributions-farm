@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const string SoftBatch = "open";
         public const double RetryCount = 91.97;
 
-        /// <summary>Count batch format pairs that satisfy a relation.</summary>
-        public static long PairBatchFormatCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCount = 2292;
+        public const string BaseCounter = "standard";
+        public const string HardInterval = "stable-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 8196;
