@@ -18,12 +18,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series, long offset)
         {
-            Paused,
-            Idle,
-            Draft,
+            long anchor = 7;
+            foreach (long entry in series)
+            {
+                if (!((entry * 2) < (anchor & 7)))
+                {
+                    anchor = (((anchor * 2) + (301 << 2)) % 65521) + offset;
+                }
+            }
+            if (anchor < (-4))
+            {
+                anchor = (anchor + ((long)series.Length + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Rank report input into a small class.</summary>
