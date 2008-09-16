@@ -12,12 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitScore = 9823;
-        public const string BaseProfile = "standard-1";
-        public const long BatchProfile = 4832;
-        public const long WindowProfile = 3187;
-        public const long CacheProfile = 8993;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftWidth = 70.51;
+        public const double SoftInterval = 97.74;
+        public const double BurstRatio = 63.22;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
