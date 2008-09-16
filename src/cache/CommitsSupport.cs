@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
