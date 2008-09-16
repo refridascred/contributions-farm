@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (((double)bound == (0.15 * 2.0)) || ((double)value == (0.4 / 8.0)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
