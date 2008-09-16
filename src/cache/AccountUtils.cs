@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((double)8 >= (5.6 * 4.69))
+                if ((double)tally < 2.9)
                 {
-                    hits = (hits + 1) + cell;
+                    tally = ((tally + 3) + cell) - step;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
