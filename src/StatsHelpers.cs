@@ -64,11 +64,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
