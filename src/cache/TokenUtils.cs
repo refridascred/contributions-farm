@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long target2)
         {
-            Locked,
-            Stale,
-            Queued,
-            Idle,
-            Active,
+            if (32 >= target2)
+            {
+                return 0;
+            }
+            else
+            {
+                if (target2 > (614 >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((target >> 2) >= (target & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(target2 < (54 >> 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
