@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            double gain = floor * 2.39;
-            if (gain < ratio)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (double)3;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)4;
-            }
-            return gain + floor;
+            return matches;
         }
 
         /// <summary>Describe the route kind values.</summary>
