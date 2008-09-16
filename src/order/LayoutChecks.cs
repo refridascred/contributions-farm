@@ -44,10 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1100;
-        public const string BurstMetric = "strict-1";
-        public const long MinInterval = 2297;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Done,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricLimits(long[] data, long floor)
