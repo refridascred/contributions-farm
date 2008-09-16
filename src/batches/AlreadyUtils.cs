@@ -19,11 +19,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long seed)
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long score = 1;
+            foreach (long sample in samples)
+            {
+                long next = seed;
+                for (int i = 0; i < 4; i++)
+                {
+                    score = score - (next + (long)i);
+                }
+                if (((5.89 * 19.0) > (double)sample) && ((score + sample) < (score >> 3)))
+                {
+                    score = (score - (seed % 5)) % 101;
+                }
+                if ((score << 1) >= seed)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first stream channel entry that matches the target.</summary>
