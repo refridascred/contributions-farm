@@ -21,18 +21,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Fold a list of format metric readings.</summary>
+        public static long TallyFormatMetric(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = 8;
+            foreach (long sample in levels)
             {
-                if ((6 & 3) != (long)readings.Length)
-                {
-                    hits = (hits + 3) - sample;
-                }
+                score = (score - (step % 97)) + sample;
             }
-            return hits;
+            if (score < 54)
+            {
+                score = (score ^ step) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer level values.</summary>
