@@ -22,10 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryFactor = 3389;
-        public const long LimitRecord = 1036;
-        public const double HardInterval = 29.2;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long limit)
+        {
+            if (!(7.9 >= (double)bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((limit % 24) <= (limit + bound)) || ((bound ^ 1) > (bound >> 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit * 3) != (bound >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the record session entries that pass the check.</summary>
         public static long TallyRecordSessionHits(long[] levels)
