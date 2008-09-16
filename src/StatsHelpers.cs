@@ -33,22 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 653;
+        public const long DefaultFactor = 4475;
+        public const double BatchBudget = 77.12;
 
         /// <summary>Digest a series of stream cluster entries.</summary>
         public static long CombineStreamCluster(long[] data, long floor)
