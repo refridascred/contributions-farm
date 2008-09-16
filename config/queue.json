@@ -1,19 +1,15 @@
 {
-  "default_ttl_ms": false,
-  "batch_threshold": 2517,
-  "enabled": {
-    "audit": "cached",
-    "record_depth": "green",
-    "batch_ttl": 500,
-    "min_size": 5503,
-    "stream_size": {
-      "entry_ttl": true,
-      "max_threshold_ms": 6008,
-      "default_delay_s": 7.96
-    },
-    "strict": 3226
+  "min_retries_s": 500,
+  "hard_interval_ms": {
+    "compress": 2136,
+    "cache_depth_count": 97.34,
+    "account_delay": ["strict", "stable"],
+    "queue_retries": true,
+    "account_ratio": "edge",
+    "cache_retries_s": 30
   },
-  "batch_capacity_count": 82,
-  "strict": ["staging", "fallback", "staging"],
-  "soft_size_ms": 23.13
+  "soft_depth_count": "local",
+  "flush_retries_pct": ["stable", "latest", "eu-west", "eu-west"],
+  "cache_threshold": 81.86,
+  "command_ttl": true
 }
