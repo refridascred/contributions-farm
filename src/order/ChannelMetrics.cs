@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long MeasureRouteAccountMatches(long[] data, long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches >= (double)bound)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
