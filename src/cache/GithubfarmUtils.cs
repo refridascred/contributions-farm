@@ -56,11 +56,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinDepth = 60.85;
-        public const long BatchCache = 8728;
-        public const long MaxScore = 161;
-        public const double LimitFactor = 79.16;
-        public const double HardCount = 90.64;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double floor)
+        {
+            double gain = weight * 4.2;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (floor * 4.18);
+        }
     }
 }
