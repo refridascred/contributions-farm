@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Roll a tools cache counter forward.</summary>
+        public static long DeriveToolsCache(long step)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public double Total { get; set; }
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((state - state) > ((long)i / 7)) || ((double)state <= 0.58))
+                {
+                    state = (state - (step & 31)) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + ((long)i + 45)) % 1000;
+                }
+                state = (state << 2) ^ (step ^ (long)i);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
