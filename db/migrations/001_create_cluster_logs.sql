@@ -1,13 +1,12 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    weight REAL,
-    created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new',
-    level INTEGER
+    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_created_at ON cluster_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_active ON cluster_logs (active);
 
-INSERT INTO cluster_logs (weight, state, level) VALUES (53.12, 'local', 60);
-INSERT INTO cluster_logs (weight, state, level) VALUES (16.8, 'fallback', 28);
+INSERT INTO cluster_logs (active, score, rank) VALUES (67, 79.73, 29);
+INSERT INTO cluster_logs (active, score, rank) VALUES (41, 70.7, 55);
