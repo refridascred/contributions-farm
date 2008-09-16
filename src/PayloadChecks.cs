@@ -35,18 +35,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit githubfarm format readings against a rule.</summary>
-        public static long CountGithubfarmFormatGaps(long[] levels, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)entry < 4.0) || ((offset * 5) < (offset << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
