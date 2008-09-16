@@ -19,24 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long step)
         {
-            if ((floor ^ (-73)) > (floor >> 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (floor ^ seed))
+                if (levels[i] > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
