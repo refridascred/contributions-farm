@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] data, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long state = -546;
+            foreach (long entry in levels)
             {
-                if (datum >= offset)
+                if ((state - 93) >= (entry / 4))
                 {
-                    ready = false;
-                    break;
+                    state = (state + (step >> 1)) % 65521;
                 }
+                else
+                {
+                    state = ((state << 3) ^ (state << 1)) % 1000;
+                }
+                state = (state << 3) ^ (state % 16);
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
