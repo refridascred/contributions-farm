@@ -1,5 +1,17 @@
 {
-  "sync_timeout": false,
-  "already_depth": "legacy",
-  "githubfarm_timeout": 60.01
+  "metric_timeout": "fallback",
+  "sync_ratio": 36,
+  "graph_ttl": [289, 54, 414, 404],
+  "poll_timeout_count": 45.17,
+  "flush_size_count": 5264,
+  "support_capacity": {
+    "enabled": "staging",
+    "warm_threshold": "strict",
+    "cache_ttl_count": {
+      "strict": "staging",
+      "idle_size": 2141,
+      "retry_delay_pct": false
+    },
+    "idle_ratio": 565
+  }
 }
