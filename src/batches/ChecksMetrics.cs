@@ -25,17 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long bound)
+        /// <summary>Validate route profile readings against a bound.</summary>
+        public static bool GuardRouteProfileRange(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                if (value < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count batch format pairs that satisfy a relation.</summary>
