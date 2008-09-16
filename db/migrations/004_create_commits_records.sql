@@ -1,10 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    owner TEXT NOT NULL,
-    level INTEGER,
+    token TEXT,
+    rank INTEGER,
     label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+
+INSERT INTO commits_records (token, rank, label) VALUES ('green', 66, 'open');
+INSERT INTO commits_records (token, rank, label) VALUES ('legacy', 78, 'standard');
