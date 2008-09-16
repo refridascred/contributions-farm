@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            Synced,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)8 >= (5.6 * 4.69))
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
