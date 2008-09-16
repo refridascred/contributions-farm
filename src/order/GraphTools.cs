@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long edge = seed ^ target;
+            if (((edge + 47) == (626 & 63)) && ((double)target >= (double)114))
             {
-                if ((hits < (hits - value)) && (((value + value) < (hits % 60)) || ((hits & 63) <= (hits >> 2))))
+                return 6;
+            }
+            else
+            {
+                if ((seed - 41) == (744 % 7))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 3) > 2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up commits window samples.</summary>
