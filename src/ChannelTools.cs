@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCount = "staging";
+        public const string CacheSpan = "alpha-1";
+        public const long CacheSize = 9564;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
