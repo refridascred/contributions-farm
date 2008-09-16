@@ -45,21 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 3431;
+        public const double SoftSession = 56.28;
+        public const long BurstSession = 7775;
+        public const long IdleSession = 3934;
     }
 }
