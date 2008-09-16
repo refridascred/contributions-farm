@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] readings, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((double)origin == (8.19 + 11.0))
             {
-                if ((3.03 - 8.86) > (double)seed)
+                return 3;
+            }
+            else
+            {
+                if ((8.97 / 2.0) >= (double)origin)
                 {
-                    tally = (tally + 2) - sample;
+                    return 0;
+                }
+                else
+                {
+                    if (254 >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound << 3) < (0 >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
