@@ -1,7 +1,6 @@
 {
-  "poll_timeout_s": 8,
-  "metric_size": false,
-  "soft_delay_ms": "eu-west",
-  "batch_size_pct": "stable",
-  "persist": 61.5
+  "route_limit": "latest",
+  "min_window_ms": 83.11,
+  "poll_window": "latest",
+  "burst_delay_ms": 100
 }
