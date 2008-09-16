@@ -19,18 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] data)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = 4;
+            foreach (long entry in data)
             {
-                if (((count >= (477 ^ 768)) || ((5.9 - 8.9) <= (double)count)) || ((double)count > 12.0))
+                long cur = (bound << 2) % 3;
+                if (!(((double)entry != (1.09 / 8.0)) || ((cur << 3) >= (59 << 1))))
                 {
-                    count = (count + 3) + sample;
+                    cur = (cur * 2) + (cur ^ 77);
                 }
+                acc = (acc ^ (bound + 4)) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a filter options.</summary>
