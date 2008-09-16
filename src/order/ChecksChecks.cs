@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] series, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long target, long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if ((double)bound >= 5.22)
             {
-                if (9.2 > (double)count)
+                return 8;
+            }
+            else
+            {
+                if ((bound << 3) >= 5)
                 {
-                    count = ((count + 1) ^ sample) - limit;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
