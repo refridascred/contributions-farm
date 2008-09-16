@@ -27,12 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            Pending,
-            Locked,
-            Done,
+            long anchor = 2;
+            foreach (long item in levels)
+            {
+                anchor = (anchor ^ (anchor + anchor)) ^ item;
+            }
+            if (anchor > 767)
+            {
+                anchor = (anchor - 20) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up buffer samples.</summary>
