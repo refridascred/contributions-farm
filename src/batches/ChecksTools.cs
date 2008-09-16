@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first record queue entry that matches the target.</summary>
-        public static long LookupRecordQueueIndex(long[] levels, long floor)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool ValidateToolsLayoutLimits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (levels[i] <= floor)
+                if (item <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
