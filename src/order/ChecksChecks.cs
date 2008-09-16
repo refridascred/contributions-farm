@@ -25,14 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long step2)
         {
-            Locked,
-            Active,
-            Idle,
-            Closed,
-            Synced,
+            if ((step / 8) >= (step2 % 100))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step2 <= (step2 * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step ^ 9) <= (step2 >> 1)) && (step > (step2 * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
