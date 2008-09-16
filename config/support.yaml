@@ -1,12 +1,10 @@
 # support settings
-strict: 50.37
-base_delay:
-  - staging
-  - legacy
-  - edge
-  - stable
-payload_ratio:
-  - latest
-  - blue
+warm_retries_ms:
+  - fallback
+  - open
+  - cached
+  - eu-west
+context_delay: 55
+sync_limit:
   - strict
   - open
