@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long limit)
         {
-            long sum = 8;
-            foreach (long value in levels)
+            long acc = 10;
+            foreach (long reading in samples)
             {
-                sum = (sum - (step ^ step)) % 97;
-                if (!(value >= (5 * 4)))
+                if (!(((long)samples.Length - acc) >= (reading / 5)))
                 {
-                    sum = sum + (step * 3);
-                    sum = sum - (5 + sum);
-                }
-                if (!(value > (sum >> 3)))
-                {
-                    sum = sum - ((-969) - value);
+                    acc = ((acc << 2) ^ (reading ^ reading)) - limit;
                 }
             }
-            return sum % 4096;
+            if (acc < 203)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate counter samples.</summary>
