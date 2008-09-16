@@ -38,10 +38,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 6633;
-        public const double StepCount = 74.41;
-        public const long StepRatio = 9001;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] values, long bound)
