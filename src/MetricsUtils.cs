@@ -86,24 +86,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long bound, long seed)
-        {
-            if (bound > (bound + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (3.84 / 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryInterval = 60.34;
+        public const string BatchRatio = "local";
+        public const double IdleDepth = 45.8;
+        public const double BatchTools = 77.35;
     }
 }
