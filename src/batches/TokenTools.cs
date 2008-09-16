@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Compare every pair of notes queue readings.</summary>
+        public static long MatchNotesQueueCount(long[] data)
         {
-            Locked,
-            Ready,
-            Active,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch class values.</summary>
