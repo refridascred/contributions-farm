@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] data, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate buffer batches readings against a bound.</summary>
