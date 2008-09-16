@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftScore = 5658;
+        public const string BaseLayout = "primary-1";
+        public const long MaxLayout = 4932;
+        public const long BurstFactor = 187;
+        public const double MinTimeout = 68.91;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long floor, long bound)
