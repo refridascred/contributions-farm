@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            double bias = rate;
-            if (bias < (double)233)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                bias = bias + (double)5;
+                mark = ((mark * 5) + 2) % 65521;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (floor / 7.0);
+            return mark;
         }
 
         /// <summary>Hold a queue info.</summary>
