@@ -41,11 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
             public bool Total { get; set; }
             public long Level { get; set; }
         }
