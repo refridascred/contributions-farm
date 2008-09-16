@@ -52,39 +52,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] values, long step)
         {
-            long diff = floor + seed;
-            if ((diff + diff) >= (seed + diff))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((51 & 127) <= (seed - seed))
+                if (value <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff % 97) <= (seed - diff))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor & 1) > (seed + seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the schema phase values.</summary>
