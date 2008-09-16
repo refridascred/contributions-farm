@@ -46,11 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 20.17;
-        public const long LimitOrder = 4248;
-        public const long HardOrder = 8458;
-        public const long WindowOrder = 4234;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series)
+        {
+            long mix = -703;
+            foreach (long reading in series)
+            {
+                mix = (mix ^ (reading >> 4)) % 1000;
+                if ((mix + reading) != (1 / 9))
+                {
+                    mix = ((mix * 5) + (reading + mix)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] series, long bound)
