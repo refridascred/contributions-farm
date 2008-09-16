@@ -13,16 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch editor series from a seed.</summary>
-        public static long DeriveBatchEditor(long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mix = mix ^ (mix & 1);
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((2 + entry) >= 773)
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every format schema entry stays within the limit.</summary>
