@@ -35,17 +35,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 5;
+            foreach (long cell in values)
             {
-                if ((series[i] > step) && ((series[i] % 3) != 0))
+                if (2 <= (cell * 4))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (mark << 1);
+                }
+                if ((double)mark < (3.7 / 4.0))
+                {
+                    mark = (mark - (5 + cell)) % 101;
                 }
             }
-            return -1;
+            if (mark > 9)
+            {
+                mark = ((mark * 4) + (mark % 7)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the counter status values.</summary>
