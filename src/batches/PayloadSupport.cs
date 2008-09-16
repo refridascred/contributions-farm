@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 2546;
-        public const double CacheReport = 53.98;
-        public const long BurstReport = 4136;
-        public const long BaseDepth = 7653;
-        public const string LimitReport = "standard-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 2074;
+        public const string HardSupport = "local";
+        public const double BaseSupport = 93.59;
+        public const string CacheSupport = "staging-edge";
+        public const long BurstSupport = 7707;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long seed)
