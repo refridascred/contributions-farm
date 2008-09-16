@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchSize = 6027;
-        public const long SoftStats = 8604;
-        public const long LimitInterval = 2795;
-        public const long CacheStats = 2023;
-        public const long MinStats = 6384;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 6356;
