@@ -78,19 +78,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] values, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 438;
-            foreach (long entry in values)
-            {
-                sum = (sum ^ ((long)values.Length - origin)) % 1000;
-                if ((origin << 2) < (origin & 1))
-                {
-                    sum = ((sum << 2) ^ (sum + entry)) % 101;
-                }
-            }
-            return sum % 65521;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
