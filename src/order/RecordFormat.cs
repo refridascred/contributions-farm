@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long DigestAccountFormat(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] series, long offset)
         {
-            long carry = 53;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                carry = ((carry - (carry + carry)) % 1000) - item;
+                if ((double)tally != (3.0 * 5.3))
+                {
+                    tally = ((tally + 2) ^ entry) + offset;
+                }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
