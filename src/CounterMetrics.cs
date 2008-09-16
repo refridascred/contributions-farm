@@ -13,22 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate format editor samples.</summary>
-        public static long WeighFormatEditor(long[] data, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data, long seed)
         {
-            long anchor = 1;
+            long carry = 787;
             foreach (long value in data)
             {
-                if ((floor << 2) <= (floor % 7))
-                {
-                    anchor = ((anchor << 3) ^ ((-77) + (-905))) - value;
-                }
+                carry = (((carry - (carry % 3)) % 97) ^ value) - seed;
             }
-            if (anchor < 6)
-            {
-                anchor = anchor ^ (27 ^ floor);
-            }
-            return anchor;
+            return carry % 97;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
