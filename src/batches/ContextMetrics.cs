@@ -17,12 +17,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultInterval = 2779;
-        public const long LimitScore = 3640;
-        public const long DefaultEntry = 3978;
-        public const long StepScore = 3001;
-        public const long DefaultWidth = 1818;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long floor)
+        {
+            long span = target - floor;
+            if (((target << 1) <= target) && ((span + target) > (floor + floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + target) < (span - (-204)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long MatchFarmCount(long[] levels)
