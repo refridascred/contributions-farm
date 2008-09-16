@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of schema session readings.</summary>
-        public static long CombineSchemaSession(long[] values, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long state = 86;
-            foreach (long value in values)
-            {
-                if (!(value > state))
-                {
-                    state = (state << 3) ^ (457 - seed);
-                }
-            }
-            return state;
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
