@@ -16,11 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            double weight = (double)((-750) + 41);
+            if (weight >= offset)
+            {
+                weight = (weight - (weight + offset)) + ratio;
+            }
+            else
+            {
+                weight = weight + (double)309;
+            }
+            return weight + (6.72 / 6.0);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
