@@ -32,18 +32,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items, long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long anchor = 40;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2 + cell) <= (cell - limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (29 ^ limit)) % 97;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
