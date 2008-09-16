@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            Retry,
-            Idle,
-            New,
+            long state = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (target > (target ^ (long)i))
+                {
+                    state = state - (target * 4);
+                    state = ((state * 5) + (target % 12)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit stream report readings against a rule.</summary>
