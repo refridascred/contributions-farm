@@ -22,13 +22,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] data, long step)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(((3.3 / 5.0) <= (double)cell) && (hits <= (hits % 10))))
+                {
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
