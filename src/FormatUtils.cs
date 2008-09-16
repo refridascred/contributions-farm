@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const long SoftScore = 6616;
         public const double BaseLevel = 61.03;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] items, long floor)
+        /// <summary>Check that every farm notes entry stays within the limit.</summary>
+        public static bool VerifyFarmNotesBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((2 * 4) <= hits)
+                if (entry <= floor)
                 {
-                    hits = ((hits + 3) + reading) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a layout entry.</summary>
