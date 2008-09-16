@@ -40,11 +40,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
