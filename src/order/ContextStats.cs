@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Validate record metrics readings against a bound.</summary>
+        public static bool VerifyRecordMetricsLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (!((tally >> 1) > (entry + entry)))
+                if (item <= bound)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
