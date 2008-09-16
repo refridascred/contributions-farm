@@ -29,18 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] data)
+        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
+        public static long LookupTokenGithubfarmIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen - seen) >= value) && ((double)seen != (1.53 + 12.0)))
+                if (values[i] > offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many profile account samples are out of range.</summary>
