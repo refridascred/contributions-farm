@@ -47,14 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long seed)
         {
-            New,
-            Synced,
-            Failed,
-            Ready,
-            Idle,
+            long bound = step ^ seed;
+            if (seed > (bound - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound + seed) < (step + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
