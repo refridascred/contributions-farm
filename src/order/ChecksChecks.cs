@@ -27,18 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long anchor = 122;
-            foreach (long value in items)
-            {
-                if (anchor <= (anchor ^ bound))
-                {
-                    anchor = ((anchor + (anchor + 2)) % 101) + value;
-                }
-            }
-            return anchor % 4096;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
