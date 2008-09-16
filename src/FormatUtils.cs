@@ -51,16 +51,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Classify a notes checks pair into a bucket.</summary>
+        public static long GradeNotesChecks(long bound, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            if ((origin + 3) < (bound / 8))
             {
-                state = state - (state - (long)i);
-                state = ((state * 4) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((origin & 3) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin / 9) < (origin + 140)) || ((bound - bound) <= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up command samples.</summary>
