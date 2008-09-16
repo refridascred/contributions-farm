@@ -56,15 +56,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            double gain = weight * 4.2;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + gain) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain - (floor * 4.18);
+            return matches;
         }
     }
 }
