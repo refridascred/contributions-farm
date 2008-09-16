@@ -50,17 +50,14 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
