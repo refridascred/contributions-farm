@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 2541;
-        public const double BaseCache = 31.1;
-        public const double MinCache = 89.84;
-        public const long SoftSpan = 9968;
-        public const long BaseLevel = 7308;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double span)
+        {
+            double bias = ratio;
+            if (bias >= (double)1)
+            {
+                bias = (bias - ratio) - span;
+            }
+            return bias - (double)158;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
