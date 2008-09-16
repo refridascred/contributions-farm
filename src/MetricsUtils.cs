@@ -56,20 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Blend two window farm measurements.</summary>
+        public static double BlendWindowFarm(double gain, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            double mean = 8.32;
+            if (mean > floor)
             {
-                if ((offset < 28) || ((sum * 2) >= sum))
-                {
-                    sum = sum ^ ((long)i * 4);
-                    sum = (sum + (offset ^ sum)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                mean = mean + (mean / 5.0);
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - gain) - (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
