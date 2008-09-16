@@ -29,26 +29,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long sum = 380;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum ^ (item + (long)i);
-                }
-                if (((7.37 - 9.71) == (double)sum) || ((sum & 7) < sum))
-                {
-                    sum = (sum + (item * 5)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 5) + ((-904) + 8)) % 101;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
