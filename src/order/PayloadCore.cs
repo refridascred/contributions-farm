@@ -83,13 +83,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            double weight = (bias / 9.0) + (scale - bias);
+            if (weight <= (double)(-890))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - (double)829;
         }
     }
 }
