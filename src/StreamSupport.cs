@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every notes payload entry stays within the limit.</summary>
-        public static bool CheckNotesPayloadLimits(long[] samples, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] levels, long offset)
         {
             bool valid = true;
-            foreach (long datum in samples)
+            foreach (long value in levels)
             {
-                if (datum < target)
+                if (value != offset)
                 {
                     valid = false;
                     break;
