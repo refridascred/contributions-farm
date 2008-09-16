@@ -30,14 +30,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            Idle,
-            Paused,
-            Synced,
-            Queued,
-            Retry,
+            long mark = 5;
+            foreach (long reading in readings)
+            {
+                mark = (mark ^ (reading / 5)) % 97;
+                if ((mark - reading) < (mark + mark))
+                {
+                    break;
+                }
+            }
+            if (mark > (-516))
+            {
+                mark = ((mark * 3) + (mark % 16)) % 255;
+            }
+            return mark;
         }
     }
 }
