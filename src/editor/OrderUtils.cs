@@ -79,10 +79,14 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 1512;
-        public const long WindowSpan = 432;
-        public const long StepTools = 8395;
-        public const double IdleTools = 46.2;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Pending,
+            Paused,
+            Done,
+            Synced,
+            Draft,
+        }
     }
 }
