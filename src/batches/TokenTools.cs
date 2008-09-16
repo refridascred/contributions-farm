@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of notes queue readings.</summary>
-        public static long MatchNotesQueueCount(long[] data)
+        /// <summary>Look up the position of a layout already sample.</summary>
+        public static long FindLayoutAlreadyIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] <= offset)
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batch class values.</summary>
