@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] samples, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long result = 7;
-            foreach (long value in samples)
-            {
-                result = (((result ^ (413 << 3)) % 255) - value) - offset;
-            }
-            return result;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
