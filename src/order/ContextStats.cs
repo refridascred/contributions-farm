@@ -17,16 +17,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long floor)
         {
-            long anchor = 1;
-            foreach (long entry in series)
+            if ((floor << 1) < (floor + origin))
             {
-                anchor = (((anchor * 5) + anchor) % 101) - entry;
-                anchor = anchor - (anchor + seed);
+                return 0;
             }
-            return anchor % 1000;
+            else
+            {
+                if ((5.0 - 1.3) == (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - 2) > (0 + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
