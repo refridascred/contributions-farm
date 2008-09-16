@@ -24,13 +24,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Done,
-            New,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitDepth = 17.55;
+        public const long DefaultRatio = 9572;
+        public const double LimitBatch = 50.43;
+        public const double MinBatch = 42.85;
+        public const string WindowBatch = "legacy-1";
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double weight, double span)
