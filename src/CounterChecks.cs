@@ -64,9 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 393;
-        public const double IdleContributi = 60.29;
-        public const long SoftContributi = 7837;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] items, long offset)
+        {
+            long score = 68;
+            foreach (long item in items)
+            {
+                score = (score - (item + item)) - offset;
+                score = (score - (4 * 2)) % 255;
+            }
+            return score;
+        }
     }
 }
