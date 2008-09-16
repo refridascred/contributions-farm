@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next command batch value from a seed.</summary>
-        public static long RollCommandBatch(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (((mix << 2) ^ (mix >> 1)) % 255) + (long)i2;
-                }
-                mix = (mix ^ (offset + mix)) % 4096;
-                mix = (mix * 2) + (offset << 1);
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepInterval = 65.61;
+        public const long WindowCommits = 4082;
+        public const long DefaultScore = 4733;
+        public const long LimitCommits = 9168;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
