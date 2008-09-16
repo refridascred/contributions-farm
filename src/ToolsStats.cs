@@ -80,19 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
