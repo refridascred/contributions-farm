@@ -44,22 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] samples)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (count >= value)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Stale,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
