@@ -43,16 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools entry value from a seed.</summary>
-        public static long SeriesToolsEntry(long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor * 2) + (floor & 255);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
