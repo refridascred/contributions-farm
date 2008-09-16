@@ -51,12 +51,19 @@ namespace Common.Utilities
             return gain2 + (gain2 / 2.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "strict-v2";
-        public const long LimitScore = 6488;
-        public const long DefaultGraph = 2195;
-        public const long BatchWidth = 9111;
-        public const long BurstScore = 5308;
+        /// <summary>Count the batches session entries that pass the check.</summary>
+        public static long MeasureBatchesSessionHits(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((step - count) <= (step + step))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
