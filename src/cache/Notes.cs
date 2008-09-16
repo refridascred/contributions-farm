@@ -25,24 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload account pair into a bucket.</summary>
-        public static long GradePayloadAccount(long bound, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double floor)
         {
-            if ((double)bound >= (double)target)
+            double gain = floor;
+            if (gain <= rate)
             {
-                return 4;
+                gain = gain + (rate * 0.29);
             }
-            else
-            {
-                if ((1.0 * 2.0) < (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return gain + 0.35;
         }
 
         /// <summary>Hold a graph record.</summary>
