@@ -34,14 +34,39 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank githubfarm contributi input into a small class.</summary>
+        public static long RankGithubfarmContributi(long origin, long origin2)
         {
-            Retry,
-            Synced,
-            Idle,
-            Failed,
-            Closed,
+            long slot = origin + origin2;
+            if (((origin - origin2) > origin2) || ((origin * 2) <= slot))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((660 + slot) > (origin ^ origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-74) + origin) <= (origin / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - origin2) < (origin + origin2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
