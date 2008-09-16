@@ -1,13 +1,16 @@
 {
-  "idle_threshold_s": 500,
-  "flush_interval": ["strict", "cached", "staging"],
-  "enabled": ["blue", "latest", "primary"],
-  "checks_ratio": {
-    "token_size": [98, 327, 483, 25],
-    "poll_retries_s": 2.01,
-    "batches_timeout": 67.66,
-    "retry_interval": "open"
+  "audit": 500,
+  "token_delay": true,
+  "max_limit_pct": 59.82,
+  "batch_capacity": {
+    "flush_threshold_ms": 30.98,
+    "verbose": 8402,
+    "idle_depth_pct": {
+      "cache_capacity": 84.72,
+      "burst_timeout_pct": [102, 135, 438, 15],
+      "dry_run": 18.86
+    }
   },
-  "notes_limit": false,
-  "dry_run": 35.25
+  "base_limit": 65.63,
+  "default_interval": ["staging", "green", "cached"]
 }
