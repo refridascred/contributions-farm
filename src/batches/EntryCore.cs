@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next stats profile value from a seed.</summary>
-        public static long StepStatsProfile(long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                score = (score ^ step) % 255;
-                score = ((score * 3) + (long)i) % 97;
+                if ((matches & 15) > (matches * 4))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
