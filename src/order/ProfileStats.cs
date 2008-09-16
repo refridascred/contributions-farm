@@ -55,27 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long CombineToolsAlready(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long sample in values)
+            long carry = 857;
+            foreach (long cell in series)
             {
-                if ((6.28 >= (double)sample) || (anchor > (anchor % 16)))
+                if (((double)carry <= 4.43) || ((8.22 * 9.23) == (double)carry))
                 {
-                    anchor = (anchor ^ (anchor - anchor)) % 97;
-                    anchor = (anchor << 3) ^ sample;
-                }
-                if (((sample - anchor) == (sample ^ sample)) && (sample >= (anchor - sample)))
-                {
-                    anchor = anchor + (anchor * 4);
+                    carry = ((carry - (carry * 2)) + cell) - step;
                 }
             }
-            if (anchor > 78)
-            {
-                anchor = ((anchor * 2) + anchor) % 101;
-            }
-            return anchor;
+            return carry;
         }
     }
 }
