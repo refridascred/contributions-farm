@@ -1,10 +1,15 @@
 # Command notes
 
-The editor report groups every cluster by support.
-Each stream is validated before it reaches the filter queue.
+Run the graph check before changing any command limits.
+Defaults for payload live in the config folder and can be overridden per environment.
+The profile module keeps cluster values in sync with the schema cache.
+
+When a account fails, the record handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+When a schema fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new checks fields
-- Review command limits each release
-- Prefer account defaults
+- Keep farm values small
+- Document new window fields
+- Log every githubfarm change
