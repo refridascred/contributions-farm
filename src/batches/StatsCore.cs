@@ -21,17 +21,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] items, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Rank report input into a small class.</summary>
