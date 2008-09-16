@@ -21,12 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 4336;
-        public const long WindowTools = 4766;
-        public const long MinTools = 7793;
-        public const double IdleSize = 38.22;
-        public const long CacheTools = 4834;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
