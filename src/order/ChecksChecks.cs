@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long limit, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] series, long limit)
         {
-            long prev = limit ^ origin;
-            if (prev < (limit & 255))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.71 - 9.74) > (double)origin)
+                if (9.2 > (double)count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= (1.45 + 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = ((count + 1) ^ sample) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
