@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowFactor = 5.97;
-        public const string BurstReport = "local-1";
-        public const string HardDepth = "latest-1";
-        public const long HardInterval = 6735;
-        public const long StepInterval = 98;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultDepth = 651;
+        public const long DefaultTimeout = 9778;
+        public const string MaxOrder = "legacy";
+        public const long WindowOrder = 9099;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxSize = 9574;
