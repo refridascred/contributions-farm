@@ -57,22 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = -9;
-            foreach (long datum in data)
-            {
-                if (sum <= (datum & 255))
-                {
-                    sum = ((sum * 4) + (datum + datum)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 2) + (datum >> 1);
-                }
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
