@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long seed)
         {
-            long total = 32;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                total = total + 7;
-                if ((double)sample >= (0.6 - 6.0))
+                if (((datum < (seed ^ seed)) || ((3 - seed) > seed)) || ((double)datum > (double)matches))
                 {
-                    total = (total << 3) ^ 5;
-                }
-                if (((454 >> 5) > sample) || (total < (sample ^ sample)))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Describe the profile kind values.</summary>
