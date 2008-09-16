@@ -32,15 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Dropped,
-            Draft,
-            Active,
-            Done,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryFactor = 3389;
+        public const long LimitRecord = 1036;
+        public const double HardInterval = 29.2;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] values, long limit)
