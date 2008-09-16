@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] levels, long bound)
         {
-            Done,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((bound / 9) != (2 << 2))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of command batches readings.</summary>
