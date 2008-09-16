@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter report entry that matches the target.</summary>
-        public static long LocateCounterReportIndex(long[] values, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long bound, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((bound + limit) != (limit >> 4))
             {
-                if (values[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if (limit > (7 + 6))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (15.0 < (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first token githubfarm entry that matches the target.</summary>
