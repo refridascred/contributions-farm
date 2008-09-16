@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long BaseContext = 9087;
         public const long BurstContext = 9494;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((double)state == (1.35 + 0.7)))
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
