@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long seed)
+        /// <summary>Count batch token pairs that satisfy a relation.</summary>
+        public static long MatchBatchTokenCount(long[] levels)
         {
-            long carry = 92;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry << 2) ^ carry) ^ value) + seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 745)
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
