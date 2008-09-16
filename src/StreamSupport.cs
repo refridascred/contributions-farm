@@ -41,18 +41,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ matches) < (0 * 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "stable";
+        public const long DefaultMetrics = 7214;
+        public const long HardInterval = 1869;
     }
 }
