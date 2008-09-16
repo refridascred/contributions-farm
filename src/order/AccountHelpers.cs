@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up format checks samples.</summary>
-        public static long OverlapFormatChecksCount(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 10)
+                    if ((readings[i] ^ readings[j]) < 4)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank token input into a small class.</summary>
