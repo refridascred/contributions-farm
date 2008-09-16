@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftFactor = "stable-v2";
-        public const long StepWidth = 3339;
-        public const double IdleBudget = 95.74;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 4013;
+        public const string BurstScore = "fallback-1";
+        public const long MinLevel = 846;
+        public const long DefaultCommits = 1021;
+        public const string SoftCommits = "standard";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] items, long seed)
