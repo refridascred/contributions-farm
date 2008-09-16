@@ -74,11 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
