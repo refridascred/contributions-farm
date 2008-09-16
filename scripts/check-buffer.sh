@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=142
+BUFFER_LIMIT=153
 log "limit is ${BUFFER_LIMIT}"
