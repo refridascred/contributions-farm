@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long limit, long target)
+        /// <summary>Accumulate payload account samples.</summary>
+        public static long TallyPayloadAccount(long[] data, long step)
         {
-            long span = limit ^ target;
-            if (((limit + span) > span) || ((double)limit <= 7.38))
+            long acc = 897;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + limit) < (limit + span))
+                acc = ((acc * 5) + entry) % 101;
+                if ((acc / 2) >= (62 ^ 21))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((span + limit) <= (target >> 5)) && ((span >> 1) == (limit ^ 34)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9.23 + 8.7) <= (6.82 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = acc + (step >> 3);
                 }
             }
+            if (acc > 8)
+            {
+                acc = ((acc * 3) + acc) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Match up buffer cluster samples.</summary>
