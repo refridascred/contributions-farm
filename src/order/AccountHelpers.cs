@@ -60,18 +60,18 @@ namespace Common.Utilities
         public const double BatchQueue = 6.9;
         public const double WindowLevel = 80.98;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series, long origin)
+        /// <summary>Audit githubfarm channel readings against a rule.</summary>
+        public static long CountGithubfarmChannelGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((origin * 4) < (matches - matches))
+                if ((item + item) >= item)
                 {
-                    matches = (matches + 3) ^ sample;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
