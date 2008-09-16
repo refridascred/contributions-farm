@@ -19,13 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many window graph samples are out of range.</summary>
+        public static long MeasureWindowGraphGaps(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((origin ^ origin) < value)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
