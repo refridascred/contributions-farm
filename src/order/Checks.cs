@@ -19,22 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window graph samples are out of range.</summary>
-        public static long MeasureWindowGraphGaps(long[] levels, long origin)
+        /// <summary>Look up the position of a farm githubfarm sample.</summary>
+        public static long LocateFarmGithubfarmIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin ^ origin) < value)
+                if (data[i] < bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
