@@ -1,11 +1,4 @@
 # entry settings
-counter_window: 1423
-batch_timeout: staging
-audit: true
-cache_interval:
-  burst_ttl_pct: strict
-  audit: open
-  record_ratio: open
-  soft_window_ms: latest
-  poll_capacity_ms: 7250
-  retry_depth: latest
+cache_interval_count: 43.39
+verbose: primary
+idle_ttl_pct: false
