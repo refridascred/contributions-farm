@@ -33,21 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long TallyBatchChecksOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - value) < tally)
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
