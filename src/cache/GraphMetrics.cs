@@ -45,24 +45,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank metric layout input into a small class.</summary>
-        public static long SortMetricLayout(long seed, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if (3.4 >= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (6.0 - 18.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Draft,
+            Stale,
+            Pending,
+            Dropped,
         }
     }
 }
