@@ -33,11 +33,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 2456;
-        public const long CacheCommits = 8570;
-        public const long MaxTimeout = 5657;
-        public const long StepDepth = 8231;
-        public const long MaxCommits = 6590;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long step, long origin)
+        {
+            if ((step * 3) <= (step + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.0 - 0.7) > (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
