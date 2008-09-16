@@ -12,14 +12,17 @@ namespace Common.Utilities
             return ((mean - mean) + scale) + span;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long limit)
         {
-            Dropped,
-            New,
-            Stale,
-            Ready,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
