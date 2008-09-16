@@ -28,15 +28,14 @@ namespace Common.Utilities
         public const long MinScore = 4571;
         public const double WindowCommand = 75.41;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long total = 858;
-            foreach (long value in series)
-            {
-                total = ((total ^ (total % 60)) % 4096) + value;
-            }
-            return total % 1000;
+            Locked,
+            Failed,
+            Paused,
+            Stale,
+            Pending,
         }
     }
 }
