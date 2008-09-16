@@ -64,15 +64,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double ratio = floor;
-            if (ratio < ratio)
-            {
-                ratio = ratio + 9.9;
-            }
-            return ratio - (scale + ratio);
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
