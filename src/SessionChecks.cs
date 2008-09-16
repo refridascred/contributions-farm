@@ -61,12 +61,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long limit, long seed)
         {
-            Stale,
-            New,
-            Pending,
+            if ((858 / 5) != (seed + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(limit <= (limit / 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (0.78 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + (-25)) <= (limit + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
