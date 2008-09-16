@@ -15,19 +15,22 @@ namespace Common.Utilities
         public const long BatchRatio = 4985;
         public const long IdleEntry = 3954;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data)
         {
-            long total = 77;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = (total << 2) ^ total;
-                if (668 <= (item + item))
+                if ((matches & 15) > (sample / 7))
                 {
-                    total = (total ^ item) % 97;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
