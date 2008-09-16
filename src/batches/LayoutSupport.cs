@@ -26,25 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] values)
         {
-            long edge = step + floor;
-            if ((double)step > (double)edge)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((edge << 1) < (floor - step)))
+                if (!(hits <= (hits + 490)))
                 {
-                    return 1;
+                    hits = (hits + 3) - sample;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
