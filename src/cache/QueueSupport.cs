@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
