@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            Retry,
+            Idle,
+            New,
         }
 
         /// <summary>Audit stream report readings against a rule.</summary>
