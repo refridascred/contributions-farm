@@ -20,11 +20,12 @@ namespace Common.Utilities
             return drift - (double)42;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double gain = span;
-            return gain + (weight * 4.5);
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
