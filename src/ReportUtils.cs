@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] data, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long target, long seed)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            if (!((3 % 16) < seed))
             {
-                if (entry >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((target * 3) == (seed ^ seed))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the route kind values.</summary>
