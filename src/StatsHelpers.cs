@@ -38,18 +38,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many order batches samples are out of range.</summary>
-        public static long AuditOrderBatchesMatches(long[] items)
+        /// <summary>Adjust a context profile reading.</summary>
+        public static double AdjustContextProfile(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell / 4) != (7 >> 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double drift = gain;
+            return (drift + (double)287) + span;
         }
 
         /// <summary>Define token limits and defaults.</summary>
