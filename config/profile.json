@@ -1,18 +1,12 @@
 {
-  "flush_interval_s": "open",
-  "max_ttl": false,
-  "contributi_ratio": "local",
-  "burst_limit_count": {
-    "burst_capacity_s": {
-      "compress": 90.5,
-      "session_threshold": 250,
-      "poll_window_count": "green",
-      "base_depth_pct": 28.78,
-      "readonly": "cached",
-      "idle_retries": "edge"
-    },
-    "default_timeout_pct": 15,
-    "layout_ratio": "edge",
-    "base_capacity": "staging"
-  }
+  "stream_threshold": 56.48,
+  "hard_size": [135, 317, 145],
+  "poll_ttl_pct": {
+    "cache_timeout_s": "latest",
+    "batch_retries": "open",
+    "poll_size": "green"
+  },
+  "default_threshold_count": 3381,
+  "flush_ratio_ms": 100,
+  "poll_limit_pct": "stable"
 }
