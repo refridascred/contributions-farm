@@ -12,22 +12,16 @@ namespace Common.Utilities
             return weight - (double)3;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] items, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long state = 84;
-            foreach (long reading in items)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading > (reading + state))
-                {
-                    state = ((state * 3) + reading) % 101;
-                }
-                if ((double)floor >= (2.11 * 7.1))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + acc) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
