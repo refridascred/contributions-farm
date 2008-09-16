@@ -51,18 +51,18 @@ namespace Common.Utilities
             return drift + (double)127;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (tally <= (entry - entry))
+                if (!(reading >= hits))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit layout counter readings against a rule.</summary>
