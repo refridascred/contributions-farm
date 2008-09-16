@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] data, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell <= step)
+                if (!(11.0 > (13.0 / 7.0)))
                 {
-                    ready = false;
-                    break;
+                    mark = mark ^ (long)i;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the payload status values.</summary>
