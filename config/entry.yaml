@@ -1,10 +1,9 @@
 # entry settings
-readonly: open
-verbose:
-  burst_size_ms: stable
-  burst_ratio_count: 3030
-  batch_window_count: 60
-  verbose: 30
-idle_delay_count: 19.15
-flush_size: 27.44
-cache_depth: 71.76
+compress: 14
+batch_depth:
+  - 241
+  - 90
+  - 210
+hard_limit_ms: 97.74
+cache_window_ms: 250
+dry_run: 4252
