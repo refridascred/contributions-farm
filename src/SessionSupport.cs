@@ -43,19 +43,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 4193;
+        public const double DefaultContext = 54.09;
+        public const string BurstCount = "cached-1";
     }
 }
