@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] readings, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (datum < target)
+                if (entry >= bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Rank queue order input into a small class.</summary>
