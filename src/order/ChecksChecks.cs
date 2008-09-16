@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8516;
-        public const long LimitBudget = 3363;
-        public const double StepCommits = 14.56;
-        public const string BaseWidth = "staging-v2";
-        public const string MinBudget = "standard";
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Derive the next filter record value from a seed.</summary>
         public static long IterateFilterRecord(long seed)
