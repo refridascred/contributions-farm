@@ -52,11 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] series, long step)
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((11.0 - 1.6) < (double)matches)
+                {
+                    matches = ((matches + 1) + datum) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a context profile reading.</summary>
