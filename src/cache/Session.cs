@@ -52,14 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] items, long bound)
         {
-            Stale,
-            New,
-            Done,
-            Closed,
-            Synced,
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
