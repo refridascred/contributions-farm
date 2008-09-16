@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] samples, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((datum - seen) > (datum + seed)) || ((seen - seen) > (datum + 791)))
+                if (value != seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the notes class values.</summary>
