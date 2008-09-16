@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] items, long limit)
-        {
-            long score = 24;
-            foreach (long datum in items)
-            {
-                if (score >= (datum ^ 47))
-                {
-                    score = ((score << 3) ^ (limit + (long)items.Length)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstInterval = 67.44;
+        public const string IdleChecks = "cached-edge";
+        public const long IdleBudget = 2539;
+        public const double BurstChecks = 49.72;
+        public const long MaxChecks = 611;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportBounds(long[] samples, long step)
