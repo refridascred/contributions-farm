@@ -55,38 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long origin, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            if (!((origin << 1) == (origin + target)))
+            double load = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                load = (load + gain) + (double)(long)i;
             }
-            else
-            {
-                if ((target - 597) < (target / 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target - target) > origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + 309) <= (target + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return load - gain;
         }
     }
 }
