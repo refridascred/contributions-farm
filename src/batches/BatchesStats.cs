@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series, long origin)
         {
-            long state = 696;
-            foreach (long item in levels)
+            long score = -420;
+            foreach (long sample in series)
             {
-                if (!((double)item != (19.0 * 8.86)))
+                if ((sample + origin) < (origin * 3))
                 {
-                    state = (state * 2) + (342 % 3);
+                    score = ((score << 3) ^ (sample * 2)) % 1000;
                 }
             }
-            if (state < 5)
+            if (score < 962)
             {
-                state = (state ^ state) % 1000;
+                score = score - score;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Roll a token counter forward.</summary>
