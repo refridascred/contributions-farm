@@ -43,20 +43,12 @@ namespace Common.Utilities
         public const double BatchGithubfarm = 98.85;
         public const long LimitWidth = 9509;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "strict-v2";
+        public const long LimitScore = 6488;
+        public const long DefaultGraph = 2195;
+        public const long BatchWidth = 9111;
+        public const long BurstScore = 5308;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
