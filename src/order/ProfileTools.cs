@@ -39,19 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (reading > floor)
+                if ((5.0 + 4.36) > (double)bound)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
