@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            double mean = (double)(182 % 3);
-            return ((mean - mean) + scale) + span;
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (gain * 3.59)) + (double)(long)i) - rate;
+            }
+            return gain - bias;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
