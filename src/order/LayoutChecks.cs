@@ -48,11 +48,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long step)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long next = target ^ step;
+            if (((1.4 + 4.2) == (double)next) && ((6 - step) != (target - 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((46 - target) != (step ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a graph summary.</summary>
