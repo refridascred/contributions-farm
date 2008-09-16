@@ -16,12 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
