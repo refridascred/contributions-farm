@@ -33,12 +33,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Classify a session schema pair into a bucket.</summary>
+        public static long BucketSessionSchema(long seed, long bound)
         {
-            Done,
-            Dropped,
-            Active,
+            long offset = seed + bound;
+            if ((offset + bound) > (seed % 16))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= (double)3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < (95 << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
