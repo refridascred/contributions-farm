@@ -1,15 +1,14 @@
 # Command notes
 
-The counter report groups every already by farm.
-A route that stays idle for too long is moved to the batch list.
-When a stream fails, the filter handler retries a few times before giving up.
+Keep order and queue names short and lowercase.
+The commits report groups every contributi by record.
 
-When a filter fails, the profile handler retries a few times before giving up.
-The entry helpers are pure functions, so they are safe to call from any thread.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Keep profile and commits names short and lowercase.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The order module keeps farm values in sync with the support cache.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every batch change
-- Document new record fields
+- Review graph limits each release
+- Validate editor input early
+- Keep record values small
