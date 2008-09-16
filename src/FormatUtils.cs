@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] values, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
