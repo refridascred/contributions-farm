@@ -1,18 +1,11 @@
 # support settings
-cache_window: 1024
-sync_window_count: true
-compress: true
-cache_retries: 100
-contributi_interval: true
-batch_retries_pct:
-  strict: 1024
-  enabled:
-    - local
-    - fallback
-    - strict
-    - blue
-  metric_ttl:
-    - legacy
-    - latest
-    - open
-    - open
+batches_window: stable
+default_delay:
+  - 211
+  - 418
+retry_timeout_pct: stable
+contributi_ratio:
+  - eu-west
+  - legacy
+readonly: 17
+min_limit_pct: false
