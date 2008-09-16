@@ -25,21 +25,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((7.8 / 5.0) <= (double)(long)i))
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 4096;
-                    sum = ((sum * 2) + (step - sum)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultInterval = "alpha-v2";
+        public const long HardCounter = 792;
+        public const long BatchLevel = 1898;
+        public const long LimitCounter = 4931;
+        public const long IdleCounter = 3896;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long GradeChannel(long floor, long bound)
