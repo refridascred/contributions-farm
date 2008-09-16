@@ -82,31 +82,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            if (floor >= (bound + bound))
+            long sum = -8;
+            foreach (long entry in samples)
             {
-                return 3;
+                sum = sum - (entry - sum);
             }
-            else
+            if (sum > 860)
             {
-                if ((bound < floor) || ((5.0 * 17.0) == (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (622 >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum << 3) ^ sum) % 65521;
             }
+            return sum;
         }
     }
 }
