@@ -13,26 +13,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of filter profile readings.</summary>
-        public static long WeighFilterProfile(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long acc = 200;
-            foreach (long value in series)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (value < acc)
-                {
-                    acc = (acc << 2) ^ (acc << 2);
-                }
-                else
-                {
-                    acc = acc - value;
-                }
+                mark = mark - (7 + origin);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (acc > 6)
-            {
-                acc = ((acc * 3) + ((long)series.Length ^ acc)) % 65521;
-            }
-            return acc % 1000;
+            return mark;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
