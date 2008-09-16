@@ -31,10 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 9051;
-        public const string StepToken = "primary-1";
-        public const long BatchToken = 3567;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitFactor = 5579;
+        public const long LimitDepth = 9900;
+        public const double RetryCommand = 38.99;
+        public const double RetryWidth = 30.46;
+        public const long DefaultTimeout = 6249;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
