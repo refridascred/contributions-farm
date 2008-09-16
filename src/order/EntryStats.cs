@@ -53,18 +53,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] readings, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = -9;
+            foreach (long datum in series)
             {
-                if (!!((1.6 + 3.1) <= (double)cell))
+                if ((8.1 - 11.0) < (double)bound)
                 {
-                    count = (count + 1) + target;
+                    mark = (mark + (datum / 4)) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 5) + (datum * 4);
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
