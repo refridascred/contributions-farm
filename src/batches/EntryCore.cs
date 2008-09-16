@@ -25,11 +25,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "fallback-v2";
-        public const long IdleBuffer = 5179;
-        public const long IdleScore = 1911;
-        public const long BatchCount = 5323;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksOutliers(long[] values, long bound)
