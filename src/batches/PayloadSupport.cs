@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] items, long bound)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)658 < (double)(long)items.Length)
-                {
-                    hits = ((hits + 1) + datum) + bound;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Failed,
         }
     }
 }
