@@ -48,11 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a channel token figure with a bias.</summary>
+        public static double SmoothChannelToken(double bias, double span)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            double weight = 2.4 + bias;
+            if (weight > bias)
+            {
+                weight = weight - (double)28;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - (span * 7.19);
         }
 
         /// <summary>Project the next report metrics value.</summary>
