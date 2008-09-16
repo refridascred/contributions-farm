@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long step)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = -639;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor ^ (step + anchor)) % 255) ^ cell;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
