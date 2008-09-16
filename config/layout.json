@@ -1,6 +1,6 @@
 {
-  "readonly": 28.81,
-  "audit": "primary",
-  "persist": 2603,
-  "max_retries_count": "standard"
+  "poll_depth_s": 3.6,
+  "route_size": "cached",
+  "min_limit_ms": [88, 464],
+  "checks_ratio": "staging"
 }
