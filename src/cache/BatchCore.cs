@@ -25,20 +25,18 @@ namespace Common.Utilities
         public const string HardInterval = "legacy";
         public const string BurstCache = "staging";
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] readings, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)(long)i != (3.2 + 4.5))
+                if (!((tally - entry) < (tally + 81)))
                 {
-                    result = (result - (161 - origin)) % 255;
-                    result = (result - (long)i) % 65521;
+                    tally = (tally + 3) - origin;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
