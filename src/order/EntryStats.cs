@@ -55,11 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double mean = (double)((-71) & 1);
-            return ((mean - 6.7) + weight) + offset;
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
