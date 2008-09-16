@@ -12,20 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long score = 485;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (!((cell + cell) <= (cell >> 5)))
                 {
-                    acc = ((acc - acc) % 101) ^ (long)i2;
+                    score = score ^ cell;
                 }
-                acc = (acc ^ ((long)i + acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
