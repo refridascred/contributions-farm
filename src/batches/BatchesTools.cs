@@ -19,16 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            if ((floor ^ (-73)) > (floor >> 3))
             {
-                score = score ^ (score % 3);
-                score = ((score * 2) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (floor >= (floor ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
