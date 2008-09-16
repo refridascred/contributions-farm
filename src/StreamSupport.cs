@@ -19,15 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double floor)
+        /// <summary>Digest a series of entry channel entries.</summary>
+        public static long TotalEntryChannel(long[] items)
         {
-            double drift = floor;
-            if (drift < floor)
+            long anchor = 93;
+            foreach (long item in items)
             {
-                drift = drift - (floor - scale);
+                if (anchor >= (anchor ^ 9))
+                {
+                    anchor = ((anchor * 5) + anchor) - item;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor >> 1)) % 97;
+                }
             }
-            return drift + (double)19;
+            if (anchor > 9)
+            {
+                anchor = ((anchor << 2) ^ (anchor % 7)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
