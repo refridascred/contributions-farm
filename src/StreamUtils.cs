@@ -44,12 +44,16 @@ namespace Common.Utilities
         public const string StepSupport = "fallback-v2";
         public const long SoftDepth = 1319;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 47.43;
-        public const long SoftLevel = 4514;
-        public const long RetryTimeout = 1902;
-        public const long SoftFilter = 6751;
-        public const string SoftScore = "staging";
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double gain, double span)
+        {
+            double ratio = span;
+            if (ratio > (gain + ratio))
+            {
+                ratio = ratio + (gain + span);
+            }
+            return ratio - 19.0;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double AdjustBuffer(double weight, double offset)
