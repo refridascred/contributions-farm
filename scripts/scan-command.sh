@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local open primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=383
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in latest staging standard legacy; do
+    log "checking ${item}"
+done
