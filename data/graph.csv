@@ -1,11 +1,6 @@
-id,weight,score,token
-1,55.51,87.38,23.05
-2,86.39,128,green
-3,8.24,434,primary
-4,97.37,59.39,latest
-5,green,edge,local
-6,cached,5.25,583
-7,open,latest,strict
-8,469,6,393
-9,48.99,blue,green
-10,stable,85.23,614
+id,count,token,rank,owner
+1,12.29,80,cached,877
+2,local,local,5.37,strict
+3,3.05,47.89,782,eu-west
+4,518,54.09,6.26,802
+5,open,178,65.36,eu-west
