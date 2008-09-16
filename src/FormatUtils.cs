@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] values, long target)
         {
-            Done,
-            Retry,
-            Pending,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
