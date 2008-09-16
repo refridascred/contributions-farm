@@ -46,19 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] readings, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = -94;
+            foreach (long datum in series)
             {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state - (step * 3)) % 4096) + datum;
             }
-            return stale;
+            if (state > 129)
+            {
+                state = ((state * 3) + (state % 60)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a stream header.</summary>
