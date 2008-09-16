@@ -43,17 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 85.37;
+        public const string LimitBudget = "standard-1";
+        public const double BaseRecord = 46.66;
+        public const double SoftDepth = 49.72;
+        public const long HardRecord = 3536;
     }
 }
