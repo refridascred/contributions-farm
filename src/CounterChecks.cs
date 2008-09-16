@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many report profile samples are out of range.</summary>
-        public static long MeasureReportProfileMatches(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((13.0 + 8.0) < (double)hits)
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
