@@ -29,15 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel commits readings against a rule.</summary>
-        public static long MeasureChannelCommitsHits(long[] readings, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long sample in readings)
             {
-                if ((datum & 31) >= (185 * 2))
+                if ((6 & 3) != (long)readings.Length)
                 {
-                    hits = (hits + 2) - seed;
+                    hits = (hits + 3) - sample;
                 }
             }
             return hits;
