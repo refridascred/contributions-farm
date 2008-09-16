@@ -14,14 +14,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long offset, long floor)
         {
-            Done,
-            Stale,
-            Failed,
-            Synced,
-            Retry,
+            long diff = offset - floor;
+            if ((diff + (-269)) >= (3 % 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor / 6) >= floor) && ((offset ^ floor) >= (offset << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
