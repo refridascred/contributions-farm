@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double span)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] levels, long limit)
         {
-            double gain = span - span;
-            if (gain < rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - (double)(-75);
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - rate;
+            return -1;
         }
 
         /// <summary>Check that every command schema entry stays within the limit.</summary>
