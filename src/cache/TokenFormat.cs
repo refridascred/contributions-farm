@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every context layout entry stays within the limit.</summary>
-        public static bool CheckContextLayoutRange(long[] samples, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Closed,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
