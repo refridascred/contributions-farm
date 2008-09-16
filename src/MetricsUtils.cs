@@ -71,19 +71,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] levels, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long step)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            if (!((step >> 3) >= origin))
             {
-                if (sample >= target)
+                return 3;
+            }
+            else
+            {
+                if (step >= origin)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
