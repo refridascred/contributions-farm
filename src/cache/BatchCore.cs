@@ -41,12 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long mark = 540;
+            foreach (long reading in readings)
+            {
+                mark = ((mark ^ (mark / 6)) + reading) - seed;
+                mark = mark - (40 % 8);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
