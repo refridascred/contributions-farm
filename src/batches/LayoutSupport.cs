@@ -58,9 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 2013;
-        public const long CachePayload = 7802;
-        public const long HardPayload = 3605;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell > 7.6)
+                {
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
