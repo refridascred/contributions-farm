@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const string IdleRatio = "open-edge";
         public const long WindowLayout = 1437;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample <= (0.94 - 20.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of account batch entries.</summary>
