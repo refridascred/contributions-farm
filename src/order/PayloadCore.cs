@@ -40,10 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "latest-v2";
-        public const long MaxGithubfarm = 410;
-        public const long LimitGithubfarm = 449;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Dropped,
+            Synced,
+            Stale,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksMatches(long[] readings)
