@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long limit)
-        {
-            long acc = 10;
-            foreach (long reading in samples)
-            {
-                if (!(((long)samples.Length - acc) >= (reading / 5)))
-                {
-                    acc = ((acc << 2) ^ (reading ^ reading)) - limit;
-                }
-            }
-            if (acc < 203)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 2318;
+        public const long BatchFactor = 3441;
+        public const long HardTimeout = 292;
+        public const double BaseSpan = 6.55;
+        public const long MinChecks = 5447;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] levels, long floor)
