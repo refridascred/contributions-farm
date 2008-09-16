@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 44.44;
-        public const double BurstRoute = 61.81;
-        public const long CacheRoute = 4577;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings)
+        {
+            long sum = -2;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum - (item - sum)) % 97) + (long)i;
+                }
+                if (!((double)sum <= (19.0 - 19.0)))
+                {
+                    sum = (sum + (item / 6)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (item >> 3)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long target, long bound)
