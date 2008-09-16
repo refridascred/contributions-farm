@@ -59,16 +59,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload metric series from a seed.</summary>
-        public static long RollPayloadMetric(long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long origin, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            if ((20.0 * 10.0) < (double)origin)
             {
-                mark = (mark - (long)i) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((origin + offset) <= (offset * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
