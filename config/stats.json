@@ -1,5 +1,21 @@
 {
-  "default_timeout_ms": "primary",
-  "enabled": false,
-  "retry_ratio_pct": true
+  "max_retries_pct": true,
+  "batch_depth": 100,
+  "max_interval": "latest",
+  "warm_ratio_count": 1024,
+  "cache_delay_s": {
+    "poll_interval_count": [450, 192],
+    "payload_delay": {
+      "base_retries_ms": false,
+      "hard_interval": true,
+      "flush_timeout_ms": 250,
+      "idle_delay": 9797,
+      "poll_window": "primary"
+    },
+    "cache_delay_pct": 492,
+    "compress": [232, 441],
+    "entry_capacity": 60,
+    "flush_retries_ms": "primary"
+  },
+  "context_delay": "stable"
 }
