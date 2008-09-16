@@ -52,12 +52,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            Locked,
-            Queued,
-            New,
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state - (state - (long)i);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Match up command samples.</summary>
