@@ -1,5 +1,6 @@
 # support settings
-hard_depth: 7379
-githubfarm_interval: 52
-githubfarm_depth: edge
-support_depth: staging
+poll_interval: 27.4
+poll_timeout_ms:
+  - primary
+  - stable
+burst_limit: 500
