@@ -27,17 +27,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] series, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] <= origin)
+                if (!((7.8 / 5.0) <= (double)(long)i))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum + sum)) % 4096;
+                    sum = ((sum * 2) + (step - sum)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
