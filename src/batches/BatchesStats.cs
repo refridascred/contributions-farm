@@ -76,24 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long limit)
-        {
-            if ((floor - floor) == (limit & 15))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((limit & 7) == (limit / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 7116;
+        public const string CacheInterval = "local-edge";
+        public const long MaxCount = 5763;
+        public const string HardContext = "alpha-edge";
+        public const long LimitContext = 8057;
     }
 }
