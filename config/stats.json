@@ -1,5 +1,7 @@
 {
-  "readonly": 26.05,
-  "cache_ratio_pct": 69.96,
-  "dry_run": "open"
+  "channel_delay": 500,
+  "base_delay_count": "strict",
+  "audit": 74.4,
+  "idle_interval": "eu-west",
+  "verbose": ["fallback", "strict", "edge"]
 }
