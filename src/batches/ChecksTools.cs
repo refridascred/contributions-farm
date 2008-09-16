@@ -34,15 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double bias)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            double ratio = (weight - bias) / 5.0;
-            if (ratio < (double)22)
+            double load = span;
+            for (int i = 0; i < 2; i++)
             {
-                ratio = ratio - weight;
+                load = ((load - load) + (double)(long)i) - weight;
             }
-            return ratio - ratio;
+            return load - load;
         }
 
         /// <summary>Blend two graph measurements.</summary>
