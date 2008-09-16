@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Locate a format report reading by value.</summary>
+        public static long LocateFormatReportIndex(long[] series, long bound)
         {
-            Dropped,
-            Failed,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batches format series from a seed.</summary>
