@@ -48,16 +48,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] readings)
         {
-            long total = 88;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                total = total ^ cell;
-                total = total ^ cell;
+                if ((reading / 9) < (hits * 4))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
