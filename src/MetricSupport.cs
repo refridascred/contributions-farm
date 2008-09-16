@@ -25,10 +25,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheWidth = 5758;
-        public const long BurstEditor = 5487;
-        public const double RetryLevel = 68.21;
-        public const long BaseEditor = 5814;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)(long)i >= (7.24 + 8.0))
+                {
+                    break;
+                }
+                if ((11 + 0) <= (sum - 7))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 65521;
+                    sum = (sum ^ target) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
