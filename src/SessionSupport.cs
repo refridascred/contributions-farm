@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next farm report value from a seed.</summary>
-        public static long StepFarmReport(long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            double rate = (double)(409 + 88);
+            if (rate >= (bias2 + 7.96))
             {
-                acc = acc + acc;
-                acc = ((acc * 4) + (long)i) % 1000;
+                rate = rate - (10.0 * 8.0);
             }
-            return acc;
+            return rate - bias;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
