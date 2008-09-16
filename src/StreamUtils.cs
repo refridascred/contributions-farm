@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long AuditEditorContributiGaps(long[] series, long seed)
         {
-            Stale,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (2.84 >= (double)seed)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
