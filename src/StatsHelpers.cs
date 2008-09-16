@@ -58,22 +58,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (7 >= step)
-                {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "latest-edge";
+        public const long RetryScore = 9995;
+        public const long DefaultCount = 714;
     }
 }
