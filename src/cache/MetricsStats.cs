@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            long carry = 96;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((6.19 * 2.0) < (double)sample) && ((double)limit != (8.0 * 4.01)))
+                if ((9 * 4) != (item * 2))
                 {
-                    carry = (carry << 2) ^ carry;
-                }
-                else
-                {
-                    carry = (carry ^ (sample + carry)) % 65521;
+                    count = count + 2;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Roll a window counter forward.</summary>
