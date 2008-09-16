@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchFactor = 23;
-        public const long IdleLevel = 442;
-        public const long BaseSpan = 2506;
-        public const long BatchScore = 2946;
+        /// <summary>Project the next token editor value.</summary>
+        public static double AdjustTokenEditor(double scale, double offset)
+        {
+            double bias = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias + (double)52) + (double)(long)i) + offset;
+            }
+            return bias + scale;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] series, long target)
