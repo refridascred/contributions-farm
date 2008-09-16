@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Check that every payload format entry stays within the limit.</summary>
+        public static bool CheckPayloadFormatRange(long[] readings, long target)
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a stats summary.</summary>
