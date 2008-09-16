@@ -38,13 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double ratio, double offset)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            double drift = offset + offset;
+            if (drift < drift)
+            {
+                drift = (drift - (offset - offset)) + ratio;
+            }
+            return drift + (4.0 / 2.0);
         }
 
         /// <summary>Combine account values into a single score.</summary>
