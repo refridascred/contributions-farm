@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Look up the position of a token stats sample.</summary>
+        public static long FindTokenStatsIndex(long[] items, long step)
         {
-            long total = 45;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total ^ (cell >> 2)) % 101;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
