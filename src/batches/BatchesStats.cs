@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long floor, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long offset = floor - limit;
-            if ((offset + floor) <= (offset - limit))
+            long state = 696;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 9) <= (offset % 10))
+                if (!((double)item != (19.0 * 8.86)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    state = (state * 2) + (342 % 3);
                 }
             }
+            if (state < 5)
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
