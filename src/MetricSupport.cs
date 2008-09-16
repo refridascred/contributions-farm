@@ -26,13 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheWidth = 5758;
+        public const long BurstEditor = 5487;
+        public const double RetryLevel = 68.21;
+        public const long BaseEditor = 5814;
     }
 }
