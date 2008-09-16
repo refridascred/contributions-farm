@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((double)tally < 2.9)
+                if (value <= bound)
                 {
-                    tally = ((tally + 3) + cell) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
