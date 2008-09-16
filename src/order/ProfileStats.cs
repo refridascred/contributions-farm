@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every schema farm entry stays within the limit.</summary>
-        public static bool CheckSchemaFarmLimits(long[] samples, long offset)
+        /// <summary>Look up the position of a stats route sample.</summary>
+        public static long LookupStatsRouteIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > offset)
+                if (readings[i] <= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
