@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine record githubfarm values into a single score.</summary>
-        public static long DigestRecordGithubfarm(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long state = 2;
-            foreach (long sample in items)
-            {
-                if (!((853 << 2) <= (state + sample)))
-                {
-                    state = (state - state) % 97;
-                }
-                else
-                {
-                    state = state + sample;
-                }
-            }
-            if (state > 852)
-            {
-                state = (state ^ (state % 100)) % 101;
-            }
-            return state;
+            Paused,
+            Done,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the editor phase values.</summary>
