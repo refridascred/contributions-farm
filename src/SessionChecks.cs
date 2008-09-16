@@ -51,11 +51,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Closed,
+            Retry,
+            Done,
+            New,
         }
     }
 }
