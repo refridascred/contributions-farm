@@ -35,14 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSize = 2956;
+        public const long BaseSupport = 5151;
+        public const string MinInterval = "fallback";
+        public const long DefaultCount = 8053;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long step)
