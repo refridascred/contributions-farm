@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "strict-edge";
-        public const string BatchContributi = "legacy-v2";
-        public const double LimitWidth = 41.21;
-        public const double BatchBudget = 62.14;
-        public const long BurstContributi = 5205;
+        /// <summary>Adjust a session format reading.</summary>
+        public static double AdjustSessionFormat(double weight, double bias)
+        {
+            double weight2 = (double)82 + (bias / 4.0);
+            if (weight2 < (weight * 1.4))
+            {
+                weight2 = weight2 + (double)1;
+            }
+            else
+            {
+                weight2 = weight2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + 3.8) + (double)(long)i;
+            }
+            return weight2 + (bias - bias);
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long bound, long limit)
