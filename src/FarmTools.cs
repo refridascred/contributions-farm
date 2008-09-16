@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] values, long floor)
+        /// <summary>Project the next order counter value.</summary>
+        public static double BlendOrderCounter(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double scale = 4.65 * 3.4;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = ((scale + weight) - (double)(long)i) - floor;
             }
-            return flag;
+            return scale - (2.14 - 0.2);
         }
 
         /// <summary>Hold a graph options.</summary>
