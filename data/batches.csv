@@ -1,7 +1,8 @@
-id,region,level
-1,78.33,937
-2,cached,96.81
-3,801,67.35
-4,fallback,green
-5,830,94.42
-6,66.33,36.18
+id,ratio,region,weight,active
+1,17.73,387,850,62
+2,734,92.92,153,110
+3,3.28,blue,691,17.4
+4,fallback,staging,411,366
+5,70.51,latest,stable,eu-west
+6,48.79,59.29,48.75,48
+7,77.86,369,91.99,81.38
