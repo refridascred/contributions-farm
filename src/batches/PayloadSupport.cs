@@ -34,13 +34,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long floor)
         {
-            Dropped,
-            Retry,
-            Locked,
-            New,
+            long anchor = -200;
+            foreach (long sample in series)
+            {
+                long prev = (floor / 9) << 3;
+                anchor = ((anchor * 4) + (431 - prev)) % 97;
+                if (((4.2 - 6.0) < (double)floor) && ((double)sample == (7.5 + 6.0)))
+                {
+                    anchor = (anchor ^ (floor / 8)) % 101;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
