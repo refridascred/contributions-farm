@@ -1,11 +1,8 @@
 {
-  "strict": "local",
-  "burst_delay_ms": ["fallback", "primary", "standard", "cached"],
-  "idle_interval_s": {
-    "githubfarm_size": "blue",
-    "burst_ratio": false,
-    "sync_limit_ms": [37, 139, 11],
-    "soft_timeout_ms": 806,
-    "context_timeout": "standard"
-  }
+  "cache_size_count": 100,
+  "contributi_delay": "strict",
+  "retry_depth_s": 6286,
+  "poll_retries": "primary",
+  "verbose": 19,
+  "queue_window": 1132
 }
