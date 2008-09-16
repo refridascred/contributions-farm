@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "strict-edge";
+        public const string BatchContributi = "legacy-v2";
+        public const double LimitWidth = 41.21;
+        public const double BatchBudget = 62.14;
+        public const long BurstContributi = 5205;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long bound, long limit)
