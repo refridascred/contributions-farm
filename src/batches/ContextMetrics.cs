@@ -19,11 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 9484;
-        public const long BatchLevel = 7510;
-        public const long BurstQueue = 3454;
-        public const string MinBudget = "latest-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardLevel = "standard-1";
+        public const long BaseFactor = 6336;
+        public const long WindowFactor = 7621;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryInterval = 93.57;
