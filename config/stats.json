@@ -1,14 +1,12 @@
 {
-  "max_window_pct": "primary",
-  "dry_run": "edge",
-  "graph_size": 100,
-  "max_timeout_count": "local",
-  "flush_timeout_pct": 63,
-  "batch_ttl_ms": {
-    "idle_ttl_s": 44,
-    "cache_window": "local",
-    "poll_capacity": 49,
-    "record_size": "blue",
-    "route_delay": true
-  }
+  "default_interval": "edge",
+  "default_delay_pct": {
+    "schema_timeout": ["primary", "fallback"],
+    "burst_depth_pct": false,
+    "tools_ratio": 66.28,
+    "burst_delay": "blue",
+    "poll_ratio_ms": "local",
+    "dry_run": 50.68
+  },
+  "flush_limit_ms": 18.25
 }
