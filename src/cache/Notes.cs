@@ -54,20 +54,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryRatio = 6005;
+        public const long HardBudget = 5818;
+        public const double SoftDepth = 50.14;
+        public const double BaseSize = 46.11;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] series, long seed)
