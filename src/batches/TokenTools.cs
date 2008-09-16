@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheScore = 284;
-        public const double BatchEntry = 15.87;
-        public const long MaxEntry = 2790;
-        public const double SoftFactor = 92.28;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (value >= (seen - value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long BucketSchema(long seed, long origin)
