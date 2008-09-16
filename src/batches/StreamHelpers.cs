@@ -71,18 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout counter readings against a rule.</summary>
-        public static long CountLayoutCounterHits(long[] values)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((2.65 - 7.3) > (double)entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
