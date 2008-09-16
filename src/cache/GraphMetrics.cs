@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((sample + seen) <= 1)
+                if ((double)tally > (9.4 + 3.12))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the profile status values.</summary>
