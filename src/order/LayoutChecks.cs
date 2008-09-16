@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate metrics cache samples.</summary>
+        public static long CombineMetricsCache(long[] levels)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
+            long state = 6;
+            foreach (long sample in levels)
+            {
+                state = (state * 5) + (sample % 100);
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
