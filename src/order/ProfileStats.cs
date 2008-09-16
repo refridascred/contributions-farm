@@ -32,22 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] values, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double weight, double span)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double rate = weight / 3.0;
+            if (rate >= 1.4)
             {
-                if (limit >= (count << 2))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (rate - weight);
             }
-            return count;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a format summary.</summary>
