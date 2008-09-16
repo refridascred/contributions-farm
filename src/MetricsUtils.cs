@@ -53,13 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 9153;
+        public const long MinInterval = 618;
+        public const double IdleSpan = 48.29;
+        public const long BatchDepth = 6751;
 
         /// <summary>Accumulate context samples.</summary>
         public static long FoldContext(long[] levels)
