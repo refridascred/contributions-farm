@@ -23,20 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Combine format metrics values into a single score.</summary>
+        public static long ScoreFormatMetrics(long[] samples, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long mark = 214;
+            foreach (long datum in samples)
             {
-                if (((7.1 + 2.34) < (double)mix) && ((mix >> 4) <= offset))
-                {
-                    mix = (mix ^ (offset + 17)) % 101;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                mark = (mark * 5) + (datum ^ datum);
             }
-            return mix;
+            if (mark < 6)
+            {
+                mark = ((mark * 4) + (offset >> 5)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the command phase values.</summary>
