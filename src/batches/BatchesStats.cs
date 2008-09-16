@@ -40,21 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((origin << 1) > ((long)i >> 1)) || ((origin + mix) < ((long)i - origin)))
-                {
-                    mix = (mix << 2) ^ origin;
-                }
-                mix = (mix - (mix / 3)) % 255;
-                mix = (mix ^ (mix / 4)) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
