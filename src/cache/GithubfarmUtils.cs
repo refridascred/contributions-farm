@@ -27,13 +27,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items, long floor)
         {
-            Retry,
-            Failed,
-            Synced,
-            New,
+            long total = 7;
+            foreach (long reading in items)
+            {
+                total = total ^ (reading ^ floor);
+                total = (total << 2) ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
