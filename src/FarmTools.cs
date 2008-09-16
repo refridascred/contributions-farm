@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            long score = 41;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = ((score * 3) + (score & 1)) ^ value;
+                if ((6.0 + 2.48) < 6.69)
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            if (score > 6)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
