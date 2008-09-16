@@ -1,6 +1,8 @@
 # support settings
-audit: 30
-compress: standard
-batch_threshold: 60.29
-strict: 1
-editor_threshold: 250
+layout_size:
+  - 462
+  - 28
+  - 130
+  - 6
+idle_capacity_pct: 2632
+burst_retries_s: green
