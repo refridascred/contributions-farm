@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((double)172 == (double)hits) || ((hits << 1) < hits))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a already options.</summary>
