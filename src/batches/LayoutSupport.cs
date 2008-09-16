@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate entry queue samples.</summary>
-        public static long WeighEntryQueue(long[] items, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] samples, long origin)
         {
-            long anchor = 59;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + (offset ^ offset)) % 1000) - datum;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 67)
-            {
-                anchor = ((anchor << 2) ^ 999) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
