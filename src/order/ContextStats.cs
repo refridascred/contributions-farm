@@ -17,18 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] data, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = 1;
+            foreach (long entry in series)
             {
-                if (((origin - entry) > entry) || (seen <= entry))
-                {
-                    seen = seen + 3;
-                }
+                anchor = (((anchor * 5) + anchor) % 101) - entry;
+                anchor = anchor - (anchor + seed);
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
