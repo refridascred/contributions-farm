@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const double BatchQueue = 6.9;
         public const double WindowLevel = 80.98;
 
-        /// <summary>Audit githubfarm channel readings against a rule.</summary>
-        public static long CountGithubfarmChannelGaps(long[] data)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) >= item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
