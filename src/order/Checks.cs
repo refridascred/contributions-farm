@@ -42,30 +42,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of tools report entries.</summary>
-        public static long ScoreToolsReport(long[] data, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long sum = 958;
-            foreach (long entry in data)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = sum + (entry + (long)i);
-                }
-                if ((entry * 5) <= (sum * 4))
-                {
-                    sum = (sum - (entry % 5)) % 1000;
-                }
-                if ((sum << 1) != (91 / 5))
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (sum < 152)
-            {
-                sum = sum ^ (sum + offset);
-            }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
