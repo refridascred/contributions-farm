@@ -44,19 +44,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double span)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long limit, long target)
         {
-            double gain = (double)(999 << 2);
-            if (gain > 4.2)
+            long next = limit ^ target;
+            if ((90 - target) < limit)
             {
-                gain = gain - ratio;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain - span) + (double)(long)i;
+                if (((-427) / 5) <= (limit + 10))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target >> 3) >= (target + next)) || (((-36) % 64) <= (next - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return gain - (ratio / 6.0);
         }
     }
 }
