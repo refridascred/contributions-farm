@@ -51,13 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Compare every pair of tools metrics readings.</summary>
+        public static long OverlapToolsMetricsCount(long[] readings)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
