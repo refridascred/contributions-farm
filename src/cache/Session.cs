@@ -26,17 +26,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long limit)
+        /// <summary>Digest a series of githubfarm metrics entries.</summary>
+        public static long FoldGithubfarmMetrics(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 911;
+            foreach (long entry in levels)
             {
-                if (data[i] < limit)
+                if ((entry + 401) < entry)
                 {
-                    return (long)i;
+                    mix = (mix ^ entry) % 1000;
+                }
+                if ((mix >> 4) > target)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the metrics status values.</summary>
