@@ -1,12 +1,18 @@
 {
-  "persist": 31,
-  "burst_ttl_ms": {
-    "strict": false,
-    "contributi_threshold": 77,
-    "default_ttl_s": [11, 252, 395, 496],
-    "enabled": 53,
-    "farm_window": "blue",
-    "batch_interval_s": true
+  "githubfarm_limit": 58,
+  "tools_retries": true,
+  "already_timeout": "open",
+  "persist": {
+    "verbose": 54.3,
+    "dry_run": "green",
+    "cache_timeout": "strict",
+    "warm_interval_ms": 500
   },
-  "entry_ratio": "green"
+  "window_delay": {
+    "warm_size_pct": 40.18,
+    "burst_limit_count": 250,
+    "batches_window": ["cached", "local", "standard"],
+    "compress": 26.03
+  },
+  "buffer_ttl": "cached"
 }
