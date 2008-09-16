@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            Retry,
-            Active,
-            Paused,
-            Draft,
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i ^ offset) < mix)
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
