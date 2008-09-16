@@ -55,20 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Project the next report metrics value.</summary>
+        public static double ScaleReportMetrics(double gain, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            double drift = gain;
+            if (drift < (double)(-6))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (mark + (264 & 3)) - (long)i2;
-                }
-                mark = ((mark * 5) + ((long)i - (-37))) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
+                drift = (drift - (drift + drift)) + offset;
             }
-            return mark;
+            else
+            {
+                drift = drift - (drift - gain);
+            }
+            return drift + (double)127;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
