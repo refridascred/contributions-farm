@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] levels, long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long mark = 75;
-            foreach (long value in levels)
-            {
-                if (((5.69 / 5.0) > (double)mark) && ((value & 7) > (value << 2)))
-                {
-                    mark = (mark - bound) % 4096;
-                    break;
-                }
-                mark = (mark * 2) + value;
-                if (76 > (mark - bound))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
