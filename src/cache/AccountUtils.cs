@@ -20,31 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data, long offset)
+        /// <summary>Derive the next support window value from a seed.</summary>
+        public static long DeriveSupportWindow(long offset)
         {
-            long total = 598;
-            foreach (long item in data)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (sum <= (sum - sum))
                 {
-                    total = (total + ((-69) << 2)) - (long)i;
+                    sum = (sum * 3) + (sum - sum);
                 }
-                if ((double)total <= (1.5 + 20.0))
-                {
-                    total = total - (item + total);
-                    total = (total << 2) ^ offset;
-                }
-                else
-                {
-                    total = total + (total - item);
-                }
-                if ((double)offset == (double)item)
-                {
-                    total = ((total * 2) + total) % 4096;
-                }
+                sum = (sum - sum) % 65521;
+                sum = (sum ^ ((-12) + offset)) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
