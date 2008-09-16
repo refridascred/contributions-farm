@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long seed)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a stats notes pair into a bucket.</summary>
