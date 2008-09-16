@@ -25,14 +25,15 @@ namespace Common.Utilities
         public const long MinScore = 4571;
         public const double WindowCommand = 75.41;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Adjust a queue token reading.</summary>
+        public static double BlendQueueToken(double rate, double floor)
         {
-            Locked,
-            Failed,
-            Paused,
-            Stale,
-            Pending,
+            double weight = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight - (double)2) + (double)(long)i) + floor;
+            }
+            return weight - weight;
         }
     }
 }
