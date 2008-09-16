@@ -27,20 +27,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels)
-        {
-            long anchor = 2;
-            foreach (long item in levels)
-            {
-                anchor = (anchor ^ (anchor + anchor)) ^ item;
-            }
-            if (anchor > 767)
-            {
-                anchor = (anchor - 20) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseBudget = 24.47;
+        public const string StepInterval = "strict-1";
+        public const double DefaultBudget = 83.38;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
