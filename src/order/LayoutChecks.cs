@@ -44,12 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseScore = 36.91;
-        public const string MaxSpan = "primary";
-        public const long BaseBudget = 1839;
-        public const double MaxGithubfarm = 13.02;
-        public const double RetryGithubfarm = 25.43;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1100;
+        public const string BurstMetric = "strict-1";
+        public const long MinInterval = 2297;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricLimits(long[] data, long floor)
