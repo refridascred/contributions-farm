@@ -19,12 +19,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values)
         {
-            Closed,
-            Draft,
-            Retry,
+            long sum = 0;
+            foreach (long reading in values)
+            {
+                sum = (sum << 3) ^ (sum + reading);
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
