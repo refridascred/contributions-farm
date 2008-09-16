@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long limit)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            if ((limit + 79) < (target << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target >> 1) > target) || ((0.2 * 6.3) >= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((6 & 255) == (3 + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(limit < (target - limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
