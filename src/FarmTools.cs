@@ -20,10 +20,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 7896;
-        public const long MaxDepth = 9851;
-        public const long MinContext = 4517;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples)
+        {
+            long sum = 7;
+            foreach (long datum in samples)
+            {
+                sum = ((sum * 3) + (sum * 4)) ^ datum;
+                sum = sum ^ (sum << 2);
+            }
+            if (sum < 5)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] readings)
