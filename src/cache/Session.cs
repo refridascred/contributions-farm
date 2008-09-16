@@ -28,24 +28,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long step, long origin)
+        /// <summary>Audit window batch readings against a rule.</summary>
+        public static long AuditWindowBatchGaps(long[] levels, long bound)
         {
-            if ((step * 3) <= (step + origin))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.0 - 0.7) > (double)origin)
+                if ((bound / 3) > (bound + bound))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) + cell;
                 }
             }
+            return count;
         }
     }
 }
