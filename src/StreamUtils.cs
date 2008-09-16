@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a support window reading by value.</summary>
-        public static long LookupSupportWindowIndex(long[] data, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 3) != 0))
+                if (items[i] < origin)
                 {
                     return (long)i;
                 }
