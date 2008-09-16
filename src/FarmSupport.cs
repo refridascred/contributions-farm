@@ -14,12 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the booking phase values.</summary>
-        public enum BookingPhase
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Queued,
-            New,
-            Failed,
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
