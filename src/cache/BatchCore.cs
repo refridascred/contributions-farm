@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 3816;
-        public const double BatchLevel = 15.97;
-        public const string WindowTimeout = "fallback-1";
-        public const long CacheWidth = 9427;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepBudget = "primary";
+        public const long LimitWindow = 7088;
+        public const string HardWindow = "stable-1";
+        public const double MinScore = 14.51;
+        public const long BurstBudget = 3217;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] series)
