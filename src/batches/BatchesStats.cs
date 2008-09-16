@@ -63,17 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long target)
+        /// <summary>Digest a series of account batch entries.</summary>
+        public static long TallyAccountBatch(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 404;
+            foreach (long value in samples)
             {
-                if (items[i] <= target)
+                if ((value * 4) >= 58)
                 {
-                    return (long)i;
+                    score = (score - (value % 5)) % 4096;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
