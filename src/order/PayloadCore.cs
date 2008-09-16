@@ -75,33 +75,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long StepClusterFormat(long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long total = 88;
+            foreach (long cell in levels)
             {
-                if (mix < 76)
-                {
-                    mix = ((mix * 4) + (10 + mix)) % 65521;
-                    break;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (step + mix)) % 97;
-                }
-                if ((step - step) > step)
-                {
-                    mix = ((mix * 5) + ((-6) << 1)) % 4096;
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (mix * 5)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                total = total ^ cell;
+                total = total ^ cell;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
