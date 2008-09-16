@@ -23,12 +23,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings)
         {
-            Pending,
-            Draft,
-            Dropped,
+            long acc = 62;
+            foreach (long item in readings)
+            {
+                if ((item % 24) >= acc)
+                {
+                    acc = acc ^ (acc % 60);
+                }
+                if ((item - 9) < item)
+                {
+                    acc = acc - acc;
+                }
+            }
+            if (acc > (-52))
+            {
+                acc = (acc + 5) % 1000;
+            }
+            return acc;
         }
     }
 }
