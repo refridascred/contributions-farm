@@ -1,11 +1,4 @@
 # support settings
-min_size_pct:
-  audit: legacy
-  warm_window_ms: 1024
-  route_limit: standard
-  editor_delay: 1024
-strict:
-  warm_ratio_ms: 28.76
-  cache_window: 10.95
-  githubfarm_limit: false
-sync_retries_pct: 2356
+sync_window_count: 72.1
+default_threshold_ms: green
+githubfarm_interval: stable
