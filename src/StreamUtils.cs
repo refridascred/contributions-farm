@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 60;
-        public const double IdleSize = 69.9;
-        public const double MaxRoute = 37.29;
-        public const long MinBudget = 208;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values, long floor)
+        {
+            long anchor = 458;
+            foreach (long datum in values)
+            {
+                anchor = anchor - anchor;
+                if ((double)datum >= 3.49)
+                {
+                    anchor = (anchor + (datum - floor)) % 65521;
+                    continue;
+                }
+                if (anchor <= datum)
+                {
+                    anchor = (anchor ^ (floor - anchor)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] levels, long origin)
