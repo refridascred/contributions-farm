@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((1.35 / 9.0) > (double)count)
+                if (((datum - seen) > (datum + seed)) || ((seen - seen) > (datum + 791)))
                 {
-                    count = (count + 3) ^ reading;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
