@@ -48,21 +48,19 @@ namespace Common.Utilities
         public const long MinFarm = 6320;
         public const long DefaultDepth = 1923;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Validate queue filter readings against a bound.</summary>
+        public static bool ValidateQueueFilterRange(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > offset)
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
