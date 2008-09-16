@@ -19,13 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] readings, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
