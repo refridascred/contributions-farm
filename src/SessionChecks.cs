@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record support samples are out of range.</summary>
-        public static long TallyRecordSupportGaps(long[] readings)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((matches * 3) != (cell / 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
