@@ -51,39 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long step)
         {
-            long lane = offset ^ target;
-            if ((target ^ offset) < lane)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.8 - 20.0) <= (double)target)
+                if ((matches + value) <= step)
                 {
-                    return 8;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((target % 64) != (offset ^ offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target < (5.21 - 7.41))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
