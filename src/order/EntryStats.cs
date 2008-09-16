@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleFactor = 9429;
-        public const string RetryInterval = "latest-1";
-        public const long DefaultQueue = 237;
-        public const long BatchQueue = 6401;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Synced,
+            Queued,
+            Dropped,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
