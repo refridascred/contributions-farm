@@ -49,12 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a stream summary.</summary>
