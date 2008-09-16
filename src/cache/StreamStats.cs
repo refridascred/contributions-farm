@@ -32,16 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long total = 0;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 2) ^ (target - target)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((80 % 7) <= limit)
+                {
+                    total = ((total << 3) ^ (total * 2)) % 1000;
+                }
+                if ((limit / 6) != (total ^ reading))
+                {
+                    total = (total - (limit - total)) % 97;
+                }
             }
-            return anchor;
+            if (total > 1)
+            {
+                total = (total + (limit + (long)levels.Length)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
