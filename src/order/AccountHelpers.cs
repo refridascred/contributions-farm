@@ -60,19 +60,19 @@ namespace Common.Utilities
         public const double BatchQueue = 6.9;
         public const double WindowLevel = 80.98;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] items, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double rate = floor;
+            if (rate >= (rate - rate))
             {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - (gain * 15.0);
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate + gain)) + (double)(long)i;
+            }
+            return rate + (double)403;
         }
 
         /// <summary>Describe the entry status values.</summary>
