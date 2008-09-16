@@ -1,7 +1,8 @@
 # support settings
-persist: false
-batch_size_pct: 100
-batch_capacity:
-  - edge
-  - local
-retry_ratio_ms: primary
+soft_limit_ms: 500
+command_ttl: 250
+flush_ratio_pct:
+  - 464
+  - 476
+payload_limit: true
+token_timeout: stable
