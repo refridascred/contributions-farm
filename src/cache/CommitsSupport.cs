@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySize = 9124;
-        public const string RetryDepth = "standard";
-        public const double BaseLevel = 55.23;
-        public const long MaxTimeout = 9569;
-        public const long BurstRatio = 783;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double rate, double bias)
+        {
+            double drift = bias;
+            return (drift - bias) + rate;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long step)
