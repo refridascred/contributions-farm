@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const long BaseCount = 4691;
         public const long RetryScore = 8511;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Roll a editor report counter forward.</summary>
+        public static long DeriveEditorReport(long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum - datum) <= (8 << 1))
-                {
-                    count = count + 3;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
