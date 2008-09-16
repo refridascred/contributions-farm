@@ -1,6 +1,5 @@
 {
-  "graph_threshold": 250,
-  "flush_timeout": 6021,
-  "idle_retries_ms": "staging",
-  "min_threshold": 23
+  "readonly": 26.05,
+  "cache_ratio_pct": 69.96,
+  "dry_run": "open"
 }
