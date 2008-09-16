@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long floor, long limit)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long offset = floor - limit;
+            if ((offset + floor) <= (offset - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset / 9) <= (offset % 10))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
