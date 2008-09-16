@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool ValidateMetricChannelRange(long[] series, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long score = 29;
+            foreach (long sample in levels)
             {
-                if (value > step)
+                score = ((score ^ ((long)levels.Length + 4)) % 97) - target;
+                if (2 > sample)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return score % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
