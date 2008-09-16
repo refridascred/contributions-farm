@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 3816;
+        public const double BatchLevel = 15.97;
+        public const string WindowTimeout = "fallback-1";
+        public const long CacheWidth = 9427;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] series)
