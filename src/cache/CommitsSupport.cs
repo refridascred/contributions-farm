@@ -29,15 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Queued,
-            Failed,
-            Stale,
-            Locked,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowBudget = 93.49;
+        public const double CacheLayout = 85.23;
+        public const long WindowSpan = 1109;
 
         /// <summary>Measure how many profile account samples are out of range.</summary>
         public static long TallyProfileAccountMatches(long[] readings)
