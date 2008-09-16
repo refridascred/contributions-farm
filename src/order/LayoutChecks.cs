@@ -31,10 +31,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 16.05;
-        public const long SoftLevel = 175;
-        public const string RetryCount = "latest-1";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long target, long step)
