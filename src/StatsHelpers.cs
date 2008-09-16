@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((48 << 3) == (sample - tally)) || (tally <= (sample >> 3)))
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
