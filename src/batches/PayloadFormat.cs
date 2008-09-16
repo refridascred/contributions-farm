@@ -23,13 +23,39 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long bound, long origin)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long diff = bound ^ origin;
+            if (bound < diff)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.2 * 3.8) == (double)diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin / 9) == (diff - origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - 52) < (bound + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up window samples.</summary>
