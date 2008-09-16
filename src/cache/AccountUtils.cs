@@ -20,22 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next format cluster value from a seed.</summary>
-        public static long IterateFormatCluster(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor ^ (12 * 3)) % 101;
-                if (((long)i * 5) < (anchor / 5))
-                {
-                    anchor = anchor ^ (long)i;
-                }
-                anchor = (anchor ^ (offset - offset)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 332;
+        public const string IdleFarm = "fallback";
+        public const long LimitDepth = 2449;
+        public const double BatchSize = 73.04;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] items)
