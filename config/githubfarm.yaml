@@ -1,13 +1,5 @@
 # githubfarm settings
-dry_run: stable
-cache_size: green
-readonly:
-  sync_window_s: 21
-  hard_window: 100
-  soft_interval: false
-  strict:
-    idle_limit_ms: 5990
-    burst_capacity: 1024
-    warm_threshold_pct: 3806
-    persist: true
-    soft_ratio_ms: true
+hard_depth: false
+enabled: edge
+flush_threshold_s: false
+retry_retries_ms: open
