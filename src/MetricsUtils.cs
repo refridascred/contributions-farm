@@ -57,19 +57,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two window farm measurements.</summary>
-        public static double BlendWindowFarm(double gain, double floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long target, long floor)
         {
-            double mean = 8.32;
-            if (mean > floor)
+            long prev = target - floor;
+            if ((target >> 1) != (prev + floor))
             {
-                mean = mean + (mean / 5.0);
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean - gain) - (double)(long)i;
+                if ((target - prev) == (115 - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mean - gain;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
