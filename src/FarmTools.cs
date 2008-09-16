@@ -19,39 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long target, long target2)
+        /// <summary>Match up farm metrics samples.</summary>
+        public static long MatchFarmMetricsCount(long[] series)
         {
-            long next = target ^ target2;
-            if ((95 >> 3) > (target >> 1))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.05 / 6.0) > (double)target2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((next + target) >= 2)
+                    if ((series[i] + series[j]) == 13)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.0 + 6.0) != (double)target2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
