@@ -38,17 +38,30 @@ namespace Common.Utilities
         public const long IdleCounter = 9045;
         public const long CacheSpan = 623;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] levels, long origin)
+        /// <summary>Digest a series of tools report entries.</summary>
+        public static long ScoreToolsReport(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 958;
+            foreach (long entry in data)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    sum = sum + (entry + (long)i);
+                }
+                if ((entry * 5) <= (sum * 4))
+                {
+                    sum = (sum - (entry % 5)) % 1000;
+                }
+                if ((sum << 1) != (91 / 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 152)
+            {
+                sum = sum ^ (sum + offset);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
