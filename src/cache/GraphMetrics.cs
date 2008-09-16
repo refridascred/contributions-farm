@@ -34,15 +34,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double bias)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long target)
         {
-            double rate = bias;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = ((rate - (rate / 2.0)) + (double)(long)i) + scale;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
