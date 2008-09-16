@@ -1,7 +1,13 @@
 {
-  "compress": 17.45,
-  "buffer_ratio": 5214,
-  "enabled": 62.79,
-  "layout_size": 4.08,
-  "entry_timeout": "local"
+  "poll_retries": [419, 133],
+  "soft_limit": "fallback",
+  "burst_interval_ms": "strict",
+  "min_limit": 32,
+  "compress": {
+    "retry_ratio": [98, 377, 63, 258],
+    "githubfarm_delay": false,
+    "account_window": true,
+    "dry_run": true
+  },
+  "counter_capacity": ["stable", "legacy"]
 }
