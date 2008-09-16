@@ -38,25 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long slot = floor - bound;
-            if (slot >= (bound * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound + slot) <= slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of commits entries.</summary>
