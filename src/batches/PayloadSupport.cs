@@ -29,16 +29,15 @@ namespace Common.Utilities
         public const string CacheSupport = "staging-edge";
         public const long BurstSupport = 7707;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long total = 131;
+            foreach (long sample in data)
             {
-                state = ((state * 5) + (seed + seed)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
+                total = (((total - 4) % 255) + sample) - offset;
             }
-            return state;
+            return total;
         }
     }
 }
