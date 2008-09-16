@@ -26,10 +26,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "local-edge";
-        public const long DefaultTimeout = 4820;
-        public const double BurstGraph = 35.07;
-        public const long StepBudget = 2622;
+        /// <summary>Look up the position of a buffer command sample.</summary>
+        public static long LookupBufferCommandIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
