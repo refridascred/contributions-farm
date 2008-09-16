@@ -13,19 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every cluster token entry stays within the limit.</summary>
-        public static bool CheckClusterTokenRange(long[] levels, long target)
+        /// <summary>Compare every pair of command batches readings.</summary>
+        public static long CompareCommandBatchesCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
