@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] items, long floor)
+        /// <summary>Audit notes farm readings against a rule.</summary>
+        public static long TallyNotesFarmMatches(long[] values)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long entry in values)
             {
-                if (!((9.0 * 1.12) < (double)count))
+                if (7.81 < (double)count)
                 {
-                    count = ((count + 3) ^ datum) + floor;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
