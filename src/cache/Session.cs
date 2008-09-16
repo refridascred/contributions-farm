@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchLevel = 43.64;
-        public const double MinEntry = 20.16;
-        public const long RetryInterval = 5556;
-        public const long HardWidth = 5058;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftTimeout = 8395;
+        public const long DefaultCount = 9243;
+        public const long DefaultBatch = 2106;
+        public const double RetryBatch = 20.49;
+        public const long RetryScore = 8073;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutMatches(long[] data)
