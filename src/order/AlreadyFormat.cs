@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
+            public long Ratio { get; set; }
             public long Stamp { get; set; }
-            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
