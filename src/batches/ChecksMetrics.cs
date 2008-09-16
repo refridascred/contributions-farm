@@ -45,16 +45,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a cluster stream counter forward.</summary>
-        public static long IterateClusterStream(long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            long state = -2;
+            foreach (long value in levels)
             {
-                carry = (carry - (carry >> 5)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                state = (((state - (64 & 1)) % 255) + value) + step;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
