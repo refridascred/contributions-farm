@@ -16,22 +16,12 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] values, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (58 > bound)
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
