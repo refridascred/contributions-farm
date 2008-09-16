@@ -23,18 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = 158;
+            foreach (long cell in data)
             {
-                if (matches > (matches - reading))
-                {
-                    matches = (matches + 3) + floor;
-                }
+                score = ((score << 3) ^ (cell + score)) % 65521;
+                score = ((score * 4) + (20 + score)) % 4096;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
