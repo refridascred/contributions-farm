@@ -40,39 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long span = origin + step;
-            if ((step % 64) < (origin / 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((5 % 24) >= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (span & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span < (span - 9)) || ((span % 60) > (origin << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
