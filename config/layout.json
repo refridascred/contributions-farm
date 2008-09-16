@@ -1,6 +1,11 @@
 {
-  "burst_delay": "green",
-  "order_ttl": 76.4,
-  "already_size": 39.08,
-  "token_retries": ["fallback", "stable"]
+  "persist": 500,
+  "flush_depth_count": [42, 17, 316],
+  "burst_retries_pct": "green",
+  "readonly": {
+    "cluster_threshold": "fallback",
+    "cluster_interval": 46,
+    "editor_size": "legacy"
+  },
+  "counter_limit": 60
 }
