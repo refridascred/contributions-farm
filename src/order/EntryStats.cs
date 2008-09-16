@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long step)
+        /// <summary>Project the next account notes value.</summary>
+        public static double AdjustAccountNotes(double ratio, double offset)
         {
-            long acc = 878;
-            foreach (long item in values)
+            double mean = (ratio * 13.0) * 2.19;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc + (step ^ 31)) % 65521) ^ item;
+                mean = (mean - (offset / 2.0)) - (double)(long)i;
             }
-            return acc;
+            return mean + (double)(-527);
         }
 
         /// <summary>Hold a account info.</summary>
