@@ -36,25 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long origin)
         {
-            long bound = origin ^ target;
-            if (((6.05 * 14.0) > (double)bound) && ((bound + bound) < (target - bound)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(origin <= (99 & 127)))
+                if (data[i] > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
