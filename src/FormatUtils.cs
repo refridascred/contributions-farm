@@ -32,23 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph context entries.</summary>
-        public static long TallyGraphContext(long[] series, long bound)
+        /// <summary>Iterate the tools already series from a seed.</summary>
+        public static long RollToolsAlready(long step)
         {
-            long mark = 5;
-            foreach (long value in series)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                mark = (mark + value) - bound;
-                if (mark <= (0 << 3))
-                {
-                    mark = mark + (mark - value);
-                }
-                if (value <= (mark + mark))
-                {
-                    break;
-                }
+                state = (state << 2) ^ 5;
+                state = state ^ (step << 2);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
