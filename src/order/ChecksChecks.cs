@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data, long floor)
         {
-            long prev = offset ^ limit;
-            if ((offset & 15) == (offset << 1))
+            long carry = 249;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + prev) >= (offset + offset)) || ((offset / 9) <= 52))
+                if ((floor / 6) >= 7)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (3 < offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry ^ sample) % 97;
                 }
             }
+            if (carry > 2)
+            {
+                carry = ((carry << 2) ^ (floor ^ carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
