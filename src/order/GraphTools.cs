@@ -71,13 +71,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit schema payload readings against a rule.</summary>
+        public static long CountSchemaPayloadMatches(long[] readings)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) < (hits ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
