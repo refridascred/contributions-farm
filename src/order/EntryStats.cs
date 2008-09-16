@@ -40,20 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account profile readings against a bound.</summary>
-        public static bool CheckAccountProfileBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 20.17;
+        public const long LimitOrder = 4248;
+        public const long HardOrder = 8458;
+        public const long WindowOrder = 4234;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] series, long bound)
