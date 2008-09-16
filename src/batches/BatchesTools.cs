@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 4013;
-        public const string BurstScore = "fallback-1";
-        public const long MinLevel = 846;
-        public const long DefaultCommits = 1021;
-        public const string SoftCommits = "standard";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((bound - bound) > seen) || ((double)value == (6.17 - 4.14)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
