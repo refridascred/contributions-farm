@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Active,
-            Ready,
-            Done,
+            Queued,
+            New,
+            Dropped,
         }
     }
 }
