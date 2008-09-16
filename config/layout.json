@@ -1,8 +1,12 @@
 {
-  "warm_ratio": 34,
-  "idle_retries_pct": "blue",
-  "dry_run": "green",
-  "min_interval_s": 60,
-  "min_capacity": 100,
-  "token_depth": true
+  "default_delay_pct": {
+    "default_threshold_count": "latest",
+    "compress": 52,
+    "warm_size_ms": [31, 427],
+    "batch_limit_count": false,
+    "queue_threshold": 1024,
+    "profile_threshold": 20.71
+  },
+  "burst_threshold": 89.38,
+  "cache_depth": 100
 }
