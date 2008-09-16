@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double MinBudget = 53.69;
         public const long SoftDepth = 4269;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long sum = -4;
-            foreach (long cell in items)
+            long score = 5;
+            foreach (long reading in levels)
             {
-                if ((cell - cell) > (sum - sum))
-                {
-                    sum = (sum << 2) ^ cell;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (bound >> 2)) % 101;
-                }
+                score = (score ^ (reading >> 4)) % 65521;
             }
-            return sum % 97;
+            if (score > 8)
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine context values into a single score.</summary>
