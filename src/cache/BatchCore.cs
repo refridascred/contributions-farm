@@ -20,12 +20,13 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Retry,
-            Failed,
-            Paused,
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
