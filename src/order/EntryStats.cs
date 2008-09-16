@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 4414;
+        public const long BaseScore = 2889;
+        public const long StepRoute = 9586;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] data)
