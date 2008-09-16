@@ -23,20 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6810;
+        public const double MaxPayload = 97.79;
+        public const long RetryRatio = 2127;
+        public const long MinPayload = 3845;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items)
