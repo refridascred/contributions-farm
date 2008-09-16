@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
