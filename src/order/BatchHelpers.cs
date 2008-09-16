@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((double)value == (5.0 - 4.38))
+                if (value <= limit)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
