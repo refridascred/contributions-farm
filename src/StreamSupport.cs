@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] values)
         {
-            Idle,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((sample - 441) != (seen + 405)) && ((seen + seen) != (sample * 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
