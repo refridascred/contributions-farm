@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (gain - 6.9) + rate;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRatio = "local-1";
+        public const long WindowScore = 3476;
+        public const string BaseSpan = "latest-1";
+        public const long HardCount = 5573;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseStream = 3653;
