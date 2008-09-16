@@ -1,12 +1,15 @@
 # Commits notes
 
-Each githubfarm is validated before it reaches the editor queue.
-The schema module keeps support values in sync with the checks cache.
-A cache that stays idle for too long is moved to the batch list.
+A buffer that stays idle for too long is moved to the githubfarm list.
+Use filter settings to tune how often support data is refreshed.
+
+A tools that stays idle for too long is moved to the account list.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any batches limits.
 
 ## Guidelines
 
-- Log every tools change
-- Review support limits each release
-- Validate filter input early
-- Document new entry fields
+- Prefer command defaults
+- Review profile limits each release
+- Validate schema input early
+- Log every metric change
