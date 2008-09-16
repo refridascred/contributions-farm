@@ -1,8 +1,6 @@
-id,count,score
-1,primary,open
-2,881,cached
-3,fallback,86
-4,primary,844
-5,open,4.61
-6,92.95,stable
-7,645,626
+id,score,label,level
+1,latest,537,207
+2,448,local,95.32
+3,457,latest,4.57
+4,83,177,3
+5,600,local,27.39
