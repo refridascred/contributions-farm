@@ -53,15 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings, long bound)
         {
-            double rate = (double)(9 % 5);
-            if (rate >= (double)172)
+            long anchor = 23;
+            foreach (long reading in readings)
             {
-                rate = rate + bias;
+                if (!((6 >> 2) <= reading))
+                {
+                    anchor = (anchor * 4) + bound;
+                }
             }
-            return rate - (bias2 + bias);
+            return anchor;
         }
 
         /// <summary>Adjust a commits reading.</summary>
