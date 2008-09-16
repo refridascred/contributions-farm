@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mean + (gain / 4.0);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + tally) < tally)
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 4336;
+        public const long WindowTools = 4766;
+        public const long MinTools = 7793;
+        public const double IdleSize = 38.22;
+        public const long CacheTools = 4834;
 
         /// <summary>Check that every entry metrics entry stays within the limit.</summary>
         public static bool CheckEntryMetricsRange(long[] series, long seed)
