@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseTimeout = 3118;
-        public const long StepBudget = 7741;
-        public const long WindowFactor = 4653;
-        public const long MaxFactor = 7249;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >= (long)readings.Length) && ((double)507 != (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate graph payload readings against a bound.</summary>
         public static bool VerifyGraphPayloadBounds(long[] data, long target)
