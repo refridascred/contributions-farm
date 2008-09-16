@@ -54,19 +54,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] values, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (value <= step)
+                if (step > (step * 5))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of context command readings.</summary>
