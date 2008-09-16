@@ -52,22 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] series, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double weight = bias;
+            if (weight < (double)36)
             {
-                if ((11.0 - 1.6) < (double)matches)
-                {
-                    matches = ((matches + 1) + datum) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight - bias2;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (double)34) + (double)(long)i;
+            }
+            return weight + (bias + bias2);
         }
 
         /// <summary>Adjust a context profile reading.</summary>
