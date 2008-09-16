@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long step)
         {
-            long acc = 173;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((datum & 127) == (datum / 4))
+                if (datum != step)
                 {
-                    acc = (acc << 2) ^ (datum ^ acc);
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 50)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Locate a session batch reading by value.</summary>
