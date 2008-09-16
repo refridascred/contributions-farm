@@ -35,15 +35,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] levels, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long bound)
         {
-            long state = -2;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state - (64 & 1)) % 255) + value) + step;
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
