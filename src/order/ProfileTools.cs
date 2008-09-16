@@ -42,18 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] levels, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((origin << 3) <= datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the commits level values.</summary>
