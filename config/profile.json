@@ -1,8 +1,7 @@
 {
-  "audit": 21.81,
-  "cache_interval_pct": ["eu-west", "eu-west"],
-  "min_size_pct": 16.78,
-  "default_interval": true,
-  "max_capacity_pct": "eu-west",
-  "flush_interval_ms": false
+  "readonly": 8520,
+  "min_ratio_pct": 45.57,
+  "retry_window_count": "latest",
+  "poll_ttl_pct": 25,
+  "sync_interval_ms": 8462
 }
