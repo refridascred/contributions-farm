@@ -46,17 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum * 3) + (seed * 3);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5616;
+        public const string StepBatch = "staging-edge";
+        public const double CacheRatio = 23.16;
+        public const double WindowBatch = 42.07;
+        public const long RetryBatch = 5674;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
