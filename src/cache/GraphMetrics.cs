@@ -32,27 +32,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] samples, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long bound2)
         {
-            long total = 0;
-            foreach (long sample in samples)
+            if ((bound2 + bound2) >= (bound - bound))
             {
-                total = (total << 2) ^ (sample >> 3);
-                if ((sample < (6 >> 5)) || ((4.7 / 9.0) > (double)total))
+                return 6;
+            }
+            else
+            {
+                if ((8.9 - 3.17) <= (double)bound2)
                 {
-                    continue;
-                }
-                if (((-3) % 100) < bound)
-                {
-                    total = ((total * 2) + (121 % 10)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    total = (total ^ (total + total)) % 97;
+                    return 4;
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
