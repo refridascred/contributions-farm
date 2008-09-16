@@ -55,12 +55,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
