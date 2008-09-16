@@ -44,15 +44,13 @@ namespace Common.Utilities
         public const long MaxWidth = 8692;
         public const long SoftSize = 5349;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double gain, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double ratio = span;
-            if (ratio > (gain + ratio))
-            {
-                ratio = ratio + (gain + span);
-            }
-            return ratio - 19.0;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
