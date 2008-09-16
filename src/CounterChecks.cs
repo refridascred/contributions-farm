@@ -56,18 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] levels, long target)
         {
-            long anchor = 23;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((6 >> 2) <= reading))
+                if (levels[i] == target)
                 {
-                    anchor = (anchor * 4) + bound;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
