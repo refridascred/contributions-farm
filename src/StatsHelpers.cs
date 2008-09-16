@@ -73,11 +73,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long limit, long limit2)
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long delta = limit ^ limit2;
+            if (((limit + limit2) >= (limit2 >> 2)) && ((double)limit2 <= (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)limit2 != (19.0 * 1.0)) || ((delta * 3) < (limit + delta)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - 7) >= (limit2 + 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(limit >= (limit2 / 4)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
