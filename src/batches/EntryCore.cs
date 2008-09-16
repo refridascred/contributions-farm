@@ -48,18 +48,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the payload checks entries that pass the check.</summary>
-        public static long CountPayloadChecksMatches(long[] series, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((limit + 492) >= (limit >> 5))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
