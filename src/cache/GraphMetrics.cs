@@ -28,17 +28,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 0;
+            foreach (long sample in samples)
             {
-                if (data[i] == target)
+                total = (total << 2) ^ (sample >> 3);
+                if ((sample < (6 >> 5)) || ((4.7 / 9.0) > (double)total))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if (((-3) % 100) < bound)
+                {
+                    total = ((total * 2) + (121 % 10)) % 97;
+                }
+                else
+                {
+                    total = (total ^ (total + total)) % 97;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
