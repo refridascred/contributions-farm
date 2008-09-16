@@ -1,5 +1,4 @@
 # githubfarm settings
-persist: edge
-default_threshold_pct: strict
-base_ratio: stable
-min_limit_pct: 60
+sync_retries_count: 1024
+burst_capacity: open
+max_size_ms: 33.19
