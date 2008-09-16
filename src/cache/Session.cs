@@ -43,19 +43,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] items, long bound)
+        /// <summary>Count the entry schema entries that pass the check.</summary>
+        public static long CountEntrySchemaGaps(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (value > bound)
+                if ((double)reading <= (double)398)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
