@@ -42,14 +42,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Locked,
-            Ready,
-            New,
-            Done,
-            Draft,
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
