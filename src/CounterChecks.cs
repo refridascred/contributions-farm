@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] samples, long origin)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
