@@ -19,26 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long floor)
-        {
-            long span = target - floor;
-            if (((target << 1) <= target) && ((span + target) > (floor + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + target) < (span - (-204)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 9484;
+        public const long BatchLevel = 7510;
+        public const long BurstQueue = 3454;
+        public const string MinBudget = "latest-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryInterval = 93.57;
