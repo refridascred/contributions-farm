@@ -27,15 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a payload command reading.</summary>
-        public static double SmoothPayloadCommand(double scale, double span)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double bias = span;
-            if (bias <= (bias + bias))
-            {
-                bias = bias - scale;
-            }
-            return bias - span;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
