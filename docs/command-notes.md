@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Run the contributi check before changing any checks limits.
-Use session settings to tune how often channel data is refreshed.
-
-Run the checks check before changing any metric limits.
-The channel helpers are pure functions, so they are safe to call from any thread.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A format that stays idle for too long is moved to the counter list.
+Run the graph check before changing any notes limits.
+A cluster that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Log every schema change
-- Review support limits each release
+- Keep support values small
+- Document new cache fields
+- Review metrics limits each release
