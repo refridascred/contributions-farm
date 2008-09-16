@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const long LimitCache = 4591;
         public const string DefaultWidth = "stable-1";
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] items, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell >= (cell >> 1)) && (cell >= (cell + 0)))
+                if (items[i] < limit)
                 {
-                    matches = (matches + 1) - step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
