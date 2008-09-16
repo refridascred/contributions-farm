@@ -1,6 +1,22 @@
 # githubfarm settings
-channel_retries: green
-poll_limit_count: fallback
-poll_depth_count: 37.14
-token_ttl: stable
-graph_delay: 40
+batch_timeout: 41.97
+hard_threshold_count:
+  - 421
+  - 337
+  - 20
+  - 337
+persist:
+  payload_ttl: 80.36
+  batch_size:
+    soft_limit: open
+    compress: fallback
+    dry_run:
+      - 87
+      - 69
+      - 399
+      - 222
+    poll_size_pct: open
+  idle_capacity_s: latest
+soft_threshold_pct: cached
+warm_retries: open
+verbose: false
