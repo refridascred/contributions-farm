@@ -62,21 +62,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of schema editor readings.</summary>
-        public static long PairSchemaEditorCount(long[] samples)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the payload checks entries that pass the check.</summary>
