@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] series, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (datum >= step)
+                if (cell != seed)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Locate a window profile reading by value.</summary>
