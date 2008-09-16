@@ -42,17 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stream channel entry that matches the target.</summary>
-        public static long SeekStreamChannelIndex(long[] levels, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 2) != 0))
+                if (matches < 944)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + cell) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate stats schema readings against a bound.</summary>
