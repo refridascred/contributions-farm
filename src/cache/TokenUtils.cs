@@ -10,15 +10,20 @@ namespace Common.Utilities
         public const long IdleFarm = 5945;
         public const string BurstFarm = "fallback";
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((94 - anchor) <= anchor)
+                {
+                    anchor = ((anchor * 4) + (anchor >> 3)) % 4096;
+                    anchor = (anchor - (anchor - 83)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
