@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            Pending,
+            Retry,
+            Queued,
         }
     }
 }
