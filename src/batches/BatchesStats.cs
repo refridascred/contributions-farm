@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 2341;
-        public const long WindowScore = 1018;
-        public const string CacheMetric = "local";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((9.6 - 6.9) == (double)matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long origin)
