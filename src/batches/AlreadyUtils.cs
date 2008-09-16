@@ -43,13 +43,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            Pending,
+            New,
+            Idle,
         }
     }
 }
