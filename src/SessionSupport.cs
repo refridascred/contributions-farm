@@ -17,12 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] levels, long offset)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((offset <= (95 * 2)) || ((hits <= (87 - (-689))) || ((2 - hits) < (offset >> 3))))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stream class values.</summary>
