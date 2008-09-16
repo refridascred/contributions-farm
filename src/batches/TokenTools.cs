@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Synced,
-            Closed,
             Draft,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
