@@ -37,20 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstRatio = 64.83;
+        public const double HardDepth = 38.73;
+        public const double LimitGraph = 40.13;
+        public const long MinGraph = 2111;
 
         /// <summary>Look up the position of a session tools sample.</summary>
         public static long LocateSessionToolsIndex(long[] levels, long target)
