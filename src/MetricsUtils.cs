@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine githubfarm payload values into a single score.</summary>
-        public static long TallyGithubfarmPayload(long[] readings, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series, long seed)
         {
-            long total = 7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (!(value <= (value ^ total)))
+                if (((59 << 1) <= (seen + (long)series.Length)) || (((seen / 3) == (reading ^ reading)) && ((reading + seed) != (1 << 3))))
                 {
-                    total = ((total << 2) ^ ((long)readings.Length >> 3)) % 101;
-                    total = (total << 2) ^ total;
-                }
-                if (((730 + 745) <= (value & 127)) || ((value ^ 143) > (limit / 4)))
-                {
-                    total = (total << 2) ^ (total % 16);
+                    seen = seen + 2;
                 }
             }
-            if (total < 60)
-            {
-                total = (total << 2) ^ (limit + limit);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the editor phase values.</summary>
