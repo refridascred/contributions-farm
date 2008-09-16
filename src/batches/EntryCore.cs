@@ -40,12 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long floor, long bound)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long slot = floor - bound;
+            if (slot >= (bound * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound + slot) <= slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a editor record.</summary>
