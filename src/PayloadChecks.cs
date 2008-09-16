@@ -61,18 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((3 - item) > (item << 1)) && (89 > (item - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Hold a commits summary.</summary>
