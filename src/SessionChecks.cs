@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long bound)
         {
-            long mix = -731;
-            foreach (long sample in levels)
+            if ((offset <= (offset << 3)) && ((bound + offset) > offset))
             {
-                if (44 <= (sample % 10))
+                return 4;
+            }
+            else
+            {
+                if ((offset + bound) != (offset / 7))
                 {
-                    mix = mix - (bound % 10);
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix + 98) % 255;
+                    return 6;
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
