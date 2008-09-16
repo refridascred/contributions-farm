@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] readings, long floor)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
