@@ -60,9 +60,19 @@ namespace Common.Utilities
             return (drift + (double)287) + span;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "latest-edge";
-        public const long RetryScore = 9995;
-        public const long DefaultCount = 714;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((mark * 3) < (offset - mark)))
+                {
+                    mark = (mark ^ (long)i) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
