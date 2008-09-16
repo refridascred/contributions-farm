@@ -34,11 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxWidth = 9706;
-        public const double RetryFormat = 20.17;
-        public const long WindowFormat = 3267;
-        public const long MinLevel = 3498;
-        public const long DefaultInterval = 4289;
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series)
+        {
+            long total = 858;
+            foreach (long value in series)
+            {
+                total = ((total ^ (total % 60)) % 4096) + value;
+            }
+            return total % 1000;
+        }
     }
 }
