@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long offset, long step)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            if ((step * 2) < (step ^ step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) <= (step >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Iterate the batch editor series from a seed.</summary>
