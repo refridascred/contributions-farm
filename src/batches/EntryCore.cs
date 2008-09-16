@@ -60,12 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Pending,
-            Retry,
-            Queued,
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
