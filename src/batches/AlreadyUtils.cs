@@ -28,19 +28,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] samples, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (entry > limit)
+                if ((double)count <= (3.85 * 0.9))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 1) + value) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
