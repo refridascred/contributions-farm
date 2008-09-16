@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double scale = (double)(47 + 12);
+            if (scale > span)
             {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (span * 4.8);
             }
-            return valid;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
