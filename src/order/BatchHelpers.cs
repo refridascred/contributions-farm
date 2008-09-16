@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels, long step)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long sum = 92;
+            foreach (long sample in levels)
+            {
+                sum = ((sum * 4) + sample) % 65521;
+            }
+            if (sum < 396)
+            {
+                sum = ((sum * 4) + (step >> 2)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
