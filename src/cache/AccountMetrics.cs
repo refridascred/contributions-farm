@@ -71,21 +71,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset + seed;
+            if ((offset - 245) <= (351 * 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((seed + seed) > (seed - 164)))
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
+                    return 7;
+                }
+                else
+                {
+                    if (offset <= ((-5) / 9))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step > (step ^ offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
