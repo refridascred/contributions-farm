@@ -57,9 +57,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchTimeout = 59.0;
-        public const long CacheFormat = 1991;
-        public const string IdleDepth = "legacy-v2";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long bound, long seed)
+        {
+            long prev = bound - seed;
+            if ((674 >> 5) < (prev << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)prev <= (9.0 - 2.4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev - (-67)) > (prev & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
