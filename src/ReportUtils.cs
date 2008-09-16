@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultDepth = 57.44;
-        public const long MaxCache = 5121;
-        public const long RetryInterval = 6200;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 4164;
+        public const long BaseContext = 2244;
+        public const long DefaultContext = 4895;
+        public const long BatchCount = 5048;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double SoftSupport = 72.92;
