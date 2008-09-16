@@ -22,17 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = acc ^ acc;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of farm queue entries.</summary>
