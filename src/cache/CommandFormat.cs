@@ -12,21 +12,22 @@ namespace Common.Utilities
             return ((mean - mean) + scale) + span;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((34 <= ((long)items.Length % 24)) || ((249 & 7) >= (state % 7)))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((((state << 2) ^ 75) % 1000) + item) + floor;
                 }
             }
-            return matches;
+            if (state > 8)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
