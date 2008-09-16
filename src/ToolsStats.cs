@@ -40,18 +40,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long total = 617;
-            foreach (long sample in data)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample > (total - 81))
-                {
-                    total = (total - (sample * 5)) % 101;
-                }
+                total = (total << 3) ^ (seed ^ seed);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
