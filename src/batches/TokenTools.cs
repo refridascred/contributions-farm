@@ -27,27 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Digest a series of cache channel entries.</summary>
+        public static long TotalCacheChannel(long[] data, long target)
         {
-            long anchor = 34;
-            foreach (long sample in series)
+            long total = 15;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 7; i++)
+                if ((target << 3) < (0 & 15))
                 {
-                    anchor = ((anchor ^ sample) % 4096) ^ (long)i;
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if (((anchor >> 5) <= (anchor - anchor)) && ((sample >> 1) <= anchor))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    total = (total * 3) + (entry + 871);
                 }
                 else
                 {
-                    anchor = (anchor - sample) % 1000;
+                    total = total - (target - total);
                 }
             }
-            return anchor;
+            return total;
         }
     }
 }
