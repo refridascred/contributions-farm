@@ -20,13 +20,11 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double ratio2 = (floor + floor) - (floor / 7.0);
+            return (ratio2 - (floor + ratio2)) + ratio;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
