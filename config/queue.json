@@ -1,5 +1,7 @@
 {
-  "stats_depth": true,
-  "cluster_timeout": 88,
-  "route_interval": "open"
+  "cache_delay": 34.13,
+  "default_capacity": ["fallback", "blue"],
+  "persist": 37,
+  "batch_ttl_pct": 2744,
+  "token_window": [350, 348, 1, 254]
 }
