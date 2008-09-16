@@ -22,30 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long score = 22;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.57 - 13.0) != (double)cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score & 3);
-                }
-                if ((double)9 == (double)score)
-                {
-                    score = (score - (cell + 27)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score << 2)) % 97;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
