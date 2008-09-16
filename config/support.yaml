@@ -1,18 +1,24 @@
 # support settings
-base_threshold_count:
-  readonly:
-    - 268
-    - 212
-    - 22
-    - 50
-  stream_capacity: 65.51
-  idle_timeout_pct:
-    - 66
-    - 445
-    - 49
-    - 108
-  entry_ratio: 60
-  max_ttl_ms: blue
-  default_ratio_s: 28.82
-commits_ratio: 100
-sync_delay_count: local
+default_interval_ms: fallback
+persist:
+  soft_limit_s: 81.99
+  flush_timeout:
+    hard_ratio_pct: 43.99
+    cache_limit: false
+    burst_limit_pct:
+      - edge
+      - edge
+      - blue
+      - edge
+    already_depth: strict
+    graph_size: true
+    min_ttl_pct:
+      - latest
+      - open
+  default_retries: true
+  base_window_s: true
+  layout_ttl: fallback
+  cache_delay: latest
+stream_threshold: local
+base_depth_ms: false
+counter_ttl: 30
