@@ -28,12 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count the buffer profile entries that pass the check.</summary>
+        public static long MeasureBufferProfileGaps(long[] values, long target)
         {
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (seen > target)
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
