@@ -21,9 +21,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 1073;
-        public const long BatchRecord = 8451;
-        public const string LimitRecord = "standard-1";
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long limit)
+        {
+            if (((origin >> 1) != (origin + limit)) || ((limit + origin) >= (limit + limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit / 6) >= origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
