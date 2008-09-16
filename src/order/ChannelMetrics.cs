@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long TotalRouteStats(long[] values, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long mix = -56;
+            foreach (long reading in values)
             {
-                if (!(11.0 > (13.0 / 7.0)))
+                if ((reading <= (reading << 3)) && ((5 + 55) > (reading - step)))
                 {
-                    mark = mark ^ (long)i;
+                    mix = (mix + step) % 101;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the payload status values.</summary>
