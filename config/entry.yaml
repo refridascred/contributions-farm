@@ -1,9 +1,38 @@
 # entry settings
-soft_window_s: staging
-burst_capacity: latest
-dry_run: false
-entry_size:
-  - 394
-  - 499
-  - 440
-  - 196
+editor_retries: primary
+base_interval_s: strict
+verbose: edge
+token_interval:
+  hard_window_count:
+    - 68
+    - 211
+    - 494
+    - 75
+  schema_timeout: cached
+  max_retries_pct: 58.27
+  min_retries_ms: blue
+min_limit: 31
+default_size_count:
+  readonly: local
+  verbose: 48
+  hard_retries:
+    flush_delay_ms: true
+    route_ttl:
+      - eu-west
+      - open
+    cache_size: 500
+    audit: false
+    poll_ratio_pct: primary
+    entry_limit: local
+  batch_limit_pct: strict
+  githubfarm_capacity:
+    default_retries_ms:
+      - 100
+      - 381
+    retry_size: 64
+    stream_capacity:
+      - 482
+      - 426
+      - 407
+      - 446
+    min_interval_pct: 66.93
