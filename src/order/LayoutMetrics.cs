@@ -19,22 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] data, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] data, long floor)
         {
-            long hits = 0;
+            bool ready = true;
             foreach (long cell in data)
             {
-                if (!(((3.3 / 5.0) <= (double)cell) && (hits <= (hits % 10))))
+                if (cell < floor)
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
