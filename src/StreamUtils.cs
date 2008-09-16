@@ -31,12 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 6785;
-        public const string CacheBatches = "cached-1";
-        public const double SoftBatches = 56.28;
-        public const long WindowBatches = 5287;
-        public const long StepSpan = 8936;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 9051;
+        public const string StepToken = "primary-1";
+        public const long BatchToken = 3567;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
