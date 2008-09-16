@@ -39,10 +39,10 @@ namespace Common.Utilities
         public const double RetryWidth = 30.46;
         public const long DefaultTimeout = 6249;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSpan = "strict-v2";
-        public const string StepSupport = "fallback-v2";
-        public const long SoftDepth = 1319;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSpan = 5426;
+        public const long MaxWidth = 8692;
+        public const long SoftSize = 5349;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double gain, double span)
