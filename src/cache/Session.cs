@@ -34,15 +34,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Look up the position of a stream batches sample.</summary>
+        public static long LocateStreamBatchesIndex(long[] series, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
