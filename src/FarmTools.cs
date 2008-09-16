@@ -29,26 +29,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            long acc = 62;
-            foreach (long item in readings)
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item % 24) >= acc)
-                {
-                    acc = acc ^ (acc % 60);
-                }
-                if ((item - 9) < item)
-                {
-                    acc = acc - acc;
-                }
+                anchor = (anchor + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (acc > (-52))
-            {
-                acc = (acc + 5) % 1000;
-            }
-            return acc;
+            return anchor;
         }
     }
 }
