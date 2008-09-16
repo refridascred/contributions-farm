@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long WindowMetric = 1312;
         public const long RetryBudget = 7832;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
