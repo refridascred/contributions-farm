@@ -60,10 +60,22 @@ namespace Common.Utilities
         public const double LimitCount = 20.67;
         public const long StepLayout = 579;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "cached-1";
-        public const long IdleBudget = 136;
-        public const long IdleTimeout = 8063;
-        public const long SoftAlready = 3107;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] readings)
+        {
+            long mark = 7;
+            foreach (long entry in readings)
+            {
+                if ((double)mark <= (7.94 + 5.6))
+                {
+                    mark = (mark - (entry + entry)) % 65521;
+                }
+            }
+            if (mark < 198)
+            {
+                mark = (mark ^ (mark % 2)) % 255;
+            }
+            return mark;
+        }
     }
 }
