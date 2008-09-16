@@ -64,13 +64,20 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series, long floor)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long state = 40;
+            foreach (long entry in series)
+            {
+                state = (((state * 2) + (state * 5)) % 101) + floor;
+                state = (state - (entry % 100)) % 101;
+            }
+            if (state < 53)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 97;
         }
     }
 }
