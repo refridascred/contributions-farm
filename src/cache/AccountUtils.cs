@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 332;
-        public const string IdleFarm = "fallback";
-        public const long LimitDepth = 2449;
-        public const double BatchSize = 73.04;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen % 12) > sample)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] values, long origin)
