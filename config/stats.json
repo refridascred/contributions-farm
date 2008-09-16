@@ -1,6 +1,14 @@
 {
-  "cache_window_pct": 1024,
-  "strict": true,
-  "batch_ratio_ms": "latest",
-  "poll_ratio_pct": 37
+  "max_window_pct": "primary",
+  "dry_run": "edge",
+  "graph_size": 100,
+  "max_timeout_count": "local",
+  "flush_timeout_pct": 63,
+  "batch_ttl_ms": {
+    "idle_ttl_s": 44,
+    "cache_window": "local",
+    "poll_capacity": 49,
+    "record_size": "blue",
+    "route_delay": true
+  }
 }
