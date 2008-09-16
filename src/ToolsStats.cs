@@ -49,12 +49,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long seed)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long diff = floor + seed;
+            if ((diff + diff) >= (seed + diff))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((51 & 127) <= (seed - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff % 97) <= (seed - diff))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor & 1) > (seed + seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
