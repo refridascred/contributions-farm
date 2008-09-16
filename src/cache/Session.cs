@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue graph readings.</summary>
-        public static long CombineQueueGraph(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] data)
         {
-            long mix = 56;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((long)series.Length == (entry / 4)) || ((double)8 != (double)entry))
+                if ((18.0 + 9.3) >= (double)sample)
                 {
-                    mix = (mix + (mix ^ mix)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a checks entry.</summary>
