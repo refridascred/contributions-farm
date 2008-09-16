@@ -1,8 +1,5 @@
 {
-  "cache_delay_count": "strict",
-  "max_interval_ms": "standard",
-  "idle_depth": ["cached", "primary"],
-  "hard_ttl_count": 38.25,
-  "counter_limit": 56.88,
-  "account_window": ["cached", "staging", "standard"]
+  "readonly": false,
+  "min_ttl": 7643,
+  "graph_interval": ["local", "blue", "strict"]
 }
