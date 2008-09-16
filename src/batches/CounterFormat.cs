@@ -32,10 +32,10 @@ namespace Common.Utilities
         public const string MaxOrder = "legacy";
         public const long WindowOrder = 9099;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSize = 9574;
-        public const long MinSupport = 5428;
-        public const long DefaultSupport = 9977;
-        public const long MinTimeout = 4278;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftScore = 1984;
+        public const double MaxCommand = 52.28;
+        public const double MinCommand = 63.62;
+        public const long IdleSpan = 3262;
     }
 }
