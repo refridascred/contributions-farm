@@ -16,13 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Check that every channel command entry stays within the limit.</summary>
+        public static bool CheckChannelCommandBounds(long[] items, long step)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a already options.</summary>
