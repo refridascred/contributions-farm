@@ -1,13 +1,4 @@
 # githubfarm settings
-already_interval: legacy
-githubfarm_ratio:
-  min_delay_s: 1802
-  verbose: 8350
-  audit: 60
-  githubfarm_delay: 39
-enabled: true
-base_retries:
-  - green
-  - latest
-  - open
-  - latest
+metrics_interval: 100
+batch_timeout_s: 7.93
+order_retries: standard
