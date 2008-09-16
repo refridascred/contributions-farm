@@ -101,24 +101,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            double scale = (double)(6 + (-2));
+            if (scale <= scale)
             {
-                acc = acc ^ (step + step);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = (acc + (step + step)) - (long)i2;
-                }
-                if (((acc + 8) > (step + (long)i)) || (step <= (-286)))
-                {
-                    acc = ((acc << 3) ^ ((long)i << 1)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                scale = ((scale + 12.0) - bias) - offset;
             }
-            return acc;
+            else
+            {
+                scale = scale + 8.4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)58) + (double)(long)i;
+            }
+            return scale - (double)(-758);
         }
     }
 }
