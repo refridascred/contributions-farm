@@ -53,17 +53,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((origin << 1) == (origin + target)))
             {
-                if (values[i] < seed)
+                return 5;
+            }
+            else
+            {
+                if ((target - 597) < (target / 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((target - target) > origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + 309) <= (target + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
