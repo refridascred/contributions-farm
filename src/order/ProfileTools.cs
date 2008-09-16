@@ -12,16 +12,19 @@ namespace Common.Utilities
             return weight - (double)3;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] series, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long result = 97;
+            foreach (long item in series)
             {
-                acc = ((acc * 5) + acc) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
+                result = ((result + (offset * 4)) % 255) ^ item;
             }
-            return acc;
+            if (result > 4)
+            {
+                result = result - (result % 12);
+            }
+            return result;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
