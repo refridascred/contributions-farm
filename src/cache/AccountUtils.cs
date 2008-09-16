@@ -28,18 +28,17 @@ namespace Common.Utilities
         public const long LimitDepth = 2449;
         public const double BatchSize = 73.04;
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long AuditSchemaEntryMatches(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum / 9) < (tally ^ tally))
+                if (values[i] == origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
