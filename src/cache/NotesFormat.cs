@@ -44,19 +44,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] series)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long sum = 380;
+            foreach (long item in series)
             {
-                if (item <= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    valid = false;
-                    break;
+                    sum = sum ^ (item + (long)i);
+                }
+                if (((7.37 - 9.71) == (double)sum) || ((sum & 7) < sum))
+                {
+                    sum = (sum + (item * 5)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 5) + ((-904) + 8)) % 101;
                 }
             }
-            return valid;
+            return sum % 65521;
         }
     }
 }
