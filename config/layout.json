@@ -1,15 +1,8 @@
 {
-  "idle_capacity": {
-    "metric_threshold": [75, 169, 292],
-    "cache_limit": 89.19,
-    "max_timeout": true,
-    "cache_threshold_ms": "local",
-    "enabled": 4412,
-    "verbose": 60
-  },
-  "account_threshold": "legacy",
-  "poll_ttl_ms": [383, 193, 414, 491],
-  "default_threshold_s": 5817,
-  "soft_interval_ms": true,
-  "enabled": 25
+  "channel_timeout": true,
+  "idle_capacity_pct": false,
+  "flush_size": 7281,
+  "commits_ratio": true,
+  "tools_size": false,
+  "profile_depth": ["edge", "cached", "cached", "open"]
 }
