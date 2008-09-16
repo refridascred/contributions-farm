@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryInterval = 9447;
-        public const string IdleSchema = "open";
-        public const double BurstBudget = 81.54;
+        /// <summary>Match up stats profile samples.</summary>
+        public static long MatchStatsProfileCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank queue order input into a small class.</summary>
         public static long BucketQueueOrder(long seed, long seed2)
