@@ -44,12 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long origin)
         {
-            Done,
-            Stale,
-            Locked,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the metrics status values.</summary>
