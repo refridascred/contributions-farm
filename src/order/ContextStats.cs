@@ -49,15 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((cell << 3) >= origin)
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a layout info.</summary>
