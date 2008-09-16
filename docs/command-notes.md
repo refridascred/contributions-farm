@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the window list.
+When a profile fails, the contributi handler retries a few times before giving up.
+Keep contributi and command names short and lowercase.
+
+Each farm is validated before it reaches the layout queue.
+Run the window check before changing any farm limits.
 
 ## Guidelines
 
-- Document new farm fields
-- Keep cluster values small
-- Review stream limits each release
+- Validate checks input early
+- Keep entry values small
+- Prefer context defaults
