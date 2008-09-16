@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            Locked,
-            Synced,
-            Queued,
-            Stale,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix << 3) ^ (4 - (long)i)) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits options.</summary>
