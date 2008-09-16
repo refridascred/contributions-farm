@@ -55,14 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Stale,
-            Dropped,
-            Closed,
-            Draft,
             Failed,
+            Queued,
+            Locked,
         }
     }
 }
