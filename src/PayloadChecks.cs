@@ -76,26 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] levels, long origin)
         {
-            long result = 92;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((1.4 / 6.0) == (double)result) || ((step << 2) == (0 << 3)))
+                if ((origin ^ 8) <= (origin + origin))
                 {
-                    result = ((result + step) % 65521) - entry;
-                }
-                else
-                {
-                    result = ((result * 2) + step) % 97;
+                    tally = (tally + 2) + datum;
                 }
             }
-            if (result > (-14))
-            {
-                result = (result - (result + 0)) % 65521;
-            }
-            return result;
+            return tally;
         }
     }
 }
