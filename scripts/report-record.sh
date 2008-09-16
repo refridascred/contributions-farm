@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=394
-log "limit is ${RECORD_LIMIT}"
+for item in local open fallback edge; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+RECORD_LIMIT=410
+log "limit is ${RECORD_LIMIT}"
