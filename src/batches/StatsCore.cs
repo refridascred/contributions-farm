@@ -56,38 +56,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            if (target > offset)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > 485)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset << 1) >= (60 >> 4))
+                    if ((samples[i] + samples[j]) < 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((53 - offset) > (offset / 7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
