@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate metric checks samples.</summary>
-        public static long FoldMetricChecks(long[] levels, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            long score = 333;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((3.7 + 4.5) >= (double)score)
+                if ((tally > (tally - item)) && !((double)item < 6.97))
                 {
-                    score = (((score * 3) + 533) - value) + floor;
+                    tally = tally + 2;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
