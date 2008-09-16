@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter entry values into a single score.</summary>
-        public static long TallyFilterEntry(long[] samples, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] series, long bound)
         {
-            long carry = 19;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long entry in series)
             {
-                carry = carry + (carry >> 5);
-                if (((seed - sample) != (sample % 24)) && ((seed + sample) >= (440 % 3)))
+                if (entry > bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Digest a series of order entries.</summary>
