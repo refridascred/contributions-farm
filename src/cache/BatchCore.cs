@@ -22,11 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long offset)
         {
-            double bias2 = (bias - 1.0) / 9.0;
-            return (bias2 + 3.3) + offset;
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
