@@ -17,18 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] samples, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)sample < (6.5 - 6.1))
+                if (((origin - entry) > entry) || (seen <= entry))
                 {
-                    tally = (tally + 2) + floor;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
