@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] values, long step)
         {
-            Locked,
-            Queued,
-            Failed,
-            Draft,
-            Paused,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of format metrics readings.</summary>
