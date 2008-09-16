@@ -35,14 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Paused,
-            Failed,
-            Dropped,
             Active,
-            Closed,
+            Ready,
+            Done,
         }
     }
 }
