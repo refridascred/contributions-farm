@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine route stats values into a single score.</summary>
-        public static long TotalRouteStats(long[] values, long step)
+        /// <summary>Count the route account entries that pass the check.</summary>
+        public static long MeasureRouteAccountMatches(long[] data, long bound)
         {
-            long mix = -56;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((reading <= (reading << 3)) && ((5 + 55) > (reading - step)))
+                if ((double)matches >= (double)bound)
                 {
-                    mix = (mix + step) % 101;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
