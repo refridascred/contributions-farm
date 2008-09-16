@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long DefaultScore = 4733;
         public const long LimitCommits = 9168;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ acc;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
