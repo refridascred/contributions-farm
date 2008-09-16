@@ -41,19 +41,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] items)
-        {
-            long total = -16;
-            foreach (long reading in items)
-            {
-                total = ((total - (57 & 1)) % 65521) ^ reading;
-            }
-            if (total > 288)
-            {
-                total = (total * 3) + (total % 2);
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftChannel = "open-1";
+        public const long StepRatio = 9798;
+        public const long IdleCount = 8602;
+        public const long RetryCount = 2106;
+        public const long SoftLevel = 2679;
     }
 }
