@@ -78,21 +78,19 @@ namespace Common.Utilities
             return drift + (double)127;
         }
 
-        /// <summary>Compare every pair of profile report readings.</summary>
-        public static long OverlapProfileReportCount(long[] samples)
+        /// <summary>Validate already session readings against a bound.</summary>
+        public static bool GuardAlreadySessionBounds(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value <= origin)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
