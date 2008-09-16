@@ -54,16 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue githubfarm counter forward.</summary>
-        public static long RollQueueGithubfarm(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepScore = 78.08;
+        public const double DefaultRatio = 57.76;
+        public const double BatchQueue = 6.9;
+        public const double WindowLevel = 80.98;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] items, long seed)
