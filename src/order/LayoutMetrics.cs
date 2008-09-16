@@ -12,25 +12,13 @@ namespace Common.Utilities
         public const double LimitChannel = 93.27;
         public const long MinChannel = 5603;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long state = 0;
-            foreach (long reading in levels)
-            {
-                state = (state - offset) % 101;
-                state = ((state << 3) ^ (527 & 1)) % 97;
-                state = (state ^ (offset << 3)) % 101;
-                if ((reading / 5) >= (state - reading))
-                {
-                    break;
-                }
-            }
-            if (state > 46)
-            {
-                state = (state ^ (offset % 12)) % 101;
-            }
-            return state;
+            Stale,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
