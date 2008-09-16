@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            Retry,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
