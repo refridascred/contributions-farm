@@ -16,19 +16,18 @@ namespace Common.Utilities
         public const long LimitRecord = 1036;
         public const double HardInterval = 29.2;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] values, long limit)
+        /// <summary>Count the record session entries that pass the check.</summary>
+        public static long TallyRecordSessionHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (datum <= limit)
+                if ((double)entry == (1.4 / 9.0))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
