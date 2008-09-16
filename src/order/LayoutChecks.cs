@@ -74,22 +74,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Blend two buffer support measurements.</summary>
+        public static double ScaleBufferSupport(double scale, double offset)
         {
-            long mark = 2;
-            foreach (long datum in readings)
+            double drift = (double)(173 + (-655));
+            if (drift < (drift * 19.0))
             {
-                if (21 < ((long)readings.Length >> 5))
-                {
-                    mark = (mark * 2) + (datum + datum);
-                }
+                drift = drift + (offset * 6.0);
             }
-            if (mark < 2)
+            else
             {
-                mark = (mark * 3) + mark;
+                drift = drift - drift;
             }
-            return mark % 1000;
+            return drift + scale;
         }
     }
 }
