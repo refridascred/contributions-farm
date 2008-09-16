@@ -57,17 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
