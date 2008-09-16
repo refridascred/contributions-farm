@@ -38,15 +38,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate batch graph samples.</summary>
-        public static long ScoreBatchGraph(long[] levels, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double span)
         {
-            long acc = 63;
-            foreach (long sample in levels)
+            double load = bias;
+            if (load > (span + load))
             {
-                acc = ((acc ^ (acc - 7)) - sample) - seed;
+                load = load + (4.2 / 8.0);
             }
-            return acc % 65521;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load / 2.0)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
