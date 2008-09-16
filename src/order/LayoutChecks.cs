@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
