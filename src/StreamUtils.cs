@@ -36,15 +36,15 @@ namespace Common.Utilities
         public const string LimitScore = "open";
         public const long WindowContributi = 9799;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data, long step)
+        /// <summary>Count the session farm entries that pass the check.</summary>
+        public static long CountSessionFarmHits(long[] data, long seed)
         {
             long hits = 0;
-            foreach (long sample in data)
+            foreach (long value in data)
             {
-                if (!!((40 - 9) > (hits - step)))
+                if ((hits >> 2) <= 21)
                 {
-                    hits = (hits + 1) + sample;
+                    hits = ((hits + 1) - value) - seed;
                 }
                 else
                 {
