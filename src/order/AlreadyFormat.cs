@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double BaseBudget = 27.36;
         public const string BurstContributi = "cached-1";
 
-        /// <summary>Check that every window notes entry stays within the limit.</summary>
-        public static bool CheckWindowNotesLimits(long[] samples, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit channel route readings against a rule.</summary>
