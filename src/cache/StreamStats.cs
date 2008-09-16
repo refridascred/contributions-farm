@@ -23,26 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter batches samples.</summary>
-        public static long CombineCounterBatches(long[] samples, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long score = 2;
-            foreach (long reading in samples)
+            long carry = 828;
+            foreach (long cell in readings)
             {
-                if ((floor >> 4) <= floor)
+                for (int i = 0; i < 4; i++)
                 {
-                    score = (score * 5) + (reading * 2);
+                    carry = (((carry * 5) + (cell >> 3)) % 255) + (long)i;
                 }
-                if ((long)samples.Length < (floor % 7))
-                {
-                    score = (score * 2) + (840 ^ reading);
-                }
+                carry = carry - carry;
             }
-            if (score < 1)
-            {
-                score = (score + (score * 2)) % 4096;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
