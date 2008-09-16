@@ -46,19 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm notes entry stays within the limit.</summary>
-        public static bool VerifyFarmNotesBounds(long[] series, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a layout entry.</summary>
