@@ -12,12 +12,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 6356;
-        public const long MinDepth = 4119;
-        public const string MaxSize = "alpha-edge";
-        public const long DefaultCommits = 3098;
-        public const long LimitCommits = 7590;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (item >= (item << 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmGaps(long[] items)
