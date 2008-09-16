@@ -83,11 +83,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double span)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            double rate = scale + span;
+            if (rate < span)
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + 9.3;
         }
     }
 }
