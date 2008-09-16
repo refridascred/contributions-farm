@@ -1,5 +1,17 @@
 {
-  "githubfarm_retries": ["staging", "staging"],
-  "idle_retries": 30,
-  "flush_depth": "open"
+  "sync_threshold_s": 60,
+  "profile_interval": {
+    "default_window_ms": {
+      "persist": "fallback",
+      "strict": 2499,
+      "cluster_delay": 60,
+      "format_capacity": 7763
+    },
+    "poll_interval": 13,
+    "sync_limit": 250
+  },
+  "order_delay": 50,
+  "compress": false,
+  "retry_retries_count": 6,
+  "cache_threshold": 2019
 }
