@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const long BaseCount = 4691;
         public const long RetryScore = 8511;
 
-        /// <summary>Roll a editor report counter forward.</summary>
-        public static long DeriveEditorReport(long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            double mean = (ratio * 5.2) * 4.0;
+            if (mean < (ratio * 4.56))
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                mean = mean - 3.24;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + (mean - ratio);
         }
     }
 }
