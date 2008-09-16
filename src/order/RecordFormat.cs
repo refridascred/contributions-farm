@@ -29,11 +29,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 78.17;
-        public const double RetryEntry = 4.11;
-        public const long WindowEntry = 934;
-        public const string DefaultTimeout = "fallback-edge";
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] readings, long limit)
