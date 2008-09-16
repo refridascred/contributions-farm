@@ -30,9 +30,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 237;
-        public const long IdleDepth = 9041;
-        public const long StepDepth = 3350;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSize = 6415;
+        public const long BatchBatches = 4640;
+        public const double WindowBatches = 75.82;
+        public const string SoftBatches = "standard";
+        public const long StepBatches = 5273;
     }
 }
