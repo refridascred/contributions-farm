@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const long LimitDepth = 2449;
         public const double BatchSize = 73.04;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long AuditSchemaEntryMatches(long[] levels)
         {
-            long carry = 2;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((carry - entry) < (entry - carry))
+                if ((datum / 9) < (tally ^ tally))
                 {
-                    carry = ((carry << 3) ^ (entry * 5)) % 255;
-                }
-                if ((carry * 4) != (carry % 2))
-                {
-                    carry = (carry - (entry + entry)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
     }
 }
