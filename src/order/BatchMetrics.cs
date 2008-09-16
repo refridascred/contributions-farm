@@ -42,16 +42,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a cache notes counter forward.</summary>
-        public static long SeriesCacheNotes(long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark + (long)i;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
