@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinBudget = 3824;
-        public const long StepRecord = 7408;
-        public const long MinRecord = 4055;
-        public const long MaxDepth = 1999;
-        public const double DefaultScore = 10.44;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
