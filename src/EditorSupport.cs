@@ -40,21 +40,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count session entry pairs that satisfy a relation.</summary>
-        public static long MatchSessionEntryCount(long[] data)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
