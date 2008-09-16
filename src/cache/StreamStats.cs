@@ -33,26 +33,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long step)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((80 % 7) <= limit)
+                if (values[i] >= step)
                 {
-                    total = ((total << 3) ^ (total * 2)) % 1000;
-                }
-                if ((limit / 6) != (total ^ reading))
-                {
-                    total = (total - (limit - total)) % 97;
+                    return (long)i;
                 }
             }
-            if (total > 1)
-            {
-                total = (total + (limit + (long)levels.Length)) % 1000;
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
