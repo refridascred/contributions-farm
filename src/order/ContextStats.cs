@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix * 4) + (mix * 3);
-                mix = ((mix * 4) + (long)i) % 1000;
+                state = (state + (limit << 3)) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
