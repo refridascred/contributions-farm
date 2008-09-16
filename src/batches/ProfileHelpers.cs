@@ -63,23 +63,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long origin)
+        /// <summary>Audit graph stats readings against a rule.</summary>
+        public static long AuditGraphStatsOutliers(long[] data)
         {
-            long anchor = 479;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                double ratio = 9.99;
-                if (!((double)origin >= ratio))
+                if ((hits + reading) == (reading - hits))
                 {
-                    ratio = ratio - (double)anchor;
-                }
-                if (origin > (origin - origin))
-                {
-                    anchor = ((anchor << 2) ^ (value << 2)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
