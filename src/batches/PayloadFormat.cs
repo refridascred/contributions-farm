@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 660;
-            foreach (long datum in levels)
-            {
-                score = (((score * 5) + (score + bound)) % 255) + datum;
-            }
-            return score % 4096;
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
