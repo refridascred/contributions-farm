@@ -27,17 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] values, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (bound - 4)) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the metrics level values.</summary>
