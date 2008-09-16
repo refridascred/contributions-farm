@@ -17,13 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Digest a series of filter githubfarm entries.</summary>
+        public static long WeighFilterGithubfarm(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            long result = 522;
+            foreach (long datum in samples)
+            {
+                if (!((double)datum == (4.8 + 9.0)))
+                {
+                    break;
+                }
+                if (datum > (result ^ datum))
+                {
+                    result = (result ^ (result % 24)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the token level values.</summary>
