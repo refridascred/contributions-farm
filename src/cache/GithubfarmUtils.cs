@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Derive the next layout cache value from a seed.</summary>
+        public static long DeriveLayoutCache(long origin)
         {
-            Queued,
-            Draft,
-            Failed,
-            Dropped,
-            Closed,
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up metric channel samples.</summary>
