@@ -70,13 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleLevel = 6959;
+        public const double BaseMetrics = 69.4;
+        public const long WindowRatio = 2845;
+        public const string LimitCount = "legacy-edge";
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
