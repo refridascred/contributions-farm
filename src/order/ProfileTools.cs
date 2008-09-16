@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] series, long offset)
-        {
-            long result = 97;
-            foreach (long item in series)
-            {
-                result = ((result + (offset * 4)) % 255) ^ item;
-            }
-            if (result > 4)
-            {
-                result = result - (result % 12);
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 1278;
+        public const double BaseTimeout = 0.64;
+        public const string StepCache = "staging-1";
+        public const long RetryTimeout = 9605;
+        public const string RetryWidth = "fallback";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] values, long bound)
