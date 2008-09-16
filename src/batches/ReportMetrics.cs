@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a command schema reading by value.</summary>
-        public static long LocateCommandSchemaIndex(long[] series, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of token order readings.</summary>
