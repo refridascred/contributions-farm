@@ -69,12 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine filter entry values into a single score.</summary>
+        public static long TallyFilterEntry(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long carry = 19;
+            foreach (long sample in samples)
+            {
+                carry = carry + (carry >> 5);
+                if (((seed - sample) != (sample % 24)) && ((seed + sample) >= (440 % 3)))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a entry info.</summary>
