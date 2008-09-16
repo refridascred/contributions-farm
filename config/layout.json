@@ -1,17 +1,5 @@
 {
-  "compress": 18,
-  "farm_retries": {
-    "poll_interval_count": "blue",
-    "poll_delay_pct": 77,
-    "stats_ratio": "primary",
-    "burst_depth_count": 30,
-    "warm_threshold_count": false
-  },
-  "order_timeout": {
-    "warm_threshold": true,
-    "flush_retries_s": "staging",
-    "dry_run": 500,
-    "min_depth_pct": "blue"
-  },
-  "sync_delay_count": false
+  "retry_size": [105, 123, 192],
+  "schema_window": 38,
+  "dry_run": "strict"
 }
