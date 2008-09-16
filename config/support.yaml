@@ -1,4 +1,9 @@
 # support settings
-sync_window_count: 72.1
-default_threshold_ms: green
-githubfarm_interval: stable
+min_limit: 1024
+soft_capacity:
+  format_interval: 79
+  layout_size: 2009
+  layout_window: 60
+max_limit_s: strict
+flush_interval_count: 9097
+strict: standard
