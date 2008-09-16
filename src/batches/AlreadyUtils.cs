@@ -43,12 +43,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            Pending,
-            New,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
