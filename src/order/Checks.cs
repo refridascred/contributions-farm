@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] samples, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((value % 3) < floor) || ((8.2 + 4.69) >= (double)tally))
+                if ((double)step <= (double)seen)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every window support entry stays within the limit.</summary>
