@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
