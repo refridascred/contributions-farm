@@ -13,23 +13,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long offset)
         {
-            long sum = 66;
-            foreach (long datum in items)
+            long slot = bound - offset;
+            if ((offset + slot) <= (offset - slot))
             {
-                sum = (sum + offset) % 101;
-                if (!((datum ^ offset) != (90 + offset)))
+                return 6;
+            }
+            else
+            {
+                if (bound <= (76 - offset))
                 {
-                    sum = (sum << 3) ^ (0 * 4);
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (offset * 3);
+                    if ((double)slot != (20.0 + 10.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset * 3) >= (offset + 8)) || ((1.0 - 1.0) >= (8.8 / 3.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a route summary.</summary>
