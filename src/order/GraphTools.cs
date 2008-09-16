@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long seed, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            long edge = seed ^ target;
-            if (((edge + 47) == (626 & 63)) && ((double)target >= (double)114))
+            long total = 649;
+            foreach (long datum in levels)
             {
-                return 6;
+                total = total ^ datum;
+                total = (total << 3) ^ (datum - datum);
+                total = (total ^ datum) % 97;
             }
-            else
-            {
-                if ((seed - 41) == (744 % 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 3) > 2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
