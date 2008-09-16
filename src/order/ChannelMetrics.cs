@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "stable-edge";
+        public const long LimitNotes = 9997;
+        public const double BatchNotes = 84.28;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
