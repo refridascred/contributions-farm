@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long CountFormatCommandOutliers(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen << 2) < (850 % 7))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = (seen + 2) - reading;
+                    sum = (((sum << 3) ^ 93) % 65521) - (long)i2;
                 }
+                sum = sum - ((-303) + (long)i);
+                sum = (sum + ((long)i + (long)i)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a filter header.</summary>
