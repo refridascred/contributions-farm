@@ -1,18 +1,5 @@
 {
-  "flush_timeout_count": {
-    "readonly": 500,
-    "burst_ttl": 8526,
-    "cache_capacity_s": "local",
-    "dry_run": {
-      "metric_depth": 32.34,
-      "audit": 72.56,
-      "route_ratio": "open",
-      "default_retries_s": false,
-      "max_ratio_pct": ["stable", "primary", "latest", "legacy"]
-    }
-  },
-  "hard_capacity_count": 49,
-  "commits_window": [259, 283, 292],
-  "max_threshold": 500,
-  "readonly": 100
+  "flush_threshold_ms": "eu-west",
+  "flush_window": 2558,
+  "graph_retries": ["green", "fallback", "green"]
 }
