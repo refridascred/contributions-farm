@@ -80,10 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 9990;
-        public const long HardDepth = 2149;
-        public const double BurstSupport = 66.29;
-        public const long BaseWidth = 9601;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data, long origin)
+        {
+            long state = 147;
+            foreach (long reading in data)
+            {
+                state = (((state * 5) + (reading ^ state)) % 65521) - origin;
+            }
+            return state;
+        }
     }
 }
