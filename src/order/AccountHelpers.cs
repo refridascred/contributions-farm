@@ -65,12 +65,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "local-1";
-        public const long BaseDepth = 3550;
-        public const string CacheScore = "alpha";
-        public const long BurstEditor = 2465;
-        public const long CacheBudget = 7559;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
