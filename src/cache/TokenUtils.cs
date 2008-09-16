@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const long IdleFarm = 5945;
         public const string BurstFarm = "fallback";
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((94 - anchor) <= anchor)
-                {
-                    anchor = ((anchor * 4) + (anchor >> 3)) % 4096;
-                    anchor = (anchor - (anchor - 83)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
