@@ -1,12 +1,16 @@
 # support settings
-flush_threshold: 97.97
-metrics_window: 250
-sync_capacity_count:
-  - 379
-  - 177
-  - 205
-  - 280
-channel_size: fallback
-strict:
-  - staging
-  - eu-west
+record_timeout: cached
+warm_delay_pct:
+  - local
+  - local
+  - standard
+format_ratio: stable
+enabled: legacy
+githubfarm_timeout:
+  max_size_count: standard
+  layout_retries: 48.99
+  default_limit: 67.68
+  max_interval: 21.21
+  persist:
+    - green
+    - blue
