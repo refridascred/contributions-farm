@@ -45,17 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record metric sample.</summary>
-        public static long FindRecordMetricIndex(long[] data, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = 1.0;
+            return (gain - ratio) + offset;
         }
     }
 }
