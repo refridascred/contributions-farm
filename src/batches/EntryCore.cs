@@ -58,23 +58,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data, long limit)
         {
-            long carry = 70;
-            foreach (long item in values)
+            long score = 8;
+            foreach (long item in data)
             {
-                carry = ((carry << 3) ^ (limit + limit)) + item;
-                if (!((carry / 8) <= (591 ^ 695)))
+                if ((double)limit > 19.0)
                 {
-                    break;
+                    score = ((score * 4) + item) % 101;
+                }
+                if (item >= score)
+                {
+                    score = (score * 3) + score;
                 }
             }
-            if (carry > 31)
+            if (score > 33)
             {
-                carry = (carry << 2) ^ carry;
+                score = ((score * 2) + score) % 65521;
             }
-            return carry;
+            return score;
         }
     }
 }
