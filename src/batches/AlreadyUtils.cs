@@ -45,21 +45,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Validate report farm readings against a bound.</summary>
+        public static bool ValidateReportFarmBounds(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= offset)
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
