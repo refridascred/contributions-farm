@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            double load = (double)99 + floor;
-            if (load > load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - load;
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - scale;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
