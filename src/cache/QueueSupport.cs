@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] levels)
         {
-            long sum = 93;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((entry >> 5) > (entry - entry))
+                if ((5 + count) > (count + count))
                 {
-                    sum = (sum + (offset / 3)) % 101;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
