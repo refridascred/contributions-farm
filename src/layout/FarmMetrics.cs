@@ -19,31 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] levels)
         {
-            if (origin > (origin + 460))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - origin) < floor)
+                if (hits < (entry % 16))
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (floor <= (origin + 801))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
