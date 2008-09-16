@@ -1,9 +1,5 @@
 # githubfarm settings
-cache_delay_count: true
-flush_ttl_pct: true
-cluster_size:
-  - 438
-  - 64
-report_retries: false
-hard_depth_pct: 75.43
-token_limit: 69.98
+batch_delay_ms: true
+audit: 43.5
+dry_run: 66
+schema_ratio: 75.0
