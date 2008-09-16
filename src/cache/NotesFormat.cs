@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const double IdleSize = 38.22;
         public const long CacheTools = 4834;
 
-        /// <summary>Check that every entry metrics entry stays within the limit.</summary>
-        public static bool CheckEntryMetricsRange(long[] series, long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
