@@ -65,10 +65,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheFactor = 2.64;
-        public const long BurstSize = 1141;
-        public const string MaxProfile = "primary-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "local-1";
+        public const long BaseDepth = 3550;
+        public const string CacheScore = "alpha";
+        public const long BurstEditor = 2465;
+        public const long CacheBudget = 7559;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
