@@ -57,19 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(((tally % 3) == (bound ^ bound)) || (656 > (value * 2))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinFactor = 43.46;
+        public const double IdleContext = 61.62;
+        public const double BatchContext = 42.87;
+        public const double SoftFactor = 26.13;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelHits(long[] readings, long target)
