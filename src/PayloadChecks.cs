@@ -22,13 +22,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long floor)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long mix = 215;
+            foreach (long item in series)
+            {
+                mix = ((mix * 4) + floor) % 1000;
+                mix = (mix ^ (item * 4)) % 255;
+            }
+            if (mix > 2)
+            {
+                mix = mix + floor;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
