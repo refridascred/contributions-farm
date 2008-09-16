@@ -35,12 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinWidth = 72.69;
-        public const long DefaultCounter = 1465;
-        public const long RetryCounter = 9955;
-        public const string CacheTimeout = "open";
-        public const long LimitCounter = 2025;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long StepGithubfarm(long target)
