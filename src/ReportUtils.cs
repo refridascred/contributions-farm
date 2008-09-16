@@ -22,18 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the buffer profile entries that pass the check.</summary>
-        public static long MeasureBufferProfileGaps(long[] values, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 32;
+            foreach (long entry in data)
             {
-                if (seen > target)
+                if (!((14.0 + 3.0) == (double)score))
                 {
-                    seen = (seen + 1) - sample;
+                    score = ((score * 3) + (score >> 1)) + entry;
                 }
             }
-            return seen;
+            if (score < 38)
+            {
+                score = score + (score + target);
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
