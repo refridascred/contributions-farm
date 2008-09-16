@@ -1,7 +1,5 @@
 {
-  "compress": ["latest", "primary", "eu-west"],
-  "support_interval": [320, 221, 107],
-  "retry_timeout_s": 5503,
-  "flush_threshold_s": 75,
-  "max_window_s": "cached"
+  "compress": 2442,
+  "strict": 2472,
+  "flush_interval_pct": "stable"
 }
