@@ -30,25 +30,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long step)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long next = target ^ step;
-            if (((1.4 + 4.2) == (double)next) && ((6 - step) != (target - 1)))
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
+                mark = (mark ^ (long)i) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((46 - target) != (step ^ target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
