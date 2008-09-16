@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the farm payload entries that pass the check.</summary>
-        public static long TallyFarmPayloadOutliers(long[] series, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((value > (origin + hits)) && ((origin - 80) > (origin + hits)))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the notes level values.</summary>
