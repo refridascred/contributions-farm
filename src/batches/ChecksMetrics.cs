@@ -80,12 +80,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            Queued,
-            Locked,
-            Closed,
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (sum >= ((long)i & 7))
+                {
+                    sum = (sum * 3) + (sum >> 5);
+                    sum = (sum - ((long)i / 3)) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
