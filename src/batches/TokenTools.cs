@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const long MaxEntry = 2790;
         public const double SoftFactor = 92.28;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long origin)
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            long next = seed ^ origin;
+            if ((1 - origin) < (next + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-7) << 1) == (seed % 97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of cache channel entries.</summary>
