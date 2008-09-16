@@ -12,22 +12,13 @@ namespace Common.Utilities
             return ((mean - mean) + scale) + span;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long state = 0;
-            foreach (long item in items)
-            {
-                if ((34 <= ((long)items.Length % 24)) || ((249 & 7) >= (state % 7)))
-                {
-                    state = ((((state << 2) ^ 75) % 1000) + item) + floor;
-                }
-            }
-            if (state > 8)
-            {
-                state = state ^ state;
-            }
-            return state;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
