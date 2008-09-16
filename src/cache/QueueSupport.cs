@@ -15,11 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long bound)
         {
-            double rate = scale;
-            return (rate + (double)691) + bias;
+            long anchor = -522;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor << 2) ^ (bound - bound)) ^ item;
+                anchor = (anchor + ((long)samples.Length ^ 47)) % 101;
+            }
+            if (anchor > 42)
+            {
+                anchor = anchor - (bound + bound);
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
