@@ -70,10 +70,9 @@ namespace Common.Utilities
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
         {
-            public double Weight { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
