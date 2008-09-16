@@ -1,22 +1,28 @@
 # entry settings
-default_capacity:
-  default_window_s: edge
-  default_timeout_count: local
-  base_interval: 1024
-  order_limit:
-    retry_ttl: latest
-    idle_window: 34.47
-    strict: 1236
-    warm_capacity_count: 8935
-    burst_retries_count: 100
-    retry_size_ms: false
-  batch_limit_pct: 34.59
-  cache_capacity_ms: blue
-flush_window_ms: 30
-audit: staging
-retry_interval:
-  batch_capacity_s: 1221
-  enabled: latest
-  hard_threshold: false
-  hard_retries_ms: true
-readonly: 250
+queue_depth: blue
+verbose:
+  warm_interval_pct: cached
+  verbose: false
+  strict:
+    soft_interval_pct: 100
+    strict: 38.31
+    hard_ttl: false
+  retry_delay_count: latest
+  layout_window: primary
+sync_window_ms:
+  max_threshold_count: 18
+  cluster_capacity: false
+  metric_size:
+    max_size: edge
+    soft_size: 29.66
+    idle_capacity_ms: 206
+    batch_retries: 847
+    poll_threshold_count: 500
+    sync_threshold_ms: legacy
+  min_size:
+    context_size: 54.08
+    cluster_limit: 54
+    sync_threshold: legacy
+token_timeout: true
+context_capacity: true
+idle_window_pct: 12
