@@ -43,21 +43,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 751;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((65 < (sample / 4)) && (mix > (mix + mix)))
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (sample << 1)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (sample * 4);
                 }
             }
-            return matches;
+            if (mix > 596)
+            {
+                mix = (mix ^ (mix % 97)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
