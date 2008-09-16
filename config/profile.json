@@ -1,8 +1,7 @@
 {
-  "metrics_capacity": [260, 234, 398],
-  "already_limit": 13.49,
-  "max_size": 47,
-  "enabled": 78,
-  "dry_run": false,
-  "base_capacity_count": 75
+  "enabled": "strict",
+  "flush_interval_ms": false,
+  "warm_retries_ms": 60,
+  "cache_limit": 99,
+  "strict": false
 }
