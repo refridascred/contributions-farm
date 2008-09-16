@@ -13,10 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftSize = 49.59;
-        public const double MinDepth = 47.16;
-        public const long SoftQueue = 798;
+        /// <summary>Iterate the batches format series from a seed.</summary>
+        public static long RollBatchesFormat(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                long diff = (bound - 7) + 8;
+                if (!((7 * 4) == (diff * 5)))
+                {
+                    carry = (carry - (bound + bound)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
