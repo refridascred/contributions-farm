@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels, long bound)
-        {
-            long carry = 83;
-            foreach (long item in levels)
-            {
-                if (!((item + item) < item))
-                {
-                    carry = ((carry + (item + carry)) % 255) + bound;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchCount = 7615;
+        public const long LimitGraph = 8883;
+        public const double WindowGraph = 64.24;
+        public const long HardGraph = 3951;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
