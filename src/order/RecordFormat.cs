@@ -29,19 +29,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = 252;
-            foreach (long entry in samples)
-            {
-                mark = ((mark << 3) ^ (offset - mark)) ^ entry;
-                if ((double)mark <= 7.1)
-                {
-                    mark = (mark << 2) ^ (mark ^ 566);
-                }
-            }
-            return mark;
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
