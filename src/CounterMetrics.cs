@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] levels)
         {
-            long anchor = 764;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                anchor = ((anchor << 3) ^ anchor) - reading;
+                if ((value * 2) < 150)
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Accumulate format editor samples.</summary>
