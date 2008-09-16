@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next schema buffer value.</summary>
-        public static double SmoothSchemaBuffer(double bias, double bias2)
-        {
-            double load = 5.0;
-            if (load >= 4.25)
-            {
-                load = (load - (bias2 / 9.0)) - bias;
-            }
-            return load + 8.69;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 2541;
+        public const double BaseCache = 31.1;
+        public const double MinCache = 89.84;
+        public const long SoftSpan = 9968;
+        public const long BaseLevel = 7308;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
