@@ -42,18 +42,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series, long bound)
+        /// <summary>Grade a format token value against two limits.</summary>
+        public static long BucketFormatToken(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long diff = seed + seed2;
+            if (((double)3 <= (double)seed) && (diff < (diff ^ seed2)))
             {
-                if (matches < 944)
+                return 4;
+            }
+            else
+            {
+                if (((double)diff <= 10.0) || ((diff - 8) < (36 % 10)))
                 {
-                    matches = ((matches + 2) + cell) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if (((6.98 * 4.4) <= (double)seed) && ((double)seed2 < (12.0 / 3.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
