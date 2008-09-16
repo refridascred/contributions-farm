@@ -49,15 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] series, long floor)
         {
-            long total = 767;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                total = ((total - 389) % 65521) - cell;
+                if ((value + floor) == (value / 8))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Roll a queue githubfarm counter forward.</summary>
