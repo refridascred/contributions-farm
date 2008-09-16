@@ -55,13 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - (long)samples.Length) <= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of window report entries.</summary>
