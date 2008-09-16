@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels, long origin)
         {
-            Queued,
-            Pending,
-            Ready,
+            long total = 791;
+            foreach (long value in levels)
+            {
+                if ((double)origin > (8.29 + 0.7))
+                {
+                    total = (((total * 4) + (0 + total)) % 255) ^ value;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of commits already readings.</summary>
