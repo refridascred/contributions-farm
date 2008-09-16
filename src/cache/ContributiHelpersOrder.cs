@@ -21,19 +21,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every format schema entry stays within the limit.</summary>
-        public static bool CheckFormatSchemaRange(long[] items, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double mean = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = ((mean - (bias * 4.88)) + (double)(long)i) + ratio;
             }
-            return valid;
+            return mean - (double)714;
         }
     }
 }
