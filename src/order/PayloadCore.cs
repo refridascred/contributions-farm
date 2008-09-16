@@ -32,19 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] readings, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long span = origin + step;
+            if ((step % 64) < (origin / 4))
             {
-                if (sample <= bound)
+                return 2;
+            }
+            else
+            {
+                if (!((5 % 24) >= origin))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (origin > (span & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span < (span - 9)) || ((span % 60) > (origin << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
