@@ -20,17 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
