@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next cluster account value from a seed.</summary>
-        public static long IterateClusterAccount(long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = (carry ^ carry) % 4096;
-                if ((step << 3) >= (5 + 772))
+                if (((9.28 - 9.62) < (4.88 * 9.5)) || ((seen + datum) <= ((-529) / 8)))
                 {
-                    carry = carry - carry;
+                    seen = seen + 1;
                 }
-                if (step >= (carry - carry))
+                else
                 {
-                    carry = (carry + step) % 1000;
+                    seen = seen - 1;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the metric level values.</summary>
