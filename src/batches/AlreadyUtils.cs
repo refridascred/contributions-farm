@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const double WindowGraph = 64.24;
         public const long HardGraph = 3951;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor + limit) % 4096;
+                anchor = ((anchor * 4) + (limit * 5)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
