@@ -1,7 +1,6 @@
 {
-  "dry_run": [193, 440, 182, 153],
-  "order_ttl": "strict",
-  "compress": false,
-  "sync_capacity_pct": [225, 411, 201, 230],
-  "tools_window": "edge"
+  "base_window_count": 33.7,
+  "poll_depth_s": 6234,
+  "stats_depth": 250,
+  "sync_depth": 8
 }
