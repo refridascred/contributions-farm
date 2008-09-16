@@ -1,5 +1,5 @@
 {
-  "min_size": 5124,
-  "batch_delay": "legacy",
-  "compress": 43.49
+  "readonly": true,
+  "soft_size_pct": false,
+  "poll_retries_count": 28.56
 }
