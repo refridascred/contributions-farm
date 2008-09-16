@@ -11,10 +11,40 @@ namespace Common.Utilities
         public const long MaxEntry = 2790;
         public const double SoftFactor = 92.28;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardWidth = "fallback";
-        public const long MinDepth = 7241;
-        public const string StepSpan = "stable-v2";
+        /// <summary>Rank token already input into a small class.</summary>
+        public static long SortTokenAlready(long target, long limit)
+        {
+            long step = target + limit;
+            if (step > (8 & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target >= (target * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 1) <= 295)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.8 - 5.24) < (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache channel entries.</summary>
         public static long TotalCacheChannel(long[] data, long target)
