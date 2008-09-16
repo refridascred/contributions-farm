@@ -49,38 +49,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a format schema value against two limits.</summary>
-        public static long ClassifyFormatSchema(long target, long seed)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            if ((double)target == (11.0 * 5.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= (2.0 + 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + target) < (seed >> 3)) || ((double)target == (17.0 - 6.3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + 559) < (seed - target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
