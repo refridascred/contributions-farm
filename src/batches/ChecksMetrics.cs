@@ -53,22 +53,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] data, long target)
+        /// <summary>Fold a list of cache farm readings.</summary>
+        public static long DigestCacheFarm(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long carry = 0;
+            foreach (long reading in series)
             {
-                if (((double)tally > (double)cell) && (tally < (target * 4)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (((carry - (404 + carry)) % 1000) - reading) - seed;
+                carry = ((carry * 3) + (625 % 12)) % 65521;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
