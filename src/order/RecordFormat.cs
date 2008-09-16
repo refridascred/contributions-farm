@@ -40,27 +40,38 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] readings, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long step, long step2)
         {
-            long total = 813;
-            foreach (long entry in readings)
+            if (((781 & 31) > (step2 - step)) || (1.92 > (double)step2))
             {
-                total = (total ^ entry) - target;
-                if ((double)total >= (double)(-52))
+                return 2;
+            }
+            else
+            {
+                if ((18.0 * 15.0) < (double)step)
                 {
-                    total = (total ^ (330 & 31)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    total = (total + (entry & 7)) % 97;
-                }
-                if (total >= entry)
-                {
-                    break;
+                    if (((double)step != (0.89 - 8.86)) || ((step2 - 9) > 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step << 1) == (step2 ^ step2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Scale a cache layout figure with a bias.</summary>
