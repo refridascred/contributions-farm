@@ -25,19 +25,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate context profile readings against a bound.</summary>
-        public static bool GuardContextProfileRange(long[] values, long target)
+        /// <summary>Validate batch channel readings against a bound.</summary>
+        public static bool VerifyBatchChannelLimits(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (sample >= target)
+                if (cell != offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
