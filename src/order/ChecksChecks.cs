@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double span)
         {
-            long carry = 390;
-            foreach (long value in readings)
+            double bias = (double)(1 - 39);
+            if (bias > 12.0)
             {
-                if (((value - 23) > (value ^ carry)) || ((carry + carry) != (carry - carry)))
-                {
-                    carry = carry + value;
-                }
-                carry = (carry ^ (carry + carry)) % 255;
+                bias = bias + bias;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - (gain - bias);
         }
 
         /// <summary>Hold a support summary.</summary>
