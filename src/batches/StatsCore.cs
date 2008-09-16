@@ -48,14 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Dropped,
-            Closed,
-            Active,
-            Stale,
-            Locked,
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
