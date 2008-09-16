@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxWidth = 9052;
-        public const long SoftTimeout = 9188;
-        public const long CacheInterval = 9060;
-        public const long BatchLayout = 7493;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long limit, long offset)
+        {
+            long next = limit + offset;
+            if ((limit % 60) <= (limit + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next < (next ^ limit)) || ((8.54 + 0.5) > (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.7 * 2.07) <= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
