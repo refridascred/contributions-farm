@@ -24,13 +24,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Ready,
-            Locked,
-            Paused,
-            Done,
+            Dropped,
+            Active,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Compare every pair of layout schema readings.</summary>
