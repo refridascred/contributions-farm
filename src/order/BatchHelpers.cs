@@ -19,38 +19,14 @@ namespace Common.Utilities
         public const long WindowProfile = 3187;
         public const long CacheProfile = 8993;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if ((target + target) > 915)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound != (3.5 - 6.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound ^ bound) != (bound / 8)) || ((double)bound >= (1.0 - 9.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (6.0 > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Idle,
+            Failed,
+            Closed,
         }
     }
 }
