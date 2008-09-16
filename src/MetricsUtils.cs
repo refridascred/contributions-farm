@@ -64,9 +64,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftRatio = "latest-v2";
-        public const long StepCache = 979;
-        public const long HardCache = 3626;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
