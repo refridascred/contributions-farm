@@ -17,19 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools layout readings against a bound.</summary>
-        public static bool ValidateToolsLayoutLimits(long[] series, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
