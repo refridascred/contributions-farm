@@ -46,19 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long mix = -703;
-            foreach (long reading in series)
+            long score = 67;
+            foreach (long reading in values)
             {
-                mix = (mix ^ (reading >> 4)) % 1000;
-                if ((mix + reading) != (1 / 9))
+                if ((8.82 - 8.5) < (double)score)
                 {
-                    mix = ((mix * 5) + (reading + mix)) % 97;
+                    score = (score + (reading & 15)) % 101;
+                }
+                if ((double)score >= 13.0)
+                {
+                    break;
                 }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Combine account values into a single score.</summary>
