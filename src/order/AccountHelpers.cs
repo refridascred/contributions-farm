@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "legacy-1";
-        public const long MinChannel = 9173;
-        public const long WindowChannel = 9876;
-        public const double DefaultSpan = 93.45;
-        public const long BaseChannel = 8901;
+        /// <summary>Match up format checks samples.</summary>
+        public static long OverlapFormatChecksCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long SortToken(long floor, long bound)
