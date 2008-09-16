@@ -78,19 +78,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long seed)
+        /// <summary>Locate a context window reading by value.</summary>
+        public static long FindContextWindowIndex(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= seed)
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
