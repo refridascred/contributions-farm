@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const string SoftLevel = "legacy-1";
         public const long LimitAccount = 7957;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
