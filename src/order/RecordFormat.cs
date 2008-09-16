@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long step)
+        /// <summary>Compare every pair of route channel readings.</summary>
+        public static long CompareRouteChannelCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
