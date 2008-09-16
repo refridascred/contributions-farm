@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4339;
-        public const long RetryChecks = 157;
-        public const long HardBudget = 3125;
-        public const double BaseDepth = 50.41;
-        public const string CacheDepth = "stable-1";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] samples)
