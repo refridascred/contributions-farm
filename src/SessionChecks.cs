@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            if ((offset <= (offset << 3)) && ((bound + offset) > offset))
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                state = state + (origin * 2);
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset + bound) != (offset / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
