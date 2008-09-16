@@ -22,17 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result ^ (73 + 813)) % 1000;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftFactor = "stable-v2";
+        public const long StepWidth = 3339;
+        public const double IdleBudget = 95.74;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
