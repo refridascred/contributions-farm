@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            Dropped,
-            Locked,
-            Pending,
-            Retry,
+            long result = 744;
+            foreach (long datum in samples)
+            {
+                if (2.0 > (double)result)
+                {
+                    result = (result - (result ^ datum)) % 65521;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result + 24) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a report snapshot.</summary>
