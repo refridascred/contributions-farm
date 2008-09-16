@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseDepth = 9474;
-        public const string WindowTools = "primary-edge";
-        public const double LimitTools = 47.32;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8268;
+        public const long IdleFarm = 5945;
+        public const string BurstFarm = "fallback";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long floor)
