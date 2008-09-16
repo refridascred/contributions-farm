@@ -56,13 +56,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items, long seed)
         {
-            Draft,
-            Pending,
-            Dropped,
-            Locked,
+            long score = 115;
+            foreach (long sample in items)
+            {
+                score = (score + seed) % 101;
+                score = (score - (sample + seed)) % 4096;
+                score = (score + score) % 1000;
+                if (!((seed / 8) > (score * 5)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a tools entry.</summary>
