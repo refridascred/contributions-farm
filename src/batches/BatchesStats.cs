@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            long score = -420;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample + origin) < (origin * 3))
+                long lane = (origin & 63) - (anchor + anchor);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    score = ((score << 3) ^ (sample * 2)) % 1000;
+                    anchor = ((anchor << 2) ^ (lane - origin)) - (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            if (score < 962)
-            {
-                score = score - score;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
