@@ -46,15 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Blend two payload metrics measurements.</summary>
+        public static double ProjectPayloadMetrics(double ratio, double floor)
         {
-            long score = 2;
-            foreach (long value in samples)
+            double load = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                score = (((score * 2) + (score - score)) % 97) ^ value;
+                load = ((load - load) - (double)(long)i) + floor;
             }
-            return score % 65521;
+            return load - 6.18;
         }
     }
 }
