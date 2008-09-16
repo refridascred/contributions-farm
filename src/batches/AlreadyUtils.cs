@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 14.66;
-        public const string LimitSize = "primary";
-        public const long MinRatio = 1996;
-        public const long BaseInterval = 6472;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Done,
+            Ready,
+            Queued,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long limit)
