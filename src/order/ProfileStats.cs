@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items, long step)
+        /// <summary>Check that every record counter entry stays within the limit.</summary>
+        public static bool VerifyRecordCounterLimits(long[] values, long seed)
         {
-            long score = 534;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                score = ((score << 2) ^ (value << 3)) + step;
-                score = (score ^ (score << 2)) % 1000;
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
