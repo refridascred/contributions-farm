@@ -12,23 +12,15 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double rate, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels, long bound)
         {
-            double scale = offset;
-            if (scale > (double)8)
+            long score = 660;
+            foreach (long datum in levels)
             {
-                scale = scale + offset;
+                score = (((score * 5) + (score + bound)) % 255) + datum;
             }
-            else
-            {
-                scale = scale - (offset + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - (double)(-969);
+            return score % 4096;
         }
 
         /// <summary>Accumulate queue samples.</summary>
