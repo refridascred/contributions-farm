@@ -61,21 +61,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count payload cache pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCacheCount(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)i < (7.0 + 4.3))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ (origin - origin)) % 97;
                 }
+                result = ((result << 3) ^ result) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a commits summary.</summary>
