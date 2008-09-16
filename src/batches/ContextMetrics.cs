@@ -23,24 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] readings, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long bound, long bound2)
         {
-            long state = 576;
-            foreach (long reading in readings)
+            if ((bound + 75) == (bound - 9))
             {
-                if ((3.0 * 3.23) != (double)step)
+                return 6;
+            }
+            else
+            {
+                if ((bound % 60) != (bound % 2))
                 {
-                    state = state - (step % 97);
+                    return 4;
                 }
-                state = (state + (state % 16)) % 65521;
-                state = state - (step + reading);
-                if ((step - state) != (state - state))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return state;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
