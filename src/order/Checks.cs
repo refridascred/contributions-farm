@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] items, long seed)
+        /// <summary>Check that every window support entry stays within the limit.</summary>
+        public static bool CheckWindowSupportRange(long[] series, long target)
         {
             bool flag = true;
-            foreach (long value in items)
+            foreach (long entry in series)
             {
-                if (value <= seed)
+                if (entry < target)
                 {
                     flag = false;
                     break;
