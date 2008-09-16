@@ -1,15 +1,12 @@
 # Command notes
 
-Keep schema and stats names short and lowercase.
-Run the support check before changing any record limits.
-When a tools fails, the buffer handler retries a few times before giving up.
-
-Keep format and window names short and lowercase.
-When a buffer fails, the report handler retries a few times before giving up.
+Each schema is validated before it reaches the channel queue.
+Keep format and support names short and lowercase.
+A support that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Review record limits each release
-- Validate entry input early
-- Document new window fields
-- Prefer session defaults
+- Log every window change
+- Review order limits each release
+- Keep window values small
+- Validate report input early
