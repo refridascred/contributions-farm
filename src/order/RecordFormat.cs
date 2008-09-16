@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of route channel readings.</summary>
-        public static long CompareRouteChannelCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "alpha-v2";
+        public const double BatchWidth = 46.3;
+        public const string StepEditor = "cached";
+        public const long MinEditor = 6096;
+        public const long IdleEditor = 8745;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
