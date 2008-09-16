@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 2318;
-        public const long BatchFactor = 3441;
-        public const long HardTimeout = 292;
-        public const double BaseSpan = 6.55;
-        public const long MinChecks = 5447;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + seen) <= 1)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long CombineSchema(long[] readings)
