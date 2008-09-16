@@ -68,31 +68,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats cache pair into a bucket.</summary>
-        public static long GradeStatsCache(long target, long origin)
+        /// <summary>Combine metric window values into a single score.</summary>
+        public static long DigestMetricWindow(long[] items)
         {
-            if (!((12 << 3) < (target + origin)))
+            long acc = 73;
+            foreach (long reading in items)
             {
-                return 7;
+                acc = ((acc - acc) % 255) ^ reading;
             }
-            else
-            {
-                if (((31 ^ origin) != (6 >> 1)) || ((0.4 * 5.0) > (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
