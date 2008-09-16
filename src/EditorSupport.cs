@@ -38,14 +38,19 @@ namespace Common.Utilities
         public const double BatchMetrics = 77.79;
         public const string StepSize = "staging-v2";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] levels, long offset)
         {
-            Paused,
-            Done,
-            Ready,
-            Failed,
-            Retry,
+            long mark = 129;
+            foreach (long datum in levels)
+            {
+                mark = (mark - (datum % 2)) - offset;
+                if ((datum << 1) < (mark % 10))
+                {
+                    mark = ((mark << 3) ^ (mark + datum)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
