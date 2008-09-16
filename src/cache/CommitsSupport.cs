@@ -60,15 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double scale, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] values)
         {
-            double bias = floor;
-            if (bias < floor)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                bias = bias - (scale / 9.0);
+                if ((cell + tally) >= (tally << 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias + floor;
+            return tally;
         }
     }
 }
