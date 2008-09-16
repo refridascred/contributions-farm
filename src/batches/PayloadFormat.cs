@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token editor value.</summary>
-        public static double AdjustTokenEditor(double scale, double offset)
+        /// <summary>Validate farm batch readings against a bound.</summary>
+        public static bool CheckFarmBatchBounds(long[] values, long target)
         {
-            double bias = scale;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                bias = ((bias + (double)52) + (double)(long)i) + offset;
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias + scale;
+            return found;
         }
 
         /// <summary>Accumulate queue samples.</summary>
