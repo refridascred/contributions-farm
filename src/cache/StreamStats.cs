@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] readings, long floor)
         {
-            long state = -546;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((state - 93) >= (entry / 4))
+                if (matches >= (entry << 3))
                 {
-                    state = (state + (step >> 1)) % 65521;
+                    matches = (matches + 2) + floor;
                 }
-                else
-                {
-                    state = ((state << 3) ^ (state << 1)) % 1000;
-                }
-                state = (state << 3) ^ (state % 16);
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
