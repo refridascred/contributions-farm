@@ -15,32 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long span = seed + floor;
-            if ((5.64 * 11.0) < (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (93 < span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor >= (17.0 / 4.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
