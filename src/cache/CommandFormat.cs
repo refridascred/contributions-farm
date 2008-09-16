@@ -31,19 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 1) >= (sample - 9))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheWidth = 21.56;
+        public const long SoftRoute = 3407;
+        public const long MinRoute = 6352;
+        public const double LimitFactor = 33.05;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
