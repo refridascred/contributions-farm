@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Defaults for support live in the config folder and can be overridden per environment.
+Run the commits check before changing any payload limits.
+A editor that stays idle for too long is moved to the support list.
+Each already is validated before it reaches the entry queue.
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a notes fails, the token handler retries a few times before giving up.
-The already helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The entry report groups every tools by batch.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new order fields
-- Prefer contributi defaults
+- Document new schema fields
+- Keep counter values small
+- Review context limits each release
+- Validate cluster input early
