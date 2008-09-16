@@ -1,22 +1,19 @@
 {
-  "account_ttl": "latest",
-  "compress": "edge",
-  "readonly": {
-    "min_window_pct": 500,
-    "compress": true,
-    "enabled": 60,
-    "context_window": "blue",
-    "command_ttl": "cached",
-    "sync_depth_ms": {
-      "context_ratio": 52.11,
-      "verbose": 21,
-      "poll_delay": true,
-      "route_window": 100,
-      "base_ttl": 1024,
-      "buffer_retries": false
-    }
+  "default_ttl_ms": false,
+  "batch_threshold": 2517,
+  "enabled": {
+    "audit": "cached",
+    "record_depth": "green",
+    "batch_ttl": 500,
+    "min_size": 5503,
+    "stream_size": {
+      "entry_ttl": true,
+      "max_threshold_ms": 6008,
+      "default_delay_s": 7.96
+    },
+    "strict": 3226
   },
-  "idle_ratio_ms": 82.65,
-  "hard_depth_pct": ["cached", "standard", "standard", "cached"],
-  "stream_threshold": true
+  "batch_capacity_count": 82,
+  "strict": ["staging", "fallback", "staging"],
+  "soft_size_ms": 23.13
 }
