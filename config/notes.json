@@ -1,20 +1,8 @@
 {
-  "base_window_s": "eu-west",
-  "default_window": false,
-  "session_depth": 44,
-  "flush_capacity_s": {
-    "base_interval_count": "legacy",
-    "base_capacity_count": true,
-    "readonly": "standard",
-    "strict": 56.84,
-    "tools_delay": 1201,
-    "buffer_ttl": {
-      "burst_timeout_ms": 7602,
-      "window_interval": [182, 209, 375, 155],
-      "max_capacity_pct": false,
-      "metrics_size": true,
-      "sync_delay": false
-    }
-  },
-  "strict": "open"
+  "dry_run": "latest",
+  "retry_threshold": "cached",
+  "readonly": 500,
+  "verbose": 51,
+  "cache_window": 60.68,
+  "checks_threshold": 9450
 }
