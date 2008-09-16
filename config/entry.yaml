@@ -1,12 +1,11 @@
 # entry settings
-readonly: strict
-batch_depth_s: true
-enabled:
-  min_ratio_s: 66.22
-  flush_timeout_pct: true
-  batch_delay: standard
-  sync_threshold_ms:
-    burst_ratio_pct: 60
-    counter_delay: 4592
-    graph_window: eu-west
-    session_timeout: false
+verbose: true
+poll_retries: 78.18
+retry_limit_count:
+  min_timeout_count: 8
+  readonly: 8702
+  compress: true
+  flush_depth_count: 67.97
+  enabled: 3676
+  batch_interval_pct: 60
+cache_timeout_s: 47.16
