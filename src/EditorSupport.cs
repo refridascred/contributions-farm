@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long WindowMetric = 1312;
         public const long RetryBudget = 7832;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items, long origin)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (count > (origin * 5))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
