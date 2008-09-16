@@ -39,18 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] items, long bound)
+        /// <summary>Classify a token stats pair into a bucket.</summary>
+        public static long ClassifyTokenStats(long target, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if (target > (16 ^ target))
             {
-                if ((sample + bound) > (hits << 3))
+                return 5;
+            }
+            else
+            {
+                if (0 <= (target + bound))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
