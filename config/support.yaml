@@ -1,4 +1,7 @@
 # support settings
-burst_interval: 500
-poll_ratio_count: true
-cache_limit_pct: strict
+max_size_pct: true
+batch_threshold_pct: 9012
+soft_size_s: 1737
+format_depth: fallback
+audit: 92
+buffer_ratio: false
