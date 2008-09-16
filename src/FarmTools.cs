@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((value >> 3) <= (value >> 4))
+                if (sample <= offset)
                 {
-                    tally = (tally + 2) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Grade a contributi command value against two limits.</summary>
