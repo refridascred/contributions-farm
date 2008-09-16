@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Rank notes graph input into a small class.</summary>
+        public static long SortNotesGraph(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)origin2 <= (2.87 * 0.87)) || (origin < ((-489) % 8)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin2) != (894 + origin2))
                 {
-                    if ((samples[i] + samples[j]) == 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + origin) != ((-721) - origin2))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin2 >> 3) >= origin2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
