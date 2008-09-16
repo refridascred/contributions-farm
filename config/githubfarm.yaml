@@ -1,5 +1,6 @@
 # githubfarm settings
-burst_threshold_s: 8398
-readonly: false
-default_ttl: local
-max_limit_s: 5.49
+max_capacity: 250
+soft_timeout_ms: 100
+token_depth: false
+batch_timeout_count: 500
+hard_size_count: 60
