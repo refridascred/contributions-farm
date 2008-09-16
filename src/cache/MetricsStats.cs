@@ -45,15 +45,14 @@ namespace Common.Utilities
         public const long CacheRatio = 7008;
         public const long IdleProfile = 5644;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double mean = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (floor + mean)) + (double)(long)i;
-            }
-            return mean - scale;
+            New,
+            Draft,
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a channel stats.</summary>
