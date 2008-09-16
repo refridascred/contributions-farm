@@ -13,19 +13,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] series, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (origin + origin)) % 4096;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
