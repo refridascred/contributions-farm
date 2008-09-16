@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 19;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc - (cell / 7)) % 4096;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
