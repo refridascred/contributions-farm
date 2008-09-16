@@ -57,13 +57,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Ready,
-            Active,
+            Stale,
+            Closed,
+            Idle,
+            Done,
             Retry,
-            Synced,
         }
 
         /// <summary>Hold a cluster info.</summary>
