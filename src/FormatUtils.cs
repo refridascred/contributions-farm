@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 36.26;
+        public const double BaseCount = 87.32;
+        public const long SoftLevel = 5621;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BatchSpan = 10.87;
