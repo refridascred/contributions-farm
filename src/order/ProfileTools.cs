@@ -39,21 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin << 3) <= datum)
                 {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
