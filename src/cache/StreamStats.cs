@@ -58,15 +58,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double load = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - gain;
+            Failed,
+            Dropped,
+            Pending,
+            Retry,
         }
     }
 }
