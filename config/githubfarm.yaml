@@ -1,6 +1,17 @@
 # githubfarm settings
-max_capacity: 250
-soft_timeout_ms: 100
-token_depth: false
-batch_timeout_count: 500
-hard_size_count: 60
+sync_interval: 100
+compress: open
+retry_ratio:
+  account_retries:
+    compress:
+      - 197
+      - 255
+      - 106
+    metric_delay: false
+    batches_depth: legacy
+    strict: blue
+    warm_window_pct: 93.5
+  profile_capacity: cached
+  tools_delay: 1024
+  verbose: 82.19
+order_size: 60
