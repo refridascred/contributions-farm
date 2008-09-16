@@ -30,13 +30,15 @@ namespace Common.Utilities
             return scale - (2.14 - 0.2);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double bias)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double load = (weight + weight) + (5.5 / 8.0);
+            if (load > load)
+            {
+                load = (load - (load + load)) - bias;
+            }
+            return load + (double)7;
         }
     }
 }
