@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            double load = floor;
-            return (load - (load / 9.0)) + rate;
+            long anchor = 764;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor << 3) ^ anchor) - reading;
+            }
+            return anchor;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
