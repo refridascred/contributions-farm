@@ -1,7 +1,12 @@
 {
-  "sync_window_pct": 8361,
-  "batch_limit_s": "fallback",
-  "sync_ratio_pct": "cached",
-  "soft_delay": 30,
-  "checks_ratio": true
+  "burst_window_pct": [372, 327, 199, 118],
+  "retry_interval_ms": 12.12,
+  "batch_ttl": "local",
+  "command_size": {
+    "batch_size": 48,
+    "audit": 8723,
+    "schema_interval": ["green", "stable", "eu-west", "staging"]
+  },
+  "context_delay": "legacy",
+  "sync_ratio_ms": "green"
 }
