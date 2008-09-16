@@ -16,39 +16,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
-        public static long RankBatchGithubfarm(long limit, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            long span = limit ^ bound;
-            if ((span - limit) != (bound - span))
+            long carry = -62;
+            foreach (long cell in readings)
             {
-                return 6;
+                carry = carry - (cell + cell);
             }
-            else
+            if (carry < (-310))
             {
-                if ((double)bound <= (5.02 + 0.94))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - 184) < (70 + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit > (461 / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = carry ^ carry;
             }
+            return carry;
         }
 
         /// <summary>Accumulate metric samples.</summary>
