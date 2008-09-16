@@ -57,32 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long bound, long seed)
-        {
-            long prev = bound - seed;
-            if ((674 >> 5) < (prev << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)prev <= (9.0 - 2.4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev - (-67)) > (prev & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 63.63;
+        public const string MaxCounter = "stable-v2";
+        public const string LimitLevel = "primary-v2";
+        public const long BatchInterval = 9617;
     }
 }
