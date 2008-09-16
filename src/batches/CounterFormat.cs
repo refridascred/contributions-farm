@@ -21,24 +21,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples, long offset)
         {
-            if (((origin >> 1) != (origin + limit)) || ((limit + origin) >= (limit + limit)))
+            long acc = 5;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit / 6) >= origin)
+                if ((entry >= (entry >> 3)) || ((acc + offset) == (126 * 4)))
                 {
-                    return 1;
+                    acc = (acc - 6) % 1000;
+                    continue;
                 }
-                else
+                acc = acc ^ (98 / 2);
+                if (((double)offset < (9.4 + 8.5)) || (3 <= offset))
                 {
-                    return 8;
+                    break;
                 }
             }
+            return acc;
         }
     }
 }
