@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long StepWidth = 3339;
         public const double IdleBudget = 95.74;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
