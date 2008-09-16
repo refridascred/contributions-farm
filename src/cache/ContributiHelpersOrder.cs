@@ -13,16 +13,39 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Grade a editor record value against two limits.</summary>
+        public static long RankEditorRecord(long target, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long lane = target ^ origin;
+            if ((29 >> 5) < (lane - origin))
             {
-                mix = ((mix << 2) ^ (origin + origin)) % 4096;
-                mix = ((mix * 2) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (target >= (origin ^ origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (4.11 + 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((lane << 1) > 152))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
