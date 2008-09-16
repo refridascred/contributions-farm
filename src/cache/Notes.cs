@@ -23,14 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long bound, long bound2)
         {
-            Retry,
-            Draft,
-            Locked,
-            Ready,
-            Idle,
+            if ((double)bound2 >= (5.9 * 6.15))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 % 100) < (9 ^ bound2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound2 - 81))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound != (3.0 * 9.4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many graph farm samples are out of range.</summary>
