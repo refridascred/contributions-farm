@@ -54,18 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine entry metrics values into a single score.</summary>
-        public static long DigestEntryMetrics(long[] samples, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long mark = 963;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark + cell) >= mark)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (((mark << 2) ^ cell) % 1000) - step;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
