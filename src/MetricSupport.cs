@@ -25,17 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
