@@ -1,8 +1,13 @@
 {
-  "burst_threshold": 25,
-  "soft_ttl": 4,
-  "contributi_window": true,
-  "entry_delay": 93,
-  "readonly": "stable",
-  "command_size": "edge"
+  "idle_threshold_s": 500,
+  "flush_interval": ["strict", "cached", "staging"],
+  "enabled": ["blue", "latest", "primary"],
+  "checks_ratio": {
+    "token_size": [98, 327, 483, 25],
+    "poll_retries_s": 2.01,
+    "batches_timeout": 67.66,
+    "retry_interval": "open"
+  },
+  "notes_limit": false,
+  "dry_run": 35.25
 }
