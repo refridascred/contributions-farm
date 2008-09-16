@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long item in readings)
             {
-                if ((double)hits < (double)613)
+                if (((long)readings.Length & 1) > 63)
                 {
-                    hits = (hits + 2) + datum;
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
