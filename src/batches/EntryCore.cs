@@ -19,13 +19,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 5095;
+        public const double StepWidth = 53.08;
+        public const string LimitCount = "stable";
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] series, long origin)
