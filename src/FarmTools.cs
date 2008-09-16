@@ -29,20 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (limit >= (93 << 3))
+                if ((value >> 3) <= (value >> 4))
                 {
-                    anchor = (anchor - (8 << 3)) % 101;
-                    anchor = ((anchor * 3) + (limit >> 2)) % 101;
+                    tally = (tally + 2) + origin;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
