@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit counter queue readings against a rule.</summary>
+        public static long MeasureCounterQueueMatches(long[] values)
         {
-            Idle,
-            Failed,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((((count ^ count) >= (value * 5)) || (((long)values.Length << 3) < (value + 34))) || ((double)value <= (3.5 - 4.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
