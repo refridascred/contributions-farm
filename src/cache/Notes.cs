@@ -54,21 +54,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell >= limit)
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
