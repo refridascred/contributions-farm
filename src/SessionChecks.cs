@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            long mark = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + limit;
-                if ((mark + sample) >= (mark % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark + mark;
-                    mark = ((mark << 3) ^ 9) % 1000;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = (mark + (long)values.Length) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the metric state values.</summary>
