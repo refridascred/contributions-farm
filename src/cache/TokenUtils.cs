@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up stats profile samples.</summary>
-        public static long OverlapStatsProfileCount(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 173;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum & 127) == (datum / 4))
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc << 2) ^ (datum ^ acc);
                 }
             }
-            return hits;
+            if (acc < 50)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
