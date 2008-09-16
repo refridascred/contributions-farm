@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (items[i] < floor)
+                if (89 < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a stream header.</summary>
