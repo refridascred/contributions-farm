@@ -1,16 +1,7 @@
 # support settings
-record_timeout: cached
-warm_delay_pct:
-  - local
-  - local
-  - standard
-format_ratio: stable
-enabled: legacy
-githubfarm_timeout:
-  max_size_count: standard
-  layout_retries: 48.99
-  default_limit: 67.68
-  max_interval: 21.21
-  persist:
-    - green
-    - blue
+soft_window: 6723
+account_timeout:
+  batch_size_pct: strict
+  payload_size: 2296
+  compress: 37.49
+soft_threshold: 30
