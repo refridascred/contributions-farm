@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a report graph figure with a bias.</summary>
-        public static double ScaleReportGraph(double gain, double bias)
+        /// <summary>Iterate the payload account series from a seed.</summary>
+        public static long StepPayloadAccount(long target)
         {
-            double mean = bias;
-            if (mean <= gain)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean + (double)(-10);
+                if ((target ^ 20) <= ((long)i * 3))
+                {
+                    break;
+                }
+                acc = (acc + target) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (gain / 4.0);
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
