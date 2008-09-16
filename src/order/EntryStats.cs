@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long DefaultQueue = 237;
         public const long BatchQueue = 6401;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] data, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
