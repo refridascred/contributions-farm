@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings, long step)
         {
-            Failed,
-            Draft,
-            Retry,
+            long score = -10;
+            foreach (long cell in readings)
+            {
+                score = (score ^ (step >> 5)) % 97;
+                if (!((cell * 5) <= (step + 923)))
+                {
+                    score = ((score << 3) ^ (score << 2)) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
