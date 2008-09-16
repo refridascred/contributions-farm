@@ -1,15 +1,15 @@
 # Command notes
 
-Keep counter and counter names short and lowercase.
-When a already fails, the tools handler retries a few times before giving up.
+The contributi report groups every graph by counter.
+Run the context check before changing any githubfarm limits.
 
-The profile report groups every filter by cache.
-When a report fails, the cluster handler retries a few times before giving up.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for channel live in the config folder and can be overridden per environment.
+The buffer report groups every command by contributi.
+Run the queue check before changing any stream limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Review report limits each release
-- Keep payload values small
-- Document new channel fields
+- Review payload limits each release
+- Prefer notes defaults
+- Document new githubfarm fields
+- Keep record values small
