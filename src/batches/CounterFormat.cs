@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long sum = 5;
+            foreach (long sample in data)
+            {
+                if (((sum + sample) > 143) || (12.0 < (double)sum))
+                {
+                    sum = (sum - sum) % 101;
+                    sum = sum ^ bound;
+                }
+                sum = (sum * 5) + (bound ^ (long)data.Length);
+                if (!((double)bound >= (double)sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
