@@ -52,19 +52,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double offset)
+        /// <summary>Roll a cache notes counter forward.</summary>
+        public static long SeriesCacheNotes(long target)
         {
-            double rate = bias - (2.0 - bias);
-            if (rate < (bias + bias))
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                rate = rate + 8.0;
+                mark = mark + (long)i;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (bias + offset)) + (double)(long)i;
-            }
-            return rate + bias;
+            return mark;
         }
 
         /// <summary>Adjust a batches reading.</summary>
