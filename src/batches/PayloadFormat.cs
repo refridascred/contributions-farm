@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long BurstRatio = 900;
         public const long WindowSupport = 2301;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            long total = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate queue samples.</summary>
