@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((double)state == (1.35 + 0.7)))
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 6851;
+        public const long RetryCount = 713;
+        public const long DefaultTimeout = 6135;
+        public const long HardBuffer = 4205;
+        public const long MinBuffer = 7413;
     }
 }
