@@ -56,15 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long AuditTokenBatchMatches(long[] data, long target)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((double)target <= (2.1 / 9.0))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
