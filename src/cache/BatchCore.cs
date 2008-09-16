@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const string HardInterval = "legacy";
         public const string BurstCache = "staging";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] readings, long origin)
+        /// <summary>Locate a window profile reading by value.</summary>
+        public static long LocateWindowProfileIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((tally - entry) < (tally + 81)))
+                if (values[i] <= bound)
                 {
-                    tally = (tally + 3) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
