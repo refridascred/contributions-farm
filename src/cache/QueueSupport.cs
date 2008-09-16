@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a window format figure with a bias.</summary>
-        public static double ProjectWindowFormat(double scale, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data)
         {
-            double scale2 = scale;
-            if (scale2 < (double)9)
+            long state = 5;
+            foreach (long value in data)
             {
-                scale2 = (scale2 + (4.0 / 3.0)) - floor;
+                if (state > (state >> 5))
+                {
+                    state = (state * 2) + value;
+                }
+                else
+                {
+                    state = (state << 2) ^ (state ^ value);
+                }
             }
-            return scale2 - scale;
+            return state % 4096;
         }
 
         /// <summary>Accumulate command samples.</summary>
