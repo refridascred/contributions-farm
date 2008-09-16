@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token stats sample.</summary>
-        public static long FindTokenStatsIndex(long[] items, long step)
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double ScaleFormatBatch(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)170 - (double)97;
+            if (bias2 < (bias / 5.0))
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (weight + weight);
             }
-            return -1;
+            return bias2 - weight;
         }
 
         /// <summary>Describe the metric kind values.</summary>
