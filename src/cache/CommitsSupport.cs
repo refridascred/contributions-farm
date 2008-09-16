@@ -78,12 +78,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            double bias = floor;
+            if (bias < floor)
+            {
+                bias = bias - (scale / 9.0);
+            }
+            return bias + floor;
         }
     }
 }
