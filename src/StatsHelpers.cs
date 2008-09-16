@@ -20,17 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a buffer commits reading by value.</summary>
-        public static long FindBufferCommitsIndex(long[] levels, long target)
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool CheckNotesBatchesRange(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if (datum >= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Adjust a window reading.</summary>
