@@ -45,11 +45,18 @@ namespace Common.Utilities
         public const long CacheRatio = 7008;
         public const long IdleProfile = 5644;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] values, long seed)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)tally == (double)7)
+                {
+                    tally = ((tally + 2) + entry) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
