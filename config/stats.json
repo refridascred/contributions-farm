@@ -1,7 +1,14 @@
 {
-  "max_ratio_s": 54.33,
-  "retry_timeout": 250,
-  "batch_interval_ms": false,
-  "sync_timeout": "standard",
-  "cache_size_ms": "local"
+  "notes_capacity": {
+    "readonly": "eu-west",
+    "max_window_ms": [272, 288, 338],
+    "filter_retries": "standard"
+  },
+  "flush_delay_ms": "primary",
+  "hard_retries": {
+    "token_interval": 78.25,
+    "soft_depth_pct": "standard",
+    "sync_limit_count": ["green", "stable"],
+    "commits_ttl": 250
+  }
 }
