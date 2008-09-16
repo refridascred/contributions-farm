@@ -13,16 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchBudget = 7138;
+        public const double HardPayload = 31.34;
+        public const long BaseDepth = 4015;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long LookupSessionIndex(long[] series, long target)
