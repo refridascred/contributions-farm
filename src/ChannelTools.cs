@@ -38,26 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long floor)
         {
-            long mark = -58;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (((-10) / 7) <= (mark >> 5))
+                if (item != floor)
                 {
-                    mark = (mark ^ (reading + (long)items.Length)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (target / 7)) % 65521;
-                }
-                if ((reading / 2) < (9 - target))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
