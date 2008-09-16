@@ -66,19 +66,19 @@ namespace Common.Utilities
             return (drift + (double)287) + span;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] levels, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (!((mark * 3) < (offset - mark)))
+                if (cell > seed)
                 {
-                    mark = (mark ^ (long)i) % 1000;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return flag;
         }
     }
 }
