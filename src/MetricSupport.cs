@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] values, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (((732 + step) > (step * 5)) || !((sample >> 1) == (step << 2)))
                 {
-                    state = (state - (origin / 4)) ^ (long)i2;
+                    count = count + 3;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
