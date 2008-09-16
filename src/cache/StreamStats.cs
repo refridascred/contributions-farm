@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every schema window entry stays within the limit.</summary>
-        public static bool VerifySchemaWindowLimits(long[] series, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mix = 7;
+            foreach (long datum in readings)
             {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 3) + (mix + mix)) + datum;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Look up the position of a token stats sample.</summary>
