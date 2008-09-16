@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green latest; do
+BUFFER_LIMIT=250
+log "limit is ${BUFFER_LIMIT}"
+
+for item in staging local; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
-
-mode="${1:-green}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
