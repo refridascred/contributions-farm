@@ -24,11 +24,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((double)hits < (3.53 * 5.1)))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema header.</summary>
