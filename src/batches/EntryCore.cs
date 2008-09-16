@@ -31,13 +31,18 @@ namespace Common.Utilities
         public const long IdleScore = 1911;
         public const long BatchCount = 5323;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] values, long bound)
         {
-            Queued,
-            Active,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((220 < (bound % 3)) && (((bound / 3) < (bound + tally)) && ((datum % 8) >= (bound % 24))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
