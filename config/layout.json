@@ -1,6 +1,16 @@
 {
-  "retry_delay_pct": true,
-  "persist": false,
-  "idle_threshold": "open",
-  "verbose": 71.34
+  "account_threshold": true,
+  "max_limit": {
+    "readonly": ["cached", "legacy"],
+    "default_ratio_count": {
+      "report_capacity": ["cached", "primary"],
+      "burst_timeout_ms": 13,
+      "compress": 98.52
+    },
+    "idle_ratio": 57
+  },
+  "idle_delay": 33,
+  "soft_depth_s": 1024,
+  "warm_interval": [195, 30, 430, 288],
+  "sync_depth_s": 78
 }
