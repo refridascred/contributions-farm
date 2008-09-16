@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit notes farm readings against a rule.</summary>
-        public static long TallyNotesFarmMatches(long[] values)
+        /// <summary>Classify a notes payload pair into a bucket.</summary>
+        public static long GradeNotesPayload(long limit, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((6.0 / 3.0) != (double)limit)
             {
-                if (7.81 < (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) >= (target << 2))
                 {
-                    count = (count + 3) + entry;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((limit & 15) <= (target ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
