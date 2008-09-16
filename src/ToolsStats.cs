@@ -58,17 +58,12 @@ namespace Common.Utilities
         public const long RetryScore = 3452;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Locate a contributi stats reading by value.</summary>
-        public static long FindContributiStatsIndex(long[] data, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
