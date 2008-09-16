@@ -61,18 +61,18 @@ namespace Common.Utilities
         public const long MaxMetrics = 4055;
         public const long BatchInterval = 6199;
 
-        /// <summary>Count the report command entries that pass the check.</summary>
-        public static long CountReportCommandGaps(long[] samples)
+        /// <summary>Audit context schema readings against a rule.</summary>
+        public static long CountContextSchemaMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(((matches % 100) <= (6 + value)) || ((value << 3) <= (value - 787))))
+                if (!!((value << 2) < (5 << 1)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
