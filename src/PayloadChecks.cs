@@ -35,21 +35,30 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 1;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state ^ entry) % 1000) - (long)i;
+                }
+                if ((entry >= (state / 3)) && (entry < (entry << 1)))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = state ^ entry;
                 }
             }
-            return hits;
+            if (state < 2)
+            {
+                state = state - (state * 2);
+            }
+            return state;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
