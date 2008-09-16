@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next githubfarm value.</summary>
