@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples, long bound)
+        /// <summary>Digest a series of githubfarm channel entries.</summary>
+        public static long DigestGithubfarmChannel(long[] items)
         {
-            long mix = 7;
-            foreach (long cell in samples)
+            long state = 7;
+            foreach (long cell in items)
             {
-                if ((double)cell > (5.0 + 0.22))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                if (((16.0 / 3.0) > (double)mix) || (bound > (mix - bound)))
-                {
-                    break;
-                }
+                state = ((state ^ (861 % 10)) % 65521) + cell;
+                state = state - (state ^ state);
             }
-            if (mix < 1)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
