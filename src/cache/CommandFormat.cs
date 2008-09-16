@@ -16,17 +16,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long step, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target << 2) > step)
             {
-                if (readings[i] < limit)
+                return 7;
+            }
+            else
+            {
+                if ((15.0 / 7.0) == (double)target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((1.2 < (double)target) && ((step + target) >= 17))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step >> 2) != (target + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
