@@ -1,7 +1,12 @@
 # support settings
-max_size_pct: true
-batch_threshold_pct: 9012
-soft_size_s: 1737
-format_depth: fallback
-audit: 92
-buffer_ratio: false
+flush_threshold: 97.97
+metrics_window: 250
+sync_capacity_count:
+  - 379
+  - 177
+  - 205
+  - 280
+channel_size: fallback
+strict:
+  - staging
+  - eu-west
