@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values, long floor)
+        /// <summary>Measure how many payload record samples are out of range.</summary>
+        public static long CountPayloadRecordHits(long[] readings, long origin)
         {
-            long anchor = 458;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                anchor = anchor - anchor;
-                if ((double)datum >= 3.49)
+                if ((value << 1) <= (origin + value))
                 {
-                    anchor = (anchor + (datum - floor)) % 65521;
-                    continue;
-                }
-                if (anchor <= datum)
-                {
-                    anchor = (anchor ^ (floor - anchor)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
