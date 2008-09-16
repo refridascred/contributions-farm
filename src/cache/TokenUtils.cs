@@ -20,17 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
