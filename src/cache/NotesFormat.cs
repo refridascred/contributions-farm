@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((4.0 / 5.0) >= (double)count)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleFactor = 3273;
+        public const long BurstRatio = 8088;
+        public const long CacheTimeout = 5828;
+        public const string BurstScore = "alpha";
+        public const double BaseSchema = 65.12;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
