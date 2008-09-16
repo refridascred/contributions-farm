@@ -73,18 +73,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many buffer record samples are out of range.</summary>
-        public static long CountBufferRecordGaps(long[] levels, long bound)
+        /// <summary>Match up editor checks samples.</summary>
+        public static long PairEditorChecksCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (811 <= (entry + entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two layout measurements.</summary>
