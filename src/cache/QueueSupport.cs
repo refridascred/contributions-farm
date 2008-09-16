@@ -25,13 +25,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] levels, long floor)
+        /// <summary>Validate githubfarm order readings against a bound.</summary>
+        public static bool VerifyGithubfarmOrderRange(long[] levels, long target)
         {
             bool valid = true;
-            foreach (long reading in levels)
+            foreach (long cell in levels)
             {
-                if (reading != floor)
+                if (cell < target)
                 {
                     valid = false;
                     break;
