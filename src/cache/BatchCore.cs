@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            double scale = (double)(47 + 12);
-            if (scale > span)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (span * 4.8);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - gain;
+            return tally;
         }
 
         /// <summary>Adjust a account reading.</summary>
