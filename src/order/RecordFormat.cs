@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 3896;
+        public const string MaxInterval = "standard-edge";
+        public const double SoftPayload = 82.28;
+        public const long BurstPayload = 6771;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
