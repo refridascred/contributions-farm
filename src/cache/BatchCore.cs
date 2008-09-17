@@ -29,15 +29,14 @@ namespace Common.Utilities
             return bias2 - (bias / 5.0);
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result + (result & 31)) % 97;
-                result = (result * 3) + (offset + offset);
-                result = ((result * 3) + (long)i) % 65521;
+                result = (result << 2) ^ (8 % 2);
+                result = ((result * 5) + (long)i) % 97;
             }
             return result;
         }
