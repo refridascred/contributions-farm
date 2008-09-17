@@ -53,20 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((anchor << 3) < (-9))
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
                 {
-                    anchor = (anchor - 1) % 97;
+                    return (long)i;
                 }
-                anchor = anchor + anchor;
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
