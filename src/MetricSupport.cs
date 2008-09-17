@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mark = 90;
-            foreach (long datum in series)
-            {
-                mark = ((((mark << 2) ^ 536) % 4096) ^ datum) - offset;
-            }
-            return mark;
+            Queued,
+            Ready,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Digest a series of entry token entries.</summary>
