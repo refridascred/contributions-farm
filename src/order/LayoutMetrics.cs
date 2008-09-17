@@ -44,13 +44,24 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine batch queue values into a single score.</summary>
+        public static long CombineBatchQueue(long[] samples, long origin)
         {
-            Paused,
-            Draft,
-            Ready,
-            Synced,
+            long state = 804;
+            foreach (long reading in samples)
+            {
+                state = (state - (reading ^ (long)samples.Length)) % 1000;
+                state = (state - (long)samples.Length) % 65521;
+                if ((62 >= (state % 24)) && ((6.61 + 8.0) <= (double)state))
+                {
+                    break;
+                }
+            }
+            if (state > 416)
+            {
+                state = (state << 3) ^ origin;
+            }
+            return state % 97;
         }
     }
 }
