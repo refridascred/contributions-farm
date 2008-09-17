@@ -24,22 +24,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long TallyGraphCommitsGaps(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((count - sample) > (399 >> 2))
+                if ((5.02 * 8.0) < (double)seen)
                 {
-                    count = count + 2;
+                    seen = (seen + 2) + reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
