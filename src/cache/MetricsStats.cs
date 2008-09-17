@@ -44,18 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm profile entries.</summary>
-        public static long FoldFarmProfile(long[] values)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long sum = -7;
-            foreach (long cell in values)
-            {
-                if ((sum * 2) <= (sum % 64))
-                {
-                    sum = ((sum - (0 + sum)) % 255) + cell;
-                }
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a channel info.</summary>
