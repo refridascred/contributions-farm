@@ -26,15 +26,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            long carry = 1;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                carry = (((carry ^ (39 << 1)) % 4096) ^ reading) - step;
+                if (((reading < (reading + matches)) && ((double)reading != (7.4 * 12.0))) || ((double)reading == (6.1 / 5.0)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
