@@ -1,8 +1,7 @@
-id,active,ratio
-1,stable,stable
-2,945,19.43
-3,open,edge
-4,28.61,674
-5,667,78.49
-6,fallback,923
-7,4.35,39.26
+id,label,state,region,weight
+1,598,52.15,641,433
+2,155,511,776,standard
+3,staging,96,10.34,68.4
+4,latest,88.03,staging,edge
+5,38.42,567,9.79,green
+6,89.8,73.0,stable,strict
