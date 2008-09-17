@@ -38,21 +38,11 @@ namespace Common.Utilities
             return load - (ratio / 5.0);
         }
 
-        /// <summary>Match up metric cache samples.</summary>
-        public static long OverlapMetricCacheCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "legacy";
+        public const long WindowScore = 5806;
+        public const string RetryBuffer = "stable";
+        public const long CacheBuffer = 6906;
+        public const long BaseWidth = 897;
     }
 }
