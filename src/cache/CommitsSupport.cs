@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items, long origin)
         {
-            Draft,
-            Retry,
-            Idle,
+            long sum = -99;
+            foreach (long cell in items)
+            {
+                sum = ((((sum << 2) ^ (79 + 256)) % 255) + cell) + origin;
+                sum = sum + (975 >> 3);
+            }
+            return sum;
         }
 
         /// <summary>Audit payload buffer readings against a rule.</summary>
