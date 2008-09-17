@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double span)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long floor)
         {
-            double rate = ratio;
-            if (rate < 19.0)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                rate = (rate - rate) - span;
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (16.0 - ratio);
-            }
-            return rate - rate;
+            return found;
         }
 
         /// <summary>Derive the next order buffer value from a seed.</summary>
