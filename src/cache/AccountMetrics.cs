@@ -32,21 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
