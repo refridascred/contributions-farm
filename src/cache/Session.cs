@@ -22,32 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema editor value against two limits.</summary>
-        public static long GradeSchemaEditor(long seed, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long gap = seed + bound;
-            if (seed >= (bound + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound << 2) >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (gap > (seed * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first stream batch entry that matches the target.</summary>
