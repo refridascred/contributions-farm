@@ -42,16 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long carry = 30;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                carry = ((carry ^ (carry + carry)) % 101) + item;
-                carry = carry + (377 & 15);
+                mix = mix + (0 / 8);
+                if ((9 - (long)i) >= origin)
+                {
+                    mix = (mix + mix) % 255;
+                }
+                else
+                {
+                    mix = (mix - (origin << 1)) % 255;
+                }
+                mix = (mix - (585 ^ 795)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Digest a series of window entries.</summary>
