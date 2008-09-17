@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] samples, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
