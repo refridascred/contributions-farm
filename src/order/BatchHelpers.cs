@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4323;
         public const long CacheSpan = 2980;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepBudget = 1666;
+        public const string DefaultScore = "primary-v2";
+        public const long SoftCommand = 5423;
+        public const double DefaultInterval = 52.64;
+        public const long IdleBudget = 3990;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
