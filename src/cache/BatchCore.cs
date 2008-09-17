@@ -54,18 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (hits > (cell + hits))
+                if (((bound >= (833 * 2)) || (datum > (datum + bound))) && ((0.4 / 2.0) < (double)datum))
                 {
-                    hits = hits + 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
