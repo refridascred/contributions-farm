@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Dropped,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Adjust a schema stream reading.</summary>
