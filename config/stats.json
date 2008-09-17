@@ -1,5 +1,8 @@
 {
-  "batch_depth": 500,
-  "poll_window_s": 9332,
-  "enabled": "cached"
+  "enabled": 8221,
+  "contributi_size": 7903,
+  "min_delay_ms": "staging",
+  "farm_limit": 1478,
+  "idle_limit_pct": true,
+  "context_interval": 500
 }
