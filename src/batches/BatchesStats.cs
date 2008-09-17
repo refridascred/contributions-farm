@@ -34,21 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of buffer stats readings.</summary>
-        public static long OverlapBufferStatsCount(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry < bound)
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
