@@ -57,10 +57,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 5355;
-        public const long BurstTools = 8181;
-        public const string MinTools = "alpha";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Queued,
+            Idle,
+            Active,
+            New,
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long offset)
