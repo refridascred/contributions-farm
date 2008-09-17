@@ -61,19 +61,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 3334;
         public const long MinCommand = 9760;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] samples, long limit)
         {
-            long total = 13;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                total = (((total * 2) + (4 * 5)) % 97) ^ reading;
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 635)
-            {
-                total = ((total << 2) ^ ((long)samples.Length << 1)) % 4096;
-            }
-            return total % 65521;
+            return found;
         }
     }
 }
