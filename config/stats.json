@@ -1,5 +1,6 @@
 {
-  "readonly": "staging",
-  "metric_threshold": "edge",
-  "enabled": "green"
+  "base_retries": 1024,
+  "poll_delay_count": 30,
+  "commits_window": 41,
+  "soft_ratio_count": 1024
 }
