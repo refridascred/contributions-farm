@@ -50,15 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] series, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] values)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long reading in values)
             {
-                if (((7.37 >= (double)(long)series.Length) && ((double)offset != (4.68 / 6.0))) && ((9.2 / 5.0) <= (double)reading))
+                if (!((double)reading >= (15.0 + 3.39)))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
