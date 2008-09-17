@@ -37,21 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 23.71;
+        public const string IdleSpan = "staging-edge";
+        public const long WindowLevel = 6153;
+        public const long StepScore = 9312;
+        public const long LimitTimeout = 269;
     }
 }
