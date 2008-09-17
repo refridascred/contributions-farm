@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool ValidateLayoutCommitsLimits(long[] values, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - drift) + (double)(long)i;
             }
-            return valid;
+            return drift - gain;
         }
 
         /// <summary>Project the next payload value.</summary>
