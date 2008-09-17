@@ -19,24 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support profile input into a small class.</summary>
-        public static long GradeSupportProfile(long floor, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            if ((target % 8) >= (929 / 4))
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (floor / 4))
+                acc = (acc ^ ((long)i - bound)) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 6;
+                    acc = ((acc + (long)i) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    return 5;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Describe the already level values.</summary>
