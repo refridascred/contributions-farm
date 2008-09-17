@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleBudget = 2402;
-        public const double DefaultSchema = 96.94;
-        public const string HardSchema = "alpha-edge";
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long seed, long seed2)
+        {
+            if ((seed >> 1) >= (seed2 << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((seed2 & 1) < (seed * 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long seed)
