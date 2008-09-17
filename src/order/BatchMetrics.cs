@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double rate, double offset)
+        /// <summary>Check that every commits notes entry stays within the limit.</summary>
+        public static bool CheckCommitsNotesRange(long[] readings, long step)
         {
-            double rate2 = (offset / 7.0) / 9.0;
-            if (rate2 > (1.51 - rate2))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                rate2 = rate2 + rate;
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - (double)8) + (double)(long)i;
-            }
-            return rate2 + (rate2 * 6.1);
+            return ready;
         }
 
         /// <summary>Hold a entry record.</summary>
