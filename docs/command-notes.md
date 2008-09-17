@@ -1,11 +1,12 @@
 # Command notes
 
-When a format fails, the support handler retries a few times before giving up.
-When a batch fails, the buffer handler retries a few times before giving up.
-The support report groups every account by batch.
+Use editor settings to tune how often token data is refreshed.
+Use notes settings to tune how often window data is refreshed.
+The channel module keeps filter values in sync with the editor cache.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep tools values small
-- Prefer metrics defaults
+- Prefer record defaults
+- Log every payload change
+- Document new context fields
+- Review checks limits each release
