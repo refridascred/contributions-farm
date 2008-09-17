@@ -1,5 +1,5 @@
 {
-  "cache_capacity": 8744,
-  "retry_capacity_ms": "cached",
-  "persist": ["edge", "legacy", "standard", "primary"]
+  "cache_size_pct": [435, 465, 77, 316],
+  "soft_limit_pct": 1200,
+  "soft_ratio": ["standard", "stable"]
 }
