@@ -57,18 +57,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (11.0 >= (double)datum)
-                {
-                    tally = tally + 1;
-                }
+                state = (state - (state + state)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
