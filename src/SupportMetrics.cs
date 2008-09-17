@@ -47,18 +47,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 898;
+        public const long BurstCommand = 1552;
+        public const long MinCommand = 4977;
+        public const string MaxCommand = "stable-edge";
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long RankAlready(long step, long seed)
