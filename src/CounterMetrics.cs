@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long step)
         {
-            Queued,
-            Done,
-            Ready,
-            Closed,
-            New,
+            long bound = limit + step;
+            if ((bound >> 5) <= (limit & 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8 & 255) >= (limit % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the window state values.</summary>
