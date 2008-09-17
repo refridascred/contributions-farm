@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count + seed) <= seed)
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleRatio = 8510;
+        public const double IdleScore = 68.38;
+        public const long HardNotes = 1411;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long FindBufferIndex(long[] readings, long limit)
