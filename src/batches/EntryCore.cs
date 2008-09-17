@@ -30,18 +30,12 @@ namespace Common.Utilities
             return ((gain2 + (double)44) + gain) + bias;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((4.8 + 5.6) > (double)limit)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
