@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values, long floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long bound)
         {
-            long mix = 38;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((3 + item) == (floor << 3)) || ((item + mix) >= 75))
+                if (cell < bound)
                 {
-                    mix = mix ^ item;
+                    stale = false;
+                    break;
                 }
-                mix = (mix + (item << 1)) % 255;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Accumulate record session samples.</summary>
