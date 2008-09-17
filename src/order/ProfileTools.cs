@@ -21,11 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double ratio = bias;
-            return ratio + (ratio - scale);
+            Synced,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
