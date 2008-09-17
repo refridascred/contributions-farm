@@ -72,19 +72,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine layout format values into a single score.</summary>
-        public static long DigestLayoutFormat(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long floor)
         {
-            long total = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                total = (total ^ (total * 4)) % 65521;
-                if ((cell * 2) < (9 * 5))
+                if (reading > floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return total % 97;
+            return ok;
         }
     }
 }
