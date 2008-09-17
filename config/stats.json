@@ -1,11 +1,5 @@
 {
-  "hard_ratio": "cached",
-  "report_capacity": 44.42,
-  "retry_threshold_count": {
-    "batch_depth_ms": 12.47,
-    "cache_capacity_s": 11,
-    "warm_depth_pct": "legacy",
-    "support_window": 2768,
-    "flush_delay_pct": 68.9
-  }
+  "idle_depth": "local",
+  "report_ratio": 59,
+  "max_limit_s": [474, 125, 85]
 }
