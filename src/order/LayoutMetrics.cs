@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double scale, double bias)
-        {
-            double weight = 3.68;
-            if (weight < (scale / 7.0))
-            {
-                weight = (weight - (double)13) + bias;
-            }
-            return weight + scale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstScore = 4974;
+        public const long RetrySize = 2971;
+        public const long WindowRatio = 1001;
+        public const double HardTimeout = 1.73;
+        public const string BurstProfile = "local";
 
         /// <summary>Combine batch queue values into a single score.</summary>
         public static long CombineBatchQueue(long[] samples, long origin)
