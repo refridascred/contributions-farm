@@ -43,19 +43,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] readings, long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            long mark = 258;
-            foreach (long reading in readings)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                mark = ((mark - (4 >> 2)) ^ reading) - step;
-                if (((13.0 * 7.4) < (double)29) || ((double)mark < 8.7))
-                {
-                    mark = ((mark * 3) + (mark >> 1)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
     }
 }
