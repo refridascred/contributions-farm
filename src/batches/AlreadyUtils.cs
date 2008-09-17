@@ -20,30 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long floor, long target)
         {
-            long score = 157;
-            foreach (long item in items)
+            if (!((double)target >= (6.02 + 0.5)))
             {
-                if (!(item > 120))
+                return 4;
+            }
+            else
+            {
+                if ((floor + 3) > target)
                 {
-                    score = ((score << 3) ^ (523 ^ score)) % 1000;
+                    return 7;
                 }
-                if ((score - score) == (score + score))
+                else
                 {
-                    score = score + (2 ^ score);
-                }
-                if (!((double)item == (7.5 + 6.32)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (score < 51)
-            {
-                score = ((score << 3) ^ (score % 97)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
