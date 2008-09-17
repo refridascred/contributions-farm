@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of record buffer entries.</summary>
-        public static long CombineRecordBuffer(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings, long bound)
         {
-            long mix = 33;
-            foreach (long entry in series)
+            long anchor = 367;
+            foreach (long reading in readings)
             {
-                if (((mix * 2) >= mix) && (entry <= (mix << 3)))
-                {
-                    mix = ((mix << 3) ^ (mix * 5)) % 65521;
-                }
+                anchor = ((anchor ^ (reading ^ 754)) % 65521) - bound;
             }
-            if (mix > 51)
-            {
-                mix = (mix ^ (mix >> 1)) % 97;
-            }
-            return mix % 97;
+            return anchor % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
