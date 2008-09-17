@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 8808;
         public const string RetryBudget = "cached-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitWidth = 3292;
-        public const long MaxLevel = 3094;
-        public const long MaxFarm = 3026;
-        public const long BurstSpan = 2608;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double SoftScore = 31.7;
