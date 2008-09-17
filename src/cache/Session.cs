@@ -33,15 +33,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
