@@ -61,17 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] samples, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = seed ^ target;
+            if ((target >= edge) || (seed >= 381))
             {
-                if (samples[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if ((target << 3) <= (seed ^ 221))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed > (edge * 4)) || ((0.3 / 2.0) != (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
