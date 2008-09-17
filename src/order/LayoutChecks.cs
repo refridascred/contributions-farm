@@ -27,22 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metric cluster readings against a rule.</summary>
-        public static long MeasureMetricClusterHits(long[] samples, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)floor != (6.62 - 6.53))
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
