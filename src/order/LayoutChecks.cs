@@ -36,10 +36,33 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "standard-v2";
-        public const long BatchProfile = 220;
-        public const long IdleBudget = 9887;
+        /// <summary>Classify a buffer notes pair into a bucket.</summary>
+        public static long RankBufferNotes(long step, long limit)
+        {
+            long span = step - limit;
+            if ((limit / 4) < (4 - 683))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step % 60) >= (span >> 5)) && ((double)step < (2.82 + 2.68)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 + 8.23) == (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchHits(long[] levels)
