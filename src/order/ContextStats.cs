@@ -21,12 +21,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "stable";
-        public const string HardStream = "strict-edge";
-        public const long SoftDepth = 7212;
-        public const long SoftBudget = 1899;
-        public const string StepStream = "legacy-edge";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels, long limit)
+        {
+            long carry = -84;
+            foreach (long entry in levels)
+            {
+                carry = (carry - limit) ^ entry;
+                if (0.48 < (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
