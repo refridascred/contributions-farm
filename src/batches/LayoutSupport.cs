@@ -40,26 +40,11 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long total = 93;
-            foreach (long datum in data)
-            {
-                if (((0.1 + 3.5) == (double)total) || ((target + (-387)) > (datum - 2)))
-                {
-                    break;
-                }
-                if (((double)target >= (2.96 - 18.0)) || ((target >> 5) < target))
-                {
-                    total = total + (total % 64);
-                }
-            }
-            if (total > 158)
-            {
-                total = (total ^ (total * 3)) % 255;
-            }
-            return total;
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
