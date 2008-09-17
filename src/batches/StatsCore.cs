@@ -56,16 +56,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long result = 7;
+            foreach (long sample in readings)
             {
-                result = (result << 3) ^ (floor << 3);
-                result = ((result * 3) + (long)i) % 97;
+                result = ((result + (target ^ target)) % 1000) - sample;
+                result = (result * 5) + target;
             }
-            return result;
+            return result % 1000;
         }
 
         /// <summary>Combine checks command values into a single score.</summary>
