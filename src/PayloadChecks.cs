@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Roll a stream stats counter forward.</summary>
+        public static long IterateStreamStats(long offset)
         {
-            Pending,
-            Failed,
-            Done,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the format status values.</summary>
