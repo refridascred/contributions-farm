@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values, long bound)
+        /// <summary>Check that every notes tools entry stays within the limit.</summary>
+        public static bool CheckNotesToolsRange(long[] levels, long step)
         {
-            long state = 6;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                state = ((state - (17 >> 5)) ^ reading) - bound;
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
