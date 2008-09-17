@@ -30,21 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double ratio = (span + span) - span;
+            return (ratio - (5.4 * 7.1)) + rate;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
