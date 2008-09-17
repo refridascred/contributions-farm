@@ -14,10 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 7289;
-        public const long LimitTimeout = 9576;
-        public const long WindowContext = 2339;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((90 >> 4) >= hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] series, long floor)
