@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long LimitCache = 4591;
         public const string DefaultWidth = "stable-1";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Iterate the checks profile series from a seed.</summary>
+        public static long StepChecksProfile(long step)
         {
-            Stale,
-            Synced,
-            New,
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!!((step % 8) >= (-429)))
+                {
+                    total = (total + (97 * 5)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the already status values.</summary>
