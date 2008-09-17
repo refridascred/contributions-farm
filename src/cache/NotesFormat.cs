@@ -20,21 +20,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state + ((long)i << 2)) % 1000;
-                state = state + step;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state << 3) ^ (state & 255)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Failed,
+            Pending,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
