@@ -19,30 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch session values into a single score.</summary>
-        public static long FoldBatchSession(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            long sum = 318;
-            foreach (long sample in values)
+            double ratio = offset;
+            if (ratio < (double)5)
             {
-                if ((double)sum > (1.6 / 4.0))
-                {
-                    sum = sum - (sum - sum);
-                }
-                if ((double)sample == (6.5 + 9.84))
-                {
-                    sum = ((sum << 2) ^ sample) % 97;
-                }
-                else
-                {
-                    sum = (sum + (sum ^ sum)) % 65521;
-                }
+                ratio = (ratio - (offset / 3.0)) + rate;
             }
-            if (sum > 1)
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum << 3) ^ sum;
+                ratio = (ratio + (1.19 / 5.0)) + (double)(long)i;
             }
-            return sum;
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
