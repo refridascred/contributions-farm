@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count / 7) >= (count * 5))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 2) + cell) - limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
