@@ -55,21 +55,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample >= (sample - tally))
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
