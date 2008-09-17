@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=278
-log "limit is ${COMMAND_LIMIT}"
-
-for item in fallback primary; do
+for item in stable strict cached; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
