@@ -69,18 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 85.78;
+        public const long MaxCounter = 5632;
+        public const string DefaultCounter = "legacy-v2";
+        public const long StepCount = 2559;
+        public const long BatchCounter = 8472;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] samples)
