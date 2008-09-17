@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Combine record editor values into a single score.</summary>
+        public static long WeighRecordEditor(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 418;
+            foreach (long entry in items)
+            {
+                mix = ((mix * 5) + entry) % 65521;
+                if ((double)mix > (8.24 / 6.0))
+                {
+                    mix = mix ^ (bound - 8);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
