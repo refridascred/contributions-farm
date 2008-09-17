@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long diff = limit - target;
-            if (!(target >= (63 >> 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.4 / 3.0) > (double)diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
