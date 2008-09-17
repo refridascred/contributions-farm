@@ -52,20 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window farm readings against a bound.</summary>
-        public static bool ValidateWindowFarmLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 6465;
+        public const long DefaultQueue = 6585;
+        public const string SoftQueue = "local";
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long GradeReport(long step, long step2)
