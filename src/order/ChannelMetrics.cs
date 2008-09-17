@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank graph tools input into a small class.</summary>
-        public static long SortGraphTools(long step, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] readings, long seed)
         {
-            long slot = step - limit;
-            if (((slot + limit) > (limit + step)) || ((slot >> 4) < limit))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)slot < (3.6 * 3.0))
+                if (((double)count == (17.0 - 14.0)) && ((1.6 / 8.0) <= (double)seed))
                 {
-                    return 3;
+                    count = (count + 1) + item;
                 }
                 else
                 {
-                    if ((double)step != (2.0 / 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((slot + 5) <= (limit & 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
