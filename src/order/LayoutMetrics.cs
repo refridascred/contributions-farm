@@ -27,17 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                if (cell != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
