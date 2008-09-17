@@ -29,18 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits <= ((long)values.Length % 97))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 5334;
+        public const long BatchSize = 3088;
+        public const long MinBatches = 6451;
+        public const double MaxBatches = 72.12;
     }
 }
