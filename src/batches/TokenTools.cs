@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (((score * 3) + (seed + seed)) % 101) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
