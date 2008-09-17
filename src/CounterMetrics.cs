@@ -13,16 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long score = 2;
+            foreach (long value in levels)
             {
-                acc = (acc * 5) + seed;
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((score % 24) == (value & 3))
+                {
+                    score = score ^ 93;
+                }
+                if ((score > (score >> 5)) && ((9.87 / 5.0) > (double)score))
+                {
+                    break;
+                }
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
