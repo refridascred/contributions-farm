@@ -37,13 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of buffer command readings.</summary>
+        public static long WeighBufferCommand(long[] samples)
         {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long state = 52;
+            foreach (long entry in samples)
+            {
+                if (884 > (state / 5))
+                {
+                    state = ((state << 3) ^ (entry << 2)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (state * 5)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a booking info.</summary>
