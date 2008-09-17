@@ -14,11 +14,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 6446;
-        public const long HardSize = 2470;
-        public const long LimitFactor = 400;
-        public const long MaxReport = 3479;
+        /// <summary>Count the queue schema entries that pass the check.</summary>
+        public static long TallyQueueSchemaHits(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches ^ seed) == (seed - seed))
+                {
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long DigestLayout(long[] levels)
