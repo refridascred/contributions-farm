@@ -12,19 +12,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Roll a schema token counter forward.</summary>
-        public static long SeriesSchemaToken(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long total = 536;
+            foreach (long value in items)
             {
-                if (seed <= (long)i)
-                {
-                    mix = ((mix << 3) ^ (5 / 6)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                total = total + value;
             }
-            return mix;
+            return total % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
