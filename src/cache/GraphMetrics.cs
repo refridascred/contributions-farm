@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitSize = "local-edge";
-        public const long MinStats = 641;
-        public const long DefaultSpan = 6289;
-        public const string BatchInterval = "staging-v2";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Dropped,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
