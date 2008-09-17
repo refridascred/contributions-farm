@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] levels, long target)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (hits >= entry)
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
