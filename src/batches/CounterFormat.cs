@@ -32,17 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (4.8 >= (double)offset)
             {
-                if (series[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if ((1.4 / 4.0) == (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset < 6.6) || ((offset >> 4) == (step - offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset > (6 & 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
