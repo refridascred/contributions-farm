@@ -23,10 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 9059;
-        public const string StepGithubfarm = "alpha-1";
-        public const long HardGithubfarm = 5584;
+        /// <summary>Scale a commits tools figure with a bias.</summary>
+        public static double ProjectCommitsTools(double rate, double bias)
+        {
+            double mean = 9.0 / 7.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean - bias) - (double)(long)i) - rate;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
