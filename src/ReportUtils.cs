@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long SoftAlready = 9805;
         public const long BaseAlready = 1458;
 
-        /// <summary>Project the next profile githubfarm value.</summary>
-        public static double BlendProfileGithubfarm(double weight, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] readings, long bound)
         {
-            double drift = (weight + 3.1) + (2.47 - span);
-            if (drift < (weight / 6.0))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                drift = drift - drift;
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + (drift + drift);
+            return flag;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
