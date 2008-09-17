@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long score = 1;
-            foreach (long datum in series)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                score = score - (datum + datum);
-                score = (score ^ (datum & 3)) % 4096;
+                long hits = (anchor - target) + (target ^ target);
+                if ((hits ^ target) < (long)i)
+                {
+                    anchor = (anchor ^ (hits ^ anchor)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the buffer state values.</summary>
