@@ -14,19 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] items, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double mean = ratio;
+            if (mean <= bias)
             {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (bias - 3.0);
             }
-            return flag;
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean + (double)(-5);
         }
 
         /// <summary>Fold a list of session command readings.</summary>
