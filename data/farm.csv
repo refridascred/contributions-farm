@@ -1,9 +1,8 @@
-id,rank,level,region
-1,staging,85.67,7.51
-2,990,local,49.62
-3,861,245,cached
-4,31.81,43.32,734
-5,10,stable,staging
-6,edge,staging,679
-7,83.58,257,15.13
-8,latest,89.45,751
+id,state,active
+1,open,13.92
+2,687,34.53
+3,88.06,edge
+4,47.7,4.11
+5,206,61.62
+6,79,811
+7,820,459
