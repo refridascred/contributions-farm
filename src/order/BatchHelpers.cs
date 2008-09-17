@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Locked,
-            Done,
-            Draft,
+            Queued,
+            Idle,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
