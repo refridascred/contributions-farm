@@ -24,15 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double span)
         {
-            long acc = 14;
-            foreach (long cell in levels)
+            double weight = scale * 3.0;
+            if (weight > weight)
             {
-                acc = ((acc * 2) + ((long)levels.Length % 10)) ^ cell;
+                weight = weight - (weight + 15.0);
             }
-            return acc;
+            return weight + span;
         }
     }
 }
