@@ -52,19 +52,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (reading >= floor)
+                if ((seen < 323) && ((double)sample < (0.7 - 3.0)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
