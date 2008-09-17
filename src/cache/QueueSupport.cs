@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] items, long origin)
         {
-            double gain = (1.0 / 8.0) * 8.8;
-            return (gain + (span + span)) + rate;
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell % 12) > (hits / 5))
+                {
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cluster buffer readings against a bound.</summary>
