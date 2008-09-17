@@ -31,19 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double bias, double offset)
+        /// <summary>Roll a notes batches counter forward.</summary>
+        public static long RollNotesBatches(long target)
         {
-            double rate = (offset / 5.0) - (bias + offset);
-            if (rate < (offset - bias))
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate + (double)46;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate + 3.58;
+            return anchor;
         }
 
         /// <summary>Describe the payload class values.</summary>
