@@ -1,10 +1,8 @@
 {
-  "soft_timeout_pct": "legacy",
-  "retry_window_ms": {
-    "burst_threshold_pct": 40.87,
-    "queue_retries": "staging",
-    "burst_threshold_count": 13
-  },
-  "warm_ttl_count": 30,
-  "profile_retries": 5732
+  "context_ttl": ["edge", "staging"],
+  "profile_size": 7633,
+  "min_depth": 14.34,
+  "soft_window_ms": 7837,
+  "strict": ["primary", "blue"],
+  "max_window": 37.15
 }
