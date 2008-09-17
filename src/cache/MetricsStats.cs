@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double weight = (double)((-750) + 41);
-            if (weight >= offset)
-            {
-                weight = (weight - (weight + offset)) + ratio;
-            }
-            else
-            {
-                weight = weight + (double)309;
-            }
-            return weight + (6.72 / 6.0);
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
