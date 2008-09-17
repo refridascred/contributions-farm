@@ -68,18 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)matches == (5.26 / 9.0))
+                if (11.0 >= (double)datum)
                 {
-                    matches = (matches + 1) - item;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
