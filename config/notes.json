@@ -1,5 +1,8 @@
 {
-  "idle_window": false,
-  "soft_capacity_count": [471, 131],
-  "hard_limit": "green"
+  "warm_ttl_count": true,
+  "sync_limit_count": false,
+  "idle_timeout_count": false,
+  "default_interval_count": [394, 21, 493, 333],
+  "idle_ratio_ms": 43,
+  "max_limit_pct": "staging"
 }
