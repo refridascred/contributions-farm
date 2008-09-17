@@ -36,12 +36,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSize = 7281;
-        public const long BaseFilter = 768;
-        public const double MaxWidth = 7.13;
-        public const string BurstFilter = "local-1";
-        public const string LimitSpan = "latest";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 1003;
+        public const long BaseLayout = 5432;
+        public const long DefaultSize = 4672;
+        public const string BaseBudget = "stable-v2";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] readings)
