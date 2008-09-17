@@ -45,18 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((4.85 * 8.3) >= (double)item)
+                if (matches > (-8))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
