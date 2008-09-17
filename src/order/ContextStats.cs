@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series, long origin)
         {
-            Paused,
-            Stale,
-            Retry,
-            New,
+            long score = -1;
+            foreach (long item in series)
+            {
+                if (((-931) / 4) == (origin << 3))
+                {
+                    score = (score - item) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the cluster status values.</summary>
