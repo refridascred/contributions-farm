@@ -32,32 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long step = bound + limit;
-            if (((limit + step) < limit) || ((5.52 + 18.0) == (double)bound))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step << 3) < (step ^ limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (12.0 - 9.9))
+                    if ((readings[i] ^ readings[j]) > 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
