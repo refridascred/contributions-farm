@@ -1,6 +1,6 @@
 {
-  "max_capacity_count": "green",
-  "base_ratio_count": 7344,
-  "burst_window_count": [209, 87],
-  "flush_retries_count": "strict"
+  "batch_ratio": "legacy",
+  "persist": false,
+  "token_depth": 46,
+  "poll_retries_pct": 89.69
 }
