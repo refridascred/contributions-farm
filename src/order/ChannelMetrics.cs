@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((entry / 7) == (tally / 2)) || ((42 & 1) > (entry ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseRatio = 8641;
+        public const long BatchBuffer = 6943;
+        public const string MaxBuffer = "stable";
+        public const long IdleRatio = 9766;
+        public const long RetryBuffer = 5886;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] readings, long bound)
