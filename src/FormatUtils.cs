@@ -39,26 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long step)
+        /// <summary>Count the queue record entries that pass the check.</summary>
+        public static long CountQueueRecordGaps(long[] levels)
         {
-            long score = 8;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((score + step) < item)
+                if (((279 ^ hits) == (reading - hits)) || ((reading - (long)levels.Length) >= (reading * 2)))
                 {
-                    score = ((score << 2) ^ (step + score)) % 65521;
-                }
-                if ((score % 5) > ((long)items.Length * 5))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (score > (-1))
-            {
-                score = (score << 3) ^ 27;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
