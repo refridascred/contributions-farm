@@ -45,26 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long carry = 1;
-            foreach (long value in items)
-            {
-                if ((double)value < (9.8 / 5.0))
-                {
-                    carry = (carry - (1 + carry)) % 255;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (value / 8)) % 4096;
-                    carry = (carry + (value / 7)) % 4096;
-                }
-                carry = carry ^ (value >> 3);
-                carry = ((carry << 3) ^ (carry - value)) % 1000;
-            }
-            return carry;
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Blend two profile editor measurements.</summary>
