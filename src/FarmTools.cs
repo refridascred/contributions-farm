@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 6746;
-        public const long RetryScore = 468;
-        public const long CacheChecks = 8599;
-        public const long BurstLevel = 650;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
