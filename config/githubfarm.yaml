@@ -1,5 +1,4 @@
 # githubfarm settings
-sync_depth: green
-dry_run: 46
-burst_retries_count: edge
-sync_limit_s: false
+min_delay: 3561
+support_capacity: 94.02
+soft_depth_pct: blue
