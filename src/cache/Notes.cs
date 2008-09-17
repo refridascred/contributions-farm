@@ -70,18 +70,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long bound)
         {
-            long carry = 650;
-            foreach (long cell in series)
+            if (!(bound >= (bound + limit)))
             {
-                if ((4 + carry) <= (cell * 2))
+                return 2;
+            }
+            else
+            {
+                if ((0.73 * 6.0) > (double)limit)
                 {
-                    carry = ((carry << 3) ^ (cell * 5)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.6 / 3.0) == (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit >= bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
     }
 }
