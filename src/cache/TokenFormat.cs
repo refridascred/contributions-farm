@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum >= limit)
+                if ((sample << 1) <= (sample + sample))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
