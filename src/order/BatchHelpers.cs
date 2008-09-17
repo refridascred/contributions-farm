@@ -39,9 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitCount = 5293;
-        public const long WindowDepth = 7182;
-        public const long CacheContributi = 232;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
