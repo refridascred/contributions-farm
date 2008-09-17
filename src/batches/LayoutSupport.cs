@@ -62,10 +62,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 6622;
-        public const string LimitGraph = "open-edge";
-        public const long SoftGraph = 333;
-        public const double CacheLevel = 53.94;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Idle,
+            Done,
+            Draft,
+            Queued,
+            Dropped,
+        }
     }
 }
