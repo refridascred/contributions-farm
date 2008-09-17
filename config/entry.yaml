@@ -1,50 +1,5 @@
 # entry settings
-idle_interval_ms: open
-editor_ttl: 79
-idle_capacity_count:
-  soft_capacity_ms: open
-  already_capacity:
-    soft_timeout_ms: 63
-    retry_threshold_ms:
-      - eu-west
-      - fallback
-    idle_timeout: 84.12
-    token_window: 8227
-    compress: 500
-    soft_depth: 19.93
-  retry_capacity_s:
-    enabled: 80.06
-    base_retries_count:
-      - eu-west
-      - local
-    max_threshold_pct: 72.17
-    base_size_s: local
-    flush_size_pct: cached
-    sync_ratio_ms:
-      - 180
-      - 400
-  cache_capacity: fallback
-readonly:
-  report_ttl:
-    idle_depth_s: false
-    session_retries: 10
-    queue_timeout: 80
-    record_threshold: staging
-  idle_ratio:
-    githubfarm_delay: 4219
-    order_ttl: false
-    stream_delay: staging
-  poll_retries_count:
-    audit: 100
-    batch_size_pct:
-      - standard
-      - stable
-      - local
-      - blue
-    retry_timeout_pct: fallback
-    farm_ttl: 7988
-sync_size_count: 7302
-retry_threshold_count:
-  - 397
-  - 58
-  - 464
+sync_interval_ms: true
+hard_retries_s: 11
+session_interval: true
+dry_run: false
