@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long limit)
-        {
-            if ((13.0 * 0.9) > (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (limit + 66))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit % 100) >= (limit + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheTimeout = "alpha";
+        public const string RetryOrder = "cached-edge";
+        public const long LimitBudget = 4220;
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] items)
