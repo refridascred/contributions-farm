@@ -42,25 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Find the first stream batch entry that matches the target.</summary>
+        public static long FindStreamBatchIndex(long[] items, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix + (0 / 8);
-                if ((9 - (long)i) >= origin)
+                if (items[i] < bound)
                 {
-                    mix = (mix + mix) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix - (origin << 1)) % 255;
-                }
-                mix = (mix - (585 ^ 795)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
