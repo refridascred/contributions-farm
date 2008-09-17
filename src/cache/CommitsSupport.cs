@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double rate, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
-            double gain = (double)(40 & 15);
-            return ((gain - (double)4) + rate) + span;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((7.0 / 9.0) <= (double)tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
