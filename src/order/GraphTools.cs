@@ -61,23 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] values, long floor)
         {
-            double gain = (double)(9 - (-782));
-            if (gain <= offset)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                gain = gain + (4.93 + 7.37);
+                if ((reading - reading) >= tally)
+                {
+                    tally = (tally + 3) - floor;
+                }
             }
-            else
-            {
-                gain = gain + (offset - scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain - (scale / 5.0);
+            return tally;
         }
     }
 }
