@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Failed,
-            Ready,
-            Retry,
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many batches layout samples are out of range.</summary>
