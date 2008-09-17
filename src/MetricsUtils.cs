@@ -37,24 +37,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items)
         {
-            if (!((step >> 3) >= origin))
+            long mix = -72;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= origin)
+                if (mix <= (datum << 2))
                 {
-                    return 8;
+                    mix = (mix - (6 % 8)) % 101;
                 }
-                else
+                if (((long)items.Length + mix) > ((-6) % 60))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
