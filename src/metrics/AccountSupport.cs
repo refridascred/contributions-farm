@@ -37,13 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long origin)
         {
-            Idle,
-            Failed,
-            Draft,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
