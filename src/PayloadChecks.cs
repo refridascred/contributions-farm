@@ -63,18 +63,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long span = target ^ limit;
+            if (((limit + target) < (target << 3)) && ((span - limit) > (-9)))
             {
-                if (count <= (5 - cell))
+                return 8;
+            }
+            else
+            {
+                if ((2 * 5) >= (limit * 5))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((span << 2) < (target * 5)) || (span >= (limit / 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit filter payload readings against a rule.</summary>
