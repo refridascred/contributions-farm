@@ -1,21 +1,26 @@
 # support settings
-idle_timeout_ms: true
-retry_interval: 250
-dry_run: strict
-hard_capacity_ms:
-  audit: 80.59
-  sync_ratio: 31
-  persist: 40
-cache_ttl_s:
-  max_ratio_pct: 73
-  poll_size: false
-  enabled: 3309
-  persist:
-    warm_depth_ms: true
-    compress: staging
-    default_ttl: 79
-    burst_delay: 5318
-    strict: 90.95
-    stats_retries:
-      - eu-west
-      - eu-west
+command_depth:
+  - 218
+  - 304
+  - 349
+  - 187
+compress:
+  sync_window: 16.06
+  batch_timeout:
+    cache_interval: 100
+    base_ttl: 60
+    poll_interval_pct:
+      - standard
+      - legacy
+      - stable
+      - blue
+    checks_delay: false
+  batch_threshold_ms:
+    - open
+    - strict
+  min_limit:
+    - 456
+    - 358
+    - 384
+    - 196
+hard_size: standard
