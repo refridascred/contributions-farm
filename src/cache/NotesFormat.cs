@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long seed2)
-        {
-            long slot = seed - seed2;
-            if ((32 > (slot ^ seed)) || (((-94) & 15) == (seed2 * 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + slot) <= (23 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((11.0 - 8.91) <= 4.18)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchScore = 9416;
+        public const long HardSize = 8706;
+        public const long BaseMetrics = 1296;
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] levels)
