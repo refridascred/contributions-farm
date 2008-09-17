@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const double MinScore = 57.37;
         public const string LimitDepth = "strict-edge";
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long seed, long origin)
+        /// <summary>Locate a support already reading by value.</summary>
+        public static long FindSupportAlreadyIndex(long[] data, long limit)
         {
-            if (!(seed < (78 >> 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin >> 4) > (origin + (-55))) || ((double)seed == (double)125))
+                if (data[i] >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin > (5.2 + 15.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)seed != (3.1 / 6.0)) || ((double)seed != (2.0 + 3.8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
