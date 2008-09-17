@@ -30,11 +30,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
+            long acc = 922;
+            foreach (long item in levels)
+            {
+                acc = (acc - (long)levels.Length) % 255;
+                if (((7 ^ item) == (floor * 2)) || ((double)item < (double)735))
+                {
+                    acc = ((acc << 2) ^ ((long)levels.Length << 1)) % 255;
+                    continue;
+                }
+                acc = (acc + (7 & 15)) % 4096;
+                if ((447 / 7) <= (acc << 2))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
