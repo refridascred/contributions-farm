@@ -1,5 +1,8 @@
 {
-  "batch_timeout_s": 6416,
-  "stats_interval": 42.31,
-  "retry_threshold_s": 1529
+  "burst_ratio_s": 12.72,
+  "commits_ratio": true,
+  "compress": "latest",
+  "cache_delay_s": false,
+  "audit": "latest",
+  "persist": 500
 }
