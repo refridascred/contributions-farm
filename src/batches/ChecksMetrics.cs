@@ -63,19 +63,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double floor)
+        /// <summary>Locate a stream githubfarm reading by value.</summary>
+        public static long SeekStreamGithubfarmIndex(long[] data, long step)
         {
-            double ratio = floor / 8.0;
-            if (ratio <= (scale * 20.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (floor - scale);
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (floor / 6.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
