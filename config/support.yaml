@@ -1,7 +1,11 @@
 # support settings
-soft_window: 6723
-account_timeout:
-  batch_size_pct: strict
-  payload_size: 2296
-  compress: 37.49
-soft_threshold: 30
+githubfarm_delay:
+  - 157
+  - 495
+enabled: false
+base_limit:
+  - strict
+  - strict
+readonly: 8335
+tools_ratio: stable
+retry_window: 75.56
