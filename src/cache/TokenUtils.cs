@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinCount = 1505;
-        public const double IdleSession = 76.83;
-        public const double BurstBudget = 69.57;
-        public const string SoftSession = "strict-v2";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Draft,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long bound)
