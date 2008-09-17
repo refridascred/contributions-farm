@@ -33,12 +33,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] items, long step)
         {
-            Ready,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
