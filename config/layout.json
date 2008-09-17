@@ -1,6 +1,5 @@
 {
-  "profile_interval": "legacy",
-  "compress": "standard",
-  "min_limit_count": false,
-  "route_retries": 60
+  "compress": true,
+  "max_threshold_pct": "open",
+  "enabled": "strict"
 }
