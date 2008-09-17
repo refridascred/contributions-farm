@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first already farm entry that matches the target.</summary>
-        public static long LocateAlreadyFarmIndex(long[] readings, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 1;
+            foreach (long entry in data)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = (((score - (58 / 6)) % 255) - entry) - target;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
