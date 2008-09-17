@@ -1,5 +1,7 @@
 {
-  "editor_delay": 30,
-  "min_ttl_ms": 5624,
-  "editor_window": "latest"
+  "dry_run": 78,
+  "warm_depth_s": 5789,
+  "account_delay": 35.79,
+  "format_window": 76.15,
+  "strict": ["cached", "primary", "blue"]
 }
