@@ -1,16 +1,5 @@
 {
-  "warm_timeout": {
-    "retry_interval_count": "staging",
-    "flush_window_s": {
-      "soft_retries": 30,
-      "warm_interval": 44,
-      "readonly": [362, 272]
-    },
-    "max_window_count": ["local", "strict"],
-    "enabled": true
-  },
-  "idle_ttl_ms": [283, 136],
-  "sync_retries_count": 60.15,
-  "sync_capacity": 250,
-  "verbose": 3613
+  "batch_threshold": 77,
+  "warm_limit_ms": 60,
+  "batch_timeout_pct": false
 }
