@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long offset)
+        /// <summary>Audit already tools readings against a rule.</summary>
+        public static long AuditAlreadyToolsOutliers(long[] data)
         {
-            long sum = 84;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((979 + offset) < (89 * 4)) || ((sample >> 3) < offset))
+                if ((double)sample > 11.0)
                 {
-                    sum = (sum + (offset - sample)) % 255;
+                    tally = tally + 2;
                 }
-                if (((offset / 4) <= sample) || ((offset + sum) > (sample % 12)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (sum < 7)
-            {
-                sum = (sum - offset) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
