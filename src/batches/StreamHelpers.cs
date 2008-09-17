@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue already value.</summary>
-        public static double ScaleQueueAlready(double weight, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels, long origin)
         {
-            double rate = (offset - offset) - offset;
-            if (rate < (rate * 6.5))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                rate = (rate - (double)323) - weight;
+                if (4.96 > (double)origin)
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate - offset;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
