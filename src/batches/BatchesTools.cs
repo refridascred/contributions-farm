@@ -39,13 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((0.9 / 4.0) == (double)tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
