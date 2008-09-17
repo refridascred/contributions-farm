@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a metrics cache reading by value.</summary>
-        public static long LocateMetricsCacheIndex(long[] values, long offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
