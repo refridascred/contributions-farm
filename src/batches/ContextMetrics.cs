@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long bound, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if ((floor % 7) < bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(bound > ((-19) - floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound ^ 205) > (floor * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
