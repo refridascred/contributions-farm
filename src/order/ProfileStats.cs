@@ -48,18 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ datum) > ((long)samples.Length - datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
