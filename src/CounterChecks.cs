@@ -45,19 +45,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double scale, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double mean = scale;
-            if (mean > (double)4)
-            {
-                mean = (mean - (double)312) + offset;
-            }
-            else
-            {
-                mean = mean + (scale - 7.9);
-            }
-            return mean - (double)94;
+            Synced,
+            Pending,
+            Queued,
+            New,
+            Dropped,
         }
     }
 }
