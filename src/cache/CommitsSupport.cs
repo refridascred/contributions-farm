@@ -72,18 +72,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample <= (step % 3)) || ((sample & 1) > (sample - step))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
