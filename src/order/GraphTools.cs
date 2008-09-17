@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const double SoftCounter = 3.29;
         public const long IdleCounter = 3578;
 
-        /// <summary>Find the first metric record entry that matches the target.</summary>
-        public static long LocateMetricRecordIndex(long[] data, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = 5.34 - (6.21 - ratio);
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (rate * 5.6)) + (double)(long)i) + offset;
             }
-            return -1;
+            return rate + rate;
         }
 
         /// <summary>Accumulate stream samples.</summary>
