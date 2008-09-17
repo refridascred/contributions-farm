@@ -33,32 +33,17 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long bound, long floor)
+        /// <summary>Find the first graph stream entry that matches the target.</summary>
+        public static long SeekGraphStreamIndex(long[] values, long origin)
         {
-            long next = bound + floor;
-            if ((9.8 - 5.0) == (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (next < (bound % 3))
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((next + next) == (next >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
