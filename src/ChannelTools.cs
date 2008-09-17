@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 50.91;
+        public const double MinDepth = 49.2;
+        public const double BaseTimeout = 51.81;
+        public const long HardDepth = 8808;
+        public const string RetryBudget = "cached-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitWidth = 3292;
