@@ -1,5 +1,5 @@
 {
-  "compress": true,
-  "max_threshold_pct": "open",
-  "enabled": "strict"
+  "readonly": 91.16,
+  "hard_delay_s": "fallback",
+  "idle_limit": 500
 }
