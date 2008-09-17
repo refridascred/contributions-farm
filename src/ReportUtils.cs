@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetrySpan = "latest-v2";
-        public const long RetryCommits = 4051;
-        public const long RetrySize = 8479;
-        public const long SoftCommits = 4879;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryLevel = "alpha-edge";
+        public const long MinAlready = 1683;
+        public const long StepRatio = 9309;
+        public const long SoftAlready = 9805;
+        public const long BaseAlready = 1458;
 
         /// <summary>Project the next profile githubfarm value.</summary>
         public static double BlendProfileGithubfarm(double weight, double span)
