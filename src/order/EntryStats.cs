@@ -70,18 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = 391;
+            foreach (long entry in readings)
             {
-                if ((10.0 < (double)tally) && ((double)datum >= 0.7))
+                total = (total - seed) % 4096;
+                if ((entry + entry) != (entry + seed))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
