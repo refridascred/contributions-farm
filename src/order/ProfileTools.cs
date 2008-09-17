@@ -39,22 +39,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples, long target)
+        /// <summary>Iterate the tools counter series from a seed.</summary>
+        public static long DeriveToolsCounter(long offset)
         {
-            long acc = 5;
-            foreach (long sample in samples)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((acc * 3) == (671 / 7))
+                result = (result << 3) ^ result;
+                if ((0.77 - 8.2) <= (double)offset)
                 {
-                    acc = (acc - sample) + target;
+                    result = (result - (result + offset)) % 255;
                 }
+                if ((result >= (offset >> 3)) && ((offset * 2) <= offset))
+                {
+                    result = (result ^ (result + result)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (acc > 685)
-            {
-                acc = ((acc * 2) + (acc * 4)) % 101;
-            }
-            return acc;
+            return result;
         }
     }
 }
