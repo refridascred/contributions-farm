@@ -55,12 +55,22 @@ namespace Common.Utilities
         public const long RetryScore = 3452;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit layout order readings against a rule.</summary>
+        public static long AuditLayoutOrderMatches(long[] series, long step)
         {
-            Retry,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)hits == (double)step)
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
