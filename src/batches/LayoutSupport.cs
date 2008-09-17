@@ -30,11 +30,13 @@ namespace Common.Utilities
         public const string StepGithubfarm = "alpha-1";
         public const long HardGithubfarm = 5584;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
