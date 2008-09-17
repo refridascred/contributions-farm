@@ -1,11 +1,7 @@
 # support settings
-githubfarm_delay:
-  - 157
-  - 495
-enabled: false
-base_limit:
-  - strict
-  - strict
-readonly: 8335
-tools_ratio: stable
-retry_window: 75.56
+max_retries_s: 1.71
+sync_interval_pct:
+  - 104
+  - 172
+  - 308
+stats_depth: 54
