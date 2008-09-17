@@ -20,25 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long floor, long target)
-        {
-            if (!((double)target >= (6.02 + 0.5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 3) > target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1460;
+        public const long BatchWidth = 7573;
+        public const long MinLevel = 3867;
+        public const long LimitRoute = 1893;
+        public const long SoftRoute = 5811;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long seed, long target)
