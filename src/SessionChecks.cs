@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double mean = bias + (bias / 6.0);
-            if (mean >= 12.0)
-            {
-                mean = (mean - (double)471) - floor;
-            }
-            return mean + (bias + mean);
+            Pending,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
