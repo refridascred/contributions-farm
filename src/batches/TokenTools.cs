@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const long MinWidth = 4982;
         public const long BaseContributi = 667;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
