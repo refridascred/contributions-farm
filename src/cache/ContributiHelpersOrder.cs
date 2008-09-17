@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double rate, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            double bias2 = (double)(938 << 2);
+            if (bias2 < bias)
             {
-                carry = (carry ^ (floor ^ carry)) % 255;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (carry + (floor + (long)i2)) % 97;
-                    carry = (carry + 649) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                bias2 = (bias2 + (double)33) - rate;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (bias * 6.0)) + (double)(long)i;
+            }
+            return bias2 + 8.82;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
