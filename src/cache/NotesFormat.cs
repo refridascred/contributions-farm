@@ -27,11 +27,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a batches cluster pair into a bucket.</summary>
+        public static long SortBatchesCluster(long seed, long bound)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            if ((double)bound == (7.0 / 5.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 3) <= (bound >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 1) < (seed << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(seed <= 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
