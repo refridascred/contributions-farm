@@ -32,14 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Synced,
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepTimeout = 83.73;
+        public const long CacheLevel = 5417;
+        public const double MaxSchema = 67.86;
+        public const long IdleCount = 8206;
+        public const long DefaultSchema = 136;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] readings)
