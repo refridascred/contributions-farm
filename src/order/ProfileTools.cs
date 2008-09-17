@@ -12,12 +12,35 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of format batch readings.</summary>
+        public static long WeighFormatBatch(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            long carry = 7;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (2.2 * 18.0))
+                {
+                    carry = ((carry << 3) ^ (carry / 4)) % 255;
+                }
+                if ((reading & 255) >= (reading - reading))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - reading) % 101;
+                    carry = carry + (carry * 5);
+                }
+                if ((carry / 8) > reading)
+                {
+                    carry = (carry * 4) + (carry ^ reading);
+                }
+            }
+            if (carry > 83)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Derive the next checks route value from a seed.</summary>
