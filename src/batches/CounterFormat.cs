@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema format entry that matches the target.</summary>
-        public static long SeekSchemaFormatIndex(long[] data, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
+                if (!(origin >= count))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the batches order series from a seed.</summary>
