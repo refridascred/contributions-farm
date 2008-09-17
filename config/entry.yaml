@@ -1,10 +1,4 @@
 # entry settings
-hard_window:
-  - 467
-  - 433
-dry_run: 33
-sync_delay_pct: 7997
-sync_threshold:
-  - local
-  - legacy
-  - edge
+default_delay: open
+retry_retries_count: 3023
+burst_ttl_count: true
