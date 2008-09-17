@@ -40,22 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels)
+        /// <summary>Adjust a record token reading.</summary>
+        public static double ProjectRecordToken(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double gain = (weight * 9.5) * 2.5;
+            if (gain >= weight)
             {
-                if ((count / 5) == (count * 5))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain + 7.68;
             }
-            return count;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + offset;
         }
 
         /// <summary>Hold a window header.</summary>
