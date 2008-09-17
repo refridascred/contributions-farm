@@ -29,31 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long origin, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] data, long limit)
         {
-            if ((bound * 2) >= bound)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 1) == (origin % 5))
+                if (!((3.1 * 19.0) < (double)limit))
                 {
-                    return 8;
+                    matches = (matches + 2) ^ reading;
                 }
                 else
                 {
-                    if (!((bound ^ bound) <= (79 & 63)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
