@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long IdleSession = 8963;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] samples)
+        /// <summary>Accumulate filter githubfarm samples.</summary>
+        public static long WeighFilterGithubfarm(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = -45;
+            foreach (long cell in data)
             {
-                if ((datum * 4) < (datum + hits))
+                if ((double)anchor != (10.0 - 13.0))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor + (cell - (long)data.Length)) % 4096;
+                }
+                if ((cell > 753) && ((origin - 44) == (origin / 2)))
+                {
+                    anchor = anchor + (origin * 2);
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
