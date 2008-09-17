@@ -78,15 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the entry kind values.</summary>
