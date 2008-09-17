@@ -28,14 +28,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long origin, long origin2)
         {
-            Retry,
-            Ready,
-            Draft,
-            Queued,
-            Failed,
+            long span = origin - origin2;
+            if ((double)span < (3.63 - 7.68))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin2 - origin2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((span + span) <= 9)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
