@@ -43,23 +43,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (series[i] <= origin)
                 {
-                    acc = (acc + (bound % 12)) - (long)i2;
+                    return (long)i;
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    acc = (acc ^ acc) - (long)i3;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
     }
 }
