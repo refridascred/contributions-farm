@@ -1,6 +1,6 @@
 {
-  "audit": 1024,
-  "idle_size": 3,
-  "default_window_count": 76,
-  "enabled": false
+  "profile_interval": "legacy",
+  "compress": "standard",
+  "min_limit_count": false,
+  "route_retries": 60
 }
