@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long TallyQueueSchemaHits(long[] levels, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((matches ^ seed) == (seed - seed))
+                if (datum > origin)
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the already level values.</summary>
