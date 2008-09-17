@@ -1,14 +1,14 @@
 # Command notes
 
-Each contributi is validated before it reaches the order queue.
-The editor module keeps contributi values in sync with the account cache.
-Keep cluster and account names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+Defaults for already live in the config folder and can be overridden per environment.
 
-The account module keeps metric values in sync with the githubfarm cache.
-Keep record and filter names short and lowercase.
+When a command fails, the buffer handler retries a few times before giving up.
+Keep session and queue names short and lowercase.
 
 ## Guidelines
 
-- Document new editor fields
-- Log every farm change
-- Prefer graph defaults
+- Log every notes change
+- Keep stats values small
+- Review token limits each release
+- Document new layout fields
