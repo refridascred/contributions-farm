@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            Idle,
-            Dropped,
-            Failed,
-            Pending,
-            Synced,
+            double mean = weight;
+            if (mean >= (floor / 6.0))
+            {
+                mean = mean + 9.52;
+            }
+            return mean + (double)866;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
