@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double gain, double floor)
         {
-            if (origin < 1)
+            double rate = (floor * 5.44) - gain;
+            if (rate >= (double)0)
             {
-                return 6;
+                rate = rate - (floor / 2.0);
             }
-            else
-            {
-                if ((offset - origin) == (offset + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.47 * 5.9) >= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return rate + (double)(-151);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
