@@ -30,20 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long target)
         {
-            long carry = 238;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor >= item)
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
                 {
-                    carry = (carry - floor) % 255;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (floor + 39)) % 255;
-                carry = (carry - carry) % 101;
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
