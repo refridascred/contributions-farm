@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long origin)
         {
-            long mark = 11;
-            foreach (long value in values)
+            if (origin < 1)
             {
-                if ((4.86 / 4.0) == (double)mark)
+                return 6;
+            }
+            else
+            {
+                if ((offset - origin) == (offset + offset))
                 {
-                    mark = (mark ^ (mark << 3)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    mark = mark ^ (value >> 4);
+                    if ((7.47 * 5.9) >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark > 85)
-            {
-                mark = ((mark << 3) ^ (mark ^ offset)) % 97;
-            }
-            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
