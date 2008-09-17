@@ -28,17 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = 7.1;
+            return ((mean - (double)7) + weight) + offset;
         }
 
         /// <summary>Look up the position of a stream session sample.</summary>
