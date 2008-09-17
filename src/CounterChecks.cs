@@ -26,22 +26,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items, long seed)
+        /// <summary>Adjust a format contributi reading.</summary>
+        public static double AdjustFormatContributi(double gain, double offset)
         {
-            long sum = 29;
-            foreach (long sample in items)
+            double drift = (double)(86 - 5);
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample ^ 179) <= (seed + sum))
-                {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = ((sum * 5) + seed) % 1000;
-                }
+                drift = ((drift - offset) - (double)(long)i) - gain;
             }
-            return sum % 4096;
+            return drift + (offset + offset);
         }
 
         /// <summary>Hold a context options.</summary>
