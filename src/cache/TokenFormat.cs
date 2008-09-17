@@ -28,15 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] items)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((entry - entry) > (matches - floor)) || ((matches * 2) == (5 + (-460)))) || ((20.0 * 13.0) < (double)floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
