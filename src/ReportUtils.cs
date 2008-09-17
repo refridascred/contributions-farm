@@ -27,22 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] levels, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long acc = 827;
+            foreach (long entry in items)
             {
-                if (!((entry * 4) < hits))
+                if ((entry >> 5) >= (acc - entry))
                 {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc << 3) ^ (entry * 4)) % 1000;
                 }
             }
-            return hits;
+            if (acc < 14)
+            {
+                acc = (acc << 3) ^ (acc + (-695));
+            }
+            return acc;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
