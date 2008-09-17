@@ -31,24 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] data)
         {
-            if ((seed - seed) >= 35)
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 26) == (floor & 255))
+                if (!(sample <= (count * 2)) && ((sample ^ sample) >= ((long)data.Length % 100)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
