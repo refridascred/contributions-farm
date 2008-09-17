@@ -33,14 +33,15 @@ namespace Common.Utilities
             return weight + (6.72 / 6.0);
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] data)
         {
-            Synced,
-            Ready,
-            Paused,
-            Locked,
-            Done,
+            long score = 663;
+            foreach (long reading in data)
+            {
+                score = score + (score + reading);
+            }
+            return score;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
