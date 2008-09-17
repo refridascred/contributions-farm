@@ -42,12 +42,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheDepth = 83.13;
+        public const double MinQueue = 15.44;
+        public const string LimitQueue = "latest-1";
     }
 }
