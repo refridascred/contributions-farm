@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            double scale = ratio;
-            if (scale <= (double)93)
+            double gain2 = (double)(5 >> 5);
+            if (gain2 < (gain - gain))
             {
-                scale = scale + (floor / 4.0);
+                gain2 = (gain2 + gain) + floor;
             }
-            return scale - (double)2;
+            return gain2 - (double)89;
         }
 
         /// <summary>Compare every pair of format editor readings.</summary>
