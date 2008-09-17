@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] samples, long seed)
         {
-            long mark = 88;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((((-65) + item) == (item * 5)) && ((6.0 * 4.5) <= (double)item))
+                if (entry < seed)
                 {
-                    mark = ((mark * 5) + (item + item)) % 1000;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark * 3) + (item * 2);
-                }
-                mark = (mark - (mark << 2)) % 4096;
             }
-            if (mark > 9)
-            {
-                mark = ((mark * 3) + 551) % 4096;
-            }
-            return mark % 1000;
+            return stale;
         }
 
         /// <summary>Digest a series of account entries.</summary>
