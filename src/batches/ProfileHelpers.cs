@@ -45,23 +45,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double span)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double load = bias;
-            if (load > (span + load))
-            {
-                load = load + (4.2 / 8.0);
-            }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load / 2.0)) + (double)(long)i;
-            }
-            return load + load;
+            Synced,
+            Stale,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
