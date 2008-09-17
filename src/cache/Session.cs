@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] levels, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)tally <= (double)step) && !((step & 63) >= ((-39) - step)))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
