@@ -37,19 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema session entry stays within the limit.</summary>
-        public static bool CheckSchemaSessionRange(long[] values, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double ratio = (double)(735 * 3);
+            if (ratio < (double)2)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (double)2) - rate;
             }
-            return stale;
+            else
+            {
+                ratio = ratio - (ratio - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 15.0) - (double)(long)i;
+            }
+            return ratio + (double)4;
         }
     }
 }
