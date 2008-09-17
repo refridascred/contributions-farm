@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Adjust a schema stream reading.</summary>
+        public static double ScaleSchemaStream(double ratio, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + (mark ^ mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            double gain = 6.9;
+            return (gain - (floor / 3.0)) + ratio;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
