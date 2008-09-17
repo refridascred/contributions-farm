@@ -36,10 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 6465;
-        public const long DefaultQueue = 6585;
-        public const string SoftQueue = "local";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinTimeout = 42.58;
+        public const long BaseLevel = 5614;
+        public const long RetryBatch = 9499;
+        public const double RetryScore = 21.2;
+        public const long CacheBatch = 7558;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double bias, double floor)
