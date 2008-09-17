@@ -20,10 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 4066;
-        public const long CacheTimeout = 9799;
-        public const long BurstFactor = 1661;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Idle,
+            Dropped,
+            Failed,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
