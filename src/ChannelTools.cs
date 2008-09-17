@@ -22,18 +22,11 @@ namespace Common.Utilities
         public const long MaxFarm = 3026;
         public const long BurstSpan = 2608;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((item + 8) != (item ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftScore = 31.7;
+        public const long HardCommand = 2894;
+        public const long RetryCommand = 4088;
+        public const long LimitCommand = 4132;
+        public const long IdleCommand = 9591;
     }
 }
