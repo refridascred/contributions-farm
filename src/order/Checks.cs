@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double SoftBatch = 48.88;
         public const long HardTimeout = 245;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit account channel readings against a rule.</summary>
+        public static long MeasureAccountChannelMatches(long[] data, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((170 / 6) <= ((long)data.Length & 63)))
+                {
+                    tally = ((tally + 2) ^ cell) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate commits samples.</summary>
