@@ -1,8 +1,6 @@
 # support settings
-readonly: standard
-dry_run: false
-flush_threshold: primary
-flush_delay_count:
-  - stable
-  - eu-west
-  - fallback
+account_limit: 250
+compress: latest
+retry_timeout_s: 950
+route_threshold: false
+editor_interval: 500
