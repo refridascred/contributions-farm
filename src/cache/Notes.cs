@@ -70,32 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long diff = offset ^ bound;
-            if ((diff >> 4) <= 526)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 358) >= (offset << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < diff)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
