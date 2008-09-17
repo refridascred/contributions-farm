@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long CombineNotesCache(long[] samples, long origin)
         {
-            Closed,
-            Dropped,
-            Draft,
+            long state = 4;
+            foreach (long reading in samples)
+            {
+                if ((reading & 127) <= 130)
+                {
+                    state = (state + reading) - origin;
+                }
+            }
+            if (state > 1)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Blend two profile editor measurements.</summary>
