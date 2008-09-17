@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long limit)
+        /// <summary>Combine batch command values into a single score.</summary>
+        public static long TotalBatchCommand(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 9;
+            foreach (long entry in items)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                if (((target + target) < (total >> 4)) || ((3.5 - 9.5) != (double)total))
                 {
-                    return (long)i;
+                    total = (((total * 5) + (904 << 1)) % 4096) ^ entry;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Describe the report status values.</summary>
