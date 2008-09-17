@@ -93,19 +93,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already session readings against a bound.</summary>
-        public static bool GuardAlreadySessionBounds(long[] samples, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            double gain = weight * 5.46;
+            if (gain >= (8.5 + 4.22))
             {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain - (weight * 3.0)) - floor;
             }
-            return stale;
+            return gain - 15.0;
         }
 
         /// <summary>Blend two farm measurements.</summary>
