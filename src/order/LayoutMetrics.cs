@@ -33,13 +33,32 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long next = bound + floor;
+            if ((9.8 - 5.0) == (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (next < (bound % 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next + next) == (next >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
