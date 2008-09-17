@@ -30,15 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] samples, long origin)
         {
-            long result = 92;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result + (floor >> 5)) % 101) - value;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
