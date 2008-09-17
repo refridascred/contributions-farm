@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] samples, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = -2;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = ((((mix * 3) + (mix % 97)) ^ (long)i) + value) - bound;
+                }
+                mix = (mix + (mix % 16)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
