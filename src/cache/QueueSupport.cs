@@ -31,22 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] values)
         {
-            long mark = 682;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (4.59 < (double)value)
+                if ((value + 570) < (matches + 12))
                 {
-                    mark = (mark ^ (value - 30)) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark + (mark - mark)) % 1000;
-            }
-            return mark % 1000;
+            return matches;
         }
     }
 }
