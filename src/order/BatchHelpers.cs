@@ -37,19 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double offset)
-        {
-            double load = (double)(647 & 15);
-            if (load < 9.7)
-            {
-                load = (load - (offset - 16.0)) - weight;
-            }
-            else
-            {
-                load = load - (load * 7.9);
-            }
-            return load - offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitCount = 5293;
+        public const long WindowDepth = 7182;
+        public const long CacheContributi = 232;
     }
 }
