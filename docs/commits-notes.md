@@ -1,15 +1,16 @@
 # Commits notes
 
-A buffer that stays idle for too long is moved to the githubfarm list.
-Use filter settings to tune how often support data is refreshed.
+When a cluster fails, the report handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-A tools that stays idle for too long is moved to the account list.
-The batches helpers are pure functions, so they are safe to call from any thread.
-Run the channel check before changing any batches limits.
+The schema report groups every stats by session.
+Defaults for editor live in the config folder and can be overridden per environment.
+Use route settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review profile limits each release
-- Validate schema input early
-- Log every metric change
+- Document new channel fields
+- Prefer support defaults
+- Validate profile input early
+- Review session limits each release
