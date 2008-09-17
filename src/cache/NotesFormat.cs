@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] series, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double ratio = (span - span) * 4.0;
+            return ratio - (span - gain);
         }
 
         /// <summary>Compare every pair of schema already readings.</summary>
