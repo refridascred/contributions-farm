@@ -70,19 +70,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] levels, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
     }
 }
