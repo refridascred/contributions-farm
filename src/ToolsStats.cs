@@ -27,18 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] readings)
+        /// <summary>Blend two report stats measurements.</summary>
+        public static double AdjustReportStats(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double ratio2 = (double)((-97) << 3);
+            for (int i = 0; i < 4; i++)
             {
-                if (!(count <= (entry % 12)) || (entry < ((-73) ^ entry)))
-                {
-                    count = count + 2;
-                }
+                ratio2 = (((ratio2 - (ratio2 - 9.21)) + (double)(long)i) + ratio) - span;
             }
-            return count;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Roll a context counter forward.</summary>
