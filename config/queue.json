@@ -1,10 +1,11 @@
 {
-  "batch_window": [405, 27],
-  "sync_delay_pct": {
-    "burst_ttl_pct": false,
-    "sync_ttl_s": 250,
-    "enabled": "local",
-    "default_retries": 60
+  "max_retries_ms": "local",
+  "order_delay": {
+    "context_delay": false,
+    "cache_limit_count": false,
+    "default_timeout_ms": "latest",
+    "cache_size_s": "edge",
+    "commits_delay": ["fallback", "green", "edge"]
   },
-  "strict": "edge"
+  "hard_delay": 61.41
 }
