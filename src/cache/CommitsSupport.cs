@@ -36,19 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            double rate = (double)(1 + (-826));
-            if (rate > rate)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + (rate + weight)) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (rate * 4.71);
-            }
-            return rate - (double)3;
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
