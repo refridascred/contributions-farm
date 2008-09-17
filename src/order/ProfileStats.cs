@@ -48,22 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((5.4 * 6.4) >= (double)matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 3472;
+        public const long BurstContributi = 9170;
+        public const long BatchContributi = 3563;
+        public const long RetryBudget = 8859;
     }
 }
