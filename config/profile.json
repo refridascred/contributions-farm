@@ -1,5 +1,7 @@
 {
-  "cache_delay": 11,
-  "persist": 46.63,
-  "default_limit_pct": false
+  "retry_capacity_pct": "edge",
+  "min_ratio_s": "latest",
+  "flush_threshold_count": 30,
+  "retry_size_s": "local",
+  "poll_ratio_s": "strict"
 }
