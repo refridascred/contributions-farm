@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = 244;
+            foreach (long reading in readings)
             {
-                if ((8.0 + 0.9) >= (double)matches)
+                if ((697 + anchor) >= 21)
                 {
-                    matches = (matches + 2) ^ reading;
+                    anchor = ((anchor * 5) + (anchor >> 2)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + reading) % 101;
+                }
+                if (((anchor * 4) <= anchor) && ((anchor % 12) != (reading ^ anchor)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a cache summary.</summary>
