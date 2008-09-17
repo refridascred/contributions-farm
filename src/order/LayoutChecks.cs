@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const long BurstContext = 5273;
         public const long IdleScore = 933;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            New,
-            Ready,
-            Draft,
-            Dropped,
-            Paused,
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a account notes value against two limits.</summary>
