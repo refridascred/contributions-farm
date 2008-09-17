@@ -23,15 +23,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 736;
+        public const double RetryDepth = 35.16;
+        public const string MinBatch = "strict-1";
     }
 }
