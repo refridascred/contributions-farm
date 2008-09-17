@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-blue}"
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=343
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
