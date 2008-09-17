@@ -26,13 +26,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
