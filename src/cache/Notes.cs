@@ -47,22 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] readings, long target)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double mean = floor;
+            if (mean < (scale + scale))
             {
-                if (!(seen > target))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - (floor * 1.6);
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - floor;
         }
 
         /// <summary>Project the next buffer value.</summary>
