@@ -1,12 +1,32 @@
 # support settings
-soft_interval: 78.03
-hard_interval_ms:
-  - 156
-  - 216
-  - 273
-format_capacity:
-  - 215
-  - 493
-  - 392
-  - 118
-dry_run: green
+soft_ratio:
+  hard_retries:
+    - 385
+    - 64
+    - 261
+    - 389
+  compress:
+    min_window_count: true
+    metric_limit: 500
+    cache_ttl: false
+  max_delay:
+    notes_delay: 5940
+    compress: stable
+    report_delay: 8228
+    hard_ratio_pct: 7581
+  burst_depth: 9267
+  retry_size_s:
+    base_depth_pct: false
+    batch_limit: 27
+    retry_threshold: false
+    idle_delay: primary
+    soft_timeout_pct: 63.8
+    default_interval_s: eu-west
+warm_interval_count: staging
+batch_size_count: 42
+poll_timeout_ms: fallback
+buffer_depth: true
+retry_timeout_pct:
+  command_threshold: edge
+  poll_size_pct: false
+  flush_limit_ms: local
