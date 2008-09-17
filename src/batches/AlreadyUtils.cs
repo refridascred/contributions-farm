@@ -33,18 +33,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long seed, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long bound = seed + target;
+            if (!((seed / 3) > seed))
             {
-                if ((count & 15) <= (count - (-7)))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed < (7.85 + 18.0))
                 {
-                    count = (count + 3) + item;
+                    return 4;
+                }
+                else
+                {
+                    if ((839 ^ 90) <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
