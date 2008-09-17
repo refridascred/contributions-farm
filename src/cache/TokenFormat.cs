@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] samples, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < seed)
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every notes tools entry stays within the limit.</summary>
