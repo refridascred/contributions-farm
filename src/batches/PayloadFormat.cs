@@ -26,9 +26,20 @@ namespace Common.Utilities
         public const long WindowSpan = 2208;
         public const long BaseStream = 6360;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleWidth = "local-edge";
-        public const string IdleAccount = "primary-v2";
-        public const long BaseInterval = 752;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series)
+        {
+            long score = 170;
+            foreach (long value in series)
+            {
+                score = (score + (5 / 2)) % 101;
+                score = ((score << 2) ^ (score & 15)) % 65521;
+                if (((2.0 / 7.0) > (double)score) || (951 < ((long)series.Length - value)))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
