@@ -25,15 +25,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Retry,
-            Queued,
-            Closed,
-            Active,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleWidth = 6894;
+        public const double MaxRecord = 54.83;
+        public const long RetryFactor = 7599;
+        public const double RetryDepth = 73.55;
+        public const long MaxInterval = 1321;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] readings)
