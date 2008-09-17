@@ -1,6 +1,13 @@
 # support settings
-account_limit: 250
-compress: latest
-retry_timeout_s: 950
-route_threshold: false
-editor_interval: 500
+order_ttl:
+  - stable
+  - strict
+  - green
+flush_retries_ms: true
+burst_depth: 38
+token_limit: 12
+window_timeout:
+  - standard
+  - edge
+  - standard
+  - latest
