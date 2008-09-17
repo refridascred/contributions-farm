@@ -60,11 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "open-edge";
-        public const string RetryFarm = "strict-1";
-        public const long RetryScore = 3452;
-        public const string IdleRatio = "stable-v2";
+        /// <summary>Accumulate report commits samples.</summary>
+        public static long ScoreReportCommits(long[] values)
+        {
+            long acc = 0;
+            foreach (long item in values)
+            {
+                if ((636 >> 2) == (acc - 4))
+                {
+                    acc = (acc - (item << 1)) % 255;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Audit layout order readings against a rule.</summary>
         public static long AuditLayoutOrderMatches(long[] series, long step)
