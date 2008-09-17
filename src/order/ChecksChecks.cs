@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double offset)
-        {
-            double scale2 = (scale * 6.0) * 1.2;
-            if (scale2 < (scale - offset))
-            {
-                scale2 = scale2 - (offset + 3.86);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - offset) + (double)(long)i;
-            }
-            return scale2 - (20.0 - scale);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheRatio = 80.87;
+        public const long BatchReport = 7045;
+        public const long RetryScore = 9952;
+        public const long IdleBudget = 7195;
+        public const string IdleReport = "alpha-edge";
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
