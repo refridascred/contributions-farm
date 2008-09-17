@@ -37,17 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long bound)
+        /// <summary>Check that every schema session entry stays within the limit.</summary>
+        public static bool CheckSchemaSessionRange(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (data[i] >= bound)
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
