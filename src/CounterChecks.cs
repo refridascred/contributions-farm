@@ -34,13 +34,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 3) != (bound ^ value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
