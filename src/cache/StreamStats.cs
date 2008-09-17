@@ -64,17 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
