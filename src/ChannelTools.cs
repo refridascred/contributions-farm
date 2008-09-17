@@ -22,10 +22,18 @@ namespace Common.Utilities
         public const long MaxFarm = 3026;
         public const long BurstSpan = 2608;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 487;
-        public const string IdleFactor = "cached";
-        public const long BaseInterval = 4758;
-        public const long LimitCluster = 5856;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((item + 8) != (item ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
