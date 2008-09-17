@@ -12,13 +12,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "fallback-v2";
+        public const long SoftDepth = 7810;
+        public const long HardCount = 7839;
+        public const string BaseBuffer = "local-v2";
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] samples, long target)
