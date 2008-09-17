@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] data)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long slot = limit + step;
+            if ((7.8 / 5.0) <= (double)step)
             {
-                if ((sample << 1) <= (sample + sample))
+                return 3;
+            }
+            else
+            {
+                if (((step % 97) == (limit * 3)) || (step <= 67))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ slot) != (step % 60))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((295 - slot) <= limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
