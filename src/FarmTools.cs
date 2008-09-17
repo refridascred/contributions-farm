@@ -19,14 +19,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long origin, long bound)
         {
-            Idle,
-            Draft,
-            Closed,
-            Queued,
-            Retry,
+            if ((bound * 2) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound << 1) == (origin % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound ^ bound) <= (79 & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
