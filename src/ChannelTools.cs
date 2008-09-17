@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const long MaxFarm = 3026;
         public const long BurstSpan = 2608;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] series)
         {
-            long sum = 810;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                sum = sum ^ (value + 56);
+                if ((((9.3 + 11.0) == (double)hits) || ((sample << 3) < (32 - sample))) && ((93 << 1) <= (0 - (long)series.Length)))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (sum < 382)
-            {
-                sum = ((sum << 2) ^ (sum / 2)) % 97;
-            }
-            return sum;
+            return hits;
         }
     }
 }
