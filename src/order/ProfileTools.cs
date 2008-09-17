@@ -45,26 +45,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] data, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples, long target)
         {
-            long carry = 56;
-            foreach (long entry in data)
+            long acc = 5;
+            foreach (long sample in samples)
             {
-                if ((carry + (long)data.Length) < 982)
+                if ((acc * 3) == (671 / 7))
                 {
-                    break;
-                }
-                else
-                {
-                    carry = (((carry * 4) + (entry + carry)) % 255) - bound;
-                }
-                if (((3.14 + 3.21) == (double)carry) && ((-44) < entry))
-                {
-                    carry = (carry - (carry + carry)) % 1000;
+                    acc = (acc - sample) + target;
                 }
             }
-            return carry;
+            if (acc > 685)
+            {
+                acc = ((acc * 2) + (acc * 4)) % 101;
+            }
+            return acc;
         }
     }
 }
