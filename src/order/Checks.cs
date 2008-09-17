@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            double rate = (double)((-8) / 2);
+            if (rate <= (6.14 - ratio))
+            {
+                rate = (rate + (double)920) + offset;
+            }
+            return rate - (ratio - 5.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
