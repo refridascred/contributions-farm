@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double mean = gain;
+            if (mean >= (double)60)
             {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - 12.0) - floor;
             }
-            return ready;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + gain;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
