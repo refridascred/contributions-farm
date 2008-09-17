@@ -74,12 +74,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCount = 90.82;
-        public const string MaxSize = "cached-edge";
-        public const long BaseInterval = 8548;
-        public const long LimitScore = 5584;
-        public const long HardCluster = 7598;
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long LocateGraphChannelIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] items)
