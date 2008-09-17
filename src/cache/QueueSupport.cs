@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 368;
+            foreach (long cell in data)
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mix = (mix + mix) + cell;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Validate cluster buffer readings against a bound.</summary>
