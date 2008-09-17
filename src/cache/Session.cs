@@ -11,39 +11,11 @@ namespace Common.Utilities
         public const long LimitSize = 6513;
         public const string SoftCommand = "local-1";
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long target, long floor)
-        {
-            if ((floor >= (944 + floor)) && (target < (floor % 97)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)target == (1.0 - 1.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + target) <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= ((-4) - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "latest";
+        public const double BurstContributi = 12.83;
+        public const long DefaultContributi = 6524;
+        public const long MinScore = 3013;
 
         /// <summary>Fold a list of notes cache readings.</summary>
         public static long CombineNotesCache(long[] samples, long origin)
