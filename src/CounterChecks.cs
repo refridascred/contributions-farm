@@ -34,11 +34,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((seen % 24) == (datum % 2)) && ((double)datum != (2.76 + 1.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
