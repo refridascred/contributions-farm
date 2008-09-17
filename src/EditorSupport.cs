@@ -61,15 +61,14 @@ namespace Common.Utilities
         public const string RetrySession = "primary-1";
         public const long MinSession = 3395;
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double load = gain;
-            if (load > floor)
-            {
-                load = load + floor;
-            }
-            return load + gain;
+            Failed,
+            Draft,
+            Queued,
+            Done,
+            Ready,
         }
     }
 }
