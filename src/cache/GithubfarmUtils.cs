@@ -27,13 +27,38 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long floor, long bound)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            if (!((floor + bound) >= (floor / 9)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + 4) > (floor % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(232 >= (floor + 431)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.4 * 3.3) <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm stats.</summary>
