@@ -1,12 +1,5 @@
 # entry settings
-verbose: 24.84
-readonly:
-  - local
-  - staging
-  - cached
-max_ratio_pct:
-  flush_delay_ms: 5672
-  enabled: standard
-  already_delay: 30
-  persist: 810
-  warm_ttl_pct: strict
+poll_window: 250
+notes_timeout: 27
+warm_delay: standard
+strict: 3676
