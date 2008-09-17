@@ -37,23 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double bias = 1.3 + floor;
-            if (bias <= (double)937)
-            {
-                bias = bias + (floor * 7.6);
-            }
-            else
-            {
-                bias = bias - (5.6 + bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + gain) + (double)(long)i;
-            }
-            return bias - (gain + 5.52);
+            Draft,
+            Closed,
+            New,
         }
     }
 }
