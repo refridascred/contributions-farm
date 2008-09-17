@@ -27,10 +27,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 46.23;
-        public const long DefaultProfile = 5993;
-        public const long BurstInterval = 4952;
+        /// <summary>Project the next cache buffer value.</summary>
+        public static double SmoothCacheBuffer(double scale, double span)
+        {
+            double ratio = (double)81 * 5.85;
+            return ((ratio + 2.3) + scale) + span;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
