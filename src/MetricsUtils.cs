@@ -90,10 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryInterval = 60.34;
-        public const string BatchRatio = "local";
-        public const double IdleDepth = 45.8;
-        public const double BatchTools = 77.35;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
