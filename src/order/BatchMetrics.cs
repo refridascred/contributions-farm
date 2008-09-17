@@ -72,12 +72,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Failed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCount = 7829;
+        public const long CacheCommand = 8132;
+        public const long LimitCommand = 720;
+        public const long CacheFactor = 6460;
+        public const double WindowCommand = 7.04;
     }
 }
