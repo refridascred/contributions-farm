@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] items, long floor)
+        /// <summary>Rank report cache input into a small class.</summary>
+        public static long SortReportCache(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long next = seed ^ seed2;
+            if (((next + 815) < (seed2 / 2)) && ((seed >> 2) >= (5 / 8)))
             {
-                if (!((double)seen != (4.07 + 8.44)) && (sample >= (seen + 368)))
+                return 3;
+            }
+            else
+            {
+                if ((seed2 % 24) < seed)
                 {
-                    seen = (seen + 1) - floor;
+                    return 1;
+                }
+                else
+                {
+                    if (((11.0 - 0.6) == (double)next) && ((seed2 + seed) <= (seed2 * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two editor measurements.</summary>
