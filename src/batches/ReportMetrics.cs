@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((count - 92) >= count)
+                if ((3.2 * 2.52) < (double)target)
                 {
-                    count = (count + 3) + entry;
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
