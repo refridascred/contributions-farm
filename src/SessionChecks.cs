@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias + (bias / 6.0);
+            if (mean >= 12.0)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)471) - floor;
             }
-            return -1;
+            return mean + (bias + mean);
         }
 
         /// <summary>Fold a list of farm readings.</summary>
