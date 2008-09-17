@@ -47,18 +47,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series, long step)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value >> 2) != (hits + hits))
-                {
-                    hits = (hits + 1) + step;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Queued,
+            Ready,
+            Synced,
         }
     }
 }
