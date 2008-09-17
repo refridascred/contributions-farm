@@ -58,21 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Audit account already readings against a rule.</summary>
+        public static long CountAccountAlreadyGaps(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((61 - seen) >= step)
                 {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
