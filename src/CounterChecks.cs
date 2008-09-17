@@ -37,17 +37,12 @@ namespace Common.Utilities
         public const long LimitCache = 4591;
         public const string DefaultWidth = "stable-1";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
