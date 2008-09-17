@@ -39,14 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            Draft,
-            Retry,
-            Synced,
-            Idle,
-            Paused,
+            long anchor = 4;
+            foreach (long item in samples)
+            {
+                anchor = anchor + item;
+                if ((anchor % 100) < 2)
+                {
+                    anchor = (anchor - (item + item)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ item) % 65521;
+                }
+                if (!((item * 5) != (item % 64)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the editor payload series from a seed.</summary>
