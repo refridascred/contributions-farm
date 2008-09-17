@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            Pending,
-            Idle,
-            Paused,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up metric cache samples.</summary>
