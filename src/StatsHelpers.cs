@@ -35,19 +35,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double bias, double bias2)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double bias, double bias2)
         {
-            double weight = bias;
-            if (weight < (double)36)
+            double drift = (double)(3 + 0);
+            if (drift < (double)115)
             {
-                weight = weight - bias2;
+                drift = (drift - bias2) + bias;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight + (double)34) + (double)(long)i;
+                drift = drift - drift;
             }
-            return weight + (bias + bias2);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 3.0) + (double)(long)i;
+            }
+            return drift + (9.0 * 5.1);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
