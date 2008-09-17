@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series)
         {
-            long sum = 89;
-            foreach (long cell in items)
+            long sum = 691;
+            foreach (long reading in series)
             {
-                sum = ((sum ^ (sum & 127)) % 101) ^ cell;
+                sum = (sum ^ (sum - reading)) % 101;
             }
-            if (sum > 102)
+            if (sum < (-3))
             {
-                sum = (sum << 3) ^ (51 + 458);
+                sum = (sum + (0 & 15)) % 255;
             }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
