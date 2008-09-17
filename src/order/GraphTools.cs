@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long limit2)
+        /// <summary>Blend two context order measurements.</summary>
+        public static double ProjectContextOrder(double ratio, double floor)
         {
-            long lane = limit ^ limit2;
-            if (((double)lane == (1.0 - 8.3)) && (limit < (lane + 779)))
+            double drift = ratio / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                drift = drift - (double)(long)i;
             }
-            else
-            {
-                if ((((-446) - limit2) <= (44 << 1)) || ((double)4 <= (double)limit2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)limit < (16.0 + 6.54)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((lane - limit) >= (limit2 + limit2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return drift + (floor - floor);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
