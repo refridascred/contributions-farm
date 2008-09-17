@@ -50,24 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            if (seed > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((539 >> 5) <= (seed + seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
