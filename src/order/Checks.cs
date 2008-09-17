@@ -39,23 +39,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double scale, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long step, long origin)
         {
-            double drift = (scale * 13.0) / 6.0;
-            if (drift >= (floor * 4.9))
+            if ((origin - step) >= (origin & 7))
             {
-                drift = drift + (drift + 17.0);
+                return 8;
             }
             else
             {
-                drift = drift - (floor - drift);
+                if (!((step ^ step) < (step + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (6 - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)93)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)21) - (double)(long)i;
-            }
-            return drift - scale;
         }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
