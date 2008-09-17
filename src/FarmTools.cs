@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long limit)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            if (!((seed % 5) > (seed * 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) <= (seed >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1 + 26) > (limit & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
