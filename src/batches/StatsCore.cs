@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a token account pair into a bucket.</summary>
-        public static long GradeTokenAccount(long limit, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long target)
         {
-            long bound2 = limit - bound;
-            if (!((bound2 + bound2) == (bound2 + 2)))
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)bound < (6.55 - 3.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the queue mode values.</summary>
