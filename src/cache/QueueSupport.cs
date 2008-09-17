@@ -31,18 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value + 570) < (matches + 12))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardFactor = 22.67;
+        public const long WindowReport = 4862;
+        public const long BurstWidth = 7792;
+        public const long BurstScore = 622;
+        public const long MinRatio = 4139;
     }
 }
