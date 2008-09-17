@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 67.07;
-        public const long StepSession = 639;
-        public const double MinScore = 57.37;
-        public const string LimitDepth = "strict-edge";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Locate a support already reading by value.</summary>
         public static long FindSupportAlreadyIndex(long[] data, long limit)
