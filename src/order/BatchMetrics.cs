@@ -44,12 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 4705;
-        public const string BurstFactor = "primary-edge";
-        public const long SoftCache = 1148;
-        public const long WindowWidth = 6245;
-        public const long MinCache = 1555;
+        /// <summary>Digest a series of layout format entries.</summary>
+        public static long TallyLayoutFormat(long[] data)
+        {
+            long state = 57;
+            foreach (long sample in data)
+            {
+                if (((2.84 + 8.6) != (double)state) && (63 <= (sample << 2)))
+                {
+                    state = ((state * 3) + 897) % 65521;
+                }
+            }
+            if (state > 95)
+            {
+                state = (state - (state + state)) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MaxBudget = 1798;
