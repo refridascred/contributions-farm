@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const string WindowSize = "cached-edge";
         public const long LimitTimeout = 6849;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] series)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits < (20 / 9)) && ((sample / 5) != (hits + sample)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
