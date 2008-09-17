@@ -32,21 +32,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Count the metrics order entries that pass the check.</summary>
+        public static long MeasureMetricsOrderHits(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item <= (hits + item))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
