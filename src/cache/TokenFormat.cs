@@ -28,17 +28,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 6;
+            foreach (long reading in values)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                state = ((state - (17 >> 5)) ^ reading) - bound;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
