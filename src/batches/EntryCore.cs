@@ -55,11 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultWidth = 5554;
-        public const long HardRecord = 9137;
-        public const long HardSpan = 9096;
-        public const double DefaultDepth = 93.48;
-        public const double MaxFactor = 30.24;
+        /// <summary>Measure how many order route samples are out of range.</summary>
+        public static long TallyOrderRouteOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((matches >> 5) <= (matches / 9)) && (((-322) - matches) <= (matches << 1)))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
