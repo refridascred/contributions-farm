@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long step)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long total = 255;
+            foreach (long entry in items)
+            {
+                if ((double)total >= 5.9)
+                {
+                    total = ((total + total) % 65521) ^ entry;
+                }
+                else
+                {
+                    total = total + (527 - (-32));
+                }
+            }
+            if (total > 30)
+            {
+                total = (total + (step & 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the window state values.</summary>
