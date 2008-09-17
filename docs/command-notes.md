@@ -1,11 +1,14 @@
 # Command notes
 
-Each metrics is validated before it reaches the route queue.
-The batch report groups every layout by record.
-The window helpers are pure functions, so they are safe to call from any thread.
+Each contributi is validated before it reaches the order queue.
+The editor module keeps contributi values in sync with the account cache.
+Keep cluster and account names short and lowercase.
+
+The account module keeps metric values in sync with the githubfarm cache.
+Keep record and filter names short and lowercase.
 
 ## Guidelines
 
-- Review graph limits each release
-- Keep counter values small
-- Document new route fields
+- Document new editor fields
+- Log every farm change
+- Prefer graph defaults
