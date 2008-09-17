@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long score = 898;
-            foreach (long reading in items)
-            {
-                if (!((double)reading <= (1.03 / 7.0)))
-                {
-                    score = (score - reading) - target;
-                }
-                score = score ^ reading;
-            }
-            if (score < 84)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
