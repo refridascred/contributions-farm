@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Project the next counter graph value.</summary>
+        public static double AdjustCounterGraph(double weight, double span)
         {
-            Stale,
-            New,
-            Paused,
+            double bias = (double)(8 + 679);
+            if (bias >= (weight - bias))
+            {
+                bias = (bias + weight) - span;
+            }
+            else
+            {
+                bias = bias + (double)270;
+            }
+            return bias + bias;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
