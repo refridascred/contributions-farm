@@ -1,10 +1,15 @@
 # Command notes
 
-Keep checks and farm names short and lowercase.
-When a filter fails, the schema handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps queue values in sync with the editor cache.
+
+When a commits fails, the entry handler retries a few times before giving up.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every window change
-- Document new entry fields
-- Validate farm input early
+- Review token limits each release
+- Log every schema change
+- Prefer metric defaults
+- Document new window fields
