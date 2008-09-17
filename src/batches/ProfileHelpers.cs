@@ -56,13 +56,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
