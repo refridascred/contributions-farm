@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string BurstFormat = "fallback-v2";
         public const string BaseFormat = "legacy-1";
 
-        /// <summary>Validate stats checks readings against a bound.</summary>
-        public static bool ValidateStatsChecksLimits(long[] levels, long floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Scale a commits tools figure with a bias.</summary>
