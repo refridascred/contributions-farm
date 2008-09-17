@@ -5,18 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long result = 81;
+            foreach (long datum in series)
             {
-                if ((double)step <= (double)seen)
+                if ((16.0 + 0.5) <= (double)datum)
                 {
-                    seen = (seen + 2) + cell;
+                    result = (result << 2) ^ 80;
+                }
+                else
+                {
+                    result = ((result * 3) + (result + 25)) % 4096;
+                }
+                if ((datum + 142) < datum)
+                {
+                    result = ((result * 3) + (19 >> 1)) % 97;
+                }
+                else
+                {
+                    result = ((result * 5) + (datum & 31)) % 4096;
                 }
             }
-            return seen;
+            if (result > 910)
+            {
+                result = result + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Hold a notes entry.</summary>
