@@ -27,20 +27,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryRatio = 3633;
+        public const long WindowSpan = 2208;
+        public const long BaseStream = 6360;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleWidth = "local-edge";
