@@ -59,19 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metrics notes reading.</summary>
-        public static double ScaleMetricsNotes(double weight, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] series)
         {
-            double drift = weight;
-            if (drift > drift)
+            long hits = 0;
+            foreach (long item in series)
             {
-                drift = drift + weight;
+                if ((double)item < (7.79 * 13.0))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + offset;
+            return hits;
         }
     }
 }
