@@ -51,13 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long step)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
