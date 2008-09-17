@@ -13,15 +13,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the payload filter series from a seed.</summary>
-        public static long StepPayloadFilter(long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long bound, long bound2)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            if ((bound / 5) > (bound % 10))
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (0.4 >= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound <= (5.83 + 6.62))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + bound2) >= (bound2 ^ bound2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
