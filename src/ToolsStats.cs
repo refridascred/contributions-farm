@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((reading & 3) < (tally >> 4)) && (5.0 >= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a commits info.</summary>
