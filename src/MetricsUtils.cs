@@ -18,13 +18,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Synced,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxLevel = 1476;
+        public const double LimitWidth = 96.1;
+        public const long BatchFarm = 6361;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long origin, long step)
