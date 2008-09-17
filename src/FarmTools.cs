@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] samples, long seed)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits / 4) < (8 - reading))
+                {
+                    hits = (hits + 1) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
