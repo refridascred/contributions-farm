@@ -28,22 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((hits << 3) <= datum)
+                if ((((seen << 2) <= (65 - seen)) || ((553 * 5) < (seen ^ 69))) || (seen <= (datum - datum)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
