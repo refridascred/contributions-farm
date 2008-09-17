@@ -14,11 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] items)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((53 ^ tally) > (sample & 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
