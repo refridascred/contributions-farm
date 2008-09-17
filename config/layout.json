@@ -1,6 +1,14 @@
 {
-  "retry_capacity_s": "open",
-  "batch_capacity": 57.76,
-  "sync_depth": false,
-  "cache_retries": 57
+  "layout_retries": 67,
+  "layout_threshold": "standard",
+  "entry_window": 62,
+  "session_depth": {
+    "schema_ttl": 74.93,
+    "enabled": 29,
+    "dry_run": "green",
+    "strict": "local",
+    "cache_delay": "latest",
+    "account_depth": 31.08
+  },
+  "cluster_window": true
 }
