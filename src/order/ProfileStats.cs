@@ -46,11 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits > (32 & 3)) || ((hits + datum) <= datum))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
