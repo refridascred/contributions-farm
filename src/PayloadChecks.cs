@@ -49,30 +49,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] items, long target)
         {
-            long state = 1;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)cell != (6.96 / 3.0))
                 {
-                    state = ((state ^ entry) % 1000) - (long)i;
-                }
-                if ((entry >= (state / 3)) && (entry < (entry << 1)))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = state ^ entry;
+                    seen = (seen + 2) - target;
                 }
             }
-            if (state < 2)
-            {
-                state = state - (state * 2);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
