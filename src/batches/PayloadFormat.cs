@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)(long)i > (double)mix) && ((419 / 6) >= origin))
-                {
-                    mix = ((mix * 3) + mix) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Retry,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a notes summary.</summary>
