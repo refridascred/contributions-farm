@@ -1,30 +1,10 @@
 # support settings
-poll_interval_pct:
-  - 253
-  - 219
-  - 453
-poll_delay_pct: 20.4
-sync_ttl_s:
-  soft_timeout_ms:
-    - edge
-    - blue
-    - standard
-  batch_ratio_s:
-    poll_size: 6243
-    default_ratio_pct: strict
-    entry_retries: eu-west
-    poll_ratio_ms: true
-  context_timeout: 4628
-  flush_interval: green
-soft_timeout_pct:
-  default_retries_count: true
-  persist: edge
-  default_threshold: 69.16
-  poll_depth_s: stable
-  batch_limit_ms:
-    - 304
-    - 409
-    - 398
-    - 50
-  idle_retries: 6340
-verbose: standard
+context_interval:
+  - 478
+  - 116
+  - 207
+  - 282
+readonly: true
+default_ratio_pct: 7214
+retry_ratio_s: 4915
+retry_interval_ms: 8132
