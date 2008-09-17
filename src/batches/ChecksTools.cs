@@ -12,35 +12,34 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long floor)
         {
-            long prev = target ^ floor;
-            if ((target * 5) > (floor + floor))
+            if (!((49 >> 1) >= (floor >> 1)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (prev < (target & 255))
+                if (!((21 + step) < floor))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((target - prev) == (prev ^ target))
+                    if (floor <= (step + floor))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        if ((floor + target) < prev)
+                        if ((19.0 - 19.0) > (double)step)
                         {
-                            return 6;
+                            return 8;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
