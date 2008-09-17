@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const double DefaultInterval = 52.64;
         public const long IdleBudget = 3990;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            Paused,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches - 29) >= (6 + datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
