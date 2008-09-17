@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string WindowNotes = "staging";
         public const double CacheFactor = 5.59;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            Paused,
-            Draft,
-            Ready,
+            double bias2 = 18.0;
+            if (bias2 < bias2)
+            {
+                bias2 = (bias2 - (bias2 + bias2)) + gain;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
