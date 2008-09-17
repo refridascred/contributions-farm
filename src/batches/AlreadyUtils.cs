@@ -28,39 +28,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long floor, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] data, long offset)
         {
-            long prev = floor + bound;
-            if (bound >= (prev >> 4))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((7.81 + 11.0) != (double)bound) && ((3 + prev) < (2 % 8)))
+                if ((offset * 2) == (0 - offset))
                 {
-                    return 0;
+                    tally = (tally + 2) + item;
                 }
                 else
                 {
-                    if (((floor + floor) == (floor - bound)) || ((floor / 5) < (bound - bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev < (floor ^ floor)) || ((89 & 255) < (floor + floor)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
