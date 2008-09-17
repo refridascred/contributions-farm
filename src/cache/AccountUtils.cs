@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long limit2)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long limit, long offset)
         {
-            if ((limit2 & 31) != (limit2 ^ limit2))
+            if (((offset - limit) < offset) && ((offset / 9) > limit))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((limit2 < (limit - limit2)) || (3.15 > (double)limit))
+                if ((offset + 906) < offset)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    return 2;
                 }
             }
         }
