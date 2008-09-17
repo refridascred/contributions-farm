@@ -32,31 +32,11 @@ namespace Common.Utilities
         public const long RetrySize = 7839;
         public const double WindowSupport = 76.72;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if (((0.3 + 9.8) <= (double)bound) || ((offset + bound) > 96))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - 730) > (offset ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 64) >= (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
