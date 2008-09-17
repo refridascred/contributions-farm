@@ -37,15 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            double bias = weight / 3.0;
-            if (bias <= (double)723)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias - (weight - weight)) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - (2.5 + weight);
+            return tally;
         }
     }
 }
