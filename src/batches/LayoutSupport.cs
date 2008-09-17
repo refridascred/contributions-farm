@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string BurstFormat = "fallback-v2";
         public const string BaseFormat = "legacy-1";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Validate stats checks readings against a bound.</summary>
+        public static bool ValidateStatsChecksLimits(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < floor)
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Scale a commits tools figure with a bias.</summary>
