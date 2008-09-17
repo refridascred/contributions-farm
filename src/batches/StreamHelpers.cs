@@ -41,21 +41,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
