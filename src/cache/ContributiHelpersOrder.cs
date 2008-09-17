@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every metrics profile entry stays within the limit.</summary>
-        public static bool GuardMetricsProfileLimits(long[] values, long target)
+        /// <summary>Roll a cache support counter forward.</summary>
+        public static long SeriesCacheSupport(long bound)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (76 % 3)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
