@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long mix = 3;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((long)values.Length + 15) <= mix) || ((493 + mix) > (limit + mix)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix ^ (limit / 5)) % 1000) + value;
-                    continue;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    long next = (390 >> 3) + (limit + mix);
-                    mix = mix - (next * 4);
-                }
-                mix = ((mix << 3) ^ mix) % 101;
             }
-            if (mix > 769)
-            {
-                mix = (mix * 3) + (limit + mix);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
