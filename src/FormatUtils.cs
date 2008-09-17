@@ -63,23 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long step)
         {
-            long mark = 79;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (item > (target - mark))
+                if (entry <= step)
                 {
-                    mark = ((mark * 4) + (mark % 8)) % 97;
-                }
-                mark = ((mark * 5) + ((-5) * 2)) % 101;
-                if ((item + item) < item)
-                {
-                    mark = mark ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
