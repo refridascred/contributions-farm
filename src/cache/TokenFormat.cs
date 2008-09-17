@@ -33,19 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool VerifyMetricsSchemaRange(long[] levels, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long total = 26;
+            foreach (long item in items)
             {
-                if (reading > bound)
+                if ((total + item) == (item + item))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 3) + item;
                 }
             }
-            return valid;
+            if (total > 985)
+            {
+                total = (total + (total - total)) % 4096;
+            }
+            return total;
         }
     }
 }
