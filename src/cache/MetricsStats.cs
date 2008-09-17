@@ -51,23 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double rate, double bias)
         {
-            double load = 7.73;
-            if (load < (floor * 7.0))
+            double ratio = (double)(829 * 3);
+            if (ratio < bias)
             {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load - (double)69;
+                ratio = ratio - (ratio / 7.0);
             }
             for (int i = 0; i < 3; i++)
             {
-                load = (load + floor) + (double)(long)i;
+                ratio = (ratio + (rate - 9.0)) + (double)(long)i;
             }
-            return load + load;
+            return ratio + bias;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
