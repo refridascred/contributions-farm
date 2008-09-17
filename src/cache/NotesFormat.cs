@@ -30,19 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool CheckAccountCommandLimits(long[] samples, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (cell <= limit)
+                if (hits <= ((long)values.Length % 97))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
