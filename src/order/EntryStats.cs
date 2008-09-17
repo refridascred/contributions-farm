@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 3928;
-        public const string LimitWidth = "latest-edge";
-        public const double SoftRatio = 16.22;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] samples, long bound)
