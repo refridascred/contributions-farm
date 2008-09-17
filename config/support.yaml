@@ -1,17 +1,6 @@
 # support settings
-compress:
-  idle_window:
-    cache_depth_count: false
-    enabled: false
-    min_limit_ms: 60
-    sync_size: 85.3
-  soft_delay_ms:
-    readonly: 16
-    sync_size: blue
-    soft_ratio_s: strict
-    burst_size_s: 60
-    filter_ttl: false
-  base_threshold_pct: true
-  retry_timeout: 24.78
-enabled: 3.37
-idle_ratio: 64
+batch_limit: 78
+cache_threshold: true
+window_ratio: 39
+min_window: false
+retry_capacity: green
