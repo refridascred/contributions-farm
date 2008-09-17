@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "base_threshold_s": 38,
-  "verbose": 9121,
-  "max_interval": 100
+  "min_delay_pct": false,
+  "cache_timeout": "eu-west",
+  "default_timeout_s": 38.5,
+  "default_timeout": true,
+  "persist": false,
+  "burst_timeout": 82.21
 }
