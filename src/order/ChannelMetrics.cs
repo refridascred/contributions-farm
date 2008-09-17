@@ -37,14 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] data, long bound)
         {
-            Stale,
-            Done,
-            Draft,
-            Active,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
