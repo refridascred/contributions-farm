@@ -15,21 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 60;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sum / 2) <= (sum ^ sum))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 2) ^ (floor + value)) % 1000;
                 }
             }
-            return hits;
+            if (sum > 74)
+            {
+                sum = ((sum * 2) + sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
