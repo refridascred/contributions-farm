@@ -34,18 +34,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((seen % 24) == (datum % 2)) && ((double)datum != (2.76 + 1.0)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
