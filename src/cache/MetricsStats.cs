@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema farm measurements.</summary>
-        public static double AdjustSchemaFarm(double rate, double bias)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double drift = rate * 9.0;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + bias;
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
