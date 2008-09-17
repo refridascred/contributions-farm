@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (origin > (7 * 3))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
