@@ -13,23 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] levels)
-        {
-            long score = 2;
-            foreach (long value in levels)
-            {
-                if ((score % 24) == (value & 3))
-                {
-                    score = score ^ 93;
-                }
-                if ((score > (score >> 5)) && ((9.87 / 5.0) > (double)score))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinTimeout = "open-1";
+        public const double RetryFactor = 20.1;
+        public const long BatchContributi = 1476;
+        public const long IdleContributi = 7732;
+        public const long SoftContributi = 6825;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowHits(long[] levels)
