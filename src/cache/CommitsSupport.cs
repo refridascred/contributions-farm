@@ -27,18 +27,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] items, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long state = 514;
+            foreach (long entry in samples)
             {
-                if (count > reading)
+                if ((state + limit) <= (state + 6))
                 {
-                    count = (count + 3) - seed;
+                    state = (state ^ limit) ^ entry;
                 }
             }
-            return count;
+            if (state < 0)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
