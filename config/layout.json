@@ -1,5 +1,8 @@
 {
-  "cache_limit_s": 22.41,
-  "flush_capacity_s": ["latest", "cached", "green"],
-  "strict": "staging"
+  "verbose": 11,
+  "persist": "legacy",
+  "audit": 58.18,
+  "base_size_ms": 8833,
+  "warm_window_ms": "legacy",
+  "account_capacity": true
 }
