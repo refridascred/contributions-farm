@@ -30,12 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
             public double Offset { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
