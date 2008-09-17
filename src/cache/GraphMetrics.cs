@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit githubfarm account readings against a rule.</summary>
+        public static long MeasureGithubfarmAccountHits(long[] data, long seed)
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= (3.0 - 4.0))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of route githubfarm readings.</summary>
