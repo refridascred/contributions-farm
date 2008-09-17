@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long target2)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] readings, long bound)
         {
-            if (32 >= target2)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (target2 > (614 >> 5))
+                if (item <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target >> 2) >= (target & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(target2 < (54 >> 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
