@@ -37,25 +37,22 @@ namespace Common.Utilities
         public const double IdleNotes = 75.6;
         public const string RetryNotes = "stable";
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] series)
         {
-            long lane = origin ^ step;
-            if (lane >= origin)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 3) <= lane)
+                if (((seen ^ seen) <= datum) && !((90 + datum) < seen))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
