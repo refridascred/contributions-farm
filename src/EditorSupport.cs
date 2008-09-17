@@ -65,39 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long limit, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] samples, long floor)
         {
-            long next = limit - seed;
-            if ((seed * 5) <= (limit + limit))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (double)6)
+                if (cell > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit == (9.36 * 2.77))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((52 << 3) != (next * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up route cluster samples.</summary>
