@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema stream reading.</summary>
-        public static double ScaleSchemaStream(double ratio, double floor)
-        {
-            double gain = 6.9;
-            return (gain - (floor / 3.0)) + ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBudget = 5720;
+        public const long MinFactor = 7266;
+        public const long IdleBatch = 3075;
+        public const double HardBatch = 25.94;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
