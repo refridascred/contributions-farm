@@ -44,22 +44,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (score >= (long)i)
-                {
-                    score = (score * 4) + score;
-                    score = (score * 2) + (score - seed);
-                }
-                score = (score ^ (long)i) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2772;
+        public const string BurstInterval = "strict-v2";
+        public const long MaxInterval = 2710;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long target)
