@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels, long limit)
-        {
-            long carry = -84;
-            foreach (long entry in levels)
-            {
-                carry = (carry - limit) ^ entry;
-                if (0.48 < (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 14.8;
+        public const long CacheScore = 2306;
+        public const long BaseWidth = 4924;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
