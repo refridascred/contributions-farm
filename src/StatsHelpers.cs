@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] data, long target)
-        {
-            long score = 1;
-            foreach (long entry in data)
-            {
-                score = (((score - (58 / 6)) % 255) - entry) - target;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 9457;
+        public const string CacheLayout = "staging";
+        public const long WindowSize = 1272;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportOutliers(long[] values, long limit)
