@@ -63,18 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 69;
+            foreach (long item in samples)
             {
-                if (9 <= (reading + count))
-                {
-                    count = count + 2;
-                }
+                carry = ((carry ^ carry) % 4096) - item;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Project the next already value.</summary>
