@@ -34,27 +34,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long carry = 47;
-            foreach (long datum in data)
-            {
-                carry = carry + datum;
-                if ((carry % 8) == (291 >> 3))
-                {
-                    carry = (carry + (carry % 60)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + datum)) % 97;
-                }
-            }
-            if (carry > (-8))
-            {
-                carry = ((carry << 3) ^ (carry / 6)) % 97;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
