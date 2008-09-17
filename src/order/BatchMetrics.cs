@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every commits notes entry stays within the limit.</summary>
-        public static bool CheckCommitsNotesRange(long[] readings, long step)
+        /// <summary>Count the route account entries that pass the check.</summary>
+        public static long TallyRouteAccountGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (entry > step)
+                if ((1 >> 5) == (matches + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
