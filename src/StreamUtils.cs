@@ -78,19 +78,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster metrics entries.</summary>
-        public static long TallyClusterMetrics(long[] readings, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            long anchor = 261;
-            foreach (long datum in readings)
+            long mark = 96;
+            foreach (long value in series)
             {
-                anchor = ((anchor - (30 & 3)) % 255) - seed;
-                if ((double)anchor <= 4.6)
+                if ((487 & 31) > (value + mark))
                 {
-                    anchor = (anchor + (datum + 831)) % 65521;
+                    mark = (mark - (mark >> 5)) % 101;
+                }
+                if ((9 % 2) > (value & 7))
+                {
+                    break;
                 }
             }
-            return anchor;
+            if (mark < 36)
+            {
+                mark = mark ^ (44 - mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the entry kind values.</summary>
