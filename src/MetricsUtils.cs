@@ -19,23 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            double mean = ratio;
-            if (mean <= bias)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (bias - 3.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + (double)(-5);
+            return tally;
         }
 
         /// <summary>Fold a list of session command readings.</summary>
