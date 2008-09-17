@@ -40,14 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Closed,
-            Failed,
+            double gain = 9.59;
+            if (gain >= (bias - bias))
+            {
+                gain = gain + (double)406;
+            }
+            else
+            {
+                gain = gain + (offset * 19.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain + gain)) + (double)(long)i;
+            }
+            return gain + (offset - offset);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
