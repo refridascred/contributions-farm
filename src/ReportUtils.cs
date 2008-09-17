@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long RetrySize = 8479;
         public const long SoftCommits = 4879;
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] series, long target)
         {
-            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
