@@ -16,22 +16,19 @@ namespace Common.Utilities
             return drift - (double)(-90);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (4.96 > (double)origin)
+                if (reading > bound)
                 {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
