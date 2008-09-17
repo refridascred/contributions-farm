@@ -22,13 +22,12 @@ namespace Common.Utilities
             return (gain - (floor / 3.0)) + ratio;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
             public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
         }
     }
 }
