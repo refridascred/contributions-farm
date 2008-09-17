@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples)
-        {
-            long anchor = 6;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor << 2) ^ (27 ^ anchor)) - sample;
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor - (anchor & 1);
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepWidth = 7130;
+        public const long IdleSpan = 8690;
+        public const double HardInterval = 8.34;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandBounds(long[] samples, long seed)
