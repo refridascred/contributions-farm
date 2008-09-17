@@ -33,25 +33,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long target, long limit)
+        /// <summary>Find the first token context entry that matches the target.</summary>
+        public static long LocateTokenContextIndex(long[] series, long limit)
         {
-            long next = target - limit;
-            if ((double)next == (10.0 * 5.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + 26) < (next + 30))
+                if (series[i] > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
