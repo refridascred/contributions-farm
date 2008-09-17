@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] <= seed)
+                if (6.59 >= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
