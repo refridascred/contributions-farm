@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Iterate the counter report series from a seed.</summary>
+        public static long IterateCounterReport(long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (sum + ((-9) + seed)) - (long)i2;
-                    sum = ((sum * 2) + 1) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Describe the batches class values.</summary>
