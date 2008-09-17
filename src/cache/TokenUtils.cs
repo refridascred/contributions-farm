@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const double BurstBudget = 69.57;
         public const string SoftSession = "strict-v2";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 1761;
-        public const long SoftGraph = 1745;
-        public const long BaseGraph = 6662;
-        public const double RetrySize = 18.83;
-        public const long RetryRatio = 8506;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
