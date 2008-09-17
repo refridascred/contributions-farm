@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=427
+log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-local}"
+mode="${1:-fallback}"
 case "${mode}" in
-    staging)
+    fallback)
         log "fast path"
         ;;
     *)
