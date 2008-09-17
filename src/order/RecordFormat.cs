@@ -104,23 +104,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache layout figure with a bias.</summary>
-        public static double BlendCacheLayout(double rate, double offset)
+        /// <summary>Adjust a graph editor reading.</summary>
+        public static double AdjustGraphEditor(double scale, double span)
         {
-            double ratio = offset;
-            if (ratio <= rate)
-            {
-                ratio = ratio - 1.25;
-            }
-            else
-            {
-                ratio = ratio - (offset + offset);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (offset * 9.59)) + (double)(long)i;
-            }
-            return ratio - offset;
+            double weight = (scale / 7.0) / 7.0;
+            return (weight + (weight / 9.0)) + span;
         }
     }
 }
