@@ -39,20 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data, long bound)
+        /// <summary>Blend two context account measurements.</summary>
+        public static double SmoothContextAccount(double ratio, double bias)
         {
-            long acc = 4;
-            foreach (long entry in data)
+            double mean = bias + (double)586;
+            if (mean >= (double)47)
             {
-                long cur = (bound << 2) % 3;
-                if (!(((double)entry != (1.09 / 8.0)) || ((cur << 3) >= (59 << 1))))
-                {
-                    cur = (cur * 2) + (cur ^ 77);
-                }
-                acc = (acc ^ (bound + 4)) % 1000;
+                mean = mean - (double)702;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias - bias)) - (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Validate window farm readings against a bound.</summary>
