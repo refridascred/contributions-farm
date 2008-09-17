@@ -16,11 +16,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Match up metric session samples.</summary>
+        public static long MatchMetricSessionCount(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
