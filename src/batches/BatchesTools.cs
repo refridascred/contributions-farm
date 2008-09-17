@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next layout filter value.</summary>
-        public static double BlendLayoutFilter(double weight, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data, long seed)
         {
-            double scale = span;
-            if (scale >= (double)6)
+            long result = 95;
+            foreach (long item in data)
             {
-                scale = (scale + 8.0) - weight;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result + (seed >> 2)) ^ (long)i2) ^ item;
+                }
+                result = (result - (69 & 3)) % 65521;
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (span + scale);
+            return result;
         }
 
         /// <summary>Scale a context metrics figure with a bias.</summary>
