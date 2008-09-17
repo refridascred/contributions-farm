@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Queued,
-            Pending,
-            Active,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheFactor = "legacy-edge";
+        public const double StepAccount = 22.32;
+        public const long MinAccount = 9946;
+        public const long CacheBudget = 5415;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
