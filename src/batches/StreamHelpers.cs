@@ -67,18 +67,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (963 > (cell - cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
