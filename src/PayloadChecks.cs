@@ -77,32 +77,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long floor, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long span = floor + offset;
-            if (((double)span > (4.92 + 2.2)) || ((5.0 + 2.0) != (double)span))
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((47 - offset) != (offset + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)7 > (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
