@@ -43,18 +43,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)item >= (1.0 / 4.0)) && ((item << 2) <= (item + tally)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = tally + 1;
+                    acc = (acc + (bound % 12)) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    acc = (acc ^ acc) - (long)i3;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
