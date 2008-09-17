@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of profile metric readings.</summary>
-        public static long OverlapProfileMetricCount(long[] values)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark / 5) <= origin)
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + (286 >> 1);
+                    mark = mark + (mark % 8);
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a commits record.</summary>
