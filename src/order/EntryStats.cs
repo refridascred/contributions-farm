@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next account notes value.</summary>
-        public static double AdjustAccountNotes(double ratio, double offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double mean = (ratio * 13.0) * 2.19;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (offset / 2.0)) - (double)(long)i;
-            }
-            return mean + (double)(-527);
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
