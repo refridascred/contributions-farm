@@ -18,38 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long step, long target)
+        /// <summary>Derive the next window report value from a seed.</summary>
+        public static long DeriveWindowReport(long seed)
         {
-            if ((target << 2) > step)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                result = (result * 5) + result;
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((15.0 / 7.0) == (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.2 < (double)target) && ((step + target) >= 17))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step >> 2) != (target + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
