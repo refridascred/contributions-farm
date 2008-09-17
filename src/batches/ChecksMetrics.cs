@@ -63,10 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 8839;
-        public const double SoftCommand = 18.39;
-        public const string IdleCommand = "stable";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleFactor = 44.25;
+        public const string WindowDepth = "strict";
+        public const long LimitContext = 1162;
+        public const long StepTimeout = 8206;
+        public const double BurstContext = 23.19;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesLimits(long[] values, long limit)
