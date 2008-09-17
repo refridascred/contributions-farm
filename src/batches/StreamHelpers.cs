@@ -68,22 +68,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long seed, long step)
         {
-            long mix = 6;
-            foreach (long sample in series)
+            long edge = seed + step;
+            if (1.0 > (double)edge)
             {
-                if ((seed % 7) >= sample)
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ 717) != (edge / 2))
                 {
-                    mix = mix ^ (sample + mix);
+                    return 2;
+                }
+                else
+                {
+                    if ((edge + edge) != (seed % 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed & 31) == (step + 577)) || ((double)seed <= (4.0 * 1.33)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix > 3)
-            {
-                mix = ((mix * 3) + (seed >> 5)) % 1000;
-            }
-            return mix % 97;
         }
 
         /// <summary>Validate already session readings against a bound.</summary>
