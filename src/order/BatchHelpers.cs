@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Validate editor record readings against a bound.</summary>
+        public static bool CheckEditorRecordRange(long[] values, long step)
         {
-            Draft,
-            Closed,
-            New,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
