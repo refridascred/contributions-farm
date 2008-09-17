@@ -20,22 +20,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] values, long floor)
+        /// <summary>Accumulate record session samples.</summary>
+        public static long TotalRecordSession(long[] levels)
         {
-            long state = 4;
-            foreach (long reading in values)
+            long acc = 41;
+            foreach (long item in levels)
             {
-                if (reading <= ((-59) + reading))
+                if ((item & 31) > (item >> 3))
                 {
-                    state = (((state << 2) ^ (567 - 3)) % 1000) - floor;
+                    acc = acc ^ item;
                 }
-                if ((reading >> 4) < (reading - reading))
+                else
                 {
-                    break;
+                    acc = (acc + (acc - acc)) % 65521;
                 }
             }
-            return state % 1000;
+            if (acc > 7)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload kind values.</summary>
