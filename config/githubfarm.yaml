@@ -1,10 +1,5 @@
 # githubfarm settings
-soft_ratio_s: 4007
-warm_capacity_pct: 82
-profile_threshold: cached
-base_capacity_count:
-  - strict
-  - staging
-  - strict
-flush_capacity: 73
-poll_delay_pct: cached
+sync_ratio: 4521
+hard_timeout: 250
+min_size_s: 4912
+filter_depth: edge
