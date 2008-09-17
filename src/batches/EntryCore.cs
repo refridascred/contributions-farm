@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine githubfarm support values into a single score.</summary>
-        public static long WeighGithubfarmSupport(long[] levels, long limit)
-        {
-            long sum = 834;
-            foreach (long entry in levels)
-            {
-                if (limit >= (entry % 64))
-                {
-                    sum = ((sum * 3) + limit) % 255;
-                }
-                if (((limit >> 4) <= (809 + 50)) && ((double)3 >= (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = ((sum * 5) + sum) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultSpan = 28.71;
+        public const double BaseWindow = 14.49;
+        public const double SoftWindow = 89.49;
 
         /// <summary>Project the next payload value.</summary>
         public static double BlendPayload(double scale, double bias)
