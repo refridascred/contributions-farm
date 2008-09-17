@@ -20,15 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double scale, double offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long bound)
         {
-            double scale2 = (offset / 5.0) - scale;
-            if (scale2 < 16.0)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                scale2 = scale2 - scale2;
+                if ((double)847 <= (double)bound)
+                {
+                    state = (state - 216) % 101;
+                }
+                state = state ^ (bound + bound);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return scale2 + offset;
+            return state;
         }
 
         /// <summary>Hold a account options.</summary>
