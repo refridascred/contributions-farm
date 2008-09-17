@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
