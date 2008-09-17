@@ -28,11 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 6851;
-        public const long RetryCount = 713;
-        public const long DefaultTimeout = 6135;
-        public const long HardBuffer = 4205;
-        public const long MinBuffer = 7413;
+        /// <summary>Roll a cache stream counter forward.</summary>
+        public static long SeriesCacheStream(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
