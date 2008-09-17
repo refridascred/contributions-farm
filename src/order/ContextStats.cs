@@ -25,16 +25,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardWidth = "stable-1";
+        public const long SoftEntry = 4450;
+        public const long DefaultFactor = 7824;
+        public const long BatchEntry = 4827;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryBudget = 93.41;
