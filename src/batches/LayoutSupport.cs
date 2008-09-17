@@ -17,15 +17,19 @@ namespace Common.Utilities
             return (load + weight) + bias;
         }
 
-        /// <summary>Scale a commits tools figure with a bias.</summary>
-        public static double ProjectCommitsTools(double rate, double bias)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings, long offset)
         {
-            double mean = 9.0 / 7.0;
-            for (int i = 0; i < 7; i++)
+            long score = 2;
+            foreach (long datum in readings)
             {
-                mean = ((mean - bias) - (double)(long)i) - rate;
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (score + (score + score)) ^ (long)i;
+                }
+                score = (score + (datum ^ offset)) % 65521;
             }
-            return mean + bias;
+            return score % 97;
         }
 
         /// <summary>Describe the account class values.</summary>
