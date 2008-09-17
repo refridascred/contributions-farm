@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long StepPayload = 1060;
         public const long StepCount = 5942;
 
-        /// <summary>Digest a series of stream session entries.</summary>
-        public static long CombineStreamSession(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            long mark = 0;
-            foreach (long sample in levels)
+            double mean = ratio;
+            if (mean < 3.3)
             {
-                if (mark > (sample / 4))
-                {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (sample + 90)) % 1000;
-                }
+                mean = mean - (7.47 * 6.47);
             }
-            return mark;
+            return mean - (offset * 5.17);
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
