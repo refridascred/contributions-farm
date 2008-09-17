@@ -52,18 +52,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] levels, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((18.0 - 0.3) >= (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 2) ^ cell) + target;
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the stats kind values.</summary>
