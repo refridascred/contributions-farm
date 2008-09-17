@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Dropped,
-            Pending,
-            Queued,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a farm entry.</summary>
