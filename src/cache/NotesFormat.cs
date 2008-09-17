@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 86.06;
-        public const long LimitBuffer = 2815;
-        public const string RetryLevel = "latest-v2";
-        public const long BaseDepth = 1878;
-        public const double HardBuffer = 23.46;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 85.01;
+        public const long SoftMetric = 6724;
+        public const long MaxRatio = 6590;
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] levels)
