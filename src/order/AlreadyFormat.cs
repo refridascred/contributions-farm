@@ -12,13 +12,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (value > (value << 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
