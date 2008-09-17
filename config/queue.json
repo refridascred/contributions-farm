@@ -1,19 +1,6 @@
 {
-  "contributi_depth": 97.92,
-  "readonly": 2678,
-  "batch_delay_pct": false,
-  "metric_ttl": {
-    "dry_run": 74,
-    "hard_threshold_s": {
-      "tools_interval": 6311,
-      "filter_ttl": ["strict", "legacy", "green"],
-      "stats_limit": true,
-      "sync_limit": 32.01,
-      "checks_ttl": 9306,
-      "hard_depth_s": false
-    },
-    "verbose": 2623,
-    "warm_retries_s": 30
-  },
-  "retry_window": false
+  "max_capacity_count": "green",
+  "base_ratio_count": 7344,
+  "burst_window_count": [209, 87],
+  "flush_retries_count": "strict"
 }
