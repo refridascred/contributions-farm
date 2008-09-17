@@ -38,19 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the editor command series from a seed.</summary>
-        public static long DeriveEditorCommand(long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = -8;
+            foreach (long reading in readings)
             {
-                if ((seed ^ (long)i) <= (seed >> 3))
+                if ((mix / 9) <= (reading / 7))
                 {
-                    state = (state ^ (state - state)) % 65521;
+                    mix = mix ^ (reading ^ reading);
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            if (mix < 675)
+            {
+                mix = (mix ^ (mix ^ mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
