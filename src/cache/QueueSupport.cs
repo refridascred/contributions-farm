@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster buffer readings against a bound.</summary>
-        public static bool VerifyClusterBufferBounds(long[] readings, long step)
+        /// <summary>Count order schema pairs that satisfy a relation.</summary>
+        public static long MatchOrderSchemaCount(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
