@@ -66,18 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] series)
+        /// <summary>Digest a series of editor support entries.</summary>
+        public static long WeighEditorSupport(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = 298;
+            foreach (long value in levels)
             {
-                if ((double)item < (7.79 * 13.0))
+                if ((value + value) != (acc & 255))
                 {
-                    hits = hits + 2;
+                    acc = acc - (acc + acc);
                 }
             }
-            return hits;
+            if (acc < 7)
+            {
+                acc = ((acc * 5) + acc) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
