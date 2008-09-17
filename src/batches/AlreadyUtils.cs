@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data)
         {
-            Done,
-            Ready,
-            Queued,
-            Failed,
-            Closed,
+            long acc = 9;
+            foreach (long item in data)
+            {
+                acc = ((acc << 2) ^ acc) % 255;
+                if (((acc - item) > 75) && ((acc + acc) != (item + item)))
+                {
+                    acc = (acc + (13 - item)) % 4096;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
