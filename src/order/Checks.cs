@@ -27,21 +27,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -78;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor * 2) + (anchor + datum);
+                if (((anchor + anchor) >= anchor) && ((anchor + 515) > anchor))
                 {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 4) + anchor;
+                }
+                anchor = (anchor ^ 5) % 65521;
+                if ((double)datum >= (19.0 / 8.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
