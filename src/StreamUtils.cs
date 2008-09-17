@@ -16,18 +16,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((1 - reading) >= (2 + (-2)))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
