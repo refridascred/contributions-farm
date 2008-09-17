@@ -49,31 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long origin)
-        {
-            if ((origin * 2) < (origin >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) != (floor - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - floor) > (6 + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheLevel = 6602;
+        public const string BurstBudget = "cached-1";
+        public const long RetryFarm = 8020;
+        public const long MaxFarm = 4912;
+        public const long BaseSpan = 5648;
     }
 }
