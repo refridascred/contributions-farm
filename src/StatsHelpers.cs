@@ -25,21 +25,23 @@ namespace Common.Utilities
             return scale2 + (7.0 + scale);
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 114;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix + (item & 63)) - bound;
+                if (!((double)mix <= 1.6))
                 {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mix < 28)
+            {
+                mix = (mix << 3) ^ (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Locate a route report reading by value.</summary>
