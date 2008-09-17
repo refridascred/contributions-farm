@@ -56,13 +56,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long offset)
         {
-            Idle,
-            Retry,
-            Synced,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
