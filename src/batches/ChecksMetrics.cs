@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items)
         {
-            long result = 13;
-            foreach (long sample in samples)
+            long mix = 8;
+            foreach (long datum in items)
             {
-                result = ((result * 2) + bound) ^ sample;
+                mix = ((mix << 2) ^ (5 * 5)) % 101;
+                if ((1.98 + 1.74) >= (17.0 + 15.0))
+                {
+                    mix = (mix << 3) ^ (mix ^ 898);
+                }
+                if (((14.0 + 5.1) != (double)(long)items.Length) && ((double)datum < (7.0 - 2.0)))
+                {
+                    break;
+                }
             }
-            if (result > 15)
-            {
-                result = (result ^ (result + (-526))) % 101;
-            }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Project the next layout value.</summary>
