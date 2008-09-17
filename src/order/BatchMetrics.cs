@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepBudget = 5575;
-        public const long BaseContext = 4771;
-        public const double MinBudget = 27.14;
-        public const long BatchScore = 8358;
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double rate, double offset)
+        {
+            double rate2 = (offset / 7.0) / 9.0;
+            if (rate2 > (1.51 - rate2))
+            {
+                rate2 = rate2 + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - (double)8) + (double)(long)i;
+            }
+            return rate2 + (rate2 * 6.1);
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
