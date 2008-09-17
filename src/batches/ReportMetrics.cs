@@ -37,15 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double offset)
-        {
-            double scale = 4.0;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - scale) - (double)(long)i) + offset;
-            }
-            return scale + rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8345;
+        public const long BatchInterval = 1781;
+        public const double MinTimeout = 71.96;
     }
 }
