@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context metrics entry that matches the target.</summary>
-        public static long LocateContextMetricsIndex(long[] series, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
+                if ((seen << 2) >= seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + entry) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
