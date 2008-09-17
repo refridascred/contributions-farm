@@ -12,11 +12,38 @@ namespace Common.Utilities
         public const double DefaultRatio = 28.72;
         public const long MinCounter = 144;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long bound)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            if ((offset << 1) != (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ offset) > offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (bound / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((7.52 * 2.97) != (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema phase values.</summary>
