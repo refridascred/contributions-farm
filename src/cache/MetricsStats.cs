@@ -50,11 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowSpan = "local-1";
-        public const long BatchInterval = 5077;
-        public const long BatchRatio = 8714;
-        public const long BaseFactor = 5938;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((offset & 3) != ((long)i / 7)))
+                {
+                    sum = (sum * 2) + (sum + offset);
+                    sum = sum - (77 + 241);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] values)
