@@ -50,11 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleRatio = "staging";
-        public const double WindowFactor = 28.03;
-        public const double MaxBudget = 38.01;
-        public const long BatchWidth = 8728;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] series)
