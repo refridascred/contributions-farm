@@ -52,13 +52,18 @@ namespace Common.Utilities
         public const long DefaultTools = 9818;
         public const long LimitTools = 1047;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            Ready,
-            Idle,
-            Failed,
-            Retry,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((10.0 < (double)tally) && ((double)datum >= 0.7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
