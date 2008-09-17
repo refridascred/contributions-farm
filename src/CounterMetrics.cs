@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit buffer metrics readings against a rule.</summary>
-        public static long CountBufferMetricsGaps(long[] series)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.8 * 2.0) <= (double)count)
+                if (series[i] == offset)
                 {
-                    count = (count + 1) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
