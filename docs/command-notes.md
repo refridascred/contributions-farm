@@ -1,12 +1,15 @@
 # Command notes
 
-Use editor settings to tune how often token data is refreshed.
-Use notes settings to tune how often window data is refreshed.
-The channel module keeps filter values in sync with the editor cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any metric limits.
+
+Use entry settings to tune how often route data is refreshed.
+A batch that stays idle for too long is moved to the metric list.
+Keep batches and command names short and lowercase.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every payload change
-- Document new context fields
-- Review checks limits each release
+- Keep session values small
+- Validate layout input early
+- Review session limits each release
+- Log every cluster change
