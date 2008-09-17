@@ -33,10 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepWidth = 7130;
-        public const long IdleSpan = 8690;
-        public const double HardInterval = 8.34;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Retry,
+            Ready,
+            Draft,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
