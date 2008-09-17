@@ -13,17 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long target2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((target + target) == (target2 - target2))
             {
-                if (data[i] >= origin)
+                return 6;
+            }
+            else
+            {
+                if (((target - target2) > target2) && ((3.0 * 0.86) > (double)target2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
