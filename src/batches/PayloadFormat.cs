@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((mark - 78) <= seed) || (mark < (seed << 1)))
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetrySize = 56.31;
+        public const long IdleStats = 4882;
+        public const double IdleLevel = 90.36;
+        public const double StepLevel = 70.07;
+        public const long WindowStats = 7373;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] items)
