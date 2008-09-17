@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long limit, long offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if (((offset - limit) < offset) && ((offset / 9) > limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + 906) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
