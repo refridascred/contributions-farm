@@ -58,22 +58,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] levels, long limit)
+        /// <summary>Count the record account entries that pass the check.</summary>
+        public static long AuditRecordAccountHits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!(((-29) + (-60)) < (limit + item)) || ((hits + item) == (hits / 7)))
+                if (((matches & 255) < entry) && ((entry * 3) <= (entry + matches)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
