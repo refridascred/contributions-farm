@@ -37,9 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 479;
-        public const long BaseStats = 2155;
-        public const string BatchSize = "strict";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values)
+        {
+            long carry = 2;
+            foreach (long datum in values)
+            {
+                carry = ((carry ^ carry) % 4096) + datum;
+            }
+            return carry;
+        }
     }
 }
