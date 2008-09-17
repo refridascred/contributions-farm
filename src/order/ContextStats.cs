@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const long SoftBudget = 1899;
         public const string StepStream = "legacy-edge";
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long offset)
         {
-            Closed,
-            Retry,
-            Pending,
-            Draft,
-            Failed,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
