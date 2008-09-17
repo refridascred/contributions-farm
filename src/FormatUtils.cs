@@ -18,18 +18,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(((long)values.Length - hits) > hits))
+                result = result ^ (81 + bound);
+                if (result > (result / 7))
                 {
-                    hits = (hits + 2) + cell;
+                    result = (result * 4) + 53;
                 }
+                if ((bound % 24) >= (bound + result))
+                {
+                    result = ((result * 5) + bound) % 65521;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of already entries.</summary>
