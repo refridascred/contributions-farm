@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long BaseWidth = 7475;
         public const long SoftEntry = 4126;
 
-        /// <summary>Digest a series of notes cluster entries.</summary>
-        public static long CombineNotesCluster(long[] items)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = 514;
-            foreach (long item in items)
-            {
-                mix = (mix - (item % 5)) % 255;
-            }
-            return mix;
+            Idle,
+            Dropped,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
