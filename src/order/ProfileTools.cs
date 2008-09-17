@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long RetrySize = 7839;
         public const double WindowSupport = 76.72;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Iterate the contributi support series from a seed.</summary>
+        public static long StepContributiSupport(long offset)
         {
-            Paused,
-            Ready,
-            Failed,
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((offset - result) != (offset + result)))
+                {
+                    result = result ^ (offset + offset);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of already readings.</summary>
