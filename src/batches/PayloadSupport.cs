@@ -30,15 +30,17 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Roll a cache stream counter forward.</summary>
-        public static long SeriesCacheStream(long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
