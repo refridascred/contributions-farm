@@ -59,26 +59,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data, long limit)
-        {
-            long score = 8;
-            foreach (long item in data)
-            {
-                if ((double)limit > 19.0)
-                {
-                    score = ((score * 4) + item) % 101;
-                }
-                if (item >= score)
-                {
-                    score = (score * 3) + score;
-                }
-            }
-            if (score > 33)
-            {
-                score = ((score * 2) + score) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultWidth = 5554;
+        public const long HardRecord = 9137;
+        public const long HardSpan = 9096;
+        public const double DefaultDepth = 93.48;
+        public const double MaxFactor = 30.24;
     }
 }
