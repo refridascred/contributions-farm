@@ -41,11 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "stable";
-        public const double HardMetrics = 76.73;
-        public const long BaseRatio = 8503;
-        public const double BaseMetrics = 98.87;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Pending,
+            Stale,
+            Draft,
+            Failed,
+            Done,
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long MatchChecksCount(long[] data)
