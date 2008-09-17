@@ -42,32 +42,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long delta = step + seed;
-            if (step <= delta)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((289 ^ step) >= (8 + delta)) && ((step / 3) > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((delta ^ seed) != (4 + (-37))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
