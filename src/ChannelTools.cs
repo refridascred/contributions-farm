@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheSpan = "latest-v2";
-        public const double BurstSize = 41.92;
-        public const long StepEntry = 9889;
-        public const long BaseWidth = 7475;
-        public const long SoftEntry = 4126;
+        /// <summary>Combine cluster token values into a single score.</summary>
+        public static long ScoreClusterToken(long[] samples, long step)
+        {
+            long mix = 64;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (((mix ^ item) % 97) ^ (long)i) + step;
+                    mix = (mix << 2) ^ item;
+                }
+                mix = mix ^ item;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
