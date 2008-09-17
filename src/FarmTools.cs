@@ -19,23 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            double load = gain;
-            if (load >= (double)3)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                load = load - (offset * 4.7);
+                if (bound > 789)
+                {
+                    acc = acc ^ acc;
+                    acc = acc - (bound << 1);
+                }
+                else
+                {
+                    acc = acc - (324 >> 2);
+                }
+                acc = acc + (bound + 63);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                load = load - (gain - load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)845) - (double)(long)i;
-            }
-            return load - gain;
+            return acc;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
