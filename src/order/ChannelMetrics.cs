@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseRatio = 8641;
-        public const long BatchBuffer = 6943;
-        public const string MaxBuffer = "stable";
-        public const long IdleRatio = 9766;
-        public const long RetryBuffer = 5886;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double bias)
+        {
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + (scale / 2.0)) - (double)(long)i) - bias;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Adjust a stream graph reading.</summary>
         public static double AdjustStreamGraph(double weight, double offset)
