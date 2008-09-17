@@ -74,21 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Validate route support readings against a bound.</summary>
+        public static bool GuardRouteSupportRange(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading != limit)
                 {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
