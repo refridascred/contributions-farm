@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardBudget = 7806;
-        public const string CacheBudget = "latest-edge";
-        public const string BaseCount = "strict-1";
-        public const long SoftSize = 2882;
-        public const long BaseStats = 2978;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the cache contributi series from a seed.</summary>
         public static long RollCacheContributi(long seed)
