@@ -30,13 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
