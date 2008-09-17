@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics queue readings against a rule.</summary>
-        public static long TallyMetricsQueueMatches(long[] samples)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((matches - matches) <= (matches >> 2)))
+                if ((series[i] == step) && ((series[i] % 3) != 0))
                 {
-                    matches = (matches + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
