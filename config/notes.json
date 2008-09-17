@@ -1,11 +1,12 @@
 {
-  "base_window": 94.5,
-  "soft_ratio_count": {
-    "persist": 60,
-    "schema_threshold": "strict",
-    "compress": 25,
-    "soft_depth_ms": [348, 327, 135, 375],
-    "readonly": "primary"
-  },
-  "burst_timeout_ms": "primary"
+  "soft_interval_s": 18,
+  "audit": 9495,
+  "channel_capacity": false,
+  "max_size": false,
+  "burst_ratio": 85,
+  "already_threshold": {
+    "batch_threshold": 250,
+    "hard_ratio": ["cached", "stable", "strict"],
+    "default_delay_pct": "fallback"
+  }
 }
