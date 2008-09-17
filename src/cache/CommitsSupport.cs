@@ -45,21 +45,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = (double)(40 & 15);
+            return ((gain - (double)4) + rate) + span;
         }
 
         /// <summary>Hold a window header.</summary>
