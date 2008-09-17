@@ -1,15 +1,6 @@
 {
-  "cache_size_pct": false,
-  "max_threshold_count": [146, 86, 491, 323],
-  "cache_capacity_s": "fallback",
-  "verbose": {
-    "poll_retries": 500,
-    "account_ratio": {
-      "persist": 9584,
-      "retry_delay_pct": "local",
-      "dry_run": [307, 46, 246, 232]
-    },
-    "warm_size": true,
-    "strict": 53.43
-  }
+  "burst_timeout": ["local", "stable", "edge"],
+  "burst_interval": 13,
+  "context_timeout": "cached",
+  "default_retries": 24
 }
