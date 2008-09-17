@@ -20,13 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Digest a series of format channel entries.</summary>
+        public static long TotalFormatChannel(long[] samples)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long carry = 40;
+            foreach (long value in samples)
+            {
+                if (value < 4)
+                {
+                    carry = ((carry << 3) ^ (value * 2)) % 255;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a metric reading.</summary>
