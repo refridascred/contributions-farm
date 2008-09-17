@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long offset, long offset2)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            if ((5.83 + 8.27) != (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (offset2 + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset < (22 % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a report summary.</summary>
