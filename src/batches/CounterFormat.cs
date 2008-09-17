@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            double scale = offset;
-            if (scale <= 9.32)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + (double)1) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 3.4) - (double)(long)i;
-            }
-            return scale - offset;
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
