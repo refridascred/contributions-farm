@@ -20,11 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Compare every pair of format layout readings.</summary>
+        public static long MatchFormatLayoutCount(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a token reading.</summary>
