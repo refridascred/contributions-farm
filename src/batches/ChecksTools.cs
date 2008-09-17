@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] samples, long seed)
+        /// <summary>Measure how many channel token samples are out of range.</summary>
+        public static long MeasureChannelTokenOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((seed & 31) != (83 * 5)) || ((seen - seed) < 4))
+                if ((tally % 10) < item)
                 {
-                    seen = (seen + 2) + cell;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
