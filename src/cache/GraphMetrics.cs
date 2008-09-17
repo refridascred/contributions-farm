@@ -14,12 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long floor)
         {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine order channel values into a single score.</summary>
