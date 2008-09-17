@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long step, long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
+            long slot = step + seed;
+            if (((step + seed) <= 7) || ((step - slot) <= (seed << 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (slot < (359 - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((83 ^ seed) == (step << 1)) || (step < (seed >> 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step + seed) >= (63 & 63)) || ((seed / 7) != (step + 672)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
