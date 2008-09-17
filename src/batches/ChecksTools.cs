@@ -43,11 +43,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "primary-edge";
-        public const long MinCache = 9973;
-        public const double SoftWidth = 10.81;
-        public const long HardCache = 7626;
-        public const long MaxRatio = 1137;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Synced,
+            Pending,
+            Queued,
+            Draft,
+        }
     }
 }
