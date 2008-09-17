@@ -26,22 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long TallyStreamTools(long[] readings)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long sum = 496;
-            foreach (long reading in readings)
-            {
-                if ((double)sum > (8.0 + 2.3))
-                {
-                    sum = sum ^ reading;
-                }
-                else
-                {
-                    sum = sum - (235 / 5);
-                }
-            }
-            return sum % 65521;
+            Paused,
+            Active,
+            Queued,
+            Retry,
+            Dropped,
         }
     }
 }
