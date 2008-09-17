@@ -56,21 +56,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel editor pairs that satisfy a relation.</summary>
-        public static long CompareChannelEditorCount(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((seed * 3) >= (bound / 3)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound + seed) != (9 + seed))
                 {
-                    if ((series[i] + series[j]) < 14)
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) > bound)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + seed) > (bound & 15))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
