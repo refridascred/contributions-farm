@@ -70,38 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long seed)
         {
-            if ((offset - floor) < (offset & 255))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (7.0 * 19.0))
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset * 4) < (offset + offset)) || ((19 & 31) >= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((5.13 + 4.59) != (double)offset) || ((offset + offset) <= 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
