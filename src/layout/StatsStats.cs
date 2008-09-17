@@ -35,18 +35,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = (mix ^ (251 + mix)) % 97;
-                mix = (mix - 0) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstRatio = 2928;
+        public const long StepWidth = 8499;
+        public const long IdleCommand = 3364;
+        public const long BurstCommand = 6869;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphLimits(long[] readings, long limit)
