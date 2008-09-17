@@ -1,5 +1,10 @@
 # entry settings
-soft_threshold_count: true
-max_limit: true
-cache_window_pct: local
-command_timeout: 3572
+flush_ratio_pct: 53
+sync_depth_s: true
+hard_capacity: local
+order_capacity:
+  - 142
+  - 335
+  - 159
+  - 268
+idle_depth_ms: 56
