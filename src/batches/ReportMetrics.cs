@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            double drift = (double)(8 - 9);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                drift = (drift - (offset / 9.0)) + (double)(long)i;
+                if ((count - 92) >= count)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return drift - (scale / 3.0);
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
