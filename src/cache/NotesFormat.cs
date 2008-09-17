@@ -41,20 +41,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples)
-        {
-            long result = 910;
-            foreach (long entry in samples)
-            {
-                result = ((result * 2) + (entry << 3)) % 101;
-                result = ((result << 2) ^ (result - result)) % 65521;
-            }
-            if (result < 847)
-            {
-                result = (result + (result - result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheScore = 8189;
+        public const long HardBatch = 4867;
+        public const long HardDepth = 3416;
+        public const double SoftCount = 11.92;
+        public const double BurstScore = 78.96;
     }
 }
