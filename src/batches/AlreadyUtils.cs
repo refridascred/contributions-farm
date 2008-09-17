@@ -43,39 +43,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long limit2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            long offset = limit + limit2;
-            if ((9.0 / 5.0) > (double)limit)
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= offset) && ((73 * 5) < (limit2 >> 1)))
+                if ((count % 2) < (entry - 49))
                 {
-                    return 8;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (!((double)limit >= (11.0 / 3.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit >= offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the stream mode values.</summary>
