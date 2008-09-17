@@ -67,13 +67,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels, long target)
         {
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long mark = 79;
+            foreach (long item in levels)
+            {
+                if (item > (target - mark))
+                {
+                    mark = ((mark * 4) + (mark % 8)) % 97;
+                }
+                mark = ((mark * 5) + ((-5) * 2)) % 101;
+                if ((item + item) < item)
+                {
+                    mark = mark ^ item;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
