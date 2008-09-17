@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long target, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = target - floor;
+            if ((double)step >= 4.8)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step >> 5) == (step << 3))
                 {
-                    if ((values[i] ^ values[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((target - 13) < (1 + target))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (8.7 < (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
