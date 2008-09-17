@@ -1,6 +1,5 @@
 {
-  "max_ttl_pct": 80.6,
-  "layout_limit": "open",
-  "hard_ratio_s": "standard",
-  "githubfarm_limit": 19.3
+  "idle_ratio": "fallback",
+  "counter_depth": 1901,
+  "sync_timeout_pct": false
 }
