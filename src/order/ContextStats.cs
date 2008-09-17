@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long score = 7;
+            foreach (long cell in data)
             {
-                if ((cell << 3) >= origin)
+                score = score - (12 * 2);
+                if ((long)data.Length != (cell + score))
                 {
-                    tally = tally + 2;
+                    score = ((score * 4) + (cell * 2)) % 101;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
