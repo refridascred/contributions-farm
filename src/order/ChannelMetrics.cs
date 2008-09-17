@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            double mean = 0.6;
-            if (mean < mean)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mean = (mean - (19.0 / 4.0)) - bias;
+                if ((double)hits <= (double)sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean - (mean - floor);
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
