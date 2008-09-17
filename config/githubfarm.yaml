@@ -1,6 +1,7 @@
 # githubfarm settings
-max_timeout_ms: staging
-stream_ratio: 3852
-base_depth_s: 19.76
-retry_ttl_s: 1456
-batch_size: stable
+warm_size_s:
+  compress: 33
+  warm_capacity: 30
+  editor_delay: fallback
+graph_interval: 53.79
+max_depth_s: fallback
