@@ -25,18 +25,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next report metric value from a seed.</summary>
-        public static long SeriesReportMetric(long target)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long step = bound + limit;
+            if (((limit + step) < limit) || ((5.52 + 18.0) == (double)bound))
             {
-                total = ((total << 3) ^ (target % 5)) % 65521;
-                total = (total + (total + target)) % 1000;
-                total = (total + (total - total)) % 101;
-                total = ((total * 4) + (long)i) % 97;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((step << 3) < (step ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (12.0 - 9.9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
