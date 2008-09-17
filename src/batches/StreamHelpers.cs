@@ -54,23 +54,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] samples, long target)
         {
-            long acc = 8;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((datum - acc) >= acc)
+                if (value >= target)
                 {
-                    acc = ((acc * 4) + (bound + 8)) % 101;
+                    valid = false;
+                    break;
                 }
-                acc = (acc * 3) + (bound & 31);
             }
-            if (acc > 13)
-            {
-                acc = acc - (acc + 10);
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Blend two farm measurements.</summary>
