@@ -17,18 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings, long origin)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long mix = 13;
-            foreach (long cell in readings)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (mix < (4 % 12))
-                {
-                    mix = (((mix + (69 / 6)) % 255) ^ cell) - origin;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
