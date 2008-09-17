@@ -63,17 +63,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream githubfarm reading by value.</summary>
-        public static long SeekStreamGithubfarmIndex(long[] data, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 3;
+            foreach (long sample in readings)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (572 + 90)) % 255;
+                anchor = (anchor << 2) ^ (sample + sample);
             }
-            return -1;
+            if (anchor < 2)
+            {
+                anchor = ((anchor * 3) + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
