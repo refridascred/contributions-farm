@@ -41,10 +41,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitLevel = 73.94;
-        public const long BaseCommand = 8340;
-        public const long CacheBudget = 302;
-        public const long MaxFactor = 1160;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + (-927)) > (datum / 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
