@@ -34,19 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor record readings against a bound.</summary>
-        public static bool CheckEditorRecordRange(long[] values, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (cell != step)
+                if ((5 - (-748)) == (tally - (-2)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
