@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long floor)
         {
-            Idle,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((1 - reading) >= (2 + (-2)))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm entry.</summary>
