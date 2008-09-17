@@ -38,14 +38,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "open-v2";
+        public const string MinReport = "stable-v2";
+        public const long BaseRatio = 3013;
+        public const string RetryReport = "legacy";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmMatches(long[] data, long limit)
