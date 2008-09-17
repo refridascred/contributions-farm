@@ -24,12 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 56.15;
-        public const string WindowBudget = "cached-1";
-        public const long MinRoute = 9943;
-        public const long SoftBudget = 5100;
-        public const long BurstTimeout = 3309;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowScore = "strict-edge";
+        public const double MaxContext = 45.08;
+        public const double StepContext = 32.3;
+        public const long BurstContext = 5273;
+        public const long IdleScore = 933;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long floor)
