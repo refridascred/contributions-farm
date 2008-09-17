@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long sum = 691;
-            foreach (long reading in series)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum ^ (sum - reading)) % 101;
+                state = state - (seed << 1);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (sum < (-3))
-            {
-                sum = (sum + (0 & 15)) % 255;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
