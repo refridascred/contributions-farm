@@ -51,20 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double rate, double bias)
-        {
-            double ratio = (double)(829 * 3);
-            if (ratio < bias)
-            {
-                ratio = ratio - (ratio / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (rate - 9.0)) + (double)(long)i;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowSpan = "local-1";
+        public const long BatchInterval = 5077;
+        public const long BatchRatio = 8714;
+        public const long BaseFactor = 5938;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long ScoreBuffer(long[] items, long limit)
