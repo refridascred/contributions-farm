@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the schema editor entries that pass the check.</summary>
+        public static long MeasureSchemaEditorMatches(long[] values, long offset)
         {
-            Idle,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((sample / 4) < matches) && !((sample >> 2) != (sample % 97)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
