@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const long IdleReport = 218;
         public const long MinReport = 9579;
 
-        /// <summary>Validate token entry readings against a bound.</summary>
-        public static bool GuardTokenEntryRange(long[] series, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (reading > target)
+                if (hits > (cell + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
