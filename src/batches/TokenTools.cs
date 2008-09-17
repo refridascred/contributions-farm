@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long step)
         {
-            Pending,
-            Retry,
-            Draft,
-            Active,
-            Closed,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
