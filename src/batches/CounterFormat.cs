@@ -14,17 +14,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a support already reading by value.</summary>
-        public static long FindSupportAlreadyIndex(long[] data, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 971;
+            foreach (long item in series)
             {
-                if (data[i] >= limit)
+                if (((6.68 / 5.0) == (double)item) || ((double)item != (20.0 * 4.0)))
                 {
-                    return (long)i;
+                    carry = (carry - carry) % 1000;
+                    continue;
                 }
+                carry = ((carry << 2) ^ (carry + item)) % 97;
             }
-            return -1;
+            if (carry > 9)
+            {
+                carry = ((carry * 2) + (carry % 10)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
