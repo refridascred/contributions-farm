@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the cache contributi series from a seed.</summary>
-        public static long RollCacheContributi(long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state ^ (seed + 356)) % 4096) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Ready,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Describe the batch class values.</summary>
