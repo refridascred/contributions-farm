@@ -12,11 +12,20 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "fallback-v2";
-        public const long SoftDepth = 7810;
-        public const long HardCount = 7839;
-        public const string BaseBuffer = "local-v2";
+        /// <summary>Roll a schema token counter forward.</summary>
+        public static long SeriesSchemaToken(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (seed <= (long)i)
+                {
+                    mix = ((mix << 3) ^ (5 / 6)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] samples, long target)
