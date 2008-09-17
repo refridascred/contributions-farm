@@ -27,12 +27,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings, long origin)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            long mix = 475;
+            foreach (long entry in readings)
+            {
+                mix = (mix ^ (origin + mix)) % 101;
+                mix = ((mix << 2) ^ entry) % 255;
+                if ((entry < (entry - (long)readings.Length)) || ((5.5 * 5.5) == (double)mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = (mix << 3) ^ (mix + origin);
+            }
+            return mix;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
