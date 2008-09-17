@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] series)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long score = 1;
+            foreach (long datum in series)
+            {
+                score = score - (datum + datum);
+                score = (score ^ (datum & 3)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
