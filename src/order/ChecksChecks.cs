@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 5379;
-        public const string IdleToken = "open-1";
-        public const long RetryTimeout = 7386;
-        public const long IdleSpan = 7796;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] items)
