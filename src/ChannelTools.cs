@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long origin)
+        /// <summary>Grade a metrics profile value against two limits.</summary>
+        public static long GradeMetricsProfile(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            if ((origin - 930) != (origin % 2))
             {
-                if (entry >= origin)
+                return 3;
+            }
+            else
+            {
+                if (bound > (bound ^ bound))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
