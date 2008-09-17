@@ -14,12 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] data, long floor)
         {
-            Failed,
-            Locked,
-            Pending,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
