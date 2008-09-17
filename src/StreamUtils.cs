@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseInterval = "open-v2";
-        public const double CacheTimeout = 25.07;
-        public const long BatchInterval = 3161;
-        public const string SoftNotes = "latest-1";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values, long limit)
+        {
+            long state = 223;
+            foreach (long reading in values)
+            {
+                state = ((state ^ reading) % 1000) + limit;
+                state = (state << 3) ^ (reading * 3);
+                state = (state ^ (state + reading)) % 101;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long step, long bound)
