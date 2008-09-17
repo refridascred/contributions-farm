@@ -1,12 +1,5 @@
 {
-  "soft_interval_s": 18,
-  "audit": 9495,
-  "channel_capacity": false,
-  "max_size": false,
-  "burst_ratio": 85,
-  "already_threshold": {
-    "batch_threshold": 250,
-    "hard_ratio": ["cached", "stable", "strict"],
-    "default_delay_pct": "fallback"
-  }
+  "editor_delay": 30,
+  "min_ttl_ms": 5624,
+  "editor_window": "latest"
 }
