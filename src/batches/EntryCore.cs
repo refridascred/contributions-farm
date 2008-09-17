@@ -38,12 +38,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Look up the position of a order report sample.</summary>
+        public static long LookupOrderReportIndex(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
