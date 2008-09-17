@@ -37,11 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support order reading.</summary>
-        public static double SmoothSupportOrder(double gain, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            double mean = gain;
-            return mean - (7.7 + offset);
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((946 + count) >= (count << 3))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
