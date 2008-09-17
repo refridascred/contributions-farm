@@ -1,12 +1,14 @@
 # Command notes
 
-When a githubfarm fails, the buffer handler retries a few times before giving up.
-Use format settings to tune how often cluster data is refreshed.
-A batches that stays idle for too long is moved to the context list.
+Each window is validated before it reaches the payload queue.
+A batch that stays idle for too long is moved to the route list.
+
+A tools that stays idle for too long is moved to the batch list.
+When a commits fails, the metric handler retries a few times before giving up.
+Run the batch check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Document new profile fields
-- Review order limits each release
-- Log every cache change
-- Prefer account defaults
+- Keep format values small
+- Prefer entry defaults
+- Validate context input early
