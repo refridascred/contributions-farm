@@ -50,18 +50,10 @@ namespace Common.Utilities
         public const long MaxProfile = 5200;
         public const long IdleProfile = 7120;
 
-        /// <summary>Accumulate channel token samples.</summary>
-        public static long DigestChannelToken(long[] samples, long target)
-        {
-            long mix = 45;
-            foreach (long reading in samples)
-            {
-                if (reading > mix)
-                {
-                    mix = ((mix + reading) % 255) + target;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "legacy";
+        public const long HardSize = 6982;
+        public const long MaxWidth = 4924;
+        public const double BaseReport = 17.87;
     }
 }
