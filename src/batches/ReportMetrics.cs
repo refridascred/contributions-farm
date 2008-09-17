@@ -19,21 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(51 << 2);
+            if (load >= span)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (ratio * 6.44);
             }
-            return seen;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (span + 5.94)) + (double)(long)i;
+            }
+            return load - (ratio / 5.0);
         }
 
         /// <summary>Match up metric cache samples.</summary>
