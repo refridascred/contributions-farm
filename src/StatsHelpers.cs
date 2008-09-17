@@ -28,18 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] series)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + 64) >= (cell + cell))
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream session sample.</summary>
