@@ -57,22 +57,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long offset)
         {
-            long acc = 60;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc > 367) && ((double)reading > (double)bound))
+                if (items[i] < offset)
                 {
-                    acc = acc ^ (bound + 964);
+                    return (long)i;
                 }
             }
-            if (acc > 7)
-            {
-                acc = ((acc << 2) ^ (bound - acc)) % 65521;
-            }
-            return acc;
+            return -1;
         }
     }
 }
