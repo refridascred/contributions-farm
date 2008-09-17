@@ -27,11 +27,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next cache buffer value.</summary>
-        public static double SmoothCacheBuffer(double scale, double span)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            double ratio = (double)81 * 5.85;
-            return ((ratio + 2.3) + scale) + span;
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
