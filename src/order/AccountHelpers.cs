@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate cache contributi samples.</summary>
-        public static long WeighCacheContributi(long[] levels, long step)
-        {
-            long carry = 883;
-            foreach (long sample in levels)
-            {
-                carry = ((((carry * 3) + (carry % 8)) % 97) ^ sample) + step;
-            }
-            if (carry > 884)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheTimeout = 38.3;
+        public const string LimitFormat = "strict";
+        public const long IdleFormat = 1478;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] series, long seed)
