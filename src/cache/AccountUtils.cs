@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((datum - datum) < (datum << 3))
+                if (entry < floor)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Adjust a schema stream reading.</summary>
