@@ -45,11 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] items, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
