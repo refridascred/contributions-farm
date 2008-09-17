@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
+            Ready,
+            Retry,
+            Dropped,
+            Closed,
             Failed,
-            Queued,
-            Locked,
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
