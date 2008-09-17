@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] series, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (offset >= seen)
+                if (datum < target)
                 {
-                    seen = (seen + 2) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
