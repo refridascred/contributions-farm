@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long score = 6;
+            foreach (long item in values)
+            {
+                if ((item ^ score) > (6 ^ seed))
+                {
+                    score = score + (seed - item);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
