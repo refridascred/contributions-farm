@@ -40,21 +40,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up farm report samples.</summary>
-        public static long OverlapFarmReportCount(long[] items)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] items, long floor)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] > floor)
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
