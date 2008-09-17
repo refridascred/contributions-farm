@@ -1,5 +1,6 @@
 {
-  "dry_run": [469, 444, 296],
-  "retry_retries_count": 4124,
-  "base_retries_count": "legacy"
+  "batch_delay_pct": "standard",
+  "contributi_ttl": "legacy",
+  "compress": "standard",
+  "strict": "open"
 }
