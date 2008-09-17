@@ -70,18 +70,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((origin2 ^ origin2) != (79 + origin))
             {
-                if ((sample - count) <= (count - 73))
+                return 3;
+            }
+            else
+            {
+                if ((6.1 * 11.0) >= (double)origin2)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 2) > (origin2 % 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin2 ^ origin2) >= 43)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
