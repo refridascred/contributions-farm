@@ -18,11 +18,24 @@ namespace Common.Utilities
         public const double WindowChecks = 29.3;
         public const long CacheSpan = 7289;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long step)
         {
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
+            long score = 1;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((score + (3 & 1)) % 65521) + (long)i;
+                    score = score ^ (15 % 2);
+                }
+                score = score - (sample + 28);
+                if ((step + score) < (sample + step))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
