@@ -1,17 +1,5 @@
 {
-  "min_threshold_s": {
-    "sync_delay_ms": 100,
-    "persist": 30,
-    "default_window_s": "edge",
-    "strict": "eu-west"
-  },
-  "base_depth_count": {
-    "min_threshold": ["strict", "blue", "staging", "standard"],
-    "hard_capacity_s": "cached",
-    "batches_timeout": "latest",
-    "compress": ["eu-west", "green", "standard", "standard"],
-    "warm_capacity": ["strict", "blue", "cached", "cached"]
-  },
-  "verbose": [331, 92, 227, 157],
-  "default_window": ["fallback", "fallback"]
+  "checks_capacity": 4413,
+  "hard_depth": 1055,
+  "poll_ratio_count": 37.38
 }
