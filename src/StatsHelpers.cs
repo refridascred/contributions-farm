@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order layout samples.</summary>
-        public static long CompareOrderLayoutCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "latest";
+        public const long LimitNotes = 9753;
+        public const string HardNotes = "staging-v2";
+        public const long MaxNotes = 47;
+        public const long MaxWidth = 3357;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] data)
