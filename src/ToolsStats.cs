@@ -35,12 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Idle,
-            Dropped,
-            Done,
+            Paused,
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate report commits samples.</summary>
