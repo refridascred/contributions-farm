@@ -1,7 +1,8 @@
-id,count
-1,standard
-2,stable
-3,fallback
-4,edge
-5,cached
-6,latest
+id,count,weight
+1,fallback,144
+2,2.61,strict
+3,stable,local
+4,87.02,882
+5,strict,20.35
+6,primary,661
+7,623,43.37
