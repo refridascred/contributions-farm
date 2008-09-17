@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 91.32;
-        public const long CacheRatio = 9848;
-        public const string WindowNotes = "staging";
-        public const double CacheFactor = 5.59;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double gain, double bias)
