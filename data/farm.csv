@@ -1,6 +1,7 @@
-id,state,owner,active,weight
-1,69.71,39.34,333,staging
-2,571,33.95,open,701
-3,53.61,legacy,eu-west,266
-4,12.34,357,72.65,182
-5,60.87,84.42,standard,open
+id,token,active,rank,label
+1,standard,edge,188,79.42
+2,strict,433,latest,878
+3,560,985,green,94.12
+4,26.54,293,451,5
+5,local,650,eu-west,49.53
+6,3,legacy,blue,cached
