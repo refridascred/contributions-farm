@@ -51,21 +51,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of cache schema readings.</summary>
-        public static long OverlapCacheSchemaCount(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
