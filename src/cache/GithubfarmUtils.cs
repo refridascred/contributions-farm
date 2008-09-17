@@ -70,19 +70,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long seed)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
     }
 }
