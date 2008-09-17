@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchTimeout = 8013;
-        public const long StepPayload = 1060;
-        public const long StepCount = 5942;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
+        {
+            long carry = 503;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (7.0 + 4.04))
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double AdjustProfile(double ratio, double offset)
