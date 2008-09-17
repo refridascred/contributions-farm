@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 7191;
+        public const long WindowBatches = 7442;
+        public const long BaseWidth = 1053;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextMatches(long[] series, long floor)
