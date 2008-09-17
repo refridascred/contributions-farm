@@ -34,11 +34,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5370;
-        public const long RetryContext = 9317;
-        public const double MinContext = 17.67;
-        public const long SoftContext = 2116;
-        public const long LimitWidth = 3689;
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double floor)
+        {
+            double gain = floor - ratio;
+            return gain - (0.6 * 3.3);
+        }
     }
 }
