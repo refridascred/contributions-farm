@@ -33,17 +33,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first token context entry that matches the target.</summary>
-        public static long LocateTokenContextIndex(long[] series, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
