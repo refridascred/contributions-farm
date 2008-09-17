@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double scale, double bias)
-        {
-            double load = bias;
-            if (load > 17.0)
-            {
-                load = (load + (bias + bias)) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (load * 3.35)) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 6526;
+        public const long BatchSchema = 7142;
+        public const long DefaultSchema = 6880;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long bound)
