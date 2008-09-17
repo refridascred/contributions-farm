@@ -1,10 +1,12 @@
 # entry settings
-flush_ratio_pct: 53
-sync_depth_s: true
-hard_capacity: local
-order_capacity:
-  - 142
-  - 335
-  - 159
-  - 268
-idle_depth_ms: 56
+sync_capacity_ms: 500
+default_window_s:
+  hard_interval_pct: legacy
+  batches_limit: legacy
+  cache_depth_count:
+    metric_ttl: false
+    compress: 1.75
+    default_window_count: 5162
+    channel_threshold: 93
+    poll_size_pct: 30
+report_window: 1714
