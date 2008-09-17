@@ -23,31 +23,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long bound)
+        /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
+        public static long LocateBatchGithubfarmIndex(long[] values, long target)
         {
-            if ((76 >= (floor + bound)) && ((floor + floor) >= (floor + 176)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >= (bound - bound)) && ((66 & 1) > (floor % 64)))
+                if (values[i] > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= (bound + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
