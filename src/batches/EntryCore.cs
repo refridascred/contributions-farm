@@ -61,11 +61,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double bias, double floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] series, long seed)
         {
-            double ratio = (double)42 + (double)65;
-            return ((ratio - (ratio * 19.0)) + bias) + floor;
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((6.4 + 4.73) < (double)(long)series.Length))
+                {
+                    hits = ((hits + 1) + datum) + seed;
+                }
+            }
+            return hits;
         }
     }
 }
