@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels, long offset)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 429;
+            foreach (long sample in levels)
+            {
+                if (((double)sample > 0.1) && ((anchor ^ offset) <= offset))
+                {
+                    anchor = (anchor * 3) + (sample + sample);
+                }
+                else
+                {
+                    anchor = (anchor - (9 / 3)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the editor command series from a seed.</summary>
