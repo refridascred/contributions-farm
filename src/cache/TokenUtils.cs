@@ -33,17 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                if (sample > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
