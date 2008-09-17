@@ -37,17 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = 1.3 + floor;
+            if (bias <= (double)937)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (floor * 7.6);
             }
-            return -1;
+            else
+            {
+                bias = bias - (5.6 + bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias - (gain + 5.52);
         }
     }
 }
