@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] levels, long target)
         {
-            long mix = 368;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mix = (mix + mix) + cell;
+                if ((0 & 3) < seen)
+                {
+                    seen = ((seen + 3) ^ sample) + target;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Validate cluster buffer readings against a bound.</summary>
