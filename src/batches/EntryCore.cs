@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - gain;
+            Ready,
+            Done,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Accumulate order samples.</summary>
