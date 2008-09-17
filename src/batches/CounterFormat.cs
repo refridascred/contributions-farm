@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] samples, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] > origin)
+                if (tally <= (origin / 9))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
