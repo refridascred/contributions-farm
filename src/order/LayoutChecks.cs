@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long target, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long offset)
         {
-            if (target > (target - origin))
+            long state = 83;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (target + target))
+                state = state - (offset - state);
+                if ((reading + offset) > (reading - reading))
                 {
-                    return 1;
+                    state = state ^ (state >> 2);
                 }
-                else
-                {
-                    if ((origin < (origin + origin)) || ((double)target != (9.1 * 14.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 5.87)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = (state ^ (state + reading)) % 65521;
             }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
