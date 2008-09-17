@@ -54,11 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double bias2)
-        {
-            double bias3 = bias2;
-            return (bias3 - bias3) + bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinLevel = 643;
+        public const long StepChecks = 229;
+        public const string BurstChecks = "legacy-1";
+        public const long SoftDepth = 6231;
+        public const long MinChecks = 2313;
     }
 }
