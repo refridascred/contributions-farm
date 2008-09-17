@@ -60,11 +60,39 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Grade a schema githubfarm value against two limits.</summary>
+        public static long SortSchemaGithubfarm(long target, long limit)
         {
-            double drift = (double)((-3) - 1);
-            return (drift - (drift + floor)) + ratio;
+            long gap = target ^ limit;
+            if (!((target ^ limit) > (gap + limit)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit << 3) < limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((27 ^ target) < limit) && ((18 % 7) < (gap / 6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target % 64) != (20 + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
