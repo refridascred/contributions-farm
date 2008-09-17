@@ -42,19 +42,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate format counter readings against a bound.</summary>
-        public static bool CheckFormatCounterBounds(long[] levels, long seed)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long AuditPayloadStatsHits(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (reading > seed)
+                if (cell <= (907 >> 2))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
