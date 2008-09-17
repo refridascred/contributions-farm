@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next layout notes value from a seed.</summary>
-        public static long SeriesLayoutNotes(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result << 2) ^ (59 + offset)) ^ (long)i2;
-                    result = (result << 3) ^ (offset % 5);
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5510;
+        public const double WindowDepth = 32.61;
+        public const double DefaultBatch = 58.54;
+        public const long MaxBatch = 5202;
+        public const long LimitFactor = 5659;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long limit)
