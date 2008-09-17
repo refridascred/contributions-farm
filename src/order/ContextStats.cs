@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long score = -1;
-            foreach (long item in series)
+            long acc = 38;
+            foreach (long item in readings)
             {
-                if (((-931) / 4) == (origin << 3))
-                {
-                    score = (score - item) % 97;
-                }
+                acc = (acc + (74 + item)) % 255;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the cluster status values.</summary>
