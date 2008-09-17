@@ -17,13 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Failed,
-            Dropped,
-            Locked,
+            Queued,
             Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
