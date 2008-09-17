@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count tools account pairs that satisfy a relation.</summary>
-        public static long OverlapToolsAccountCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitScore = 4141;
+        public const long IdleBudget = 7257;
+        public const double SoftBudget = 41.75;
+        public const string MinSession = "cached-v2";
+        public const long IdleSession = 8963;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBudget = 5990;
