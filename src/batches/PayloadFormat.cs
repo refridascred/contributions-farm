@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetrySize = 56.31;
-        public const long IdleStats = 4882;
-        public const double IdleLevel = 90.36;
-        public const double StepLevel = 70.07;
-        public const long WindowStats = 7373;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] items)
