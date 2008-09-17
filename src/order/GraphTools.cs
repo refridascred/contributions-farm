@@ -20,14 +20,15 @@ namespace Common.Utilities
             return rate - (span + 1.12);
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Iterate the payload filter series from a seed.</summary>
+        public static long StepPayloadFilter(long bound)
         {
-            Queued,
-            Done,
-            Dropped,
-            Locked,
-            Paused,
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
