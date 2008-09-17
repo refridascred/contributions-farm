@@ -10,17 +10,16 @@ namespace Common.Utilities
         public const double DefaultSchema = 96.94;
         public const string HardSchema = "alpha-edge";
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 5) + seed;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of format metric readings.</summary>
