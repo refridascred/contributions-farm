@@ -38,19 +38,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mix = 213;
-            foreach (long item in levels)
-            {
-                mix = ((mix * 3) + (item % 60)) % 1000;
-            }
-            if (mix > 72)
-            {
-                mix = (mix ^ (seed % 8)) % 255;
-            }
-            return mix % 97;
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
