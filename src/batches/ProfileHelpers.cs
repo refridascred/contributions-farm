@@ -34,12 +34,19 @@ namespace Common.Utilities
             return ((ratio + 2.3) + scale) + span;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate batch record readings against a bound.</summary>
+        public static bool CheckBatchRecordBounds(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count record graph pairs that satisfy a relation.</summary>
