@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double bias, double offset)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            double rate = (offset / 5.0) - (bias + offset);
+            if (rate < (offset - bias))
+            {
+                rate = rate + (double)46;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + 3.58;
         }
 
         /// <summary>Describe the payload class values.</summary>
