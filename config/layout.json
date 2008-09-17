@@ -1,8 +1,24 @@
 {
-  "flush_size_pct": true,
-  "compress": false,
-  "warm_ratio": [362, 240, 37],
-  "min_interval": "stable",
-  "batch_window": "edge",
-  "audit": "blue"
+  "poll_threshold": 25.17,
+  "cache_threshold_ms": {
+    "filter_ratio": 57.17,
+    "retry_ttl_count": ["fallback", "blue"],
+    "hard_threshold_s": 27,
+    "command_delay": ["stable", "strict", "edge"],
+    "audit": "fallback",
+    "cache_limit_count": 500
+  },
+  "order_limit": 83,
+  "poll_delay_pct": {
+    "audit": {
+      "batch_ratio": "strict",
+      "warm_size": false,
+      "retry_interval_s": 32.54,
+      "batch_threshold": "strict",
+      "max_window_pct": 100,
+      "notes_ttl": false
+    },
+    "soft_size": [448, 387],
+    "payload_threshold": false
+  }
 }
