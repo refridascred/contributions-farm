@@ -37,22 +37,15 @@ namespace Common.Utilities
         public const double IdleNotes = 75.6;
         public const string RetryNotes = "stable";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((seen ^ seen) <= datum) && !((90 + datum) < seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
