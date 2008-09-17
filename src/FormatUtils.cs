@@ -39,15 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long CountQueueRecordGaps(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long item in values)
             {
-                if (((279 ^ hits) == (reading - hits)) || ((reading - (long)levels.Length) >= (reading * 2)))
+                if ((4.85 * 8.3) >= (double)item)
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
             }
             return hits;
