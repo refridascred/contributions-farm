@@ -54,13 +54,10 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Pending,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheRatio = 2824;
+        public const string IdleLevel = "standard-v2";
+        public const long StepSize = 4735;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
