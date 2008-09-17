@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSize = 916;
-        public const long DefaultOrder = 9433;
-        public const long BurstFactor = 3156;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((mark - 78) <= seed) || (mark < (seed << 1)))
+                {
+                    mark = (mark ^ mark) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] items)
