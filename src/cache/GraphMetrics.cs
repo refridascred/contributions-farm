@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm account readings against a rule.</summary>
-        public static long MeasureGithubfarmAccountHits(long[] data, long seed)
+        /// <summary>Count queue cluster pairs that satisfy a relation.</summary>
+        public static long MatchQueueClusterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell >= (3.0 - 4.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) + seed;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the already counter entries that pass the check.</summary>
