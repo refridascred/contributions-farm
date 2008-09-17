@@ -1,8 +1,17 @@
 {
-  "compress": 24.86,
-  "default_depth_ms": "staging",
-  "readonly": 77.97,
-  "support_capacity": true,
-  "farm_depth": 100,
-  "queue_capacity": "latest"
+  "idle_retries": {
+    "min_delay_ms": 66.84,
+    "token_window": {
+      "command_timeout": 73.71,
+      "token_interval": 250,
+      "enabled": "eu-west",
+      "tools_ratio": "standard",
+      "layout_limit": "standard"
+    },
+    "buffer_retries": "blue",
+    "readonly": "local"
+  },
+  "soft_capacity": "cached",
+  "poll_capacity_ms": 7627,
+  "dry_run": ["fallback", "blue"]
 }
