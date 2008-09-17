@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetrySize = 8479;
         public const long SoftCommits = 4879;
 
-        /// <summary>Check that every layout already entry stays within the limit.</summary>
-        public static bool ValidateLayoutAlreadyRange(long[] data, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine batches values into a single score.</summary>
