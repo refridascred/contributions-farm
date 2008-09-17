@@ -1,17 +1,26 @@
 # support settings
-cache_threshold:
-  - primary
-  - cached
-  - blue
-  - eu-west
-dry_run:
-  default_depth: 11.86
-  cluster_capacity:
+soft_retries_s: local
+base_delay: true
+retry_retries_s:
+  retry_depth_ms: 96.94
+  warm_limit: blue
+  flush_ttl_s:
+    - 62
+    - 209
+  batch_limit: fallback
+  readonly: edge
+  sync_retries_pct: false
+strict: 5526
+counter_window:
+  verbose: cached
+  already_delay: false
+  payload_retries:
     - fallback
+    - latest
     - fallback
-  burst_threshold:
-    - 348
-    - 238
-    - 27
-  compress: false
-idle_capacity: 76.39
+  warm_size: 1665
+  session_delay:
+    - 194
+    - 173
+    - 327
+  compress: 100
