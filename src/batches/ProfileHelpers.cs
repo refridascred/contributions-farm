@@ -16,15 +16,21 @@ namespace Common.Utilities
             return rate + (double)(-151);
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long state = -6;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (datum + datum)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
