@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long step, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long slot = step + seed;
-            if (((step + seed) <= 7) || ((step - slot) <= (seed << 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (slot < (359 - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((83 ^ seed) == (step << 1)) || (step < (seed >> 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step + seed) >= (63 & 63)) || ((seed / 7) != (step + 672)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
