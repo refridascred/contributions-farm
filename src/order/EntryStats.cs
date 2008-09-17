@@ -24,21 +24,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
