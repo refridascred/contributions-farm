@@ -1,29 +1,5 @@
 # githubfarm settings
-idle_threshold_s: 1832
-warm_window_ms: 59.93
-cache_size: eu-west
-sync_threshold_ms:
-  persist:
-    support_ratio: 250
-    min_retries_pct: 500
-    max_window_s:
-      - 270
-      - 182
-      - 184
-      - 8
-    readonly: 100
-    persist: 2728
-    sync_interval_ms: standard
-  readonly: 250
-  default_timeout_ms:
-    audit: 5219
-    sync_interval_ms: cached
-    payload_limit: false
-    base_retries_ms: 500
-  idle_depth: legacy
-  burst_limit: false
-  commits_retries: standard
-readonly: 60
-idle_size_pct:
-  - 104
-  - 135
+buffer_delay: 60
+burst_retries: eu-west
+soft_threshold_count: true
+burst_delay_s: true
