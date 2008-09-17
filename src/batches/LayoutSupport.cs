@@ -57,12 +57,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Closed,
-            Ready,
-            Synced,
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
