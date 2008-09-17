@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseDepth = 673;
+        public const double IdleScore = 92.09;
+        public const long SoftCounter = 5269;
+        public const double DefaultSize = 41.0;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] levels, long limit)
