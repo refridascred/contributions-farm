@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] values, long limit)
+        /// <summary>Project the next queue commits value.</summary>
+        public static double BlendQueueCommits(double gain, double span)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double ratio = span;
+            if (ratio > ratio)
             {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + span) - gain;
             }
-            return stale;
+            else
+            {
+                ratio = ratio + (double)8;
+            }
+            return ratio - span;
         }
 
         /// <summary>Hold a checks info.</summary>
