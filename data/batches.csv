@@ -1,9 +1,8 @@
-id,label,count,state,active
-1,primary,44.84,70.63,60.4
-2,182,89.06,37.15,cached
-3,78.83,57.86,88.92,edge
-4,163,126,72.1,588
-5,52.47,18.7,fallback,cached
-6,45.27,staging,standard,83.22
-7,staging,313,primary,282
-8,493,30.59,258,staging
+id,active,ratio
+1,stable,stable
+2,945,19.43
+3,open,edge
+4,28.61,674
+5,667,78.49
+6,fallback,923
+7,4.35,39.26
