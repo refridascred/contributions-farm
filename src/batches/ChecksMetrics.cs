@@ -54,20 +54,15 @@ namespace Common.Utilities
         public const double MaxScore = 65.9;
         public const long StepLevel = 1086;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] series, long step)
         {
-            long anchor = 3;
-            foreach (long sample in readings)
+            long anchor = 727;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 2) + (572 + 90)) % 255;
-                anchor = (anchor << 2) ^ (sample + sample);
+                anchor = (((anchor * 4) + (anchor + step)) % 65521) - value;
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor * 3) + anchor) % 4096;
-            }
-            return anchor;
+            return anchor % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
