@@ -1,5 +1,5 @@
 {
-  "report_ratio": ["edge", "edge", "blue"],
-  "editor_window": ["cached", "standard", "blue", "open"],
-  "buffer_delay": 65.48
+  "hard_delay": ["blue", "cached", "open"],
+  "session_window": ["green", "legacy", "standard", "open"],
+  "persist": "cached"
 }
