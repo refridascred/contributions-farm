@@ -1,9 +1,4 @@
 # entry settings
-compress: 64.37
-batches_ttl:
-  - 310
-  - 177
-  - 470
-retry_retries_count: primary
-base_ttl: 71.82
-strict: 250
+batch_window: stable
+batch_interval_s: local
+poll_delay_pct: 1024
