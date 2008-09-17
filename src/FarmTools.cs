@@ -37,12 +37,9 @@ namespace Common.Utilities
         public const string DefaultScore = "strict";
         public const double WindowSize = 25.68;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchTimeout = 38.5;
+        public const string HardFactor = "legacy-1";
+        public const string MinSchema = "cached";
     }
 }
