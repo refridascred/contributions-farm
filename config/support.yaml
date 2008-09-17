@@ -1,7 +1,4 @@
 # support settings
-max_retries_s: 1.71
-sync_interval_pct:
-  - 104
-  - 172
-  - 308
-stats_depth: 54
+batch_delay: 50
+idle_timeout: 27
+cache_limit: 96.59
