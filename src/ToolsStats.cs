@@ -71,14 +71,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Draft,
-            Done,
-            Queued,
-            Active,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 1595;
+        public const long MinStream = 2564;
+        public const long IdleScore = 6697;
     }
 }
