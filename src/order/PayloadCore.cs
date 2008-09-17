@@ -30,18 +30,19 @@ namespace Common.Utilities
             return scale + (double)21;
         }
 
-        /// <summary>Measure how many token counter samples are out of range.</summary>
-        public static long TallyTokenCounterGaps(long[] values, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = 552;
+            foreach (long value in data)
             {
-                if (!(1 < (target - 456)))
-                {
-                    count = (count + 2) + cell;
-                }
+                mark = (mark ^ (bound - bound)) ^ value;
             }
-            return count;
+            if (mark < (-68))
+            {
+                mark = (mark ^ ((long)data.Length << 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
