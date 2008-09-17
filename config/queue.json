@@ -1,5 +1,6 @@
 {
-  "commits_delay": ["cached", "fallback"],
-  "githubfarm_delay": 16.48,
-  "record_window": "cached"
+  "soft_retries_count": 30,
+  "token_capacity": true,
+  "compress": "fallback",
+  "max_delay_ms": 41.28
 }
