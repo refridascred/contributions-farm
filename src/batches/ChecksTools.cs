@@ -32,23 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long acc = 8;
-            foreach (long reading in levels)
-            {
-                if (!((reading ^ acc) > (acc % 8)))
-                {
-                    acc = (acc << 3) ^ (reading << 1);
-                }
-                if ((acc << 2) >= (reading + reading))
-                {
-                    acc = (acc ^ (reading + reading)) % 4096;
-                }
-                acc = (acc * 3) + (5 ^ (-81));
-            }
-            return acc;
+            Synced,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
