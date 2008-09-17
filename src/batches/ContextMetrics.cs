@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((limit * 3) != (limit & 31)) || (hits < cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 1299;
+        public const long BurstRatio = 6449;
+        public const string BaseLevel = "stable";
 
         /// <summary>Iterate the editor payload series from a seed.</summary>
         public static long DeriveEditorPayload(long floor)
