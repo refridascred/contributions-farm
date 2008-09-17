@@ -37,15 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long offset)
         {
-            double weight = gain;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                weight = (weight + (weight * 5.28)) - (double)(long)i;
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight - offset;
+            return found;
         }
     }
 }
