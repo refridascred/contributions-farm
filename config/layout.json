@@ -1,8 +1,13 @@
 {
-  "persist": 50.16,
-  "contributi_timeout": 250,
-  "verbose": 7,
-  "enabled": 7888,
-  "batch_ttl_count": 96,
-  "sync_ttl_ms": false
+  "idle_capacity_pct": false,
+  "max_limit": {
+    "sync_interval_pct": [202, 492, 30, 325],
+    "farm_size": 22,
+    "enabled": ["latest", "latest", "stable"],
+    "flush_depth": false,
+    "dry_run": ["stable", "stable", "fallback", "eu-west"]
+  },
+  "min_ratio": ["fallback", "primary", "cached", "blue"],
+  "farm_size": "stable",
+  "base_timeout_ms": 27.45
 }
