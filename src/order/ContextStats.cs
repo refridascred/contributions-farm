@@ -21,12 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 4513;
-        public const string BurstRatio = "legacy";
-        public const long BatchSpan = 3682;
-        public const long StepDepth = 6618;
-        public const double RetryTimeout = 67.56;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "stable";
+        public const string HardStream = "strict-edge";
+        public const long SoftDepth = 7212;
+        public const long SoftBudget = 1899;
+        public const string StepStream = "legacy-edge";
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
