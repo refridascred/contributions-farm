@@ -35,19 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading != (7.39 - 18.0))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 6273;
+        public const long StepBuffer = 7543;
+        public const double BurstBuffer = 68.78;
+        public const string DefaultWidth = "primary-v2";
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
