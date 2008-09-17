@@ -19,26 +19,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (bound > 789)
-                {
-                    acc = acc ^ acc;
-                    acc = acc - (bound << 1);
-                }
-                else
-                {
-                    acc = acc - (324 >> 2);
-                }
-                acc = acc + (bound + 63);
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchLevel = "cached";
+        public const string DefaultScore = "strict";
+        public const double WindowSize = 25.68;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long ClassifyBatches(long target, long bound)
