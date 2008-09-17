@@ -58,12 +58,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Compare every pair of queue schema readings.</summary>
+        public static long CompareQueueSchemaCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
