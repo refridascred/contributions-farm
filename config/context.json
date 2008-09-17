@@ -1,6 +1,5 @@
 {
-  "warm_capacity_count": 33.55,
-  "stream_ratio": "staging",
-  "flush_delay_count": ["stable", "fallback", "latest", "open"],
-  "base_retries": 6.86
+  "context_ttl": "staging",
+  "warm_limit_pct": 75.89,
+  "record_interval": true
 }
