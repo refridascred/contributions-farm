@@ -31,12 +31,15 @@ namespace Common.Utilities
         public const long IdleBatch = 3075;
         public const double HardBatch = 25.94;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long DigestSupportStats(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long sum = 64;
+            foreach (long reading in levels)
+            {
+                sum = (((sum - (-2)) % 97) - reading) + floor;
+            }
+            return sum % 1000;
         }
     }
 }
