@@ -62,18 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long MeasureFarmGithubfarmGaps(long[] values, long offset)
+        /// <summary>Match up schema cluster samples.</summary>
+        public static long OverlapSchemaClusterCount(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((604 / 5) >= offset) || (7 <= (offset + offset)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
