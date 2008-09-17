@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the counter report series from a seed.</summary>
-        public static long IterateCounterReport(long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long offset, long offset2)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            if ((5.83 + 8.27) != (double)offset)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (offset >= (offset2 + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset < (22 % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches class values.</summary>
