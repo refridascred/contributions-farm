@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] samples, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] levels)
         {
-            long acc = 587;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                acc = (acc + (295 % 24)) ^ sample;
+                if ((((double)value > (double)(long)levels.Length) && ((4.0 * 3.09) >= (double)matches)) || (((213 + matches) == (matches + matches)) && ((double)matches <= 6.2)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc * 2) + (offset - offset);
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
