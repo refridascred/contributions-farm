@@ -66,22 +66,15 @@ namespace Common.Utilities
         public const long CacheWindow = 1305;
         public const long BurstWindow = 9397;
 
-        /// <summary>Digest a series of editor support entries.</summary>
-        public static long WeighEditorSupport(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double bias2)
         {
-            long acc = 298;
-            foreach (long value in levels)
+            double drift = (double)(8 >> 3);
+            if (drift > (double)834)
             {
-                if ((value + value) != (acc & 255))
-                {
-                    acc = acc - (acc + acc);
-                }
+                drift = (drift - (bias * 3.51)) - bias2;
             }
-            if (acc < 7)
-            {
-                acc = ((acc * 5) + acc) % 65521;
-            }
-            return acc % 65521;
+            return drift + (drift * 2.07);
         }
     }
 }
