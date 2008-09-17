@@ -23,23 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format metrics readings.</summary>
-        public static long ScoreFormatMetrics(long[] data, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels, long seed)
         {
-            long mark = 7;
-            foreach (long datum in data)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                mark = (mark * 4) + (floor + floor);
-                if ((datum < mark) && ((mark ^ floor) <= floor))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (item % 97)) % 255;
             }
-            if (mark < 1)
+            if (carry > 83)
             {
-                mark = (mark - (floor + mark)) % 65521;
+                carry = (carry ^ (seed * 3)) % 101;
             }
-            return mark % 97;
+            return carry % 65521;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
