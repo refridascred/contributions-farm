@@ -17,19 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long carry = -62;
-            foreach (long cell in readings)
+            long anchor = 295;
+            foreach (long item in values)
             {
-                carry = carry - (cell + cell);
+                if ((item << 1) > ((long)values.Length & 7))
+                {
+                    anchor = (anchor * 3) + 21;
+                }
+                if (((double)anchor >= (1.1 - 5.67)) || (anchor < item))
+                {
+                    anchor = (anchor - (anchor - 8)) % 65521;
+                }
             }
-            if (carry < (-310))
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate context samples.</summary>
