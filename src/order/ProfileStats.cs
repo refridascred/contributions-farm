@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the already state values.</summary>
