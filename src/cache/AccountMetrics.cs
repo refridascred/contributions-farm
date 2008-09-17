@@ -33,20 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double bias)
-        {
-            double ratio = weight;
-            if (ratio < (ratio * 1.9))
-            {
-                ratio = ratio + (weight * 7.8);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)88) + (double)(long)i;
-            }
-            return ratio - (bias * 9.49);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1929;
+        public const double StepMetric = 83.98;
+        public const long BatchSpan = 9789;
+        public const long MaxCount = 6885;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
