@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = 503;
-            foreach (long reading in series)
-            {
-                if ((double)reading < (7.0 + 4.04))
-                {
-                    carry = (carry * 4) + carry;
-                }
-            }
-            return carry;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
