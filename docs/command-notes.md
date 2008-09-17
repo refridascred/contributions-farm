@@ -1,13 +1,16 @@
 # Command notes
 
-The profile report groups every account by editor.
-The queue module keeps entry values in sync with the report cache.
+Run the account check before changing any payload limits.
+Keep tools and command names short and lowercase.
+Each batch is validated before it reaches the command queue.
 
-Keep token and record names short and lowercase.
-Use layout settings to tune how often command data is refreshed.
+The contributi report groups every commits by cluster.
+A notes that stays idle for too long is moved to the batch list.
+Run the entry check before changing any entry limits.
 
 ## Guidelines
 
-- Log every batch change
-- Document new batches fields
-- Review batch limits each release
+- Prefer graph defaults
+- Keep checks values small
+- Document new filter fields
+- Validate queue input early
