@@ -34,14 +34,21 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Idle,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
