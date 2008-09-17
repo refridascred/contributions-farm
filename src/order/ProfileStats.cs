@@ -36,13 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long seed)
         {
-            Ready,
-            Retry,
-            Draft,
-            Paused,
+            if (seed > offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((539 >> 5) <= (seed + seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
