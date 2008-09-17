@@ -71,18 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] data, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long state = 7;
+            foreach (long cell in series)
             {
-                if ((double)datum >= (double)37)
-                {
-                    count = (count + 2) + bound;
-                }
+                state = ((state << 3) ^ (50 + cell)) % 4096;
             }
-            return count;
+            if (state < 5)
+            {
+                state = state ^ offset;
+            }
+            return state;
         }
 
         /// <summary>Combine checks command values into a single score.</summary>
