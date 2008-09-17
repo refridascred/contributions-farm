@@ -35,31 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long mark = 0;
-            foreach (long datum in values)
-            {
-                if ((98 % 100) != (643 + datum))
-                {
-                    long matches = datum;
-                    mark = ((mark * 2) + (matches + 13)) % 1000;
-                }
-                if ((double)mark != (15.0 + 5.0))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = mark - (datum % 5);
-                }
-                if (((9 << 3) != (mark + datum)) || ((2.98 + 1.0) < (double)datum))
-                {
-                    mark = (mark - (mark & 3)) % 255;
-                }
-            }
-            return mark % 65521;
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
