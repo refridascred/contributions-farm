@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the route tools series from a seed.</summary>
-        public static long DeriveRouteTools(long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                score = (score ^ (step >> 2)) % 255;
-                score = ((score * 4) + (long)i) % 97;
+                if ((8.0 + 0.9) >= (double)matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
