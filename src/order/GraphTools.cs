@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] items, long seed)
         {
-            long total = 649;
-            foreach (long datum in levels)
+            long sum = -99;
+            foreach (long entry in items)
             {
-                total = total ^ datum;
-                total = (total << 3) ^ (datum - datum);
-                total = (total ^ datum) % 97;
+                if (((sum - sum) > ((-882) % 97)) || (39 > (entry ^ seed)))
+                {
+                    sum = (sum ^ (entry - entry)) % 4096;
+                }
             }
-            return total;
+            if (sum > 59)
+            {
+                sum = ((sum << 3) ^ (seed % 12)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
