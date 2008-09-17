@@ -14,18 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((90 >> 4) >= hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Stale,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Digest a series of format entries.</summary>
