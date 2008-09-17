@@ -20,12 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1460;
-        public const long BatchWidth = 7573;
-        public const long MinLevel = 3867;
-        public const long LimitRoute = 1893;
-        public const long SoftRoute = 5811;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long floor)
+        {
+            long total = 12;
+            foreach (long sample in readings)
+            {
+                if ((10.0 / 2.0) == (double)sample)
+                {
+                    total = (total - (sample & 7)) % 97;
+                    total = total + (total >> 4);
+                }
+                total = total - (total % 64);
+                if ((floor % 24) >= (sample * 4))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long SortGraph(long floor, long bound)
