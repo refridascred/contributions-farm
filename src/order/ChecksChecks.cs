@@ -30,12 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Ready,
-            Active,
-            Dropped,
+            public bool Count { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
