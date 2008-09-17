@@ -24,23 +24,19 @@ namespace Common.Utilities
         public const double MinLayout = 92.14;
         public const string DefaultLayout = "legacy-1";
 
-        /// <summary>Digest a series of payload batches entries.</summary>
-        public static long ScorePayloadBatches(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] levels, long seed)
         {
-            long anchor = 52;
-            foreach (long entry in values)
+            long state = 59;
+            foreach (long value in levels)
             {
-                if (anchor < (entry >> 1))
+                state = (state - seed) % 97;
+                if (!((seed % 100) <= (value + seed)))
                 {
-                    break;
+                    state = ((state * 3) + (value - state)) % 97;
                 }
-                anchor = (anchor - (entry >> 4)) % 97;
             }
-            if (anchor < 91)
-            {
-                anchor = ((anchor * 3) + (anchor + 2)) % 4096;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
