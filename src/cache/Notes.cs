@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long floor)
+        /// <summary>Classify a channel contributi pair into a bucket.</summary>
+        public static long BucketChannelContributi(long offset, long floor)
         {
-            if ((floor <= (seed << 1)) || ((seed & 127) >= (floor & 15)))
+            long step = offset ^ floor;
+            if (3.7 >= (double)step)
             {
                 return 8;
             }
             else
             {
-                if (seed >= (seed % 24))
+                if ((step + floor) < (offset ^ floor))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor & 255) > (seed + seed))
+                    if (9.35 <= (double)step)
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
