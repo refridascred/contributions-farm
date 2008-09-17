@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] samples, long bound)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mix = -2;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = ((((mix * 3) + (mix % 97)) ^ (long)i) + value) - bound;
-                }
-                mix = (mix + (mix % 16)) % 1000;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
