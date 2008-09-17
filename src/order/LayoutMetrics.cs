@@ -30,17 +30,19 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Find the first graph stream entry that matches the target.</summary>
-        public static long SeekGraphStreamIndex(long[] values, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -582;
+            foreach (long item in levels)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result * 4) + (item & 15);
             }
-            return -1;
+            if (result < 1)
+            {
+                result = (result << 2) ^ (result + 74);
+            }
+            return result % 97;
         }
     }
 }
