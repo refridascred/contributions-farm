@@ -1,13 +1,4 @@
 # support settings
-compress:
-  readonly: 41
-  entry_threshold: 35
-  retry_delay_ms:
-    - 208
-    - 210
-  audit: 500
-strict: 43.63
-route_capacity:
-  - 77
-  - 154
-max_capacity: strict
+batch_ratio_pct: 93
+default_depth_s: false
+dry_run: 73.65
