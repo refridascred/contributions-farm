@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Paused,
-            Locked,
-            New,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetrySpan = "latest-v2";
+        public const long RetryCommits = 4051;
+        public const long RetrySize = 8479;
+        public const long SoftCommits = 4879;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
