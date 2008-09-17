@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long bound)
+        /// <summary>Combine githubfarm editor values into a single score.</summary>
+        public static long WeighGithubfarmEditor(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 4;
+            foreach (long entry in data)
             {
-                if (items[i] == bound)
+                if (step <= (1 * 4))
                 {
-                    return (long)i;
+                    result = (result ^ ((long)data.Length >> 4)) % 4096;
                 }
+                else
+                {
+                    result = result - (step - result);
+                }
+                result = (result + entry) % 101;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
