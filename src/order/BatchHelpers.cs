@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long sum = 92;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + sample) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum < 396)
-            {
-                sum = ((sum * 4) + (step >> 2)) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
