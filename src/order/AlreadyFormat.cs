@@ -42,18 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)tally != (8.9 / 6.0)))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
