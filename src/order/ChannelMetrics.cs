@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 9615;
-        public const long BaseBuffer = 5240;
-        public const long WindowScore = 9369;
-        public const long WindowTimeout = 8003;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Stale,
+            New,
+            Failed,
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long DeriveProfile(long target)
