@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Check that every batch batches entry stays within the limit.</summary>
+        public static bool ValidateBatchBatchesLimits(long[] values, long seed)
         {
-            long acc = 9;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                acc = ((acc << 2) ^ acc) % 255;
-                if (((acc - item) > 75) && ((acc + acc) != (item + item)))
+                if (item <= seed)
                 {
-                    acc = (acc + (13 - item)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
