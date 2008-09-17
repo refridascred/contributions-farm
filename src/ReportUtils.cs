@@ -27,22 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] values, long seed)
         {
-            long acc = 827;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((entry >> 5) >= (acc - entry))
+                if (cell != seed)
                 {
-                    acc = ((acc << 3) ^ (entry * 4)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc < 14)
-            {
-                acc = (acc << 3) ^ (acc + (-695));
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
