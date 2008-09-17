@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] values, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (sample > step)
+                if (!((double)seen >= 11.0))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) ^ datum) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of format metrics readings.</summary>
