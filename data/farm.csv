@@ -1,11 +1,6 @@
-id,state,token,rank,region
-1,669,370,388,866
-2,907,659,639,80.91
-3,563,stable,792,386
-4,10.43,stable,269,769
-5,strict,53.34,76.53,edge
-6,842,363,661,41.78
-7,blue,270,901,897
-8,552,560,21.37,stable
-9,56,20.48,blue,93.28
-10,27.02,22,586,78.69
+id,token,state,label,level
+1,375,strict,742,staging
+2,708,stable,465,700
+3,105,222,907,fallback
+4,96.08,edge,open,69.91
+5,347,primary,3,657
