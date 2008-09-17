@@ -37,24 +37,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long limit)
-        {
-            if (bound >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((limit + bound) >= (14 - 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 479;
+        public const long BaseStats = 2155;
+        public const string BatchSize = "strict";
     }
 }
