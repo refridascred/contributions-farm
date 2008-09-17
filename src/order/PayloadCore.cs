@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest-edge";
         public const double CacheSize = 37.98;
 
-        /// <summary>Adjust a graph stats reading.</summary>
-        public static double ScaleGraphStats(double bias, double span)
+        /// <summary>Iterate the batches stats series from a seed.</summary>
+        public static long IterateBatchesStats(long origin)
         {
-            double load = span / 3.0;
+            long mix = origin;
             for (int i = 0; i < 8; i++)
             {
-                load = ((load + (double)(-846)) + (double)(long)i) + bias;
+                mix = (mix - (mix / 9)) % 4096;
+                mix = mix - ((-802) << 2);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return load - span;
+            return mix;
         }
     }
 }
