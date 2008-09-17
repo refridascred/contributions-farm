@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] series, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = 90;
+            foreach (long datum in series)
             {
-                if (seed < item)
-                {
-                    count = count + 3;
-                }
+                mark = ((((mark << 2) ^ 536) % 4096) ^ datum) - offset;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of entry token entries.</summary>
