@@ -54,10 +54,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchRatio = "staging-1";
-        public const long DefaultQueue = 6270;
-        public const long StepRatio = 3362;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] items, long origin)
+        {
+            long result = 3;
+            foreach (long reading in items)
+            {
+                result = result ^ (reading + origin);
+            }
+            return result;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
