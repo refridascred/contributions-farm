@@ -53,21 +53,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((entry / 5) != (tally * 2)))
                 {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + floor;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
