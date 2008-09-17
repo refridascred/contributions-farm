@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Iterate the route tools series from a seed.</summary>
+        public static long DeriveRouteTools(long step)
         {
-            double load = 16.0 / 8.0;
-            if (load <= load)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                load = (load + (offset * 4.0)) - bias;
+                score = (score ^ (step >> 2)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return load + offset;
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
