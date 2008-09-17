@@ -27,11 +27,24 @@ namespace Common.Utilities
             return (gain - (floor / 3.0)) + ratio;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double ratio, double bias)
+        /// <summary>Grade a route context value against two limits.</summary>
+        public static long ClassifyRouteContext(long offset, long step)
         {
-            double gain = ratio;
-            return (gain + (double)(-933)) + bias;
+            if ((step < (8 & 63)) || ((step << 2) != (step - offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.85 * 16.0) >= (double)offset) && ((double)step < (10.0 - 8.7)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
