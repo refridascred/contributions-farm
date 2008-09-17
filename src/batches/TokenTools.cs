@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings, long target)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double floor)
         {
-            long result = 9;
-            foreach (long item in readings)
+            double weight2 = floor;
+            if (weight2 < (weight2 * 5.0))
             {
-                result = (result - item) % 255;
-                if ((4.16 + 8.63) != (double)target)
-                {
-                    result = ((result << 2) ^ (result ^ 510)) % 255;
-                }
+                weight2 = (weight2 - (floor * 13.0)) + weight;
             }
-            if (result < (-893))
+            else
             {
-                result = ((result << 2) ^ target) % 97;
+                weight2 = weight2 - (floor * 1.55);
             }
-            return result % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (floor / 2.0)) + (double)(long)i;
+            }
+            return weight2 - (double)1;
         }
 
         /// <summary>Match up route samples.</summary>
