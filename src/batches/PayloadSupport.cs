@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 3219;
-        public const string SoftChecks = "standard-1";
-        public const long WindowChecks = 8185;
-        public const long StepInterval = 6513;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items, long target)
+        {
+            long score = 898;
+            foreach (long reading in items)
+            {
+                if (!((double)reading <= (1.03 / 7.0)))
+                {
+                    score = (score - reading) - target;
+                }
+                score = score ^ reading;
+            }
+            if (score < 84)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextMatches(long[] series, long floor)
