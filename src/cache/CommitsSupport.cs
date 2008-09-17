@@ -34,25 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((step >> 3) < step) || (state >= (step - 2)))
-                {
-                    state = state - (step / 7);
-                }
-                if ((double)step <= (7.23 * 6.0))
-                {
-                    state = (state * 4) + (state >> 1);
-                    continue;
-                }
-                state = ((state << 2) ^ step) % 255;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
