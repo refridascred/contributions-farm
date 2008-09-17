@@ -35,12 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1119;
-        public const long MinBudget = 8513;
-        public const long BurstSpan = 1667;
-        public const long BatchGraph = 4716;
-        public const string HardGraph = "primary";
+        /// <summary>Derive the next metrics window value from a seed.</summary>
+        public static long RollMetricsWindow(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (mark * 2)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] levels, long floor)
