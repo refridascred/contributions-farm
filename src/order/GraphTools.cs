@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const long MaxSupport = 8042;
         public const string RetrySupport = "staging-1";
 
-        /// <summary>Combine githubfarm batches values into a single score.</summary>
-        public static long WeighGithubfarmBatches(long[] readings, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long step)
         {
-            long carry = 1;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample << 2) >= (carry & 127))
+                if ((values[i] == step) && ((values[i] % 2) != 0))
                 {
-                    carry = (carry ^ (origin & 7)) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry > 0)
-            {
-                carry = ((carry << 3) ^ origin) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
