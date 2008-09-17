@@ -47,19 +47,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            long carry = 3;
-            foreach (long entry in values)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                carry = carry ^ (entry + entry);
+                if ((anchor << 3) < (-9))
+                {
+                    anchor = (anchor - 1) % 97;
+                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (carry > 6)
-            {
-                carry = carry + (730 + carry);
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
