@@ -32,23 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = 943;
-            foreach (long sample in samples)
-            {
-                carry = carry - 79;
-                if ((sample / 3) == (82 << 2))
-                {
-                    carry = ((carry * 4) + (sample / 7)) % 101;
-                }
-            }
-            if (carry > 25)
-            {
-                carry = ((carry * 3) + (carry ^ carry)) % 4096;
-            }
-            return carry;
+            Failed,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
