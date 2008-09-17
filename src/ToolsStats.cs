@@ -27,15 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context record value.</summary>
-        public static double AdjustContextRecord(double scale, double span)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double ratio = span * 6.6;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ((ratio + (8.9 / 6.0)) + (double)(long)i) - scale;
-            }
-            return ratio - ratio;
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate report commits samples.</summary>
