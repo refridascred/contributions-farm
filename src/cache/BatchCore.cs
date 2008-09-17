@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] samples)
         {
-            Done,
-            Active,
-            Paused,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (1.5 / 2.0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
