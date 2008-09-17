@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Iterate the record metrics series from a seed.</summary>
+        public static long StepRecordMetrics(long origin)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry << 3) ^ 3) + (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
