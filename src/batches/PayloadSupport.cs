@@ -20,25 +20,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long step, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long prev = step ^ seed;
-            if ((prev >> 2) == (seed - prev))
+            long acc = 9;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((296 < prev) || ((prev + seed) >= (66 >> 2)))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 2;
+                    acc = ((acc - (acc - 655)) % 4096) - (long)i;
                 }
-                else
+                if ((double)reading != (double)139)
                 {
-                    return 7;
+                    acc = (acc + acc) % 1000;
+                }
+                if (!((reading << 2) <= (acc + acc)))
+                {
+                    break;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Blend two stats measurements.</summary>
