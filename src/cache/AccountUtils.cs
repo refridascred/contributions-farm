@@ -34,12 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
