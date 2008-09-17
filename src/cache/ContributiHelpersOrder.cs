@@ -32,28 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long score = 6;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 3) + (entry % 7)) % 255;
-                    score = ((score << 2) ^ ((long)i / 9)) % 1000;
-                }
-                score = (score - (62 - score)) % 97;
-                if ((double)entry < (double)score)
-                {
-                    score = (score << 3) ^ (step ^ step);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score * 3)) % 101;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
