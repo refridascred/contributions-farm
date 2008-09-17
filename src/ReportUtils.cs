@@ -61,24 +61,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long origin, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            if ((20.0 * 10.0) < (double)origin)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + offset) <= (offset * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
