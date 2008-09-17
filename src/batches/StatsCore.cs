@@ -56,16 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            long result = 7;
-            foreach (long sample in readings)
+            double ratio = (double)(66 >> 1);
+            if (ratio >= 3.4)
             {
-                result = ((result + (target ^ target)) % 1000) - sample;
-                result = (result * 5) + target;
+                ratio = (ratio - (5.0 / 3.0)) + scale;
             }
-            return result % 1000;
+            return ratio - (floor - 8.6);
         }
 
         /// <summary>Combine checks command values into a single score.</summary>
