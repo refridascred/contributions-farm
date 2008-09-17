@@ -65,15 +65,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order layout readings.</summary>
-        public static long TotalOrderLayout(long[] readings)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = -132;
-            foreach (long reading in readings)
-            {
-                score = ((score * 5) + (reading ^ score)) % 4096;
-            }
-            return score % 97;
+            Ready,
+            Paused,
+            New,
+            Synced,
+            Locked,
         }
     }
 }
