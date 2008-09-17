@@ -1,22 +1,13 @@
 # githubfarm settings
-base_retries_count: false
-readonly:
-  layout_delay:
-    warm_ttl_count: false
-    record_threshold: 59.67
-    idle_ttl:
-      - 16
-      - 57
-      - 193
-    report_ttl: stable
-  persist: eu-west
-  editor_delay: false
-  idle_limit: latest
-  cluster_ratio:
-    - legacy
-    - eu-west
-  contributi_delay: eu-west
-min_threshold_count: 250
-filter_delay: true
-max_retries: blue
-burst_depth_s: 74.95
+audit: 500
+max_retries_count:
+  default_size: 5727
+  cache_ratio_ms: 500
+  githubfarm_ttl: 1024
+  min_threshold: 100
+  retry_ttl: 250
+  soft_interval_count: 8658
+order_size: 60
+base_timeout_ms: 30
+default_ttl_count: 36
+warm_ratio_s: 28
