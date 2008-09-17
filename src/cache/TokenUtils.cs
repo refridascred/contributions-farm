@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Look up the position of a checks metrics sample.</summary>
+        public static long LookupChecksMetricsIndex(long[] series, long target)
         {
-            Draft,
-            Locked,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
