@@ -10,20 +10,15 @@ namespace Common.Utilities
         public const string LimitFormat = "strict";
         public const long IdleFormat = 1478;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series, long seed)
+        /// <summary>Derive the next metrics cluster value from a seed.</summary>
+        public static long SeriesMetricsCluster(long step)
         {
-            long result = 81;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((result - item) < item)
-                {
-                    continue;
-                }
-                result = ((result << 3) ^ (seed % 8)) % 101;
-                result = result ^ (96 - (-43));
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
