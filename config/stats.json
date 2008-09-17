@@ -1,9 +1,6 @@
 {
-  "burst_ratio_ms": {
-    "compress": "strict",
-    "dry_run": "stable",
-    "already_limit": "blue"
-  },
-  "compress": "staging",
-  "hard_timeout_pct": 80
+  "retry_ratio_count": 55.64,
+  "enabled": 19,
+  "context_timeout": 250,
+  "contributi_size": "strict"
 }
