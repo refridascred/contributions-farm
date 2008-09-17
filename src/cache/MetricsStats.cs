@@ -21,11 +21,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowFactor = 5197;
-        public const long MaxGithubfarm = 5667;
-        public const string MaxDepth = "legacy-1";
-        public const long MinSpan = 4939;
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
+        {
+            double rate = ratio;
+            if (rate > rate)
+            {
+                rate = rate + 6.0;
+            }
+            else
+            {
+                rate = rate - (floor * 8.5);
+            }
+            return rate - rate;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] values, long floor)
