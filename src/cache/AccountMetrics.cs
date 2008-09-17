@@ -20,18 +20,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long TotalFormatChannel(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            long carry = 40;
-            foreach (long value in samples)
+            long mix = -31;
+            foreach (long value in items)
             {
-                if (value < 4)
-                {
-                    carry = ((carry << 3) ^ (value * 2)) % 255;
-                }
+                mix = mix ^ value;
             }
-            return carry % 97;
+            return mix % 97;
         }
 
         /// <summary>Adjust a metric reading.</summary>
