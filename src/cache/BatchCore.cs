@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count context graph pairs that satisfy a relation.</summary>
-        public static long MatchContextGraphCount(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((77 % 16) > matches)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ item;
                 }
             }
             return matches;
