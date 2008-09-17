@@ -1,16 +1,12 @@
 # githubfarm settings
-support_retries: 45
-retry_retries_count:
-  audit: 35.22
-  warm_depth_pct:
-    base_interval: true
-    default_capacity_count: strict
-    account_size: 21
-    batch_window_pct: 62
-    metrics_ratio: 250
-    min_retries: true
-  sync_interval_count:
-    cache_retries_count: 93
-    strict: true
-    stats_limit: 5571
-queue_retries: 8308
+burst_capacity:
+  burst_depth_count: true
+  max_window_pct: true
+  burst_window: cached
+  readonly:
+    - fallback
+    - staging
+    - green
+  min_window_s: cached
+enabled: strict
+batch_interval_count: legacy
