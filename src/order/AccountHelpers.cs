@@ -97,13 +97,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Draft,
-            Locked,
-            Paused,
-            Closed,
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
