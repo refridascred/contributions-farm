@@ -38,21 +38,22 @@ namespace Common.Utilities
         public const double RetryDepth = 73.55;
         public const long MaxInterval = 1321;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((hits > cell) && ((double)cell >= (5.9 - 2.5))) || ((double)cell < (8.0 + 3.0)))
                 {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
