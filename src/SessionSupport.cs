@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long IdleSession = 8963;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 4) < (datum + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
