@@ -1,9 +1,5 @@
 # entry settings
-compress: 96.48
-soft_size: 54.22
-enabled: stable
-strict:
-  - staging
-  - primary
-  - primary
-  - green
+max_ratio_count: 17
+min_threshold_pct: 9035
+enabled: 83.82
+max_retries: 29
