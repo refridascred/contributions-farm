@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Idle,
-            Queued,
-            Draft,
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
