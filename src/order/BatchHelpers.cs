@@ -31,15 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
