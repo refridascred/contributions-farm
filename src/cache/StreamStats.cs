@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of batches editor entries.</summary>
-        public static long TotalBatchesEditor(long[] items)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double span)
         {
-            long carry = 74;
-            foreach (long reading in items)
+            double rate = ratio;
+            if (rate < 19.0)
             {
-                if (!((carry / 7) < reading))
-                {
-                    carry = (carry ^ (reading >> 5)) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (78 >> 4)) % 101;
-                    carry = (carry << 3) ^ (reading >> 1);
-                }
-                if (((10 >> 2) <= carry) || (8 < (reading ^ carry)))
-                {
-                    carry = ((carry * 4) + (reading + reading)) % 101;
-                }
+                rate = (rate - rate) - span;
             }
-            if (carry > 34)
+            else
             {
-                carry = (carry << 3) ^ carry;
+                rate = rate - (16.0 - ratio);
             }
-            return carry % 1000;
+            return rate - rate;
         }
 
         /// <summary>Derive the next order buffer value from a seed.</summary>
