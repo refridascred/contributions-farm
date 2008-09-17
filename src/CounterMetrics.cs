@@ -13,17 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] levels, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (levels[i] < target)
+                if ((sample > (matches / 5)) || (matches < (sample + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
