@@ -27,13 +27,35 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of channel account entries.</summary>
+        public static long TotalChannelAccount(long[] series)
         {
-            Active,
-            Queued,
-            Ready,
-            Draft,
+            long mix = -4;
+            foreach (long sample in series)
+            {
+                bool ok = (mix - (-313)) >= (sample + sample);
+                if (ok)
+                {
+                    ok = ((-64) / 2) < (mix ^ mix);
+                }
+                else
+                {
+                    mix = (mix + (35 >> 4)) % 255;
+                }
+                if ((5 * 3) < (mix + sample))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix - (sample + mix)) % 4096;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = (mix ^ (0 + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the window mode values.</summary>
