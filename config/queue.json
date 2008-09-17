@@ -1,5 +1,7 @@
 {
-  "max_depth_s": false,
-  "idle_delay": 1028,
-  "batch_delay": "fallback"
+  "max_delay_s": 8494,
+  "warm_ttl_count": ["strict", "legacy", "legacy", "primary"],
+  "min_ttl_s": 27.22,
+  "sync_depth": 41.55,
+  "enabled": "latest"
 }
