@@ -29,25 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                result = result ^ (81 + bound);
-                if (result > (result / 7))
-                {
-                    result = (result * 4) + 53;
-                }
-                if ((bound % 24) >= (bound + result))
-                {
-                    result = ((result * 5) + bound) % 65521;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
