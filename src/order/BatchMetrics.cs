@@ -57,18 +57,19 @@ namespace Common.Utilities
         public const long LimitSpan = 6862;
         public const string BurstEditor = "cached-1";
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] samples, long limit)
+        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
+        public static bool GuardClusterStreamLimits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (!((16.0 * 5.2) != (double)seen))
+                if (item <= floor)
                 {
-                    seen = ((seen + 1) ^ value) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a already summary.</summary>
