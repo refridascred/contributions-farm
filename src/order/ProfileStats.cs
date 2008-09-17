@@ -27,21 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up metric farm samples.</summary>
-        public static long PairMetricFarmCount(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((17.0 / 8.0) <= (double)seen) || ((double)seen >= 7.7)) || ((double)seen < (19.0 - 3.67)))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
