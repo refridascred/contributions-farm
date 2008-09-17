@@ -50,13 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
