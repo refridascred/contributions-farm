@@ -1,10 +1,8 @@
 # support settings
-burst_ratio_s: 8277
-counter_retries: local
-dry_run:
-  - open
-  - strict
-  - open
-order_retries: 80
-persist: 500
-sync_ratio: 36
+readonly: standard
+dry_run: false
+flush_threshold: primary
+flush_delay_count:
+  - stable
+  - eu-west
+  - fallback
