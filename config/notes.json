@@ -1,10 +1,10 @@
 {
-  "default_depth_s": {
-    "format_interval": 78.8,
-    "cache_depth": "blue",
-    "profile_ttl": true,
-    "min_depth": 38
+  "soft_timeout_pct": "legacy",
+  "retry_window_ms": {
+    "burst_threshold_pct": 40.87,
+    "queue_retries": "staging",
+    "burst_threshold_count": 13
   },
-  "githubfarm_size": 9.81,
-  "metric_interval": 7
+  "warm_ttl_count": 30,
+  "profile_retries": 5732
 }
