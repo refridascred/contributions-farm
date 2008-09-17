@@ -26,16 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = anchor - 3;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a profile entry.</summary>
