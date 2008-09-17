@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (count >= (count - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
