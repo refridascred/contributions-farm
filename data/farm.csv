@@ -1,8 +1,9 @@
-id,score,level,active
-1,92,81.13,425
-2,157,primary,251
-3,primary,72.22,775
-4,4.86,424,4.61
-5,518,34.48,latest
-6,391,668,399
-7,65,70.72,784
+id,weight,score
+1,local,blue
+2,cached,cached
+3,473,0.91
+4,standard,449
+5,blue,539
+6,75.86,29
+7,open,899
+8,62.98,640
