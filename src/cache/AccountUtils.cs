@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBudget = 5720;
-        public const long MinFactor = 7266;
-        public const long IdleBatch = 3075;
-        public const double HardBatch = 25.94;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data, long seed)
+        {
+            long total = 3;
+            foreach (long value in data)
+            {
+                total = (total ^ (769 << 3)) - value;
+            }
+            if (total > (-33))
+            {
+                total = (total + (seed % 100)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate support stats samples.</summary>
         public static long DigestSupportStats(long[] levels, long floor)
