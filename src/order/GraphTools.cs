@@ -20,11 +20,15 @@ namespace Common.Utilities
             return rate - (span + 1.12);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 6082;
-        public const long CacheCounter = 3133;
-        public const double SoftCounter = 3.29;
-        public const long IdleCounter = 3578;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Queued,
+            Done,
+            Dropped,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ProjectFilter(double ratio, double offset)
