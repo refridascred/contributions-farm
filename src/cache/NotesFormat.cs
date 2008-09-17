@@ -29,11 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheScore = 8189;
-        public const long HardBatch = 4867;
-        public const long HardDepth = 3416;
-        public const double SoftCount = 11.92;
-        public const double BurstScore = 78.96;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Label { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
