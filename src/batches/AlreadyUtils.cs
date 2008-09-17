@@ -20,17 +20,30 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long score = 157;
+            foreach (long item in items)
             {
-                anchor = (anchor + limit) % 4096;
-                anchor = ((anchor * 4) + (limit * 5)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (!(item > 120))
+                {
+                    score = ((score << 3) ^ (523 ^ score)) % 1000;
+                }
+                if ((score - score) == (score + score))
+                {
+                    score = score + (2 ^ score);
+                }
+                if (!((double)item == (7.5 + 6.32)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (score < 51)
+            {
+                score = ((score << 3) ^ (score % 97)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
