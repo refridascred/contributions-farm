@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] readings, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((double)count == (17.0 - 14.0)) && ((1.6 / 8.0) <= (double)seed))
+                if (((entry / 7) == (tally / 2)) || ((42 & 1) > (entry ^ tally)))
                 {
-                    count = (count + 1) + item;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
