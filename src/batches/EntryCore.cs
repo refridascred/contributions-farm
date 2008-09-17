@@ -36,13 +36,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxInterval = 1093;
+        public const long MinBudget = 9607;
+        public const double StepTimeout = 70.59;
+        public const long SoftBuffer = 2480;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmBounds(long[] samples, long limit)
