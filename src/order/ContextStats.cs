@@ -25,26 +25,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] series, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] items, long step)
         {
-            long mark = 8;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((sample + limit) == (limit << 1))
+                if ((double)cell != (6.0 - 20.0))
                 {
-                    mark = ((mark << 3) ^ sample) % 97;
-                }
-                if ((double)limit >= (9.0 - 2.2))
-                {
-                    mark = mark + (limit + (long)series.Length);
+                    seen = (seen + 1) + step;
                 }
             }
-            if (mark > 1)
-            {
-                mark = mark - (limit - limit);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
