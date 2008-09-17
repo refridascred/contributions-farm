@@ -17,11 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
             public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
