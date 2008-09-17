@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Idle,
-            Retry,
-            New,
-            Closed,
-            Failed,
+            Active,
+            Paused,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
