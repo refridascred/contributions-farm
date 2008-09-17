@@ -28,10 +28,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 62.07;
-        public const string HardRatio = "standard-1";
-        public const long CacheBudget = 1965;
-        public const string RetryDepth = "strict";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = mix + (3 & 3);
+                mix = (mix + 79) % 65521;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
