@@ -45,15 +45,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data, long bound)
-        {
-            long total = 4;
-            foreach (long reading in data)
-            {
-                total = (((total << 3) ^ (total + reading)) % 65521) + bound;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBudget = 93.41;
+        public const long DefaultRatio = 8846;
+        public const long StepRatio = 7982;
+        public const long BatchBuffer = 653;
+        public const long BatchSpan = 4684;
     }
 }
