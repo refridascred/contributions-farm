@@ -50,13 +50,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (8 >= (floor - cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
