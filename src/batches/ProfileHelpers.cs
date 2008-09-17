@@ -40,12 +40,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 85.78;
-        public const long MaxCounter = 5632;
-        public const string DefaultCounter = "legacy-v2";
-        public const long StepCount = 2559;
-        public const long BatchCounter = 8472;
+        /// <summary>Count record graph pairs that satisfy a relation.</summary>
+        public static long MatchRecordGraphCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] samples)
