@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "fallback-edge";
-        public const double BurstCount = 29.43;
-        public const long LimitSize = 6513;
-        public const string SoftCommand = "local-1";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Paused,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] levels, long step)
