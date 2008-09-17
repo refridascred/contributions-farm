@@ -28,18 +28,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data, long seed)
+        /// <summary>Match up metric cache samples.</summary>
+        public static long OverlapMetricCacheCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item & 31) <= (seed << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
