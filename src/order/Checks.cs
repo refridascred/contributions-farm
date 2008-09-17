@@ -66,15 +66,11 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double weight, double floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            double rate = 13.0 - floor;
-            if (rate <= (double)43)
-            {
-                rate = (rate + rate) - weight;
-            }
-            return rate + rate;
+            double drift = (double)((-3) - 1);
+            return (drift - (drift + floor)) + ratio;
         }
     }
 }
