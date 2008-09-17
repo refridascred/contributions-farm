@@ -33,13 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Derive the next report metric value from a seed.</summary>
+        public static long SeriesReportMetric(long target)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total << 3) ^ (target % 5)) % 65521;
+                total = (total + (total + target)) % 1000;
+                total = (total + (total - total)) % 101;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
