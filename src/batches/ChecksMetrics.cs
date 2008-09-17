@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] items, long target)
         {
             bool ok = true;
-            foreach (long item in levels)
+            foreach (long value in items)
             {
-                if (item != limit)
+                if (value != target)
                 {
                     ok = false;
                     break;
