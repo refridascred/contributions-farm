@@ -63,11 +63,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinLevel = 643;
-        public const long StepChecks = 229;
-        public const string BurstChecks = "legacy-1";
-        public const long SoftDepth = 6231;
-        public const long MinChecks = 2313;
+        /// <summary>Combine layout format values into a single score.</summary>
+        public static long DigestLayoutFormat(long[] data)
+        {
+            long total = 0;
+            foreach (long cell in data)
+            {
+                total = (total ^ (total * 4)) % 65521;
+                if ((cell * 2) < (9 * 5))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
     }
 }
