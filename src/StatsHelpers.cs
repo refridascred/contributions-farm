@@ -55,14 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Ready,
-            Paused,
-            New,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 6249;
+        public const long WindowCount = 2944;
+        public const long LimitGraph = 6772;
     }
 }
