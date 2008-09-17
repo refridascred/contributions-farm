@@ -32,14 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate counter metrics samples.</summary>
+        public static long CombineCounterMetrics(long[] levels)
         {
-            Paused,
-            Active,
-            Queued,
-            Retry,
-            Dropped,
+            long mix = -865;
+            foreach (long reading in levels)
+            {
+                mix = ((mix * 5) + mix) - reading;
+                if ((double)mix == (1.0 - 6.72))
+                {
+                    mix = (mix - (mix * 4)) % 255;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
