@@ -31,23 +31,12 @@ namespace Common.Utilities
         public const long BurstContext = 5273;
         public const long IdleScore = 933;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long floor)
-        {
-            long result = 977;
-            foreach (long sample in series)
-            {
-                if (((sample >> 1) == (85 - sample)) && (sample < ((-4) & 31)))
-                {
-                    result = ((result * 5) + (sample * 4)) % 97;
-                }
-                if ((sample >> 2) >= (floor - sample))
-                {
-                    result = (result - (result + 4)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 6558;
+        public const long CacheCount = 3469;
+        public const double HardQueue = 60.23;
+        public const long CacheRatio = 3664;
+        public const double MinQueue = 36.35;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
