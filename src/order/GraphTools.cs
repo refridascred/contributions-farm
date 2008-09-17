@@ -60,13 +60,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double scale, double offset)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            double gain = (double)(9 - (-782));
+            if (gain <= offset)
+            {
+                gain = gain + (4.93 + 7.37);
+            }
+            else
+            {
+                gain = gain + (offset - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain - (scale / 5.0);
         }
     }
 }
