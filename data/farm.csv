@@ -1,6 +1,6 @@
-id,token,count,ratio
-1,fallback,45,40.2
-2,legacy,87.25,124
-3,96.65,77.41,250
-4,edge,415,952
-5,656,standard,green
+id,state,owner,active,weight
+1,69.71,39.34,333,staging
+2,571,33.95,open,701
+3,53.61,legacy,eu-west,266
+4,12.34,357,72.65,182
+5,60.87,84.42,standard,open
