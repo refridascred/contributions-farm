@@ -1,7 +1,16 @@
 # githubfarm settings
-warm_size_s:
-  compress: 33
-  warm_capacity: 30
-  editor_delay: fallback
-graph_interval: 53.79
-max_depth_s: fallback
+max_ratio_pct: true
+flush_size_count: 3.27
+base_limit_s: strict
+batch_size_ms:
+  account_size: blue
+  profile_interval: 83.88
+  enabled: latest
+  buffer_ratio: false
+  batch_interval_count:
+    - 328
+    - 278
+    - 376
+    - 176
+  sync_retries_pct: fallback
+dry_run: 1113
