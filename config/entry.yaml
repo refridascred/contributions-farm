@@ -1,12 +1,10 @@
 # entry settings
-sync_capacity_ms: 500
-default_window_s:
-  hard_interval_pct: legacy
-  batches_limit: legacy
-  cache_depth_count:
-    metric_ttl: false
-    compress: 1.75
-    default_window_count: 5162
-    channel_threshold: 93
-    poll_size_pct: 30
-report_window: 1714
+hard_window:
+  - 467
+  - 433
+dry_run: 33
+sync_delay_pct: 7997
+sync_threshold:
+  - local
+  - legacy
+  - edge
