@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stats order value.</summary>
-        public static double ProjectStatsOrder(double ratio, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            double drift = (double)(11 << 3);
-            if (drift <= floor)
+            long count = 0;
+            foreach (long cell in values)
             {
-                drift = drift + (6.42 / 5.0);
+                if (count >= ((long)values.Length & 15))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (8.2 + ratio)) - (double)(long)i;
-            }
-            return drift + (ratio / 3.0);
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
