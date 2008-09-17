@@ -39,22 +39,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if (seed2 >= seed)
             {
-                if ((count % 2) < (entry - 49))
+                return 6;
+            }
+            else
+            {
+                if ((seed2 & 15) > seed2)
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the stream mode values.</summary>
