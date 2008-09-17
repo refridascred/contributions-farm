@@ -44,12 +44,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinTimeout = 42.58;
-        public const long BaseLevel = 5614;
-        public const long RetryBatch = 9499;
-        public const double RetryScore = 21.2;
-        public const long CacheBatch = 7558;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples)
+        {
+            long mix = 14;
+            foreach (long value in samples)
+            {
+                mix = (mix ^ (mix & 15)) + value;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double bias, double floor)
