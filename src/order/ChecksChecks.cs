@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a report token sample.</summary>
-        public static long LookupReportTokenIndex(long[] series, long floor)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count support session pairs that satisfy a relation.</summary>
