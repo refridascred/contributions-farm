@@ -1,8 +1,6 @@
 {
-  "cache_delay_count": [195, 446, 462],
-  "cluster_window": "latest",
-  "retry_interval_count": "primary",
-  "readonly": "eu-west",
-  "flush_window_count": ["local", "cached", "edge"],
-  "warm_interval": false
+  "soft_limit_s": 8960,
+  "max_ratio_pct": "standard",
+  "retry_delay_pct": "primary",
+  "warm_limit_ms": 30
 }
