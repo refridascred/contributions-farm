@@ -48,19 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value - (-23)) > (value + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftLevel = 63.2;
+        public const double BaseFarm = 48.55;
+        public const double StepFarm = 33.25;
+        public const long StepSize = 1381;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsGaps(long[] data)
