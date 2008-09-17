@@ -22,12 +22,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] values, long target)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (target > (count << 1))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
