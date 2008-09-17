@@ -20,25 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long seed, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] values, long origin)
         {
-            long next = seed ^ origin;
-            if ((1 - origin) < (next + origin))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-7) << 1) == (seed % 97))
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
