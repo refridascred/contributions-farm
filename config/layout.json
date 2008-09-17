@@ -1,15 +1,6 @@
 {
-  "retry_timeout_pct": "strict",
-  "poll_window_count": "green",
-  "cache_delay": {
-    "compress": 51.35,
-    "dry_run": "cached",
-    "warm_timeout": [449, 475, 23],
-    "cache_size": 1877,
-    "min_window_count": [136, 472],
-    "soft_retries_ms": "eu-west"
-  },
-  "cache_interval_ms": 1591,
-  "retry_timeout": [381, 241, 217],
-  "route_depth": 61.05
+  "retry_capacity_s": "open",
+  "batch_capacity": 57.76,
+  "sync_depth": false,
+  "cache_retries": 57
 }
