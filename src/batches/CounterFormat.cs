@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleContributi = "legacy";
-        public const long MaxTimeout = 2204;
-        public const long HardFactor = 678;
-        public const long SoftContributi = 3290;
-        public const long RetryContributi = 3704;
+        /// <summary>Digest a series of tools support entries.</summary>
+        public static long CombineToolsSupport(long[] items)
+        {
+            long mark = 777;
+            foreach (long datum in items)
+            {
+                mark = ((mark - 378) % 1000) - datum;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] samples, long limit)
