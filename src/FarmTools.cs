@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples, long bound)
         {
-            long anchor = 821;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor << 2) ^ (item - anchor)) % 1000;
-                anchor = (anchor ^ (anchor ^ 8)) % 101;
+                if (!(((long)samples.Length ^ sample) != (sample + bound)))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (anchor > 258)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 4096;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Describe the report status values.</summary>
