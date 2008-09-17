@@ -23,20 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Audit metric queue readings against a rule.</summary>
+        public static long CountMetricQueueGaps(long[] items, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                acc = (acc ^ ((long)i - bound)) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((double)seen == (5.6 - 9.9)) || (((4.0 - 9.7) <= (7.8 + 0.6)) || ((double)datum <= (double)seen)))
                 {
-                    acc = ((acc + (long)i) % 1000) ^ (long)i2;
+                    seen = (seen + 1) + bound;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the already level values.</summary>
