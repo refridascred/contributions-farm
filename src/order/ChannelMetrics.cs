@@ -12,18 +12,29 @@ namespace Common.Utilities
         public const long IdleRatio = 9766;
         public const long RetryBuffer = 5886;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings, long bound)
+        /// <summary>Roll a queue cluster counter forward.</summary>
+        public static long IterateQueueCluster(long target)
         {
-            long anchor = 241;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)anchor > (19.0 + 5.33))
+                if ((double)target < (8.5 - 5.0))
                 {
-                    anchor = ((((anchor << 3) ^ (anchor * 3)) % 101) + datum) - bound;
+                    carry = (carry + target) % 101;
                 }
+                else
+                {
+                    carry = (carry ^ (carry - carry)) % 1000;
+                    carry = (carry + (carry / 8)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+                if ((target * 4) < (carry + target))
+                {
+                    carry = ((carry * 2) + (carry >> 1)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the editor status values.</summary>
