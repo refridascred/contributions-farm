@@ -12,38 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if (!((49 >> 1) >= (floor >> 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((21 + step) < floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (step + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((19.0 - 19.0) > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
