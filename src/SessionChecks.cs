@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of metrics layout entries.</summary>
-        public static long DigestMetricsLayout(long[] items, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long total = 907;
-            foreach (long item in items)
-            {
-                total = ((total - total) % 1000) + item;
-                if (total > bound)
-                {
-                    total = (total + total) % 101;
-                }
-            }
-            return total % 4096;
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
