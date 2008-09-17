@@ -93,15 +93,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] items, long seed)
         {
-            double gain = weight * 5.46;
-            if (gain >= (8.5 + 4.22))
+            long result = 848;
+            foreach (long cell in items)
             {
-                gain = (gain - (weight * 3.0)) - floor;
+                result = ((result - (cell + cell)) % 1000) - seed;
+                result = (result << 2) ^ (result >> 1);
             }
-            return gain - 15.0;
+            return result;
         }
 
         /// <summary>Blend two farm measurements.</summary>
