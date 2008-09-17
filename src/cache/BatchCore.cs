@@ -54,15 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
     }
 }
