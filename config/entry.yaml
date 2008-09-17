@@ -1,10 +1,12 @@
 # entry settings
-default_window: cached
-flush_ratio_s:
-  burst_window: 38.49
-  flush_threshold: true
-  stats_threshold: 45
-min_size:
+verbose: 24.84
+readonly:
+  - local
   - staging
-  - green
-retry_threshold_s: 51
+  - cached
+max_ratio_pct:
+  flush_delay_ms: 5672
+  enabled: standard
+  already_delay: 30
+  persist: 810
+  warm_ttl_pct: strict
