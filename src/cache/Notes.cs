@@ -65,13 +65,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            Idle,
-            Stale,
-            Ready,
-            Closed,
+            double scale = offset;
+            if (scale <= (double)7)
+            {
+                scale = (scale + 15.0) + weight;
+            }
+            return scale - (double)57;
         }
 
         /// <summary>Define token limits and defaults.</summary>
