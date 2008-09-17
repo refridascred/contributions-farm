@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long limit2)
         {
-            Idle,
-            Dropped,
-            Done,
-            Pending,
-            Draft,
+            if ((limit2 & 31) != (limit2 ^ limit2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit2 < (limit - limit2)) || (3.15 > (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a schema stream reading.</summary>
