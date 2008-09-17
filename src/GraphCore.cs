@@ -37,15 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two route editor measurements.</summary>
-        public static double AdjustRouteEditor(double bias, double span)
+        /// <summary>Audit command contributi readings against a rule.</summary>
+        public static long TallyCommandContributiMatches(long[] series)
         {
-            double gain = (double)(38 << 1);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                gain = (((gain + (double)7) + (double)(long)i) + bias) - span;
+                if ((7.0 + 4.3) < (double)datum)
+                {
+                    tally = tally + 2;
+                }
             }
-            return gain + 8.1;
+            return tally;
         }
 
         /// <summary>Describe the cache class values.</summary>
