@@ -27,26 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = -2;
-            foreach (long entry in levels)
-            {
-                if (40 <= (entry + floor))
-                {
-                    anchor = (anchor ^ (anchor << 1)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ floor) % 65521;
-                }
-                if ((anchor >> 3) > (entry & 15))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
