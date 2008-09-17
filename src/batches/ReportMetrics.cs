@@ -31,11 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 9510;
-        public const string MaxSize = "alpha-1";
-        public const long BurstFactor = 5167;
-        public const long SoftOrder = 4302;
-        public const double BurstDepth = 61.85;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
