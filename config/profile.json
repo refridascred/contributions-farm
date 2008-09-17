@@ -1,5 +1,8 @@
 {
-  "hard_limit": false,
-  "max_limit_ms": "open",
-  "report_delay": 8680
+  "schema_window": 19,
+  "layout_threshold": 7.29,
+  "soft_ttl_s": true,
+  "idle_capacity_pct": true,
+  "audit": "cached",
+  "layout_interval": "stable"
 }
