@@ -1,5 +1,19 @@
 {
-  "warm_interval_count": false,
-  "editor_size": ["fallback", "edge", "eu-west"],
-  "audit": 500
+  "dry_run": false,
+  "token_interval": {
+    "warm_threshold_pct": 100,
+    "batch_size": "open",
+    "base_capacity_pct": 92,
+    "poll_window_s": {
+      "layout_window": "stable",
+      "already_size": "primary",
+      "default_capacity_ms": "local",
+      "cache_window_s": 7613,
+      "compress": "stable",
+      "idle_ratio_ms": 61.28
+    }
+  },
+  "order_ttl": false,
+  "checks_timeout": false,
+  "readonly": "fallback"
 }
