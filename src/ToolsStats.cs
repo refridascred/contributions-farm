@@ -40,19 +40,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] readings, long target)
+        /// <summary>Project the next context record value.</summary>
+        public static double AdjustContextRecord(double scale, double span)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double ratio = span * 6.6;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio + (8.9 / 6.0)) + (double)(long)i) - scale;
             }
-            return ready;
+            return ratio - ratio;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
