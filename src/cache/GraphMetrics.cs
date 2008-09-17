@@ -69,26 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long target)
         {
-            long carry = 884;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((carry << 3) == (sample << 2))
+                if (cell > target)
                 {
-                    carry = (carry + 3) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ limit) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 126)
-            {
-                carry = carry + (95 * 3);
-            }
-            return carry % 1000;
+            return ok;
         }
     }
 }
