@@ -31,24 +31,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long bound2)
+        /// <summary>Combine order channel values into a single score.</summary>
+        public static long TotalOrderChannel(long[] levels)
         {
-            if ((bound2 + bound2) >= (bound - bound))
+            long result = -717;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.9 - 3.17) <= (double)bound2)
+                if (((double)reading <= (8.4 / 7.0)) || ((3.34 + 6.7) != (double)reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    result = result ^ (99 << 3);
                 }
             }
+            if (result < 0)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
