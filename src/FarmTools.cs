@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
