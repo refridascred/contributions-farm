@@ -1,14 +1,11 @@
 {
-  "flush_retries_s": {
-    "default_threshold_count": "staging",
-    "min_interval_count": 84,
-    "burst_size": "green",
-    "payload_threshold": 5507,
-    "record_threshold": 66.34,
-    "sync_size": 4660
+  "strict": 29,
+  "cluster_capacity": true,
+  "context_threshold": {
+    "cache_window_count": "legacy",
+    "soft_ratio": "local",
+    "enabled": "staging"
   },
-  "batch_interval": "latest",
-  "format_ratio": true,
-  "sync_ratio_s": "legacy",
-  "audit": 39
+  "max_retries_pct": 11,
+  "retry_ttl": "legacy"
 }
