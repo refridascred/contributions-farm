@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long WindowChecks = 8185;
         public const long StepInterval = 6513;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 1;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((5.2 - 2.4) < (double)mark) && ((cell - cell) > (57 - limit)))
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark * 4) + 79) % 255;
+                }
+                else
+                {
+                    mark = (mark + (cell & 15)) % 97;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Roll a cache stream counter forward.</summary>
