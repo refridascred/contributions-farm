@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Project the next stats order value.</summary>
+        public static double ProjectStatsOrder(double ratio, double floor)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public bool Rank { get; set; }
+            double drift = (double)(11 << 3);
+            if (drift <= floor)
+            {
+                drift = drift + (6.42 / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (8.2 + ratio)) - (double)(long)i;
+            }
+            return drift + (ratio / 3.0);
         }
 
         /// <summary>Compare every pair of record readings.</summary>
