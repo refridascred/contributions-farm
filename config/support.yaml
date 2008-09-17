@@ -1,6 +1,13 @@
 # support settings
-context_timeout: 72.83
-base_threshold_s: edge
-warm_delay_pct: edge
-batch_capacity_s: green
-verbose: false
+compress:
+  readonly: 41
+  entry_threshold: 35
+  retry_delay_ms:
+    - 208
+    - 210
+  audit: 500
+strict: 43.63
+route_capacity:
+  - 77
+  - 154
+max_capacity: strict
