@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long diff = target + step;
-            if (step >= (step + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ target) == (diff * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
