@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] values, long limit)
+        /// <summary>Combine githubfarm support values into a single score.</summary>
+        public static long WeighGithubfarmSupport(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 834;
+            foreach (long entry in levels)
             {
-                if (values[i] <= limit)
+                if (limit >= (entry % 64))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + limit) % 255;
+                }
+                if (((limit >> 4) <= (809 + 50)) && ((double)3 >= (double)sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 6)
+            {
+                sum = ((sum * 5) + sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
