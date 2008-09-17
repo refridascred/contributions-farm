@@ -20,12 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Failed,
-            Stale,
-            Dropped,
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
