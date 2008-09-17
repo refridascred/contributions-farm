@@ -45,11 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "latest-1";
-        public const double MaxBudget = 22.25;
-        public const long CacheWidth = 2530;
-        public const long CacheTimeout = 8072;
-        public const long MinStats = 8163;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
