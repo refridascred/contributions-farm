@@ -67,11 +67,18 @@ namespace Common.Utilities
             return weight + (bias + bias2);
         }
 
-        /// <summary>Adjust a context profile reading.</summary>
-        public static double AdjustContextProfile(double gain, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            double drift = gain;
-            return (drift + (double)287) + span;
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum >= (8.2 + 8.0)) && ((matches + matches) > (datum * 5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up commits samples.</summary>
