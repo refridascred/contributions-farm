@@ -1,7 +1,5 @@
 {
-  "cache_capacity": 43.26,
-  "batches_size": true,
-  "default_limit_count": "primary",
-  "order_depth": 30,
-  "poll_window_s": true
+  "strict": ["strict", "latest", "staging", "local"],
+  "base_window_ms": 34,
+  "soft_capacity": 82.58
 }
