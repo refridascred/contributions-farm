@@ -1,8 +1,20 @@
 {
-  "context_ttl": ["edge", "staging"],
-  "profile_size": 7633,
-  "min_depth": 14.34,
-  "soft_window_ms": 7837,
-  "strict": ["primary", "blue"],
-  "max_window": 37.15
+  "batch_interval_ms": {
+    "layout_threshold": {
+      "already_retries": 76,
+      "batch_timeout": "green",
+      "schema_limit": 7102,
+      "base_delay_ms": true,
+      "compress": "standard",
+      "flush_threshold_count": 33.94
+    },
+    "flush_interval": "stable",
+    "verbose": "green",
+    "checks_depth": [110, 109, 355, 418],
+    "batch_depth": "open"
+  },
+  "base_interval_s": "eu-west",
+  "burst_interval_s": [395, 65],
+  "readonly": "latest",
+  "min_capacity_count": "latest"
 }
