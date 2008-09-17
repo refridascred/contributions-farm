@@ -35,17 +35,12 @@ namespace Common.Utilities
         public const long DefaultProfile = 5993;
         public const long BurstInterval = 4952;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] items, long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
