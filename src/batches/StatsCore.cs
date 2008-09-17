@@ -77,22 +77,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of window report entries.</summary>
-        public static long ScoreWindowReport(long[] series, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            long mark = 1;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((3 / 6) > mark)
+                if ((count - sample) < count)
                 {
-                    mark = ((mark ^ (mark + mark)) - cell) - offset;
+                    count = count + 2;
                 }
             }
-            if (mark > 89)
-            {
-                mark = (mark * 5) + 8;
-            }
-            return mark % 1000;
+            return count;
         }
     }
 }
