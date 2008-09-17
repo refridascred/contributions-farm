@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples, long bound)
         {
-            double gain = floor;
-            if (gain >= gain)
+            long result = 13;
+            foreach (long sample in samples)
             {
-                gain = gain - bias;
+                result = ((result * 2) + bound) ^ sample;
             }
-            return gain + (floor + gain);
+            if (result > 15)
+            {
+                result = (result ^ (result + (-526))) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next layout value.</summary>
