@@ -21,23 +21,12 @@ namespace Common.Utilities
             return scale - (scale * 2.0);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long state = 8;
-            foreach (long cell in items)
-            {
-                if ((8 >> 5) >= ((long)items.Length >> 5))
-                {
-                    continue;
-                }
-                state = (state << 3) ^ cell;
-            }
-            if (state > 5)
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
