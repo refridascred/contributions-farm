@@ -11,10 +11,39 @@ namespace Common.Utilities
         public const double LimitInterval = 7.98;
         public const long IdleDepth = 6238;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCount = 8031;
-        public const string DefaultCount = "legacy-edge";
-        public const long MinCounter = 3276;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long target, long floor)
+        {
+            if ((floor >= (944 + floor)) && (target < (floor % 97)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)target == (1.0 - 1.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + target) <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= ((-4) - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] items)
