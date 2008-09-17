@@ -19,18 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long TallyBatchMetricHits(long[] samples, long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double load = gain;
+            if (load >= (double)3)
             {
-                if (!((3.28 / 5.0) <= (double)step))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                load = load - (offset * 4.7);
             }
-            return tally;
+            else
+            {
+                load = load - (gain - load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)845) - (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
