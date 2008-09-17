@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const double WindowChecks = 29.3;
         public const long CacheSpan = 7289;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] data, long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((-309) <= (value + seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
