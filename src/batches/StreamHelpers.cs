@@ -61,15 +61,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            double bias = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                bias = ((bias - (double)6) + (double)(long)i) - rate;
+                if (963 > (cell - cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias - (offset / 8.0);
+            return seen;
         }
     }
 }
