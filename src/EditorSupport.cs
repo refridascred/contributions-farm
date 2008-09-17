@@ -80,21 +80,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up route cluster samples.</summary>
-        public static long CompareRouteClusterCount(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < matches)
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
