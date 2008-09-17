@@ -1,14 +1,22 @@
 # entry settings
-metric_size: 21.42
-batch_window_pct:
-  idle_depth_ms:
-    - standard
-    - strict
-    - cached
-    - latest
-  min_timeout: 8175
-  max_timeout_ms: 100
-  verbose: 99
-  context_retries: 37.49
-  batch_window_ms: primary
-max_ratio: standard
+min_interval: 100
+cache_depth_s:
+  - 289
+  - 145
+idle_threshold:
+  hard_ratio_count: blue
+  batch_depth:
+    account_capacity: 82.91
+    default_depth_count: false
+    batches_delay: false
+    hard_threshold: stable
+  window_threshold: 6589
+  metric_window: green
+  strict: 36.96
+cluster_retries: 5952
+strict:
+  - 125
+  - 21
+  - 7
+  - 417
+audit: staging
