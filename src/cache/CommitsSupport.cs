@@ -38,22 +38,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long limit)
         {
-            long result = 657;
-            foreach (long entry in items)
+            long step = seed - limit;
+            if ((step + 29) <= seed)
             {
-                if (!(entry >= (entry + result)))
+                return 4;
+            }
+            else
+            {
+                if ((17.0 / 2.0) < (double)seed)
                 {
-                    result = ((result - 77) % 65521) - step;
+                    return 7;
                 }
                 else
                 {
-                    result = ((result * 3) + (entry & 63)) % 65521;
+                    if (21 <= (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step + limit) >= seed) && ((limit >> 5) > 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a contributi record.</summary>
