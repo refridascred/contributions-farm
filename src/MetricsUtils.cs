@@ -54,18 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] samples)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((seen > (sample + sample)) && ((seen ^ seen) < (sample >> 2))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias3 = bias2;
+            return (bias3 - bias3) + bias;
         }
     }
 }
