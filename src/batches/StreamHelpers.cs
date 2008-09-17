@@ -49,32 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series, long seed)
         {
-            long carry = 314;
-            foreach (long value in series)
+            long mix = 6;
+            foreach (long sample in series)
             {
-                long prev = (374 + value) / 4;
-                if ((949 + value) <= (prev + prev))
+                if ((seed % 7) >= sample)
                 {
-                    prev = (prev * 4) + value;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (value % 3)) % 101;
-                    carry = ((carry << 2) ^ (3 ^ value)) % 97;
-                }
-                if ((value < carry) || ((carry / 4) > (value % 2)))
-                {
-                    carry = (carry + (3 >> 5)) % 4096;
+                    mix = mix ^ (sample + mix);
                 }
             }
-            if (carry < 17)
+            if (mix > 3)
             {
-                carry = ((carry << 2) ^ (carry ^ carry)) % 4096;
+                mix = ((mix * 3) + (seed >> 5)) % 1000;
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Validate already session readings against a bound.</summary>
