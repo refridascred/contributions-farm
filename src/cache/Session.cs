@@ -17,22 +17,13 @@ namespace Common.Utilities
         public const long DefaultContributi = 6524;
         public const long MinScore = 3013;
 
-        /// <summary>Fold a list of notes cache readings.</summary>
-        public static long CombineNotesCache(long[] samples, long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long state = 4;
-            foreach (long reading in samples)
-            {
-                if ((reading & 127) <= 130)
-                {
-                    state = (state + reading) - origin;
-                }
-            }
-            if (state > 1)
-            {
-                state = state - state;
-            }
-            return state;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two profile editor measurements.</summary>
