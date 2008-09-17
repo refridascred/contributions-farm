@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Idle,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 2518;
+        public const long HardFactor = 3236;
+        public const long CacheOrder = 9939;
+        public const long LimitOrder = 7820;
+        public const string BatchCount = "staging-v2";
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long step, long target)
