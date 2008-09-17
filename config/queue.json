@@ -1,5 +1,6 @@
 {
-  "flush_depth": "staging",
-  "audit": false,
-  "enabled": "legacy"
+  "flush_ttl_count": "fallback",
+  "command_capacity": 37.67,
+  "max_capacity_s": ["legacy", "legacy", "strict"],
+  "cache_size": [352, 305, 256]
 }
