@@ -46,15 +46,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long acc = 386;
-            foreach (long entry in values)
-            {
-                acc = (((acc ^ (330 / 4)) % 65521) + entry) + origin;
-            }
-            return acc % 65521;
+            Idle,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
