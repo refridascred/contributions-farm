@@ -55,22 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long seed)
         {
-            long acc = -2;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum > (double)bound)
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
                 {
-                    acc = (acc * 4) + datum;
-                }
-                if (((acc >> 2) <= datum) && ((bound + bound) == (datum + acc)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
