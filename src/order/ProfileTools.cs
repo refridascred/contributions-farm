@@ -20,13 +20,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Derive the next checks route value from a seed.</summary>
+        public static long SeriesChecksRoute(long step)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = acc ^ step;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter options.</summary>
