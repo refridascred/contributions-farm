@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Draft,
-            Failed,
-            Locked,
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
