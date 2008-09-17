@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            double scale = offset;
+            if (scale <= 9.32)
+            {
+                scale = (scale + (double)1) + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 3.4) - (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
