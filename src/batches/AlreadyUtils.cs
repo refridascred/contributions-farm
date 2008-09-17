@@ -20,22 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stats buffer readings.</summary>
-        public static long WeighStatsBuffer(long[] items)
+        /// <summary>Match up stream batch samples.</summary>
+        public static long MatchStreamBatchCount(long[] series)
         {
-            long mix = 419;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading ^ mix) >= 2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix + (reading - mix);
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 30)
-            {
-                mix = mix + (mix + (-61));
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Hold a schema record.</summary>
