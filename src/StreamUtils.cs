@@ -28,39 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long prev = step - bound;
-            if (359 < step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound - 27) == (prev - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound & 255) != (bound + 62))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((prev * 5) < bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up checks route samples.</summary>
