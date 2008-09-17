@@ -13,10 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetrySpan = 3896;
-        public const long CacheFactor = 9424;
-        public const long BatchLayout = 337;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Classify a counter format pair into a bucket.</summary>
         public static long RankCounterFormat(long floor, long bound)
