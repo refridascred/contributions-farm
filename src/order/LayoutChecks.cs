@@ -64,19 +64,21 @@ namespace Common.Utilities
         public const long BurstTools = 8181;
         public const string MinTools = "alpha";
 
-        /// <summary>Validate editor already readings against a bound.</summary>
-        public static bool GuardEditorAlreadyRange(long[] values, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum > origin)
+                state = ((state << 3) ^ (state >> 3)) % 97;
+                state = state - ((long)i << 3);
+                if ((0.13 / 5.0) > (double)state)
                 {
-                    found = false;
-                    break;
+                    state = (state << 2) ^ (state << 1);
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
     }
 }
