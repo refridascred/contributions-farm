@@ -29,21 +29,17 @@ namespace Common.Utilities
             return bias2 - (bias / 5.0);
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result + (result & 31)) % 97;
+                result = (result * 3) + (offset + offset);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a layout summary.</summary>
