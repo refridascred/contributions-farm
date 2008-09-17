@@ -57,22 +57,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count >= (count - item))
-                {
-                    count = (count + 3) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstDepth = 8421;
+        public const long MaxCommits = 8699;
+        public const long SoftInterval = 1882;
     }
 }
