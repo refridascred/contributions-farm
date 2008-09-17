@@ -34,13 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Dropped,
-            Failed,
-            Closed,
-            Synced,
+            Retry,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
