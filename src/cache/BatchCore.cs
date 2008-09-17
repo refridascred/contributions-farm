@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5510;
-        public const double WindowDepth = 32.61;
-        public const double DefaultBatch = 58.54;
-        public const long MaxBatch = 5202;
-        public const long LimitFactor = 5659;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBudget = 1352;
+        public const long SoftInterval = 3726;
+        public const double BaseCount = 26.92;
+        public const double IdleBatches = 18.05;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long limit)
