@@ -13,18 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples)
+        /// <summary>Audit queue entry readings against a rule.</summary>
+        public static long AuditQueueEntryOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)datum == (6.0 * 4.0))
+                if ((0.4 * 18.0) != (double)reading)
                 {
-                    matches = matches + 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a contributi stats.</summary>
