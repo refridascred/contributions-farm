@@ -46,22 +46,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] items, long limit)
         {
-            long score = 7;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((6 / 2) > (score >> 2))
+                if (entry < limit)
                 {
-                    score = (((score - score) % 97) ^ reading) - step;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score * 3)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
     }
 }
