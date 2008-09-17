@@ -27,32 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long edge = target + limit;
-            if ((2.0 * 20.0) > (double)edge)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((417 + limit) <= (target ^ edge)) || ((edge << 3) <= target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit < (limit - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
