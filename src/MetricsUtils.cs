@@ -36,28 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session command readings.</summary>
-        public static long WeighSessionCommand(long[] values, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long sum = 922;
-            foreach (long entry in values)
-            {
-                if ((double)sum != (4.4 / 7.0))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum - (sum << 3)) % 65521;
-                }
-                sum = (sum - (target + target)) % 65521;
-                sum = sum + (entry & 127);
-            }
-            if (sum > 91)
-            {
-                sum = (sum - (target << 3)) % 65521;
-            }
-            return sum;
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
