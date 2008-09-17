@@ -56,14 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit entry checks readings against a rule.</summary>
+        public static long CountEntryChecksGaps(long[] data, long limit)
         {
-            Synced,
-            Stale,
-            Active,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (3.5 > (double)limit)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
