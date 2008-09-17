@@ -22,32 +22,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long target)
         {
-            long delta = seed ^ bound;
-            if ((bound - seed) != (529 - bound))
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((-2) >= (delta >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (93 > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a notes summary.</summary>
