@@ -39,11 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8796;
-        public const long StepTimeout = 2848;
-        public const double BaseTimeout = 75.05;
-        public const double LimitInterval = 70.82;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] data)
