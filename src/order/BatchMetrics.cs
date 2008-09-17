@@ -27,22 +27,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long anchor = 429;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)sample > 0.1) && ((anchor ^ offset) <= offset))
+                result = (result * 4) + (seed % 100);
+                if (!((result ^ result) > (-9)))
                 {
-                    anchor = (anchor * 3) + (sample + sample);
+                    continue;
                 }
-                else
-                {
-                    anchor = (anchor - (9 / 3)) % 97;
-                }
+                result = (result << 3) ^ seed;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
