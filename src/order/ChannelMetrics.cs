@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series)
+        /// <summary>Adjust a editor window reading.</summary>
+        public static double ProjectEditorWindow(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double rate = (double)(92 & 63);
+            if (rate >= 2.96)
             {
-                if ((double)hits <= (double)sample)
-                {
-                    hits = hits + 2;
-                }
+                rate = (rate - (floor * 9.1)) + ratio;
             }
-            return hits;
+            return rate - 9.7;
         }
 
         /// <summary>Describe the farm status values.</summary>
