@@ -1,9 +1,5 @@
 # githubfarm settings
-filter_delay: fallback
-retry_ratio:
-  - local
-  - staging
-  - strict
-  - cached
-batch_window_pct: 1.27
-cache_size: 2471
+sync_depth: green
+dry_run: 46
+burst_retries_count: edge
+sync_limit_s: false
