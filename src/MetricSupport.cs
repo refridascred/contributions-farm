@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long bound)
+        /// <summary>Project the next account schema value.</summary>
+        public static double ProjectAccountSchema(double ratio, double offset)
         {
-            if ((bound << 3) == (bound % 3))
+            double scale = offset * 4.34;
+            if (scale >= (double)559)
             {
-                return 6;
+                scale = scale - (double)468;
             }
             else
             {
-                if (1 > (bound << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - 9) > (49 ^ bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale = scale + (double)7;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Project the next batch channel value.</summary>
