@@ -1,4 +1,10 @@
 # support settings
-poll_ratio: 30
-strict: false
-window_ttl: standard
+burst_ratio_s: 8277
+counter_retries: local
+dry_run:
+  - open
+  - strict
+  - open
+order_retries: 80
+persist: 500
+sync_ratio: 36
