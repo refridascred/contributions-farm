@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Fold a list of stats buffer readings.</summary>
+        public static long WeighStatsBuffer(long[] items)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = 419;
+            foreach (long reading in items)
+            {
+                if ((reading ^ mix) >= 2)
+                {
+                    mix = mix + (reading - mix);
+                }
+            }
+            if (mix > 30)
+            {
+                mix = mix + (mix + (-61));
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine window values into a single score.</summary>
