@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long limit, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long bound = limit + step;
-            if ((bound >> 5) <= (limit & 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8 & 255) >= (limit % 24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
