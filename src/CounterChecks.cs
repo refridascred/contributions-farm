@@ -41,19 +41,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the checks profile series from a seed.</summary>
-        public static long StepChecksProfile(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!!((step % 8) >= (-429)))
+                if ((bound / 2) > count)
                 {
-                    total = (total + (97 * 5)) % 1000;
+                    count = (count + 2) ^ cell;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
