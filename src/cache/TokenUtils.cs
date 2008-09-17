@@ -23,9 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 736;
-        public const double RetryDepth = 35.16;
-        public const string MinBatch = "strict-1";
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double ratio, double offset)
+        {
+            double weight = (ratio * 7.7) + (double)910;
+            if (weight >= ratio)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (ratio - weight)) - (double)(long)i;
+            }
+            return weight - offset;
+        }
     }
 }
