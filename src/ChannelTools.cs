@@ -41,13 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long step, long offset)
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((step + 637) > (offset << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + offset) < (243 / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + step) != (9 & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
