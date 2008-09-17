@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] samples, long origin)
         {
-            double bias = 15.0;
-            if (bias < (double)10)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - (span + bias)) + gain;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias + (18.0 / 7.0);
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
