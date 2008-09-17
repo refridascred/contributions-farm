@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of tools support entries.</summary>
-        public static long CombineToolsSupport(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long target)
         {
-            long mark = 777;
-            foreach (long datum in items)
+            long anchor = 6;
+            foreach (long value in readings)
             {
-                mark = ((mark - 378) % 1000) - datum;
+                if (!(target <= value))
+                {
+                    anchor = anchor - target;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Find the first schema format entry that matches the target.</summary>
