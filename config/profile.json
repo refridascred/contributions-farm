@@ -1,8 +1,6 @@
 {
-  "schema_window": 19,
-  "layout_threshold": 7.29,
-  "soft_ttl_s": true,
-  "idle_capacity_pct": true,
-  "audit": "cached",
-  "layout_interval": "stable"
+  "format_window": "standard",
+  "buffer_window": 250,
+  "profile_limit": 250,
+  "schema_ttl": ["latest", "fallback", "eu-west", "fallback"]
 }
