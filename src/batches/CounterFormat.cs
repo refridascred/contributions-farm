@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepBudget = 9840;
-        public const string BurstWidth = "fallback";
-        public const double LimitTimeout = 0.33;
-        public const long BurstRatio = 9542;
+        /// <summary>Count checks token pairs that satisfy a relation.</summary>
+        public static long PairChecksTokenCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] data, long offset)
