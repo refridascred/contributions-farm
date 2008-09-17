@@ -1,17 +1,8 @@
 {
-  "sync_capacity": true,
-  "window_retries": {
-    "stats_depth": 2.51,
-    "support_window": "edge",
-    "cache_ttl_ms": "primary",
-    "max_window_pct": {
-      "base_limit": "stable",
-      "sync_delay": "stable",
-      "record_timeout": 100,
-      "default_threshold_ms": 2688
-    },
-    "contributi_ttl": "latest"
-  },
-  "retry_ratio_ms": 1024,
-  "support_limit": "stable"
+  "already_retries": [32, 213, 388, 70],
+  "dry_run": 100,
+  "retry_ratio": 3.49,
+  "report_ttl": 1024,
+  "idle_limit": 100,
+  "metric_limit": true
 }
