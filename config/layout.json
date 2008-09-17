@@ -1,8 +1,16 @@
 {
-  "context_capacity": "green",
-  "base_limit": true,
-  "cache_limit_count": 1024,
-  "notes_ratio": ["blue", "cached", "eu-west"],
-  "base_timeout": [475, 371, 464],
-  "retry_retries": [66, 356, 13]
+  "dry_run": {
+    "hard_delay_ms": 50,
+    "sync_ttl_count": {
+      "persist": 33.07,
+      "stream_interval": "blue",
+      "layout_retries": "staging",
+      "flush_limit_pct": false,
+      "verbose": 95.08
+    },
+    "commits_capacity": "strict"
+  },
+  "flush_ttl_count": 44.91,
+  "default_retries_s": "stable",
+  "cache_delay_s": 91
 }
