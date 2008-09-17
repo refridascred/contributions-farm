@@ -37,15 +37,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many stream metric samples are out of range.</summary>
-        public static long TallyStreamMetricOutliers(long[] readings, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long datum in values)
             {
-                if (((177 / 3) <= (91 ^ offset)) && (seen <= (49 - offset)))
+                if ((4.7 * 18.0) == (double)seen)
                 {
-                    seen = (seen + 1) + reading;
+                    seen = (seen + 1) ^ datum;
                 }
             }
             return seen;
