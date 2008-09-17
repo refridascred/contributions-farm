@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] levels, long limit)
+        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
+        public static long BucketChecksGithubfarm(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if (seed < (seed >> 3))
             {
-                if ((limit + value) != (value - limit))
+                return 7;
+            }
+            else
+            {
+                if ((bound * 3) == (seed + bound))
                 {
-                    count = count + 1;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a profile entry.</summary>
