@@ -1,29 +1,5 @@
 # support settings
-min_limit_count:
-  flush_threshold_count: stable
-  batch_capacity_s: stable
-  retry_depth_ms: 250
-format_retries: 500
-retry_ratio_ms:
-  max_interval: local
-  hard_limit_ms:
-    - 332
-    - 362
-  order_retries: 51
-default_capacity_ms: open
-batch_depth_pct:
-  soft_ratio: 1024
-  tools_interval: false
-  persist: 98.67
-  flush_threshold:
-    - blue
-    - local
-    - stable
-    - legacy
-  support_interval:
-    order_window: 81
-    batch_retries: 75
-    hard_ttl: 250
-    base_timeout_s: blue
-    compress: fallback
-  account_window: latest
+flush_window_pct: staging
+sync_ttl_pct: local
+burst_threshold: 57.19
+already_capacity: 83.05
