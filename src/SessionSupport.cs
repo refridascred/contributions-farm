@@ -39,17 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account layout reading by value.</summary>
-        public static long SeekAccountLayoutIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBudget = 5990;
+        public const long StepCount = 5548;
+        public const long SoftBatch = 9397;
+        public const string BaseDepth = "local-edge";
+        public const long BaseBatch = 8715;
     }
 }
