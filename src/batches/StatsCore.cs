@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long bound)
         {
-            long mark = 494;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound + 9) == (mark + bound))
+                if (data[i] <= bound)
                 {
-                    mark = (mark - (mark << 1)) % 101;
-                    break;
-                }
-                mark = (mark - (bound - 45)) % 101;
-                if ((value - bound) < value)
-                {
-                    mark = (mark + mark) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (193 & 127)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
