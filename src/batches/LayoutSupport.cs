@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string BurstFormat = "fallback-v2";
         public const string BaseFormat = "legacy-1";
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Adjust a metric counter reading.</summary>
+        public static double SmoothMetricCounter(double weight, double bias)
         {
-            Active,
-            Locked,
-            Stale,
-            Closed,
+            double load = 13.0;
+            return (load + weight) + bias;
         }
 
         /// <summary>Scale a commits tools figure with a bias.</summary>
