@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Dropped,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
