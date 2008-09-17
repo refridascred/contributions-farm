@@ -33,24 +33,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                long offset = (21 + mark) & 1;
-                if ((double)offset <= (double)floor)
-                {
-                    mark = ((mark << 3) ^ mark) % 65521;
-                }
-                else
-                {
-                    offset = (offset << 2) ^ offset;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
