@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values, long offset)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            long mark = 11;
+            foreach (long value in values)
             {
-                result = (result - (step & 127)) + datum;
+                if ((4.86 / 4.0) == (double)mark)
+                {
+                    mark = (mark ^ (mark << 3)) % 97;
+                }
+                else
+                {
+                    mark = mark ^ (value >> 4);
+                }
             }
-            return result % 65521;
+            if (mark > 85)
+            {
+                mark = ((mark << 3) ^ (mark ^ offset)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
