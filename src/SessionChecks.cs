@@ -40,22 +40,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long offset)
         {
-            long score = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value >= (value - value))
+                if (!((offset + sample) > (sample + 0)))
                 {
-                    score = score + (value << 1);
+                    tally = tally + 2;
                 }
             }
-            if (score > 22)
-            {
-                score = score - (score + score);
-            }
-            return score;
+            return tally;
         }
     }
 }
