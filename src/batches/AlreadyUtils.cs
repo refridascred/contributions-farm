@@ -55,18 +55,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] samples, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long offset = limit + limit2;
+            if ((9.0 / 5.0) > (double)limit)
             {
-                if ((floor * 3) >= (item / 6))
+                return 2;
+            }
+            else
+            {
+                if ((limit <= offset) && ((73 * 5) < (limit2 >> 1)))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)limit >= (11.0 / 3.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit >= offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the stream mode values.</summary>
