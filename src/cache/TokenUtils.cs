@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] series, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long limit)
         {
             bool ok = true;
-            foreach (long item in series)
+            foreach (long value in samples)
             {
-                if (item <= seed)
+                if (value < limit)
                 {
                     ok = false;
                     break;
