@@ -13,11 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Closed,
+            Synced,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
