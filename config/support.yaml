@@ -1,4 +1,30 @@
 # support settings
-default_interval_ms: false
-max_ttl: 23
-farm_limit: false
+burst_ttl_count: 20
+schema_window: 13
+base_interval_s: true
+commits_retries: 1753
+persist: 76.86
+cache_capacity_ms:
+  min_interval_s:
+    max_ratio_count: 9913
+    flush_retries_count: 30
+    burst_window_pct: 35.5
+    metrics_timeout: staging
+    verbose: 48.35
+  cache_capacity: 68.47
+  cache_ratio_count: 60
+  entry_limit:
+    - open
+    - stable
+    - standard
+    - strict
+  burst_delay:
+    audit: 58.18
+    editor_timeout: 46.31
+    layout_interval:
+      - 279
+      - 56
+      - 350
+    burst_capacity_ms: blue
+    poll_ratio_s: true
+    cache_window: local
