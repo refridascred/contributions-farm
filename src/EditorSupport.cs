@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (seen >= (552 >> 1))
+                if (sample > target)
                 {
-                    seen = (seen + 3) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
