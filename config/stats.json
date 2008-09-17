@@ -1,8 +1,9 @@
 {
-  "min_delay_pct": false,
-  "cache_timeout": "eu-west",
-  "default_timeout_s": 38.5,
-  "default_timeout": true,
-  "persist": false,
-  "burst_timeout": 82.21
+  "burst_ratio_ms": {
+    "compress": "strict",
+    "dry_run": "stable",
+    "already_limit": "blue"
+  },
+  "compress": "staging",
+  "hard_timeout_pct": 80
 }
