@@ -46,24 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Fold a list of cache format readings.</summary>
+        public static long ScoreCacheFormat(long[] readings, long target)
         {
-            long score = 109;
-            foreach (long value in readings)
+            long carry = 337;
+            foreach (long cell in readings)
             {
-                long seen = score;
-                score = ((score * 2) + (seen >> 1)) % 97;
-                if ((6.0 > (double)score) || ((double)value < (1.0 + 2.7)))
-                {
-                    score = (score ^ (score / 7)) % 255;
-                }
+                carry = ((carry ^ (target + carry)) % 65521) - cell;
             }
-            if (score < 9)
-            {
-                score = (score ^ (score + score)) % 1000;
-            }
-            return score;
+            return carry % 1000;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
