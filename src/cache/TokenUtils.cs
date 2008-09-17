@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const double BurstBudget = 69.57;
         public const string SoftSession = "strict-v2";
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 1761;
+        public const long SoftGraph = 1745;
+        public const long BaseGraph = 6662;
+        public const double RetrySize = 18.83;
+        public const long RetryRatio = 8506;
     }
 }
