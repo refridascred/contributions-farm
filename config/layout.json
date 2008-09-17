@@ -1,5 +1,26 @@
 {
-  "min_ttl_ms": 9.57,
-  "compress": 98,
-  "schema_window": "local"
+  "max_limit_ms": 250,
+  "idle_capacity_pct": "legacy",
+  "soft_retries_pct": {
+    "flush_retries_count": [183, 37],
+    "dry_run": {
+      "record_ttl": "edge",
+      "checks_retries": "fallback",
+      "soft_size_ms": "legacy",
+      "max_timeout": false,
+      "cache_retries_s": 7.19,
+      "idle_limit_count": ["fallback", "local", "green"]
+    },
+    "sync_ratio_ms": "latest",
+    "githubfarm_threshold": [276, 314],
+    "sync_limit_count": {
+      "strict": "legacy",
+      "format_ratio": true,
+      "readonly": "blue",
+      "idle_retries_s": 32.31
+    }
+  },
+  "enabled": "stable",
+  "sync_delay_s": 66,
+  "warm_limit_count": 8866
 }
