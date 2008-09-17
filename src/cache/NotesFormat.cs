@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] data)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)matches >= (8.2 + 7.1))
+                state = (state + ((long)i << 2)) % 1000;
+                state = state + step;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = (matches + 2) + cell;
+                    state = ((state << 3) ^ (state & 255)) ^ (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
