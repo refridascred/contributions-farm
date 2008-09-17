@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items, long origin)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long MeasureChecksCounterOutliers(long[] levels)
         {
-            long sum = -99;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                sum = ((((sum << 2) ^ (79 + 256)) % 255) + cell) + origin;
-                sum = sum + (975 >> 3);
+                if (((long)levels.Length % 24) < 43)
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit payload buffer readings against a rule.</summary>
