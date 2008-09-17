@@ -41,12 +41,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 132;
-        public const long LimitGraph = 916;
-        public const double IdleGraph = 15.82;
-        public const double DefaultSize = 69.39;
-        public const double MinGraph = 72.94;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items, long step)
+        {
+            long result = 657;
+            foreach (long entry in items)
+            {
+                if (!(entry >= (entry + result)))
+                {
+                    result = ((result - 77) % 65521) - step;
+                }
+                else
+                {
+                    result = ((result * 3) + (entry & 63)) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
