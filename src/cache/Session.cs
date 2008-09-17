@@ -34,17 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream batch entry that matches the target.</summary>
-        public static long FindStreamBatchIndex(long[] items, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count route channel pairs that satisfy a relation.</summary>
