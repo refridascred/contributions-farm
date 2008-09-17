@@ -45,15 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] items)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches > (-8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + reading;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
