@@ -33,17 +33,12 @@ namespace Common.Utilities
             return weight + (6.72 / 6.0);
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] readings, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
