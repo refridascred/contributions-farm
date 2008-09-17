@@ -18,12 +18,39 @@ namespace Common.Utilities
         public const long CacheFactor = 9424;
         public const long BatchLayout = 337;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a counter format pair into a bucket.</summary>
+        public static long RankCounterFormat(long floor, long bound)
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long prev = floor + bound;
+            if (!((floor << 1) >= (17 - bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor > (615 >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ bound) >= (floor & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((prev & 255) != (prev % 24)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
