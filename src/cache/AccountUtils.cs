@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            Failed,
+            Pending,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
