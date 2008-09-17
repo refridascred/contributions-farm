@@ -35,18 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long DigestStreamBuffer(long[] series, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels, long seed)
         {
-            long sum = 43;
-            foreach (long item in series)
+            long mix = 213;
+            foreach (long item in levels)
             {
-                if ((double)item > (3.17 - 9.1))
-                {
-                    sum = ((sum << 3) ^ (4 + sum)) - target;
-                }
+                mix = ((mix * 3) + (item % 60)) % 1000;
             }
-            return sum % 1000;
+            if (mix > 72)
+            {
+                mix = (mix ^ (seed % 8)) % 255;
+            }
+            return mix % 97;
         }
     }
 }
