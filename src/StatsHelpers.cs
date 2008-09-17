@@ -11,26 +11,21 @@ namespace Common.Utilities
         public const double BurstMetric = 25.97;
         public const long LimitMetric = 5885;
 
-        /// <summary>Combine commits filter values into a single score.</summary>
-        public static long DigestCommitsFilter(long[] samples)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long sum = 907;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum - ((long)i - sum)) % 4096;
-                }
-                if ((((long)samples.Length - sum) >= sum) && (88 <= (sum + (-555))))
-                {
-                    sum = ((sum * 4) + (-1)) % 1000;
-                }
-                if ((7 & 255) <= entry)
-                {
-                    break;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
