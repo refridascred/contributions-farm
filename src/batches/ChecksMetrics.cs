@@ -74,19 +74,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] values, long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
