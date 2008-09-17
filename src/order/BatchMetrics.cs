@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const long LimitSpan = 6862;
         public const string BurstEditor = "cached-1";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] samples, long limit)
         {
-            Stale,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((16.0 * 5.2) != (double)seen))
+                {
+                    seen = ((seen + 1) ^ value) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel level values.</summary>
