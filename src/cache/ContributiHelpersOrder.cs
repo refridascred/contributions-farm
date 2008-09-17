@@ -17,11 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 2.1;
-        public const double BaseContributi = 41.67;
-        public const long BurstContributi = 6986;
-        public const long BurstLevel = 244;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count > (7.76 - 4.2))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long DigestBatches(long[] samples, long bound)
