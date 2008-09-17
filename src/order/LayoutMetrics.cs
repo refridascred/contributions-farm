@@ -36,9 +36,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitFactor = 688;
-        public const double MinInterval = 81.21;
-        public const double SoftQueue = 2.86;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit << 3) >= (limit & 63))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
