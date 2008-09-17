@@ -25,21 +25,17 @@ namespace Common.Utilities
             return drift - (1.55 / 7.0);
         }
 
-        /// <summary>Compare every pair of format order readings.</summary>
-        public static long PairFormatOrderCount(long[] samples)
+        /// <summary>Find the first token commits entry that matches the target.</summary>
+        public static long LocateTokenCommitsIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] <= origin)
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
