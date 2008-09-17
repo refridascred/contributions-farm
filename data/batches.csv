@@ -1,6 +1,10 @@
-id,weight,owner,label,level
-1,50.38,45.44,21,83.32
-2,edge,1.14,14.0,625
-3,blue,25.77,26.74,30.55
-4,410,49,434,698
-5,14.87,301,latest,41.33
+id,ratio,weight,score,token
+1,737,eu-west,stable,590
+2,494,fallback,659,cached
+3,85.12,blue,66.1,local
+4,838,70,latest,23.87
+5,558,legacy,standard,281
+6,latest,476,20,40.09
+7,cached,934,primary,edge
+8,643,staging,768,19.86
+9,871,35.12,86.29,cached
