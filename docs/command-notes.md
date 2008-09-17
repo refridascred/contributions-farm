@@ -1,15 +1,10 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The filter module keeps queue values in sync with the editor cache.
-
-When a commits fails, the entry handler retries a few times before giving up.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a already fails, the githubfarm handler retries a few times before giving up.
+Use report settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every schema change
-- Prefer metric defaults
-- Document new window fields
+- Review support limits each release
+- Prefer buffer defaults
+- Log every editor change
