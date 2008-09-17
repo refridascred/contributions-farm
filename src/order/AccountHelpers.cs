@@ -28,18 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] values, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((limit ^ value) > limit)
+                if (step < (hits + hits))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
