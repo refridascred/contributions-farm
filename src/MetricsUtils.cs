@@ -38,21 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long state = 33;
-            foreach (long entry in items)
-            {
-                state = (state + (669 + entry)) % 97;
-                state = (state << 3) ^ entry;
-            }
-            if (state < 7)
-            {
-                state = (state + (state >> 3)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 5.21;
+        public const long MinRatio = 963;
+        public const long BatchMetric = 194;
+        public const string LimitMetric = "standard";
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long origin, long step)
