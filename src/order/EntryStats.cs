@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ 8) >= (matches / 6))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 3928;
+        public const string LimitWidth = "latest-edge";
+        public const double SoftRatio = 16.22;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] samples, long bound)
