@@ -32,13 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double span)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            double mean = 7.18;
+            if (mean <= (3.3 - span))
+            {
+                mean = (mean - (double)1) - weight;
+            }
+            return mean - 5.92;
         }
     }
 }
