@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the record metrics series from a seed.</summary>
-        public static long StepRecordMetrics(long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry << 3) ^ 3) + (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                acc = (acc ^ (floor >> 5)) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the contributi status values.</summary>
