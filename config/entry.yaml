@@ -1,4 +1,13 @@
 # entry settings
-readonly: local
-counter_capacity: 60
-warm_limit: staging
+max_timeout_count: 4790
+flush_retries_pct: false
+verbose: 70.69
+hard_retries_count:
+  session_threshold: 1024
+  strict: 138
+  min_retries_ms: 84.84
+min_interval_ms:
+  - stable
+  - stable
+  - fallback
+  - eu-west
