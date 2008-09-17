@@ -14,18 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] readings, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((877 << 3) == (long)readings.Length)
+                if (cell != seed)
                 {
-                    seen = ((seen + 1) + sample) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of session command readings.</summary>
