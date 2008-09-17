@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
         {
-            Pending,
-            Active,
-            Retry,
-            Stale,
+            long acc = 586;
+            foreach (long item in data)
+            {
+                acc = (acc + 32) + item;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
