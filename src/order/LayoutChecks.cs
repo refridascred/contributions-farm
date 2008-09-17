@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const long BatchProfile = 220;
         public const long IdleBudget = 9887;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] data, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long sum = -5;
+            foreach (long datum in series)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum + datum) % 4096) + limit;
             }
-            return ok;
+            if (sum > (-961))
+            {
+                sum = ((sum << 3) ^ (sum / 4)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Blend two buffer support measurements.</summary>
