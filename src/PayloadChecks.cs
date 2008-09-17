@@ -83,18 +83,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter payload readings against a rule.</summary>
-        public static long CountFilterPayloadGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + tally) > (tally * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 3929;
+        public const long CacheScore = 9994;
+        public const long HardToken = 3161;
+        public const long MinRatio = 4682;
+        public const long DefaultToken = 2292;
     }
 }
