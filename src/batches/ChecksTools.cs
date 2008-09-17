@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many channel token samples are out of range.</summary>
-        public static long MeasureChannelTokenOutliers(long[] levels)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally % 10) < item)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double ratio = (span - rate) + 0.5;
+            return ratio - ratio;
         }
 
         /// <summary>Audit metric queue readings against a rule.</summary>
