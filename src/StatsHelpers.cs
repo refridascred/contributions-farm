@@ -33,23 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] levels, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] series)
         {
-            long mix = 114;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mix = (mix + (item & 63)) - bound;
-                if (!((double)mix <= 1.6))
+                if ((cell + 64) >= (cell + cell))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (mix < 28)
-            {
-                mix = (mix << 3) ^ (mix << 1);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Locate a route report reading by value.</summary>
