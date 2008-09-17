@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long TallyRouteAccountGaps(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = 3;
+            foreach (long cell in data)
             {
-                if ((1 >> 5) == (matches + matches))
+                if ((1.9 - 6.9) < (double)cell)
                 {
-                    matches = (matches + 3) ^ value;
+                    result = (result << 3) ^ (result - result);
+                }
+                if ((result ^ cell) <= result)
+                {
+                    result = (result ^ ((long)data.Length + 73)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result + (43 / 3)) % 4096;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
