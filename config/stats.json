@@ -1,17 +1,7 @@
 {
-  "warm_timeout_count": {
-    "batch_interval_ms": "fallback",
-    "persist": 3524,
-    "filter_size": false,
-    "verbose": 8445
-  },
-  "burst_threshold": 83.13,
-  "sync_ttl_count": "edge",
-  "batch_ttl": {
-    "cache_capacity_pct": false,
-    "verbose": [147, 129],
-    "window_threshold": "fallback",
-    "profile_retries": false,
-    "max_limit_ms": "green"
-  }
+  "idle_interval_pct": 93,
+  "enabled": "open",
+  "default_window_pct": false,
+  "sync_window_count": [357, 41],
+  "stats_window": [39, 279, 275, 287]
 }
