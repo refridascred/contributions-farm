@@ -64,13 +64,11 @@ namespace Common.Utilities
             return ratio - (bias * 9.49);
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
