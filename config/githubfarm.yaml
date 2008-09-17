@@ -1,16 +1,10 @@
 # githubfarm settings
-retry_delay_count: 3.64
-schema_interval:
-  compress: false
-  audit: true
-  max_capacity: true
-  notes_depth: true
-  hard_timeout:
-    - latest
-    - blue
-batches_delay: 100
-min_capacity_pct: false
-context_depth:
-  - local
-  - local
-burst_threshold: false
+hard_depth_pct: edge
+retry_window: legacy
+record_delay:
+  - staging
+  - open
+profile_delay:
+  - 170
+  - 8
+  - 447
