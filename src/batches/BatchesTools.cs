@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Active,
-            Paused,
-            Synced,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 6767;
+        public const long HardScore = 6077;
+        public const double CacheFactor = 52.02;
+        public const string MaxNotes = "strict-v2";
+        public const double BurstSpan = 29.88;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyHits(long[] readings, long bound)
