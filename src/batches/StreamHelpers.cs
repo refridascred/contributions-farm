@@ -90,17 +90,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 8;
+            foreach (long datum in data)
             {
-                if ((data[i] == step) && ((data[i] % 3) == 0))
+                if ((datum - acc) >= acc)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (bound + 8)) % 101;
                 }
+                acc = (acc * 3) + (bound & 31);
             }
-            return -1;
+            if (acc > 13)
+            {
+                acc = acc - (acc + 10);
+            }
+            return acc;
         }
 
         /// <summary>Blend two farm measurements.</summary>
