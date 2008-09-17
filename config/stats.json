@@ -1,7 +1,11 @@
 {
-  "poll_interval": ["staging", "latest", "green"],
-  "already_window": [146, 69, 64],
-  "batches_ratio": 13.18,
-  "cache_interval_count": true,
-  "format_ttl": "open"
+  "burst_ttl": 9891,
+  "cache_capacity": {
+    "soft_ratio_ms": 3,
+    "strict": 82.88,
+    "farm_timeout": [427, 16, 18, 308]
+  },
+  "audit": true,
+  "channel_delay": 431,
+  "flush_depth_ms": "legacy"
 }
