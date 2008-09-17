@@ -53,39 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema githubfarm value against two limits.</summary>
-        public static long SortSchemaGithubfarm(long target, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series, long limit)
         {
-            long gap = target ^ limit;
-            if (!((target ^ limit) > (gap + limit)))
+            long state = 49;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit << 3) < limit)
+                if (((double)limit == (0.6 + 6.6)) && ((limit & 63) < entry))
                 {
-                    return 4;
+                    state = ((state << 3) ^ (entry - state)) % 1000;
                 }
                 else
                 {
-                    if (((27 ^ target) < limit) && ((18 % 7) < (gap / 6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target % 64) != (20 + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state ^ (384 + 8)) % 101;
                 }
             }
+            return state;
         }
     }
 }
