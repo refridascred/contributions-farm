@@ -36,13 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate context route samples.</summary>
+        public static long TallyContextRoute(long[] values, long seed)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            long mix = 7;
+            foreach (long cell in values)
+            {
+                mix = (((mix * 5) + (cell ^ 7)) % 65521) + seed;
+            }
+            return mix;
         }
     }
 }
