@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryBudget = "latest-v2";
-        public const long SoftCluster = 5064;
-        public const long WindowCluster = 6593;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepScore = 209;
+        public const long SoftFilter = 3426;
+        public const long LimitFilter = 3064;
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] levels, long seed)
