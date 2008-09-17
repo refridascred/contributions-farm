@@ -44,12 +44,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "strict-v2";
-        public const long MaxScore = 885;
-        public const long HardRatio = 994;
-        public const long LimitCache = 4591;
-        public const string DefaultWidth = "stable-1";
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public double Level { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Iterate the checks profile series from a seed.</summary>
         public static long StepChecksProfile(long step)
