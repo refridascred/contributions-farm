@@ -30,19 +30,11 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading ^ reading) < (93 + 0)) || ((count / 8) != (limit >> 5))) && ((double)limit > (16.0 + 8.39)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 175;
+        public const double HardSpan = 13.08;
+        public const string BatchFormat = "standard";
+        public const string MaxFormat = "open-edge";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
