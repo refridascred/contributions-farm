@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const double BurstBuffer = 68.78;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seen != (8.8 / 2.0))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
