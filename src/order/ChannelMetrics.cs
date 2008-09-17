@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mean - (mean - floor);
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowInterval = 9615;
+        public const long BaseBuffer = 5240;
+        public const long WindowScore = 9369;
+        public const long WindowTimeout = 8003;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double AdjustChecks(double ratio, double bias)
