@@ -1,7 +1,8 @@
 {
-  "dry_run": 78,
-  "warm_depth_s": 5789,
-  "account_delay": 35.79,
-  "format_window": 76.15,
-  "strict": ["cached", "primary", "blue"]
+  "compress": 24.86,
+  "default_depth_ms": "staging",
+  "readonly": 77.97,
+  "support_capacity": true,
+  "farm_depth": 100,
+  "queue_capacity": "latest"
 }
