@@ -38,19 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (datum <= seed)
+                if (reading > floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
