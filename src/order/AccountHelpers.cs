@@ -73,28 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long score = 274;
-            foreach (long datum in data)
-            {
-                double load = (double)(datum - 24);
-                if ((load + load) > load)
-                {
-                    load = load - load;
-                    load = load - load;
-                }
-                if ((double)score != (9.0 / 2.0))
-                {
-                    score = (score ^ (27 - score)) % 255;
-                }
-            }
-            if (score < 62)
-            {
-                score = score + 770;
-            }
-            return score;
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the queue status values.</summary>
