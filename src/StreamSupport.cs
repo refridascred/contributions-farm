@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Combine order channel values into a single score.</summary>
+        public static long TotalOrderChannel(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 419;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < (2 << 2))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total * 4) + (item & 31);
+                }
+                if ((double)total != (3.0 * 6.76))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 0)
+            {
+                total = (total ^ (limit * 2)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of contributi counter entries.</summary>
