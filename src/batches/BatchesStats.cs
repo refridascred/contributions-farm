@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 7833;
-        public const string IdleFactor = "local-1";
-        public const string WindowSize = "cached-edge";
-        public const long LimitTimeout = 6849;
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double floor)
+        {
+            double ratio2 = ratio;
+            if (ratio2 >= (floor * 8.0))
+            {
+                ratio2 = ratio2 - (14.0 / 4.0);
+            }
+            else
+            {
+                ratio2 = ratio2 - (ratio2 - 1.35);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - (double)8;
+        }
 
         /// <summary>Compare every pair of buffer stats readings.</summary>
         public static long OverlapBufferStatsCount(long[] items)
