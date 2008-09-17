@@ -12,15 +12,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double bias, double bias2)
+        /// <summary>Digest a series of stream session entries.</summary>
+        public static long CombineStreamSession(long[] levels)
         {
-            double mean = 15.0;
-            if (mean >= (bias * 0.42))
+            long mark = 0;
+            foreach (long sample in levels)
             {
-                mean = mean + (bias + bias2);
+                if (mark > (sample / 4))
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (sample + 90)) % 1000;
+                }
             }
-            return mean + 1.1;
+            return mark;
         }
 
         /// <summary>Describe the profile level values.</summary>
