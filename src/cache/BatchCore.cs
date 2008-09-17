@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Grade a batch graph value against two limits.</summary>
+        public static long SortBatchGraph(long step, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long edge = step + bound;
+            if (((double)edge < (double)474) || ((edge & 1) < step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((15 - step) >= edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next support value.</summary>
