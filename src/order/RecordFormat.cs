@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long step = target - floor;
-            if ((double)step >= 4.8)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 5) == (step << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - 13) < (1 + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (8.7 < (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Draft,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
