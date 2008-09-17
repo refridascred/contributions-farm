@@ -1,5 +1,14 @@
 {
-  "base_interval": "latest",
-  "default_retries_s": [478, 376, 307],
-  "audit": "green"
+  "flush_retries_s": {
+    "default_threshold_count": "staging",
+    "min_interval_count": 84,
+    "burst_size": "green",
+    "payload_threshold": 5507,
+    "record_threshold": 66.34,
+    "sync_size": 4660
+  },
+  "batch_interval": "latest",
+  "format_ratio": true,
+  "sync_ratio_s": "legacy",
+  "audit": 39
 }
