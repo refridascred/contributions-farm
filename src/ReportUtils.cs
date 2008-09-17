@@ -19,26 +19,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mark = 61;
-            foreach (long item in levels)
-            {
-                if (!((item - 7) <= (28 & 3)))
-                {
-                    mark = mark ^ (mark ^ mark);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (mark - 292)) % 4096;
-                }
-            }
-            if (mark < 31)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
