@@ -1,17 +1,7 @@
 # githubfarm settings
-hard_timeout_pct: primary
-compress: 85.09
-cache_capacity: primary
-default_window:
-  burst_threshold_s: standard
-  warm_depth: standard
-  cluster_timeout: green
-  compress: 3895
-  contributi_capacity: 66.88
-  min_window: blue
-min_threshold:
-  batch_interval_ms: true
-  route_capacity: 60
-  soft_delay_ms: 500
-  verbose: false
-notes_ratio: 58
+flush_ttl_pct: strict
+dry_run: 49
+context_retries:
+  compress: 60
+  payload_timeout: 100
+  filter_timeout: local
