@@ -1,7 +1,7 @@
 {
-  "cache_window_pct": 5569,
-  "sync_size_pct": 24.66,
-  "warm_window": false,
-  "min_retries_count": "blue",
-  "soft_threshold_s": 9664
+  "batch_limit_s": false,
+  "flush_threshold_count": ["blue", "stable"],
+  "batch_retries_count": true,
+  "retry_size_count": true,
+  "min_ttl_count": false
 }
