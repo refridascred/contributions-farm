@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor << 3) ^ floor) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a entry stats.</summary>
