@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] readings)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)hits > (4.46 - 4.4))
-                {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
