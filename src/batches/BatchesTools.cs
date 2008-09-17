@@ -33,22 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] levels, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count & 255) != (sample * 5))
-                {
-                    count = (count + 3) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
