@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples, long seed)
+        /// <summary>Validate cluster buffer readings against a bound.</summary>
+        public static bool VerifyClusterBufferBounds(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!((count + seed) == (datum << 1)))
+                if (datum >= step)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
