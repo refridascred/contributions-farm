@@ -85,16 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] items, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] data, long step)
         {
-            long result = 848;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result - (cell + cell)) % 1000) - seed;
-                result = (result << 2) ^ (result >> 1);
+                if ((data[i] == step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Blend two farm measurements.</summary>
