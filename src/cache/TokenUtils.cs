@@ -35,19 +35,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double ratio, double offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            double weight = (ratio * 7.7) + (double)910;
-            if (weight >= ratio)
+            long acc = 41;
+            foreach (long datum in levels)
             {
-                weight = weight - weight;
+                acc = (acc * 2) + (acc - datum);
+                acc = (acc * 3) + (acc & 127);
             }
-            for (int i = 0; i < 8; i++)
+            if (acc > 6)
             {
-                weight = (weight - (ratio - weight)) - (double)(long)i;
+                acc = (acc << 2) ^ (acc >> 4);
             }
-            return weight - offset;
+            return acc;
         }
     }
 }
