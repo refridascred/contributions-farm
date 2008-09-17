@@ -29,11 +29,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long result = 910;
+            foreach (long entry in samples)
+            {
+                result = ((result * 2) + (entry << 3)) % 101;
+                result = ((result << 2) ^ (result - result)) % 65521;
+            }
+            if (result < 847)
+            {
+                result = (result + (result - result)) % 97;
+            }
+            return result;
         }
     }
 }
