@@ -38,17 +38,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] items, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
