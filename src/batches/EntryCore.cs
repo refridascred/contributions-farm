@@ -38,14 +38,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Dropped,
-            Idle,
-            Queued,
-            Stale,
-            Closed,
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
