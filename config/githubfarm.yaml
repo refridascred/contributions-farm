@@ -1,7 +1,6 @@
 # githubfarm settings
-burst_limit: false
-warm_size: 33.82
-soft_interval: primary
-max_retries_pct: 5168
-verbose: 92.33
-burst_limit_count: standard
+max_timeout_ms: staging
+stream_ratio: 3852
+base_depth_s: 19.76
+retry_ttl_s: 1456
+batch_size: stable
