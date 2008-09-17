@@ -27,16 +27,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long carry = 422;
+            foreach (long value in series)
             {
-                total = (total << 3) ^ (seed ^ seed);
-                total = ((total * 3) + (long)i) % 65521;
+                carry = (((carry << 2) ^ (value - 64)) % 65521) - bound;
+                carry = (carry + (carry - carry)) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
