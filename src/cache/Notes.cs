@@ -52,19 +52,13 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool ValidateSupportReportBounds(long[] samples, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
