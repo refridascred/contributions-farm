@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
-        public static long BucketChecksGithubfarm(long seed, long bound)
+        /// <summary>Count the tools notes entries that pass the check.</summary>
+        public static long TallyToolsNotesMatches(long[] levels, long limit)
         {
-            if (seed < (seed >> 3))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 3) == (seed + bound))
+                if (!(((double)count < (double)limit) && (12.0 < (double)limit)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
