@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const double LimitInterval = 7.98;
         public const long IdleDepth = 6238;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCount = 8031;
+        public const string DefaultCount = "legacy-edge";
+        public const long MinCounter = 3276;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
