@@ -46,22 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
+        /// <summary>Accumulate cache queue samples.</summary>
+        public static long WeighCacheQueue(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long acc = 3;
+            foreach (long cell in values)
             {
-                if ((double)tally > 4.69)
+                if ((8.5 / 9.0) != (double)cell)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = acc ^ (cell + cell);
                 }
             }
-            return tally;
+            if (acc > 54)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Rank schema metrics input into a small class.</summary>
