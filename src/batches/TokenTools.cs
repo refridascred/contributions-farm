@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double ratio, double bias)
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long DigestStreamBuffer(long[] series, long target)
         {
-            double gain = ratio + bias;
-            for (int i = 0; i < 9; i++)
+            long sum = 43;
+            foreach (long item in series)
             {
-                gain = (gain - (4.0 + bias)) + (double)(long)i;
+                if ((double)item > (3.17 - 9.1))
+                {
+                    sum = ((sum << 3) ^ (4 + sum)) - target;
+                }
             }
-            return gain - ratio;
+            return sum % 1000;
         }
     }
 }
