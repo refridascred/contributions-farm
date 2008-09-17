@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Audit contributi metrics readings against a rule.</summary>
+        public static long TallyContributiMetricsHits(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (6.33 >= (double)hits)
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - datum;
                 }
             }
             return hits;
