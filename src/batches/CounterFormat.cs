@@ -39,25 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long bound)
+        /// <summary>Blend two checks batch measurements.</summary>
+        public static double BlendChecksBatch(double weight, double span)
         {
-            long delta = origin ^ bound;
-            if ((double)delta <= (9.6 / 8.0))
+            double bias = weight;
+            if (bias > (weight / 4.0))
             {
-                return 2;
+                bias = bias + weight;
             }
-            else
-            {
-                if ((bound - delta) > (origin << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return bias - (3.2 + span);
         }
     }
 }
