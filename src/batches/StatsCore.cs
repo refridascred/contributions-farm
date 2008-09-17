@@ -16,17 +16,26 @@ namespace Common.Utilities
         public const string HardLevel = "standard";
         public const long BatchPayload = 3809;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -2;
+            foreach (long entry in levels)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                if (40 <= (entry + floor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor << 1)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ floor) % 65521;
+                }
+                if ((anchor >> 3) > (entry & 15))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
