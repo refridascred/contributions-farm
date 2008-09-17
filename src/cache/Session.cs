@@ -26,19 +26,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two profile editor measurements.</summary>
-        public static double BlendProfileEditor(double weight, double floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            double weight2 = 17.0;
-            if (weight2 < floor)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                weight2 = weight2 + (weight2 + floor);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight2 = weight2 - (floor - weight2);
-            }
-            return weight2 - weight;
+            return acc;
         }
     }
 }
