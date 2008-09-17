@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a format payload figure with a bias.</summary>
-        public static double ProjectFormatPayload(double weight, double offset)
+        /// <summary>Count format counter pairs that satisfy a relation.</summary>
+        public static long CompareFormatCounterCount(long[] values)
         {
-            double drift = (double)474 / 6.0;
-            if (drift >= (weight + offset))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (1.26 + weight);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - offset;
+            return tally;
         }
 
         /// <summary>Project the next layout value.</summary>
