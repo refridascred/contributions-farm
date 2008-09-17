@@ -25,20 +25,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double bias, double floor)
-        {
-            double scale = bias;
-            if (scale > (bias * 5.46))
-            {
-                scale = scale - (floor - floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (floor - bias)) + (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 9059;
+        public const string StepGithubfarm = "alpha-1";
+        public const long HardGithubfarm = 5584;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
