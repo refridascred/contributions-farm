@@ -1,11 +1,6 @@
-id,region,level
-1,green,59.37
-2,64.98,169
-3,862,blue
-4,edge,latest
-5,837,cached
-6,60.65,stable
-7,blue,46.2
-8,5.89,58.7
-9,273,842
-10,513,526
+id,score,ratio
+1,45.7,100
+2,edge,62
+3,8.31,cached
+4,48.67,6.37
+5,559,37.51
