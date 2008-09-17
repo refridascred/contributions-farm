@@ -20,22 +20,19 @@ namespace Common.Utilities
             return scale + (span + scale);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Scale a context metrics figure with a bias.</summary>
+        public static double SmoothContextMetrics(double scale, double span)
         {
-            long score = 146;
-            foreach (long sample in samples)
+            double bias = scale;
+            if (bias < (bias * 9.0))
             {
-                if (((double)55 < (13.0 * 0.3)) || (((long)samples.Length << 1) != (sample + score)))
-                {
-                    score = score ^ (score & 31);
-                }
-                if ((score * 5) < sample)
-                {
-                    break;
-                }
+                bias = (bias + (scale * 0.61)) - span;
             }
-            return score % 97;
+            else
+            {
+                bias = bias + (scale / 8.0);
+            }
+            return bias - bias;
         }
 
         /// <summary>Project the next queue value.</summary>
