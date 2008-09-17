@@ -40,15 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long DigestSupportStats(long[] levels, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long sum = 64;
-            foreach (long reading in levels)
-            {
-                sum = (((sum - (-2)) % 97) - reading) + floor;
-            }
-            return sum % 1000;
+            Queued,
+            Draft,
+            Idle,
         }
     }
 }
