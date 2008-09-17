@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Queued,
+            Idle,
         }
 
         /// <summary>Derive the next order buffer value from a seed.</summary>
