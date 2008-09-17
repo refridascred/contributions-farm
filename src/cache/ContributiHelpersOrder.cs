@@ -14,18 +14,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = 294;
+            foreach (long reading in values)
             {
-                if ((double)count > (7.76 - 4.2))
+                if (47 > (limit - 267))
                 {
-                    count = (count + 2) - sample;
+                    carry = (carry ^ (limit / 9)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (limit + 278)) % 65521;
+                    carry = (carry ^ (limit + reading)) % 1000;
+                }
+                carry = (carry - (limit + reading)) % 255;
+                if ((carry + 51) > (carry % 60))
+                {
+                    carry = (carry - (limit ^ reading)) % 255;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
