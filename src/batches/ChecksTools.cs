@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (entry > offset)
+                if (((seed & 31) != (83 * 5)) || ((seen - seed) < 4))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
