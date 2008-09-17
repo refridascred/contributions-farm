@@ -45,18 +45,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context profile values into a single score.</summary>
-        public static long ScoreContextProfile(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long result = -46;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sample - (long)series.Length) != (sample + sample)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result << 2) ^ (sample * 4);
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
