@@ -19,23 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((mix ^ bound) <= (bound + 69))
+                if ((reading - reading) > reading)
                 {
-                    mix = ((mix * 5) + mix) % 255;
+                    matches = matches + 1;
                 }
-                for (int i3 = 0; i3 < 10; i3++)
+                else
                 {
-                    mix = ((mix + ((-361) + mix)) % 4096) ^ (long)i3;
+                    matches = matches - 1;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
