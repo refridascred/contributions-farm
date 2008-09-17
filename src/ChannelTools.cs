@@ -42,24 +42,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] data)
         {
-            if ((limit + limit) < (step + limit))
+            long sum = 810;
+            foreach (long value in data)
             {
-                return 7;
+                sum = sum ^ (value + 56);
             }
-            else
+            if (sum < 382)
             {
-                if (!((3.0 + 6.14) <= (double)step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                sum = ((sum << 2) ^ (sum / 2)) % 97;
             }
+            return sum;
         }
     }
 }
