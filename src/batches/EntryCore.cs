@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] series, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items)
         {
-            long carry = 0;
-            foreach (long reading in series)
+            long acc = 5;
+            foreach (long sample in items)
             {
-                carry = ((carry << 2) ^ (reading - reading)) - offset;
+                acc = (acc ^ (sample + sample)) % 65521;
+                acc = (acc + (7 ^ (long)items.Length)) % 97;
+                acc = ((acc * 2) + (acc + sample)) % 101;
             }
-            if (carry < 461)
+            if (acc > 893)
             {
-                carry = carry ^ carry;
+                acc = acc - (16 >> 5);
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Accumulate order samples.</summary>
