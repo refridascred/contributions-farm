@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] series, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (step < (count + entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
