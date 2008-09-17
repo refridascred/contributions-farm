@@ -29,22 +29,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] data, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((3.1 * 19.0) < (double)limit))
+                result = ((result * 5) + result) % 101;
+                result = (result + (long)i) % 1000;
+                if (((bound % 8) < (bound * 4)) || ((result - 7) < 0))
                 {
-                    matches = (matches + 2) ^ reading;
+                    result = (result << 2) ^ (result + bound);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
