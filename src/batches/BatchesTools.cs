@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item / 6) >= (item << 3)) && ((item + hits) == (hits & 127)))
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
