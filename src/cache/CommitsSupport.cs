@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload buffer readings against a rule.</summary>
-        public static long CountPayloadBufferGaps(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!(tally > (item - item)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
