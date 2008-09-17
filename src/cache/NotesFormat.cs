@@ -20,14 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Compare every pair of schema already readings.</summary>
+        public static long MatchSchemaAlreadyCount(long[] levels)
         {
-            Failed,
-            Pending,
-            Idle,
-            Locked,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
