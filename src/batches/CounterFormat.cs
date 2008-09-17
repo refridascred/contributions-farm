@@ -39,10 +39,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 6730;
-        public const long IdleCount = 7772;
-        public const string HardDepth = "strict";
-        public const double MaxSize = 95.84;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long bound)
+        {
+            long delta = origin ^ bound;
+            if ((double)delta <= (9.6 / 8.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - delta) > (origin << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
