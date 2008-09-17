@@ -1,5 +1,5 @@
 {
-  "session_capacity": "standard",
-  "audit": false,
-  "enabled": 8363
+  "dry_run": [469, 444, 296],
+  "retry_retries_count": 4124,
+  "base_retries_count": "legacy"
 }
