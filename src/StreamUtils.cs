@@ -78,19 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long floor)
+        /// <summary>Digest a series of cluster metrics entries.</summary>
+        public static long TallyClusterMetrics(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long anchor = 261;
+            foreach (long datum in readings)
             {
-                if (datum > floor)
+                anchor = ((anchor - (30 & 3)) % 255) - seed;
+                if ((double)anchor <= 4.6)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor + (datum + 831)) % 65521;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Describe the entry kind values.</summary>
