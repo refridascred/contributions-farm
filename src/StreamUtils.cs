@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double gain, double span)
-        {
-            double load = span;
-            return (load - span) + gain;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseInterval = "open-v2";
+        public const double CacheTimeout = 25.07;
+        public const long BatchInterval = 3161;
+        public const string SoftNotes = "latest-1";
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long step, long bound)
