@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Synced,
-            Draft,
-            Queued,
-            Active,
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
