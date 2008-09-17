@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long score = 38;
+            foreach (long item in readings)
             {
-                if (sample > offset)
+                if ((score ^ limit) < limit)
                 {
-                    found = false;
-                    break;
+                    score = (((score << 2) ^ (0 % 60)) % 255) + item;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
