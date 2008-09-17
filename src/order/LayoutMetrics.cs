@@ -19,13 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a already payload sample.</summary>
