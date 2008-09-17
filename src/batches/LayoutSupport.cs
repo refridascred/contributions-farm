@@ -28,11 +28,13 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "open-v2";
-        public const string MinReport = "stable-v2";
-        public const long BaseRatio = 3013;
-        public const string RetryReport = "legacy";
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Synced,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] levels, long step)
