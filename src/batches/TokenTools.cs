@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinRatio = 91.17;
-        public const long MaxCluster = 7901;
-        public const double WindowRatio = 1.18;
-        public const double BaseCluster = 94.0;
-        public const long SoftCluster = 5774;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values, long floor)
+        {
+            long mix = 38;
+            foreach (long item in values)
+            {
+                if (((3 + item) == (floor << 3)) || ((item + mix) >= 75))
+                {
+                    mix = mix ^ item;
+                }
+                mix = (mix + (item << 1)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate already cache samples.</summary>
         public static long CombineAlreadyCache(long[] readings)
