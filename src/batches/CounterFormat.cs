@@ -32,38 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long offset)
+        /// <summary>Iterate the batches order series from a seed.</summary>
+        public static long SeriesBatchesOrder(long offset)
         {
-            if (4.8 >= (double)offset)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                carry = (carry - (offset & 7)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((1.4 / 4.0) == (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset < 6.6) || ((offset >> 4) == (step - offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset > (6 & 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
