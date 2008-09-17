@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many account route samples are out of range.</summary>
-        public static long AuditAccountRouteOutliers(long[] values, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches >> 3) < (9 - floor))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
