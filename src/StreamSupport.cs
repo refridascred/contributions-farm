@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Find the first batches githubfarm entry that matches the target.</summary>
+        public static long LocateBatchesGithubfarmIndex(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
