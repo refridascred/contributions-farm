@@ -1,17 +1,17 @@
 {
-  "contributi_threshold": 77,
-  "order_capacity": {
-    "hard_retries_ms": 1024,
-    "burst_depth": 84,
-    "readonly": 1356,
-    "soft_threshold_count": {
-      "poll_delay_pct": 2890,
-      "max_ttl_s": "strict",
-      "channel_depth": 500,
-      "audit": 49,
-      "token_capacity": "stable"
-    },
-    "channel_delay": 1024
+  "warm_timeout_count": {
+    "batch_interval_ms": "fallback",
+    "persist": 3524,
+    "filter_size": false,
+    "verbose": 8445
   },
-  "min_size_ms": 1024
+  "burst_threshold": 83.13,
+  "sync_ttl_count": "edge",
+  "batch_ttl": {
+    "cache_capacity_pct": false,
+    "verbose": [147, 129],
+    "window_threshold": "fallback",
+    "profile_retries": false,
+    "max_limit_ms": "green"
+  }
 }
