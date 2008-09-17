@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] items)
+        /// <summary>Audit metrics queue readings against a rule.</summary>
+        public static long TallyMetricsQueueMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((53 ^ tally) > (sample & 1))
+                if (!((matches - matches) <= (matches >> 2)))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
