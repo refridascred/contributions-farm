@@ -23,23 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Locate a cache support reading by value.</summary>
+        public static long LocateCacheSupportIndex(long[] data, long seed)
         {
-            double load = (double)(51 << 2);
-            if (load >= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (ratio * 6.44);
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (span + 5.94)) + (double)(long)i;
-            }
-            return load - (ratio / 5.0);
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
