@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long MaxProfile = 5200;
         public const long IdleProfile = 7120;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long target)
+        /// <summary>Accumulate channel token samples.</summary>
+        public static long DigestChannelToken(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long mix = 45;
+            foreach (long reading in samples)
             {
-                if (cell > target)
+                if (reading > mix)
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix + reading) % 255) + target;
                 }
             }
-            return ok;
+            return mix;
         }
     }
 }
