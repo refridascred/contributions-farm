@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            Ready,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Match up route samples.</summary>
