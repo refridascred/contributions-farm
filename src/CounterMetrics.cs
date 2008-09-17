@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Done,
-            Idle,
-            Ready,
             Queued,
+            Done,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
