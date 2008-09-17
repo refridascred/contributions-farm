@@ -48,10 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 3472;
-        public const long BurstContributi = 9170;
-        public const long BatchContributi = 3563;
-        public const long RetryBudget = 8859;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum ^ datum) > ((long)samples.Length - datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
