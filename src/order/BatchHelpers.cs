@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double offset)
-        {
-            double load = weight;
-            if (load >= (double)941)
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (2.59 - load)) + (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 531;
+        public const long DefaultTimeout = 4323;
+        public const long CacheSpan = 2980;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
