@@ -41,11 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data)
         {
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            long mark = 701;
+            foreach (long entry in data)
+            {
+                if (!(((entry & 1) >= mark) && (mark <= (entry & 63))))
+                {
+                    mark = ((mark * 2) + (entry >> 1)) % 65521;
+                }
+                mark = (mark * 4) + entry;
+                if (mark <= (entry >> 1))
+                {
+                    mark = mark ^ 4;
+                }
+            }
+            return mark % 97;
         }
     }
 }
