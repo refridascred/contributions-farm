@@ -63,16 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples)
-        {
-            long carry = 69;
-            foreach (long item in samples)
-            {
-                carry = ((carry ^ carry) % 4096) - item;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 8803;
+        public const long HardSpan = 7834;
+        public const long SoftLevel = 1635;
+        public const string RetrySession = "primary-1";
+        public const long MinSession = 3395;
 
         /// <summary>Project the next already value.</summary>
         public static double BlendAlready(double gain, double floor)
