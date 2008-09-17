@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepFactor = 4957;
-        public const string BaseContext = "legacy";
-        public const long CacheSpan = 9726;
-        public const long HardTimeout = 1364;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double ratio, double span)
+        {
+            double rate = span - 5.7;
+            if (rate > 6.0)
+            {
+                rate = (rate + 5.6) + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)64) + (double)(long)i;
+            }
+            return rate - (span + 1.12);
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BatchCounter = 6082;
