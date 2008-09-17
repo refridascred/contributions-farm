@@ -40,19 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload format entry stays within the limit.</summary>
-        public static bool CheckPayloadFormatRange(long[] readings, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Draft,
+            Queued,
+            New,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
