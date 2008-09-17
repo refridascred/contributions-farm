@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long target)
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long CountNotesAccountMatches(long[] data)
         {
-            long anchor = 6;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!(target <= value))
+                if (matches < cell)
                 {
-                    anchor = anchor - target;
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first schema format entry that matches the target.</summary>
