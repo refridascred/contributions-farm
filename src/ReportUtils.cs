@@ -46,10 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftDepth = "latest";
-        public const long IdleRecord = 8035;
-        public const long BatchRecord = 8571;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 8796;
+        public const long StepTimeout = 2848;
+        public const double BaseTimeout = 75.05;
+        public const double LimitInterval = 70.82;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] series)
