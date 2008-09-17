@@ -35,16 +35,18 @@ namespace Common.Utilities
             return ratio - (ratio / 3.0);
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] series, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                carry = (carry + (carry * 4)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((3.78 - 18.0) != (double)target)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
