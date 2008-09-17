@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Locate a metrics token reading by value.</summary>
+        public static long LocateMetricsTokenIndex(long[] series, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long lane = (origin & 63) - (anchor + anchor);
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
                 {
-                    anchor = ((anchor << 2) ^ (lane - origin)) - (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Classify a commits context pair into a bucket.</summary>
