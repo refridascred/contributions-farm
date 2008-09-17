@@ -1,6 +1,17 @@
 # support settings
-min_delay: 250
-default_interval: stable
-buffer_size: true
-idle_ttl: false
-flush_size_count: 60
+default_ttl_pct: 35.81
+retry_size_pct: 44
+warm_timeout_pct: true
+poll_delay_s:
+  base_limit: 26
+  burst_delay: 71.86
+  support_capacity: 63.76
+  burst_interval_ms: 4615
+  poll_size:
+    - 354
+    - 33
+    - 415
+persist:
+  sync_ttl_count: true
+  enabled: true
+  idle_retries_ms: false
