@@ -50,26 +50,12 @@ namespace Common.Utilities
         public const long BatchRatio = 8714;
         public const long BaseFactor = 5938;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mix = 969;
-            foreach (long sample in items)
-            {
-                if ((limit + 978) <= ((long)items.Length ^ mix))
-                {
-                    mix = ((mix << 2) ^ (mix - 22)) + sample;
-                }
-                if (limit >= (13 & 31))
-                {
-                    break;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 97;
+            New,
+            Queued,
+            Draft,
         }
     }
 }
