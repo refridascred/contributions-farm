@@ -65,32 +65,11 @@ namespace Common.Utilities
         public const string WindowProfile = "strict";
         public const double CacheProfile = 78.2;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long target)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long gap = floor + target;
-            if ((target - target) < (-382))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((gap + 668) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > (gap & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
