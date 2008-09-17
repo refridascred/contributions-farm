@@ -1,14 +1,12 @@
 # Command notes
 
-Each window is validated before it reaches the payload queue.
-A batch that stays idle for too long is moved to the route list.
-
-A tools that stays idle for too long is moved to the batch list.
-When a commits fails, the metric handler retries a few times before giving up.
-Run the batch check before changing any githubfarm limits.
+Keep session and window names short and lowercase.
+When a cache fails, the report handler retries a few times before giving up.
+When a tools fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer entry defaults
-- Validate context input early
+- Log every format change
+- Keep token values small
+- Validate commits input early
+- Document new context fields
