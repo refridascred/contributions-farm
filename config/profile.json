@@ -1,20 +1,5 @@
 {
-  "sync_threshold_s": {
-    "soft_delay_ms": "green",
-    "stats_size": false,
-    "strict": {
-      "min_ttl": 4194,
-      "base_ttl_ms": [255, 152, 481, 479],
-      "idle_size": 100,
-      "account_interval": false,
-      "profile_size": 77
-    },
-    "githubfarm_delay": 60,
-    "flush_size_count": "strict"
-  },
-  "verbose": 77.22,
-  "burst_limit": 9174,
-  "batch_retries_pct": "stable",
-  "readonly": 500,
-  "soft_size": true
+  "burst_timeout": 76,
+  "idle_delay_s": 60,
+  "context_depth": 30
 }
