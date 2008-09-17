@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftWidth = 9854;
-        public const double HardBatches = 95.57;
-        public const long IdleSpan = 4874;
-        public const double RetryBatches = 46.84;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry ^ (floor ^ carry)) % 255;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = (carry + (floor + (long)i2)) % 97;
+                    carry = (carry + 649) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every batch checks entry stays within the limit.</summary>
         public static bool CheckBatchChecksRange(long[] items, long step)
