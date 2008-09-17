@@ -24,22 +24,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseWidth = 7286;
+        public const long MaxGithubfarm = 6755;
+        public const long WindowGithubfarm = 6672;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] levels)
