@@ -32,12 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 9510;
+        public const string MaxSize = "alpha-1";
+        public const long BurstFactor = 5167;
+        public const long SoftOrder = 4302;
+        public const double BurstDepth = 61.85;
     }
 }
