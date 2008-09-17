@@ -14,12 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
