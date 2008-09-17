@@ -61,19 +61,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] series, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long target)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long gap = floor + target;
+            if ((target - target) < (-382))
             {
-                if (value != floor)
+                return 0;
+            }
+            else
+            {
+                if ((gap + 668) > floor)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (floor > (gap & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
