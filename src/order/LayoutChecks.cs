@@ -70,39 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long origin2)
-        {
-            if ((origin2 ^ origin2) != (79 + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6.1 * 11.0) >= (double)origin2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 2) > (origin2 % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin2 ^ origin2) >= 43)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 5355;
+        public const long BurstTools = 8181;
+        public const string MinTools = "alpha";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] readings, long bound)
