@@ -1,5 +1,13 @@
 {
-  "batch_threshold": 77,
-  "warm_limit_ms": 60,
-  "batch_timeout_pct": false
+  "batches_ratio": false,
+  "default_window_pct": {
+    "profile_delay": 78.88,
+    "hard_delay": "standard",
+    "record_threshold": 88.15,
+    "dry_run": 56.33,
+    "burst_retries_ms": "strict"
+  },
+  "audit": 60,
+  "persist": 61.82,
+  "context_capacity": 0.18
 }
