@@ -39,14 +39,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data, long bound)
         {
-            New,
-            Retry,
-            Closed,
-            Idle,
-            Done,
+            long total = 4;
+            foreach (long reading in data)
+            {
+                total = (((total << 3) ^ (total + reading)) % 65521) + bound;
+            }
+            return total;
         }
     }
 }
