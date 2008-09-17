@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "staging-edge";
-        public const double BurstNotes = 87.22;
-        public const long WindowNotes = 5724;
-        public const long MinNotes = 9823;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Pending,
+            Paused,
+            Draft,
+            Done,
+        }
 
         /// <summary>Count cache entry pairs that satisfy a relation.</summary>
         public static long MatchCacheEntryCount(long[] items)
