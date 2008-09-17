@@ -24,32 +24,12 @@ namespace Common.Utilities
         public const string DefaultScore = "strict";
         public const double WindowSize = 25.68;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long target, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long prev = target - bound;
-            if ((double)prev < (1.75 - 2.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((13.0 > (double)prev) && ((target / 3) == (target + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((3.92 * 0.9) >= (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
