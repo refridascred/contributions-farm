@@ -12,11 +12,19 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Check that every layout order entry stays within the limit.</summary>
+        public static bool VerifyLayoutOrderBounds(long[] series, long target)
         {
-            double scale = offset;
-            return (scale - offset) + weight;
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up metric farm samples.</summary>
