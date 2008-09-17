@@ -37,16 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches order series from a seed.</summary>
-        public static long SeriesBatchesOrder(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry - (offset & 7)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 6730;
+        public const long IdleCount = 7772;
+        public const string HardDepth = "strict";
+        public const double MaxSize = 95.84;
     }
 }
