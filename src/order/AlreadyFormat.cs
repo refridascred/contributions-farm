@@ -28,15 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] series)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long datum in series)
             {
-                if (!(item > hits) || ((9.71 / 4.0) == (double)item))
+                if ((hits << 3) <= datum)
                 {
-                    hits = hits + 2;
+                    hits = hits + 1;
                 }
                 else
                 {
