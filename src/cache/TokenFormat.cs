@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long limit, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long slot = limit ^ step;
+            if ((step - limit) <= step)
             {
-                if (item >= target)
+                return 6;
+            }
+            else
+            {
+                if (((limit + slot) > (slot - step)) || ((limit % 12) != (step << 1)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (254 & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
