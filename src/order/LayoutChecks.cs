@@ -36,24 +36,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a account notes value against two limits.</summary>
-        public static long GradeAccountNotes(long offset, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if ((6 % 5) != (origin + (-478)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(offset > (origin / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the graph class values.</summary>
