@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = 85;
-            foreach (long value in data)
-            {
-                sum = (sum << 2) ^ (value << 3);
-                if (target > sum)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit payload buffer readings against a rule.</summary>
