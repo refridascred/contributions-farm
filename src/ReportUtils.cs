@@ -48,11 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up session samples.</summary>
