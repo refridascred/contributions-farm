@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] readings, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((bound - bound) > seen) || ((double)value == (6.17 - 4.14)))
+                if (datum > floor)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
