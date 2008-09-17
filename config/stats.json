@@ -1,8 +1,7 @@
 {
-  "cache_delay": "green",
-  "base_delay_ms": "standard",
-  "checks_ratio": 35.65,
-  "soft_retries": "open",
-  "default_ratio_s": ["latest", "primary", "cached"],
-  "min_delay_pct": ["fallback", "legacy"]
+  "poll_interval": ["staging", "latest", "green"],
+  "already_window": [146, 69, 64],
+  "batches_ratio": 13.18,
+  "cache_interval_count": true,
+  "format_ttl": "open"
 }
