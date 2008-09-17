@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            New,
-            Paused,
-            Pending,
-            Ready,
-            Stale,
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((origin - score) < (score % 97))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache entry.</summary>
