@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the payload route entries that pass the check.</summary>
-        public static long AuditPayloadRouteGaps(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (sample <= (sample + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a commits info.</summary>
