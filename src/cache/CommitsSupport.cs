@@ -40,19 +40,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a record token reading.</summary>
-        public static double ProjectRecordToken(double weight, double offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            double gain = (weight * 9.5) * 2.5;
-            if (gain >= weight)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + 7.68;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + offset;
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
