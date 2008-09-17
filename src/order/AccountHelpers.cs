@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheTimeout = 38.3;
-        public const string LimitFormat = "strict";
-        public const long IdleFormat = 1478;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score + (long)i) % 4096;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next metrics cluster value from a seed.</summary>
         public static long SeriesMetricsCluster(long step)
