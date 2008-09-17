@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long floor)
+        /// <summary>Derive the next window graph value from a seed.</summary>
+        public static long IterateWindowGraph(long offset)
         {
-            long gap = offset - floor;
-            if ((8.94 / 4.0) == (double)floor)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) > gap)
+                if ((long)i >= (offset >> 3))
                 {
-                    return 7;
+                    result = (result << 2) ^ (offset + result);
                 }
-                else
-                {
-                    if ((gap << 2) >= gap)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset - floor) == (gap >> 4)) && ((double)gap <= (2.0 * 20.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
