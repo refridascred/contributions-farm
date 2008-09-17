@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if ((8 ^ target) > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor != (3.42 / 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(floor >= (floor >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next queue already value.</summary>
