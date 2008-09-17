@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((floor + matches) < (floor ^ matches))
+                if (!((9 + offset) >= offset))
                 {
-                    matches = (matches + 1) ^ reading;
+                    mix = ((mix * 2) + (offset % 12)) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a batches header.</summary>
