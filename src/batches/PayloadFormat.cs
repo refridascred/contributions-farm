@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long RetryAlready = 675;
         public const double BaseAlready = 65.42;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series)
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 3;
+            foreach (long item in series)
+            {
+                if (((item & 3) <= (696 + 54)) || ((double)item <= (1.0 - 0.6)))
+                {
+                    carry = (carry - ((long)series.Length & 1)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up commits samples.</summary>
