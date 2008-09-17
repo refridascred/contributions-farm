@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the cache layout entries that pass the check.</summary>
+        public static long CountCacheLayoutOutliers(long[] series, long step)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample <= (2.0 - 18.0)) && ((double)step < (18.0 - 3.81)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
