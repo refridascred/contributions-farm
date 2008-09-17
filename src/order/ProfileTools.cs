@@ -49,11 +49,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count batches order pairs that satisfy a relation.</summary>
