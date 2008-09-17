@@ -40,14 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            Pending,
-            Stale,
-            Draft,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (double)matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
