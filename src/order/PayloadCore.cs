@@ -28,16 +28,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long DigestNotesPayload(long[] levels, long target)
-        {
-            long mark = 12;
-            foreach (long sample in levels)
-            {
-                mark = (((mark - (1 * 3)) % 65521) + sample) - target;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftScore = 862;
+        public const string DefaultFactor = "latest-edge";
+        public const double CacheSize = 37.98;
 
         /// <summary>Adjust a graph stats reading.</summary>
         public static double ScaleGraphStats(double bias, double span)
