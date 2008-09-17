@@ -19,21 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order schema pairs that satisfy a relation.</summary>
-        public static long MatchOrderSchemaCount(long[] series)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
