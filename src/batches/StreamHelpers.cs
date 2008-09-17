@@ -39,39 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long seed, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long edge = seed + step;
-            if (1.0 > (double)edge)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ 717) != (edge / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge + edge) != (seed % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed & 31) == (step + 577)) || ((double)seed <= (4.0 * 1.33)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Failed,
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
