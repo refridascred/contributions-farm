@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] series, long offset)
         {
-            Ready,
-            Done,
-            Retry,
-            Paused,
-            Locked,
+            long carry = 0;
+            foreach (long reading in series)
+            {
+                carry = ((carry << 2) ^ (reading - reading)) - offset;
+            }
+            if (carry < 461)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
