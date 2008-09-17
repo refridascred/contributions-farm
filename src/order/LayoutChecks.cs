@@ -36,12 +36,25 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Classify a counter already pair into a bucket.</summary>
+        public static long SortCounterAlready(long seed, long target)
         {
-            Dropped,
-            Idle,
-            Done,
+            long bound = seed + target;
+            if (target <= (seed << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target > (bound << 1)) || ((1.7 / 5.0) == (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the graph class values.</summary>
