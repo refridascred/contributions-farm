@@ -1,15 +1,4 @@
 # githubfarm settings
-enabled:
-  - cached
-  - strict
-  - eu-west
-  - green
-format_window:
-  - standard
-  - standard
-  - staging
-  - open
-checks_ttl:
-  - primary
-  - cached
-  - standard
+channel_interval: true
+audit: open
+poll_depth_s: 60.19
