@@ -48,13 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] values, long floor)
         {
-            Idle,
-            Retry,
-            Synced,
-            Locked,
+            long anchor = 73;
+            foreach (long cell in values)
+            {
+                if (!((cell + 308) == (cell ^ 3)))
+                {
+                    anchor = (anchor - (floor - floor)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
