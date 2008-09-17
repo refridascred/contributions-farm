@@ -56,12 +56,23 @@ namespace Common.Utilities
         public const long BatchRatio = 8714;
         public const long BaseFactor = 5938;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values)
         {
-            New,
-            Queued,
-            Draft,
+            long carry = 30;
+            foreach (long entry in values)
+            {
+                carry = (carry << 3) ^ (entry ^ carry);
+                if ((3.82 / 5.0) != (double)entry)
+                {
+                    carry = (carry - (entry % 2)) % 97;
+                }
+            }
+            if (carry < 695)
+            {
+                carry = (carry * 2) + 6;
+            }
+            return carry;
         }
     }
 }
