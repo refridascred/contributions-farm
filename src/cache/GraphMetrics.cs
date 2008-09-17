@@ -43,10 +43,39 @@ namespace Common.Utilities
         public const long MaxProfile = 5200;
         public const long IdleProfile = 7120;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "legacy";
-        public const long HardSize = 6982;
-        public const long MaxWidth = 4924;
-        public const double BaseReport = 17.87;
+        /// <summary>Rank schema metrics input into a small class.</summary>
+        public static long RankSchemaMetrics(long offset, long limit)
+        {
+            long slot = offset ^ limit;
+            if ((limit + offset) > offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((slot * 3) < (offset * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (slot >= (offset / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + 0) >= (39 % 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
