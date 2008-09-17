@@ -62,19 +62,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] readings, long limit)
         {
-            long carry = -490;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry ^ (reading / 7);
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < (-162))
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
