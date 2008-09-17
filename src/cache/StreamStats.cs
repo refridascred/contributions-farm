@@ -33,13 +33,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] values, long bound)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((bound - datum) >= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
