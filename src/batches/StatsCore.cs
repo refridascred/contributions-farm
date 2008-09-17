@@ -29,15 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Locked,
-            Stale,
-            Synced,
-            New,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 7472;
+        public const long CachePayload = 3454;
+        public const string HardLevel = "standard";
+        public const long BatchPayload = 3809;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] readings)
