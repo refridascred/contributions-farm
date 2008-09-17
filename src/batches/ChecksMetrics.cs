@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long target)
+        /// <summary>Scale a format payload figure with a bias.</summary>
+        public static double ProjectFormatPayload(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)474 / 6.0;
+            if (drift >= (weight + offset))
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (1.26 + weight);
             }
-            return -1;
+            return drift - offset;
         }
 
         /// <summary>Project the next layout value.</summary>
