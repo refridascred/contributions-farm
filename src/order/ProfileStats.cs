@@ -41,22 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits > (32 & 3)) || ((hits + datum) <= datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
