@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context account measurements.</summary>
-        public static double SmoothContextAccount(double ratio, double bias)
+        /// <summary>Find the first context metrics entry that matches the target.</summary>
+        public static long LocateContextMetricsIndex(long[] series, long target)
         {
-            double mean = bias + (double)586;
-            if (mean >= (double)47)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (double)702;
+                if ((series[i] < target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (bias - bias)) - (double)(long)i;
-            }
-            return mean + ratio;
+            return -1;
         }
 
         /// <summary>Validate window farm readings against a bound.</summary>
