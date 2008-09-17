@@ -1,16 +1,8 @@
 # githubfarm settings
-max_ratio_pct: true
-flush_size_count: 3.27
-base_limit_s: strict
-batch_size_ms:
-  account_size: blue
-  profile_interval: 83.88
-  enabled: latest
-  buffer_ratio: false
-  batch_interval_count:
-    - 328
-    - 278
-    - 376
-    - 176
-  sync_retries_pct: fallback
-dry_run: 1113
+format_ttl:
+  - 343
+  - 117
+poll_retries_ms: false
+record_threshold: 8.66
+commits_interval: false
+hard_interval_ms: edge
