@@ -38,19 +38,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values, long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = 893;
-            foreach (long sample in values)
-            {
-                acc = (acc + (8 >> 3)) + bound;
-                if (sample < acc)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
