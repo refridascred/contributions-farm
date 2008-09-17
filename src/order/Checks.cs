@@ -32,24 +32,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long anchor = -78;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor * 2) + (anchor + datum);
-                if (((anchor + anchor) >= anchor) && ((anchor + 515) > anchor))
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                anchor = (anchor ^ 5) % 65521;
-                if ((double)datum >= (19.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
