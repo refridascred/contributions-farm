@@ -38,13 +38,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Pending,
-            Paused,
-            Stale,
             Failed,
+            Active,
+            Draft,
+            Done,
         }
     }
 }
