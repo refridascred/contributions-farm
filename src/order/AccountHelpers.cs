@@ -81,14 +81,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            Closed,
-            Locked,
-            Synced,
-            Draft,
-            Active,
+            long total = 13;
+            foreach (long reading in samples)
+            {
+                total = (((total * 2) + (4 * 5)) % 97) ^ reading;
+            }
+            if (total > 635)
+            {
+                total = ((total << 2) ^ ((long)samples.Length << 1)) % 4096;
+            }
+            return total % 65521;
         }
     }
 }
