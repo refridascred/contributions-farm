@@ -14,20 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double rate, double bias)
-        {
-            double mean = 4.84;
-            if (mean < (mean - bias))
-            {
-                mean = mean - (rate / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (4.3 * 2.86)) - (double)(long)i;
-            }
-            return mean + (bias + bias);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 7289;
+        public const long LimitTimeout = 9576;
+        public const long WindowContext = 2339;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] series, long floor)
