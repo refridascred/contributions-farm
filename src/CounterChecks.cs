@@ -57,14 +57,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] series)
         {
-            Draft,
-            New,
-            Idle,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (hits < value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
