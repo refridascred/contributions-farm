@@ -78,19 +78,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer support measurements.</summary>
-        public static double ScaleBufferSupport(double scale, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long bound)
         {
-            double drift = (double)(173 + (-655));
-            if (drift < (drift * 19.0))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                drift = drift + (offset * 6.0);
+                if (62 >= (reading + reading))
+                {
+                    matches = (matches + 2) - bound;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + scale;
+            return matches;
         }
     }
 }
