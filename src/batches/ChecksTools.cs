@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long step)
         {
-            double gain = 9.59;
-            if (gain >= (bias - bias))
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                gain = gain + (double)406;
+                if (!((step + step) <= step))
+                {
+                    mark = ((mark * 2) + (467 / 6)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + (offset * 19.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain + gain)) + (double)(long)i;
-            }
-            return gain + (offset - offset);
+            return mark;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
