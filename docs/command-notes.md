@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Run the schema check before changing any checks limits.
-Run the tools check before changing any format limits.
+The record module keeps entry values in sync with the contributi cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
+
+The tools report groups every batches by route.
+The githubfarm report groups every window by metric.
+Keep already and report names short and lowercase.
 
 ## Guidelines
 
-- Validate account input early
-- Keep entry values small
-- Prefer metric defaults
+- Document new graph fields
+- Review window limits each release
+- Validate graph input early
