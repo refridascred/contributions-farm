@@ -44,21 +44,16 @@ namespace Common.Utilities
             return gain + 1.7;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 3) ^ (481 - result)) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
