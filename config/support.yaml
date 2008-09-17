@@ -1,4 +1,12 @@
 # support settings
-min_timeout_ms: 46.64
-max_window: 5014
-poll_size_pct: edge
+filter_ratio: 11
+order_window: 3906
+metric_retries:
+  - 41
+  - 211
+  - 239
+  - 253
+hard_timeout_pct:
+  githubfarm_timeout: standard
+  farm_threshold: open
+  cluster_interval: 38.8
