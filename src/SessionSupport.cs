@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "local-v2";
-        public const long MinInterval = 546;
-        public const long DefaultRecord = 1552;
-        public const string BatchRatio = "latest-v2";
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
