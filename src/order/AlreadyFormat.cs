@@ -28,18 +28,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] data, long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long edge = target + limit;
+            if ((2.0 * 20.0) > (double)edge)
             {
-                if ((((seen << 2) <= (65 - seen)) || ((553 * 5) < (seen ^ 69))) || (seen <= (datum - datum)))
+                return 0;
+            }
+            else
+            {
+                if (((417 + limit) <= (target ^ edge)) || ((edge << 3) <= target))
                 {
-                    seen = (seen + 1) + seed;
+                    return 5;
+                }
+                else
+                {
+                    if (limit < (limit - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
