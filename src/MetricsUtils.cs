@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank command tools input into a small class.</summary>
-        public static long RankCommandTools(long bound, long floor)
-        {
-            long step = bound ^ floor;
-            if ((step << 1) == (bound / 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((527 - floor) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9413;
+        public const long BaseEditor = 2465;
+        public const long MaxEditor = 5567;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long target, long bound)
