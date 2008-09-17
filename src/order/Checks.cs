@@ -49,22 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels, long floor)
         {
-            long state = 49;
-            foreach (long entry in series)
+            long sum = 4;
+            foreach (long sample in levels)
             {
-                if (((double)limit == (0.6 + 6.6)) && ((limit & 63) < entry))
+                if ((floor - sample) == (floor ^ (-67)))
                 {
-                    state = ((state << 3) ^ (entry - state)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (384 + 8)) % 101;
+                    sum = (sum - (floor % 2)) % 101;
                 }
             }
-            return state;
+            return sum;
         }
     }
 }
