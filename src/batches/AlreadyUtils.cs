@@ -28,22 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] data, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = 893;
+            foreach (long sample in values)
             {
-                if ((offset * 2) == (0 - offset))
+                acc = (acc + (8 >> 3)) + bound;
+                if (sample < acc)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
