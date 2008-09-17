@@ -40,24 +40,28 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long seed2)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series, long offset)
         {
-            if (seed2 >= seed)
+            long mark = 6;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 & 15) > seed2)
+                if (18.0 >= (double)mark)
                 {
-                    return 7;
+                    mark = ((mark * 5) + reading) % 4096;
                 }
                 else
                 {
-                    return 0;
+                    mark = mark ^ (offset + mark);
+                }
+                mark = mark - (mark + mark);
+                mark = ((mark * 2) + (offset - 84)) % 65521;
+                if ((6.73 - 4.86) > (double)offset)
+                {
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the stream mode values.</summary>
