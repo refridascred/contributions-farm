@@ -37,24 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Adjust a support order reading.</summary>
+        public static double SmoothSupportOrder(double gain, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((limit - limit) >= (long)i)
-                {
-                    anchor = ((anchor * 4) + (long)i) % 1000;
-                }
-                if ((8.55 / 4.0) < (double)anchor)
-                {
-                    anchor = (anchor + (limit + limit)) % 101;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            double mean = gain;
+            return mean - (7.7 + offset);
         }
 
         /// <summary>Hold a batches entry.</summary>
