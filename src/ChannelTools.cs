@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels, long step)
+        /// <summary>Audit session support readings against a rule.</summary>
+        public static long TallySessionSupportGaps(long[] samples, long floor)
         {
-            long result = 84;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                result = (((result ^ result) % 65521) + cell) - step;
+                if (!((11.0 * 0.5) > (double)floor) || !((double)floor < (1.9 * 1.0)))
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
