@@ -12,22 +12,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Audit metric queue readings against a rule.</summary>
-        public static long CountMetricQueueGaps(long[] items, long bound)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((double)seen == (5.6 - 9.9)) || (((4.0 - 9.7) <= (7.8 + 0.6)) || ((double)datum <= (double)seen)))
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a stats reading by value.</summary>
