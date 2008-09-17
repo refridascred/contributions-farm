@@ -31,12 +31,17 @@ namespace Common.Utilities
             return ratio - (ratio / 3.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 770;
-        public const double HardBatch = 75.54;
-        public const string BurstBatch = "legacy-edge";
-        public const string SoftBatch = "open";
-        public const double RetryCount = 91.97;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry + (carry * 4)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] values)
