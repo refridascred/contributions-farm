@@ -58,18 +58,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] values, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = 24;
+            foreach (long item in data)
             {
-                if ((reading - reading) >= tally)
+                if ((acc - item) < (item ^ acc))
                 {
-                    tally = (tally + 3) - floor;
+                    acc = (acc + (2 * 3)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ 53;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
