@@ -67,9 +67,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 7035;
-        public const string BatchFactor = "fallback-edge";
-        public const long MaxWidth = 3496;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (entry <= (entry & 1))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
