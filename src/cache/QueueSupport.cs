@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mean - 4.38;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] items, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((hits + datum) >= hits)
+                if (datum < target)
                 {
-                    hits = (hits + 3) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
