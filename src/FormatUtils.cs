@@ -62,19 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate route support readings against a bound.</summary>
