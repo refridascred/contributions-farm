@@ -69,22 +69,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit layout order readings against a rule.</summary>
-        public static long AuditLayoutOrderMatches(long[] series, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((double)hits == (double)step)
+                if ((reading % 16) != (0 - reading))
                 {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
