@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of format layout readings.</summary>
-        public static long MatchFormatLayoutCount(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((seen * 4) == (seen << 3)) && ((seen - datum) == (seen ^ datum)))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
