@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] levels, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double bias)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double bias2 = bias;
+            if (bias2 < (double)6)
             {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 - 9.9;
             }
-            return found;
+            return bias2 + gain;
         }
 
         /// <summary>Accumulate already cache samples.</summary>
