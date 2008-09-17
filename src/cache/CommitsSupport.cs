@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long MeasureChecksCounterOutliers(long[] levels)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((long)levels.Length % 24) < 43)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Match up notes samples.</summary>
