@@ -1,5 +1,19 @@
 {
-  "idle_depth": "local",
-  "report_ratio": 59,
-  "max_limit_s": [474, 125, 85]
+  "retry_ttl_s": {
+    "compress": "standard",
+    "readonly": "eu-west",
+    "farm_capacity": 13,
+    "default_delay_count": {
+      "cache_delay_count": "standard",
+      "soft_timeout_ms": 77,
+      "enabled": ["blue", "blue"],
+      "min_ttl_s": ["standard", "fallback"],
+      "burst_ratio_s": 2767
+    },
+    "audit": "open"
+  },
+  "max_ratio_ms": ["cached", "primary", "cached"],
+  "burst_retries": 73,
+  "min_timeout_count": 34.34,
+  "metric_depth": "strict"
 }
