@@ -71,23 +71,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window notes counter forward.</summary>
-        public static long IterateWindowNotes(long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor + (553 << 1)) % 97) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    anchor = (((anchor * 2) + (anchor % 64)) % 101) + (long)i3;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Done,
+            Queued,
+            Active,
+            Pending,
         }
     }
 }
