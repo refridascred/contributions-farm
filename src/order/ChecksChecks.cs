@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheRatio = 80.87;
-        public const long BatchReport = 7045;
-        public const long RetryScore = 9952;
-        public const long IdleBudget = 7195;
-        public const string IdleReport = "alpha-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4152;
+        public const string LimitQueue = "primary";
+        public const long HardQueue = 2975;
+        public const long CacheQueue = 1389;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
