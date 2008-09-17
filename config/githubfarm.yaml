@@ -1,12 +1,44 @@
 # githubfarm settings
-burst_capacity:
-  burst_depth_count: true
-  max_window_pct: true
-  burst_window: cached
-  readonly:
-    - fallback
-    - staging
-    - green
-  min_window_s: cached
-enabled: strict
-batch_interval_count: legacy
+readonly:
+  - 100
+  - 228
+  - 445
+flush_capacity_count:
+  batch_depth_pct: 31
+  min_delay_s: 90.12
+  sync_delay_ms:
+    token_size: open
+    githubfarm_size:
+      - local
+      - open
+      - legacy
+      - legacy
+    sync_delay_ms: 3909
+    poll_window_s: 28.51
+    warm_ttl_ms:
+      - 217
+      - 2
+    record_delay: edge
+poll_limit_ms:
+  support_timeout:
+    stats_limit: true
+    enabled: standard
+    stream_window: 4350
+    base_retries:
+      - open
+      - primary
+      - cached
+    soft_ttl: false
+    token_threshold: 500
+  context_retries:
+    persist: 82.88
+    sync_threshold: 1024
+    cache_threshold_pct: 6.79
+  max_depth_s: blue
+cache_ratio_ms: local
+cluster_window:
+  audit: open
+  hard_timeout: false
+  hard_size_ms: 89
+  min_depth_s: 35
+  dry_run: true
