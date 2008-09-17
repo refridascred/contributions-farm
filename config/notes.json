@@ -1,8 +1,11 @@
 {
-  "poll_interval": false,
-  "schema_timeout": 250,
-  "sync_size_pct": 55.81,
-  "idle_window": "standard",
-  "compress": 16.06,
-  "metrics_size": ["cached", "stable", "local", "blue"]
+  "min_timeout_pct": {
+    "cache_ttl": true,
+    "contributi_delay": [162, 109, 461],
+    "dry_run": 250,
+    "sync_depth_ms": "standard"
+  },
+  "tools_threshold": "local",
+  "flush_size": "green",
+  "burst_depth_count": 4784
 }
