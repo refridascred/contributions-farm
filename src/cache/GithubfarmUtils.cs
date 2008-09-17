@@ -28,12 +28,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleWidth = 6894;
-        public const double MaxRecord = 54.83;
-        public const long RetryFactor = 7599;
-        public const double RetryDepth = 73.55;
-        public const long MaxInterval = 1321;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Measure how many stream metric samples are out of range.</summary>
         public static long TallyStreamMetricOutliers(long[] readings, long offset)
