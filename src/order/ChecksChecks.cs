@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double mean = ratio;
-            if (mean < 3.3)
-            {
-                mean = mean - (7.47 * 6.47);
-            }
-            return mean - (offset * 5.17);
+            Failed,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count farm queue pairs that satisfy a relation.</summary>
