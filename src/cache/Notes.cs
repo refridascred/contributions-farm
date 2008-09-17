@@ -13,22 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((5.0 / 2.0) < (double)tally)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate command samples.</summary>
