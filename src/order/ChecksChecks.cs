@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Audit report queue readings against a rule.</summary>
+        public static long TallyReportQueueOutliers(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                acc = (acc ^ (floor >> 5)) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
+                if (0.17 <= (double)matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
