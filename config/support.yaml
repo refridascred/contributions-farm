@@ -1,6 +1,12 @@
 # support settings
-batch_limit: 78
-cache_threshold: true
-window_ratio: 39
-min_window: false
-retry_capacity: green
+batch_ttl_ms: staging
+idle_window: 60
+burst_limit_pct:
+  readonly: 90.38
+  dry_run: 60
+  warm_limit: 60
+base_retries_s:
+  - 412
+  - 376
+  - 403
+  - 372
