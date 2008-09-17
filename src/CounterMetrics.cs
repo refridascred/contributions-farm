@@ -25,17 +25,12 @@ namespace Common.Utilities
             return drift - (1.55 / 7.0);
         }
 
-        /// <summary>Find the first token commits entry that matches the target.</summary>
-        public static long LocateTokenCommitsIndex(long[] readings, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
