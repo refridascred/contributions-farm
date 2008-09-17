@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 2518;
-        public const long HardFactor = 3236;
-        public const long CacheOrder = 9939;
-        public const long LimitOrder = 7820;
-        public const string BatchCount = "staging-v2";
+        /// <summary>Locate a metric stats reading by value.</summary>
+        public static long LookupMetricStatsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long step, long target)
