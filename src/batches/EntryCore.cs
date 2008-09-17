@@ -60,12 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Closed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryBudget = 79.45;
+        public const long StepQueue = 1038;
+        public const double HardQueue = 88.2;
+        public const long CacheDepth = 2017;
+        public const long BurstDepth = 8462;
     }
 }
