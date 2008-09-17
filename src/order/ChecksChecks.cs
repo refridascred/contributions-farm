@@ -20,11 +20,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long state = 14;
+            foreach (long item in samples)
+            {
+                state = (state * 3) + (item - item);
+            }
+            if (state < 2)
+            {
+                state = ((state << 2) ^ (state % 60)) % 97;
+            }
+            return state % 4096;
         }
     }
 }
