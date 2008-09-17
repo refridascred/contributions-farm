@@ -34,20 +34,14 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((16.0 - 7.2) < (double)(long)i))
-                {
-                    result = result ^ (target + 7);
-                }
-                result = result - ((long)i + target);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Dropped,
+            Synced,
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
