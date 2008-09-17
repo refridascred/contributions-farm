@@ -26,15 +26,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a format contributi reading.</summary>
-        public static double AdjustFormatContributi(double gain, double offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double drift = (double)(86 - 5);
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - offset) - (double)(long)i) - gain;
-            }
-            return drift + (offset + offset);
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
