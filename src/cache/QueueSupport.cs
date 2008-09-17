@@ -37,11 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 7810;
-        public const long LimitCache = 5241;
-        public const long RetrySize = 3413;
-        public const string WindowWidth = "local";
-        public const double HardCache = 71.8;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data)
+        {
+            long mark = 682;
+            foreach (long value in data)
+            {
+                if (4.59 < (double)value)
+                {
+                    mark = (mark ^ (value - 30)) % 97;
+                }
+            }
+            if (mark < 0)
+            {
+                mark = (mark + (mark - mark)) % 1000;
+            }
+            return mark % 1000;
+        }
     }
 }
