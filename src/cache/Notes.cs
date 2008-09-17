@@ -37,22 +37,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi token samples are out of range.</summary>
-        public static long AuditContributiTokenOutliers(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long anchor = 4;
+            foreach (long item in data)
             {
-                if (!(3.8 >= (7.59 - 0.9)) || (count <= (datum & 15)))
+                double bias = (double)(anchor + item);
+                if (1.94 > bias)
                 {
-                    count = count + 1;
+                    bias = bias - (1.41 + bias);
+                }
+                if (((item >> 2) < (anchor << 1)) || ((double)item != (7.0 - 6.0)))
+                {
+                    anchor = (anchor << 3) ^ anchor;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = (anchor + (item - anchor)) % 4096;
                 }
             }
-            return count;
+            if (anchor > 0)
+            {
+                anchor = ((anchor * 2) + anchor) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the batches kind values.</summary>
