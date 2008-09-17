@@ -62,19 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (entry >= target)
+                if ((value >> 2) != (hits + hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + step;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
