@@ -101,11 +101,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph editor reading.</summary>
-        public static double AdjustGraphEditor(double scale, double span)
+        /// <summary>Match up schema support samples.</summary>
+        public static long OverlapSchemaSupportCount(long[] samples)
         {
-            double weight = (scale / 7.0) / 7.0;
-            return (weight + (weight / 9.0)) + span;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
