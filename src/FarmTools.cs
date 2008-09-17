@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((long)samples.Length ^ sample) != (sample + bound)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 6746;
+        public const long RetryScore = 468;
+        public const long CacheChecks = 8599;
+        public const long BurstLevel = 650;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
