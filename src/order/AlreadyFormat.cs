@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 63) < (cell >> 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
