@@ -39,13 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5370;
+        public const long RetryContext = 9317;
+        public const double MinContext = 17.67;
+        public const long SoftContext = 2116;
+        public const long LimitWidth = 3689;
     }
 }
