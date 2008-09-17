@@ -61,18 +61,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many order route samples are out of range.</summary>
-        public static long TallyOrderRouteOutliers(long[] data)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((matches >> 5) <= (matches / 9)) && (((-322) - matches) <= (matches << 1)))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            double ratio = (double)42 + (double)65;
+            return ((ratio - (ratio * 19.0)) + bias) + floor;
         }
     }
 }
