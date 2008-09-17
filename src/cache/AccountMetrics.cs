@@ -47,22 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 9.24;
+        public const string SoftFactor = "fallback-v2";
+        public const string RetryBuffer = "standard-v2";
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
