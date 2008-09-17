@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double gain2 = (double)(8 << 2);
-            return ((gain2 + (double)44) + gain) + bias;
+            Active,
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
