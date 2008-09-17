@@ -1,13 +1,6 @@
 # support settings
-order_ttl:
-  - stable
-  - strict
-  - green
-flush_retries_ms: true
-burst_depth: 38
-token_limit: 12
-window_timeout:
-  - standard
-  - edge
-  - standard
-  - latest
+min_delay: 250
+default_interval: stable
+buffer_size: true
+idle_ttl: false
+flush_size_count: 60
