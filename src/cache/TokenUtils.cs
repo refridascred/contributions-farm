@@ -39,10 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 8510;
-        public const double IdleScore = 68.38;
-        public const long HardNotes = 1411;
+        /// <summary>Digest a series of filter stats entries.</summary>
+        public static long ScoreFilterStats(long[] readings)
+        {
+            long total = 0;
+            foreach (long value in readings)
+            {
+                if ((2.79 * 20.0) < (double)value)
+                {
+                    total = ((total << 2) ^ total) % 1000;
+                }
+                total = total ^ value;
+                if (!((double)value <= (7.71 * 5.6)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long FindBufferIndex(long[] readings, long limit)
