@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 7.5 + 16.0;
+            if (ratio < 8.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - scale) - bias;
             }
-            return tally;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the payload status values.</summary>
