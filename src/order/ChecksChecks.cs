@@ -22,21 +22,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] levels)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
