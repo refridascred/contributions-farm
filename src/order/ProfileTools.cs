@@ -45,15 +45,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] data, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = 56;
+            foreach (long entry in data)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((carry + (long)data.Length) < 982)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (((carry * 4) + (entry + carry)) % 255) - bound;
+                }
+                if (((3.14 + 3.21) == (double)carry) && ((-44) < entry))
+                {
+                    carry = (carry - (carry + carry)) % 1000;
+                }
             }
-            return score;
+            return carry;
         }
     }
 }
