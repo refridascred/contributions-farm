@@ -26,13 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Match up stream checks samples.</summary>
+        public static long PairStreamChecksCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batch checks entry stays within the limit.</summary>
