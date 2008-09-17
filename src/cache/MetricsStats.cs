@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series, long floor)
+        /// <summary>Derive the next support metrics value from a seed.</summary>
+        public static long DeriveSupportMetrics(long step)
         {
-            long acc = 6;
-            foreach (long datum in series)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (((acc - (811 / 8)) % 1000) ^ datum) - floor;
+                if (!((((long)i >> 1) == (12 << 2)) || ((result * 4) < (716 & 15))))
+                {
+                    result = (result + (result + step)) % 255;
+                    result = (result ^ 8) % 255;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
