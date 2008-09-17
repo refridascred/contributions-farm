@@ -14,32 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long slot = step + target;
-            if ((slot - target) >= (step - 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step % 16) == (step << 1)) || ((slot >> 4) < ((-820) - slot)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - step) <= (47 ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
