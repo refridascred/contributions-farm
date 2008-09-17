@@ -23,19 +23,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            long mark = 552;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ (bound - bound)) ^ value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark < (-68))
-            {
-                mark = (mark ^ ((long)data.Length << 1)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
