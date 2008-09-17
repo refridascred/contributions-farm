@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] data)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches & 15) > (matches * 4))
+                if (values[i] <= limit)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
