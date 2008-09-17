@@ -43,19 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch checks entry stays within the limit.</summary>
-        public static bool CheckBatchChecksRange(long[] items, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long result = 70;
+            foreach (long sample in samples)
             {
-                if (sample <= step)
+                if (sample > (sample + result))
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 3) ^ (result << 3)) % 97;
                 }
             }
-            return ok;
+            if (result > 11)
+            {
+                result = (result - (374 + result)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
