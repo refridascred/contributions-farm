@@ -26,20 +26,18 @@ namespace Common.Utilities
         public const long WindowSpan = 2208;
         public const long BaseStream = 6360;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Combine context profile values into a single score.</summary>
+        public static long ScoreContextProfile(long[] series)
         {
-            long score = 170;
-            foreach (long value in series)
+            long result = -46;
+            foreach (long sample in series)
             {
-                score = (score + (5 / 2)) % 101;
-                score = ((score << 2) ^ (score & 15)) % 65521;
-                if (((2.0 / 7.0) > (double)score) || (951 < ((long)series.Length - value)))
+                if (!((sample - (long)series.Length) != (sample + sample)))
                 {
-                    break;
+                    result = (result << 2) ^ (sample * 4);
                 }
             }
-            return score % 1000;
+            return result;
         }
     }
 }
