@@ -20,15 +20,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] samples, long limit)
         {
-            long mix = -31;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ value;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
