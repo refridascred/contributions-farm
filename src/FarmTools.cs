@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] values, long limit)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
