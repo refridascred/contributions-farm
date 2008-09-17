@@ -62,13 +62,28 @@ namespace Common.Utilities
         public const double BatchQueue = 6.9;
         public const double WindowLevel = 80.98;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] data)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long score = 274;
+            foreach (long datum in data)
+            {
+                double load = (double)(datum - 24);
+                if ((load + load) > load)
+                {
+                    load = load - load;
+                    load = load - load;
+                }
+                if ((double)score != (9.0 / 2.0))
+                {
+                    score = (score ^ (27 - score)) % 255;
+                }
+            }
+            if (score < 62)
+            {
+                score = score + 770;
+            }
+            return score;
         }
 
         /// <summary>Describe the entry status values.</summary>
