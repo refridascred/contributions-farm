@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            double scale = ratio;
+            if (scale <= (double)93)
+            {
+                scale = scale + (floor / 4.0);
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
