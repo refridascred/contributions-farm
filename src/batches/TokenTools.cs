@@ -29,17 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 92;
+            foreach (long value in series)
             {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
+                result = ((result + (floor >> 5)) % 101) - value;
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
