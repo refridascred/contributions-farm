@@ -1,6 +1,7 @@
 {
-  "persist": ["blue", "fallback", "green"],
-  "soft_capacity_count": 42.24,
-  "batch_retries_pct": 20,
-  "format_ratio": "standard"
+  "flush_timeout": false,
+  "audit": "legacy",
+  "checks_limit": "stable",
+  "token_timeout": 9449,
+  "counter_threshold": 1440
 }
