@@ -41,9 +41,14 @@ namespace Common.Utilities
         public const long IdleReport = 218;
         public const long MinReport = 9579;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheDepth = 83.13;
-        public const double MinQueue = 15.44;
-        public const string LimitQueue = "latest-1";
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Active,
+            Done,
+            Closed,
+            Retry,
+            Idle,
+        }
     }
 }
