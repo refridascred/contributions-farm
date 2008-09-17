@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
+        public static bool CheckMetricContributiBounds(long[] series, long step)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a cache entry.</summary>
