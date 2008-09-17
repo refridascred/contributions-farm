@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long state = 3;
-            foreach (long value in samples)
-            {
-                if (((-41) / 5) > ((long)samples.Length * 4))
-                {
-                    state = (state - (value + state)) - origin;
-                }
-            }
-            if (state < 98)
-            {
-                state = (state + 1) % 1000;
-            }
-            return state % 1000;
+            Dropped,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
