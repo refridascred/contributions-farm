@@ -17,18 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Count the layout account entries that pass the check.</summary>
+        public static long TallyLayoutAccountHits(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count != (1.0 - 20.0))
                 {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - item;
                 }
             }
             return count;
