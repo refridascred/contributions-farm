@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 1)
+                    if ((samples[i] + samples[j]) < 1)
                     {
                         seen = seen + 1;
                     }
