@@ -30,23 +30,21 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i < acc)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ ((long)i & 255);
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc + (target / 5);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
     }
 }
