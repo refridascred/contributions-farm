@@ -13,10 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 6526;
-        public const long BatchSchema = 7142;
-        public const long DefaultSchema = 6880;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 6654;
+        public const long MaxInterval = 727;
+        public const double MaxGithubfarm = 63.53;
+        public const long HardTimeout = 4635;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long bound)
