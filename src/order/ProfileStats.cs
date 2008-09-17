@@ -41,11 +41,11 @@ namespace Common.Utilities
         public const double BurstBuffer = 68.78;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
