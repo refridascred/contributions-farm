@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] levels, long target)
         {
-            Stale,
-            Ready,
-            Dropped,
-            Failed,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (hits >= entry)
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record record.</summary>
