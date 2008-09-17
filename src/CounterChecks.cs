@@ -26,18 +26,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] values, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = 29;
+            foreach (long sample in items)
             {
-                if (target > (count << 1))
+                if ((sample ^ 179) <= (seed + sum))
                 {
-                    count = (count + 2) + datum;
+                    sum = sum ^ sum;
+                }
+                else
+                {
+                    sum = ((sum * 5) + seed) % 1000;
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
