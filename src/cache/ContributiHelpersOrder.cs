@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (6.59 >= (double)matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
