@@ -22,21 +22,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count cache entry pairs that satisfy a relation.</summary>
-        public static long MatchCacheEntryCount(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
