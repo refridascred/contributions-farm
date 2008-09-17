@@ -42,12 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route report reading by value.</summary>
-        public static long FindRouteReportIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a stream session sample.</summary>
+        public static long LocateStreamSessionIndex(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
