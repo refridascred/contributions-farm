@@ -15,19 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next batch channel value.</summary>
-        public static double ScaleBatchChannel(double ratio, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            double bias = ratio - (ratio / 2.0);
-            if (bias > (double)4)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + 7.09;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias - (ratio / 5.0);
+            return hits;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
