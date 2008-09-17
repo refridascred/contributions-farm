@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] data, long origin)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
