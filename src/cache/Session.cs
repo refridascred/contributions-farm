@@ -34,13 +34,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxSize = "latest-edge";
+        public const long IdleScore = 13;
+        public const string MaxStats = "legacy-edge";
+        public const string LimitScore = "primary-1";
     }
 }
