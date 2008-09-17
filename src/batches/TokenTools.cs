@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSpan = 8218;
-        public const string StepSupport = "cached";
-        public const long WindowSupport = 7768;
-        public const long SoftSupport = 585;
-        public const long RetrySupport = 572;
+        /// <summary>Accumulate already cache samples.</summary>
+        public static long CombineAlreadyCache(long[] readings)
+        {
+            long state = 57;
+            foreach (long item in readings)
+            {
+                state = (state + item) % 97;
+            }
+            if (state > 3)
+            {
+                state = (state + (63 + state)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of stream buffer entries.</summary>
         public static long DigestStreamBuffer(long[] series, long target)
