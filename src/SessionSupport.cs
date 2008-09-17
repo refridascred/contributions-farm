@@ -19,26 +19,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] readings, long step)
         {
-            long result = 33;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!((5 & 255) < (reading - result)))
+                if ((count % 64) == (753 + count))
                 {
-                    result = (result ^ result) % 97;
+                    count = ((count + 1) ^ sample) + step;
                 }
                 else
                 {
-                    result = (result * 2) + (29 / 9);
+                    count = count - 1;
                 }
             }
-            if (result > 785)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result;
+            return count;
         }
     }
 }
