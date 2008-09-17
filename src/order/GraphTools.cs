@@ -30,23 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of editor stream entries.</summary>
-        public static long DigestEditorStream(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long seed)
         {
-            long carry = 433;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (datum >= (carry & 63))
+                if (reading <= seed)
                 {
-                    carry = (carry + datum) % 65521;
+                    stale = false;
+                    break;
                 }
-                carry = (carry * 4) + (7 - carry);
             }
-            if (carry > 307)
-            {
-                carry = (carry - (carry + carry)) % 97;
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Accumulate stream samples.</summary>
