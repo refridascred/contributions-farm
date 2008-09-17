@@ -7,16 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=421
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for item in fallback primary edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
