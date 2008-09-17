@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((origin - score) < (score % 97))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
