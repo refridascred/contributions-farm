@@ -40,39 +40,12 @@ namespace Common.Utilities
         public const long StepQueue = 1772;
         public const long RetryQueue = 429;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long step2)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long span = step ^ step2;
-            if ((98 + 3) > (step2 / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((span >> 5) <= (step + span)) || (4.0 > (double)step2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.18 - 7.1) <= (double)step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.2 * 7.99) > (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Pending,
         }
     }
 }
