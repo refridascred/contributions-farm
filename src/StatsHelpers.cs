@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 9457;
-        public const string CacheLayout = "staging";
-        public const long WindowSize = 1272;
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double bias, double offset)
+        {
+            double mean = 3.6 + offset;
+            if (mean < (double)126)
+            {
+                mean = mean + mean;
+            }
+            return mean - (bias - offset);
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
