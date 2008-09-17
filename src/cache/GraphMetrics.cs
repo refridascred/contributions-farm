@@ -33,13 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally > 4.69)
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank schema metrics input into a small class.</summary>
