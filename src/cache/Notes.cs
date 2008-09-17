@@ -64,14 +64,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Closed,
-            Idle,
-            Retry,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowFactor = "staging-edge";
+        public const long RetryProfile = 9382;
+        public const double BurstProfile = 27.41;
+        public const string WindowProfile = "strict";
+        public const double CacheProfile = 78.2;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long RankNotes(long floor, long target)
