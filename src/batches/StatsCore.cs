@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)tally < 5.0)
-                {
-                    tally = ((tally + 3) + sample) - offset;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
