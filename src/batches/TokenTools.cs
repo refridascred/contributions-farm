@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long bound)
+        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
+        public static bool CheckContributiGithubfarmLimits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (cell < bound)
+                if (value > floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Accumulate record session samples.</summary>
