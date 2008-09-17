@@ -1,17 +1,5 @@
 {
-  "idle_retries": {
-    "min_delay_ms": 66.84,
-    "token_window": {
-      "command_timeout": 73.71,
-      "token_interval": 250,
-      "enabled": "eu-west",
-      "tools_ratio": "standard",
-      "layout_limit": "standard"
-    },
-    "buffer_retries": "blue",
-    "readonly": "local"
-  },
-  "soft_capacity": "cached",
-  "poll_capacity_ms": 7627,
-  "dry_run": ["fallback", "blue"]
+  "idle_window": false,
+  "soft_capacity_count": [471, 131],
+  "hard_limit": "green"
 }
