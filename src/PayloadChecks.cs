@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleFactor = 2094;
+        public const long LimitCount = 2618;
+        public const long StepFactor = 1007;
+        public const string IdleCommits = "staging";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteHits(long[] series, long bound)
