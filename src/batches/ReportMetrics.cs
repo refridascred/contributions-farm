@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] items, long floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double drift = (double)(8 - 9);
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - (offset / 9.0)) + (double)(long)i;
             }
-            return flag;
+            return drift - (scale / 3.0);
         }
 
         /// <summary>Match up report samples.</summary>
