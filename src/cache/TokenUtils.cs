@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Done,
+            Failed,
+            New,
+            Stale,
         }
 
         /// <summary>Look up the position of a checks metrics sample.</summary>
