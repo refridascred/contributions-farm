@@ -28,12 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] readings, long origin)
+        /// <summary>Find the first tools cache entry that matches the target.</summary>
+        public static long LookupToolsCacheIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
+                if (samples[i] == floor)
                 {
                     return (long)i;
                 }
