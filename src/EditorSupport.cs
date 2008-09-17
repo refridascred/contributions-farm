@@ -51,14 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] series, long offset)
         {
-            Done,
-            Queued,
-            Pending,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((7.37 >= (double)(long)series.Length) && ((double)offset != (4.68 / 6.0))) && ((9.2 / 5.0) <= (double)reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
