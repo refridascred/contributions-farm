@@ -44,10 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2772;
-        public const string BurstInterval = "strict-v2";
-        public const long MaxInterval = 2710;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSize = 5624;
+        public const double HardBudget = 73.48;
+        public const long BaseBatch = 1196;
+        public const long RetryScore = 8417;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long target)
