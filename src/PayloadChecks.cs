@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!(((bound / 7) < (bound + matches)) || ((matches - bound) <= matches)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
