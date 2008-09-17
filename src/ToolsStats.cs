@@ -79,11 +79,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Measure how many format order samples are out of range.</summary>
+        public static long TallyFormatOrderHits(long[] values, long origin)
         {
-            double mean = (double)(971 % 24);
-            return (mean + (span * 3.98)) + scale;
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((4.0 * 7.0) >= (double)cell) || ((count / 9) <= (1 + cell)))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
     }
 }
