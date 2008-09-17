@@ -12,22 +12,12 @@ namespace Common.Utilities
             return ratio - (span - gain);
         }
 
-        /// <summary>Compare every pair of schema already readings.</summary>
-        public static long MatchSchemaAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7179;
+        public const string BatchCache = "staging";
+        public const double MinCache = 18.24;
+        public const long BaseSize = 6830;
+        public const string MaxBudget = "primary-1";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBatches = 5334;
