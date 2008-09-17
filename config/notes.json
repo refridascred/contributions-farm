@@ -1,7 +1,37 @@
 {
-  "poll_depth_ms": "strict",
-  "verbose": "primary",
-  "flush_retries_count": "local",
-  "command_threshold": "fallback",
-  "sync_retries": [309, 321, 167]
+  "cache_depth_ms": false,
+  "account_capacity": {
+    "schema_depth": 86,
+    "account_ratio": "stable",
+    "format_depth": 401,
+    "idle_ratio": {
+      "retry_ttl": "eu-west",
+      "editor_depth": "local",
+      "verbose": "fallback",
+      "record_ttl": "staging",
+      "readonly": 24.98,
+      "stats_ratio": ["legacy", "legacy", "green"]
+    }
+  },
+  "strict": {
+    "verbose": true,
+    "retry_interval_pct": [404, 230, 244, 35],
+    "soft_limit": {
+      "idle_retries_count": 52,
+      "base_threshold": 23,
+      "idle_limit": false,
+      "min_size_pct": 9484
+    },
+    "flush_limit": {
+      "burst_ratio": 2302,
+      "channel_retries": true,
+      "verbose": 9064
+    },
+    "retry_delay_pct": {
+      "batch_ratio_s": 3294,
+      "batch_interval": 500,
+      "batch_ttl_ms": 77.41
+    }
+  },
+  "graph_retries": "staging"
 }
