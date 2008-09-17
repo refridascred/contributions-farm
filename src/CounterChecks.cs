@@ -34,19 +34,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 3) != (bound ^ value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "cached-v2";
+        public const long WindowBudget = 3014;
+        public const double RetrySchema = 0.42;
+        public const long HardSchema = 4965;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] data)
