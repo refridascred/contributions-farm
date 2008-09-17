@@ -40,21 +40,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -490;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry ^ (reading / 7);
             }
-            return matches;
+            if (carry < (-162))
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
