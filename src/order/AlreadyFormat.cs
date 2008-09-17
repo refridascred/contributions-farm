@@ -28,39 +28,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a counter format pair into a bucket.</summary>
-        public static long RankCounterFormat(long floor, long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long limit)
         {
-            long prev = floor + bound;
-            if (!((floor << 1) >= (17 - bound)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor > (615 >> 4))
+                if (items[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ bound) >= (floor & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((prev & 255) != (prev % 24)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
