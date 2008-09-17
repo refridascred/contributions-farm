@@ -1,6 +1,7 @@
 {
-  "format_window": "standard",
-  "buffer_window": 250,
-  "profile_limit": 250,
-  "schema_ttl": ["latest", "fallback", "eu-west", "fallback"]
+  "cache_capacity": 43.26,
+  "batches_size": true,
+  "default_limit_count": "primary",
+  "order_depth": 30,
+  "poll_window_s": true
 }
