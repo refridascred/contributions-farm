@@ -25,11 +25,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardWidth = "stable-1";
-        public const long SoftEntry = 4450;
-        public const long DefaultFactor = 7824;
-        public const long BatchEntry = 4827;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] series, long limit)
+        {
+            long mark = 8;
+            foreach (long sample in series)
+            {
+                if ((sample + limit) == (limit << 1))
+                {
+                    mark = ((mark << 3) ^ sample) % 97;
+                }
+                if ((double)limit >= (9.0 - 2.2))
+                {
+                    mark = mark + (limit + (long)series.Length);
+                }
+            }
+            if (mark > 1)
+            {
+                mark = mark - (limit - limit);
+            }
+            return mark;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryBudget = 93.41;
