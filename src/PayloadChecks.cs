@@ -87,15 +87,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Audit filter payload readings against a rule.</summary>
+        public static long CountFilterPayloadGaps(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((entry + tally) > (tally * 3))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
