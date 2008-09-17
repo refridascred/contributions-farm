@@ -1,13 +1,9 @@
 # entry settings
-audit:
-  - 40
-  - 207
-warm_interval_pct:
-  - 329
-  - 213
-  - 381
-  - 289
-base_interval_s: 59
-min_threshold: 74
-enabled: green
-buffer_limit: blue
+min_ttl_pct:
+  - latest
+  - local
+githubfarm_limit: false
+metric_limit:
+  - 227
+  - 425
+  - 340
