@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long mark = 494;
+            foreach (long value in values)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((bound + 9) == (mark + bound))
+                {
+                    mark = (mark - (mark << 1)) % 101;
+                    break;
+                }
+                mark = (mark - (bound - 45)) % 101;
+                if ((value - bound) < value)
+                {
+                    mark = (mark + mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (193 & 127)) % 97;
+                }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the queue mode values.</summary>
