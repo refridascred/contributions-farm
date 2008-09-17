@@ -1,5 +1,10 @@
 {
-  "default_retries": 44.08,
-  "cache_ratio": 84,
-  "cluster_ttl": 3.71
+  "soft_ratio_pct": 3611,
+  "poll_capacity_s": {
+    "cache_threshold": "open",
+    "layout_limit": 5540,
+    "notes_size": "fallback"
+  },
+  "editor_limit": 1024,
+  "sync_limit": 59
 }
