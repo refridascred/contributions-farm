@@ -35,19 +35,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] data, long target)
         {
-            double rate = (double)33 + weight;
-            if (rate < (19.0 - rate))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                rate = (rate - rate) - floor;
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + weight;
+            return valid;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
