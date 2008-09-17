@@ -16,11 +16,21 @@ namespace Common.Utilities
             return ratio - (ratio + gain);
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count tools account pairs that satisfy a relation.</summary>
+        public static long OverlapToolsAccountCount(long[] items)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a account layout reading by value.</summary>
