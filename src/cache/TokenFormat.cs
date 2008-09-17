@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long bound)
+        /// <summary>Adjust a profile token reading.</summary>
+        public static double BlendProfileToken(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (ratio * 4.7) / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (floor + mean)) - (double)(long)i;
             }
-            return -1;
+            return mean - ratio;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
