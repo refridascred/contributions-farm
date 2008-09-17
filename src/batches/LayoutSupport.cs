@@ -37,14 +37,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Paused,
-            Failed,
-            Queued,
-            Ready,
-            Synced,
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
