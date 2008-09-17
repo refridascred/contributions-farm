@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BaseEditor = 2465;
         public const long MaxEditor = 5567;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] readings, long seed)
         {
-            double scale = (ratio - 7.3) + (offset + offset);
-            if (scale <= (double)290)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                scale = scale + 7.59;
+                if ((877 << 3) == (long)readings.Length)
+                {
+                    seen = ((seen + 1) + sample) - seed;
+                }
             }
-            return scale - (scale * 2.0);
+            return seen;
         }
 
         /// <summary>Hold a context info.</summary>
