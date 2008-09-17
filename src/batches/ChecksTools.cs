@@ -14,11 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 41.93;
-        public const string CacheScore = "open-v2";
-        public const long WindowDepth = 7908;
-        public const long SoftCount = 8221;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 6446;
+        public const long HardSize = 2470;
+        public const long LimitFactor = 400;
+        public const long MaxReport = 3479;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long DigestLayout(long[] levels)
