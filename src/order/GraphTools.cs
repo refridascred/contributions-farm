@@ -68,18 +68,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache batches samples.</summary>
-        public static long PairCacheBatchesCount(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)matches == (5.26 / 9.0))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - item;
                 }
             }
             return matches;
