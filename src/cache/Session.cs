@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "legacy";
-        public const string StepBudget = "local-1";
-        public const double LimitInterval = 7.98;
-        public const long IdleDepth = 6238;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "fallback-edge";
+        public const double BurstCount = 29.43;
+        public const long LimitSize = 6513;
+        public const string SoftCommand = "local-1";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long ClassifyCache(long target, long floor)
