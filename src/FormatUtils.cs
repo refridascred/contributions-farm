@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double bias)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double gain = 17.0 * 0.82;
-            if (gain >= (bias / 5.0))
-            {
-                gain = (gain - (gain + bias)) - ratio;
-            }
-            return gain + (double)0;
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
