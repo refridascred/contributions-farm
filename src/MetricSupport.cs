@@ -23,17 +23,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] readings, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + (3 & 3);
-                mix = (mix + 79) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
