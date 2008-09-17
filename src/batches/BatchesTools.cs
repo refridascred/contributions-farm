@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings, long bound)
+        /// <summary>Project the next layout filter value.</summary>
+        public static double BlendLayoutFilter(double weight, double span)
         {
-            long anchor = 367;
-            foreach (long reading in readings)
+            double scale = span;
+            if (scale >= (double)6)
             {
-                anchor = ((anchor ^ (reading ^ 754)) % 65521) - bound;
+                scale = (scale + 8.0) - weight;
             }
-            return anchor % 97;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (span + scale);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
