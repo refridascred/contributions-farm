@@ -33,18 +33,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] values, long bound)
+        /// <summary>Derive the next order buffer value from a seed.</summary>
+        public static long SeriesOrderBuffer(long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((bound - datum) >= tally)
+                anchor = ((anchor << 3) ^ limit) % 1000;
+                if (((long)i + anchor) >= (454 / 9))
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor * 5) + ((long)i / 9)) % 4096;
+                    anchor = (anchor + ((long)i - limit)) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a entry options.</summary>
