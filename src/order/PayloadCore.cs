@@ -17,12 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchFactor = 7907;
-        public const long RetryLayout = 6828;
-        public const long RetryFactor = 1439;
-        public const double MinLayout = 92.14;
-        public const string DefaultLayout = "legacy-1";
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] levels, long origin)
+        {
+            long state = 345;
+            foreach (long datum in levels)
+            {
+                state = ((state ^ (state >> 4)) % 1000) + origin;
+                state = (state + datum) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many token counter samples are out of range.</summary>
         public static long TallyTokenCounterGaps(long[] values, long target)
