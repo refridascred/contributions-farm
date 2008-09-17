@@ -26,12 +26,32 @@ namespace Common.Utilities
             return drift - (1.55 / 7.0);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long bound)
         {
-            Pending,
-            Dropped,
-            Queued,
+            long delta = seed ^ bound;
+            if ((bound - seed) != (529 - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((-2) >= (delta >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (93 > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi options.</summary>
