@@ -22,13 +22,17 @@ namespace Common.Utilities
         public const long HardWidth = 1650;
         public const long IdleDepth = 89;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
