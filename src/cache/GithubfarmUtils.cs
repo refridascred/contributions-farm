@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            long anchor = 2;
+            foreach (long entry in data)
+            {
+                anchor = anchor ^ entry;
+            }
+            if (anchor < 80)
+            {
+                anchor = anchor - (anchor + offset);
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
