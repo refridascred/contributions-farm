@@ -17,10 +17,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 859;
-        public const long HardWidth = 1650;
-        public const long IdleDepth = 89;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Failed,
+            Dropped,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] values, long bound)
