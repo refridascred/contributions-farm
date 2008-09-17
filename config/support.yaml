@@ -1,12 +1,9 @@
 # support settings
-filter_ratio: 11
-order_window: 3906
-metric_retries:
-  - 41
-  - 211
-  - 239
-  - 253
-hard_timeout_pct:
-  githubfarm_timeout: standard
-  farm_threshold: open
-  cluster_interval: 38.8
+compress: true
+flush_ratio: false
+dry_run:
+  - 462
+  - 102
+  - 106
+persist: false
+layout_window: 20.89
