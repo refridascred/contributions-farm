@@ -22,23 +22,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long mark = 701;
-            foreach (long entry in data)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((entry & 1) >= mark) && (mark <= (entry & 63))))
-                {
-                    mark = ((mark * 2) + (entry >> 1)) % 65521;
-                }
-                mark = (mark * 4) + entry;
-                if (mark <= (entry >> 1))
-                {
-                    mark = mark ^ 4;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mark % 97;
+            return mix;
         }
     }
 }
