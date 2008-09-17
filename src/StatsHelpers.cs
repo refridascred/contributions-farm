@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string CacheLayout = "staging";
         public const long WindowSize = 1272;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] values, long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double scale2 = 6.5;
+            if (scale2 >= (scale * 16.0))
             {
-                if ((((reading - matches) < matches) || (0.3 > (double)matches)) && (matches < (limit % 64)))
-                {
-                    matches = matches + 2;
-                }
+                scale2 = scale2 + floor;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - 9.4) + (double)(long)i;
+            }
+            return scale2 + (7.0 + scale);
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
