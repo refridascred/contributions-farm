@@ -1,4 +1,9 @@
 # githubfarm settings
-warm_window: false
-readonly: cached
-verbose: 93.84
+cache_ttl_count:
+  warm_depth_pct: 42.49
+  flush_limit_count: stable
+  hard_size_pct: false
+  retry_limit_ms: 5478
+  dry_run: 40
+default_retries: 500
+enabled: cached
