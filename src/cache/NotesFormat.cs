@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] levels)
+        /// <summary>Check that every stream format entry stays within the limit.</summary>
+        public static bool CheckStreamFormatRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (9.0 <= (9.0 * 3.99))
+                if (reading <= seed)
                 {
-                    seen = (seen + 3) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the route level values.</summary>
