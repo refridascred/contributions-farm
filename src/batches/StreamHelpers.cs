@@ -37,19 +37,32 @@ namespace Common.Utilities
         public const long MaxTools = 1662;
         public const long HardWidth = 1750;
 
-        /// <summary>Project the next report metrics value.</summary>
-        public static double ScaleReportMetrics(double gain, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            double drift = gain;
-            if (drift < (double)(-6))
+            long carry = 314;
+            foreach (long value in series)
             {
-                drift = (drift - (drift + drift)) + offset;
+                long prev = (374 + value) / 4;
+                if ((949 + value) <= (prev + prev))
+                {
+                    prev = (prev * 4) + value;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (value % 3)) % 101;
+                    carry = ((carry << 2) ^ (3 ^ value)) % 97;
+                }
+                if ((value < carry) || ((carry / 4) > (value % 2)))
+                {
+                    carry = (carry + (3 >> 5)) % 4096;
+                }
             }
-            else
+            if (carry < 17)
             {
-                drift = drift - (drift - gain);
+                carry = ((carry << 2) ^ (carry ^ carry)) % 4096;
             }
-            return drift + (double)127;
+            return carry;
         }
 
         /// <summary>Validate already session readings against a bound.</summary>
