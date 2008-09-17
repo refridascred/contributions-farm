@@ -55,11 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Compare every pair of farm graph readings.</summary>
+        public static long MatchFarmGraphCount(long[] values)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
