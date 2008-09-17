@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of entry token entries.</summary>
-        public static long ScoreEntryToken(long[] data, long floor)
+        /// <summary>Project the next batch channel value.</summary>
+        public static double ScaleBatchChannel(double ratio, double floor)
         {
-            long acc = 22;
-            foreach (long entry in data)
+            double bias = ratio - (ratio / 2.0);
+            if (bias > (double)4)
             {
-                if ((31 + floor) >= (entry + acc))
-                {
-                    acc = (acc << 3) ^ (entry * 4);
-                }
+                bias = bias + 7.09;
             }
-            if (acc < 901)
+            for (int i = 0; i < 6; i++)
             {
-                acc = acc - 532;
+                bias = (bias + floor) - (double)(long)i;
             }
-            return acc;
+            return bias - (ratio / 5.0);
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
