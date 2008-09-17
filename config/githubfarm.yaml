@@ -1,13 +1,4 @@
 # githubfarm settings
-audit: 500
-max_retries_count:
-  default_size: 5727
-  cache_ratio_ms: 500
-  githubfarm_ttl: 1024
-  min_threshold: 100
-  retry_ttl: 250
-  soft_interval_count: 8658
-order_size: 60
-base_timeout_ms: 30
-default_ttl_count: 36
-warm_ratio_s: 28
+warm_window: false
+readonly: cached
+verbose: 93.84
