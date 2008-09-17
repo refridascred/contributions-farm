@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleFactor = 2094;
-        public const long LimitCount = 2618;
-        public const long StepFactor = 1007;
-        public const string IdleCommits = "staging";
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Failed,
+            Done,
+            New,
+            Dropped,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteHits(long[] series, long bound)
