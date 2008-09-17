@@ -22,38 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long floor, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            if (!((floor + bound) >= (floor / 9)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + 4) > (floor % 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(232 >= (floor + 431)))
+                    if ((values[i] + values[j]) < 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.4 * 3.3) <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
