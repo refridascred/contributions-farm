@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream entry measurements.</summary>
-        public static double BlendStreamEntry(double ratio, double bias)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data, long target)
         {
-            double rate = bias;
-            if (rate > (double)0)
+            long score = -58;
+            foreach (long datum in data)
             {
-                rate = (rate + bias) - ratio;
+                score = ((score ^ target) % 4096) ^ datum;
+                if (target >= (target % 8))
+                {
+                    score = score + ((long)data.Length % 2);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (rate - bias);
+            return score;
         }
 
         /// <summary>Describe the already kind values.</summary>
