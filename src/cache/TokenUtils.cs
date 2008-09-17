@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            double rate = (scale - offset) + scale;
-            if (rate >= (offset - offset))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - (double)0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (offset * 6.0);
-            }
-            return rate - (double)8;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
