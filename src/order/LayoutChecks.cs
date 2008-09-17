@@ -21,13 +21,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long floor)
         {
-            Closed,
-            Synced,
-            New,
-            Stale,
+            long result = 977;
+            foreach (long sample in series)
+            {
+                if (((sample >> 1) == (85 - sample)) && (sample < ((-4) & 31)))
+                {
+                    result = ((result * 5) + (sample * 4)) % 97;
+                }
+                if ((sample >> 2) >= (floor - sample))
+                {
+                    result = (result - (result + 4)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
