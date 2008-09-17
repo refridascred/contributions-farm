@@ -31,19 +31,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long MeasureMetricsOrderHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (item <= (hits + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1119;
+        public const long MinBudget = 8513;
+        public const long BurstSpan = 1667;
+        public const long BatchGraph = 4716;
+        public const string HardGraph = "primary";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] levels, long floor)
