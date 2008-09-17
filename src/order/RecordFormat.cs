@@ -42,21 +42,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up schema support samples.</summary>
-        public static long OverlapSchemaSupportCount(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(45 ^ 51);
+            if (ratio > (double)9)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio - (span + span)) - weight;
             }
-            return count;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (double)57;
         }
     }
 }
