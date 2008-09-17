@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 8808;
         public const string RetryBudget = "cached-v2";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "cached-1";
-        public const long StepCounter = 6893;
-        public const long WindowCounter = 6612;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheSize = "open-1";
+        public const long HardTimeout = 6972;
+        public const string BurstTools = "stable-v2";
+        public const string BaseSize = "local-1";
+        public const long StepDepth = 7279;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
