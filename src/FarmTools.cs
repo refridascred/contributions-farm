@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of route contributi readings.</summary>
-        public static long ScoreRouteContributi(long[] values, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long sum = 987;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum * 3) >= (datum + datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum ^ (32 ^ target);
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
