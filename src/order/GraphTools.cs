@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double ratio, double span)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double rate = span - 5.7;
-            if (rate > 6.0)
-            {
-                rate = (rate + 5.6) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)64) + (double)(long)i;
-            }
-            return rate - (span + 1.12);
+            New,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the payload filter series from a seed.</summary>
