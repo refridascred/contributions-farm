@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (matches - 681))
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 1966;
+        public const long MaxToken = 3395;
+        public const long HardToken = 5301;
+        public const double WindowToken = 15.69;
+        public const long IdleToken = 6326;
     }
 }
