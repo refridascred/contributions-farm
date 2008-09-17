@@ -21,12 +21,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            Ready,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Blend two queue measurements.</summary>
