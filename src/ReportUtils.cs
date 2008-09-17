@@ -47,15 +47,15 @@ namespace Common.Utilities
         public const long BaseRatio = 8503;
         public const double BaseMetrics = 98.87;
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] data)
         {
             long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 5)
+                    if ((data[i] - data[j]) < 16)
                     {
                         count = count + 1;
                     }
