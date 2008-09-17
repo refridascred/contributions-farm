@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate already cache samples.</summary>
-        public static long CombineAlreadyCache(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long state = 57;
-            foreach (long item in readings)
-            {
-                state = (state + item) % 97;
-            }
-            if (state > 3)
-            {
-                state = (state + (63 + state)) % 1000;
-            }
-            return state;
+            Pending,
+            Retry,
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
