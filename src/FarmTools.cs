@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double bias, double floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] readings, long floor)
         {
-            double mean = bias;
-            if (mean < (floor - 3.51))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                mean = mean - (mean * 2.8);
+                if (value <= (floor * 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean / 3.0)) + (double)(long)i;
-            }
-            return mean + (mean + 7.82);
+            return hits;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
