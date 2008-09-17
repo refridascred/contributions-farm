@@ -11,20 +11,31 @@ namespace Common.Utilities
         public const long WindowDepth = 1171;
         public const long LimitRoute = 9274;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long bound)
         {
-            long acc = 4;
-            foreach (long entry in levels)
+            if (bound >= (bound >> 4))
             {
-                acc = (acc * 4) + acc;
-                acc = acc - (entry / 3);
-                if (acc >= (entry - acc))
+                return 5;
+            }
+            else
+            {
+                if ((3.4 / 6.0) != (double)bound)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 2) == (8 + 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
