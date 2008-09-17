@@ -74,19 +74,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 16) != (0 - reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCount = 90.82;
+        public const string MaxSize = "cached-edge";
+        public const long BaseInterval = 8548;
+        public const long LimitScore = 5584;
+        public const long HardCluster = 7598;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] items)
