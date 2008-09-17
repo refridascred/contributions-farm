@@ -22,21 +22,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 61;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((item - 7) <= (28 & 3)))
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (mark ^ mark);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (mark - 292)) % 4096;
                 }
             }
-            return count;
+            if (mark < 31)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a session record.</summary>
