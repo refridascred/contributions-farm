@@ -1,12 +1,10 @@
 # Command notes
 
-Keep record and batch names short and lowercase.
-Each order is validated before it reaches the cache queue.
-Defaults for route live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The token module keeps payload values in sync with the checks cache.
 
 ## Guidelines
 
-- Log every checks change
-- Prefer report defaults
-- Review buffer limits each release
-- Validate record input early
+- Keep context values small
+- Validate graph input early
+- Document new channel fields
