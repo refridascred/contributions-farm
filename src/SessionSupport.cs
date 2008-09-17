@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const long WindowDepth = 1171;
         public const long LimitRoute = 9274;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if (bound >= (bound >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.4 / 6.0) != (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound / 2) == (8 + 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a account layout reading by value.</summary>
