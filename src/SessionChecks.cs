@@ -48,14 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate notes window readings against a bound.</summary>
+        public static bool VerifyNotesWindowRange(long[] readings, long seed)
         {
-            Closed,
-            Done,
-            Failed,
-            Synced,
-            New,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
