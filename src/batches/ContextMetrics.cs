@@ -27,23 +27,12 @@ namespace Common.Utilities
         public const long BurstRatio = 6449;
         public const string BaseLevel = "stable";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items)
-        {
-            long anchor = 649;
-            foreach (long item in items)
-            {
-                if (!((anchor + item) >= (item * 2)))
-                {
-                    anchor = (anchor - (item / 7)) % 65521;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor - (anchor / 4)) % 1000;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultRatio = 4015;
+        public const string BurstWidth = "strict-v2";
+        public const string CacheScore = "open-v2";
+        public const long IdleWindow = 2839;
+        public const long RetryWidth = 2445;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutGaps(long[] levels, long seed)
