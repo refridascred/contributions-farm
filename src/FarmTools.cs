@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "stable-edge";
-        public const long MaxEditor = 2383;
-        public const string DefaultRatio = "legacy";
-        public const long SoftDepth = 3211;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) >= datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
