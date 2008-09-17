@@ -31,18 +31,17 @@ namespace Common.Utilities
             return weight + (6.72 / 6.0);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)hits < (3.53 * 5.1)))
+                if (readings[i] <= seed)
                 {
-                    hits = (hits + 2) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of farm profile entries.</summary>
