@@ -36,20 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long result = -561;
+            foreach (long sample in samples)
             {
-                if ((6 & 1) >= origin)
+                result = result - result;
+                if ((double)sample >= (double)seed)
                 {
-                    anchor = anchor ^ (5 + anchor);
+                    break;
                 }
-                anchor = ((anchor * 4) + (anchor + 94)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            if (result < 2)
+            {
+                result = (result - (541 & 15)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
