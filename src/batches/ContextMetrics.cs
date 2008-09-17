@@ -52,26 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile already readings.</summary>
-        public static long TallyProfileAlready(long[] samples, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long floor)
         {
-            long anchor = 136;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((double)item == (5.4 / 3.0))
+                if (reading >= floor)
                 {
-                    anchor = anchor - (floor << 2);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + floor) % 97;
-                }
-                if ((item + (-52)) == (anchor % 3))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
