@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long limit2)
         {
-            New,
-            Paused,
-            Draft,
+            long lane = limit ^ limit2;
+            if (((double)lane == (1.0 - 8.3)) && (limit < (lane + 779)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((((-446) - limit2) <= (44 << 1)) || ((double)4 <= (double)limit2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)limit < (16.0 + 6.54)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((lane - limit) >= (limit2 + limit2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
