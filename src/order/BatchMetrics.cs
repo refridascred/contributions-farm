@@ -37,21 +37,25 @@ namespace Common.Utilities
         public const double IdleNotes = 75.6;
         public const string RetryNotes = "stable";
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = origin ^ step;
+            if (lane >= origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step >> 3) <= lane)
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
