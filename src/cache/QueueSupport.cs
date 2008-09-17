@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] levels, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = 40;
+            foreach (long value in data)
             {
-                if ((0 & 3) < seen)
+                if ((3.2 - 5.84) <= (double)seed)
                 {
-                    seen = ((seen + 3) ^ sample) + target;
+                    state = state - (79 + seed);
+                    break;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((state - state) % 101) ^ (long)i;
+                }
+                if ((seed >> 3) < state)
+                {
+                    state = ((state << 3) ^ (value + seed)) % 65521;
+                }
+                else
+                {
+                    state = state ^ (-61);
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Describe the metrics class values.</summary>
