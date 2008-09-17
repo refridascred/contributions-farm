@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long BaseWidth = 7475;
         public const long SoftEntry = 4126;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Idle,
-            Dropped,
-            Ready,
-            Failed,
-            Locked,
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
