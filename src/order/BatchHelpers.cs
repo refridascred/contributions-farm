@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4323;
         public const long CacheSpan = 2980;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepBudget = 1666;
-        public const string DefaultScore = "primary-v2";
-        public const long SoftCommand = 5423;
-        public const double DefaultInterval = 52.64;
-        public const long IdleBudget = 3990;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandMatches(long[] levels)
