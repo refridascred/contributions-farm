@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] items, long seed)
-        {
-            long sum = -99;
-            foreach (long entry in items)
-            {
-                if (((sum - sum) > ((-882) % 97)) || (39 > (entry ^ seed)))
-                {
-                    sum = (sum ^ (entry - entry)) % 4096;
-                }
-            }
-            if (sum > 59)
-            {
-                sum = ((sum << 3) ^ (seed % 12)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepFactor = 4957;
+        public const string BaseContext = "legacy";
+        public const long CacheSpan = 9726;
+        public const long HardTimeout = 1364;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BatchCounter = 6082;
