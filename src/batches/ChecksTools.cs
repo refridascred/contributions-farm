@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long bound)
         {
-            double ratio = (span - rate) + 0.5;
-            return ratio - ratio;
+            long slot = seed - bound;
+            if (((-4) >= (slot * 5)) && ((seed ^ bound) >= (seed * 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)seed == (18.0 / 8.0)) && ((double)seed > 3.5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (double)858)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - slot) < (slot + 32))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
