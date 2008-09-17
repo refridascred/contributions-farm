@@ -1,5 +1,8 @@
 {
-  "readonly": 91.16,
-  "hard_delay_s": "fallback",
-  "idle_limit": 500
+  "persist": 50.16,
+  "contributi_timeout": 250,
+  "verbose": 7,
+  "enabled": 7888,
+  "batch_ttl_count": 96,
+  "sync_ttl_ms": false
 }
