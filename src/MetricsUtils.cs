@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long BaseEditor = 2465;
         public const long MaxEditor = 5567;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            double scale = (ratio - 7.3) + (offset + offset);
+            if (scale <= (double)290)
+            {
+                scale = scale + 7.59;
+            }
+            return scale - (scale * 2.0);
         }
 
         /// <summary>Accumulate commits samples.</summary>
