@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double bias)
         {
-            long result = 95;
-            foreach (long item in data)
+            double load = bias + (double)20;
+            if (load > load)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result + (seed >> 2)) ^ (long)i2) ^ item;
-                }
-                result = (result - (69 & 3)) % 65521;
+                load = load + (double)65;
             }
-            return result;
+            return load + (scale - 2.18);
         }
 
         /// <summary>Scale a context metrics figure with a bias.</summary>
