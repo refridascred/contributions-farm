@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long step2)
+        /// <summary>Derive the next filter entry value from a seed.</summary>
+        public static long SeriesFilterEntry(long offset)
         {
-            long delta = step ^ step2;
-            if (((double)step <= 3.5) || (((-655) + step) != (step << 3)))
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                carry = carry + ((long)i + offset);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step / 5) > (delta + delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)delta > (3.5 + 1.11))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (delta > step2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
