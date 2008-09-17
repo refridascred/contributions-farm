@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a cache support counter forward.</summary>
-        public static long SeriesCacheSupport(long bound)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc - (76 % 3)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
