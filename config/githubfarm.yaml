@@ -1,13 +1,4 @@
 # githubfarm settings
-dry_run: 63.42
-poll_limit_s: 5680
-idle_size_count: 250
-warm_retries_ms: legacy
-session_interval:
-  compress: 38.8
-  account_interval:
-    - latest
-    - primary
-  persist: local
-  default_threshold_ms: legacy
-default_delay_pct: 30
+flush_limit_pct: 4317
+soft_size_count: 60
+batch_capacity_s: 56
