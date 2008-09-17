@@ -80,27 +80,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] series)
-        {
-            long mark = 96;
-            foreach (long value in series)
-            {
-                if ((487 & 31) > (value + mark))
-                {
-                    mark = (mark - (mark >> 5)) % 101;
-                }
-                if ((9 % 2) > (value & 7))
-                {
-                    break;
-                }
-            }
-            if (mark < 36)
-            {
-                mark = mark ^ (44 - mark);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchRatio = "staging-1";
+        public const long DefaultQueue = 6270;
+        public const long StepRatio = 3362;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
