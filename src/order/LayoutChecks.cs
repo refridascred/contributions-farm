@@ -55,21 +55,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] series, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                state = ((state << 3) ^ (state >> 3)) % 97;
-                state = state - ((long)i << 3);
-                if ((0.13 / 5.0) > (double)state)
+                if (count >= (count - item))
                 {
-                    state = (state << 2) ^ (state << 1);
+                    count = (count + 3) - origin;
                 }
-                state = ((state * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
