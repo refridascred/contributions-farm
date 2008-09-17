@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a metrics profile value against two limits.</summary>
-        public static long GradeMetricsProfile(long bound, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels, long step)
         {
-            if ((origin - 930) != (origin % 2))
+            long result = 84;
+            foreach (long cell in levels)
             {
-                return 3;
+                result = (((result ^ result) % 65521) + cell) - step;
             }
-            else
-            {
-                if (bound > (bound ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
