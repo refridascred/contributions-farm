@@ -27,16 +27,22 @@ namespace Common.Utilities
         public const long BurstRatio = 6449;
         public const string BaseLevel = "stable";
 
-        /// <summary>Iterate the editor payload series from a seed.</summary>
-        public static long DeriveEditorPayload(long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = 649;
+            foreach (long item in items)
             {
-                sum = ((sum * 3) + (sum - floor)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (!((anchor + item) >= (item * 2)))
+                {
+                    anchor = (anchor - (item / 7)) % 65521;
+                }
             }
-            return sum;
+            if (anchor > 1)
+            {
+                anchor = (anchor - (anchor / 4)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
