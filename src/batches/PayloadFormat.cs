@@ -34,10 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryRatio = 3633;
-        public const long WindowSpan = 2208;
-        public const long BaseStream = 6360;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine context profile values into a single score.</summary>
         public static long ScoreContextProfile(long[] series)
