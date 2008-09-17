@@ -22,18 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] values, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen % 12) > sample)
-                {
-                    seen = (seen + 2) + limit;
-                }
+                mark = ((mark * 3) + (mark ^ mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a metrics options.</summary>
