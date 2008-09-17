@@ -27,18 +27,39 @@ namespace Common.Utilities
             return (load - span) + gain;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long prev = step - bound;
+            if (359 < step)
             {
-                if ((tally + tally) > floor)
+                return 2;
+            }
+            else
+            {
+                if ((bound - 27) == (prev - step))
                 {
-                    tally = (tally + 1) ^ datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound & 255) != (bound + 62))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((prev * 5) < bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
