@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series, long target)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((datum + 4) < (993 - target)) || !(target > (datum >> 4)))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
