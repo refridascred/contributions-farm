@@ -13,21 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count checks token pairs that satisfy a relation.</summary>
-        public static long PairChecksTokenCount(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
