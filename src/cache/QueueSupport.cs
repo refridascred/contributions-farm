@@ -29,18 +29,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length > (count * 4))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleSize = 39.05;
+        public const long DefaultRoute = 7108;
+        public const long CacheSpan = 9562;
     }
 }
