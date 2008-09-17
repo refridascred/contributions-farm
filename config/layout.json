@@ -1,16 +1,12 @@
 {
-  "dry_run": {
-    "hard_delay_ms": 50,
-    "sync_ttl_count": {
-      "persist": 33.07,
-      "stream_interval": "blue",
-      "layout_retries": "staging",
-      "flush_limit_pct": false,
-      "verbose": 95.08
-    },
-    "commits_capacity": "strict"
+  "compress": ["blue", "local", "legacy"],
+  "min_depth_s": {
+    "soft_ratio_count": 34.69,
+    "token_timeout": 2174,
+    "compress": 500,
+    "batch_depth_count": ["standard", "staging", "eu-west", "latest"],
+    "soft_capacity_count": 9693,
+    "default_ratio_count": 9981
   },
-  "flush_ttl_count": 44.91,
-  "default_retries_s": "stable",
-  "cache_delay_s": 91
+  "hard_window": 77.67
 }
