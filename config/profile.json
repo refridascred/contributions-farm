@@ -1,5 +1,6 @@
 {
-  "burst_timeout": 76,
-  "idle_delay_s": 60,
-  "context_depth": 30
+  "poll_window": ["strict", "stable", "latest", "strict"],
+  "soft_timeout_count": ["staging", "local"],
+  "cache_size": 60,
+  "audit": "edge"
 }
