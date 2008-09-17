@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 7386;
         public const long IdleSpan = 7796;
 
-        /// <summary>Count farm queue pairs that satisfy a relation.</summary>
-        public static long OverlapFarmQueueCount(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0 - seen) <= seen)
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
