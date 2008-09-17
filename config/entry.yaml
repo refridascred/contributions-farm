@@ -1,7 +1,6 @@
 # entry settings
-warm_retries_count: 5151
-hard_threshold_ms: 1.46
-soft_size_ms:
-  - primary
-  - green
-  - primary
+default_capacity:
+  - blue
+  - legacy
+githubfarm_delay: 63
+readonly: 98.97
