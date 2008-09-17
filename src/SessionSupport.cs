@@ -19,22 +19,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] readings, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count % 64) == (753 + count))
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
                 {
-                    count = ((count + 1) ^ sample) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
