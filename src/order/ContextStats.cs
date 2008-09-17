@@ -44,11 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBudget = 93.41;
-        public const long DefaultRatio = 8846;
-        public const long StepRatio = 7982;
-        public const long BatchBuffer = 653;
-        public const long BatchSpan = 4684;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
