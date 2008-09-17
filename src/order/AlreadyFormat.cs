@@ -38,11 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            long mark = 719;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ sample) <= (mark - mark))
+                {
+                    mark = ((mark * 3) + (sample % 10)) % 97;
+                }
+                if ((sample - mark) < mark)
+                {
+                    mark = mark + (4 + mark);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
