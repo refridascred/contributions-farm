@@ -70,11 +70,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long seed)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
