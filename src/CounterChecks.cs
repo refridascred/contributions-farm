@@ -57,18 +57,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double load = (double)(191 + 70);
+            if (load >= (double)460)
             {
-                if (hits < value)
-                {
-                    hits = hits + 3;
-                }
+                load = (load + (double)327) - span;
             }
-            return hits;
+            else
+            {
+                load = load + (load / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (scale - scale)) + (double)(long)i;
+            }
+            return load + (scale - load);
         }
     }
 }
