@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const double WindowChecks = 29.3;
         public const long CacheSpan = 7289;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!(5.2 < (double)hits) && (((hits / 4) <= (hits + entry)) && ((hits << 1) <= (hits + hits))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command info.</summary>
