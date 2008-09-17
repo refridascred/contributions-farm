@@ -45,18 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((bound >= (833 * 2)) || (datum > (datum + bound))) && ((0.4 / 2.0) < (double)datum))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
