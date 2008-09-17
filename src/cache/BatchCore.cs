@@ -42,14 +42,19 @@ namespace Common.Utilities
         public const long IdleReport = 218;
         public const long MinReport = 9579;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate token entry readings against a bound.</summary>
+        public static bool GuardTokenEntryRange(long[] series, long target)
         {
-            Active,
-            Done,
-            Closed,
-            Retry,
-            Idle,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
