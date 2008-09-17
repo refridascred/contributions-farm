@@ -28,15 +28,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next already payload value.</summary>
-        public static double BlendAlreadyPayload(double rate, double span)
+        /// <summary>Look up the position of a already payload sample.</summary>
+        public static long LocateAlreadyPayloadIndex(long[] data, long floor)
         {
-            double weight = span;
-            if (weight > (weight / 4.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - (span / 4.0)) - rate;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)(-9);
+            return -1;
         }
     }
 }
