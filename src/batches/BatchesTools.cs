@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of command already readings.</summary>
-        public static long TotalCommandAlready(long[] samples, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long anchor = 69;
-            foreach (long value in samples)
-            {
-                long delta = (value * 4) + (406 - value);
-                anchor = anchor ^ delta;
-                anchor = ((anchor << 3) ^ (offset - anchor)) % 1000;
-                if (value <= (offset + offset))
-                {
-                    break;
-                }
-            }
-            if (anchor > 581)
-            {
-                anchor = (anchor ^ (anchor & 255)) % 1000;
-            }
-            return anchor % 97;
+            Idle,
+            Retry,
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
