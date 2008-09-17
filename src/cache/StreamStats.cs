@@ -33,21 +33,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = target - limit;
+            if ((double)next == (10.0 * 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target + 26) < (next + 30))
                 {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
