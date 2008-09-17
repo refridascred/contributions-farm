@@ -63,39 +63,15 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double weight, double floor)
         {
-            long next = floor ^ seed;
-            if (((next - seed) >= (seed ^ floor)) && ((floor << 3) != (78 << 2)))
+            double rate = 13.0 - floor;
+            if (rate <= (double)43)
             {
-                return 5;
+                rate = (rate + rate) - weight;
             }
-            else
-            {
-                if ((double)floor <= (3.0 + 7.98))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((seed / 6) > ((-765) + floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next ^ next) <= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return rate + rate;
         }
     }
 }
