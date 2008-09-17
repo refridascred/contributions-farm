@@ -22,11 +22,21 @@ namespace Common.Utilities
         public const long WindowScore = 9369;
         public const long WindowTimeout = 8003;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double bias)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            double mean = 5.0;
-            return (mean + (bias / 6.0)) + ratio;
+            long sum = target;
+            for (int i = 0; i < 6; i++)
+            {
+                long matches = (sum + target) / 5;
+                if (((long)i - matches) <= ((long)i - target))
+                {
+                    sum = (sum << 2) ^ (matches + 354);
+                    sum = sum - 45;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
