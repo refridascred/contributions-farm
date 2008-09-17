@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every contributi githubfarm entry stays within the limit.</summary>
-        public static bool CheckContributiGithubfarmLimits(long[] series, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long result = 9;
+            foreach (long item in readings)
             {
-                if (value > floor)
+                result = (result - item) % 255;
+                if ((4.16 + 8.63) != (double)target)
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 2) ^ (result ^ 510)) % 255;
                 }
             }
-            return ok;
+            if (result < (-893))
+            {
+                result = ((result << 2) ^ target) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Match up route samples.</summary>
