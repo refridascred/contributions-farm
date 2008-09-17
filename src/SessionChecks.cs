@@ -29,18 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long carry = 1;
+            foreach (long reading in samples)
             {
-                if (seen >= (reading + seen))
-                {
-                    seen = seen + 2;
-                }
+                carry = (((carry ^ (39 << 1)) % 4096) ^ reading) - step;
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate order samples.</summary>
