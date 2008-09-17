@@ -1,4 +1,15 @@
 # githubfarm settings
-flush_limit_pct: 4317
-soft_size_count: 60
-batch_capacity_s: 56
+enabled:
+  - cached
+  - strict
+  - eu-west
+  - green
+format_window:
+  - standard
+  - standard
+  - staging
+  - open
+checks_ttl:
+  - primary
+  - cached
+  - standard
