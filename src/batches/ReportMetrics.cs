@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long step)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
