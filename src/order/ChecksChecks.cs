@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchTimeout = 8013;
+        public const long StepPayload = 1060;
+        public const long StepCount = 5942;
 
         /// <summary>Digest a series of stream session entries.</summary>
         public static long CombineStreamSession(long[] levels)
