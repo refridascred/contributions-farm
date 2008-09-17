@@ -27,21 +27,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                result = (result * 4) + (seed % 100);
-                if (!((result ^ result) > (-9)))
+                if ((double)reading >= 8.84)
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                result = (result << 3) ^ seed;
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
