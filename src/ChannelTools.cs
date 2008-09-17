@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const long HardDepth = 8808;
         public const string RetryBudget = "cached-v2";
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "cached-1";
+        public const long StepCounter = 6893;
+        public const long WindowCounter = 6612;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
