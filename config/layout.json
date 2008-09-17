@@ -1,20 +1,7 @@
 {
-  "persist": 50.04,
-  "burst_timeout_pct": 49.48,
-  "max_capacity_count": {
-    "flush_depth": {
-      "poll_window_ms": 43,
-      "base_depth_s": 500,
-      "cache_depth": [433, 493],
-      "base_size": 63,
-      "window_depth": true,
-      "burst_threshold_s": true
-    },
-    "retry_delay_count": true,
-    "default_window_s": true,
-    "batches_retries": true,
-    "retry_capacity": true,
-    "contributi_retries": "legacy"
-  },
-  "idle_interval_pct": false
+  "profile_size": 6417,
+  "channel_ttl": "green",
+  "flush_delay_ms": "green",
+  "enabled": "stable",
+  "base_threshold": [166, 336, 48]
 }
