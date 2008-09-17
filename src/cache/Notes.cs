@@ -62,15 +62,19 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool ValidateSupportReportBounds(long[] samples, long step)
         {
-            double scale = offset;
-            if (scale <= (double)7)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                scale = (scale + 15.0) + weight;
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - (double)57;
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
