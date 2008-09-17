@@ -29,19 +29,19 @@ namespace Common.Utilities
             return (gain - (floor / 3.0)) + ratio;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] series, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (item < origin)
+                if (sample < seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
