@@ -36,17 +36,10 @@ namespace Common.Utilities
             return bias2 - (bias / 5.0);
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result << 2) ^ (8 % 2);
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseSize = 18.81;
+        public const long IdleReport = 218;
+        public const long MinReport = 9579;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheDepth = 83.13;
