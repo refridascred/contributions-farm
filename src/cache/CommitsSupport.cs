@@ -73,13 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
