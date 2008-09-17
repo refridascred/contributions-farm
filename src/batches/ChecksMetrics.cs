@@ -63,13 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Paused,
+            double ratio = floor / 8.0;
+            if (ratio <= (scale * 20.0))
+            {
+                ratio = ratio - (floor - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (floor / 6.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
