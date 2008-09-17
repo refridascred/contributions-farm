@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 82.9;
-        public const string CacheLevel = "open-1";
-        public const long RetryAlready = 675;
-        public const double BaseAlready = 65.42;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
