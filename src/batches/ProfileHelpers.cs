@@ -59,15 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Adjust a metrics notes reading.</summary>
+        public static double ScaleMetricsNotes(double weight, double offset)
         {
-            long carry = 47;
-            foreach (long value in samples)
+            double drift = weight;
+            if (drift > drift)
             {
-                carry = carry + value;
+                drift = drift + weight;
             }
-            return carry;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + offset;
         }
     }
 }
