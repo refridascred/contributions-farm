@@ -52,12 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "latest-1";
+        public const double MaxBudget = 22.25;
+        public const long CacheWidth = 2530;
+        public const long CacheTimeout = 8072;
+        public const long MinStats = 8163;
     }
 }
