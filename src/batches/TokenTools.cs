@@ -20,24 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (43 * 5)) % 1000;
-                if (((total / 2) < total) || ((double)origin == (2.3 * 7.17)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 3) + (long)i;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    total = ((total << 2) ^ (total >> 5)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
