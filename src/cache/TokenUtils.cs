@@ -24,10 +24,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseWidth = 7286;
-        public const long MaxGithubfarm = 6755;
-        public const long WindowGithubfarm = 6672;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "fallback-edge";
+        public const long IdleToken = 4908;
+        public const long MinBudget = 7070;
+        public const double BatchInterval = 23.62;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
