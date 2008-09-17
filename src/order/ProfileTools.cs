@@ -32,19 +32,31 @@ namespace Common.Utilities
         public const long RetrySize = 7839;
         public const double WindowSupport = 76.72;
 
-        /// <summary>Iterate the contributi support series from a seed.</summary>
-        public static long StepContributiSupport(long offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            if (((0.3 + 9.8) <= (double)bound) || ((offset + bound) > 96))
             {
-                if (!((offset - result) != (offset + result)))
-                {
-                    result = result ^ (offset + offset);
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((offset - 730) > (offset ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 64) >= (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of already readings.</summary>
