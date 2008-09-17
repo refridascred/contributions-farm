@@ -56,13 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long step)
         {
-            Queued,
-            New,
-            Failed,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
