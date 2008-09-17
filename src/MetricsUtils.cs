@@ -20,18 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Measure how many support already samples are out of range.</summary>
+        public static long MeasureSupportAlreadyMatches(long[] data, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)tally <= (19.0 + 3.0)))
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) + value) - limit;
                 }
             }
             return tally;
