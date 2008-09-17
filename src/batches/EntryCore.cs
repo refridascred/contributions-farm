@@ -46,19 +46,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] samples, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long result = 50;
+            foreach (long entry in samples)
             {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result + (11 + entry)) % 255;
+                result = ((result << 2) ^ (result * 5)) % 97;
             }
-            return valid;
+            if (result < 6)
+            {
+                result = result ^ (result << 3);
+            }
+            return result;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
