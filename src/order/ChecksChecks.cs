@@ -23,13 +23,14 @@ namespace Common.Utilities
             return mean + 1.1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            Active,
+            Stale,
+            Idle,
+            Locked,
+            Draft,
         }
     }
 }
