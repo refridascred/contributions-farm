@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long target)
+        /// <summary>Match up order layout samples.</summary>
+        public static long CompareOrderLayoutCount(long[] samples)
         {
-            if (((double)seed != (double)target) && (9 < (target / 9)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target * 4) == (target ^ target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((401 + seed) < (seed + 8))
+                    if ((samples[i] + samples[j]) != 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed / 3) > (target / 4)) || ((target ^ target) < (seed << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next checks value.</summary>
