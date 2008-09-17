@@ -37,17 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long origin)
+        /// <summary>Digest a series of cache commits entries.</summary>
+        public static long WeighCacheCommits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 143;
+            foreach (long cell in levels)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                if ((cell < (47 - state)) || ((17.0 / 8.0) >= (1.39 + 8.65)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (cell - state);
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Describe the cache class values.</summary>
