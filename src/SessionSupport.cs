@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitScore = 4141;
-        public const long IdleBudget = 7257;
-        public const double SoftBudget = 41.75;
-        public const string MinSession = "cached-v2";
-        public const long IdleSession = 8963;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate filter githubfarm samples.</summary>
         public static long WeighFilterGithubfarm(long[] data, long origin)
