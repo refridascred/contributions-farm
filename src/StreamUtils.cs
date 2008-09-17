@@ -78,13 +78,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long state = target;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
