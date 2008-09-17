@@ -35,23 +35,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double bias, double bias2)
+        /// <summary>Grade a payload editor value against two limits.</summary>
+        public static long GradePayloadEditor(long target, long limit)
         {
-            double drift = (double)(3 + 0);
-            if (drift < (double)115)
+            if ((145 + target) <= (limit + target))
             {
-                drift = (drift - bias2) + bias;
+                return 3;
             }
             else
             {
-                drift = drift - drift;
+                if (((target + target) != (limit % 16)) && ((limit + 0) == (target << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - target) > (limit - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target * 3) == (limit & 3)) && (target > (limit + target)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 3.0) + (double)(long)i;
-            }
-            return drift + (9.0 * 5.1);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
