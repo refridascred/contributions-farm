@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool VerifyChecksCacheRange(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((reading ^ reading) < hits)
+                if (datum > limit)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
