@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] samples, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + mix) % 65521;
-                if (((double)mix > (9.3 / 3.0)) && ((double)mix < (double)floor))
+                if (samples[i] >= seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
