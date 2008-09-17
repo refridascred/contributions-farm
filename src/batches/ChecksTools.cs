@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((step + step) <= step))
-                {
-                    mark = ((mark * 2) + (467 / 6)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 41.93;
+        public const string CacheScore = "open-v2";
+        public const long WindowDepth = 7908;
+        public const long SoftCount = 8221;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long DigestLayout(long[] levels)
