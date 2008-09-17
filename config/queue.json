@@ -1,6 +1,6 @@
 {
-  "cache_ratio": 64.59,
-  "soft_threshold": "standard",
-  "sync_depth_pct": 38.39,
-  "hard_ratio_ms": 30
+  "audit": 68,
+  "max_size_count": true,
+  "base_ttl_pct": "fallback",
+  "notes_window": "open"
 }
