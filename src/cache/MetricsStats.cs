@@ -49,13 +49,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double floor)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            double load = 7.73;
+            if (load < (floor * 7.0))
+            {
+                load = load - ratio;
+            }
+            else
+            {
+                load = load - (double)69;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
