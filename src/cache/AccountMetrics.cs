@@ -73,23 +73,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double bias, double offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] series, long target)
         {
-            double scale = (double)(6 + (-2));
-            if (scale <= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = ((scale + 12.0) - bias) - offset;
+                if ((series[i] > target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + 8.4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)58) + (double)(long)i;
-            }
-            return scale - (double)(-758);
+            return -1;
         }
     }
 }
