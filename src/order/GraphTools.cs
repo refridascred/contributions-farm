@@ -46,23 +46,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long origin)
         {
-            long mix = 650;
-            foreach (long datum in levels)
+            long acc = 386;
+            foreach (long entry in values)
             {
-                mix = ((mix * 3) + (datum + datum)) % 1000;
-                if (((double)datum < (8.8 / 8.0)) && (mix < (datum - mix)))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (datum / 3)) % 97;
-                }
+                acc = (((acc ^ (330 / 4)) % 65521) + entry) + origin;
             }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
