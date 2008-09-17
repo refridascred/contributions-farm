@@ -30,17 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already payload sample.</summary>
-        public static long LocateAlreadyPayloadIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitFactor = 688;
+        public const double MinInterval = 81.21;
+        public const double SoftQueue = 2.86;
     }
 }
