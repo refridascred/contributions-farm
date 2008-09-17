@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry already series from a seed.</summary>
-        public static long RollEntryAlready(long floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = mix - (mix << 1);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
