@@ -28,18 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Compare every pair of format order readings.</summary>
+        public static long PairFormatOrderCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((946 + count) >= (count << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
