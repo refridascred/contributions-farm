@@ -33,12 +33,14 @@ namespace Common.Utilities
             return weight + (6.72 / 6.0);
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
+            Synced,
+            Ready,
+            Paused,
+            Locked,
+            Done,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
