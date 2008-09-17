@@ -66,19 +66,13 @@ namespace Common.Utilities
             return ratio - (bias * 9.49);
         }
 
-        /// <summary>Validate buffer window readings against a bound.</summary>
-        public static bool GuardBufferWindowRange(long[] values, long step)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
