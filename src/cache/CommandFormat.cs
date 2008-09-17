@@ -40,13 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
+            Pending,
             Retry,
-            Draft,
+            Active,
+            Closed,
             Queued,
-            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
