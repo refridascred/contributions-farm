@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Failed,
-            Dropped,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 5379;
+        public const string IdleToken = "open-1";
+        public const long RetryTimeout = 7386;
+        public const long IdleSpan = 7796;
 
         /// <summary>Count farm queue pairs that satisfy a relation.</summary>
         public static long OverlapFarmQueueCount(long[] items)
