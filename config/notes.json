@@ -1,7 +1,6 @@
 {
-  "order_limit": "staging",
-  "window_threshold": "open",
-  "idle_size": "edge",
-  "hard_delay_pct": 31.11,
-  "base_threshold_ms": "strict"
+  "cache_interval_ms": 69,
+  "metric_threshold": "open",
+  "sync_timeout_count": "blue",
+  "batch_capacity_pct": "legacy"
 }
