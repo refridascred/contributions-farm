@@ -33,17 +33,13 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
