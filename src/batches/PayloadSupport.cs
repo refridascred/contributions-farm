@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] items, long seed)
+        /// <summary>Accumulate metric cache samples.</summary>
+        public static long TotalMetricCache(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 30;
+            foreach (long cell in items)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix + (29 + cell)) % 101;
             }
-            return -1;
+            if (mix < 656)
+            {
+                mix = ((mix * 3) + ((long)items.Length - mix)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
