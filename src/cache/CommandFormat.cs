@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window report value from a seed.</summary>
-        public static long DeriveWindowReport(long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                result = (result * 5) + result;
-                result = ((result * 4) + (long)i) % 97;
+                if ((sample % 12) >= (bound + bound))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
