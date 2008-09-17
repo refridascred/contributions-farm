@@ -1,8 +1,16 @@
 {
-  "default_depth": 401,
-  "cache_timeout": "eu-west",
-  "flush_ratio": 30.13,
-  "stats_retries": ["cached", "staging"],
-  "window_size": "stable",
-  "burst_capacity": ["strict", "standard", "legacy"]
+  "flush_delay": false,
+  "cache_timeout_s": "strict",
+  "retry_threshold_ms": {
+    "notes_retries": false,
+    "retry_capacity": 6719,
+    "retry_ratio_ms": {
+      "checks_size": "blue",
+      "soft_depth_s": 43.55,
+      "default_delay_pct": "cached"
+    },
+    "verbose": "cached",
+    "sync_threshold": 86.46
+  },
+  "batch_depth_pct": 30
 }
