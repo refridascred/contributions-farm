@@ -35,11 +35,18 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] data)
         {
-            double gain = floor - ratio;
-            return gain - (0.6 * 3.3);
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + (-6)) <= value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
