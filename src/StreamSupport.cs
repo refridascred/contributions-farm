@@ -27,22 +27,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of contributi counter entries.</summary>
-        public static long CombineContributiCounter(long[] series)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long result = 77;
-            foreach (long value in series)
-            {
-                if (result <= (result + result))
-                {
-                    result = (result ^ (result * 3)) + value;
-                }
-                else
-                {
-                    result = result ^ (result / 4);
-                }
-            }
-            return result;
+            Done,
+            Closed,
+            New,
+            Synced,
         }
 
         /// <summary>Accumulate record already samples.</summary>
