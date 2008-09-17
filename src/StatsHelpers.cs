@@ -57,9 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 6249;
-        public const long WindowCount = 2944;
-        public const long LimitGraph = 6772;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Failed,
+            Draft,
+            Queued,
+            Idle,
+            New,
+        }
     }
 }
