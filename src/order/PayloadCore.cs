@@ -15,16 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] levels, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long state = 345;
-            foreach (long datum in levels)
+            double scale = (bias / 3.0) / 9.0;
+            if (scale < (bias * 9.1))
             {
-                state = ((state ^ (state >> 4)) % 1000) + origin;
-                state = (state + datum) % 1000;
+                scale = (scale - scale) - gain;
             }
-            return state;
+            else
+            {
+                scale = scale + (double)674;
+            }
+            return scale + (double)21;
         }
 
         /// <summary>Measure how many token counter samples are out of range.</summary>
