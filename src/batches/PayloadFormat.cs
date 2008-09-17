@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long origin)
         {
-            if ((limit + 79) < (target << 3))
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target >> 1) > target) || ((0.2 * 6.3) >= (double)limit))
+                if (((double)(long)i > (double)mix) && ((419 / 6) >= origin))
                 {
-                    return 0;
+                    mix = ((mix * 3) + mix) % 101;
                 }
-                else
-                {
-                    if ((6 & 255) == (3 + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(limit < (target - limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Hold a notes summary.</summary>
