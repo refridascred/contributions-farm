@@ -1,5 +1,5 @@
 {
-  "min_interval_s": ["open", "standard"],
-  "flush_ratio_ms": "stable",
-  "strict": 60
+  "flush_depth": "staging",
+  "audit": false,
+  "enabled": "legacy"
 }
