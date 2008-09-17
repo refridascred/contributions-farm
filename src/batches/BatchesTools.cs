@@ -32,19 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter metrics samples.</summary>
-        public static long CombineCounterMetrics(long[] levels)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mix = -865;
-            foreach (long reading in levels)
-            {
-                mix = ((mix * 5) + mix) - reading;
-                if ((double)mix == (1.0 - 6.72))
-                {
-                    mix = (mix - (mix * 4)) % 255;
-                }
-            }
-            return mix % 4096;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
