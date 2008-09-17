@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] items, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (sample != bound)
+                if (cell < floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
