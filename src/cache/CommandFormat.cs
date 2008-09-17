@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftInterval = 9059;
-        public const long MinStats = 7503;
-        public const string IdleStats = "alpha";
-        public const double LimitLevel = 29.6;
+        /// <summary>Count the graph metrics entries that pass the check.</summary>
+        public static long AuditGraphMetricsGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((5.92 + 3.4) > (double)tally)
+                {
+                    tally = ((tally + 1) ^ item) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long BucketQueue(long step, long target)
