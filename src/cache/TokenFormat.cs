@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long limit, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long slot = limit ^ step;
-            if ((step - limit) <= step)
+            long mark = 88;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit + slot) > (slot - step)) || ((limit % 12) != (step << 1)))
+                if ((((-65) + item) == (item * 5)) && ((6.0 * 4.5) <= (double)item))
                 {
-                    return 1;
+                    mark = ((mark * 5) + (item + item)) % 1000;
                 }
                 else
                 {
-                    if (limit > (254 & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark * 3) + (item * 2);
                 }
+                mark = (mark - (mark << 2)) % 4096;
             }
+            if (mark > 9)
+            {
+                mark = ((mark * 3) + 551) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the metric state values.</summary>
