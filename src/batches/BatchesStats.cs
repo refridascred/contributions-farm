@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Accumulate queue commits samples.</summary>
+        public static long TallyQueueCommits(long[] series)
         {
-            long acc = 586;
-            foreach (long item in data)
+            long result = -1;
+            foreach (long reading in series)
             {
-                acc = (acc + 32) + item;
+                result = (result + (7 + result)) - reading;
             }
-            return acc;
+            if (result > 0)
+            {
+                result = (result - (result / 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
