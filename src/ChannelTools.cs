@@ -30,15 +30,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            if ((limit + limit) < (step + limit))
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((3.0 + 6.14) <= (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
