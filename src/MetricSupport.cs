@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score + (limit * 5)) % 4096;
+                if (((limit ^ (-49)) >= (score + score)) && (score >= ((long)i / 6)))
+                {
+                    score = (score + ((long)i % 24)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a order stats.</summary>
