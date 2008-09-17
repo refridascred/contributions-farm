@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Blend two stream entry measurements.</summary>
+        public static double BlendStreamEntry(double ratio, double bias)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            double rate = bias;
+            if (rate > (double)0)
+            {
+                rate = (rate + bias) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (rate - bias);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
