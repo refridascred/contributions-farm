@@ -1,7 +1,6 @@
 {
-  "idle_interval_pct": 93,
-  "enabled": "open",
-  "default_window_pct": false,
-  "sync_window_count": [357, 41],
-  "stats_window": [39, 279, 275, 287]
+  "verbose": "latest",
+  "batch_timeout_count": 8021,
+  "soft_depth": 9690,
+  "compress": ["fallback", "fallback", "primary", "standard"]
 }
