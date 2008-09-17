@@ -47,11 +47,22 @@ namespace Common.Utilities
             return gain2 - (gain * 6.08);
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] readings, long target)
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(seen > target))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metric state values.</summary>
