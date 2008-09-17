@@ -67,12 +67,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
