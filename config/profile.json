@@ -1,8 +1,7 @@
 {
-  "cache_window": "standard",
-  "strict": 9508,
-  "verbose": "stable",
-  "compress": 1.11,
-  "idle_ratio_count": "strict",
-  "hard_limit": "blue"
+  "cache_window_pct": 5569,
+  "sync_size_pct": 24.66,
+  "warm_window": false,
+  "min_retries_count": "blue",
+  "soft_threshold_s": 9664
 }
