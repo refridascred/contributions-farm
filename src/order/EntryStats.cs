@@ -32,12 +32,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardLevel = "local-edge";
-        public const double BurstTools = 45.28;
-        public const long CacheCount = 4459;
-        public const long DefaultTools = 9818;
-        public const long LimitTools = 1047;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSize = 7281;
+        public const long BaseFilter = 768;
+        public const double MaxWidth = 7.13;
+        public const string BurstFilter = "local-1";
+        public const string LimitSpan = "latest";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] readings)
