@@ -48,19 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples, long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] items)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound == (7.01 / 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
