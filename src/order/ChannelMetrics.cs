@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Adjust a stream graph reading.</summary>
-        public static double AdjustStreamGraph(double weight, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long step)
         {
-            double rate = (double)(0 / 4);
-            if (rate <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - (double)0) - offset;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (weight + rate);
-            }
-            return rate + (double)42;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
