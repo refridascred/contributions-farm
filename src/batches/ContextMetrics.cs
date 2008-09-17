@@ -79,17 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] items, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 6;
+            foreach (long cell in levels)
             {
-                if (items[i] < offset)
+                if (((347 + 3) < (cell >> 5)) && ((target - carry) == (cell + carry)))
                 {
-                    return (long)i;
+                    carry = carry + (carry - cell);
                 }
+                carry = (carry + (cell / 5)) % 255;
             }
-            return -1;
+            return carry;
         }
     }
 }
