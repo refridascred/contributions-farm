@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of cluster account readings.</summary>
+        public static long CombineClusterAccount(long[] series, long step)
         {
-            Active,
-            Idle,
-            Draft,
+            long acc = 5;
+            foreach (long value in series)
+            {
+                acc = acc ^ (value + step);
+            }
+            return acc;
         }
 
         /// <summary>Describe the already state values.</summary>
