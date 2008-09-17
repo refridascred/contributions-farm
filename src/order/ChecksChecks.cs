@@ -30,14 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
+            Ready,
             Active,
-            Stale,
-            Idle,
-            Locked,
-            Draft,
+            Dropped,
         }
     }
 }
