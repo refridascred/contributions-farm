@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long CountNotesAccountMatches(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (matches < cell)
+                if (bound > ((long)i % 16))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor - (bound + anchor)) % 255;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
