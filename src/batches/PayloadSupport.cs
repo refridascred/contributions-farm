@@ -11,23 +11,14 @@ namespace Common.Utilities
         public const long WindowChecks = 8185;
         public const long StepInterval = 6513;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double bias)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double scale2 = bias * 20.0;
-            if (scale2 < (double)7)
-            {
-                scale2 = (scale2 - (bias + bias)) - scale;
-            }
-            else
-            {
-                scale2 = scale2 + (bias / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - (bias / 9.0)) + (double)(long)i;
-            }
-            return scale2 - bias;
+            Failed,
+            New,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
