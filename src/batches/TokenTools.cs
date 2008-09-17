@@ -42,12 +42,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchWidth = 674;
+        public const long SoftScore = 2551;
+        public const double MaxGraph = 54.63;
     }
 }
