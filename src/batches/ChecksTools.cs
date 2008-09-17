@@ -19,16 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Rank support profile input into a small class.</summary>
+        public static long GradeSupportProfile(long floor, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            if ((target % 8) >= (929 / 4))
             {
-                sum = (sum * 3) + (sum * 4);
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (floor < (floor / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the already level values.</summary>
