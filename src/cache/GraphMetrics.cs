@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            Stale,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count queue cluster pairs that satisfy a relation.</summary>
