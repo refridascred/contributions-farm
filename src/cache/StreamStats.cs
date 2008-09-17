@@ -42,13 +42,28 @@ namespace Common.Utilities
         public const long IdleSchema = 8865;
         public const long BatchLevel = 4797;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long bound)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long mix = 584;
+            foreach (long value in samples)
+            {
+                mix = ((mix << 2) ^ (value + (-121))) % 65521;
+                mix = mix ^ (bound << 1);
+                if (!((bound - mix) < (bound + bound)))
+                {
+                    mix = mix - (bound - 895);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (bound / 4);
+                }
+            }
+            if (mix < 54)
+            {
+                mix = (mix - (mix ^ 4)) % 4096;
+            }
+            return mix;
         }
     }
 }
