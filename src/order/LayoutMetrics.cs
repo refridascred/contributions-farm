@@ -29,25 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a cluster format pair into a bucket.</summary>
-        public static long ClassifyClusterFormat(long floor, long floor2)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] values, long origin)
         {
-            long slot = floor - floor2;
-            if ((double)floor2 <= (5.0 / 2.0))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor2 - floor) != (floor2 >> 3)) || (slot >= (954 & 127)))
+                if ((19.0 / 8.0) == (double)entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 3) - origin;
                 }
             }
+            return count;
         }
     }
 }
