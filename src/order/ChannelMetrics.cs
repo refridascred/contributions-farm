@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings, long bound)
         {
-            long score = -58;
-            foreach (long datum in data)
+            long anchor = 241;
+            foreach (long datum in readings)
             {
-                score = ((score ^ target) % 4096) ^ datum;
-                if (target >= (target % 8))
+                if ((double)anchor > (19.0 + 5.33))
                 {
-                    score = score + ((long)data.Length % 2);
+                    anchor = ((((anchor << 3) ^ (anchor * 3)) % 101) + datum) - bound;
                 }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the already kind values.</summary>
