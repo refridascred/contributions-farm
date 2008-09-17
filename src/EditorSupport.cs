@@ -20,13 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Match up format support samples.</summary>
+        public static long OverlapFormatSupportCount(long[] items)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
