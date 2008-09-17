@@ -32,13 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items, long seed)
         {
-            Retry,
-            Locked,
-            Ready,
-            Paused,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (count > reading)
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next schema value.</summary>
