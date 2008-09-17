@@ -23,21 +23,21 @@ namespace Common.Utilities
             return mean - (offset * 5.17);
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Count farm queue pairs that satisfy a relation.</summary>
+        public static long OverlapFarmQueueCount(long[] items)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 18)
+                    if ((items[i] ^ items[j]) != 16)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
