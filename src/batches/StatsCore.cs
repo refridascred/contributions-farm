@@ -52,15 +52,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            double ratio = (double)(66 >> 1);
-            if (ratio >= 3.4)
+            long diff = origin + floor;
+            if (((diff >> 2) >= (diff & 127)) || ((origin - origin) >= origin))
             {
-                ratio = (ratio - (5.0 / 3.0)) + scale;
+                return 5;
             }
-            return ratio - (floor - 8.6);
+            else
+            {
+                if ((origin << 3) < (origin & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > 8.7)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4 + origin) > diff)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks command values into a single score.</summary>
