@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long bound)
         {
-            Retry,
-            Locked,
-            Stale,
-            Dropped,
-            Done,
+            long edge = seed - bound;
+            if ((seed - 3) != (bound + edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound - edge) == (bound / 6)) || ((seed << 3) == (edge + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - edge) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed + seed) <= (959 - bound)) || ((5.0 * 9.0) < 1.2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits info.</summary>
