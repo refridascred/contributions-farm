@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Ready,
+            long score = 5;
+            foreach (long entry in items)
+            {
+                if ((score + 108) < (score + entry))
+                {
+                    score = ((score << 3) ^ ((long)items.Length + entry)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - (long)items.Length)) % 1000;
+                }
+            }
+            if (score > 2)
+            {
+                score = ((score << 2) ^ (score % 100)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
