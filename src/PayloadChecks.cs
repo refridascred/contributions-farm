@@ -77,19 +77,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double bias)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long floor, long offset)
         {
-            double gain2 = (double)((-84) ^ 58);
-            if (gain2 >= (gain + gain))
+            long span = floor + offset;
+            if (((double)span > (4.92 + 2.2)) || ((5.0 + 2.0) != (double)span))
             {
-                gain2 = (gain2 - (gain / 3.0)) - bias;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain2 = (gain2 - (gain2 / 5.0)) + (double)(long)i;
+                if ((47 - offset) != (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)7 > (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return gain2 + gain;
         }
     }
 }
