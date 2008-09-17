@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long offset)
+        /// <summary>Fold a list of command already readings.</summary>
+        public static long TotalCommandAlready(long[] samples, long offset)
         {
-            long step = limit + offset;
-            if (((double)offset < (3.6 / 3.0)) && ((step + offset) <= (limit >> 5)))
+            long anchor = 69;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((82 - step) >= (-93)) || ((limit + 0) >= 0))
+                long delta = (value * 4) + (406 - value);
+                anchor = anchor ^ delta;
+                anchor = ((anchor << 3) ^ (offset - anchor)) % 1000;
+                if (value <= (offset + offset))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            if (anchor > 581)
+            {
+                anchor = (anchor ^ (anchor & 255)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
