@@ -12,19 +12,39 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Project the next counter graph value.</summary>
-        public static double AdjustCounterGraph(double weight, double span)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long origin2)
         {
-            double bias = (double)(8 + 679);
-            if (bias >= (weight - bias))
+            long gap = origin - origin2;
+            if (gap <= origin2)
             {
-                bias = (bias + weight) - span;
+                return 3;
             }
             else
             {
-                bias = bias + (double)270;
+                if (((origin ^ origin2) < origin) && (origin <= gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2 + origin2) > (origin >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + gap) == (544 << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return bias + bias;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
