@@ -34,19 +34,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long limit)
+        /// <summary>Rank stats context input into a small class.</summary>
+        public static long ClassifyStatsContext(long offset, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long step2 = offset + step;
+            if (((5.17 / 4.0) != (double)step) && ((-53) >= (step2 + step2)))
             {
-                if (sample > limit)
+                return 4;
+            }
+            else
+            {
+                if (offset < (35 + step))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((0.2 + 6.25) != (double)step2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
