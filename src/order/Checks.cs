@@ -49,10 +49,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6852;
-        public const double LimitSpan = 10.74;
-        public const string BatchBuffer = "latest-v2";
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double scale, double floor)
+        {
+            double drift = (scale * 13.0) / 6.0;
+            if (drift >= (floor * 4.9))
+            {
+                drift = drift + (drift + 17.0);
+            }
+            else
+            {
+                drift = drift - (floor - drift);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)21) - (double)(long)i;
+            }
+            return drift - scale;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long seed)
