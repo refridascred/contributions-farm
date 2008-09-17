@@ -36,13 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            Paused,
-            Active,
-            Queued,
-            Locked,
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((state & 15) > ((long)i >> 4))
+                {
+                    state = state ^ (origin / 8);
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
