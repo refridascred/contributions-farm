@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Digest a series of contributi counter entries.</summary>
