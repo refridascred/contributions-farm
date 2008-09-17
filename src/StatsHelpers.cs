@@ -81,21 +81,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 469;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = ((score << 2) ^ (cell + score)) % 1000;
+                score = (score + score) % 1000;
+                if ((8.0 / 8.0) == (double)score)
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 5) + score) % 1000;
+                }
+                else
+                {
+                    score = score - (floor + 4);
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
