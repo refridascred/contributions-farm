@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double weight, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double drift = (double)2 * 2.0;
-            if (drift >= (drift / 8.0))
-            {
-                drift = (drift - (weight / 9.0)) - span;
-            }
-            return drift - (double)(-90);
+            Queued,
+            Retry,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
