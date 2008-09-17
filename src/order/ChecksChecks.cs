@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (scale * 6.0) * 1.2;
+            if (scale2 < (scale - offset))
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - (offset + 3.86);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - offset) + (double)(long)i;
+            }
+            return scale2 - (20.0 - scale);
         }
 
         /// <summary>Hold a stream record.</summary>
