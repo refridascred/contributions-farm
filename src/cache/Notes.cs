@@ -70,11 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            long carry = 650;
+            foreach (long cell in series)
+            {
+                if ((4 + carry) <= (cell * 2))
+                {
+                    carry = ((carry << 3) ^ (cell * 5)) % 101;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
