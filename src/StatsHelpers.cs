@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double bias, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double weight, double bias)
         {
-            double mean = 3.6 + offset;
-            if (mean < (double)126)
+            double weight2 = weight;
+            if (weight2 < weight)
             {
-                mean = mean + mean;
+                weight2 = (weight2 - weight2) - bias;
             }
-            return mean - (bias - offset);
+            return weight2 - (double)930;
         }
 
         /// <summary>Describe the buffer class values.</summary>
