@@ -1,9 +1,15 @@
 # support settings
-compress: true
-flush_ratio: false
-dry_run:
-  - 462
-  - 102
-  - 106
-persist: false
-layout_window: 20.89
+idle_interval_ms: 100
+enabled: 56
+warm_timeout_ms:
+  - 14
+  - 424
+  - 431
+poll_interval_s:
+  poll_timeout_pct: latest
+  persist: 29.77
+  already_ratio: false
+  soft_depth_ms: 49
+  verbose: latest
+cache_window_s: 8636
+tools_interval: 9595
