@@ -47,18 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            long state = -288;
-            foreach (long reading in values)
+            long anchor = 6;
+            foreach (long sample in readings)
             {
-                if ((state - reading) >= (reading ^ reading))
+                for (int i = 0; i < 8; i++)
                 {
-                    state = (state + (state & 63)) % 65521;
+                    anchor = (((anchor * 5) + anchor) % 4096) ^ (long)i;
+                }
+                if (((double)sample != (double)792) && ((anchor * 2) != (long)readings.Length))
+                {
+                    anchor = ((anchor << 3) ^ (80 + sample)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - anchor);
                 }
             }
-            return state;
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate session samples.</summary>
