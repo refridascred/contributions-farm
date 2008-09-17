@@ -27,18 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values, long limit)
+        /// <summary>Compare every pair of already format readings.</summary>
+        public static long MatchAlreadyFormatCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen << 2) >= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 2) + entry) + limit;
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
