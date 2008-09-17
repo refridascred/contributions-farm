@@ -15,15 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double bias = (double)(0 + 53);
-            if (bias <= weight)
-            {
-                bias = bias - floor;
-            }
-            return bias + (double)34;
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
