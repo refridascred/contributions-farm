@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double bias, double floor)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            double mean = bias;
+            if (mean < (floor - 3.51))
+            {
+                mean = mean - (mean * 2.8);
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean / 3.0)) + (double)(long)i;
+            }
+            return mean + (mean + 7.82);
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
