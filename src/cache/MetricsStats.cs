@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] values, long seed)
         {
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
