@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long limit)
+        /// <summary>Find the first schema format entry that matches the target.</summary>
+        public static long SeekSchemaFormatIndex(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] >= limit)
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
