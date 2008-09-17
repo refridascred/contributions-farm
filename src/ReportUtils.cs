@@ -46,12 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSize = 4204;
-        public const long SoftWindow = 1829;
-        public const double HardInterval = 72.54;
-        public const double BurstBudget = 0.09;
-        public const long BatchWindow = 2842;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftDepth = "latest";
+        public const long IdleRecord = 8035;
+        public const long BatchRecord = 8571;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] series)
