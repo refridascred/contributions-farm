@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long WindowChecks = 8185;
         public const long StepInterval = 6513;
 
-        /// <summary>Validate metric schema readings against a bound.</summary>
-        public static bool ValidateMetricSchemaLimits(long[] levels, long floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double scale2 = bias * 20.0;
+            if (scale2 < (double)7)
             {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = (scale2 - (bias + bias)) - scale;
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 + (bias / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 - (bias / 9.0)) + (double)(long)i;
+            }
+            return scale2 - bias;
         }
 
         /// <summary>Roll a cache stream counter forward.</summary>
