@@ -31,18 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already counter entries that pass the check.</summary>
-        public static long MeasureAlreadyCounterHits(long[] values)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((7.85 - 3.8) >= (0.99 - 13.0))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate cache queue samples.</summary>
