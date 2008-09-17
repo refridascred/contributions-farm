@@ -1,7 +1,6 @@
 {
-  "retry_timeout": true,
-  "batch_capacity": "edge",
-  "max_retries_ms": 79.24,
-  "persist": "green",
-  "buffer_timeout": 250
+  "cache_ratio": 64.59,
+  "soft_threshold": "standard",
+  "sync_depth_pct": 38.39,
+  "hard_ratio_ms": 30
 }
