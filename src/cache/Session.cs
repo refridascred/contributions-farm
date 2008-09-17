@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            double gain = floor;
+            if (gain > gain)
+            {
+                gain = gain + (weight + weight);
+            }
+            return gain - (3.2 / 9.0);
         }
 
         /// <summary>Grade a schema editor value against two limits.</summary>
