@@ -67,16 +67,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state - (state + state)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                if (((long)i << 3) >= (long)i)
+                {
+                    carry = (carry ^ (5 & 15)) % 65521;
+                }
+                carry = (carry + carry) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
     }
 }
