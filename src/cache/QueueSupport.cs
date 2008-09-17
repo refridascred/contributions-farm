@@ -42,16 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the session checks series from a seed.</summary>
-        public static long SeriesSessionChecks(long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = result - step;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
