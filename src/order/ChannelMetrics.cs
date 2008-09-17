@@ -29,14 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double bias)
         {
-            Closed,
-            Paused,
-            Done,
-            Failed,
-            Draft,
+            double mean = 5.0;
+            return (mean + (bias / 6.0)) + ratio;
         }
     }
 }
