@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long SoftMetric = 6724;
         public const long MaxRatio = 6590;
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)matches >= (8.2 + 7.1))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a batches cluster pair into a bucket.</summary>
