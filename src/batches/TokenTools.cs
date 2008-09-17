@@ -14,21 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum - (long)i) % 4096;
-                if (((sum >> 3) >= (offset & 127)) && (0.67 < (double)offset))
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8953;
+        public const long MinWidth = 4982;
+        public const long BaseContributi = 667;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] samples, long origin)
