@@ -1,6 +1,7 @@
 {
-  "batch_ratio": "legacy",
-  "persist": false,
-  "token_depth": 46,
-  "poll_retries_pct": 89.69
+  "burst_size_count": 20.73,
+  "schema_delay": 2773,
+  "soft_limit": 9174,
+  "flush_timeout": "local",
+  "editor_ratio": [177, 158]
 }
