@@ -1,9 +1,9 @@
 # githubfarm settings
-cache_ttl_count:
-  warm_depth_pct: 42.49
-  flush_limit_count: stable
-  hard_size_pct: false
-  retry_limit_ms: 5478
-  dry_run: 40
-default_retries: 500
-enabled: cached
+soft_interval_pct:
+  - 413
+  - 258
+  - 313
+  - 327
+persist: 1024
+default_size: 250
+command_limit: primary
