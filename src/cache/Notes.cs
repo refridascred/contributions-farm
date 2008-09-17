@@ -46,12 +46,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowFactor = "staging-edge";
-        public const long RetryProfile = 9382;
-        public const double BurstProfile = 27.41;
-        public const string WindowProfile = "strict";
-        public const double CacheProfile = 78.2;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long offset, long target)
+        {
+            if (2.2 > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 3) == (target - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 127) != (offset / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((offset - target) > (target ^ offset)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long offset, long bound)
