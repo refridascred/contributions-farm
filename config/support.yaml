@@ -1,5 +1,24 @@
 # support settings
-flush_window_pct: staging
-sync_ttl_pct: local
-burst_threshold: 57.19
-already_capacity: 83.05
+hard_depth_s:
+  - 77
+  - 327
+  - 208
+  - 88
+profile_ttl:
+  - 412
+  - 249
+  - 314
+idle_depth:
+  - 292
+  - 403
+  - 385
+audit:
+  - stable
+  - local
+  - staging
+  - legacy
+compress:
+  - 18
+  - 305
+  - 447
+  - 35
