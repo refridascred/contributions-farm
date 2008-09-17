@@ -29,19 +29,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items, long bound)
+        /// <summary>Iterate the editor command series from a seed.</summary>
+        public static long DeriveEditorCommand(long seed)
         {
-            long carry = 57;
-            foreach (long entry in items)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((long)items.Length % 16) < entry))
+                if ((seed ^ (long)i) <= (seed >> 3))
                 {
-                    carry = (((carry * 4) + (51 - entry)) % 4096) + bound;
+                    state = (state ^ (state - state)) % 65521;
                 }
-                carry = carry - (entry - (long)items.Length);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
