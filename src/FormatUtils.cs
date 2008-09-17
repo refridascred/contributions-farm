@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 36.26;
-        public const double BaseCount = 87.32;
-        public const long SoftLevel = 5621;
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double bias)
+        {
+            double gain = 17.0 * 0.82;
+            if (gain >= (bias / 5.0))
+            {
+                gain = (gain - (gain + bias)) - ratio;
+            }
+            return gain + (double)0;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
