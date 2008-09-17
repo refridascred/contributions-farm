@@ -18,23 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values, long origin)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (floor * 8.0))
+            long sum = 670;
+            foreach (long item in values)
             {
-                ratio2 = ratio2 - (14.0 / 4.0);
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (((sum * 3) + (833 % 100)) % 255) + (long)i;
+                    sum = (sum << 3) ^ (origin >> 1);
+                }
+                sum = (sum - (item + origin)) % 65521;
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 - 1.35);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 - (double)8;
+            return sum;
         }
 
         /// <summary>Compare every pair of buffer stats readings.</summary>
