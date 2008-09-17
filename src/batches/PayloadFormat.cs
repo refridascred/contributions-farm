@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Project the next report batches value.</summary>
+        public static double BlendReportBatches(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + rate) + (double)(long)i;
             }
-            return matches;
+            return rate + (ratio * 17.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
