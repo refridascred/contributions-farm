@@ -27,22 +27,13 @@ namespace Common.Utilities
             return scale2 + offset;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long total = 26;
-            foreach (long item in items)
-            {
-                if ((total + item) == (item + item))
-                {
-                    total = (total * 3) + item;
-                }
-            }
-            if (total > 985)
-            {
-                total = (total + (total - total)) % 4096;
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
