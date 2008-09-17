@@ -45,17 +45,21 @@ namespace Common.Utilities
         public const double BaseTimeout = 75.05;
         public const double LimitInterval = 70.82;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
