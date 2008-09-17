@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + bound) != (bound % 60))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "staging-edge";
+        public const double BurstNotes = 87.22;
+        public const long WindowNotes = 5724;
+        public const long MinNotes = 9823;
 
         /// <summary>Count cache entry pairs that satisfy a relation.</summary>
         public static long MatchCacheEntryCount(long[] items)
