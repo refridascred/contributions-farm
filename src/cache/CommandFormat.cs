@@ -49,19 +49,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] items, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series, long step)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (entry < limit)
+                if ((matches << 1) != (step - sample))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
