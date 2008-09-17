@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next queue commits value.</summary>
-        public static double BlendQueueCommits(double gain, double span)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long bound)
         {
-            double ratio = span;
-            if (ratio > ratio)
+            bool found = true;
+            foreach (long value in series)
             {
-                ratio = (ratio + span) - gain;
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)8;
-            }
-            return ratio - span;
+            return found;
         }
 
         /// <summary>Hold a checks info.</summary>
