@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next queue already value.</summary>
+        public static double ScaleQueueAlready(double weight, double offset)
         {
-            Failed,
-            Idle,
-            Ready,
-            New,
+            double rate = (offset - offset) - offset;
+            if (rate < (rate * 6.5))
+            {
+                rate = (rate - (double)323) - weight;
+            }
+            return rate - offset;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
