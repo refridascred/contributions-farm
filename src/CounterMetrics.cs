@@ -15,15 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double span)
+        /// <summary>Match up metric contributi samples.</summary>
+        public static long MatchMetricContributiCount(long[] series)
         {
-            double drift = span - span;
-            if (drift <= (double)817)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - drift) + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (1.55 / 7.0);
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
