@@ -51,17 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
