@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const long BaseEditor = 2465;
         public const long MaxEditor = 5567;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long offset = target + bound;
-            if ((double)offset >= (6.18 * 1.21))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target << 1) != (bound >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= (77 - 188))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
