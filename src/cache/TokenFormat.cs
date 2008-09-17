@@ -28,32 +28,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long origin, long origin2)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long bound)
         {
-            long span = origin - origin2;
-            if ((double)span < (3.63 - 7.68))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin2 - origin2))
+                if (data[i] == bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((span + span) <= 9)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
