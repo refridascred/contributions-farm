@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const double MinLayout = 92.14;
         public const string DefaultLayout = "legacy-1";
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] levels, long seed)
+        /// <summary>Measure how many token counter samples are out of range.</summary>
+        public static long TallyTokenCounterGaps(long[] values, long target)
         {
-            long state = 59;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = (state - seed) % 97;
-                if (!((seed % 100) <= (value + seed)))
+                if (!(1 < (target - 456)))
                 {
-                    state = ((state * 3) + (value - state)) % 97;
+                    count = (count + 2) + cell;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
