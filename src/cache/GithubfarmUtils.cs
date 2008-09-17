@@ -45,13 +45,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Paused,
-            Closed,
-            Stale,
-            Done,
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
