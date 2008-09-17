@@ -1,11 +1,5 @@
 {
-  "burst_capacity": 96.72,
-  "min_retries_count": 3078,
-  "sync_depth_pct": [101, 404],
-  "filter_threshold": {
-    "cache_timeout": ["strict", "strict", "edge"],
-    "retry_ttl_ms": "fallback",
-    "format_ttl": 80,
-    "warm_interval_pct": [268, 296, 245]
-  }
+  "min_interval_s": ["open", "standard"],
+  "flush_ratio_ms": "stable",
+  "strict": 60
 }
