@@ -12,21 +12,18 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 755;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item >> 4) != (item % 5))
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 4) + (item & 31)) % 4096;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Match up metric farm samples.</summary>
