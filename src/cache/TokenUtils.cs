@@ -29,20 +29,13 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 6755;
         public const long WindowGithubfarm = 6672;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long acc = 41;
-            foreach (long datum in levels)
-            {
-                acc = (acc * 2) + (acc - datum);
-                acc = (acc * 3) + (acc & 127);
-            }
-            if (acc > 6)
-            {
-                acc = (acc << 2) ^ (acc >> 4);
-            }
-            return acc;
+            Retry,
+            Locked,
+            Active,
+            Queued,
         }
     }
 }
