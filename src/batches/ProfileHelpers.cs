@@ -41,20 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch channel readings against a bound.</summary>
-        public static bool VerifyBatchChannelLimits(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 46.23;
+        public const long DefaultProfile = 5993;
+        public const long BurstInterval = 4952;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] items, long offset)
