@@ -52,11 +52,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryScore = "primary-1";
-        public const double HardTimeout = 31.01;
-        public const double IdleNotes = 75.6;
-        public const string RetryNotes = "stable";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (score >= (long)i)
+                {
+                    score = (score * 4) + score;
+                    score = (score * 2) + (score - seed);
+                }
+                score = (score ^ (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long target)
