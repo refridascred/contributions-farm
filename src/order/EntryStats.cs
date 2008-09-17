@@ -16,12 +16,23 @@ namespace Common.Utilities
             return mean + (double)(-527);
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((mix ^ bound) <= (bound + 69))
+                {
+                    mix = ((mix * 5) + mix) % 255;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    mix = ((mix + ((-361) + mix)) % 4096) ^ (long)i3;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream class values.</summary>
