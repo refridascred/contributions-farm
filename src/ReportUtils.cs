@@ -41,13 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinMetrics = "stable";
+        public const double HardMetrics = 76.73;
+        public const long BaseRatio = 8503;
+        public const double BaseMetrics = 98.87;
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] data)
