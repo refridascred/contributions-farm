@@ -68,32 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] samples, long floor)
         {
-            long edge = seed ^ target;
-            if ((target >= edge) || (seed >= 381))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target << 3) <= (seed ^ 221))
+                if ((floor * 3) >= (item / 6))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed > (edge * 4)) || ((0.3 / 2.0) != (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
