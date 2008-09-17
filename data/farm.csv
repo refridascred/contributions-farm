@@ -1,7 +1,9 @@
-id,owner,count,region
-1,22,49.85,open
-2,584,63.39,edge
-3,28.76,90.82,406
-4,506,54.78,cached
-5,67.75,legacy,789
-6,57.28,54.52,latest
+id,rank,score,count,label
+1,legacy,strict,45.14,725
+2,edge,27.77,edge,444
+3,431,stable,502,91.7
+4,7.38,local,276,stable
+5,58.33,349,182,blue
+6,160,345,56.25,16.56
+7,478,standard,strict,515
+8,211,341,59.43,blue
