@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            if (316 < bound)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (bound << 1))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 8;
+                    sum = (sum + ((-9) + seed)) - (long)i2;
+                    sum = ((sum * 2) + 1) % 1000;
                 }
-                else
-                {
-                    if ((5 + bound) <= (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.2 - 5.32) <= (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
