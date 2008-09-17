@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] items, long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell % 12) > (hits / 5))
+                if (items[i] >= floor)
                 {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate cluster buffer readings against a bound.</summary>
