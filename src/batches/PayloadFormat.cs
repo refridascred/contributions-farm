@@ -35,22 +35,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long AuditPayloadStatsHits(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= (907 >> 2))
+                if ((tally ^ tally) == (tally >> 5))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) ^ sample;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
