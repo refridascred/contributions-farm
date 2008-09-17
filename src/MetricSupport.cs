@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!(sample >= (matches + seed)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepRatio = 18.25;
+        public const long MaxMetric = 8301;
+        public const double BurstDepth = 66.93;
 
         /// <summary>Digest a series of entry token entries.</summary>
         public static long ScoreEntryToken(long[] data, long floor)
