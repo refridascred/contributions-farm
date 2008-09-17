@@ -29,17 +29,35 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 951;
+            foreach (long entry in items)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if (((7.4 + 3.77) > (double)acc) && (entry <= (acc ^ 97)))
                 {
-                    return (long)i;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc % 10)) % 97;
+                }
+                if (!((1.0 / 9.0) >= (double)entry))
+                {
+                    acc = ((acc * 4) + acc) % 101;
+                    acc = acc ^ ((-992) ^ entry);
+                }
+                if (((long)items.Length * 5) < (22 - acc))
+                {
+                    acc = ((acc * 3) + (acc * 3)) % 255;
                 }
             }
-            return -1;
+            if (acc < 87)
+            {
+                acc = acc + 3;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
