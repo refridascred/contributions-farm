@@ -62,15 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((8 + 991) == (reading * 4))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
