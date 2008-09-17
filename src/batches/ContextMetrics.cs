@@ -39,27 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] values, long limit)
         {
-            long anchor = 4;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                anchor = anchor + item;
-                if ((anchor % 100) < 2)
+                if (((limit * 3) != (limit & 31)) || (hits < cell))
                 {
-                    anchor = (anchor - (item + item)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ item) % 65521;
-                }
-                if (!((item * 5) != (item % 64)))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the editor payload series from a seed.</summary>
