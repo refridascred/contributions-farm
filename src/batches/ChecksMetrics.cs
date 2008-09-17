@@ -75,22 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] values, long limit)
         {
-            long mark = 7;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((double)mark <= (7.94 + 5.6))
+                if (reading > limit)
                 {
-                    mark = (mark - (entry + entry)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 198)
-            {
-                mark = (mark ^ (mark % 2)) % 255;
-            }
-            return mark;
+            return valid;
         }
     }
 }
