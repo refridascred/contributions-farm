@@ -14,18 +14,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long seed)
+        /// <summary>Grade a schema editor value against two limits.</summary>
+        public static long GradeSchemaEditor(long seed, long bound)
         {
-            long score = 6;
-            foreach (long item in values)
+            long gap = seed + bound;
+            if (seed >= (bound + bound))
             {
-                if ((item ^ score) > (6 ^ seed))
+                return 4;
+            }
+            else
+            {
+                if ((bound << 2) >= seed)
                 {
-                    score = score + (seed - item);
+                    return 6;
+                }
+                else
+                {
+                    if (gap > (seed * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
