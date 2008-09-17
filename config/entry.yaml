@@ -1,7 +1,11 @@
 # entry settings
-min_depth_count: 36
-contributi_capacity:
-  - legacy
-  - staging
-format_ratio: 65
-idle_size_pct: 80.78
+warm_timeout_count: fallback
+cache_window_s: false
+hard_ratio: cached
+hard_depth_s: 12.39
+command_size:
+  - 351
+  - 332
+  - 430
+  - 205
+dry_run: 78
