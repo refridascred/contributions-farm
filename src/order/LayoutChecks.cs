@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const long BurstContext = 5273;
         public const long IdleScore = 933;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 6558;
-        public const long CacheCount = 3469;
-        public const double HardQueue = 60.23;
-        public const long CacheRatio = 3664;
-        public const double MinQueue = 36.35;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            New,
+            Ready,
+            Draft,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
