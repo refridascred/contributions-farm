@@ -14,12 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstScore = 4974;
-        public const long RetrySize = 2971;
-        public const long WindowRatio = 1001;
-        public const double HardTimeout = 1.73;
-        public const string BurstProfile = "local";
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Combine batch queue values into a single score.</summary>
         public static long CombineBatchQueue(long[] samples, long origin)
