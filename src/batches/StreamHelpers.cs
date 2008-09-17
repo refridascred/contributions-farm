@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long floor)
         {
-            Failed,
-            Retry,
-            Pending,
+            if ((8 ^ target) > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor != (3.42 / 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(floor >= (floor >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
