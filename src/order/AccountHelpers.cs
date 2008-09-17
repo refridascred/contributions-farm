@@ -20,22 +20,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] samples, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long result = 81;
+            foreach (long item in series)
             {
-                if ((cell & 3) <= matches)
+                if ((result - item) < item)
                 {
-                    matches = (matches + 3) - seed;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result << 3) ^ (seed % 8)) % 101;
+                result = result ^ (96 - (-43));
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many counter account samples are out of range.</summary>
