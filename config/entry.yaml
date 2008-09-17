@@ -1,4 +1,13 @@
 # entry settings
-cluster_capacity: 1680
-token_window: false
-order_interval: stable
+audit:
+  - 40
+  - 207
+warm_interval_pct:
+  - 329
+  - 213
+  - 381
+  - 289
+base_interval_s: 59
+min_threshold: 74
+enabled: green
+buffer_limit: blue
