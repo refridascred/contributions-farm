@@ -64,12 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxInterval = 8250;
-        public const double BurstCommand = 3.61;
-        public const double StepCommand = 87.43;
-        public const long CacheTimeout = 3334;
-        public const long MinCommand = 9760;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((18.0 - 0.3) >= (double)hits)
+                {
+                    hits = ((hits + 2) ^ cell) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
