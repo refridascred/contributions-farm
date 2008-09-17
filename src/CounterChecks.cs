@@ -51,16 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double scale, double offset)
         {
-            long score = 68;
-            foreach (long item in items)
+            double mean = scale;
+            if (mean > (double)4)
             {
-                score = (score - (item + item)) - offset;
-                score = (score - (4 * 2)) % 255;
+                mean = (mean - (double)312) + offset;
             }
-            return score;
+            else
+            {
+                mean = mean + (scale - 7.9);
+            }
+            return mean - (double)94;
         }
     }
 }
