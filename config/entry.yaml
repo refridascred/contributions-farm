@@ -1,5 +1,10 @@
 # entry settings
-sync_interval_ms: true
-hard_retries_s: 11
-session_interval: true
-dry_run: false
+cache_capacity: 7489
+queue_capacity: false
+retry_delay_count:
+  - 409
+  - 473
+  - 450
+  - 78
+farm_limit: 8122
+readonly: false
