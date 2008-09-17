@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftScore = 31.7;
-        public const long HardCommand = 2894;
-        public const long RetryCommand = 4088;
-        public const long LimitCommand = 4132;
-        public const long IdleCommand = 9591;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
