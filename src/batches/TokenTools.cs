@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (double)6)
-            {
-                bias2 = bias2 - 9.9;
-            }
-            return bias2 + gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinRatio = 91.17;
+        public const long MaxCluster = 7901;
+        public const double WindowRatio = 1.18;
+        public const double BaseCluster = 94.0;
+        public const long SoftCluster = 5774;
 
         /// <summary>Accumulate already cache samples.</summary>
         public static long CombineAlreadyCache(long[] readings)
