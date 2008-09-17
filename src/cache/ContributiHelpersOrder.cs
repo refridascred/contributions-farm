@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every metrics profile entry stays within the limit.</summary>
+        public static bool GuardMetricsProfileLimits(long[] values, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
