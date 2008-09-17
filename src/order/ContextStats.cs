@@ -65,18 +65,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long ScoreFarmToken(long[] data)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long state = -956;
-            foreach (long value in data)
-            {
-                if (((long)data.Length >= (state - value)) || ((value ^ state) < value))
-                {
-                    state = ((state * 2) + (long)data.Length) % 65521;
-                }
-            }
-            return state;
+            New,
+            Retry,
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
