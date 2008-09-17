@@ -73,12 +73,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
