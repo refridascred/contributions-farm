@@ -64,10 +64,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheLevel = 8107;
-        public const double MaxInterval = 44.72;
-        public const double HardContext = 91.49;
-        public const double SoftContext = 93.39;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample <= (step % 3)) || ((sample & 1) > (sample - step))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
