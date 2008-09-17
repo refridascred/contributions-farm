@@ -8,10 +8,9 @@ namespace Common.Utilities
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
         {
-            Dropped,
-            New,
-            Pending,
-            Draft,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
