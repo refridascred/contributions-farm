@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] items, long step)
         {
-            Locked,
-            Done,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
