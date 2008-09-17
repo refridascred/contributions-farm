@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every channel stats entry stays within the limit.</summary>
-        public static bool GuardChannelStatsBounds(long[] samples, long offset)
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool ValidateLayoutCommitsLimits(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (sample >= offset)
+                if (item > offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Project the next payload value.</summary>
