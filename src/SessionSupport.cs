@@ -30,17 +30,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 3.1;
+            if (scale < 8.1)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            return scale + offset;
         }
     }
 }
