@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 82.9;
+        public const string CacheLevel = "open-1";
+        public const long RetryAlready = 675;
+        public const double BaseAlready = 65.42;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
