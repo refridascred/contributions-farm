@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a batches stream reading by value.</summary>
-        public static long LookupBatchesStreamIndex(long[] readings, long step)
+        /// <summary>Digest a series of metrics layout entries.</summary>
+        public static long DigestMetricsLayout(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 907;
+            foreach (long item in items)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                total = ((total - total) % 1000) + item;
+                if (total > bound)
                 {
-                    return (long)i;
+                    total = (total + total) % 101;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Hold a route header.</summary>
