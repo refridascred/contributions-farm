@@ -1,10 +1,6 @@
 # support settings
-notes_capacity: 6307
-batch_ttl_s: 7920
-poll_size_ms: 6.21
-sync_capacity_pct: local
-base_retries: true
-sync_timeout_ms:
-  persist: 39.46
-  batch_size_ms: 45.1
-  retry_ratio: 39
+context_timeout: 72.83
+base_threshold_s: edge
+warm_delay_pct: edge
+batch_capacity_s: green
+verbose: false
