@@ -38,12 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] values, long floor)
         {
-            Pending,
-            Failed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
