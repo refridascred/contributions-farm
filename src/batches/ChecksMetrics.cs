@@ -49,18 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel metrics samples are out of range.</summary>
-        public static long AuditChannelMetricsGaps(long[] values)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 533;
+            foreach (long value in values)
             {
-                if (((reading >> 3) != (reading + count)) || ((reading - count) <= (count - count)))
-                {
-                    count = count + 3;
-                }
+                mark = mark ^ (value + mark);
+                mark = ((mark << 3) ^ (value + 0)) % 101;
             }
-            return count;
+            if (mark > 6)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Locate a stream githubfarm reading by value.</summary>
