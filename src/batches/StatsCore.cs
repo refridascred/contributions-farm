@@ -26,15 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long origin2)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long slot = origin ^ origin2;
+            if ((slot / 4) >= (slot / 8))
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)origin > (5.9 * 7.93))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) == (slot << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile entry.</summary>
