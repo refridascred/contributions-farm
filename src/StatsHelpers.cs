@@ -83,24 +83,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels, long floor)
+        /// <summary>Fold a list of order layout readings.</summary>
+        public static long TotalOrderLayout(long[] readings)
         {
-            long score = 469;
-            foreach (long cell in levels)
+            long score = -132;
+            foreach (long reading in readings)
             {
-                score = ((score << 2) ^ (cell + score)) % 1000;
-                score = (score + score) % 1000;
-                if ((8.0 / 8.0) == (double)score)
-                {
-                    score = ((score * 5) + score) % 1000;
-                }
-                else
-                {
-                    score = score - (floor + 4);
-                }
+                score = ((score * 5) + (reading ^ score)) % 4096;
             }
-            return score;
+            return score % 97;
         }
     }
 }
