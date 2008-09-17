@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Done,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleContributi = "legacy";
+        public const long MaxTimeout = 2204;
+        public const long HardFactor = 678;
+        public const long SoftContributi = 3290;
+        public const long RetryContributi = 3704;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
