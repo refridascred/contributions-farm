@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable edge; do
+COMMAND_LIMIT=172
+log "limit is ${COMMAND_LIMIT}"
+
+for item in cached primary staging; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
