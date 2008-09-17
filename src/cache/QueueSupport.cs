@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long limit)
         {
-            long state = 40;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.2 - 5.84) <= (double)seed)
+                if (values[i] < limit)
                 {
-                    state = state - (79 + seed);
-                    break;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    state = ((state - state) % 101) ^ (long)i;
-                }
-                if ((seed >> 3) < state)
-                {
-                    state = ((state << 3) ^ (value + seed)) % 65521;
-                }
-                else
-                {
-                    state = state ^ (-61);
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
