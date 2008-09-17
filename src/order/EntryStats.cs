@@ -33,13 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Done,
             Paused,
-            New,
-            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
