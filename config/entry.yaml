@@ -1,19 +1,5 @@
 # entry settings
-filter_window:
-  - 253
-  - 328
-flush_threshold_count: cached
-soft_ttl:
-  - strict
-  - open
-  - staging
-  - blue
-support_size: legacy
-already_ttl:
-  - 254
-  - 64
-  - 375
-  - 285
-retry_interval_ms:
-  - fallback
-  - stable
+soft_threshold_count: true
+max_limit: true
+cache_window_pct: local
+command_timeout: 3572
