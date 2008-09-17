@@ -1,6 +1,5 @@
 {
-  "poll_window": ["strict", "stable", "latest", "strict"],
-  "soft_timeout_count": ["staging", "local"],
-  "cache_size": 60,
-  "audit": "edge"
+  "warm_interval_count": false,
+  "editor_size": ["fallback", "edge", "eu-west"],
+  "audit": 500
 }
