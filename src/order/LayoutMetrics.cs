@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long total = 255;
-            foreach (long entry in items)
-            {
-                if ((double)total >= 5.9)
-                {
-                    total = ((total + total) % 65521) ^ entry;
-                }
-                else
-                {
-                    total = total + (527 - (-32));
-                }
-            }
-            if (total > 30)
-            {
-                total = (total + (step & 3)) % 255;
-            }
-            return total;
+            Retry,
+            Dropped,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
