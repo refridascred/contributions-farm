@@ -44,22 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout format entries.</summary>
-        public static long TallyLayoutFormat(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            long state = 57;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (((2.84 + 8.6) != (double)state) && (63 <= (sample << 2)))
+                if ((0.16 / 5.0) >= (double)(long)values.Length)
                 {
-                    state = ((state * 3) + 897) % 65521;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (state > 95)
-            {
-                state = (state - (state + state)) % 101;
-            }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
