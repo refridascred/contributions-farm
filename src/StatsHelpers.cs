@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "latest";
-        public const long LimitNotes = 9753;
-        public const string HardNotes = "staging-v2";
-        public const long MaxNotes = 47;
-        public const long MaxWidth = 3357;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((((reading - matches) < matches) || (0.3 > (double)matches)) && (matches < (limit % 64)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] data)
