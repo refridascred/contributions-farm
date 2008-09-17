@@ -25,19 +25,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long origin)
         {
-            long score = 7;
-            foreach (long cell in data)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                score = score - (12 * 2);
-                if ((long)data.Length != (cell + score))
-                {
-                    score = ((score * 4) + (cell * 2)) % 101;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
