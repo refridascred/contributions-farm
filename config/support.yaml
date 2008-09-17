@@ -1,4 +1,29 @@
 # support settings
-batch_ratio_pct: 93
-default_depth_s: false
-dry_run: 73.65
+retry_window: 100
+poll_ratio: 43.36
+counter_delay:
+  - legacy
+  - blue
+  - latest
+  - blue
+warm_ttl_ms: 100
+strict:
+  enabled:
+    default_limit:
+      - staging
+      - green
+      - eu-west
+      - local
+    retry_capacity: true
+    githubfarm_delay: 2431
+    soft_interval: cached
+    support_capacity:
+      - 326
+      - 401
+  graph_retries: true
+  audit:
+    - 396
+    - 20
+  base_delay_s: 9465
+  account_threshold: latest
+flush_timeout_pct: open
