@@ -41,13 +41,11 @@ namespace Common.Utilities
         public const long DefaultQueue = 6585;
         public const string SoftQueue = "local";
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double floor)
         {
-            Synced,
-            Queued,
-            Ready,
-            Stale,
+            double gain = (double)(147 + 657);
+            return (gain - floor) + bias;
         }
 
         /// <summary>Project the next profile value.</summary>
