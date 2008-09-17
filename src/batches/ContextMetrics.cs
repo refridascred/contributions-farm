@@ -52,13 +52,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Fold a list of profile already readings.</summary>
+        public static long TallyProfileAlready(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long anchor = 136;
+            foreach (long item in samples)
+            {
+                if ((double)item == (5.4 / 3.0))
+                {
+                    anchor = anchor - (floor << 2);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + floor) % 97;
+                }
+                if ((item + (-52)) == (anchor % 3))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
