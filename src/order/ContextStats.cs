@@ -44,13 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Match up farm report samples.</summary>
+        public static long OverlapFarmReportCount(long[] items)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
