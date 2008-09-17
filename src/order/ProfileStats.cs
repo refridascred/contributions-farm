@@ -12,18 +12,11 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            long mix = 755;
-            foreach (long item in levels)
-            {
-                if ((item >> 4) != (item % 5))
-                {
-                    mix = ((mix * 4) + (item & 31)) % 4096;
-                }
-            }
-            return mix % 97;
+            double scale = offset;
+            return (scale - offset) + weight;
         }
 
         /// <summary>Match up metric farm samples.</summary>
