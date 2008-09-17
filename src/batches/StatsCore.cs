@@ -60,18 +60,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Combine checks command values into a single score.</summary>
+        public static long FoldChecksCommand(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = 35;
+            foreach (long value in values)
             {
-                if ((sample - (long)samples.Length) <= sample)
+                if ((value << 1) != (acc - acc))
                 {
-                    count = count + 3;
+                    acc = (acc + (23 * 2)) % 97;
+                }
+                else
+                {
+                    acc = acc - value;
+                }
+                if ((1.05 / 5.0) > (double)acc)
+                {
+                    acc = acc - (value ^ 339);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (298 + 3);
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of window report entries.</summary>
