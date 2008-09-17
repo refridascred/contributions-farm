@@ -82,9 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 1595;
-        public const long MinStream = 2564;
-        public const long IdleScore = 6697;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((matches / 4) >= value) && (((value - value) < value) && ((double)matches == (7.3 - 4.87))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
