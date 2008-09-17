@@ -69,13 +69,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Ready,
-            Draft,
+            Active,
+            Failed,
+            Pending,
+            Idle,
             Retry,
-            Stale,
         }
     }
 }
