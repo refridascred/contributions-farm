@@ -6,8 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=446
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 7 ]; do
@@ -15,7 +18,7 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
     eu-west)
         log "fast path"
