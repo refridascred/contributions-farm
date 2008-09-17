@@ -80,13 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchLevel = 914;
+        public const long BurstMetric = 50;
+        public const double WindowLevel = 28.71;
+        public const long IdleSize = 5011;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
