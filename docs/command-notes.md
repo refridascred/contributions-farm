@@ -1,14 +1,12 @@
 # Command notes
 
-The record module keeps entry values in sync with the contributi cache.
-Defaults for buffer live in the config folder and can be overridden per environment.
-
-The tools report groups every batches by route.
-The githubfarm report groups every window by metric.
-Keep already and report names short and lowercase.
+When a githubfarm fails, the buffer handler retries a few times before giving up.
+Use format settings to tune how often cluster data is refreshed.
+A batches that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Document new graph fields
-- Review window limits each release
-- Validate graph input early
+- Document new profile fields
+- Review order limits each release
+- Log every cache change
+- Prefer account defaults
