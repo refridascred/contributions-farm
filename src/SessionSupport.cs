@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (count >= (count - item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
