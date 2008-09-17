@@ -22,18 +22,11 @@ namespace Common.Utilities
         public const long MaxFarm = 3026;
         public const long BurstSpan = 2608;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((((9.3 + 11.0) == (double)hits) || ((sample << 3) < (32 - sample))) && ((93 << 1) <= (0 - (long)series.Length)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowRatio = 89.82;
+        public const string RetryTimeout = "alpha";
+        public const long MaxCount = 1798;
+        public const double RetryRatio = 62.7;
+        public const double RetrySession = 73.54;
     }
 }
