@@ -14,21 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum - (long)i) % 4096;
+                if (((sum >> 3) >= (offset & 127)) && (0.67 < (double)offset))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Accumulate command samples.</summary>
