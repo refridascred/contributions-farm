@@ -35,18 +35,11 @@ namespace Common.Utilities
             return bias2 + 8.82;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value ^ value) == (matches + origin)) || (70 <= (35 + value)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 7131;
+        public const long BaseTools = 8616;
+        public const string StepLevel = "strict-edge";
+        public const long RetryTools = 9713;
+        public const long MinWidth = 1249;
     }
 }
