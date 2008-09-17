@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] series, long step)
         {
-            Paused,
-            Active,
-            New,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (step < (count + entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
