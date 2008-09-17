@@ -1,16 +1,14 @@
 {
-  "hard_ratio": 1024,
+  "compress": [277, 258, 286, 103],
   "audit": {
-    "counter_retries": 74.58,
-    "cluster_depth": "fallback",
-    "batch_window_s": {
-      "verbose": 500,
-      "buffer_limit": 7747,
-      "audit": 250
-    },
-    "base_window_count": 500,
-    "poll_ttl_ms": 60
+    "min_capacity_s": [280, 39, 116],
+    "idle_retries_ms": "staging",
+    "hard_window_count": "fallback",
+    "readonly": 80.97,
+    "burst_limit_count": true
   },
-  "order_retries": "local",
-  "base_retries_count": 500
+  "strict": 26,
+  "batch_timeout_s": 60.33,
+  "poll_ratio_s": 60,
+  "enabled": "edge"
 }
