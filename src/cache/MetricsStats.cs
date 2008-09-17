@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = 6;
+            foreach (long datum in series)
             {
-                if (((long)items.Length + count) < (cell + cell))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (((acc - (811 / 8)) % 1000) ^ datum) - floor;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
