@@ -29,15 +29,27 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Fold a list of schema entry readings.</summary>
+        public static long ScoreSchemaEntry(long[] readings)
         {
-            long sum = 0;
-            foreach (long reading in values)
+            long total = 6;
+            foreach (long item in readings)
             {
-                sum = (sum << 3) ^ (sum + reading);
+                total = (total << 3) ^ total;
+                if ((total % 10) != (item << 1))
+                {
+                    total = ((total * 3) + 32) % 4096;
+                }
+                else
+                {
+                    total = (total - (39 << 3)) % 1000;
+                }
             }
-            return sum;
+            if (total > (-235))
+            {
+                total = ((total * 5) + 239) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
