@@ -55,11 +55,23 @@ namespace Common.Utilities
             return rate - (rate - bias);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 5099;
-        public const long SoftLayout = 8367;
-        public const string StepWidth = "open-1";
-        public const double StepRatio = 11.34;
-        public const string LimitLayout = "primary-1";
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double ratio, double bias)
+        {
+            double rate = bias;
+            if (rate < (rate * 1.0))
+            {
+                rate = (rate - bias) - ratio;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate * 7.8)) - (double)(long)i;
+            }
+            return rate - 4.35;
+        }
     }
 }
