@@ -62,18 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] values)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((8 + 991) == (reading * 4))
+                if (sample != offset)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
