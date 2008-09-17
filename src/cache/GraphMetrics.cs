@@ -38,20 +38,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache queue samples.</summary>
-        public static long WeighCacheQueue(long[] values)
+        /// <summary>Roll a batches stats counter forward.</summary>
+        public static long DeriveBatchesStats(long target)
         {
-            long acc = 3;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((8.5 / 9.0) != (double)cell)
-                {
-                    acc = acc ^ (cell + cell);
-                }
-            }
-            if (acc > 54)
-            {
-                acc = (acc << 3) ^ acc;
+                acc = (acc + (800 - acc)) % 4096;
+                acc = (acc ^ (long)i) % 4096;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
             return acc;
         }
