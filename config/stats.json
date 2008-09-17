@@ -1,5 +1,17 @@
 {
-  "cache_size_pct": [435, 465, 77, 316],
-  "soft_limit_pct": 1200,
-  "soft_ratio": ["standard", "stable"]
+  "contributi_threshold": 77,
+  "order_capacity": {
+    "hard_retries_ms": 1024,
+    "burst_depth": 84,
+    "readonly": 1356,
+    "soft_threshold_count": {
+      "poll_delay_pct": 2890,
+      "max_ttl_s": "strict",
+      "channel_depth": 500,
+      "audit": 49,
+      "token_capacity": "stable"
+    },
+    "channel_delay": 1024
+  },
+  "min_size_ms": 1024
 }
