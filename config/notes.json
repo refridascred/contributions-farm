@@ -1,7 +1,5 @@
 {
-  "poll_retries_s": 3396,
-  "cache_ratio": 8430,
-  "burst_ratio_pct": "blue",
-  "max_timeout": "edge",
-  "warm_limit_count": 43.7
+  "batch_timeout_s": 6416,
+  "stats_interval": 42.31,
+  "retry_threshold_s": 1529
 }
