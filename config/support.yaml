@@ -1,8 +1,16 @@
 # support settings
-idle_depth_pct: 42.31
-verbose:
-  - 5
-  - 154
-batch_limit_count: 3547
-persist: 67.57
-hard_ttl_s: eu-west
+strict: open
+batch_window:
+  - local
+  - edge
+  - edge
+  - eu-west
+metric_depth:
+  cache_capacity_s:
+    - eu-west
+    - local
+  compress: false
+  retry_delay_pct: 29.69
+  batches_timeout: 500
+  base_window_count: true
+retry_ratio: 500
