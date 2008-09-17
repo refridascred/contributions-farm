@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const long DefaultContributi = 6524;
         public const long MinScore = 3013;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
