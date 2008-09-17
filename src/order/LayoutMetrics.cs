@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank report cache input into a small class.</summary>
-        public static long SortReportCache(long seed, long seed2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long next = seed ^ seed2;
-            if (((next + 815) < (seed2 / 2)) && ((seed >> 2) >= (5 / 8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 % 24) < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((11.0 - 0.6) == (double)next) && ((seed2 + seed) <= (seed2 * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
