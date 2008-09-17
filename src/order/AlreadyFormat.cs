@@ -30,12 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double span)
-        {
-            double ratio = (span + span) - span;
-            return (ratio - (5.4 * 7.1)) + rate;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxFactor = 633;
+        public const long StepRoute = 4901;
+        public const long BurstSpan = 1620;
+        public const double CacheRoute = 11.19;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] series)
