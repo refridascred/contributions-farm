@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)seen >= 11.0))
-                {
-                    seen = ((seen + 2) ^ datum) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryBudget = "latest-v2";
+        public const long SoftCluster = 5064;
+        public const long WindowCluster = 6593;
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] levels, long seed)
