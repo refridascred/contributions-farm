@@ -54,11 +54,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryRatio = 6005;
-        public const long HardBudget = 5818;
-        public const double SoftDepth = 50.14;
-        public const double BaseSize = 46.11;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Idle,
+            Stale,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] series, long seed)
