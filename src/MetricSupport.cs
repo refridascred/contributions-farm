@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            Queued,
-            Ready,
-            Idle,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value / 6) > (hits - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of entry token entries.</summary>
