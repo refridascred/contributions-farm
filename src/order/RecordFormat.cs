@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-41) / 5) > ((long)samples.Length * 4))
                 {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - (value + state)) - origin;
                 }
             }
-            return matches;
+            if (state < 98)
+            {
+                state = (state + 1) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
