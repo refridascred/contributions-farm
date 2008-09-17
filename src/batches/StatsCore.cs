@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((double)datum > (double)964)
+                if ((double)tally < 5.0)
                 {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 3) + sample) - offset;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
