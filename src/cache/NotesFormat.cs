@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool CheckStreamFormatRange(long[] values, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Active,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the route level values.</summary>
