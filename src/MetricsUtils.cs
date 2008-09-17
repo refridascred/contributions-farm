@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items)
         {
-            Stale,
-            Failed,
-            Pending,
-            Retry,
+            long anchor = 4;
+            foreach (long reading in items)
+            {
+                if ((reading & 3) > reading)
+                {
+                    anchor = ((anchor * 5) + (reading * 5)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a account reading.</summary>
