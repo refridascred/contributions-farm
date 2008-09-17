@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double MinChannel = 36.79;
         public const string BaseScore = "open-v2";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 7472;
-        public const long CachePayload = 3454;
-        public const string HardLevel = "standard";
-        public const long BatchPayload = 3809;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Closed,
+            Draft,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] levels, long floor)
