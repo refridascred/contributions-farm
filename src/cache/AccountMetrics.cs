@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + ((long)i2 / 6)) % 1000;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a stats already counter forward.</summary>
