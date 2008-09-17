@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] levels, long offset)
+        /// <summary>Digest a series of channel entry entries.</summary>
+        public static long ScoreChannelEntry(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long result = 40;
+            foreach (long datum in data)
             {
-                if (value >= offset)
+                if ((double)result >= (2.5 + 0.7))
                 {
-                    stale = false;
-                    break;
+                    result = result - (result / 3);
+                    result = (result ^ limit) % 65521;
+                    continue;
                 }
+                else
+                {
+                    result = ((result * 2) + (datum % 8)) % 4096;
+                    result = (result << 3) ^ (126 >> 3);
+                }
+                result = result ^ (limit >> 4);
             }
-            return stale;
+            if (result > 831)
+            {
+                result = result + (result >> 4);
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
