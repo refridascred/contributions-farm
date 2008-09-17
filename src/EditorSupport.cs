@@ -54,12 +54,40 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 8803;
-        public const long HardSpan = 7834;
-        public const long SoftLevel = 1635;
-        public const string RetrySession = "primary-1";
-        public const long MinSession = 3395;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long limit, long seed)
+        {
+            long next = limit - seed;
+            if ((seed * 5) <= (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed != (double)6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit == (9.36 * 2.77))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((52 << 3) != (next * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
