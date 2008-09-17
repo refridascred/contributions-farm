@@ -30,19 +30,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] series, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
