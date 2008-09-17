@@ -38,19 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double gain, double offset)
-        {
-            double rate = gain;
-            if (rate > (double)797)
-            {
-                rate = (rate + (rate + rate)) + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate - 7.74)) + (double)(long)i;
-            }
-            return rate - (double)114;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheSize = 28.05;
+        public const double CacheFarm = 55.38;
+        public const string HardFarm = "local-1";
+        public const long CacheBudget = 6618;
     }
 }
