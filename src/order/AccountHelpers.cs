@@ -74,19 +74,21 @@ namespace Common.Utilities
         public const long CacheTimeout = 3334;
         public const long MinCommand = 9760;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
