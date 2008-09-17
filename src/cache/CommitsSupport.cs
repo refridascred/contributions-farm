@@ -41,19 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((limit + entry) <= (-94))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 132;
+        public const long LimitGraph = 916;
+        public const double IdleGraph = 15.82;
+        public const double DefaultSize = 69.39;
+        public const double MinGraph = 72.94;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
