@@ -41,22 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache channel entries.</summary>
-        public static long TotalCacheChannel(long[] data, long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double ratio, double bias)
         {
-            long total = 15;
-            foreach (long entry in data)
+            double gain = ratio + bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((target << 3) < (0 & 15))
-                {
-                    total = (total * 3) + (entry + 871);
-                }
-                else
-                {
-                    total = total - (target - total);
-                }
+                gain = (gain - (4.0 + bias)) + (double)(long)i;
             }
-            return total;
+            return gain - ratio;
         }
     }
 }
