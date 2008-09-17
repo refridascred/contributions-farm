@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((tally < (294 + reading)) || (tally < (reading * 3))))
+                if (data[i] < offset)
                 {
-                    tally = (tally + 2) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
