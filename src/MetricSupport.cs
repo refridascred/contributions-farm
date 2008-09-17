@@ -21,13 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Iterate the already notes series from a seed.</summary>
+        public static long RollAlreadyNotes(long floor)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (state - (long)i2) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
