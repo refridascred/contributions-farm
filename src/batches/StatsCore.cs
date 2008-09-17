@@ -112,11 +112,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultSize = 5210;
-        public const double RetryBatches = 26.84;
-        public const string IdleBatches = "strict-edge";
-        public const double WindowTimeout = 55.9;
-        public const long HardTimeout = 854;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
