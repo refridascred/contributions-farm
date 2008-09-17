@@ -25,14 +25,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Match up metric farm samples.</summary>
+        public static long PairMetricFarmCount(long[] series)
         {
-            Draft,
-            Dropped,
-            Active,
-            Synced,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
