@@ -36,21 +36,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 78;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry ^ (bound ^ (long)items.Length)) % 4096;
+                if (entry >= bound)
                 {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 3) + (bound >> 4)) % 101;
+                }
+                if (entry < carry)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
