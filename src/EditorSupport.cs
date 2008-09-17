@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long carry = 711;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry ^ carry) % 255) - step;
-                if (sample >= (sample / 4))
+                if (seen >= (552 >> 1))
                 {
-                    carry = (carry ^ sample) % 255;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
