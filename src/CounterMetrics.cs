@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long seed, long seed2)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((seed >> 1) >= (seed2 << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((seed2 & 1) < (seed * 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Locked,
+            Draft,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
