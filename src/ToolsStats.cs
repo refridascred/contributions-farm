@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 34;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (datum + floor)) % 97;
+                }
+                else
+                {
+                    result = (result * 2) + (result * 5);
+                }
+                if (datum > (504 << 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
