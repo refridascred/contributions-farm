@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 250;
-        public const double BurstRoute = 84.11;
-        public const long WindowDepth = 1171;
-        public const long LimitRoute = 9274;
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double gain, double bias)
+        {
+            double ratio = (bias / 6.0) - (gain + bias);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (8.86 * 0.1)) - (double)(long)i;
+            }
+            return ratio - (ratio + gain);
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
