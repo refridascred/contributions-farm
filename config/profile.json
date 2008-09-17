@@ -1,16 +1,5 @@
 {
-  "flush_delay": false,
-  "cache_timeout_s": "strict",
-  "retry_threshold_ms": {
-    "notes_retries": false,
-    "retry_capacity": 6719,
-    "retry_ratio_ms": {
-      "checks_size": "blue",
-      "soft_depth_s": 43.55,
-      "default_delay_pct": "cached"
-    },
-    "verbose": "cached",
-    "sync_threshold": 86.46
-  },
-  "batch_depth_pct": 30
+  "hard_limit": false,
+  "max_limit_ms": "open",
+  "report_delay": 8680
 }
