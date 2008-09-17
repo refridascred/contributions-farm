@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] series, long bound)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((reading - bound) < matches) || ((matches ^ 87) == ((-469) >> 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
