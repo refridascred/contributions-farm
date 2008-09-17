@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 2431;
+        public const long BurstFactor = 7924;
+        public const string SoftChannel = "latest-v2";
+        public const long RetryChannel = 1274;
 
         /// <summary>Fold a list of format batch readings.</summary>
         public static long WeighFormatBatch(long[] items)
