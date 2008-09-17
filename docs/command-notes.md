@@ -1,11 +1,12 @@
 # Command notes
 
-Each already is validated before it reaches the channel queue.
-A profile that stays idle for too long is moved to the metric list.
+The buffer report groups every command by batch.
+Keep cache and stream names short and lowercase.
+Use editor settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Validate layout input early
-- Log every graph change
-- Document new cluster fields
+- Prefer token defaults
+- Keep command values small
+- Document new commits fields
+- Log every githubfarm change
