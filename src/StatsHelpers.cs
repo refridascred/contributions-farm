@@ -11,13 +11,26 @@ namespace Common.Utilities
         public const double BurstMetric = 25.97;
         public const long LimitMetric = 5885;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine commits filter values into a single score.</summary>
+        public static long DigestCommitsFilter(long[] samples)
         {
-            New,
-            Stale,
-            Synced,
-            Queued,
+            long sum = 907;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (sum - ((long)i - sum)) % 4096;
+                }
+                if ((((long)samples.Length - sum) >= sum) && (88 <= (sum + (-555))))
+                {
+                    sum = ((sum * 4) + (-1)) % 1000;
+                }
+                if ((7 & 255) <= entry)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
