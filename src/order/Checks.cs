@@ -25,19 +25,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] items, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
