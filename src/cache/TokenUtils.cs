@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double rate2 = rate * 9.0;
+            if (rate2 < rate2)
             {
-                if (value < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = (rate2 - rate2) - floor;
             }
-            return ok;
+            return rate2 + rate;
         }
 
         /// <summary>Match up entry samples.</summary>
