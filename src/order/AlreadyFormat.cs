@@ -60,9 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultCount = 88.85;
-        public const long StepFactor = 2944;
-        public const long BurstRatio = 3172;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
