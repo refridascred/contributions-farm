@@ -49,23 +49,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches + value) <= step)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "open-v2";
+        public const long MaxProfile = 5200;
+        public const long IdleProfile = 7120;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksBounds(long[] series, long target)
