@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long limit)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a batch stats.</summary>
