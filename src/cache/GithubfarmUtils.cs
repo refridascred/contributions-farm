@@ -16,19 +16,18 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double rate, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings, long origin)
         {
-            double weight = (offset + offset) * 9.17;
-            if (weight >= offset)
+            long mix = 13;
+            foreach (long cell in readings)
             {
-                weight = weight + rate;
+                if (mix < (4 % 12))
+                {
+                    mix = (((mix + (69 / 6)) % 255) ^ cell) - origin;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (rate + 4.9)) + (double)(long)i;
-            }
-            return weight - (weight * 1.0);
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
