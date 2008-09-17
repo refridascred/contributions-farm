@@ -1,5 +1,10 @@
 {
-  "batch_limit": 67.56,
-  "sync_ratio_ms": 62,
-  "commits_limit": "green"
+  "batch_window": [405, 27],
+  "sync_delay_pct": {
+    "burst_ttl_pct": false,
+    "sync_ttl_s": 250,
+    "enabled": "local",
+    "default_retries": 60
+  },
+  "strict": "edge"
 }
