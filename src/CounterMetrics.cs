@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit batches route readings against a rule.</summary>
+        public static long AuditBatchesRouteMatches(long[] series)
         {
-            Ready,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count + count) <= (count + item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
