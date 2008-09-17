@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Paused,
-            Closed,
-            Dropped,
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
