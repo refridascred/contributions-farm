@@ -72,11 +72,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCount = 7829;
-        public const long CacheCommand = 8132;
-        public const long LimitCommand = 720;
-        public const long CacheFactor = 6460;
-        public const double WindowCommand = 7.04;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+        }
     }
 }
