@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double gain, double bias)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] values, long limit)
         {
-            double gain2 = (double)719 - gain;
-            if (gain2 <= (double)9)
+            bool found = true;
+            foreach (long item in values)
             {
-                gain2 = gain2 + bias;
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (gain2 / 6.0)) + (double)(long)i;
-            }
-            return gain2 - (gain * 6.08);
+            return found;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
