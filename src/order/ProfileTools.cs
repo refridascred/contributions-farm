@@ -40,12 +40,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchBudget = 3380;
-        public const string IdleDepth = "open-1";
-        public const long RetrySupport = 8444;
-        public const long RetrySize = 7839;
-        public const double WindowSupport = 76.72;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
