@@ -33,17 +33,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 66;
+            foreach (long sample in series)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (912 * 5)) % 255) ^ sample;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the cache phase values.</summary>
