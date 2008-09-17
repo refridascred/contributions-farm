@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a stream stats counter forward.</summary>
-        public static long IterateStreamStats(long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (237 >= (sample % 64))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
