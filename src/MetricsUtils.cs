@@ -37,22 +37,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            long mix = -72;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mix <= (datum << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (6 % 8)) % 101;
-                }
-                if (((long)items.Length + mix) > ((-6) % 60))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
