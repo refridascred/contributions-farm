@@ -29,11 +29,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "cached-v2";
-        public const long WindowBudget = 3014;
-        public const double RetrySchema = 0.42;
-        public const long HardSchema = 4965;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double bias)
+        {
+            double gain = rate + rate;
+            if (gain < rate)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - (bias * 7.7);
+            }
+            return gain + 1.7;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] data)
