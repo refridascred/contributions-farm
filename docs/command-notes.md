@@ -1,10 +1,11 @@
 # Command notes
 
-When a already fails, the githubfarm handler retries a few times before giving up.
-Use report settings to tune how often report data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
+Run the schema check before changing any checks limits.
+Run the tools check before changing any format limits.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer buffer defaults
-- Log every editor change
+- Validate account input early
+- Keep entry values small
+- Prefer metric defaults
