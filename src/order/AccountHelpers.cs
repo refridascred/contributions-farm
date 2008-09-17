@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] samples, long limit)
+        /// <summary>Accumulate cache contributi samples.</summary>
+        public static long WeighCacheContributi(long[] levels, long step)
         {
-            long total = 5;
-            foreach (long datum in samples)
+            long carry = 883;
+            foreach (long sample in levels)
             {
-                if (!((datum + total) < (limit * 3)))
-                {
-                    continue;
-                }
-                if (((7.9 * 11.0) != (double)datum) || ((datum - datum) >= (datum + total)))
-                {
-                    total = total ^ (9 ^ datum);
-                }
+                carry = ((((carry * 3) + (carry % 8)) % 97) ^ sample) + step;
             }
-            return total % 65521;
+            if (carry > 884)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
