@@ -34,13 +34,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
