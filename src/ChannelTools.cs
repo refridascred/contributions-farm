@@ -41,31 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long step, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            if ((step + 637) > (offset << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + offset) < (243 / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + step) != (9 & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
