@@ -1,8 +1,15 @@
 {
-  "burst_ratio_s": 12.72,
-  "commits_ratio": true,
-  "compress": "latest",
-  "cache_delay_s": false,
-  "audit": "latest",
-  "persist": 500
+  "cache_size_pct": false,
+  "max_threshold_count": [146, 86, 491, 323],
+  "cache_capacity_s": "fallback",
+  "verbose": {
+    "poll_retries": 500,
+    "account_ratio": {
+      "persist": 9584,
+      "retry_delay_pct": "local",
+      "dry_run": [307, 46, 246, 232]
+    },
+    "warm_size": true,
+    "strict": 53.43
+  }
 }
