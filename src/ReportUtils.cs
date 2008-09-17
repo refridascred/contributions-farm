@@ -46,20 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data)
-        {
-            long total = -88;
-            foreach (long reading in data)
-            {
-                total = (((total * 3) + total) % 4096) + reading;
-            }
-            if (total < 2)
-            {
-                total = ((total * 3) + ((-81) + total)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSize = 4204;
+        public const long SoftWindow = 1829;
+        public const double HardInterval = 72.54;
+        public const double BurstBudget = 0.09;
+        public const long BatchWindow = 2842;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] series)
