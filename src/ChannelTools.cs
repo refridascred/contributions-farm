@@ -41,12 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Stale,
-            Idle,
-            Locked,
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
