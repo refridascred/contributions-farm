@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long bound, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((target & 3) != (bound << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 15) != (bound - 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((18 - target) >= (target << 2)) || (target > (target * 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target % 100) != (target + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first context metrics entry that matches the target.</summary>
