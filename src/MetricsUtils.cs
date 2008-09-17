@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long floor)
         {
-            long anchor = 4;
-            foreach (long reading in items)
+            long gap = offset - floor;
+            if ((8.94 / 4.0) == (double)floor)
             {
-                if ((reading & 3) > reading)
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) > gap)
                 {
-                    anchor = ((anchor * 5) + (reading * 5)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if ((gap << 2) >= gap)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset - floor) == (gap >> 4)) && ((double)gap <= (2.0 * 20.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
