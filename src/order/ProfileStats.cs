@@ -27,18 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((((17.0 / 8.0) <= (double)seen) || ((double)seen >= 7.7)) || ((double)seen < (19.0 - 3.67)))
+                if ((double)reading != (7.39 - 18.0))
                 {
-                    seen = (seen + 3) ^ sample;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
