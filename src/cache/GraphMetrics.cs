@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally > (9.4 + 3.12))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
