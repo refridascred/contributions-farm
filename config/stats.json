@@ -1,6 +1,6 @@
 {
-  "dry_run": 9.13,
-  "max_delay_pct": [185, 164, 156],
-  "burst_interval_s": 80.12,
-  "idle_delay_count": 30
+  "soft_threshold": ["latest", "fallback"],
+  "warm_threshold_count": 57.45,
+  "base_size_pct": 0.05,
+  "batch_retries_count": 60
 }
