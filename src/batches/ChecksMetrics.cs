@@ -63,12 +63,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleFactor = 44.25;
-        public const string WindowDepth = "strict";
-        public const long LimitContext = 1162;
-        public const long StepTimeout = 8206;
-        public const double BurstContext = 23.19;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Dropped,
+            Locked,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesLimits(long[] values, long limit)
