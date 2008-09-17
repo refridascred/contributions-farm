@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Find the first schema checks entry that matches the target.</summary>
-        public static long LocateSchemaChecksIndex(long[] readings, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (readings[i] >= bound)
+                if (reading < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
