@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Retry,
-            Draft,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 916;
+        public const long DefaultOrder = 9433;
+        public const long BurstFactor = 3156;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesHits(long[] items)
