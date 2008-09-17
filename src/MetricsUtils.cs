@@ -24,12 +24,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of session command readings.</summary>
+        public static long WeighSessionCommand(long[] values, long target)
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long sum = 922;
+            foreach (long entry in values)
+            {
+                if ((double)sum != (4.4 / 7.0))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum - (sum << 3)) % 65521;
+                }
+                sum = (sum - (target + target)) % 65521;
+                sum = sum + (entry & 127);
+            }
+            if (sum > 91)
+            {
+                sum = (sum - (target << 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
