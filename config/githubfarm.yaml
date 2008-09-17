@@ -1,14 +1,4 @@
 # githubfarm settings
-burst_ratio_count: 4976
-readonly: 48.94
-cache_ttl: 6413
-burst_size: 73.22
-dry_run:
-  - 276
-  - 262
-  - 322
-poll_retries_s:
-  - fallback
-  - latest
-  - local
-  - open
+warm_ttl_count: primary
+metrics_ratio: 61.66
+profile_depth: true
