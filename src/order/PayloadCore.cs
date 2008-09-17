@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Dropped,
-            Synced,
-            Stale,
-            Idle,
-            Draft,
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next order value.</summary>
