@@ -1,4 +1,4 @@
 # githubfarm settings
-channel_interval: true
-audit: open
-poll_depth_s: 60.19
+compress: 6940
+batch_retries_ms: 5295
+warm_threshold_s: staging
