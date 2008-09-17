@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((double)acc == (9.1 - 7.46))
+                if (reading < target)
                 {
-                    acc = ((acc * 3) + ((long)i << 1)) % 255;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc * 3) + (floor - (long)i);
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a order summary.</summary>
