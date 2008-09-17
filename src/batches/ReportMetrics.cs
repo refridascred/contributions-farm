@@ -23,17 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache support reading by value.</summary>
-        public static long LocateCacheSupportIndex(long[] data, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] <= seed)
+                if ((sample - sample) == (count ^ 20))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a stats reading.</summary>
