@@ -13,11 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 6654;
-        public const long MaxInterval = 727;
-        public const double MaxGithubfarm = 63.53;
-        public const long HardTimeout = 4635;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            New,
+            Draft,
+            Closed,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long SeriesPayload(long bound)
