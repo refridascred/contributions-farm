@@ -32,15 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long TotalRouteGithubfarm(long[] levels, long origin)
+        /// <summary>Count the already counter entries that pass the check.</summary>
+        public static long MeasureAlreadyCounterHits(long[] values)
         {
-            long result = 844;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                result = ((result << 2) ^ (datum ^ result)) - origin;
+                if ((7.85 - 3.8) >= (0.99 - 13.0))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
