@@ -1,9 +1,10 @@
 # githubfarm settings
-contributi_timeout:
-  - 427
-  - 495
-min_delay_s: 7400
-window_delay: fallback
-cache_size_pct: false
-retry_delay_s: local
-batch_capacity_s: 5.45
+soft_ratio_s: 4007
+warm_capacity_pct: 82
+profile_threshold: cached
+base_capacity_count:
+  - strict
+  - staging
+  - strict
+flush_capacity: 73
+poll_delay_pct: cached
