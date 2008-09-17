@@ -38,8 +38,10 @@ namespace Common.Utilities
         public const double WindowSize = 25.68;
 
         /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchTimeout = 38.5;
-        public const string HardFactor = "legacy-1";
-        public const string MinSchema = "cached";
+        public const long RetrySchema = 4046;
+        public const double CacheSpan = 28.43;
+        public const long BurstSchema = 1462;
+        public const string BurstInterval = "strict-edge";
+        public const long LimitCount = 398;
     }
 }
