@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 8664;
-        public const long HardInterval = 6339;
-        public const double MaxLevel = 10.76;
-        public const long BaseInterval = 5158;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double gain, double bias)
