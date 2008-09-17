@@ -36,23 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples, long seed)
+        /// <summary>Iterate the editor payload series from a seed.</summary>
+        public static long DeriveEditorPayload(long floor)
         {
-            long result = -561;
-            foreach (long sample in samples)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                result = result - result;
-                if ((double)sample >= (double)seed)
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (sum - floor)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (result < 2)
-            {
-                result = (result - (541 & 15)) % 101;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
