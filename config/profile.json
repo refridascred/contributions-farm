@@ -1,18 +1,8 @@
 {
-  "enabled": ["strict", "fallback", "local", "cached"],
-  "cache_ttl_ms": 500,
-  "retry_interval": "blue",
-  "sync_window": "standard",
-  "base_capacity": {
-    "command_size": 7849,
-    "burst_threshold": 91,
-    "sync_timeout": false,
-    "batches_capacity": "green",
-    "dry_run": {
-      "poll_retries": "strict",
-      "idle_ttl_count": "strict",
-      "retry_interval": "eu-west"
-    },
-    "default_size": "cached"
-  }
+  "cache_window": "standard",
+  "strict": 9508,
+  "verbose": "stable",
+  "compress": 1.11,
+  "idle_ratio_count": "strict",
+  "hard_limit": "blue"
 }
