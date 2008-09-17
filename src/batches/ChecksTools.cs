@@ -33,12 +33,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitLevel = 73.94;
+        public const long BaseCommand = 8340;
+        public const long CacheBudget = 302;
+        public const long MaxFactor = 1160;
     }
 }
