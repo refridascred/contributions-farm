@@ -37,21 +37,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up checks route samples.</summary>
-        public static long PairChecksRouteCount(long[] items)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate record samples.</summary>
