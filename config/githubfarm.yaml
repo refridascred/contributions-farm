@@ -1,44 +1,22 @@
 # githubfarm settings
+base_retries_count: false
 readonly:
-  - 100
-  - 228
-  - 445
-flush_capacity_count:
-  batch_depth_pct: 31
-  min_delay_s: 90.12
-  sync_delay_ms:
-    token_size: open
-    githubfarm_size:
-      - local
-      - open
-      - legacy
-      - legacy
-    sync_delay_ms: 3909
-    poll_window_s: 28.51
-    warm_ttl_ms:
-      - 217
-      - 2
-    record_delay: edge
-poll_limit_ms:
-  support_timeout:
-    stats_limit: true
-    enabled: standard
-    stream_window: 4350
-    base_retries:
-      - open
-      - primary
-      - cached
-    soft_ttl: false
-    token_threshold: 500
-  context_retries:
-    persist: 82.88
-    sync_threshold: 1024
-    cache_threshold_pct: 6.79
-  max_depth_s: blue
-cache_ratio_ms: local
-cluster_window:
-  audit: open
-  hard_timeout: false
-  hard_size_ms: 89
-  min_depth_s: 35
-  dry_run: true
+  layout_delay:
+    warm_ttl_count: false
+    record_threshold: 59.67
+    idle_ttl:
+      - 16
+      - 57
+      - 193
+    report_ttl: stable
+  persist: eu-west
+  editor_delay: false
+  idle_limit: latest
+  cluster_ratio:
+    - legacy
+    - eu-west
+  contributi_delay: eu-west
+min_threshold_count: 250
+filter_delay: true
+max_retries: blue
+burst_depth_s: 74.95
