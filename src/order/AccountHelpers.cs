@@ -41,11 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 7576;
-        public const long BatchCount = 7749;
-        public const double MaxWidth = 2.53;
-        public const double StepRoute = 79.63;
+        /// <summary>Measure how many counter account samples are out of range.</summary>
+        public static long TallyCounterAccountMatches(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((2 & 127) > (bound ^ datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long floor)
