@@ -48,15 +48,9 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseSize = "staging";
+        public const string MinOrder = "primary-v2";
+        public const long MaxOrder = 5834;
     }
 }
