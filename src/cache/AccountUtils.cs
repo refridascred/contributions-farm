@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data, long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long total = 3;
-            foreach (long value in data)
-            {
-                total = (total ^ (769 << 3)) - value;
-            }
-            if (total > (-33))
-            {
-                total = (total + (seed % 100)) % 97;
-            }
-            return total;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
