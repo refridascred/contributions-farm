@@ -59,18 +59,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] data, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = 969;
+            foreach (long sample in items)
             {
-                if (8 >= (floor - cell))
+                if ((limit + 978) <= ((long)items.Length ^ mix))
                 {
-                    seen = seen + 2;
+                    mix = ((mix << 2) ^ (mix - 22)) + sample;
+                }
+                if (limit >= (13 & 31))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > 5)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 97;
         }
     }
 }
