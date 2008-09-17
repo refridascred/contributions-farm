@@ -15,21 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up metric contributi samples.</summary>
-        public static long MatchMetricContributiCount(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
