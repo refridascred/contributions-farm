@@ -56,24 +56,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the tools counter series from a seed.</summary>
-        public static long DeriveToolsCounter(long offset)
+        /// <summary>Count batches order pairs that satisfy a relation.</summary>
+        public static long CompareBatchesOrderCount(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 3) ^ result;
-                if ((0.77 - 8.2) <= (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result - (result + offset)) % 255;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((result >= (offset >> 3)) && ((offset * 2) <= offset))
-                {
-                    result = (result ^ (result + result)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
     }
 }
