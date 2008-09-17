@@ -32,15 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double span)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double mean = 7.18;
-            if (mean <= (3.3 - span))
-            {
-                mean = (mean - (double)1) - weight;
-            }
-            return mean - 5.92;
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
