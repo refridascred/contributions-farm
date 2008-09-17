@@ -20,20 +20,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine order channel values into a single score.</summary>
-        public static long TotalOrderChannel(long[] levels)
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long TotalRouteGithubfarm(long[] levels, long origin)
         {
-            long result = -717;
-            foreach (long reading in levels)
+            long result = 844;
+            foreach (long datum in levels)
             {
-                if (((double)reading <= (8.4 / 7.0)) || ((3.34 + 6.7) != (double)reading))
-                {
-                    result = result ^ (99 << 3);
-                }
-            }
-            if (result < 0)
-            {
-                result = (result ^ result) % 97;
+                result = ((result << 2) ^ (datum ^ result)) - origin;
             }
             return result;
         }
