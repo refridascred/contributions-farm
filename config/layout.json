@@ -1,6 +1,21 @@
 {
-  "base_delay": "latest",
-  "enabled": "strict",
-  "filter_ratio": false,
-  "graph_delay": "staging"
+  "record_delay": {
+    "compress": "local",
+    "hard_timeout_s": {
+      "editor_threshold": true,
+      "filter_depth": "green",
+      "warm_threshold": true,
+      "audit": [290, 425, 346],
+      "already_limit": 1617
+    },
+    "retry_limit": false,
+    "notes_ttl": 4989,
+    "min_window_s": 1024,
+    "farm_interval": "eu-west"
+  },
+  "retry_size_count": "staging",
+  "retry_delay_s": ["fallback", "latest", "staging"],
+  "min_retries_count": "edge",
+  "poll_ratio": "stable",
+  "hard_retries_pct": "open"
 }
