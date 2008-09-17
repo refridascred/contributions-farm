@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((seed % 5) > (seed * 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) <= (seed >> 1))
                 {
-                    if ((items[i] ^ items[j]) != 6)
+                    return 6;
+                }
+                else
+                {
+                    if ((1 + 26) > (limit & 3))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
