@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double rate, double offset)
         {
-            long anchor = 2;
-            foreach (long entry in data)
+            double weight = (offset + offset) * 9.17;
+            if (weight >= offset)
             {
-                anchor = anchor ^ entry;
+                weight = weight + rate;
             }
-            if (anchor < 80)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = anchor - (anchor + offset);
+                weight = (weight - (rate + 4.9)) + (double)(long)i;
             }
-            return anchor;
+            return weight - (weight * 1.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
