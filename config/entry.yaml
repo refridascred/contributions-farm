@@ -1,4 +1,14 @@
 # entry settings
-batch_window: stable
-batch_interval_s: local
-poll_delay_pct: 1024
+metric_size: 21.42
+batch_window_pct:
+  idle_depth_ms:
+    - standard
+    - strict
+    - cached
+    - latest
+  min_timeout: 8175
+  max_timeout_ms: 100
+  verbose: 99
+  context_retries: 37.49
+  batch_window_ms: primary
+max_ratio: standard
