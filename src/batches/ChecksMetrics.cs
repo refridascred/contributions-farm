@@ -58,16 +58,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of cache farm readings.</summary>
-        public static long DigestCacheFarm(long[] series, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long carry = 0;
-            foreach (long reading in series)
-            {
-                carry = (((carry - (404 + carry)) % 1000) - reading) - seed;
-                carry = ((carry * 3) + (625 % 12)) % 65521;
-            }
-            return carry % 4096;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
