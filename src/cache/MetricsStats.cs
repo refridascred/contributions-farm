@@ -43,22 +43,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)count < (16.0 - 7.8))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
