@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((result - bound) == (447 - bound))
-                {
-                    break;
-                }
-                result = ((result << 2) ^ (long)i) % 4096;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the commits kind values.</summary>
