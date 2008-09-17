@@ -13,15 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Pending,
-            Locked,
-            Dropped,
-            Draft,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleBudget = "legacy";
+        public const long WindowPayload = 117;
+        public const long SoftDepth = 7961;
+        public const double MinRatio = 20.21;
 
         /// <summary>Adjust a route reading.</summary>
         public static double ProjectRoute(double ratio, double offset)
