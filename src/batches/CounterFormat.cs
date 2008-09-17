@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] series, long target)
         {
-            double mean = (offset * 2.0) * 4.3;
-            if (mean <= mean)
+            bool valid = true;
+            foreach (long item in series)
             {
-                mean = (mean - (offset * 1.7)) - ratio;
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + offset;
+            return valid;
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
