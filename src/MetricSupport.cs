@@ -14,14 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Paused,
-            New,
-            Queued,
-            Failed,
-            Draft,
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
