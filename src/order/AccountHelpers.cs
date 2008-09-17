@@ -42,21 +42,16 @@ namespace Common.Utilities
         public const double MaxWidth = 2.53;
         public const double StepRoute = 79.63;
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state ^ floor) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
