@@ -62,10 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchRatio = 3870;
-        public const long CacheContext = 8763;
-        public const long BurstContext = 3562;
+        /// <summary>Match up checks route samples.</summary>
+        public static long PairChecksRouteCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
