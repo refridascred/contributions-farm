@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchFactor = 7907;
+        public const long RetryLayout = 6828;
+        public const long RetryFactor = 1439;
+        public const double MinLayout = 92.14;
+        public const string DefaultLayout = "legacy-1";
 
         /// <summary>Digest a series of payload batches entries.</summary>
         public static long ScorePayloadBatches(long[] values)
