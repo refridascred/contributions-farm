@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] data, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double mean = 3.0 + (double)97;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (((mean - (7.8 / 5.0)) + (double)(long)i) + ratio) + floor;
             }
-            return ok;
+            return mean - 4.38;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
