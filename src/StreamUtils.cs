@@ -89,19 +89,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double rate = 5.6;
-            if (rate > offset)
-            {
-                rate = (rate + (1.18 * 6.22)) - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)3;
+            Pending,
+            Done,
+            Retry,
         }
     }
 }
