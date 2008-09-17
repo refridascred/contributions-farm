@@ -25,22 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Fold a list of token githubfarm readings.</summary>
+        public static long FoldTokenGithubfarm(long[] levels)
         {
-            long matches = 0;
+            long score = 5;
             foreach (long datum in levels)
             {
-                if ((matches - 29) >= (6 + datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = score ^ (datum << 1);
             }
-            return matches;
+            if (score > 3)
+            {
+                score = score - 7;
+            }
+            return score % 4096;
         }
     }
 }
