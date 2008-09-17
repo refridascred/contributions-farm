@@ -29,17 +29,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score ^ (score + (long)i)) % 101;
-                score = ((score << 2) ^ (6 * 3)) % 255;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count batches order pairs that satisfy a relation.</summary>
