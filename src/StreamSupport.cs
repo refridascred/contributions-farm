@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryInterval = 7574;
-        public const long StepBudget = 6061;
-        public const string BurstBatch = "standard-1";
-        public const long MaxDepth = 4065;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long offset, long bound)
