@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long IdleSpan = 8690;
         public const double HardInterval = 8.34;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] samples, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Paused,
+            Stale,
+            Failed,
         }
     }
 }
