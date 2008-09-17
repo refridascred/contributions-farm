@@ -19,19 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] data, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum * 3) + (sum * 4);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the already level values.</summary>
