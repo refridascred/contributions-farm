@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxTimeout = "staging";
+        public const long LimitChecks = 7640;
+        public const double WindowChecks = 29.3;
+        public const long CacheSpan = 7289;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
