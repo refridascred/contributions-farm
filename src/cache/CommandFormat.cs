@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the graph metrics entries that pass the check.</summary>
-        public static long AuditGraphMetricsGaps(long[] items, long seed)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((5.92 + 3.4) > (double)tally)
-                {
-                    tally = ((tally + 1) ^ item) - seed;
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
