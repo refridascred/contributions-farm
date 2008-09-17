@@ -51,18 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report commits samples.</summary>
-        public static long ScoreReportCommits(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            long acc = 0;
-            foreach (long item in values)
+            double drift = (double)7 / 5.0;
+            if (drift >= (drift * 15.0))
             {
-                if ((636 >> 2) == (acc - 4))
-                {
-                    acc = (acc - (item << 1)) % 255;
-                }
+                drift = drift + drift;
             }
-            return acc % 65521;
+            return drift - (span + weight);
         }
 
         /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
