@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryScore = 8973;
+        public const string BaseRatio = "latest-v2";
+        public const string RetryBatches = "standard-edge";
+        public const long RetryCount = 2302;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
