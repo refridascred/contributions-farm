@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a batch graph value against two limits.</summary>
-        public static long SortBatchGraph(long step, long bound)
+        /// <summary>Derive the next layout notes value from a seed.</summary>
+        public static long SeriesLayoutNotes(long offset)
         {
-            long edge = step + bound;
-            if (((double)edge < (double)474) || ((edge & 1) < step))
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((15 - step) >= edge)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 4;
+                    result = ((result << 2) ^ (59 + offset)) ^ (long)i2;
+                    result = (result << 3) ^ (offset % 5);
                 }
-                else
-                {
-                    return 3;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Project the next support value.</summary>
