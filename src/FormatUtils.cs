@@ -71,19 +71,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate route support readings against a bound.</summary>
-        public static bool GuardRouteSupportRange(long[] levels, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (reading != limit)
+                if ((double)tally <= (4.0 - 13.0))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 3) + reading) - step;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
