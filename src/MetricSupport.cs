@@ -32,23 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of contributi report entries.</summary>
-        public static long WeighContributiReport(long[] series, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long result = 22;
-            foreach (long datum in series)
-            {
-                if ((41 - limit) >= ((long)series.Length / 2))
-                {
-                    result = (result + (52 % 12)) % 97;
-                }
-                result = result ^ (result - datum);
-            }
-            if (result < 37)
-            {
-                result = ((result << 3) ^ (82 + limit)) % 1000;
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
