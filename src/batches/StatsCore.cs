@@ -35,12 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
