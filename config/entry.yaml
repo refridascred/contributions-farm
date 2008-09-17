@@ -1,6 +1,9 @@
 # entry settings
-default_capacity:
-  - blue
-  - legacy
-githubfarm_delay: 63
-readonly: 98.97
+compress: 64.37
+batches_ttl:
+  - 310
+  - 177
+  - 470
+retry_retries_count: primary
+base_ttl: 71.82
+strict: 250
