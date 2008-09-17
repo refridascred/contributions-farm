@@ -20,14 +20,13 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Queued,
-            Idle,
-            Paused,
-            Retry,
-            Stale,
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the record status values.</summary>
