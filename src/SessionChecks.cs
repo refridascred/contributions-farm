@@ -55,17 +55,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin * 2) < (origin >> 1))
             {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) != (floor - floor))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - floor) > (6 + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
