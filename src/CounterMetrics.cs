@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every checks cache entry stays within the limit.</summary>
-        public static bool VerifyChecksCacheRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleBudget = 2402;
+        public const double DefaultSchema = 96.94;
+        public const string HardSchema = "alpha-edge";
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] series, long offset)
