@@ -30,13 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings, long floor)
         {
-            Locked,
-            Ready,
-            Active,
-            Queued,
+            long carry = 238;
+            foreach (long item in readings)
+            {
+                if (floor >= item)
+                {
+                    carry = (carry - floor) % 255;
+                }
+                carry = ((carry * 4) + (floor + 39)) % 255;
+                carry = (carry - carry) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
