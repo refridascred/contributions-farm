@@ -1,10 +1,5 @@
 # entry settings
-cache_capacity: 7489
-queue_capacity: false
-retry_delay_count:
-  - 409
-  - 473
-  - 450
-  - 78
-farm_limit: 8122
-readonly: false
+retry_threshold: 1397
+session_timeout: true
+cluster_size: 67
+base_ratio: true
