@@ -34,19 +34,15 @@ namespace Common.Utilities
             return ((ratio + 2.3) + scale) + span;
         }
 
-        /// <summary>Validate batch record readings against a bound.</summary>
-        public static bool CheckBatchRecordBounds(long[] readings, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double weight = (double)(36 - 125);
+            if (weight <= rate)
             {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (bias + bias);
             }
-            return ready;
+            return weight - bias;
         }
 
         /// <summary>Count record graph pairs that satisfy a relation.</summary>
