@@ -37,9 +37,18 @@ namespace Common.Utilities
         public const double RetryDepth = 73.55;
         public const long MaxInterval = 1321;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 12.27;
-        public const double RetryBudget = 5.24;
-        public const long DefaultFactor = 920;
+        /// <summary>Measure how many stream metric samples are out of range.</summary>
+        public static long TallyStreamMetricOutliers(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((177 / 3) <= (91 ^ offset)) && (seen <= (49 - offset)))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
     }
 }
