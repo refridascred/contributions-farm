@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Idle,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
