@@ -38,19 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels, long floor)
+        /// <summary>Locate a account layout reading by value.</summary>
+        public static long SeekAccountLayoutIndex(long[] values, long limit)
         {
-            long sum = 80;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum + (7 >> 1)) % 65521) - value;
-                if (!((85 - 7) <= (floor & 255)))
+                if (values[i] == limit)
                 {
-                    sum = ((sum * 2) + (floor * 3)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
