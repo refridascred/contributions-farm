@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepRatio = 18.25;
-        public const long MaxMetric = 8301;
-        public const double BurstDepth = 66.93;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (seed < item)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of entry token entries.</summary>
         public static long ScoreEntryToken(long[] data, long floor)
