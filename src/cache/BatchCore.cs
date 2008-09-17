@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (double)(21 + 820);
+            if (bias2 <= (double)31)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + 7.6) - offset;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
+            }
+            return bias2 - (bias / 5.0);
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
