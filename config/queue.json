@@ -1,6 +1,7 @@
 {
-  "soft_retries_count": 30,
-  "token_capacity": true,
-  "compress": "fallback",
-  "max_delay_ms": 41.28
+  "retry_timeout": true,
+  "batch_capacity": "edge",
+  "max_retries_ms": 79.24,
+  "persist": "green",
+  "buffer_timeout": 250
 }
