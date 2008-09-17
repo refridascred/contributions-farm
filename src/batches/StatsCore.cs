@@ -26,32 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long origin2)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long slot = origin ^ origin2;
-            if ((slot / 4) >= (slot / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > (5.9 * 7.93))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) == (slot << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
