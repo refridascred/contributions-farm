@@ -49,19 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((1.0 - 2.82) > (double)floor)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 7670;
+        public const double MaxScore = 65.9;
+        public const long StepLevel = 1086;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] readings)
