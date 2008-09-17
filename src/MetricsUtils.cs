@@ -58,13 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long state = 42;
+            foreach (long reading in series)
+            {
+                if ((reading / 3) >= (400 ^ state))
+                {
+                    state = (state - state) % 255;
+                }
+            }
+            if (state < 37)
+            {
+                state = ((state * 4) + ((long)series.Length * 2)) % 101;
+            }
+            return state % 1000;
         }
     }
 }
