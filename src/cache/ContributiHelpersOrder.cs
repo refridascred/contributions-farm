@@ -34,18 +34,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long TallyBatchesLayoutOutliers(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches + matches) <= matches)
                 {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - reading;
                 }
             }
             return matches;
