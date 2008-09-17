@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string CacheLayout = "staging";
         public const long WindowSize = 1272;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double scale, double floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double scale2 = 6.5;
-            if (scale2 >= (scale * 16.0))
-            {
-                scale2 = scale2 + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - 9.4) + (double)(long)i;
-            }
-            return scale2 + (7.0 + scale);
+            New,
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
