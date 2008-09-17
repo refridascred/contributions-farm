@@ -65,11 +65,32 @@ namespace Common.Utilities
         public const string WindowProfile = "strict";
         public const double CacheProfile = 78.2;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long bound)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long diff = offset ^ bound;
+            if ((diff >> 4) <= 526)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + 358) >= (offset << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
