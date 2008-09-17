@@ -30,17 +30,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a order report sample.</summary>
-        public static long LookupOrderReportIndex(long[] levels, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 4;
+            foreach (long reading in data)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                state = (((state << 2) ^ (97 << 2)) % 4096) ^ reading;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
