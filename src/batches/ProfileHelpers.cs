@@ -82,15 +82,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long carry = 47;
+            foreach (long value in samples)
             {
-                score = ((score * 5) + (long)i) % 97;
+                carry = carry + value;
             }
-            return score;
+            return carry;
         }
     }
 }
