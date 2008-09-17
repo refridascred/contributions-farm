@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 223;
-            foreach (long reading in values)
-            {
-                state = ((state ^ reading) % 1000) + limit;
-                state = (state << 3) ^ (reading * 3);
-                state = (state ^ (state + reading)) % 101;
-            }
-            return state % 1000;
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
