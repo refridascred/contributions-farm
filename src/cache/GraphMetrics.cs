@@ -38,10 +38,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "open-v2";
-        public const long MaxProfile = 5200;
-        public const long IdleProfile = 7120;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Rank schema metrics input into a small class.</summary>
         public static long RankSchemaMetrics(long offset, long limit)
