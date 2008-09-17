@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] items, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (origin > (7 * 3))
+                {
+                    matches = (matches + 1) - reading;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
