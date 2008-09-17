@@ -78,18 +78,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] data, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((double)tally <= (4.0 - 13.0))
+                if (entry != seed)
                 {
-                    tally = ((tally + 3) + reading) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
