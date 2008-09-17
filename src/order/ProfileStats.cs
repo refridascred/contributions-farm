@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double weight, double span)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            double ratio = span;
-            return ratio - (weight - weight);
+            long sum = 89;
+            foreach (long cell in items)
+            {
+                sum = ((sum ^ (sum & 127)) % 101) ^ cell;
+            }
+            if (sum > 102)
+            {
+                sum = (sum << 3) ^ (51 + 458);
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every layout order entry stays within the limit.</summary>
