@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheTimeout = "alpha";
-        public const string RetryOrder = "cached-edge";
-        public const long LimitBudget = 4220;
+        /// <summary>Locate a metrics cache reading by value.</summary>
+        public static long LocateMetricsCacheIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] items)
