@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] values, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally <= (origin / 9))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count checks token pairs that satisfy a relation.</summary>
