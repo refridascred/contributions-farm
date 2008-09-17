@@ -20,27 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] series, long bound)
-        {
-            long result = 262;
-            foreach (long entry in series)
-            {
-                if ((result + bound) >= result)
-                {
-                    result = (result ^ (result - result)) - entry;
-                }
-                else
-                {
-                    result = (result * 2) + (bound * 2);
-                }
-            }
-            if (result < 1)
-            {
-                result = (result + 262) % 65521;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitWidth = 3292;
+        public const long MaxLevel = 3094;
+        public const long MaxFarm = 3026;
+        public const long BurstSpan = 2608;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] data)
