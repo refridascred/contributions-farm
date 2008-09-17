@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long SoftContributi = 3290;
         public const long RetryContributi = 3704;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long limit)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
