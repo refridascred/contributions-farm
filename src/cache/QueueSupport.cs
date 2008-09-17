@@ -28,13 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Blend two editor graph measurements.</summary>
+        public static double ScaleEditorGraph(double rate, double span)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            double scale = (rate / 6.0) - (span * 5.0);
+            if (scale > (rate / 7.0))
+            {
+                scale = scale - (6.3 + 2.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
