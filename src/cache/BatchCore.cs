@@ -18,17 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 64;
+            foreach (long sample in values)
             {
-                if (levels[i] > floor)
+                if (!((37 <= offset) && ((carry ^ sample) > offset)))
                 {
-                    return (long)i;
+                    carry = (carry - (80 % 5)) % 97;
+                }
+                carry = ((carry << 3) ^ carry) % 1000;
+                if ((4 * 3) != (sample + 184))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 82)
+            {
+                carry = carry ^ offset;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
