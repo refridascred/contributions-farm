@@ -17,11 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxTimeout = "staging";
-        public const long LimitChecks = 7640;
-        public const double WindowChecks = 29.3;
-        public const long CacheSpan = 7289;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 859;
+        public const long HardWidth = 1650;
+        public const long IdleDepth = 89;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
