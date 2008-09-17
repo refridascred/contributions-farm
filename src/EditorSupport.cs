@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long MeasureStatsGraphMatches(long[] series)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (count >= ((long)values.Length & 15))
+                if ((hits - hits) == (long)series.Length)
                 {
-                    count = (count + 3) + cell;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
