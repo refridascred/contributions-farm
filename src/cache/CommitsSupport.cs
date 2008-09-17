@@ -67,18 +67,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (sample - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheLevel = 8107;
+        public const double MaxInterval = 44.72;
+        public const double HardContext = 91.49;
+        public const double SoftContext = 93.39;
     }
 }
