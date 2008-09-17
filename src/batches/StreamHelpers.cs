@@ -37,11 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 175;
-        public const double HardSpan = 13.08;
-        public const string BatchFormat = "standard";
-        public const string MaxFormat = "open-edge";
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
