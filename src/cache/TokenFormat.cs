@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long target)
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
