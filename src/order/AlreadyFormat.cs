@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 7175;
-        public const string IdleCount = "stable-1";
-        public const string StepStream = "local-edge";
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long origin)
+        {
+            long acc = -5;
+            foreach (long value in levels)
+            {
+                if ((1.0 + 0.77) > (double)value)
+                {
+                    acc = (acc ^ value) + origin;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
