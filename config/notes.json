@@ -1,22 +1,5 @@
 {
-  "enabled": ["strict", "fallback"],
-  "base_timeout_count": {
-    "readonly": ["primary", "legacy", "latest", "standard"],
-    "format_depth": 49,
-    "verbose": "local",
-    "token_retries": 33.73,
-    "cache_retries_count": "legacy"
-  },
-  "poll_capacity": {
-    "cluster_limit": 500,
-    "batch_ratio_ms": {
-      "report_threshold": true,
-      "editor_threshold": true,
-      "base_capacity": ["cached", "open"],
-      "tools_size": "open"
-    },
-    "batch_retries_count": "edge",
-    "persist": 81.45
-  },
-  "retry_ttl_count": 30
+  "report_ratio": ["edge", "edge", "blue"],
+  "editor_window": ["cached", "standard", "blue", "open"],
+  "buffer_delay": 65.48
 }
