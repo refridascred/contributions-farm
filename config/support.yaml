@@ -1,9 +1,4 @@
 # support settings
-audit: true
-base_retries: 13
-burst_window_pct: false
-record_interval:
-  - 106
-  - 11
-  - 489
-  - 236
+poll_ratio: 30
+strict: false
+window_ttl: standard
