@@ -37,10 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseSize = 18.81;
-        public const long IdleReport = 218;
-        public const long MinReport = 9579;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordHits(long[] samples)
