@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double gain, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            double rate = (floor * 5.44) - gain;
-            if (rate >= (double)0)
+            long sum = 721;
+            foreach (long value in values)
             {
-                rate = rate - (floor / 2.0);
+                sum = ((sum - (sum - sum)) % 1000) ^ value;
             }
-            return rate + (double)(-151);
+            if (sum < 3)
+            {
+                sum = (sum - (33 << 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Match up payload samples.</summary>
