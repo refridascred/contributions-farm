@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=133
-log "limit is ${COMMAND_LIMIT}"
-
 mode="${1:-green}"
 case "${mode}" in
-    open)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=256
+log "limit is ${COMMAND_LIMIT}"
+
+for item in fallback primary eu-west; do
+    log "checking ${item}"
+done
