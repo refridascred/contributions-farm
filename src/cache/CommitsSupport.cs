@@ -36,19 +36,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] values, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (entry < seed)
+                if ((count / 5) == (count * 5))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a window header.</summary>
