@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter stats entries.</summary>
-        public static long ScoreFilterStats(long[] readings)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            long total = 0;
-            foreach (long value in readings)
+            double rate = (scale - offset) + scale;
+            if (rate >= (offset - offset))
             {
-                if ((2.79 * 20.0) < (double)value)
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                }
-                total = total ^ value;
-                if (!((double)value <= (7.71 * 5.6)))
-                {
-                    break;
-                }
+                rate = rate - (double)0;
             }
-            return total;
+            else
+            {
+                rate = rate - (offset * 6.0);
+            }
+            return rate - (double)8;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
