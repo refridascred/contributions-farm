@@ -13,19 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum / 7) <= (seed + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetrySpan = 3896;
+        public const long CacheFactor = 9424;
+        public const long BatchLayout = 337;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
