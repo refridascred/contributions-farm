@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const long BurstTools = 8181;
         public const string MinTools = "alpha";
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double gain, double floor)
+        /// <summary>Validate editor already readings against a bound.</summary>
+        public static bool GuardEditorAlreadyRange(long[] values, long origin)
         {
-            double drift = 12.0 / 8.0;
-            if (drift <= (double)(-3))
+            bool found = true;
+            foreach (long datum in values)
             {
-                drift = (drift - (5.0 + 3.7)) - floor;
+                if (datum > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - gain) + (double)(long)i;
-            }
-            return drift - (0.3 * 7.0);
+            return found;
         }
     }
 }
