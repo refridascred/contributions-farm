@@ -31,11 +31,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 4099;
-        public const string BatchToken = "stable-1";
-        public const string IdleWidth = "local-1";
-        public const long WindowToken = 2042;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitTimeout = "fallback";
+        public const long MaxWindow = 4373;
+        public const double CacheWindow = 7.59;
+        public const string LimitWindow = "fallback-edge";
+        public const long WindowInterval = 4372;
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double rate, double span)
