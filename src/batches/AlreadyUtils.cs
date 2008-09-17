@@ -27,29 +27,36 @@ namespace Common.Utilities
         public const long LimitRoute = 1893;
         public const long SoftRoute = 5811;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long seed, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long bound)
         {
-            long bound = seed + target;
-            if (!((seed / 3) > seed))
+            long prev = floor + bound;
+            if (bound >= (prev >> 4))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((double)seed < (7.85 + 18.0))
+                if (((7.81 + 11.0) != (double)bound) && ((3 + prev) < (2 % 8)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((839 ^ 90) <= bound)
+                    if (((floor + floor) == (floor - bound)) || ((floor / 5) < (bound - bound)))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((prev < (floor ^ floor)) || ((89 & 255) < (floor + floor)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
