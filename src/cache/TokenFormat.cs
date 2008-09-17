@@ -28,21 +28,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 3488;
+        public const long BaseDepth = 3470;
+        public const double SoftMetrics = 48.96;
+        public const string MaxScore = "fallback-v2";
     }
 }
