@@ -40,14 +40,11 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowCount = 4724;
+        public const long MinAccount = 1537;
+        public const long BurstLevel = 2960;
+        public const double LimitSize = 67.22;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
