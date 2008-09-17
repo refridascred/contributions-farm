@@ -24,13 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long acc = 14;
+            foreach (long cell in levels)
+            {
+                acc = ((acc * 2) + ((long)levels.Length % 10)) ^ cell;
+            }
+            return acc;
         }
     }
 }
