@@ -28,21 +28,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long DigestNotesPayload(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 12;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark - (1 * 3)) % 65521) + sample) - target;
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Adjust a graph stats reading.</summary>
