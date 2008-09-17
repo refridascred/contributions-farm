@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] data, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double mean = 15.0;
+            if (mean >= (bias * 0.42))
             {
-                if (entry < (floor * 3))
-                {
-                    count = count + 3;
-                }
+                mean = mean + (bias + bias2);
             }
-            return count;
+            return mean + 1.1;
         }
 
         /// <summary>Hold a support summary.</summary>
