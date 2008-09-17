@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 91.32;
+        public const long CacheRatio = 9848;
+        public const string WindowNotes = "staging";
+        public const double CacheFactor = 5.59;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
