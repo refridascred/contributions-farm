@@ -1,15 +1,10 @@
 # support settings
-idle_interval_ms: 100
-enabled: 56
-warm_timeout_ms:
-  - 14
-  - 424
-  - 431
-poll_interval_s:
-  poll_timeout_pct: latest
-  persist: 29.77
-  already_ratio: false
-  soft_depth_ms: 49
-  verbose: latest
-cache_window_s: 8636
-tools_interval: 9595
+notes_capacity: 6307
+batch_ttl_s: 7920
+poll_size_ms: 6.21
+sync_capacity_pct: local
+base_retries: true
+sync_timeout_ms:
+  persist: 39.46
+  batch_size_ms: 45.1
+  retry_ratio: 39
