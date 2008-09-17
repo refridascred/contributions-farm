@@ -15,19 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] levels, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
