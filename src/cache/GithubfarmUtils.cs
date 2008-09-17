@@ -34,22 +34,13 @@ namespace Common.Utilities
         public const double RetryDepth = 73.55;
         public const long MaxInterval = 1321;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] readings)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((hits > cell) && ((double)cell >= (5.9 - 2.5))) || ((double)cell < (8.0 + 3.0)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
