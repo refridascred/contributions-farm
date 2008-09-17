@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a channel contributi pair into a bucket.</summary>
-        public static long BucketChannelContributi(long offset, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] items)
         {
-            long step = offset ^ floor;
-            if (3.7 >= (double)step)
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + floor) < (offset ^ floor))
+                if ((matches - matches) == (item * 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (9.35 <= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
