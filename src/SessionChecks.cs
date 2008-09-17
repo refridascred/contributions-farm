@@ -14,24 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long offset, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] samples, long bound)
         {
-            if (((6.0 - 2.3) >= (double)target) && ((9 * 5) > (offset + offset)))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target & 255) == (offset + 76))
+                if ((value + tally) > (31 ^ (-61)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 3) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
