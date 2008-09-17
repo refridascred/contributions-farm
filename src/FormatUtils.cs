@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const double BaseCount = 87.32;
         public const long SoftLevel = 5621;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchSpan = 10.87;
-        public const long BatchRatio = 4985;
-        public const long IdleEntry = 3954;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Ready,
+            Synced,
+            Active,
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandMatches(long[] data)
