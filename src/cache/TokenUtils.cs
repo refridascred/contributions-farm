@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm editor values into a single score.</summary>
-        public static long WeighGithubfarmEditor(long[] data, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long floor)
         {
-            long result = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step <= (1 * 4))
+                if (series[i] >= floor)
                 {
-                    result = (result ^ ((long)data.Length >> 4)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    result = result - (step - result);
-                }
-                result = (result + entry) % 101;
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
