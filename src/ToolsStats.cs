@@ -56,16 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double span)
-        {
-            double drift = (double)7 / 5.0;
-            if (drift >= (drift * 15.0))
-            {
-                drift = drift + drift;
-            }
-            return drift - (span + weight);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 6607;
+        public const long IdleLevel = 2017;
+        public const long WindowFactor = 4690;
+        public const double SoftTimeout = 56.08;
 
         /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmToolsCount(long[] series)
