@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] samples, long seed)
         {
-            double mean = 3.0 + (double)97;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mean = (((mean - (7.8 / 5.0)) + (double)(long)i) + ratio) + floor;
+                if (!((count + seed) == (datum << 1)))
+                {
+                    count = count + 1;
+                }
             }
-            return mean - 4.38;
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
