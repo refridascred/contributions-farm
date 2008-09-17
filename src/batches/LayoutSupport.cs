@@ -57,39 +57,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long bound)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long offset = seed ^ bound;
-            if ((bound >> 4) >= (offset & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if (13.0 > (7.07 * 4.83))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((38 + 5) >= (offset ^ seed)) && (17.0 <= (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset >= (offset & 7)) || (bound < offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the cluster status values.</summary>
