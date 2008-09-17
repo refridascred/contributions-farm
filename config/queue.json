@@ -1,7 +1,5 @@
 {
-  "burst_size_count": 20.73,
-  "schema_delay": 2773,
-  "soft_limit": 9174,
-  "flush_timeout": "local",
-  "editor_ratio": [177, 158]
+  "default_retries": 44.08,
+  "cache_ratio": 84,
+  "cluster_ttl": 3.71
 }
