@@ -1,6 +1,12 @@
 {
-  "flush_ttl_count": "fallback",
-  "command_capacity": 37.67,
-  "max_capacity_s": ["legacy", "legacy", "strict"],
-  "cache_size": [352, 305, 256]
+  "max_ratio": 500,
+  "base_delay_count": {
+    "queue_interval": 95.65,
+    "persist": 500,
+    "soft_timeout": ["staging", "fallback", "local", "local"],
+    "hard_size_ms": 91.8,
+    "entry_capacity": 15.68
+  },
+  "sync_threshold_count": "stable",
+  "order_window": 3276
 }
