@@ -48,18 +48,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long span = offset + origin;
+            if ((offset >> 5) != (span * 3))
             {
-                if ((double)item >= (6.0 - 9.25))
+                return 5;
+            }
+            else
+            {
+                if ((span >> 4) != (origin / 4))
                 {
-                    matches = (matches + 2) + offset;
+                    return 6;
+                }
+                else
+                {
+                    if (offset < span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin > ((-771) + offset)) || (offset <= (0 + (-994))))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
