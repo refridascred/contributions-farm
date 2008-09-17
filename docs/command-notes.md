@@ -1,10 +1,11 @@
 # Command notes
 
-When a account fails, the farm handler retries a few times before giving up.
-Use schema settings to tune how often layout data is refreshed.
+Use report settings to tune how often account data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
+Run the account check before changing any account limits.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate buffer input early
-- Review notes limits each release
+- Keep queue values small
+- Review entry limits each release
+- Document new metric fields
