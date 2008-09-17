@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long acc = -5;
-            foreach (long value in levels)
-            {
-                if ((1.0 + 0.77) > (double)value)
-                {
-                    acc = (acc ^ value) + origin;
-                }
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many account route samples are out of range.</summary>
