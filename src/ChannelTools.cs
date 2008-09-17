@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 1966;
-        public const long MaxToken = 3395;
-        public const long HardToken = 5301;
-        public const double WindowToken = 15.69;
-        public const long IdleToken = 6326;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Stale,
+            Idle,
+            Locked,
+        }
     }
 }
