@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double mean = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + (scale / 2.0)) - (double)(long)i) - bias;
-            }
-            return mean - scale;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a report reading by value.</summary>
