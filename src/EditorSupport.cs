@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] values, long step)
+        /// <summary>Count profile format pairs that satisfy a relation.</summary>
+        public static long PairProfileFormatCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step << 2) >= (matches >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the farm level values.</summary>
