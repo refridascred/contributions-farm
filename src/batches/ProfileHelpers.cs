@@ -56,21 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a session tools counter forward.</summary>
-        public static long IterateSessionTools(long target)
+        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
+        public static long AuditGithubfarmFilterHits(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (cell <= (306 & 31))
                 {
-                    anchor = (((anchor * 5) + (anchor >> 4)) % 4096) - (long)i2;
+                    hits = hits + 1;
                 }
-                anchor = (anchor + (0 + (long)i)) % 4096;
-                anchor = anchor + (anchor + 53);
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
