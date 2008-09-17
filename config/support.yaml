@@ -1,16 +1,9 @@
 # support settings
-strict: open
-batch_window:
-  - local
-  - edge
-  - edge
-  - eu-west
-metric_depth:
-  cache_capacity_s:
-    - eu-west
-    - local
-  compress: false
-  retry_delay_pct: 29.69
-  batches_timeout: 500
-  base_window_count: true
-retry_ratio: 500
+readonly: standard
+flush_timeout: eu-west
+entry_interval:
+  command_capacity: false
+  default_ratio_ms: 30.74
+  readonly:
+    - 150
+    - 259
