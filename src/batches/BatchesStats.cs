@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits context pair into a bucket.</summary>
-        public static long BucketCommitsContext(long offset, long offset2)
-        {
-            long bound = offset - offset2;
-            if ((((-79) << 2) > offset) || ((double)offset >= (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset < (8.3 - 5.7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 7833;
+        public const string IdleFactor = "local-1";
+        public const string WindowSize = "cached-edge";
+        public const long LimitTimeout = 6849;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long SortPayload(long seed, long bound)
