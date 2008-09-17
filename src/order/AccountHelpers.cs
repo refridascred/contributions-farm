@@ -59,12 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data, long bound)
         {
-            Active,
-            Dropped,
-            Failed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value >= (hits % 3))
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
