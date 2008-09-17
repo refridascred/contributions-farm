@@ -13,14 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            New,
-            Draft,
-            Closed,
-            Synced,
-            Locked,
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
