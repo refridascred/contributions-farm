@@ -12,22 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinCount = 1505;
+        public const double IdleSession = 76.83;
+        public const double BurstBudget = 69.57;
+        public const string SoftSession = "strict-v2";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderBounds(long[] readings, long step)
