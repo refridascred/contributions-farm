@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5862;
-        public const double MinQueue = 46.33;
-        public const long MinWidth = 5599;
-        public const long HardQueue = 90;
-        public const long BatchLevel = 1789;
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
