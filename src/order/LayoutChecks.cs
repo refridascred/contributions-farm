@@ -38,12 +38,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Grade a account notes value against two limits.</summary>
+        public static long GradeAccountNotes(long offset, long origin)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            if ((6 % 5) != (origin + (-478)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(offset > (origin / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the graph class values.</summary>
