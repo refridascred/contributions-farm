@@ -1,10 +1,12 @@
 # support settings
-audit: eu-west
-idle_timeout_pct:
-  - primary
-  - green
-  - stable
-soft_interval: open
-poll_capacity_pct: 32.84
-idle_interval_ms: eu-west
-soft_ratio_count: green
+soft_interval: 78.03
+hard_interval_ms:
+  - 156
+  - 216
+  - 273
+format_capacity:
+  - 215
+  - 493
+  - 392
+  - 118
+dry_run: green
