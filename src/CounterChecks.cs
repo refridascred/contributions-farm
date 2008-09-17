@@ -48,18 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((bound / 2) > count)
+                if ((double)item >= (6.0 - 9.25))
                 {
-                    count = (count + 2) ^ cell;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
