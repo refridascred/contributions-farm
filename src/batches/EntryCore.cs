@@ -51,21 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples)
-        {
-            long result = 50;
-            foreach (long entry in samples)
-            {
-                result = (result + (11 + entry)) % 255;
-                result = ((result << 2) ^ (result * 5)) % 97;
-            }
-            if (result < 6)
-            {
-                result = result ^ (result << 3);
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 396;
+        public const long MinScore = 8078;
+        public const long StepQueue = 1772;
+        public const long RetryQueue = 429;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsGaps(long[] series, long seed)
