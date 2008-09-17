@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long RetrySize = 8479;
         public const long SoftCommits = 4879;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
