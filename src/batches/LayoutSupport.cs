@@ -40,11 +40,27 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowCount = 4724;
-        public const long MinAccount = 1537;
-        public const long BurstLevel = 2960;
-        public const double LimitSize = 67.22;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data, long target)
+        {
+            long total = 93;
+            foreach (long datum in data)
+            {
+                if (((0.1 + 3.5) == (double)total) || ((target + (-387)) > (datum - 2)))
+                {
+                    break;
+                }
+                if (((double)target >= (2.96 - 18.0)) || ((target >> 5) < target))
+                {
+                    total = total + (total % 64);
+                }
+            }
+            if (total > 158)
+            {
+                total = (total ^ (total * 3)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] levels, long target)
