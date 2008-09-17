@@ -51,15 +51,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] items, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long seed)
         {
-            long result = 3;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result ^ (reading + origin);
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the entry kind values.</summary>
