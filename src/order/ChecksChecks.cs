@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long MeasureMetricCacheMatches(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((((77 / 8) < (reading & 7)) || (step <= (seen - 540))) || ((double)reading <= (0.57 / 8.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
