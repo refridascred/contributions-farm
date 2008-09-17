@@ -53,19 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] series, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long floor)
         {
-            long state = 7;
-            foreach (long cell in series)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state << 3) ^ (50 + cell)) % 4096;
+                result = (result << 3) ^ (floor << 3);
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (state < 5)
-            {
-                state = state ^ offset;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Combine checks command values into a single score.</summary>
