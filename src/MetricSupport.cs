@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] series, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((547 * 3) <= (hits / 7)) || ((item + 484) < limit))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
