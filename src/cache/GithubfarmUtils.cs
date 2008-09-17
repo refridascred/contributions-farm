@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                if ((double)acc == (9.1 - 7.46))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + ((long)i << 1)) % 255;
                 }
+                else
+                {
+                    acc = (acc * 3) + (floor - (long)i);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a order summary.</summary>
