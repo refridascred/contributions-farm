@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Compare every pair of account counter readings.</summary>
+        public static long CompareAccountCounterCount(long[] samples)
         {
-            long anchor = 244;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((697 + anchor) >= 21)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (anchor >> 2)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + reading) % 101;
-                }
-                if (((anchor * 4) <= anchor) && ((anchor % 12) != (reading ^ anchor)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
