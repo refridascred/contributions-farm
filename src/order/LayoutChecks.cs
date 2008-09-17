@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank session channel input into a small class.</summary>
-        public static long SortSessionChannel(long bound, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long target, long origin)
         {
-            long next = bound ^ origin;
-            if (!((6 - 18) != (next - next)))
+            if (target > (target - origin))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((bound + next) <= (next * 2))
+                if (target > (target + target))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    if ((origin < (origin + origin)) || ((double)target != (9.1 * 14.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin >= 5.87)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
