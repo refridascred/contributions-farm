@@ -39,38 +39,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long step, long origin)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if ((origin - step) >= (origin & 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step ^ step) < (step + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (6 - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)93)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Grade a schema githubfarm value against two limits.</summary>
