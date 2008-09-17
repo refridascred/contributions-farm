@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches - matches) == (item * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
