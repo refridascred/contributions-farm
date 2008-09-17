@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine context stats values into a single score.</summary>
-        public static long TallyContextStats(long[] readings)
+        /// <summary>Rank session channel input into a small class.</summary>
+        public static long SortSessionChannel(long bound, long origin)
         {
-            long state = 11;
-            foreach (long cell in readings)
+            long next = bound ^ origin;
+            if (!((6 - 18) != (next - next)))
             {
-                state = state + 699;
-                if ((state + state) > (long)readings.Length)
+                return 8;
+            }
+            else
+            {
+                if ((bound + next) <= (next * 2))
                 {
-                    state = state - (state + 181);
+                    return 5;
                 }
-                if ((10.0 - 19.0) < (double)(long)readings.Length)
+                else
                 {
-                    state = (state * 2) + (cell - cell);
+                    return 2;
                 }
             }
-            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
