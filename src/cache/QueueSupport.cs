@@ -29,11 +29,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardFactor = 22.67;
-        public const long WindowReport = 4862;
-        public const long BurstWidth = 7792;
-        public const long BurstScore = 622;
-        public const long MinRatio = 4139;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((long)samples.Length > (count * 4))
+                {
+                    count = (count + 2) - datum;
+                }
+            }
+            return count;
+        }
     }
 }
