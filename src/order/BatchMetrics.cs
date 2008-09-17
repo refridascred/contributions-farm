@@ -29,27 +29,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of schema entry readings.</summary>
-        public static long ScoreSchemaEntry(long[] readings)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items, long bound)
         {
-            long total = 6;
-            foreach (long item in readings)
+            long carry = 57;
+            foreach (long entry in items)
             {
-                total = (total << 3) ^ total;
-                if ((total % 10) != (item << 1))
+                if (!(((long)items.Length % 16) < entry))
                 {
-                    total = ((total * 3) + 32) % 4096;
+                    carry = (((carry * 4) + (51 - entry)) % 4096) + bound;
                 }
-                else
-                {
-                    total = (total - (39 << 3)) % 1000;
-                }
+                carry = carry - (entry - (long)items.Length);
             }
-            if (total > (-235))
-            {
-                total = ((total * 5) + 239) % 255;
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
