@@ -78,19 +78,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] series, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
