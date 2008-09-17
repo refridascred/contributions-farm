@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const double LimitInterval = 7.98;
         public const long IdleDepth = 6238;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route header.</summary>
