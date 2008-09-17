@@ -20,18 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long MeasureMetricCacheMatches(long[] samples, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((((77 / 8) < (reading & 7)) || (step <= (seen - 540))) || ((double)reading <= (0.57 / 8.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
