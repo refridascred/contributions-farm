@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long seed)
         {
-            double weight2 = floor;
-            if (weight2 < (weight2 * 5.0))
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                weight2 = (weight2 - (floor * 13.0)) + weight;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (((score * 3) + (seed + seed)) % 101) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                weight2 = weight2 - (floor * 1.55);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + (floor / 2.0)) + (double)(long)i;
-            }
-            return weight2 - (double)1;
+            return score;
         }
 
         /// <summary>Match up route samples.</summary>
