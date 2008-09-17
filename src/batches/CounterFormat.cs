@@ -20,18 +20,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of contributi counter readings.</summary>
-        public static long ScoreContributiCounter(long[] samples)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            long mark = 441;
-            foreach (long sample in samples)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((90 / 7) <= (90 + mark)))
-                {
-                    mark = (mark - (mark % 60)) - sample;
-                }
+                carry = (carry + ((long)i + carry)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mark % 65521;
+            return carry;
         }
     }
 }
