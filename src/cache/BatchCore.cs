@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] values, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] data, long origin)
         {
-            long carry = 64;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((37 <= offset) && ((carry ^ sample) > offset)))
+                if (data[i] <= origin)
                 {
-                    carry = (carry - (80 % 5)) % 97;
-                }
-                carry = ((carry << 3) ^ carry) % 1000;
-                if ((4 * 3) != (sample + 184))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 82)
-            {
-                carry = carry ^ offset;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
