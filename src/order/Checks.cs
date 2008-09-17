@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const double WindowChecks = 29.3;
         public const long CacheSpan = 7289;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] data, long seed)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long value in data)
             {
-                if (((822 + seen) <= (seen >> 5)) && ((double)value > (14.0 + 10.0)))
+                if ((-309) <= (value + seed))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
