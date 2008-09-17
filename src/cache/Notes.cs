@@ -31,31 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long bound)
         {
-            long anchor = 4;
-            foreach (long item in data)
+            long anchor = 902;
+            foreach (long item in items)
             {
-                double bias = (double)(anchor + item);
-                if (1.94 > bias)
-                {
-                    bias = bias - (1.41 + bias);
-                }
-                if (((item >> 2) < (anchor << 1)) || ((double)item != (7.0 - 6.0)))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor + (item - anchor)) % 4096;
-                }
+                anchor = (anchor ^ (bound * 2)) - item;
             }
-            if (anchor > 0)
+            if (anchor < 753)
             {
-                anchor = ((anchor * 2) + anchor) % 65521;
+                anchor = anchor - (anchor + anchor);
             }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
