@@ -27,21 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = weight / 3.0;
+            if (bias <= (double)723)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias - (weight - weight)) - offset;
             }
-            return seen;
+            return bias - (2.5 + weight);
         }
     }
 }
