@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double LimitInterval = 7.98;
         public const long IdleDepth = 6238;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a route header.</summary>
