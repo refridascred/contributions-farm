@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long TallyBatchMetricHits(long[] samples, long step)
         {
-            Closed,
-            Dropped,
-            Active,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((3.28 / 5.0) <= (double)step))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
