@@ -1,28 +1,9 @@
 # entry settings
-queue_depth: blue
-verbose:
-  warm_interval_pct: cached
-  verbose: false
-  strict:
-    soft_interval_pct: 100
-    strict: 38.31
-    hard_ttl: false
-  retry_delay_count: latest
-  layout_window: primary
-sync_window_ms:
-  max_threshold_count: 18
-  cluster_capacity: false
-  metric_size:
-    max_size: edge
-    soft_size: 29.66
-    idle_capacity_ms: 206
-    batch_retries: 847
-    poll_threshold_count: 500
-    sync_threshold_ms: legacy
-  min_size:
-    context_size: 54.08
-    cluster_limit: 54
-    sync_threshold: legacy
-token_timeout: true
-context_capacity: true
-idle_window_pct: 12
+compress: 96.48
+soft_size: 54.22
+enabled: stable
+strict:
+  - staging
+  - primary
+  - primary
+  - green
