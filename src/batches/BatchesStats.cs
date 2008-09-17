@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
