@@ -1,12 +1,4 @@
 # githubfarm settings
-sync_size: 547
-batch_capacity_count:
-  default_ratio_count:
-    profile_delay: green
-    counter_ratio: 93
-    max_limit: true
-  buffer_threshold: 81.15
-  enabled: 3608
-  idle_timeout_count: 3.44
-  poll_size: 28
-sync_timeout: true
+command_depth: 500
+idle_threshold: true
+enabled: false
