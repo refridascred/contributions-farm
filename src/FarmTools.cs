@@ -40,21 +40,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long target, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long prev = target - bound;
+            if ((double)prev < (1.75 - 2.0))
             {
-                result = ((result * 5) + result) % 101;
-                result = (result + (long)i) % 1000;
-                if (((bound % 8) < (bound * 4)) || ((result - 7) < 0))
-                {
-                    result = (result << 2) ^ (result + bound);
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((13.0 > (double)prev) && ((target / 3) == (target + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((3.92 * 0.9) >= (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
