@@ -34,13 +34,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            public long Total { get; set; }
             public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
