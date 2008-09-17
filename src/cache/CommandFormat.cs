@@ -67,19 +67,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7035;
+        public const string BatchFactor = "fallback-edge";
+        public const long MaxWidth = 3496;
     }
 }
