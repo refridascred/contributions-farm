@@ -47,15 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples, long bound)
         {
-            long anchor = 292;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                anchor = (anchor - (offset - 11)) ^ entry;
+                if ((double)bound == (7.01 / 8.0))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
     }
 }
