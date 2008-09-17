@@ -42,15 +42,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            double weight = scale * 3.0;
-            if (weight > weight)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight - (weight + 15.0);
+                if (((long)i + result) >= seed)
+                {
+                    result = result ^ (seed * 4);
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return weight + span;
+            return result;
         }
     }
 }
