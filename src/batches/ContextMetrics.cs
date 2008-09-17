@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryRatio = 8717;
-        public const long BurstDepth = 642;
-        public const string StepToken = "cached-1";
+        /// <summary>Locate a schema context reading by value.</summary>
+        public static long FindSchemaContextIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
         public static long MeasureChannelBatchHits(long[] samples)
