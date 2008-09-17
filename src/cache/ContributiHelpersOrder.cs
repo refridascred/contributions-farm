@@ -31,21 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes githubfarm readings.</summary>
-        public static long CompareNotesGithubfarmCount(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed - seed) >= 35)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed + 26) == (floor & 255))
                 {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
