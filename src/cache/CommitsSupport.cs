@@ -43,12 +43,11 @@ namespace Common.Utilities
             return ((gain - (double)4) + rate) + span;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleRatio = "staging";
+        public const double WindowFactor = 28.03;
+        public const double MaxBudget = 38.01;
+        public const long BatchWidth = 8728;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] series)
