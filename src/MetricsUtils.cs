@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long BaseEditor = 2465;
         public const long MaxEditor = 5567;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
