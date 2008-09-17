@@ -14,14 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
             Idle,
             Locked,
-            Ready,
-            Done,
-            New,
+            Active,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
