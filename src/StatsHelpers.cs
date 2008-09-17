@@ -35,17 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter schema reading by value.</summary>
-        public static long LocateFilterSchemaIndex(long[] readings, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
