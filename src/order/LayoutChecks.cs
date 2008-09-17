@@ -57,18 +57,19 @@ namespace Common.Utilities
         public const long BurstTools = 8181;
         public const string MinTools = "alpha";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double drift = 12.0 / 8.0;
+            if (drift <= (double)(-3))
             {
-                if (62 >= (reading + reading))
-                {
-                    matches = (matches + 2) - bound;
-                }
+                drift = (drift - (5.0 + 3.7)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift - (0.3 * 7.0);
         }
     }
 }
