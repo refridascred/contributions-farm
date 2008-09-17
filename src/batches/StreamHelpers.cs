@@ -66,12 +66,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
