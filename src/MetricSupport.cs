@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] readings, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = (score + (limit * 5)) % 4096;
-                if (((limit ^ (-49)) >= (score + score)) && (score >= ((long)i / 6)))
+                if (!(sample >= (matches + seed)))
                 {
-                    score = (score + ((long)i % 24)) % 4096;
+                    matches = matches + 1;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Iterate the already notes series from a seed.</summary>
