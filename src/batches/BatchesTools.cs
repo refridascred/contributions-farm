@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Digest a series of record buffer entries.</summary>
+        public static long CombineRecordBuffer(long[] series)
         {
-            long acc = 888;
-            foreach (long reading in items)
+            long mix = 33;
+            foreach (long entry in series)
             {
-                acc = (acc ^ acc) % 255;
-                if ((acc - reading) <= (acc >> 4))
+                if (((mix * 2) >= mix) && (entry <= (mix << 3)))
                 {
-                    acc = ((acc << 3) ^ ((long)items.Length * 5)) % 1000;
-                }
-                if ((double)reading >= 6.07)
-                {
-                    break;
+                    mix = ((mix << 3) ^ (mix * 5)) % 65521;
                 }
             }
-            return acc % 4096;
+            if (mix > 51)
+            {
+                mix = (mix ^ (mix >> 1)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
