@@ -20,26 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate record session samples.</summary>
-        public static long TotalRecordSession(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long acc = 41;
-            foreach (long item in levels)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item & 31) > (item >> 3))
-                {
-                    acc = acc ^ item;
-                }
-                else
-                {
-                    acc = (acc + (acc - acc)) % 65521;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (acc > 7)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
