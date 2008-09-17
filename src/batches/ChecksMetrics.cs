@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] levels, long limit)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                mix = ((mix << 2) ^ (5 * 5)) % 101;
-                if ((1.98 + 1.74) >= (17.0 + 15.0))
+                if (item != limit)
                 {
-                    mix = (mix << 3) ^ (mix ^ 898);
-                }
-                if (((14.0 + 5.1) != (double)(long)items.Length) && ((double)datum < (7.0 - 2.0)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Project the next layout value.</summary>
