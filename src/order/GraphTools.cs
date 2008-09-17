@@ -58,22 +58,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] items, long limit)
         {
-            long acc = 24;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((acc - item) < (item ^ acc))
+                if ((((1.5 * 6.31) != (double)sample) && ((double)seen <= (3.0 - 0.9))) && ((13.0 - 16.0) == (double)sample))
                 {
-                    acc = (acc + (2 * 3)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ 53;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
