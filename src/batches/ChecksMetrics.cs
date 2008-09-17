@@ -49,17 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long limit)
+        /// <summary>Measure how many channel metrics samples are out of range.</summary>
+        public static long AuditChannelMetricsGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                if (((reading >> 3) != (reading + count)) || ((reading - count) <= (count - count)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
