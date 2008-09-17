@@ -37,19 +37,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format metric readings.</summary>
-        public static long TallyFormatMetric(long[] levels, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            long score = 8;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                score = (score - (step % 97)) + sample;
+                if ((limit - limit) >= (long)i)
+                {
+                    anchor = ((anchor * 4) + (long)i) % 1000;
+                }
+                if ((8.55 / 4.0) < (double)anchor)
+                {
+                    anchor = (anchor + (limit + limit)) % 101;
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (score < 54)
-            {
-                score = (score ^ step) % 4096;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a batches entry.</summary>
