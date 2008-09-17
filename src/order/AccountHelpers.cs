@@ -56,11 +56,23 @@ namespace Common.Utilities
         public const double MaxWidth = 2.53;
         public const double StepRoute = 79.63;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepScore = 78.08;
-        public const double DefaultRatio = 57.76;
-        public const double BatchQueue = 6.9;
-        public const double WindowLevel = 80.98;
+        /// <summary>Accumulate already format samples.</summary>
+        public static long WeighAlreadyFormat(long[] series)
+        {
+            long result = 0;
+            foreach (long entry in series)
+            {
+                if ((19.0 + 8.6) < (double)entry)
+                {
+                    result = ((result * 3) + result) % 65521;
+                }
+                else
+                {
+                    result = result - (entry - entry);
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] data)
