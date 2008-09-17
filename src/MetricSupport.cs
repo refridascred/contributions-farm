@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long bound)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            if ((bound << 3) == (bound % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (1 > (bound << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - 9) > (49 ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batch channel value.</summary>
