@@ -79,13 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            Ready,
-            Draft,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits - hits) > 156)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
