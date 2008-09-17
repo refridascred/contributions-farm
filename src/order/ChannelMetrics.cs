@@ -55,23 +55,14 @@ namespace Common.Utilities
             return rate - (rate - bias);
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double rate = bias;
-            if (rate < (rate * 1.0))
-            {
-                rate = (rate - bias) - ratio;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (rate * 7.8)) - (double)(long)i;
-            }
-            return rate - 4.35;
+            Stale,
+            Done,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
