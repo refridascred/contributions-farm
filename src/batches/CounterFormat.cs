@@ -11,24 +11,38 @@ namespace Common.Utilities
         public const double MinScore = 57.37;
         public const string LimitDepth = "strict-edge";
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long seed, long origin)
         {
-            long sum = 5;
-            foreach (long sample in data)
+            if (!(seed < (78 >> 3)))
             {
-                if (((sum + sample) > 143) || (12.0 < (double)sum))
+                return 7;
+            }
+            else
+            {
+                if (((origin >> 4) > (origin + (-55))) || ((double)seed == (double)125))
                 {
-                    sum = (sum - sum) % 101;
-                    sum = sum ^ bound;
+                    return 5;
                 }
-                sum = (sum * 5) + (bound ^ (long)data.Length);
-                if (!((double)bound >= (double)sum))
+                else
                 {
-                    break;
+                    if ((double)origin > (5.2 + 15.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)seed != (3.1 / 6.0)) || ((double)seed != (2.0 + 3.8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
