@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] items, long floor)
         {
-            Paused,
-            Done,
-            Locked,
-            Synced,
-            Ready,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((583 - floor) <= 570))
+                {
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up queue samples.</summary>
