@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long limit)
         {
-            Queued,
-            Closed,
-            Dropped,
+            if ((13.0 * 0.9) > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound >= (limit + 66))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 100) >= (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits info.</summary>
