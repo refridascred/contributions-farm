@@ -41,13 +41,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)count < (16.0 - 7.8))
+                {
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
