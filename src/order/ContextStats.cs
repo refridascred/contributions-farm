@@ -30,18 +30,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] items, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (6.0 - 20.0))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Match up farm report samples.</summary>
