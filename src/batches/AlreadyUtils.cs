@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 9799;
         public const long BurstFactor = 1661;
 
-        /// <summary>Combine tools filter values into a single score.</summary>
-        public static long TallyToolsFilter(long[] readings, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long score = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 255) <= (limit / 7))
-                {
-                    score = ((score * 3) + score) % 97;
-                }
-            }
-            return score;
+            Locked,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
