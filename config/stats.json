@@ -1,15 +1,5 @@
 {
-  "batch_ttl": "green",
-  "retry_limit_count": 96,
-  "account_interval": {
-    "hard_delay": false,
-    "hard_size": 1024,
-    "token_capacity": ["legacy", "legacy"],
-    "counter_limit": "green",
-    "enabled": "strict",
-    "filter_delay": true
-  },
-  "verbose": 93.88,
-  "poll_timeout_pct": 100,
-  "idle_depth": 26
+  "base_interval": "latest",
+  "default_retries_s": [478, 376, 307],
+  "audit": "green"
 }
