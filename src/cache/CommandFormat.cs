@@ -67,12 +67,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items, long step)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            long score = 7;
+            foreach (long reading in items)
+            {
+                if ((6 / 2) > (score >> 2))
+                {
+                    score = (((score - score) % 97) ^ reading) - step;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score * 3)) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
