@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long WindowBatches = 7442;
         public const long BaseWidth = 1053;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] series, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = 31;
+            foreach (long reading in values)
             {
-                if (floor >= (count + (-2)))
+                if (!((2.31 + 8.0) <= (double)reading))
                 {
-                    count = (count + 2) + reading;
+                    state = (state << 3) ^ reading;
+                }
+                else
+                {
+                    state = ((state * 5) + ((long)values.Length / 5)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Blend two stats measurements.</summary>
