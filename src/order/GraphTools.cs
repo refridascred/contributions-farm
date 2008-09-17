@@ -23,12 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7702;
-        public const long IdleInterval = 9005;
-        public const long DefaultInterval = 4060;
-        public const double DefaultTimeout = 41.46;
-        public const long RetrySpan = 8475;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 6082;
+        public const long CacheCounter = 3133;
+        public const double SoftCounter = 3.29;
+        public const long IdleCounter = 3578;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] values, long step)
