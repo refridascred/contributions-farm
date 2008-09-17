@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const double WindowChecks = 29.3;
         public const long CacheSpan = 7289;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] readings)
         {
-            long score = 1;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (((822 + seen) <= (seen >> 5)) && ((double)value > (14.0 + 10.0)))
                 {
-                    score = ((score + (3 & 1)) % 65521) + (long)i;
-                    score = score ^ (15 % 2);
-                }
-                score = score - (sample + 28);
-                if ((step + score) < (sample + step))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
