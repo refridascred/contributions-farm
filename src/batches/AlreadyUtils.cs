@@ -55,13 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Draft,
+            Retry,
+            Stale,
         }
     }
 }
