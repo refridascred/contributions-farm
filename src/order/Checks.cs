@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "latest";
-        public const double SoftBatch = 48.88;
-        public const long HardTimeout = 245;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((limit + value) != (value - limit))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
