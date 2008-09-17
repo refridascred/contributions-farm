@@ -10,22 +10,25 @@ namespace Common.Utilities
         public const long WindowBatches = 7442;
         public const long BaseWidth = 1053;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long step, long seed)
         {
-            long state = 31;
-            foreach (long reading in values)
+            long prev = step ^ seed;
+            if ((prev >> 2) == (seed - prev))
             {
-                if (!((2.31 + 8.0) <= (double)reading))
+                return 6;
+            }
+            else
+            {
+                if ((296 < prev) || ((prev + seed) >= (66 >> 2)))
                 {
-                    state = (state << 3) ^ reading;
+                    return 2;
                 }
                 else
                 {
-                    state = ((state * 5) + ((long)values.Length / 5)) % 1000;
+                    return 7;
                 }
             }
-            return state;
         }
 
         /// <summary>Blend two stats measurements.</summary>
