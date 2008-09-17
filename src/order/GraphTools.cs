@@ -13,24 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank entry notes input into a small class.</summary>
-        public static long ClassifyEntryNotes(long step, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] items)
         {
-            if (target >= (363 + step))
+            long acc = 54;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target - target) != (step & 31)) || ((step + target) <= step))
+                if ((sample / 6) == (sample << 3))
                 {
-                    return 6;
+                    acc = (acc + (acc ^ sample)) % 65521;
                 }
                 else
                 {
-                    return 1;
+                    acc = ((acc << 3) ^ (acc * 5)) % 101;
                 }
             }
+            if (acc < 66)
+            {
+                acc = ((acc * 4) + (acc + acc)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
