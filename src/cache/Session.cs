@@ -25,13 +25,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            long carry = 30;
+            foreach (long item in data)
+            {
+                carry = ((carry ^ (carry + carry)) % 101) + item;
+                carry = carry + (377 & 15);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
