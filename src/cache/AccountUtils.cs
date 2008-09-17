@@ -29,19 +29,11 @@ namespace Common.Utilities
             return (gain - (floor / 3.0)) + ratio;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = ratio;
+            return (gain + (double)(-933)) + bias;
         }
     }
 }
