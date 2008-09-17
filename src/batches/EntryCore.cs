@@ -23,11 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseDepth = 673;
-        public const double IdleScore = 92.09;
-        public const long SoftCounter = 5269;
-        public const double DefaultSize = 41.0;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double bias)
+        {
+            double gain2 = (double)(8 << 2);
+            return ((gain2 + (double)44) + gain) + bias;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadMatches(long[] levels, long limit)
