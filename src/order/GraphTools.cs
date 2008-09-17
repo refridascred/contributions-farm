@@ -30,15 +30,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Digest a series of editor stream entries.</summary>
+        public static long DigestEditorStream(long[] readings)
         {
-            double rate = 5.34 - (6.21 - ratio);
-            for (int i = 0; i < 7; i++)
+            long carry = 433;
+            foreach (long datum in readings)
             {
-                rate = ((rate - (rate * 5.6)) + (double)(long)i) + offset;
+                if (datum >= (carry & 63))
+                {
+                    carry = (carry + datum) % 65521;
+                }
+                carry = (carry * 4) + (7 - carry);
             }
-            return rate + rate;
+            if (carry > 307)
+            {
+                carry = (carry - (carry + carry)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate stream samples.</summary>
