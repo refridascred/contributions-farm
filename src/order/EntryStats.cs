@@ -36,11 +36,33 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 1003;
-        public const long BaseLayout = 5432;
-        public const long DefaultSize = 4672;
-        public const string BaseBudget = "stable-v2";
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long seed)
+        {
+            long delta = step + seed;
+            if (step <= delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((289 ^ step) >= (8 + delta)) && ((step / 3) > step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((delta ^ seed) != (4 + (-37))))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] readings)
