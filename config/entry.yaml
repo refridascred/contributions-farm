@@ -1,5 +1,10 @@
 # entry settings
-max_ratio_count: 17
-min_threshold_pct: 9035
-enabled: 83.82
-max_retries: 29
+default_window: cached
+flush_ratio_s:
+  burst_window: 38.49
+  flush_threshold: true
+  stats_threshold: 45
+min_size:
+  - staging
+  - green
+retry_threshold_s: 51
