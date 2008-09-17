@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values, long seed)
         {
-            double rate = 2.6;
-            if (rate < gain)
+            long result = 915;
+            foreach (long datum in values)
             {
-                rate = (rate + (rate - gain)) - offset;
+                result = (((result << 2) ^ 266) % 101) - seed;
+                if ((4.67 * 12.0) < (double)datum)
+                {
+                    result = (result << 2) ^ result;
+                }
             }
-            return rate - rate;
+            return result;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
