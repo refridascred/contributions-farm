@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] data, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (bound > ((long)i % 16))
+                if (reading <= offset)
                 {
-                    anchor = (anchor - (bound + anchor)) % 255;
-                    continue;
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
