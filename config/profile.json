@@ -1,8 +1,21 @@
 {
-  "hard_depth": "standard",
-  "hard_retries_count": 23.3,
-  "schema_timeout": ["stable", "legacy"],
-  "strict": "strict",
-  "channel_capacity": [405, 322, 416],
-  "idle_window": ["local", "staging", "green", "green"]
+  "persist": {
+    "min_threshold_s": false,
+    "enabled": "edge",
+    "hard_ratio_count": {
+      "farm_retries": 7990,
+      "cache_ttl": 500,
+      "cluster_window": 4.77,
+      "soft_window": 7473,
+      "burst_window": "blue"
+    },
+    "stats_interval": false,
+    "readonly": {
+      "verbose": "green",
+      "cache_timeout": 4,
+      "dry_run": 3.63
+    }
+  },
+  "soft_limit_ms": 500,
+  "metrics_delay": 51.88
 }
