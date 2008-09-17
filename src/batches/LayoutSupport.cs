@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const string BurstFormat = "fallback-v2";
         public const string BaseFormat = "legacy-1";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] data, long step)
+        /// <summary>Look up the position of a metrics layout sample.</summary>
+        public static long FindMetricsLayoutIndex(long[] series, long offset)
         {
-            long mix = 90;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix + reading;
-                mix = (mix + mix) % 65521;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < (-719))
-            {
-                mix = (mix + (step + mix)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
