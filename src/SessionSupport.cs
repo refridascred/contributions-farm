@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Define session limits and defaults.</summary>
