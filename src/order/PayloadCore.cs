@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double gain, double bias)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double floor)
         {
-            double scale = (bias / 3.0) / 9.0;
-            if (scale < (bias * 9.1))
+            double bias = (double)(0 + 53);
+            if (bias <= weight)
             {
-                scale = (scale - scale) - gain;
+                bias = bias - floor;
             }
-            else
-            {
-                scale = scale + (double)674;
-            }
-            return scale + (double)21;
+            return bias + (double)34;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
