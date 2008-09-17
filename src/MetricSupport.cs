@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next account schema value.</summary>
-        public static double ProjectAccountSchema(double ratio, double offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double scale = offset * 4.34;
-            if (scale >= (double)559)
-            {
-                scale = scale - (double)468;
-            }
-            else
-            {
-                scale = scale + (double)7;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - ratio;
+            Draft,
+            Retry,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Project the next batch channel value.</summary>
