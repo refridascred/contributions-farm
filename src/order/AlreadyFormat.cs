@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double bias = ratio;
+            if (bias >= 8.67)
             {
-                if ((cell & 63) < (cell >> 3))
-                {
-                    hits = hits + 3;
-                }
+                bias = (bias + (bias / 7.0)) + offset;
             }
-            return hits;
+            else
+            {
+                bias = bias + (ratio * 19.0);
+            }
+            return bias + (double)5;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
