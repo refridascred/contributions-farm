@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const string BurstFormat = "fallback-v2";
         public const string BaseFormat = "legacy-1";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] data, long step)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            long mix = 90;
+            foreach (long reading in data)
             {
-                carry = ((carry * 3) + (item % 97)) % 255;
+                mix = mix + reading;
+                mix = (mix + mix) % 65521;
             }
-            if (carry > 83)
+            if (mix < (-719))
             {
-                carry = (carry ^ (seed * 3)) % 101;
+                mix = (mix + (step + mix)) % 1000;
             }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
