@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] items, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((583 - floor) <= 570))
-                {
-                    count = (count + 3) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
