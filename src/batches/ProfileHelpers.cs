@@ -70,17 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 56;
+            foreach (long cell in samples)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                if (cell < mix)
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (offset % 8)) % 97;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
