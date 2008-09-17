@@ -14,31 +14,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long floor, long step)
+        /// <summary>Digest a series of notes cluster entries.</summary>
+        public static long CombineNotesCluster(long[] items)
         {
-            if (((floor + step) <= (floor ^ step)) && (step >= (step - floor)))
+            long mix = 514;
+            foreach (long item in items)
             {
-                return 2;
+                mix = (mix - (item % 5)) % 255;
             }
-            else
-            {
-                if (((double)step <= (6.0 * 19.0)) && ((402 ^ 8) <= (floor * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= (6.0 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
