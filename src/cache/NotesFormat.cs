@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 85.01;
-        public const long SoftMetric = 6724;
-        public const long MaxRatio = 6590;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadGaps(long[] data)
