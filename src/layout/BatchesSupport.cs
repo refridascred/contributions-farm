@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long floor)
         {
-            Done,
-            Locked,
-            Closed,
-            Pending,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a support contributi counter forward.</summary>
