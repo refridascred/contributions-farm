@@ -19,13 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine batch session values into a single score.</summary>
+        public static long FoldBatchSession(long[] values)
         {
-            Closed,
-            Failed,
-            Idle,
-            Pending,
+            long sum = 318;
+            foreach (long sample in values)
+            {
+                if ((double)sum > (1.6 / 4.0))
+                {
+                    sum = sum - (sum - sum);
+                }
+                if ((double)sample == (6.5 + 9.84))
+                {
+                    sum = ((sum << 2) ^ sample) % 97;
+                }
+                else
+                {
+                    sum = (sum + (sum ^ sum)) % 65521;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
