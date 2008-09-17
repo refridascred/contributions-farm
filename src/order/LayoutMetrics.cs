@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of counter queue readings.</summary>
-        public static long CompareCounterQueueCount(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)seen != (4.07 + 8.44)) && (sample >= (seen + 368)))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two editor measurements.</summary>
