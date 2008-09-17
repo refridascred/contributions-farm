@@ -1,17 +1,24 @@
 # support settings
-default_ttl_pct: 35.81
-retry_size_pct: 44
-warm_timeout_pct: true
-poll_delay_s:
-  base_limit: 26
-  burst_delay: 71.86
-  support_capacity: 63.76
-  burst_interval_ms: 4615
-  poll_size:
-    - 354
-    - 33
-    - 415
-persist:
-  sync_ttl_count: true
-  enabled: true
-  idle_retries_ms: false
+warm_limit_pct: 100
+strict: legacy
+poll_size_s:
+  - stable
+  - eu-west
+  - edge
+  - edge
+retry_limit_pct:
+  command_window:
+    max_window_s: 6.59
+    batch_ratio: 18.57
+    max_interval: false
+    default_ttl_count: open
+  verbose: true
+  editor_delay:
+    - standard
+    - cached
+  soft_size_s: green
+retry_ttl:
+  poll_capacity_pct: 60
+  base_depth: green
+  warm_limit_count: open
+  warm_delay: 1024
