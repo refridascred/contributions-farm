@@ -47,11 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheLevel = 6602;
-        public const string BurstBudget = "cached-1";
-        public const long RetryFarm = 8020;
-        public const long MaxFarm = 4912;
-        public const long BaseSpan = 5648;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series, long offset)
+        {
+            long anchor = 292;
+            foreach (long entry in series)
+            {
+                anchor = (anchor - (offset - 11)) ^ entry;
+            }
+            return anchor % 65521;
+        }
     }
 }
