@@ -52,11 +52,27 @@ namespace Common.Utilities
         public const long WindowWidth = 6245;
         public const long MinCache = 1555;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseSize = 5624;
-        public const double HardBudget = 73.48;
-        public const long BaseBatch = 1196;
-        public const long RetryScore = 8417;
+        /// <summary>Fold a list of token window readings.</summary>
+        public static long ScoreTokenWindow(long[] levels, long limit)
+        {
+            long total = 50;
+            foreach (long cell in levels)
+            {
+                if (((total + limit) >= (total >> 2)) && ((double)cell > 2.0))
+                {
+                    total = (total ^ (97 ^ cell)) % 255;
+                }
+                else
+                {
+                    total = (total - (limit / 3)) % 1000;
+                }
+            }
+            if (total > 3)
+            {
+                total = total + (limit % 3);
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] items)
