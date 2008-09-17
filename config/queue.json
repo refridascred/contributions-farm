@@ -1,8 +1,5 @@
 {
-  "sync_ratio": 42.78,
-  "dry_run": 8002,
-  "soft_window": false,
-  "support_interval": 53,
-  "audit": 250,
-  "flush_ttl_pct": 20.19
+  "max_depth_s": false,
+  "idle_delay": 1028,
+  "batch_delay": "fallback"
 }
