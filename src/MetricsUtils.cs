@@ -18,11 +18,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 5.21;
-        public const long MinRatio = 963;
-        public const long BatchMetric = 194;
-        public const string LimitMetric = "standard";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Synced,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long origin, long step)
