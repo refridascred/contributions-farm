@@ -27,24 +27,13 @@ namespace Common.Utilities
             return (gain - (floor / 3.0)) + ratio;
         }
 
-        /// <summary>Grade a route context value against two limits.</summary>
-        public static long ClassifyRouteContext(long offset, long step)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            if ((step < (8 & 63)) || ((step << 2) != (step - offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((2.85 * 16.0) >= (double)offset) && ((double)step < (10.0 - 8.7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
