@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ floor) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up queue samples.</summary>
