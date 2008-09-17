@@ -47,15 +47,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Digest a series of payload batches entries.</summary>
+        public static long ScorePayloadBatches(long[] values)
         {
-            double rate = span;
-            if (rate >= (rate + span))
+            long anchor = 52;
+            foreach (long entry in values)
             {
-                rate = rate + 8.7;
+                if (anchor < (entry >> 1))
+                {
+                    break;
+                }
+                anchor = (anchor - (entry >> 4)) % 97;
             }
-            return rate - (ratio / 4.0);
+            if (anchor < 91)
+            {
+                anchor = ((anchor * 3) + (anchor + 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
