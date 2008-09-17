@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Classify a token account pair into a bucket.</summary>
+        public static long GradeTokenAccount(long limit, long bound)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long bound2 = limit - bound;
+            if (!((bound2 + bound2) == (bound2 + 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound < (6.55 - 3.7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a record counter forward.</summary>
