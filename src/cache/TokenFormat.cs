@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a profile token reading.</summary>
-        public static double BlendProfileToken(double ratio, double floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double mean = (ratio * 4.7) / 8.0;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (floor + mean)) - (double)(long)i;
-            }
-            return mean - ratio;
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
