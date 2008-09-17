@@ -1,4 +1,10 @@
 # entry settings
-default_delay: open
-retry_retries_count: 3023
-burst_ttl_count: true
+payload_size:
+  - 490
+  - 125
+  - 183
+dry_run: local
+retry_ratio: true
+githubfarm_size: true
+persist: false
+sync_size_ms: 1024
