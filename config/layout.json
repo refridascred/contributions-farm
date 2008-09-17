@@ -1,7 +1,19 @@
 {
-  "profile_size": 6417,
-  "channel_ttl": "green",
-  "flush_delay_ms": "green",
-  "enabled": "stable",
-  "base_threshold": [166, 336, 48]
+  "compress": true,
+  "layout_capacity": {
+    "tools_delay": 79.22,
+    "batch_depth": 500,
+    "context_retries": 2033,
+    "burst_threshold_ms": {
+      "batch_capacity_count": [258, 185],
+      "default_size": true,
+      "min_window": 7447,
+      "default_depth_ms": 1747,
+      "idle_timeout": "strict"
+    }
+  },
+  "metric_capacity": "fallback",
+  "layout_limit": [10, 22, 99, 357],
+  "soft_retries_pct": 3993,
+  "dry_run": "edge"
 }
