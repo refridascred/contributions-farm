@@ -49,10 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 7670;
-        public const double MaxScore = 65.9;
-        public const long StepLevel = 1086;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values)
+        {
+            long state = -288;
+            foreach (long reading in values)
+            {
+                if ((state - reading) >= (reading ^ reading))
+                {
+                    state = (state + (state & 63)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long FoldSession(long[] series, long step)
