@@ -46,13 +46,12 @@ namespace Common.Utilities
             return ratio + (ratio - scale);
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchBudget = 3380;
+        public const string IdleDepth = "open-1";
+        public const long RetrySupport = 8444;
+        public const long RetrySize = 7839;
+        public const double WindowSupport = 76.72;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
