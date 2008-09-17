@@ -56,18 +56,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
-        public static long AuditGithubfarmFilterHits(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (306 & 31))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
