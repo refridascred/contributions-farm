@@ -43,17 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next checks route value from a seed.</summary>
-        public static long SeriesChecksRoute(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = acc ^ step;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowScore = 5240;
+        public const string HardAlready = "legacy-v2";
+        public const long BatchAlready = 399;
+        public const string DefaultAlready = "open-1";
 
         /// <summary>Compare every pair of farm graph readings.</summary>
         public static long MatchFarmGraphCount(long[] values)
