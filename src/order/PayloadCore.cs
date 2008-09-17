@@ -38,10 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheSize = 28.05;
-        public const double CacheFarm = 55.38;
-        public const string HardFarm = "local-1";
-        public const long CacheBudget = 6618;
+        /// <summary>Adjust a graph stats reading.</summary>
+        public static double ScaleGraphStats(double bias, double span)
+        {
+            double load = span / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + (double)(-846)) + (double)(long)i) + bias;
+            }
+            return load - span;
+        }
     }
 }
