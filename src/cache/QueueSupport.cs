@@ -37,19 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 7810;
+        public const long LimitCache = 5241;
+        public const long RetrySize = 3413;
+        public const string WindowWidth = "local";
+        public const double HardCache = 71.8;
     }
 }
