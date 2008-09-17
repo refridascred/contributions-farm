@@ -47,11 +47,24 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long bound)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            if (((bound - 46) < 559) || (6.96 <= (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((581 << 3) < bound) || ((7.48 / 3.0) < (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of token entries.</summary>
