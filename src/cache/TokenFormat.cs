@@ -28,19 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long floor)
         {
-            double drift = 7.98 + (floor - floor);
-            if (drift > drift)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                drift = drift - (drift + drift);
+                if ((((entry - entry) > (matches - floor)) || ((matches * 2) == (5 + (-460)))) || ((20.0 * 13.0) < (double)floor))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                drift = drift - (floor + rate);
-            }
-            return drift + (rate - floor);
+            return matches;
         }
     }
 }
