@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long RetrySize = 8479;
         public const long SoftCommits = 4879;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
