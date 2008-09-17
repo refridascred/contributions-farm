@@ -50,15 +50,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of cache format readings.</summary>
-        public static long ScoreCacheFormat(long[] readings, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long carry = 337;
-            foreach (long cell in readings)
+            long acc = 8;
+            foreach (long reading in levels)
             {
-                carry = ((carry ^ (target + carry)) % 65521) - cell;
+                if (!((reading ^ acc) > (acc % 8)))
+                {
+                    acc = (acc << 3) ^ (reading << 1);
+                }
+                if ((acc << 2) >= (reading + reading))
+                {
+                    acc = (acc ^ (reading + reading)) % 4096;
+                }
+                acc = (acc * 3) + (5 ^ (-81));
             }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
