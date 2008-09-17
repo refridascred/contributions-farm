@@ -30,11 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 23.71;
-        public const string IdleSpan = "staging-edge";
-        public const long WindowLevel = 6153;
-        public const long StepScore = 9312;
-        public const long LimitTimeout = 269;
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool CheckAccountCommandLimits(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
