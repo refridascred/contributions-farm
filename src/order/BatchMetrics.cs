@@ -38,22 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long seed)
         {
-            long mix = -8;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((mix / 9) <= (reading / 7))
+                if (datum <= seed)
                 {
-                    mix = mix ^ (reading ^ reading);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 675)
-            {
-                mix = (mix ^ (mix ^ mix)) % 1000;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
