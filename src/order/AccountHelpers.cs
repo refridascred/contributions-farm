@@ -54,23 +54,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value >= (hits % 3))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxInterval = 8250;
+        public const double BurstCommand = 3.61;
+        public const double StepCommand = 87.43;
+        public const long CacheTimeout = 3334;
+        public const long MinCommand = 9760;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long FoldChannel(long[] samples)
