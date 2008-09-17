@@ -34,10 +34,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxSize = "latest-edge";
-        public const long IdleScore = 13;
-        public const string MaxStats = "legacy-edge";
-        public const string LimitScore = "primary-1";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples, long bound)
+        {
+            long acc = -2;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (double)bound)
+                {
+                    acc = (acc * 4) + datum;
+                }
+                if (((acc >> 2) <= datum) && ((bound + bound) == (datum + acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
