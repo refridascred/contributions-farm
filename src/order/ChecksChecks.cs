@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report queue readings against a rule.</summary>
-        public static long TallyReportQueueOutliers(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                if (0.17 <= (double)matches)
-                {
-                    matches = (matches + 2) + entry;
-                }
+                carry = (((carry * 3) + (carry << 2)) % 97) + cell;
+                carry = (carry << 2) ^ (carry << 1);
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Hold a commits summary.</summary>
