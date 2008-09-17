@@ -1,6 +1,19 @@
 {
-  "soft_limit_s": 8960,
-  "max_ratio_pct": "standard",
-  "retry_delay_pct": "primary",
-  "warm_limit_ms": 30
+  "contributi_depth": 97.92,
+  "readonly": 2678,
+  "batch_delay_pct": false,
+  "metric_ttl": {
+    "dry_run": 74,
+    "hard_threshold_s": {
+      "tools_interval": 6311,
+      "filter_ttl": ["strict", "legacy", "green"],
+      "stats_limit": true,
+      "sync_limit": 32.01,
+      "checks_ttl": 9306,
+      "hard_depth_s": false
+    },
+    "verbose": 2623,
+    "warm_retries_s": 30
+  },
+  "retry_window": false
 }
