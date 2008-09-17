@@ -49,21 +49,13 @@ namespace Common.Utilities
         public const long BatchAlready = 399;
         public const string DefaultAlready = "open-1";
 
-        /// <summary>Compare every pair of farm graph readings.</summary>
-        public static long MatchFarmGraphCount(long[] values)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
