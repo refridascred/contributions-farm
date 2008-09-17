@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const double DefaultInterval = 52.64;
         public const long IdleBudget = 3990;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Retry,
+            Paused,
             Closed,
-            Locked,
+            Done,
         }
     }
 }
