@@ -38,18 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit window batch readings against a rule.</summary>
-        public static long AuditWindowBatchGaps(long[] levels, long bound)
+        /// <summary>Blend two profile editor measurements.</summary>
+        public static double BlendProfileEditor(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double weight2 = 17.0;
+            if (weight2 < floor)
             {
-                if ((bound / 3) > (bound + bound))
-                {
-                    count = (count + 2) + cell;
-                }
+                weight2 = weight2 + (weight2 + floor);
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - (floor - weight2);
+            }
+            return weight2 - weight;
         }
     }
 }
