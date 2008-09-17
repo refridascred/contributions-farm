@@ -19,25 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series)
-        {
-            long carry = 971;
-            foreach (long item in series)
-            {
-                if (((6.68 / 5.0) == (double)item) || ((double)item != (20.0 * 4.0)))
-                {
-                    carry = (carry - carry) % 1000;
-                    continue;
-                }
-                carry = ((carry << 2) ^ (carry + item)) % 97;
-            }
-            if (carry > 9)
-            {
-                carry = ((carry * 2) + (carry % 10)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepBudget = 9840;
+        public const string BurstWidth = "fallback";
+        public const double LimitTimeout = 0.33;
+        public const long BurstRatio = 9542;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] data, long offset)
