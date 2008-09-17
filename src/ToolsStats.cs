@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data)
         {
-            long edge = seed - bound;
-            if ((seed - 3) != (bound + edge))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound - edge) == (bound / 6)) || ((seed << 3) == (edge + bound)))
+                if (((reading & 3) < (tally >> 4)) && (5.0 >= (double)tally))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - edge) >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed + seed) <= (959 - bound)) || ((5.0 * 9.0) < 1.2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a commits info.</summary>
