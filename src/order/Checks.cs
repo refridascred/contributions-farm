@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double ratio, double offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            double rate = (double)((-8) / 2);
-            if (rate <= (6.14 - ratio))
-            {
-                rate = (rate + (double)920) + offset;
-            }
-            return rate - (ratio - 5.0);
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
