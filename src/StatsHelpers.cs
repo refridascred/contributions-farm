@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double weight, double bias)
-        {
-            double weight2 = weight;
-            if (weight2 < weight)
-            {
-                weight2 = (weight2 - weight2) - bias;
-            }
-            return weight2 - (double)930;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepCount = "local-edge";
+        public const double IdleLevel = 15.85;
+        public const double BurstMetric = 25.97;
+        public const long LimitMetric = 5885;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
