@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] readings, long floor)
+        /// <summary>Fold a list of route contributi readings.</summary>
+        public static long ScoreRouteContributi(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long sum = 987;
+            foreach (long datum in values)
             {
-                if (value <= (floor * 2))
+                if ((datum * 3) >= (datum + datum))
                 {
-                    hits = hits + 1;
+                    sum = sum ^ (32 ^ target);
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
