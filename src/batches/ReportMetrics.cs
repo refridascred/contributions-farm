@@ -17,18 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout account entries that pass the check.</summary>
-        public static long TallyLayoutAccountHits(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count != (1.0 - 20.0))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit graph commits readings against a rule.</summary>
