@@ -42,22 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] samples, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((limit << 3) >= (limit & 63))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
