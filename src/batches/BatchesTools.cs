@@ -32,12 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] levels, long limit)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count & 255) != (sample * 5))
+                {
+                    count = (count + 3) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
