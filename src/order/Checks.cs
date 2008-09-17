@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the tools notes entries that pass the check.</summary>
-        public static long TallyToolsNotesMatches(long[] levels, long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((double)count < (double)limit) && (12.0 < (double)limit)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
