@@ -54,17 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
