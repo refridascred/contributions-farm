@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=434
+FARM_LIMIT=143
 log "limit is ${FARM_LIMIT}"
 
-for item in staging open; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
