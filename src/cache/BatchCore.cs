@@ -15,20 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((limit - (-7)) == (limit << 3)) || ((2.71 * 20.0) == (double)total))
+                if (hits <= (sample << 1))
                 {
-                    total = total + 93;
+                    hits = hits + 1;
                 }
-                total = (total + (600 - limit)) % 65521;
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
