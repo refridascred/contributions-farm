@@ -37,11 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine tools filter values into a single score.</summary>
+        public static long TallyToolsFilter(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long score = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 255) <= (limit / 7))
+                {
+                    score = ((score * 3) + score) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
