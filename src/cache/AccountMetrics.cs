@@ -55,17 +55,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
+                if ((entry % 24) > hits)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
