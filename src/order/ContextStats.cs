@@ -21,14 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 4513;
+        public const string BurstRatio = "legacy";
+        public const long BatchSpan = 3682;
+        public const long StepDepth = 6618;
+        public const double RetryTimeout = 67.56;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
