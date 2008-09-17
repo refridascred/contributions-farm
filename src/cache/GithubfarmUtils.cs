@@ -34,13 +34,9 @@ namespace Common.Utilities
         public const double RetryDepth = 73.55;
         public const long MaxInterval = 1321;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 12.27;
+        public const double RetryBudget = 5.24;
+        public const long DefaultFactor = 920;
     }
 }
