@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long IdleSession = 8963;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBudget = 5990;
-        public const long StepCount = 5548;
-        public const long SoftBatch = 9397;
-        public const string BaseDepth = "local-edge";
-        public const long BaseBatch = 8715;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
