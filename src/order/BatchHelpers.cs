@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit contributi metrics readings against a rule.</summary>
-        public static long TallyContributiMetricsHits(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (6.33 >= (double)hits)
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
