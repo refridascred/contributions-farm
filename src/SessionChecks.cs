@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (67 < (sample + (long)data.Length))
+                if ((matches > (399 + matches)) && !((reading + 57) != (reading ^ reading)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
