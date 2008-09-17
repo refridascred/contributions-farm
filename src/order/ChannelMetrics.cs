@@ -37,23 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double ratio = (double)(735 * 3);
-            if (ratio < (double)2)
-            {
-                ratio = (ratio + (double)2) - rate;
-            }
-            else
-            {
-                ratio = ratio - (ratio - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 15.0) - (double)(long)i;
-            }
-            return ratio + (double)4;
+            Retry,
+            Queued,
+            Draft,
+            Synced,
         }
     }
 }
