@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] levels, long offset)
+        /// <summary>Find the first token format entry that matches the target.</summary>
+        public static long SeekTokenFormatIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= offset)
+                if (values[i] <= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
