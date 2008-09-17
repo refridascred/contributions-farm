@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Compare every pair of profile metric readings.</summary>
+        public static long OverlapProfileMetricCount(long[] values)
         {
-            double gain = floor;
-            if (gain > gain)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (weight + weight);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - (3.2 / 9.0);
+            return tally;
         }
 
         /// <summary>Grade a schema editor value against two limits.</summary>
