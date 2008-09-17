@@ -23,18 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series)
+        /// <summary>Count context graph pairs that satisfy a relation.</summary>
+        public static long MatchContextGraphCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits <= (sample << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
