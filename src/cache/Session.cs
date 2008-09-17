@@ -22,11 +22,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Iterate the profile queue series from a seed.</summary>
+        public static long DeriveProfileQueue(long offset)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc + (acc + acc)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first stream batch entry that matches the target.</summary>
