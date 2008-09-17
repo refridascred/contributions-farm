@@ -19,13 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many account route samples are out of range.</summary>
+        public static long AuditAccountRouteOutliers(long[] values, long floor)
         {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches >> 3) < (9 - floor))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
