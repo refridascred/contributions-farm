@@ -1,8 +1,9 @@
-id,count,weight
-1,fallback,144
-2,2.61,strict
-3,stable,local
-4,87.02,882
-5,strict,20.35
-6,primary,661
-7,623,43.37
+id,rank,level,region
+1,staging,85.67,7.51
+2,990,local,49.62
+3,861,245,cached
+4,31.81,43.32,734
+5,10,stable,staging
+6,edge,staging,679
+7,83.58,257,15.13
+8,latest,89.45,751
