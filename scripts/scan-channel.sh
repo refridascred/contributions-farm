@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 7); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=181
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in latest stable green local; do
+for item in standard staging local fallback; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=403
+log "limit is ${CHANNEL_LIMIT}"
