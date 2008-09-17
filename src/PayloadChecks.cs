@@ -61,20 +61,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i < (7.0 + 4.3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ (origin - origin)) % 97;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result << 3) ^ result) % 65521;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
