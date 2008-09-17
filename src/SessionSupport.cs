@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long DefaultRecord = 1552;
         public const string BatchRatio = "latest-v2";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
