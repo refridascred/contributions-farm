@@ -1,12 +1,15 @@
 {
-  "compress": ["blue", "local", "legacy"],
-  "min_depth_s": {
-    "soft_ratio_count": 34.69,
-    "token_timeout": 2174,
-    "compress": 500,
-    "batch_depth_count": ["standard", "staging", "eu-west", "latest"],
-    "soft_capacity_count": 9693,
-    "default_ratio_count": 9981
+  "retry_timeout_pct": "strict",
+  "poll_window_count": "green",
+  "cache_delay": {
+    "compress": 51.35,
+    "dry_run": "cached",
+    "warm_timeout": [449, 475, 23],
+    "cache_size": 1877,
+    "min_window_count": [136, 472],
+    "soft_retries_ms": "eu-west"
   },
-  "hard_window": 77.67
+  "cache_interval_ms": 1591,
+  "retry_timeout": [381, 241, 217],
+  "route_depth": 61.05
 }
