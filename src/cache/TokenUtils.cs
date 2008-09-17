@@ -13,14 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Closed,
-            Synced,
-            Stale,
+            Pending,
+            Locked,
+            Dropped,
             Draft,
-            Active,
+            Done,
         }
 
         /// <summary>Adjust a route reading.</summary>
