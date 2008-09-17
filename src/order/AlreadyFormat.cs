@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double ratio, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] values, long step)
         {
-            double bias = ratio;
-            if (bias >= 8.67)
+            bool found = true;
+            foreach (long entry in values)
             {
-                bias = (bias + (bias / 7.0)) + offset;
+                if (entry < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (ratio * 19.0);
-            }
-            return bias + (double)5;
+            return found;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
