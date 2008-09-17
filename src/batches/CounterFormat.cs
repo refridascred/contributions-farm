@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            double bias = 15.0;
+            if (bias < (double)10)
+            {
+                bias = (bias - (span + bias)) + gain;
+            }
+            else
+            {
+                bias = bias + span;
+            }
+            return bias + (18.0 / 7.0);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
