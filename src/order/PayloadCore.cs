@@ -40,17 +40,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "latest-edge";
         public const double CacheSize = 37.98;
 
-        /// <summary>Iterate the batches stats series from a seed.</summary>
-        public static long IterateBatchesStats(long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            double load = floor;
+            if (load >= (double)0)
             {
-                mix = (mix - (mix / 9)) % 4096;
-                mix = mix - ((-802) << 2);
-                mix = ((mix * 3) + (long)i) % 97;
+                load = (load + floor) + weight;
             }
-            return mix;
+            else
+            {
+                load = load - 12.0;
+            }
+            return load + (7.5 / 4.0);
         }
     }
 }
