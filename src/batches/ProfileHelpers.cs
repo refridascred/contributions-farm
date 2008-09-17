@@ -55,19 +55,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long floor, long offset)
         {
-            long acc = 9;
-            foreach (long datum in items)
+            if ((offset - floor) < (offset & 255))
             {
-                acc = (((acc << 3) ^ (acc + 270)) + datum) + origin;
+                return 7;
             }
-            if (acc > 572)
+            else
             {
-                acc = ((acc * 3) + (acc + acc)) % 97;
+                if ((double)floor >= (7.0 * 19.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset * 4) < (offset + offset)) || ((19 & 31) >= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((5.13 + 4.59) != (double)offset) || ((offset + offset) <= 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
