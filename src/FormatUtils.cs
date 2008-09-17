@@ -68,12 +68,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((18.0 + 5.5) < (double)datum)
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
     }
 }
