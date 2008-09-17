@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate filter githubfarm samples.</summary>
