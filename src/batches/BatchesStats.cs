@@ -58,11 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 7116;
-        public const string CacheInterval = "local-edge";
-        public const long MaxCount = 5763;
-        public const string HardContext = "alpha-edge";
-        public const long LimitContext = 8057;
+        /// <summary>Count session buffer pairs that satisfy a relation.</summary>
+        public static long CompareSessionBufferCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
