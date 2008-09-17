@@ -31,18 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples, long bound)
+        /// <summary>Compare every pair of notes githubfarm readings.</summary>
+        public static long CompareNotesGithubfarmCount(long[] levels)
         {
-            long mix = 26;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix + mix) <= (item * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix + mix) % 4096) + bound;
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return seen;
         }
     }
 }
