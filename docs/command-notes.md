@@ -1,14 +1,13 @@
 # Command notes
 
-The contributi module keeps farm values in sync with the cache cache.
-Keep session and session names short and lowercase.
+The profile report groups every account by editor.
+The queue module keeps entry values in sync with the report cache.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-A command that stays idle for too long is moved to the order list.
+Keep token and record names short and lowercase.
+Use layout settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Document new session fields
-- Log every editor change
-- Keep graph values small
-- Review account limits each release
+- Log every batch change
+- Document new batches fields
+- Review batch limits each release
