@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultSpan = 28.71;
-        public const double BaseWindow = 14.49;
-        public const double SoftWindow = 89.49;
+        /// <summary>Check that every channel stats entry stays within the limit.</summary>
+        public static bool GuardChannelStatsBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double BlendPayload(double scale, double bias)
