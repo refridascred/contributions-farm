@@ -56,9 +56,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftCount = "alpha-1";
-        public const long WindowReport = 1783;
-        public const double CacheLevel = 78.44;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Draft,
+            New,
+            Idle,
+            Retry,
+            Locked,
+        }
     }
 }
