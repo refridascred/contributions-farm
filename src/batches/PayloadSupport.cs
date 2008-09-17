@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long WindowChecks = 8185;
         public const long StepInterval = 6513;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long limit)
+        /// <summary>Validate metric schema readings against a bound.</summary>
+        public static bool ValidateMetricSchemaLimits(long[] levels, long floor)
         {
-            long mark = 1;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (((5.2 - 2.4) < (double)mark) && ((cell - cell) > (57 - limit)))
+                if (value != floor)
                 {
-                    mark = ((mark * 4) + 79) % 255;
-                }
-                else
-                {
-                    mark = (mark + (cell & 15)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return flag;
         }
 
         /// <summary>Roll a cache stream counter forward.</summary>
