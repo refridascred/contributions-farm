@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west fallback; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in stable eu-west; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 4); do
     total=$((total + i * 2))
 done
 log "total ${total}"
