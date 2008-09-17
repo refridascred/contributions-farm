@@ -1,12 +1,5 @@
 {
-  "window_limit": false,
-  "record_delay": 44.98,
-  "warm_interval": {
-    "readonly": 55,
-    "batches_limit": ["stable", "strict", "cached", "local"],
-    "soft_limit_ms": "edge",
-    "burst_ratio": "cached"
-  },
-  "retry_size": false,
-  "soft_timeout": 86
+  "batch_depth": 500,
+  "poll_window_s": 9332,
+  "enabled": "cached"
 }
