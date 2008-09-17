@@ -55,18 +55,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry % 24) > hits)
+                if (values[i] > step)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
