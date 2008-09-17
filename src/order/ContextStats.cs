@@ -28,38 +28,14 @@ namespace Common.Utilities
         public const long SoftBudget = 1899;
         public const string StepStream = "legacy-edge";
 
-        /// <summary>Grade a context batch value against two limits.</summary>
-        public static long BucketContextBatch(long bound, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if ((bound >> 4) != (target / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound <= (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(679 < target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target <= (9.6 * 5.98))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Pending,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
