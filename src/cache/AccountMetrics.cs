@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Roll a stats already counter forward.</summary>
-        public static long RollStatsAlready(long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a window record.</summary>
