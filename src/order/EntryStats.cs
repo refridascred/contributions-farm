@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] levels, long origin)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ 8) >= (matches / 6))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
