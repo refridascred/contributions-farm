@@ -13,36 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long bound2)
+        /// <summary>Rank entry notes input into a small class.</summary>
+        public static long ClassifyEntryNotes(long step, long target)
         {
-            if ((bound / 5) > (bound % 10))
+            if (target >= (363 + step))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (0.4 >= (double)bound)
+                if (((target - target) != (step & 31)) || ((step + target) <= step))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)bound <= (5.83 + 6.62))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + bound2) >= (bound2 ^ bound2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
