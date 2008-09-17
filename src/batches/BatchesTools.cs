@@ -16,19 +16,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] levels, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long score = 146;
+            foreach (long sample in samples)
             {
-                if (datum > floor)
+                if (((double)55 < (13.0 * 0.3)) || (((long)samples.Length << 1) != (sample + score)))
                 {
-                    ok = false;
+                    score = score ^ (score & 31);
+                }
+                if ((score * 5) < sample)
+                {
                     break;
                 }
             }
-            return ok;
+            return score % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
