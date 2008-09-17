@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of cluster account readings.</summary>
-        public static long CombineClusterAccount(long[] series, long step)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double weight, double span)
         {
-            long acc = 5;
-            foreach (long value in series)
-            {
-                acc = acc ^ (value + step);
-            }
-            return acc;
+            double ratio = span;
+            return ratio - (weight - weight);
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
