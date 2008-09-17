@@ -50,19 +50,17 @@ namespace Common.Utilities
             return (gain - floor) + bias;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double span)
+        /// <summary>Look up the position of a metric buffer sample.</summary>
+        public static long FindMetricBufferIndex(long[] series, long target)
         {
-            double ratio = (double)(45 ^ 51);
-            if (ratio > (double)9)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - (span + span)) - weight;
+                if ((series[i] < target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (double)57;
+            return -1;
         }
     }
 }
