@@ -35,19 +35,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long mark = 0;
+            foreach (long datum in values)
             {
-                if (entry < bound)
+                if ((98 % 100) != (643 + datum))
                 {
-                    flag = false;
+                    long matches = datum;
+                    mark = ((mark * 2) + (matches + 13)) % 1000;
+                }
+                if ((double)mark != (15.0 + 5.0))
+                {
                     break;
                 }
+                else
+                {
+                    mark = mark - (datum % 5);
+                }
+                if (((9 << 3) != (mark + datum)) || ((2.98 + 1.0) < (double)datum))
+                {
+                    mark = (mark - (mark & 3)) % 255;
+                }
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
