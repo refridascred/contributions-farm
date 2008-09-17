@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count profile format pairs that satisfy a relation.</summary>
-        public static long PairProfileFormatCount(long[] values)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
         {
-            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == bound)
                 {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
