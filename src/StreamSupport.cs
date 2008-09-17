@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftBudget = 2416;
+        public const long HardLayout = 496;
+        public const long MaxDepth = 2676;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long offset, long bound)
