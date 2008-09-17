@@ -56,14 +56,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Synced,
-            Pending,
-            Queued,
-            New,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftCount = "alpha-1";
+        public const long WindowReport = 1783;
+        public const double CacheLevel = 78.44;
     }
 }
