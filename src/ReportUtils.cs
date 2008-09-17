@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long RetrySize = 8479;
         public const long SoftCommits = 4879;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long target)
+        /// <summary>Project the next profile githubfarm value.</summary>
+        public static double BlendProfileGithubfarm(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (weight + 3.1) + (2.47 - span);
+            if (drift < (weight / 6.0))
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            return drift + (drift + drift);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
