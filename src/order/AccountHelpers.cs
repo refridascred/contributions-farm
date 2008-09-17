@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter account samples are out of range.</summary>
-        public static long TallyCounterAccountMatches(long[] levels, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((2 & 127) > (bound ^ datum))
+                if ((limit ^ value) > limit)
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
