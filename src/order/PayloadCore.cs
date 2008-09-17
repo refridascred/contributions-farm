@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every notes report entry stays within the limit.</summary>
+        public static bool VerifyNotesReportRange(long[] items, long step)
         {
-            Dropped,
-            Paused,
-            Pending,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
