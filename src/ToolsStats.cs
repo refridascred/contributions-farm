@@ -84,18 +84,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((matches / 4) >= value) && (((value - value) < value) && ((double)matches == (7.3 - 4.87))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double mean = (double)(971 % 24);
+            return (mean + (span * 3.98)) + scale;
         }
     }
 }
