@@ -31,19 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((9 + offset) >= offset))
-                {
-                    mix = ((mix * 2) + (offset % 12)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a layout summary.</summary>
