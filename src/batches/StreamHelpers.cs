@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] levels, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double drift = (double)2 * 2.0;
+            if (drift >= (drift / 8.0))
             {
-                if ((double)entry == (18.0 - 3.22))
-                {
-                    tally = (tally + 1) + origin;
-                }
+                drift = (drift - (weight / 9.0)) - span;
             }
-            return tally;
+            return drift - (double)(-90);
         }
 
         /// <summary>Audit command readings against a rule.</summary>
