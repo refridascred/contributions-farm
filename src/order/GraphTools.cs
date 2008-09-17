@@ -18,10 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 5231;
-        public const long MaxSupport = 8042;
-        public const string RetrySupport = "staging-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchTimeout = 553;
+        public const double MinTimeout = 30.03;
+        public const string DefaultSpan = "latest-1";
+        public const string BurstRatio = "stable-1";
+        public const long MinSpan = 651;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] values, long step)
