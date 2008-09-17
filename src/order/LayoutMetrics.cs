@@ -29,11 +29,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Classify a cluster format pair into a bucket.</summary>
+        public static long ClassifyClusterFormat(long floor, long floor2)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long slot = floor - floor2;
+            if ((double)floor2 <= (5.0 / 2.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor2 - floor) != (floor2 >> 3)) || (slot >= (954 & 127)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
