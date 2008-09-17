@@ -38,17 +38,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a batches stats counter forward.</summary>
-        public static long DeriveBatchesStats(long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double gain, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            double rate = (gain / 9.0) + (gain + span);
+            if (rate <= 6.0)
             {
-                acc = (acc + (800 - acc)) % 4096;
-                acc = (acc ^ (long)i) % 4096;
-                acc = ((acc * 4) + (long)i) % 65521;
+                rate = rate - (double)63;
             }
-            return acc;
+            return rate + (0.1 - span);
         }
 
         /// <summary>Rank schema metrics input into a small class.</summary>
