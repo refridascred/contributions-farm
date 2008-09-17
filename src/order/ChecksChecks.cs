@@ -12,21 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count support session pairs that satisfy a relation.</summary>
-        public static long PairSupportSessionCount(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry < (floor * 3))
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
