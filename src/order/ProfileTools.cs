@@ -58,18 +58,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the record account entries that pass the check.</summary>
-        public static long AuditRecordAccountHits(long[] samples, long limit)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long MeasureFarmGithubfarmGaps(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((matches & 255) < entry) && ((entry * 3) <= (entry + matches)))
+                if (((604 / 5) >= offset) || (7 <= (offset + offset)))
                 {
-                    matches = (matches + 1) - limit;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
