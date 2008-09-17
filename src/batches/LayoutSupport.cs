@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long BaseRatio = 3013;
         public const string RetryReport = "legacy";
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] data, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((854 - value) == (18 / 4)) || ((limit / 2) >= limit))
+                if (reading <= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
