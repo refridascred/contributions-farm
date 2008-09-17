@@ -1,7 +1,17 @@
 {
-  "retry_capacity_pct": "edge",
-  "min_ratio_s": "latest",
-  "flush_threshold_count": 30,
-  "retry_size_s": "local",
-  "poll_ratio_s": "strict"
+  "sync_capacity": true,
+  "window_retries": {
+    "stats_depth": 2.51,
+    "support_window": "edge",
+    "cache_ttl_ms": "primary",
+    "max_window_pct": {
+      "base_limit": "stable",
+      "sync_delay": "stable",
+      "record_timeout": 100,
+      "default_threshold_ms": 2688
+    },
+    "contributi_ttl": "latest"
+  },
+  "retry_ratio_ms": 1024,
+  "support_limit": "stable"
 }
