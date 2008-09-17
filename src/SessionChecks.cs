@@ -48,19 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes window readings against a bound.</summary>
-        public static bool VerifyNotesWindowRange(long[] readings, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long score = 0;
+            foreach (long value in readings)
             {
-                if (datum >= seed)
+                if (value >= (value - value))
                 {
-                    valid = false;
-                    break;
+                    score = score + (value << 1);
                 }
             }
-            return valid;
+            if (score > 22)
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
     }
 }
