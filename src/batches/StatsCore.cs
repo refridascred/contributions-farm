@@ -89,18 +89,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count - sample) < count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double ratio = (double)6 - weight;
+            return (ratio + (ratio * 4.83)) + floor;
         }
     }
 }
