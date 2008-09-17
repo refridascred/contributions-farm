@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first token format entry that matches the target.</summary>
-        public static long SeekTokenFormatIndex(long[] values, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 711;
+            foreach (long sample in values)
             {
-                if (values[i] <= bound)
+                carry = ((carry ^ carry) % 255) - step;
+                if (sample >= (sample / 4))
                 {
-                    return (long)i;
+                    carry = (carry ^ sample) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the farm level values.</summary>
