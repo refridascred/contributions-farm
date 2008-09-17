@@ -1,11 +1,8 @@
 {
-  "max_retries_ms": "local",
-  "order_delay": {
-    "context_delay": false,
-    "cache_limit_count": false,
-    "default_timeout_ms": "latest",
-    "cache_size_s": "edge",
-    "commits_delay": ["fallback", "green", "edge"]
-  },
-  "hard_delay": 61.41
+  "cache_delay_count": [195, 446, 462],
+  "cluster_window": "latest",
+  "retry_interval_count": "primary",
+  "readonly": "eu-west",
+  "flush_window_count": ["local", "cached", "edge"],
+  "warm_interval": false
 }
