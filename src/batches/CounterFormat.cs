@@ -27,15 +27,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two checks batch measurements.</summary>
-        public static double BlendChecksBatch(double weight, double span)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long limit)
         {
-            double bias = weight;
-            if (bias > (weight / 4.0))
+            if (bound >= limit)
             {
-                bias = bias + weight;
+                return 0;
             }
-            return bias - (3.2 + span);
+            else
+            {
+                if (!((limit + bound) >= (14 - 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
