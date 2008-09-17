@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine cluster token values into a single score.</summary>
-        public static long ScoreClusterToken(long[] samples, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long origin)
         {
-            long mix = 64;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 2; i++)
+                if (entry >= origin)
                 {
-                    mix = (((mix ^ item) % 97) ^ (long)i) + step;
-                    mix = (mix << 2) ^ item;
+                    flag = false;
+                    break;
                 }
-                mix = mix ^ item;
             }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
