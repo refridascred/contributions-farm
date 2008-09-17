@@ -14,18 +14,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long offset, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if (((6.0 - 2.3) >= (double)target) && ((9 * 5) > (offset + offset)))
             {
-                if ((matches > (399 + matches)) && !((reading + 57) != (reading ^ reading)))
+                return 0;
+            }
+            else
+            {
+                if ((target & 255) == (offset + 76))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
