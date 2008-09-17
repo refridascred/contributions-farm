@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Ready,
-            Dropped,
-            New,
-            Idle,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 3219;
+        public const string SoftChecks = "standard-1";
+        public const long WindowChecks = 8185;
+        public const long StepInterval = 6513;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] readings)
