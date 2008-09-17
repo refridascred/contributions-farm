@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] levels, long offset)
         {
-            double ratio = (span - span) * 4.0;
-            return ratio - (span - gain);
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
