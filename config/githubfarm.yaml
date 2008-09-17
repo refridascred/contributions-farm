@@ -1,4 +1,17 @@
 # githubfarm settings
-min_delay: 3561
-support_capacity: 94.02
-soft_depth_pct: blue
+payload_ratio:
+  filter_window: 11
+  soft_retries_count: staging
+  hard_ratio_ms: eu-west
+  strict: 1.63
+readonly: 5284
+flush_ratio:
+  cache_ratio: false
+  burst_delay: 91
+  poll_ttl:
+    - 81
+    - 296
+    - 115
+  schema_retries: 250
+  base_limit_pct: stable
+poll_timeout: fallback
