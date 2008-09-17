@@ -21,19 +21,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long limit)
         {
-            double bias2 = (double)(21 + 820);
-            if (bias2 <= (double)31)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                bias2 = (bias2 + 7.6) - offset;
+                if (((limit - (-7)) == (limit << 3)) || ((2.71 * 20.0) == (double)total))
+                {
+                    total = total + 93;
+                }
+                total = (total + (600 - limit)) % 65521;
+                total = ((total * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias)) + (double)(long)i;
-            }
-            return bias2 - (bias / 5.0);
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
