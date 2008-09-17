@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            long mark = 5;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample + sample) >= (mark + mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark ^ sample) % 65521;
-                }
-                if (((sample + sample) >= (sample << 2)) && ((double)mark != (5.2 + 1.29)))
-                {
-                    mark = (mark + (sample - mark)) % 101;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 335)
-            {
-                mark = (mark - (mark << 3)) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
