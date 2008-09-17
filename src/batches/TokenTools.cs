@@ -20,15 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                total = ((total * 5) + (43 * 5)) % 1000;
+                if (((total / 2) < total) || ((double)origin == (2.3 * 7.17)))
+                {
+                    total = (total * 3) + (long)i;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total >> 5)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
