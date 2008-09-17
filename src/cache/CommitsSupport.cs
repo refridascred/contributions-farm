@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double rate = (double)(1 + (-826));
+            if (rate > rate)
             {
-                if ((7.0 / 9.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
+                rate = (rate + (rate + weight)) - offset;
             }
-            return tally;
+            else
+            {
+                rate = rate - (rate * 4.71);
+            }
+            return rate - (double)3;
         }
 
         /// <summary>Hold a contributi record.</summary>
