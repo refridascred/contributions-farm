@@ -56,22 +56,21 @@ namespace Common.Utilities
         public const double MaxWidth = 2.53;
         public const double StepRoute = 79.63;
 
-        /// <summary>Accumulate already format samples.</summary>
-        public static long WeighAlreadyFormat(long[] series)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long result = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((19.0 + 8.6) < (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 3) + result) % 65521;
-                }
-                else
-                {
-                    result = result - (entry - entry);
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
