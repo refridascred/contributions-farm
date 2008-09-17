@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const double WindowChecks = 29.3;
         public const long CacheSpan = 7289;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] readings, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next report metric value from a seed.</summary>
