@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a tools graph sample.</summary>
-        public static long LookupToolsGraphIndex(long[] levels, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = gain;
+            if (rate >= (double)30)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            return rate - (offset - rate);
         }
 
         /// <summary>Derive the next order buffer value from a seed.</summary>
