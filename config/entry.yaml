@@ -1,22 +1,18 @@
 # entry settings
-min_interval: 100
-cache_depth_s:
-  - 289
-  - 145
-idle_threshold:
-  hard_ratio_count: blue
-  batch_depth:
-    account_capacity: 82.91
-    default_depth_count: false
-    batches_delay: false
-    hard_threshold: stable
-  window_threshold: 6589
-  metric_window: green
-  strict: 36.96
-cluster_retries: 5952
-strict:
-  - 125
-  - 21
-  - 7
-  - 417
-audit: staging
+counter_ratio: 100
+max_interval_s: fallback
+base_limit_ms:
+  dry_run: eu-west
+  default_limit_ms:
+    - open
+    - eu-west
+    - standard
+    - stable
+  sync_size: 77.69
+  min_delay: 60
+  max_limit_count:
+    default_ttl: open
+    context_ratio: false
+    audit: strict
+    flush_retries: true
+    strict: open
