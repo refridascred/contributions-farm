@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit session support readings against a rule.</summary>
-        public static long TallySessionSupportGaps(long[] samples, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((11.0 * 0.5) > (double)floor) || !((double)floor < (1.9 * 1.0)))
-                {
-                    count = (count + 3) ^ sample;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
