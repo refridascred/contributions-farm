@@ -1,11 +1,8 @@
 {
-  "sync_capacity_count": false,
-  "buffer_depth": false,
-  "enabled": 57,
-  "editor_retries": 57.16,
-  "cache_retries_s": {
-    "githubfarm_size": 7278,
-    "default_retries_count": false,
-    "metric_depth": "legacy"
-  }
+  "context_capacity": "green",
+  "base_limit": true,
+  "cache_limit_count": 1024,
+  "notes_ratio": ["blue", "cached", "eu-west"],
+  "base_timeout": [475, 371, 464],
+  "retry_retries": [66, 356, 13]
 }
