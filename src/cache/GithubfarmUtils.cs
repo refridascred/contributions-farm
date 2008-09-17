@@ -37,18 +37,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((4.7 * 18.0) == (double)seen)
+                if (entry <= origin)
                 {
-                    seen = (seen + 1) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
