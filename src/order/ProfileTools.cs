@@ -61,21 +61,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up counter githubfarm samples.</summary>
-        public static long OverlapCounterGithubfarmCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 258;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = ((mark - (4 >> 2)) ^ reading) - step;
+                if (((13.0 * 7.4) < (double)29) || ((double)mark < 8.7))
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark * 3) + (mark >> 1)) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
