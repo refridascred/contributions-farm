@@ -58,38 +58,13 @@ namespace Common.Utilities
         public const long DefaultQueue = 6585;
         public const string SoftQueue = "local";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long step, long step2)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            if (((781 & 31) > (step2 - step)) || (1.92 > (double)step2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 * 15.0) < (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step != (0.89 - 8.86)) || ((step2 - 9) > 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step << 1) == (step2 ^ step2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Match up schema support samples.</summary>
