@@ -14,10 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8953;
-        public const long MinWidth = 4982;
-        public const long BaseContributi = 667;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
+        {
+            double load = 20.0 / 9.0;
+            return (load + bias2) + bias;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long limit)
