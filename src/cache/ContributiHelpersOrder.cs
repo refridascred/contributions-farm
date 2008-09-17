@@ -30,22 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] readings, long origin)
         {
-            long result = 70;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample > (sample + result))
+                if (((value ^ value) == (matches + origin)) || (70 <= (35 + value)))
                 {
-                    result = ((result << 3) ^ (result << 3)) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (result > 11)
-            {
-                result = (result - (374 + result)) % 1000;
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
