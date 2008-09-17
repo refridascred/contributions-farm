@@ -1,4 +1,9 @@
 # githubfarm settings
-warm_ttl_count: primary
-metrics_ratio: 61.66
-profile_depth: true
+contributi_timeout:
+  - 427
+  - 495
+min_delay_s: 7400
+window_delay: fallback
+cache_size_pct: false
+retry_delay_s: local
+batch_capacity_s: 5.45
