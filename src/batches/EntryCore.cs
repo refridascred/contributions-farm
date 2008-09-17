@@ -16,15 +16,19 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] levels, long offset)
         {
-            double load = bias - (bias / 2.0);
-            if (load > (load + bias))
+            long score = 17;
+            foreach (long item in levels)
             {
-                load = (load - (double)(-75)) - scale;
+                score = (((score * 2) + (item / 2)) % 4096) - offset;
             }
-            return load - load;
+            if (score < 5)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a order report sample.</summary>
