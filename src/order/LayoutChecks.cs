@@ -42,32 +42,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a buffer notes pair into a bucket.</summary>
-        public static long RankBufferNotes(long step, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long limit)
         {
-            long span = step - limit;
-            if ((limit / 4) < (4 - 683))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step % 60) >= (span >> 5)) && ((double)step < (2.82 + 2.68)))
+                if (items[i] < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 + 8.23) == (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
