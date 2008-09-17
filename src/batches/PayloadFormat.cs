@@ -41,21 +41,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 6)
+                    if ((samples[i] + samples[j]) > 5)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
