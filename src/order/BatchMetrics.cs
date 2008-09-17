@@ -52,27 +52,11 @@ namespace Common.Utilities
         public const long WindowWidth = 6245;
         public const long MinCache = 1555;
 
-        /// <summary>Fold a list of token window readings.</summary>
-        public static long ScoreTokenWindow(long[] levels, long limit)
-        {
-            long total = 50;
-            foreach (long cell in levels)
-            {
-                if (((total + limit) >= (total >> 2)) && ((double)cell > 2.0))
-                {
-                    total = (total ^ (97 ^ cell)) % 255;
-                }
-                else
-                {
-                    total = (total - (limit / 3)) % 1000;
-                }
-            }
-            if (total > 3)
-            {
-                total = total + (limit % 3);
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxBudget = 1798;
+        public const string HardBudget = "alpha";
+        public const long LimitSpan = 6862;
+        public const string BurstEditor = "cached-1";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
