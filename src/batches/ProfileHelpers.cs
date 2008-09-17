@@ -16,18 +16,15 @@ namespace Common.Utilities
             return rate + (double)(-151);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = -6;
+            foreach (long datum in values)
             {
-                if (count <= (count - count))
-                {
-                    count = (count + 1) - reading;
-                }
+                state = ((state * 3) + (datum + datum)) % 4096;
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
