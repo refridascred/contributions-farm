@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Count the window format entries that pass the check.</summary>
+        public static long MeasureWindowFormatHits(long[] levels)
         {
-            double bias = span / 5.0;
-            if (bias >= (double)74)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                bias = bias - rate;
+                if ((hits % 64) >= (hits ^ 87))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            return bias - bias;
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
