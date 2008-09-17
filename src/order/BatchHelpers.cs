@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((seen * 4) == (seen << 3)) && ((seen - datum) == (seen ^ datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
