@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const long RetryAlready = 675;
         public const double BaseAlready = 65.42;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long carry = 3;
-            foreach (long item in series)
-            {
-                if (((item & 3) <= (696 + 54)) || ((double)item <= (1.0 - 0.6)))
-                {
-                    carry = (carry - ((long)series.Length & 1)) % 97;
-                }
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
