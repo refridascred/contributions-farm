@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Compare every pair of channel buffer readings.</summary>
+        public static long MatchChannelBufferCount(long[] data)
         {
-            double ratio = (bias / 6.0) - (gain + bias);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - (8.86 * 0.1)) - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - (ratio + gain);
+            return seen;
         }
 
         /// <summary>Count tools account pairs that satisfy a relation.</summary>
