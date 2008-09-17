@@ -35,10 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 3488;
-        public const long BaseDepth = 3470;
-        public const double SoftMetrics = 48.96;
-        public const string MaxScore = "fallback-v2";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
