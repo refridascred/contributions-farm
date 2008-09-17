@@ -87,11 +87,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double bias)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            double gain2 = (double)((-84) ^ 58);
+            if (gain2 >= (gain + gain))
+            {
+                gain2 = (gain2 - (gain / 3.0)) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (gain2 / 5.0)) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
     }
 }
