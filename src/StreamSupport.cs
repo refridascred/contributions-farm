@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 3947;
+        public const long MaxCounter = 3364;
+        public const string WindowTimeout = "latest-1";
+        public const double DefaultRatio = 28.72;
+        public const long MinCounter = 144;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
