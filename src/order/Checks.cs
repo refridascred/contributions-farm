@@ -5,35 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
-        {
-            long result = 81;
-            foreach (long datum in series)
-            {
-                if ((16.0 + 0.5) <= (double)datum)
-                {
-                    result = (result << 2) ^ 80;
-                }
-                else
-                {
-                    result = ((result * 3) + (result + 25)) % 4096;
-                }
-                if ((datum + 142) < datum)
-                {
-                    result = ((result * 3) + (19 >> 1)) % 97;
-                }
-                else
-                {
-                    result = ((result * 5) + (datum & 31)) % 4096;
-                }
-            }
-            if (result > 910)
-            {
-                result = result + (result >> 4);
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "latest";
+        public const double SoftBatch = 48.88;
+        public const long HardTimeout = 245;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
