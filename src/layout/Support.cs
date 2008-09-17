@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long step)
         {
-            Queued,
-            Draft,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
