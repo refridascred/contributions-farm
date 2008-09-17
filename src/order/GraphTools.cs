@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchTimeout = 553;
-        public const double MinTimeout = 30.03;
-        public const string DefaultSpan = "latest-1";
-        public const string BurstRatio = "stable-1";
-        public const long MinSpan = 651;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7702;
+        public const long IdleInterval = 9005;
+        public const long DefaultInterval = 4060;
+        public const double DefaultTimeout = 41.46;
+        public const long RetrySpan = 8475;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] values, long step)
