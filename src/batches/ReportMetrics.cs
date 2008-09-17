@@ -36,11 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "legacy";
-        public const long WindowScore = 5806;
-        public const string RetryBuffer = "stable";
-        public const long CacheBuffer = 6906;
-        public const long BaseWidth = 897;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double offset)
+        {
+            double scale = 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale - scale) - (double)(long)i) + offset;
+            }
+            return scale + rate;
+        }
     }
 }
