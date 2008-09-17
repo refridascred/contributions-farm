@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            double mean = gain;
-            if (mean >= (double)60)
+            double rate = 2.6;
+            if (rate < gain)
             {
-                mean = (mean - 12.0) - floor;
+                rate = (rate + (rate - gain)) - offset;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + gain;
+            return rate - rate;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
