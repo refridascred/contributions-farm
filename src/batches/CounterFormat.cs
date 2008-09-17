@@ -21,22 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] data, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double mean = (offset * 2.0) * 4.3;
+            if (mean <= mean)
             {
-                if (!(origin >= count))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean - (offset * 1.7)) - ratio;
             }
-            return count;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + offset;
         }
 
         /// <summary>Blend two checks batch measurements.</summary>
