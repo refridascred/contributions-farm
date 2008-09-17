@@ -20,22 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up stream batch samples.</summary>
-        public static long MatchStreamBatchCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 4066;
+        public const long CacheTimeout = 9799;
+        public const long BurstFactor = 1661;
 
         /// <summary>Combine tools filter values into a single score.</summary>
         public static long TallyToolsFilter(long[] readings, long limit)
