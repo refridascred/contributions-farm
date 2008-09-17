@@ -52,11 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of record entries.</summary>
