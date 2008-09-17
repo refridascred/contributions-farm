@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state + ((long)i2 / 6)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 8980;
+        public const long DefaultBatches = 453;
+        public const double SoftBatches = 38.77;
+        public const double RetrySize = 14.82;
+        public const long MaxLevel = 6045;
 
         /// <summary>Roll a stats already counter forward.</summary>
         public static long RollStatsAlready(long target)
