@@ -34,23 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values, long limit)
         {
-            long mark = 10;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mark = (mark - (mark ^ mark)) % 4096;
-                if (reading > (9 - reading))
+                if (((7.63 - 9.0) <= (double)value) && (((limit + tally) > 0) && ((95 + 3) != (value + 19))))
                 {
-                    mark = ((mark * 3) + (reading >> 3)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (reading % 64)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
