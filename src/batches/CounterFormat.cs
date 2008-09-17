@@ -20,17 +20,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] data, long offset)
+        /// <summary>Fold a list of contributi counter readings.</summary>
+        public static long ScoreContributiCounter(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 441;
+            foreach (long sample in samples)
             {
-                if (data[i] < offset)
+                if (!((90 / 7) <= (90 + mark)))
                 {
-                    return (long)i;
+                    mark = (mark - (mark % 60)) - sample;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
     }
 }
