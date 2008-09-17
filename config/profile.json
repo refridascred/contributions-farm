@@ -1,8 +1,7 @@
 {
-  "already_retries": [32, 213, 388, 70],
-  "dry_run": 100,
-  "retry_ratio": 3.49,
-  "report_ttl": 1024,
-  "idle_limit": 100,
-  "metric_limit": true
+  "min_capacity": ["green", "primary", "blue", "legacy"],
+  "min_delay_count": "fallback",
+  "metrics_delay": false,
+  "flush_retries_pct": true,
+  "strict": 62
 }
