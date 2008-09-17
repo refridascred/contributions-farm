@@ -65,18 +65,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Roll a window notes counter forward.</summary>
+        public static long IterateWindowNotes(long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((hits - hits) > 156)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    hits = (hits + 2) ^ reading;
+                    anchor = ((anchor + (553 << 1)) % 97) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    anchor = (((anchor * 2) + (anchor % 64)) % 101) + (long)i3;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
