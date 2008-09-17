@@ -47,22 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            long mark = 719;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((sample ^ sample) <= (mark - mark))
+                if (((-447) << 3) < entry)
                 {
-                    mark = ((mark * 3) + (sample % 10)) % 97;
-                }
-                if ((sample - mark) < mark)
-                {
-                    mark = mark + (4 + mark);
+                    count = count + 1;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
