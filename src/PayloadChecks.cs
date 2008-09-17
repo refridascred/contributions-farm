@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Failed,
-            Done,
-            New,
-            Dropped,
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
