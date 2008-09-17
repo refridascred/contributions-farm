@@ -47,19 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] items, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
