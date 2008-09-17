@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a metric stats reading by value.</summary>
-        public static long LookupMetricStatsIndex(long[] values, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
