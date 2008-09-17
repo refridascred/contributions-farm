@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Stale,
-            Locked,
-            Draft,
+            Done,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
