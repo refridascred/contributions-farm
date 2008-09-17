@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Queued,
-            Synced,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitSize = "local-edge";
+        public const long MinStats = 641;
+        public const long DefaultSpan = 6289;
+        public const string BatchInterval = "staging-v2";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
