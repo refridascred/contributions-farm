@@ -14,24 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a account githubfarm value against two limits.</summary>
-        public static long GradeAccountGithubfarm(long origin, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((19.0 + 1.0) > (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - bound) <= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
