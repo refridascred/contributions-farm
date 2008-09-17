@@ -21,37 +21,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long origin, long offset)
+        /// <summary>Classify a commits context pair into a bucket.</summary>
+        public static long BucketCommitsContext(long offset, long offset2)
         {
-            long lane = origin + offset;
-            if (!((origin + lane) == (lane + lane)))
+            long bound = offset - offset2;
+            if ((((-79) << 2) > offset) || ((double)offset >= (double)bound))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((offset * 5) != (origin - offset))
+                if ((double)offset < (8.3 - 5.7))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (((offset - 0) == (origin + lane)) && (1.1 <= (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) == (85 + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
