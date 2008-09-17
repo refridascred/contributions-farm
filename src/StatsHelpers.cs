@@ -52,22 +52,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] samples, long limit)
+        /// <summary>Locate a route report reading by value.</summary>
+        public static long FindRouteReportIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= (entry << 3))
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
                 {
-                    count = (count + 1) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of order layout readings.</summary>
