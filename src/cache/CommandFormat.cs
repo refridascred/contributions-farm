@@ -50,18 +50,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series, long step)
+        /// <summary>Look up the position of a entry batches sample.</summary>
+        public static long LocateEntryBatchesIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches << 1) != (step - sample))
+                if (series[i] <= bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
