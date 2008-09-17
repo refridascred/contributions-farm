@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two context order measurements.</summary>
-        public static double ProjectContextOrder(double ratio, double floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double drift = ratio / 5.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (floor - floor);
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
