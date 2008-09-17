@@ -1,20 +1,9 @@
 # githubfarm settings
-max_threshold_ms:
-  token_retries: open
-  persist: true
-  soft_interval_s: true
-  dry_run: 8641
-  route_depth:
-    context_limit:
-      - primary
-      - blue
-      - staging
-    enabled: legacy
-    burst_retries: blue
-    githubfarm_depth: 29.6
-    queue_limit: 69
-verbose: 500
-soft_threshold: 5327
-poll_ttl_pct: 1024
-compress: latest
-retry_interval: 1024
+filter_delay: fallback
+retry_ratio:
+  - local
+  - staging
+  - strict
+  - cached
+batch_window_pct: 1.27
+cache_size: 2471
