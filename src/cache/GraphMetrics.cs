@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryScore = 8973;
-        public const string BaseRatio = "latest-v2";
-        public const string RetryBatches = "standard-edge";
-        public const long RetryCount = 2302;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((753 + value) <= (-6))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
