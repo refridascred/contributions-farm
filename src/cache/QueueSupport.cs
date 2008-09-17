@@ -29,9 +29,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleSize = 39.05;
-        public const long DefaultRoute = 7108;
-        public const long CacheSpan = 9562;
+        /// <summary>Iterate the session checks series from a seed.</summary>
+        public static long SeriesSessionChecks(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result - step;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
