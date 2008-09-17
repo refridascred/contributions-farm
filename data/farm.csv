@@ -1,11 +1,6 @@
-id,token,ratio,score
-1,238,268,338
-2,130,993,486
-3,2.9,95,71.86
-4,139,521,strict
-5,737,local,open
-6,306,560,310
-7,25.72,540,fallback
-8,strict,999,standard
-9,43.26,legacy,32.92
-10,422,fallback,12.6
+id,weight,ratio
+1,526,primary
+2,84.63,273
+3,fallback,99.0
+4,23.92,local
+5,green,39.85
