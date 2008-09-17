@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepScore = 209;
-        public const long SoftFilter = 3426;
-        public const long LimitFilter = 3064;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchDepth = 48.29;
+        public const string BurstFormat = "fallback-v2";
+        public const string BaseFormat = "legacy-1";
 
         /// <summary>Accumulate route samples.</summary>
         public static long WeighRoute(long[] levels, long seed)
