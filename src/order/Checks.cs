@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
             public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
