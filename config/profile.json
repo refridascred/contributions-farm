@@ -1,5 +1,22 @@
 {
-  "strict": "edge",
-  "warm_timeout_s": 1024,
-  "dry_run": 53.0
+  "verbose": 1056,
+  "default_retries_ms": {
+    "metrics_window": 1134,
+    "batch_delay_s": {
+      "poll_capacity_pct": 9837,
+      "tools_depth": 9,
+      "command_threshold": "blue"
+    },
+    "retry_ttl_count": 65.78,
+    "max_interval": "green",
+    "cache_delay": 60
+  },
+  "default_threshold_ms": 4707,
+  "contributi_retries": "latest",
+  "soft_capacity": "latest",
+  "batch_size_ms": {
+    "layout_interval": 100,
+    "base_ttl": true,
+    "session_threshold": 90.0
+  }
 }
