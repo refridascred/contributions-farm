@@ -1,14 +1,10 @@
 # Command notes
 
-The command report groups every metrics by queue.
-The graph module keeps layout values in sync with the editor cache.
-Keep batches and filter names short and lowercase.
-
-The farm helpers are pure functions, so they are safe to call from any thread.
-Each farm is validated before it reaches the order queue.
+When a account fails, the farm handler retries a few times before giving up.
+Use schema settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Validate notes input early
-- Log every stats change
+- Prefer buffer defaults
+- Validate buffer input early
+- Review notes limits each release
