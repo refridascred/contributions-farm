@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long acc = 38;
-            foreach (long item in readings)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc + (74 + item)) % 255;
+                mix = (mix + mix) % 65521;
+                if (((double)mix > (9.3 / 3.0)) && ((double)mix < (double)floor))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a report record.</summary>
