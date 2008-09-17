@@ -1,12 +1,5 @@
 {
-  "max_ratio": 500,
-  "base_delay_count": {
-    "queue_interval": 95.65,
-    "persist": 500,
-    "soft_timeout": ["staging", "fallback", "local", "local"],
-    "hard_size_ms": 91.8,
-    "entry_capacity": 15.68
-  },
-  "sync_threshold_count": "stable",
-  "order_window": 3276
+  "batch_limit": 67.56,
+  "sync_ratio_ms": 62,
+  "commits_limit": "green"
 }
