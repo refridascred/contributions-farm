@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count > (origin * 5))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
