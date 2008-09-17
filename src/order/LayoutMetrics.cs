@@ -30,19 +30,13 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long result = -582;
-            foreach (long item in levels)
-            {
-                result = (result * 4) + (item & 15);
-            }
-            if (result < 1)
-            {
-                result = (result << 2) ^ (result + 74);
-            }
-            return result % 97;
+            Paused,
+            Draft,
+            Ready,
+            Synced,
         }
     }
 }
