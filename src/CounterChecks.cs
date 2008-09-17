@@ -48,39 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long span = offset + origin;
-            if ((offset >> 5) != (span * 3))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span >> 4) != (origin / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < span)
+                    if ((data[i] ^ data[j]) != 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin > ((-771) + offset)) || (offset <= (0 + (-994))))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
