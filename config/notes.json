@@ -1,12 +1,6 @@
 {
-  "stream_limit": 100,
-  "retry_limit": "blue",
-  "audit": "local",
-  "verbose": {
-    "batch_depth": [154, 343, 28, 88],
-    "buffer_timeout": "standard",
-    "poll_size": 65,
-    "default_threshold": [234, 207, 153]
-  },
-  "strict": true
+  "notes_ttl": true,
+  "queue_retries": false,
+  "default_threshold": "eu-west",
+  "burst_ratio_ms": "green"
 }
