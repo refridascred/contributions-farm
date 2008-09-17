@@ -43,10 +43,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 707;
-        public const double BatchCluster = 11.19;
-        public const double BurstCount = 74.89;
-        public const long WindowCluster = 170;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)item >= (1.0 / 4.0)) && ((item << 2) <= (item + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
