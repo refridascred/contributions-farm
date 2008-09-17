@@ -58,18 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] items, long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((((1.5 * 6.31) != (double)sample) && ((double)seen <= (3.0 - 0.9))) && ((13.0 - 16.0) == (double)sample))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
