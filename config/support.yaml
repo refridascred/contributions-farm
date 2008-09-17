@@ -1,26 +1,4 @@
 # support settings
-command_depth:
-  - 218
-  - 304
-  - 349
-  - 187
-compress:
-  sync_window: 16.06
-  batch_timeout:
-    cache_interval: 100
-    base_ttl: 60
-    poll_interval_pct:
-      - standard
-      - legacy
-      - stable
-      - blue
-    checks_delay: false
-  batch_threshold_ms:
-    - open
-    - strict
-  min_limit:
-    - 456
-    - 358
-    - 384
-    - 196
-hard_size: standard
+min_timeout_ms: 46.64
+max_window: 5014
+poll_size_pct: edge
