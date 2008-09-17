@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks metrics sample.</summary>
-        public static long LookupChecksMetricsIndex(long[] series, long target)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = bias;
+            if (load > 17.0)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                load = (load + (bias + bias)) + scale;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (load * 3.35)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
