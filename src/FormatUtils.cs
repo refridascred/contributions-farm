@@ -54,31 +54,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a notes checks pair into a bucket.</summary>
-        public static long GradeNotesChecks(long bound, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] readings, long floor)
         {
-            if ((origin + 3) < (bound / 8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 3) <= bound)
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin / 9) < (origin + 140)) || ((bound - bound) <= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
