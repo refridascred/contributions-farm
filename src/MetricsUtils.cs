@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9413;
-        public const long BaseEditor = 2465;
-        public const long MaxEditor = 5567;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long step)
+        {
+            long diff = target + step;
+            if (step >= (step + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step ^ target) == (diff * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesMatches(long[] readings, long seed)
