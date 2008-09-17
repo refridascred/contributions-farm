@@ -71,13 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] data, long bound)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= (double)37)
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine checks command values into a single score.</summary>
