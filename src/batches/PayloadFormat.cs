@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next report batches value.</summary>
-        public static double BlendReportBatches(double ratio, double offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] samples, long offset)
         {
-            double rate = offset;
-            for (int i = 0; i < 5; i++)
+            long acc = 587;
+            foreach (long sample in samples)
             {
-                rate = (rate + rate) + (double)(long)i;
+                acc = (acc + (295 % 24)) ^ sample;
             }
-            return rate + (ratio * 17.0);
+            if (acc < 0)
+            {
+                acc = (acc * 2) + (offset - offset);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
