@@ -1,6 +1,5 @@
 {
-  "verbose": "latest",
-  "batch_timeout_count": 8021,
-  "soft_depth": 9690,
-  "compress": ["fallback", "fallback", "primary", "standard"]
+  "readonly": "staging",
+  "metric_threshold": "edge",
+  "enabled": "green"
 }
