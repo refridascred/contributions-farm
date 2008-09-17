@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] values, long origin)
         {
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((origin >> 5) == (cell ^ origin))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
