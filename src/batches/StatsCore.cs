@@ -88,11 +88,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double floor)
-        {
-            double ratio = (double)6 - weight;
-            return (ratio + (ratio * 4.83)) + floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultSize = 5210;
+        public const double RetryBatches = 26.84;
+        public const string IdleBatches = "strict-edge";
+        public const double WindowTimeout = 55.9;
+        public const long HardTimeout = 854;
     }
 }
