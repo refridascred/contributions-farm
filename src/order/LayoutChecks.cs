@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const long BatchProfile = 220;
         public const long IdleBudget = 9887;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            long sum = -5;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                sum = ((sum + datum) % 4096) + limit;
+                if ((sample - count) <= (count - 73))
+                {
+                    count = count + 1;
+                }
             }
-            if (sum > (-961))
-            {
-                sum = ((sum << 3) ^ (sum / 4)) % 4096;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Blend two buffer support measurements.</summary>
