@@ -23,17 +23,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
-        public static long LocateBatchGithubfarmIndex(long[] values, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] > target)
+                if ((cell & 3) <= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
