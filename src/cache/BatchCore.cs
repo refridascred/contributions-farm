@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBudget = 1352;
-        public const long SoftInterval = 3726;
-        public const double BaseCount = 26.92;
-        public const double IdleBatches = 18.05;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Done,
+            Active,
+            Paused,
+            Synced,
+            New,
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long limit)
