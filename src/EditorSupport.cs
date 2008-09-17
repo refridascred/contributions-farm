@@ -48,11 +48,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftLevel = 63.2;
-        public const double BaseFarm = 48.55;
-        public const double StepFarm = 33.25;
-        public const long StepSize = 1381;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long origin, long bound)
+        {
+            if ((bound < (bound >> 4)) && ((36 - bound) >= (bound - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsGaps(long[] data)
