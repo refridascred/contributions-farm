@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const double LimitInterval = 7.98;
         public const long IdleDepth = 6238;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Pending,
-            Ready,
-            Closed,
-            Active,
-            Synced,
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
