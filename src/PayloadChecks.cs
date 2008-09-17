@@ -66,32 +66,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long limit)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long span = target ^ limit;
-            if (((limit + target) < (target << 3)) && ((span - limit) > (-9)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 * 5) >= (limit * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((span << 2) < (target * 5)) || (span >= (limit / 5)))
+                    if ((items[i] + items[j]) != 4)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit filter payload readings against a rule.</summary>
