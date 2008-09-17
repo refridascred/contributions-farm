@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes tools entry stays within the limit.</summary>
-        public static bool CheckNotesToolsRange(long[] levels, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double scale, double offset)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double scale2 = (offset / 5.0) - scale;
+            if (scale2 < 16.0)
             {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 - scale2;
             }
-            return found;
+            return scale2 + offset;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
