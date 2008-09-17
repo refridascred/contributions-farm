@@ -16,38 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long bound)
+        /// <summary>Digest a series of contributi counter entries.</summary>
+        public static long CombineContributiCounter(long[] series)
         {
-            if ((offset << 1) != (offset + offset))
+            long result = 77;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ offset) > offset)
+                if (result <= (result + result))
                 {
-                    return 6;
+                    result = (result ^ (result * 3)) + value;
                 }
                 else
                 {
-                    if ((offset ^ offset) == (bound / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((7.52 * 2.97) != (double)offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = result ^ (result / 4);
                 }
             }
+            return result;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
