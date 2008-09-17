@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit batches route readings against a rule.</summary>
-        public static long AuditBatchesRouteMatches(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double bias = span / 5.0;
+            if (bias >= (double)74)
             {
-                if ((count + count) <= (count + item))
-                {
-                    count = count + 3;
-                }
+                bias = bias - rate;
             }
-            return count;
+            return bias - bias;
         }
 
         /// <summary>Roll a record counter forward.</summary>
