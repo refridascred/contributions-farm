@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "local-v2";
+        public const long MinInterval = 546;
+        public const long DefaultRecord = 1552;
+        public const string BatchRatio = "latest-v2";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long SeriesStats(long floor)
