@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next filter entry value from a seed.</summary>
-        public static long SeriesFilterEntry(long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = carry + ((long)i + offset);
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
