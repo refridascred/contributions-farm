@@ -13,12 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinTimeout = "open-1";
-        public const double RetryFactor = 20.1;
-        public const long BatchContributi = 1476;
-        public const long IdleContributi = 7732;
-        public const long SoftContributi = 6825;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowHits(long[] levels)
