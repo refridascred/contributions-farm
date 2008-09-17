@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many account batch samples are out of range.</summary>
-        public static long TallyAccountBatchHits(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long diff = limit - target;
+            if (!(target >= (63 >> 4)))
             {
-                if (count < sample)
+                return 4;
+            }
+            else
+            {
+                if ((0.4 / 3.0) > (double)diff)
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
