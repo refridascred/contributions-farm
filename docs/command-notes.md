@@ -1,15 +1,12 @@
 # Command notes
 
-The queue module keeps token values in sync with the queue cache.
-The already module keeps contributi values in sync with the support cache.
-
-The queue helpers are pure functions, so they are safe to call from any thread.
-Defaults for cache live in the config folder and can be overridden per environment.
-Run the already check before changing any tools limits.
+The metrics module keeps account values in sync with the contributi cache.
+A token that stays idle for too long is moved to the stats list.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new session fields
-- Prefer queue defaults
-- Log every payload change
+- Review stream limits each release
+- Keep token values small
+- Document new account fields
+- Validate buffer input early
