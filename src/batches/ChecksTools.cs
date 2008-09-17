@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long slot = seed - bound;
-            if (((-4) >= (slot * 5)) && ((seed ^ bound) >= (seed * 2)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed == (18.0 / 8.0)) && ((double)seed > 3.5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (double)858)
+                    if ((data[i] ^ data[j]) != 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - slot) < (slot + 32))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
