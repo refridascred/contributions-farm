@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long WindowChecks = 8185;
         public const long StepInterval = 6513;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] series, long floor)
         {
-            Failed,
-            New,
-            Dropped,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (floor >= (count + (-2)))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
