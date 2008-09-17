@@ -1,6 +1,5 @@
 {
-  "batch_delay_pct": "standard",
-  "contributi_ttl": "legacy",
-  "compress": "standard",
-  "strict": "open"
+  "cache_delay": 11,
+  "persist": 46.63,
+  "default_limit_pct": false
 }
