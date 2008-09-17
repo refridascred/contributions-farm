@@ -1,10 +1,9 @@
 # githubfarm settings
-hard_depth_pct: edge
-retry_window: legacy
-record_delay:
-  - staging
-  - open
-profile_delay:
-  - 170
-  - 8
-  - 447
+readonly:
+  - 35
+  - 309
+  - 64
+graph_timeout: 1905
+route_interval:
+  - 144
+  - 99
