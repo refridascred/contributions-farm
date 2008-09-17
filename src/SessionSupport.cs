@@ -31,22 +31,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate filter githubfarm samples.</summary>
-        public static long WeighFilterGithubfarm(long[] data, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long anchor = -45;
-            foreach (long cell in data)
+            long result = 33;
+            foreach (long reading in levels)
             {
-                if ((double)anchor != (10.0 - 13.0))
+                if (!((5 & 255) < (reading - result)))
                 {
-                    anchor = (anchor + (cell - (long)data.Length)) % 4096;
+                    result = (result ^ result) % 97;
                 }
-                if ((cell > 753) && ((origin - 44) == (origin / 2)))
+                else
                 {
-                    anchor = anchor + (origin * 2);
+                    result = (result * 2) + (29 / 9);
                 }
             }
-            return anchor % 65521;
+            if (result > 785)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result;
         }
     }
 }
