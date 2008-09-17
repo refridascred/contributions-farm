@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Done,
-            Failed,
-            Ready,
-            Dropped,
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
