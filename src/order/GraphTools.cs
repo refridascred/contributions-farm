@@ -14,26 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            long acc = 54;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample / 6) == (sample << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + (acc ^ sample)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc * 5)) % 101;
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 66)
-            {
-                acc = ((acc * 4) + (acc + acc)) % 97;
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
