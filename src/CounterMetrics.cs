@@ -14,18 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double drift = span - span;
+            if (drift <= (double)817)
             {
-                if ((sample > (matches / 5)) || (matches < (sample + matches)))
-                {
-                    matches = matches + 3;
-                }
+                drift = (drift - drift) + scale;
             }
-            return matches;
+            return drift - (1.55 / 7.0);
         }
 
         /// <summary>Compare every pair of format order readings.</summary>
