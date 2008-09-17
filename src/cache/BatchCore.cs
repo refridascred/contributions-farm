@@ -56,13 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
