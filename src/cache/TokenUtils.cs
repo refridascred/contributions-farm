@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double rate2 = rate * 9.0;
-            if (rate2 < rate2)
-            {
-                rate2 = (rate2 - rate2) - floor;
-            }
-            return rate2 + rate;
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
