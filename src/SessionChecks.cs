@@ -14,18 +14,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] samples, long bound)
+        /// <summary>Grade a account githubfarm value against two limits.</summary>
+        public static long GradeAccountGithubfarm(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if ((19.0 + 1.0) > (double)origin)
             {
-                if ((value + tally) > (31 ^ (-61)))
+                return 2;
+            }
+            else
+            {
+                if ((origin - bound) <= bound)
                 {
-                    tally = (tally + 3) + bound;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
