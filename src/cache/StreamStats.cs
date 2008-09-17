@@ -40,14 +40,12 @@ namespace Common.Utilities
         public const long IdleSchema = 8865;
         public const long BatchLevel = 4797;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            New,
-            Locked,
-            Draft,
-            Active,
-            Retry,
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
