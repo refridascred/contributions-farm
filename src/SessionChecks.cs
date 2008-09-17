@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] data, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
