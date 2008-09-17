@@ -67,22 +67,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry <= (entry & 1))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
