@@ -27,38 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches cluster pair into a bucket.</summary>
-        public static long SortBatchesCluster(long seed, long bound)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            if ((double)bound == (7.0 / 5.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 3) <= (bound >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) < (seed << 2))
+                    if ((values[i] - values[j]) != 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(seed <= 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
