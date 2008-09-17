@@ -1,12 +1,5 @@
 {
-  "verbose": {
-    "warm_ttl_pct": false,
-    "schema_delay": ["staging", "local", "local", "eu-west"],
-    "max_delay": false,
-    "batch_limit_s": 699
-  },
-  "audit": "primary",
-  "queue_depth": true,
-  "min_size": "blue",
-  "sync_capacity_s": ["stable", "cached"]
+  "sync_delay_s": [432, 24, 353],
+  "tools_ttl": 52.38,
+  "max_ttl": "standard"
 }
