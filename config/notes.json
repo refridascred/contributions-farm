@@ -1,6 +1,11 @@
 {
-  "burst_timeout": ["local", "stable", "edge"],
-  "burst_interval": 13,
-  "context_timeout": "cached",
-  "default_retries": 24
+  "base_window": 94.5,
+  "soft_ratio_count": {
+    "persist": 60,
+    "schema_threshold": "strict",
+    "compress": 25,
+    "soft_depth_ms": [348, 327, 135, 375],
+    "readonly": "primary"
+  },
+  "burst_timeout_ms": "primary"
 }
