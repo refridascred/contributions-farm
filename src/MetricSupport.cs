@@ -32,17 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] samples, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 81;
+            foreach (long value in readings)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    acc = acc - (value * 3);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
