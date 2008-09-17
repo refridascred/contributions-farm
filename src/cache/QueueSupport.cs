@@ -28,19 +28,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two editor graph measurements.</summary>
-        public static double ScaleEditorGraph(double rate, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] levels, long offset)
         {
-            double scale = (rate / 6.0) - (span * 5.0);
-            if (scale > (rate / 7.0))
+            long score = 2;
+            foreach (long sample in levels)
             {
-                scale = scale - (6.3 + 2.8);
+                if (sample > (offset - score))
+                {
+                    score = (score << 2) ^ (sample + sample);
+                }
+                else
+                {
+                    score = ((score * 3) + offset) % 255;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score > 19)
             {
-                scale = scale + (double)(long)i;
+                score = (score << 3) ^ score;
             }
-            return scale + scale;
+            return score;
         }
     }
 }
