@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 7) <= (seed + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
