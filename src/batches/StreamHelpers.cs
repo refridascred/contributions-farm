@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry == (18.0 - 3.22))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next queue already value.</summary>
