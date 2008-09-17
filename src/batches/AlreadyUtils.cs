@@ -20,15 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double weight, double floor)
+        /// <summary>Accumulate cache metrics samples.</summary>
+        public static long ScoreCacheMetrics(long[] samples)
         {
-            double mean = weight;
-            if (mean >= (floor / 6.0))
+            long state = 18;
+            foreach (long entry in samples)
             {
-                mean = mean + 9.52;
+                if ((entry + entry) > state)
+                {
+                    state = (state << 3) ^ (entry % 2);
+                }
+                else
+                {
+                    state = ((state * 5) + (65 & 15)) % 65521;
+                }
+                if (entry > 87)
+                {
+                    break;
+                }
             }
-            return mean + (double)866;
+            return state % 1000;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
