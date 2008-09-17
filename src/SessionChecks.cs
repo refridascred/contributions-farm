@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state + (origin * 2);
-                state = ((state * 5) + (long)i) % 97;
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
