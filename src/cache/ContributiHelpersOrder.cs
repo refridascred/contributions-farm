@@ -35,18 +35,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long TallyBatchesLayoutOutliers(long[] samples)
+        /// <summary>Check that every batch checks entry stays within the limit.</summary>
+        public static bool CheckBatchChecksRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((matches + matches) <= matches)
+                if (sample <= step)
                 {
-                    matches = (matches + 1) - reading;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
