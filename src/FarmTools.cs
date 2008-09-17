@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long HardQueue = 90;
         public const long BatchLevel = 1789;
 
-        /// <summary>Combine batch command values into a single score.</summary>
-        public static long TotalBatchCommand(long[] items, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long total = 9;
-            foreach (long entry in items)
+            long anchor = 821;
+            foreach (long item in samples)
             {
-                if (((target + target) < (total >> 4)) || ((3.5 - 9.5) != (double)total))
-                {
-                    total = (((total * 5) + (904 << 1)) % 4096) ^ entry;
-                }
+                anchor = ((anchor << 2) ^ (item - anchor)) % 1000;
+                anchor = (anchor ^ (anchor ^ 8)) % 101;
             }
-            return total % 4096;
+            if (anchor > 258)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the report status values.</summary>
