@@ -1,5 +1,19 @@
 # entry settings
-retry_threshold: 1397
-session_timeout: true
-cluster_size: 67
-base_ratio: true
+filter_window:
+  - 253
+  - 328
+flush_threshold_count: cached
+soft_ttl:
+  - strict
+  - open
+  - staging
+  - blue
+support_size: legacy
+already_ttl:
+  - 254
+  - 64
+  - 375
+  - 285
+retry_interval_ms:
+  - fallback
+  - stable
