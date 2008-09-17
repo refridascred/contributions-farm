@@ -30,17 +30,23 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] < origin)
+                if ((long)i < acc)
                 {
-                    return (long)i;
+                    acc = acc ^ ((long)i & 255);
                 }
+                else
+                {
+                    acc = acc + (target / 5);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
