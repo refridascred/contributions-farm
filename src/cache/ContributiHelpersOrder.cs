@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long BurstContributi = 6986;
         public const long BurstLevel = 244;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 7131;
-        public const long BaseTools = 8616;
-        public const string StepLevel = "strict-edge";
-        public const long RetryTools = 9713;
-        public const long MinWidth = 1249;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples, long bound)
+        {
+            long mix = 26;
+            foreach (long item in samples)
+            {
+                if ((mix + mix) <= (item * 3))
+                {
+                    mix = ((mix + mix) % 4096) + bound;
+                }
+            }
+            return mix % 4096;
+        }
     }
 }
