@@ -1,8 +1,12 @@
 # githubfarm settings
-stats_delay:
-  - 223
-  - 460
-  - 283
-  - 95
-max_limit_pct: 250
-verbose: cached
+cache_limit_count:
+  - cached
+  - eu-west
+compress: true
+readonly: edge
+idle_interval_count:
+  - eu-west
+  - green
+  - latest
+default_delay: 100
+persist: true
