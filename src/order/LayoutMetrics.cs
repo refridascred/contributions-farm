@@ -28,24 +28,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine batch queue values into a single score.</summary>
-        public static long CombineBatchQueue(long[] samples, long origin)
+        /// <summary>Project the next already payload value.</summary>
+        public static double BlendAlreadyPayload(double rate, double span)
         {
-            long state = 804;
-            foreach (long reading in samples)
+            double weight = span;
+            if (weight > (weight / 4.0))
             {
-                state = (state - (reading ^ (long)samples.Length)) % 1000;
-                state = (state - (long)samples.Length) % 65521;
-                if ((62 >= (state % 24)) && ((6.61 + 8.0) <= (double)state))
-                {
-                    break;
-                }
+                weight = (weight - (span / 4.0)) - rate;
             }
-            if (state > 416)
-            {
-                state = (state << 3) ^ origin;
-            }
-            return state % 97;
+            return weight + (double)(-9);
         }
     }
 }
