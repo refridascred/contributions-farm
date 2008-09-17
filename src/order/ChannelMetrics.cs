@@ -37,13 +37,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Retry,
-            Queued,
+            Closed,
+            Paused,
+            Done,
+            Failed,
             Draft,
-            Synced,
         }
     }
 }
