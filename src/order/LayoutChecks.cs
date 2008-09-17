@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] readings, long limit)
+        /// <summary>Iterate the cache contributi series from a seed.</summary>
+        public static long RollCacheContributi(long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (value != limit)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ready = false;
-                    break;
+                    state = ((state ^ (seed + 356)) % 4096) + (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Audit metric cluster readings against a rule.</summary>
