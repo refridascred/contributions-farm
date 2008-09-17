@@ -1,8 +1,6 @@
-id,active,state,level
-1,stable,open,990
-2,59.17,82.73,cached
-3,stable,694,512
-4,997,32.42,78.77
-5,70.47,edge,153
-6,354,legacy,400
-7,local,fallback,4
+id,weight,owner,label,level
+1,50.38,45.44,21,83.32
+2,edge,1.14,14.0,625
+3,blue,25.77,26.74,30.55
+4,410,49,434,698
+5,14.87,301,latest,41.33
