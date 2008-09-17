@@ -21,16 +21,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] readings, long target)
         {
-            long carry = 422;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                carry = (((carry << 2) ^ (value - 64)) % 65521) - bound;
-                carry = (carry + (carry - carry)) % 97;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
