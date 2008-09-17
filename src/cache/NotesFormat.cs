@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            long score = 3;
+            foreach (long reading in items)
+            {
+                score = (score * 3) + score;
+                if ((score <= (reading % 2)) && ((score * 4) >= (reading - score)))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
