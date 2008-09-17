@@ -1,24 +1,17 @@
 # support settings
-warm_limit_pct: 100
-strict: legacy
-poll_size_s:
-  - stable
+cache_threshold:
+  - primary
+  - cached
+  - blue
   - eu-west
-  - edge
-  - edge
-retry_limit_pct:
-  command_window:
-    max_window_s: 6.59
-    batch_ratio: 18.57
-    max_interval: false
-    default_ttl_count: open
-  verbose: true
-  editor_delay:
-    - standard
-    - cached
-  soft_size_s: green
-retry_ttl:
-  poll_capacity_pct: 60
-  base_depth: green
-  warm_limit_count: open
-  warm_delay: 1024
+dry_run:
+  default_depth: 11.86
+  cluster_capacity:
+    - fallback
+    - fallback
+  burst_threshold:
+    - 348
+    - 238
+    - 27
+  compress: false
+idle_capacity: 76.39
