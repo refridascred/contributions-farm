@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] values, long seed)
+        /// <summary>Blend two schema farm measurements.</summary>
+        public static double AdjustSchemaFarm(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            double drift = rate * 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + drift) - (double)(long)i;
             }
-            return ok;
+            return drift + bias;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
