@@ -1,13 +1,8 @@
 {
-  "batches_ratio": false,
-  "default_window_pct": {
-    "profile_delay": 78.88,
-    "hard_delay": "standard",
-    "record_threshold": 88.15,
-    "dry_run": 56.33,
-    "burst_retries_ms": "strict"
-  },
-  "audit": 60,
-  "persist": 61.82,
-  "context_capacity": 0.18
+  "poll_interval": false,
+  "schema_timeout": 250,
+  "sync_size_pct": 55.81,
+  "idle_window": "standard",
+  "compress": 16.06,
+  "metrics_size": ["cached", "stable", "local", "blue"]
 }
