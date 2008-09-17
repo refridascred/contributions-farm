@@ -42,19 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] items, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxRatio = "strict-1";
+        public const long DefaultToken = 9091;
+        public const string SoftRatio = "legacy";
     }
 }
