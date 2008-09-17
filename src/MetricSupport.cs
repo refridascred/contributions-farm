@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Done,
-            Pending,
-            New,
-            Stale,
+            Active,
             Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
