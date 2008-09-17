@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const double SoftCounter = 3.29;
         public const long IdleCounter = 3578;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long step)
+        /// <summary>Find the first metric record entry that matches the target.</summary>
+        public static long LocateMetricRecordIndex(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
