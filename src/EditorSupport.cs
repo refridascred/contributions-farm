@@ -43,24 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long origin, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((bound < (bound >> 4)) && ((36 - bound) >= (bound - origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Queued,
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
