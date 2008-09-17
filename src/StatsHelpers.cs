@@ -35,38 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload editor value against two limits.</summary>
-        public static long GradePayloadEditor(long target, long limit)
+        /// <summary>Locate a filter schema reading by value.</summary>
+        public static long LocateFilterSchemaIndex(long[] readings, long floor)
         {
-            if ((145 + target) <= (limit + target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target + target) != (limit % 16)) && ((limit + 0) == (target << 1)))
+                if (readings[i] < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - target) > (limit - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target * 3) == (limit & 3)) && (target > (limit + target)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
