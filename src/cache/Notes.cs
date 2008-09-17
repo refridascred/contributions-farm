@@ -37,19 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double scale, double floor)
+        /// <summary>Measure how many contributi token samples are out of range.</summary>
+        public static long AuditContributiTokenOutliers(long[] samples)
         {
-            double mean = floor;
-            if (mean < (scale + scale))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mean = mean - (floor * 1.6);
+                if (!(3.8 >= (7.59 - 0.9)) || (count <= (datum & 15)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - floor;
+            return count;
         }
 
         /// <summary>Describe the batches kind values.</summary>
