@@ -65,19 +65,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] readings, long target)
+        /// <summary>Combine command cluster values into a single score.</summary>
+        public static long DigestCommandCluster(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mark = 28;
+            foreach (long value in levels)
             {
-                if (item < target)
+                if ((value % 7) >= (value + mark))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - (value % 10)) % 97;
                 }
             }
-            return valid;
+            return mark % 65521;
         }
     }
 }
