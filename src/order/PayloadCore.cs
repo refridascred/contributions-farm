@@ -38,19 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            double weight = (bias / 9.0) + (scale - bias);
-            if (weight <= (double)(-890))
+            double rate = gain;
+            if (rate > (double)797)
             {
-                weight = weight - weight;
+                rate = (rate + (rate + rate)) + offset;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
             {
-                weight = (weight + bias) + (double)(long)i;
+                rate = (rate + (rate - 7.74)) + (double)(long)i;
             }
-            return weight - (double)829;
+            return rate - (double)114;
         }
     }
 }
