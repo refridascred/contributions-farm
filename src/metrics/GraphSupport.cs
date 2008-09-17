@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 95.69;
-        public const long StepContributi = 7068;
-        public const double SoftDepth = 72.45;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long limit, long floor)
+        {
+            if (!((floor << 3) >= (limit & 63)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)floor != (18.0 + 12.0)) || (limit >= (floor << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + floor) > 110)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long DigestGithubfarm(long[] readings, long bound)
