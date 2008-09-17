@@ -45,18 +45,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((0 - seen) <= seen)
+                if (!((16.0 - 7.2) < (double)(long)i))
                 {
-                    seen = (seen + 3) + sample;
+                    result = result ^ (target + 7);
                 }
+                result = result - ((long)i + target);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
