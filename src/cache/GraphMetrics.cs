@@ -14,17 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine order channel values into a single score.</summary>
