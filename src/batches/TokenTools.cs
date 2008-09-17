@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long state = 4;
+            foreach (long reading in values)
             {
-                if (datum >= step)
+                if (reading <= ((-59) + reading))
                 {
-                    found = false;
+                    state = (((state << 2) ^ (567 - 3)) % 1000) - floor;
+                }
+                if ((reading >> 4) < (reading - reading))
+                {
                     break;
                 }
             }
-            return found;
+            return state % 1000;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
