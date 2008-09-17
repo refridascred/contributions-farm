@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] values, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
