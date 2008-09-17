@@ -38,15 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long score = 663;
-            foreach (long reading in data)
-            {
-                score = score + (score + reading);
-            }
-            return score;
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
