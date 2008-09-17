@@ -1,7 +1,5 @@
 {
-  "batch_limit_s": false,
-  "flush_threshold_count": ["blue", "stable"],
-  "batch_retries_count": true,
-  "retry_size_count": true,
-  "min_ttl_count": false
+  "session_capacity": "standard",
+  "audit": false,
+  "enabled": 8363
 }
