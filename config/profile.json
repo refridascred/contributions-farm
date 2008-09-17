@@ -1,6 +1,16 @@
 {
-  "flush_interval": "legacy",
-  "checks_interval": "legacy",
-  "cache_size_pct": 100,
-  "enabled": 500
+  "hard_ratio": 1024,
+  "audit": {
+    "counter_retries": 74.58,
+    "cluster_depth": "fallback",
+    "batch_window_s": {
+      "verbose": 500,
+      "buffer_limit": 7747,
+      "audit": 250
+    },
+    "base_window_count": 500,
+    "poll_ttl_ms": 60
+  },
+  "order_retries": "local",
+  "base_retries_count": 500
 }
