@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel batch entries that pass the check.</summary>
-        public static long MeasureChannelBatchHits(long[] samples)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= 55)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Iterate the editor payload series from a seed.</summary>
