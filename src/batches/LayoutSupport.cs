@@ -46,14 +46,19 @@ namespace Common.Utilities
         public const long BurstLevel = 2960;
         public const double LimitSize = 67.22;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long target)
         {
-            Idle,
-            Done,
-            Draft,
-            Queued,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
