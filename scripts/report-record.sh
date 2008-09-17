@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=446
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-local}"
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
