@@ -44,15 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long mix = 14;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix ^ (mix & 15)) + value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
