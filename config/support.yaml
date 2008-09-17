@@ -1,10 +1,9 @@
 # support settings
-dry_run: true
-readonly: 4887
-compress: 60
-idle_depth_ms: 34.92
-base_interval_s: latest
-hard_delay_count:
-  sync_depth: blue
-  idle_threshold: 80
-  default_depth: fallback
+min_ratio_s: staging
+poll_depth: 250
+dry_run:
+  - strict
+  - green
+  - legacy
+  - green
+sync_retries_s: 676
