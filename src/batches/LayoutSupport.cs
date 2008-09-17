@@ -47,12 +47,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] data, long limit)
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((854 - value) == (18 / 4)) || ((limit / 2) >= limit))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
