@@ -1,6 +1,15 @@
 {
-  "notes_ttl": true,
-  "queue_retries": false,
-  "default_threshold": "eu-west",
-  "burst_ratio_ms": "green"
+  "poll_timeout_pct": {
+    "account_timeout": "eu-west",
+    "max_size_pct": "fallback",
+    "readonly": "green"
+  },
+  "batch_window": {
+    "batch_depth_ms": 500,
+    "schema_capacity": "local",
+    "channel_timeout": [257, 472],
+    "sync_interval_ms": 3952,
+    "retry_interval": 100
+  },
+  "compress": ["edge", "latest", "primary"]
 }
