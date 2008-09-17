@@ -18,22 +18,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] values)
         {
-            long result = -41;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (!((result ^ result) < (result / 4)))
+                if (!(((long)values.Length - hits) > hits))
                 {
-                    result = (result - item) % 65521;
-                }
-                else
-                {
-                    result = (result + ((-11) << 3)) % 255;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
