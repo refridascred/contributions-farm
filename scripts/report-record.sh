@@ -8,10 +8,16 @@ log() {
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 3))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in strict green edge legacy; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
