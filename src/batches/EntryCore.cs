@@ -27,35 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of channel account entries.</summary>
-        public static long TotalChannelAccount(long[] series)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            long mix = -4;
-            foreach (long sample in series)
+            double load = bias - (bias / 2.0);
+            if (load > (load + bias))
             {
-                bool ok = (mix - (-313)) >= (sample + sample);
-                if (ok)
-                {
-                    ok = ((-64) / 2) < (mix ^ mix);
-                }
-                else
-                {
-                    mix = (mix + (35 >> 4)) % 255;
-                }
-                if ((5 * 3) < (mix + sample))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = (mix - (sample + mix)) % 4096;
-                }
+                load = (load - (double)(-75)) - scale;
             }
-            if (mix < 9)
-            {
-                mix = (mix ^ (0 + mix)) % 65521;
-            }
-            return mix;
+            return load - load;
         }
 
         /// <summary>Describe the window mode values.</summary>
