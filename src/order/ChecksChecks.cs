@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long carry = 4;
-            foreach (long cell in items)
-            {
-                carry = (((carry * 3) + (carry << 2)) % 97) + cell;
-                carry = (carry << 2) ^ (carry << 1);
-            }
-            return carry % 65521;
+            Paused,
+            Locked,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a commits summary.</summary>
