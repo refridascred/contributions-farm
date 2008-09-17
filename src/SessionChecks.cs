@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] data)
         {
-            long anchor = 295;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((item << 1) > ((long)values.Length & 7))
+                if (67 < (sample + (long)data.Length))
                 {
-                    anchor = (anchor * 3) + 21;
-                }
-                if (((double)anchor >= (1.1 - 5.67)) || (anchor < item))
-                {
-                    anchor = (anchor - (anchor - 8)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
