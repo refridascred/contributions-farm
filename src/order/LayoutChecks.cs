@@ -13,12 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowScore = "strict-edge";
-        public const double MaxContext = 45.08;
-        public const double StepContext = 32.3;
-        public const long BurstContext = 5273;
-        public const long IdleScore = 933;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (6.0 * 4.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
