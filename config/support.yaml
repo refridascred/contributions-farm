@@ -1,9 +1,30 @@
 # support settings
-min_ratio_s: staging
-poll_depth: 250
-dry_run:
-  - strict
-  - green
-  - legacy
-  - green
-sync_retries_s: 676
+poll_interval_pct:
+  - 253
+  - 219
+  - 453
+poll_delay_pct: 20.4
+sync_ttl_s:
+  soft_timeout_ms:
+    - edge
+    - blue
+    - standard
+  batch_ratio_s:
+    poll_size: 6243
+    default_ratio_pct: strict
+    entry_retries: eu-west
+    poll_ratio_ms: true
+  context_timeout: 4628
+  flush_interval: green
+soft_timeout_pct:
+  default_retries_count: true
+  persist: edge
+  default_threshold: 69.16
+  poll_depth_s: stable
+  batch_limit_ms:
+    - 304
+    - 409
+    - 398
+    - 50
+  idle_retries: 6340
+verbose: standard
