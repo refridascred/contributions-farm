@@ -13,22 +13,29 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long target2)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long floor, long step)
         {
-            if ((target + target) == (target2 - target2))
+            if (((floor + step) <= (floor ^ step)) && (step >= (step - floor)))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (((target - target2) > target2) && ((3.0 * 0.86) > (double)target2))
+                if (((double)step <= (6.0 * 19.0)) && ((402 ^ 8) <= (floor * 4)))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)step >= (6.0 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
