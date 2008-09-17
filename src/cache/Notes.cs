@@ -74,11 +74,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Audit layout order readings against a rule.</summary>
+        public static long MeasureLayoutOrderOutliers(long[] series)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((0 & 31) < count)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
     }
 }
