@@ -118,17 +118,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            double bias = offset;
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum ^ (581 - origin)) % 65521;
-                sum = ((sum * 3) + ((long)i + origin)) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
+                bias = ((bias - (double)6) + (double)(long)i) - rate;
             }
-            return sum;
+            return bias - (offset / 8.0);
         }
     }
 }
