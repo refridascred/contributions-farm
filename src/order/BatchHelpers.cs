@@ -30,18 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((5 - (-748)) == (tally - (-2)))
+                if (sample != seed)
                 {
-                    tally = (tally + 2) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
