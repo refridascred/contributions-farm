@@ -67,10 +67,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardScore = 7297;
-        public const long RetryToken = 410;
-        public const long BaseToken = 7585;
-        public const long LimitToken = 3351;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
