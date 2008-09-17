@@ -69,18 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((double)datum >= (8.2 + 8.0)) && ((matches + matches) > (datum * 5)))
+                if (entry >= (entry << 3))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of order layout readings.</summary>
