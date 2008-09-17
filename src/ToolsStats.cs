@@ -58,17 +58,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a graph channel sample.</summary>
-        public static long LocateGraphChannelIndex(long[] readings, long target)
+        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmToolsCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
