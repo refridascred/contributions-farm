@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long IdleCount = 8206;
         public const long DefaultSchema = 136;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + (-927)) > (datum / 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "primary-edge";
+        public const long MinCache = 9973;
+        public const double SoftWidth = 10.81;
+        public const long HardCache = 7626;
+        public const long MaxRatio = 1137;
     }
 }
