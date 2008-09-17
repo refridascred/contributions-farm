@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache layout entries that pass the check.</summary>
-        public static long CountCacheLayoutOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((double)sample <= (2.0 - 18.0)) && ((double)step < (18.0 - 3.81)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowFactor = 5197;
+        public const long MaxGithubfarm = 5667;
+        public const string MaxDepth = "legacy-1";
+        public const long MinSpan = 4939;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] values, long floor)
