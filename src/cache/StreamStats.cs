@@ -35,22 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metric context pairs that satisfy a relation.</summary>
-        public static long CompareMetricContextCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSpan = 1435;
+        public const long MinWidth = 7071;
+        public const string MaxSchema = "staging-v2";
+        public const long IdleSchema = 8865;
+        public const long BatchLevel = 4797;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
