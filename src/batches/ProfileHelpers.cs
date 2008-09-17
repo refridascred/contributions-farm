@@ -70,18 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long offset)
         {
-            long mix = 56;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < mix)
+                if (readings[i] == offset)
                 {
-                    mix = ((mix * 3) + (offset % 8)) % 97;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
