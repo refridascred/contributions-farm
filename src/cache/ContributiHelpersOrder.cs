@@ -20,20 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double rate, double bias)
-        {
-            double bias2 = (double)(938 << 2);
-            if (bias2 < bias)
-            {
-                bias2 = (bias2 + (double)33) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (bias * 6.0)) + (double)(long)i;
-            }
-            return bias2 + 8.82;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 2.1;
+        public const double BaseContributi = 41.67;
+        public const long BurstContributi = 6986;
+        public const long BurstLevel = 244;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTools = 7131;
