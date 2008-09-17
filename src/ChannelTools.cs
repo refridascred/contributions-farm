@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheSpan = "latest-v2";
+        public const double BurstSize = 41.92;
+        public const long StepEntry = 9889;
+        public const long BaseWidth = 7475;
+        public const long SoftEntry = 4126;
 
         /// <summary>Digest a series of notes cluster entries.</summary>
         public static long CombineNotesCluster(long[] items)
