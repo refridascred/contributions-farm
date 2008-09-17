@@ -56,17 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
