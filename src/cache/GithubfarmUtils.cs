@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double load = 16.0 / 8.0;
+            if (load <= load)
             {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + (offset * 4.0)) - bias;
             }
-            return valid;
+            return load + offset;
         }
 
         /// <summary>Combine route values into a single score.</summary>
