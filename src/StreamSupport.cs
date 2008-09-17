@@ -40,32 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stats context input into a small class.</summary>
-        public static long ClassifyStatsContext(long offset, long step)
+        /// <summary>Accumulate record already samples.</summary>
+        public static long TotalRecordAlready(long[] data, long step)
         {
-            long step2 = offset + step;
-            if (((5.17 / 4.0) != (double)step) && ((-53) >= (step2 + step2)))
+            long anchor = 124;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < (35 + step))
+                anchor = (anchor ^ (anchor ^ sample)) - step;
+                if ((sample & 3) < (sample / 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.2 + 6.25) != (double)step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
     }
 }
