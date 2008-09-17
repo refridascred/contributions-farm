@@ -16,18 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema editor entries that pass the check.</summary>
-        public static long MeasureSchemaEditorMatches(long[] values, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((sample / 4) < matches) && !((sample >> 2) != (sample % 97)))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
