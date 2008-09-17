@@ -37,18 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long bound)
         {
-            long score = 38;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score ^ limit) < limit)
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
                 {
-                    score = (((score << 2) ^ (0 % 60)) % 255) + item;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
