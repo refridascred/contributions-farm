@@ -21,14 +21,25 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long floor)
         {
-            Stale,
-            Done,
-            Queued,
-            Retry,
-            Ready,
+            long cur = origin - floor;
+            if (((double)origin >= (9.99 + 7.0)) && ((5 ^ floor) >= (cur + floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)(-2) != (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate counter samples.</summary>
