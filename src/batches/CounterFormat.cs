@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits > (hits - hits))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
