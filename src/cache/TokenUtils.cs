@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 315;
+            foreach (long datum in series)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ limit) % 97) ^ datum;
             }
-            return -1;
+            if (carry < 23)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
