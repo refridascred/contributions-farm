@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((2.5 * 3.39) > (double)offset) && ((offset >> 1) > (offset << 1)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((double)bound > (2.6 / 5.0)))
                 {
-                    if ((series[i] + series[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ offset) < offset)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset > (9 + offset)) || (87 <= (offset ^ 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
