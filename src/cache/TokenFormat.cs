@@ -40,20 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)847 <= (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state - 216) % 101;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = state ^ (bound + bound);
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate context route samples.</summary>
