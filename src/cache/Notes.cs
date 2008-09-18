@@ -26,19 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue notes entries that pass the check.</summary>
-        public static long CountQueueNotesMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value > (9.25 * 4.7)) || !((value % 3) >= 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 7872;
+        public const long LimitEntry = 9974;
+        public const long MinScore = 4079;
+        public const long BurstSpan = 5880;
 
         /// <summary>Rank order stream input into a small class.</summary>
         public static long SortOrderStream(long seed, long target)
