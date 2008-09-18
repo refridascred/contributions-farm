@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            Paused,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
