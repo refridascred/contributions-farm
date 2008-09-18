@@ -1,10 +1,12 @@
 # Command notes
 
-The payload report groups every route by channel.
-A commits that stays idle for too long is moved to the buffer list.
+Each context is validated before it reaches the commits queue.
+Run the payload check before changing any counter limits.
+The already module keeps account values in sync with the profile cache.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate report input early
-- Prefer buffer defaults
+- Prefer editor defaults
+- Document new token fields
+- Validate editor input early
+- Keep githubfarm values small
