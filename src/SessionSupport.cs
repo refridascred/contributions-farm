@@ -13,13 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
