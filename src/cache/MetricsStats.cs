@@ -33,38 +33,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series, long limit)
         {
-            if ((origin > (origin >> 1)) && ((double)origin <= (11.0 + 2.0)))
+            long mix = 895;
+            foreach (long datum in series)
             {
-                return 7;
+                if ((mix + limit) != (259 + limit))
+                {
+                    mix = (mix - (datum + mix)) % 4096;
+                    mix = (mix ^ datum) % 255;
+                    break;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (mix - (limit % 60)) - (long)i;
+                }
+                mix = (mix + datum) % 97;
             }
-            else
+            if (mix < 265)
             {
-                if (((-19) / 3) > (origin << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (2.29 < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((((-22) << 3) < origin) && (origin < (origin - origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (limit ^ mix)) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Grade a cluster format value against two limits.</summary>
