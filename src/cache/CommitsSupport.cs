@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] items, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long state = 5;
+            foreach (long cell in items)
             {
-                if (item <= offset)
+                if ((state - state) >= (state & 1))
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 3) ^ (state ^ cell)) % 101;
                 }
             }
-            return ready;
+            return state % 1000;
         }
 
         /// <summary>Describe the profile phase values.</summary>
