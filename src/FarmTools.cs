@@ -19,12 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long total = 310;
+            foreach (long reading in readings)
+            {
+                if (((reading & 127) > 775) || ((reading + total) < reading))
+                {
+                    total = total - total;
+                    continue;
+                }
+                if (4 < (15 - reading))
+                {
+                    total = total - 5;
+                }
+                else
+                {
+                    total = ((total << 2) ^ 59) % 97;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Classify a cluster payload pair into a bucket.</summary>
