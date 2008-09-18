@@ -27,21 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Validate githubfarm route readings against a bound.</summary>
+        public static bool GuardGithubfarmRouteRange(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Roll a context counter forward.</summary>
