@@ -45,13 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long offset)
         {
-            Active,
-            Ready,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen - offset) >= seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks level values.</summary>
