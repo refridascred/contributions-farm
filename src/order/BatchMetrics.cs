@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
-        {
-            long result = 3;
-            foreach (long cell in data)
-            {
-                if ((1.9 - 6.9) < (double)cell)
-                {
-                    result = (result << 3) ^ (result - result);
-                }
-                if ((result ^ cell) <= result)
-                {
-                    result = (result ^ ((long)data.Length + 73)) % 97;
-                }
-                else
-                {
-                    result = (result + (43 / 3)) % 4096;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftTimeout = 7473;
+        public const long RetryBatches = 4897;
+        public const string SoftCount = "standard-edge";
+        public const long CacheBatches = 1325;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] values)
