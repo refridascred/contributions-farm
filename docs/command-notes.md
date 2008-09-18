@@ -1,11 +1,10 @@
 # Command notes
 
-Each farm is validated before it reaches the batch queue.
-Keep editor and schema names short and lowercase.
+Each stream is validated before it reaches the window queue.
+The report module keeps buffer values in sync with the stream cache.
 
 ## Guidelines
 
-- Log every notes change
-- Review tools limits each release
-- Validate graph input early
-- Document new metric fields
+- Document new stream fields
+- Review stats limits each release
+- Keep notes values small
