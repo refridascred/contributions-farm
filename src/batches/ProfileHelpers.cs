@@ -20,19 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] series)
         {
-            double ratio = weight;
-            if (ratio < (weight - ratio))
+            long count = 0;
+            foreach (long datum in series)
             {
-                ratio = ratio - (weight + span);
+                if (count > (830 * 3))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)477;
-            }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
