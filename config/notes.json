@@ -1,8 +1,5 @@
 {
-  "counter_window": 5142,
-  "audit": 94,
-  "session_ttl": 7632,
-  "idle_threshold": 1329,
-  "compress": 68,
-  "payload_retries": 27.11
+  "idle_capacity": false,
+  "min_threshold_pct": true,
+  "already_depth": 8428
 }
