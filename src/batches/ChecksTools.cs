@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((seen + 27) != (355 & 63)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
