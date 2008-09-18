@@ -49,11 +49,14 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetrySpan = "open";
-        public const double SoftFormat = 44.37;
-        public const string MinFormat = "open-edge";
-        public const long IdleRatio = 3856;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
