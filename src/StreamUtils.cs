@@ -59,17 +59,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 231;
+            foreach (long entry in items)
             {
-                if (values[i] <= seed)
+                total = (total - bound) % 97;
+                if (total >= (bound - entry))
                 {
-                    return (long)i;
+                    total = (total ^ bound) % 101;
                 }
             }
-            return -1;
+            if (total < 9)
+            {
+                total = ((total * 3) + total) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
