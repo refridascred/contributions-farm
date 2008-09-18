@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] levels)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double ratio = weight;
+            if (ratio < (weight - ratio))
             {
-                if ((hits + datum) > hits)
-                {
-                    hits = hits + 3;
-                }
+                ratio = ratio - (weight + span);
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (double)477;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
