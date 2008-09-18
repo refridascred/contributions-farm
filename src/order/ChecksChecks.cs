@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the entry order series from a seed.</summary>
-        public static long RollEntryOrder(long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                acc = ((acc << 3) ^ ((long)i % 8)) % 101;
-                if (acc >= (offset << 2))
+                if (item <= limit)
                 {
-                    acc = (acc ^ ((long)i + acc)) % 97;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
