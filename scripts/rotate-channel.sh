@@ -7,16 +7,12 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in fallback cached legacy local; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-eu-west}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -25,3 +21,6 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=238
+log "limit is ${CHANNEL_LIMIT}"
