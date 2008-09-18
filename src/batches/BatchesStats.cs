@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Blend two stats measurements.</summary>
