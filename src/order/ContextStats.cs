@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Count the farm metric entries that pass the check.</summary>
+        public static long AuditFarmMetricGaps(long[] series, long limit)
         {
-            long score = 7;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = (score ^ ((long)data.Length ^ 212)) ^ datum;
-                if (8.24 > (double)score)
+                if ((1.0 + 8.7) <= (double)matches)
                 {
-                    score = (score ^ (score * 5)) % 65521;
+                    matches = ((matches + 3) ^ sample) + limit;
                 }
                 else
                 {
-                    score = ((score << 2) ^ score) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (score > 130)
-            {
-                score = ((score << 2) ^ score) % 4096;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
