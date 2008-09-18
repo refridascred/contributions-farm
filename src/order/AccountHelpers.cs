@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 749;
-        public const double BatchBuffer = 55.5;
-        public const long DefaultBuffer = 1299;
-        public const long RetryBuffer = 722;
-        public const long MinDepth = 7880;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Dropped,
+            Ready,
+            Locked,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Derive the next metrics cluster value from a seed.</summary>
         public static long SeriesMetricsCluster(long step)
