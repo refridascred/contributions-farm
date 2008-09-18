@@ -36,17 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long limit2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = limit - limit2;
+            if ((slot / 4) > (slot + 4))
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= (7.2 / 4.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((slot & 255) > (slot % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((92 & 63) < (limit2 % 16)) || ((limit + 55) > (limit - slot)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
