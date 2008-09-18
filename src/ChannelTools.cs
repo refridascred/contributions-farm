@@ -19,12 +19,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheSize = "open-1";
-        public const long HardTimeout = 6972;
-        public const string BurstTools = "stable-v2";
-        public const string BaseSize = "local-1";
-        public const long StepDepth = 7279;
+        /// <summary>Fold a list of filter farm readings.</summary>
+        public static long ScoreFilterFarm(long[] series, long floor)
+        {
+            long total = 5;
+            foreach (long cell in series)
+            {
+                if (((double)floor < (double)998) && ((double)total != (double)62))
+                {
+                    total = ((total + total) % 97) ^ cell;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total % 16)) % 255;
+                }
+            }
+            if (total > 25)
+            {
+                total = ((total << 3) ^ (1 & 7)) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
