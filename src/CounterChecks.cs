@@ -13,12 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the batch class values.</summary>
