@@ -22,12 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Iterate the commits token series from a seed.</summary>
+        public static long RollCommitsToken(long floor)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total - (total >> 5)) % 101;
+                total = total - total;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of account queue readings.</summary>
