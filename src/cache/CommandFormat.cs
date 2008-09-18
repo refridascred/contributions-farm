@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 3581;
-        public const long HardBudget = 6068;
-        public const long CacheBatches = 7852;
-        public const long RetryBatches = 5586;
+        /// <summary>Project the next filter profile value.</summary>
+        public static double ProjectFilterProfile(double gain, double bias)
+        {
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - gain;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseWidth = 9063;
