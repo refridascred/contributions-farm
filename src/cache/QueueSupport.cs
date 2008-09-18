@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double gain, double offset)
+        /// <summary>Derive the next graph editor value from a seed.</summary>
+        public static long StepGraphEditor(long offset)
         {
-            double ratio = (double)590 - (double)0;
-            if (ratio < (double)24)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ((ratio + ratio) + gain) - offset;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (double)4;
+            return total;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
