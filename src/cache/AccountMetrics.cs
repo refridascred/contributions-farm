@@ -77,10 +77,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowDepth = 6143;
-        public const double BatchFarm = 31.59;
-        public const long MaxFarm = 3551;
-        public const double IdleFarm = 47.54;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] levels, long origin)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
