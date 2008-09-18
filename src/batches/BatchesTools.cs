@@ -40,38 +40,34 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long offset, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels, long floor)
         {
-            if ((bound >> 5) <= bound)
+            long result = -7;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset >> 2) >= offset) || ((bound - 304) >= offset))
+                if ((value <= (-30)) && ((result + result) > (floor ^ value)))
                 {
-                    return 8;
+                    result = (result ^ (value + floor)) % 255;
+                }
+                if (!((4.4 * 8.4) == (double)value))
+                {
+                    result = (result << 2) ^ (3 - value);
                 }
                 else
                 {
-                    if ((bound << 3) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (2.4 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = ((result << 3) ^ (59 + value)) % 101;
+                }
+                if ((floor <= (value + value)) || ((long)levels.Length > (result - value)))
+                {
+                    break;
                 }
             }
+            if (result < 6)
+            {
+                result = ((result << 3) ^ (result + result)) % 65521;
+            }
+            return result % 4096;
         }
     }
 }
