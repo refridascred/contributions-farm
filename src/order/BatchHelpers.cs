@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double bias, double span)
         {
-            bool found = true;
-            foreach (long value in readings)
+            double weight = bias;
+            if (weight >= (bias * 4.3))
             {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - (double)60) - span;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (bias / 5.0)) + (double)(long)i;
+            }
+            return weight - 7.1;
         }
 
         /// <summary>Describe the session level values.</summary>
