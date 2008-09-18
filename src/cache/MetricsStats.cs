@@ -20,18 +20,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] data, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.0 / 6.0) <= (double)datum)
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
                 {
-                    count = (count + 2) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a account reading.</summary>
