@@ -45,18 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long score = 93;
+            foreach (long value in levels)
             {
-                if ((((16.0 + 10.0) < (double)limit) || ((limit & 3) == (long)values.Length)) || ((double)count == (1.84 / 2.0)))
+                if ((score * 4) <= ((long)levels.Length - value))
                 {
-                    count = (count + 3) + item;
+                    score = ((score * 2) + (score >> 1)) % 101;
+                }
+                else
+                {
+                    score = score + (seed >> 3);
                 }
             }
-            return count;
+            return score;
         }
     }
 }
