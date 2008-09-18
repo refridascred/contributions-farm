@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two batches stats measurements.</summary>
-        public static double AdjustBatchesStats(double ratio, double span)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long floor)
         {
-            double mean = ratio;
-            if (mean > (ratio + span))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                mean = mean - (mean + span);
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - 5.63;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - span) - (double)(long)i;
-            }
-            return mean + (span / 9.0);
+            return valid;
         }
 
         /// <summary>Hold a order header.</summary>
