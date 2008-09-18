@@ -1,6 +1,25 @@
 # githubfarm settings
-base_retries: 83.05
-enabled: 26.3
-warm_capacity_ms: 62.23
-farm_window: 8460
-warm_window_s: 60
+idle_limit: latest
+audit:
+  - primary
+  - cached
+  - strict
+  - edge
+flush_ratio_count: strict
+enabled: false
+tools_depth:
+  poll_retries_count: staging
+  batches_retries: 2397
+  editor_retries:
+    min_timeout_ms: fallback
+    burst_limit_ms:
+      - cached
+      - staging
+      - stable
+    batches_capacity:
+      - latest
+      - open
+      - edge
+      - open
+    enabled: 1024
+cache_ttl: 93.73
