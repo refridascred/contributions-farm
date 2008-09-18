@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of channel entry entries.</summary>
-        public static long ScoreChannelEntry(long[] data, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long target)
         {
-            long result = 40;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)result >= (2.5 + 0.7))
+                if (series[i] > target)
                 {
-                    result = result - (result / 3);
-                    result = (result ^ limit) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result * 2) + (datum % 8)) % 4096;
-                    result = (result << 3) ^ (126 >> 3);
-                }
-                result = result ^ (limit >> 4);
             }
-            if (result > 831)
-            {
-                result = result + (result >> 4);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
