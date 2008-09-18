@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] values, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] samples, long target)
         {
-            long sum = 43;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                sum = ((((sum << 2) ^ (long)values.Length) % 65521) - reading) - step;
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Hold a stats stats.</summary>
