@@ -24,15 +24,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] levels, long floor)
         {
-            long result = -67;
-            foreach (long sample in items)
+            long total = 16;
+            foreach (long cell in levels)
             {
-                result = (result ^ (result - sample)) % 97;
+                total = (total << 2) ^ cell;
+                if (!((double)cell < (11.0 * 8.35)))
+                {
+                    total = (total - (floor / 7)) % 65521;
+                }
             }
-            return result % 4096;
+            if (total < (-39))
+            {
+                total = total - floor;
+            }
+            return total;
         }
 
         /// <summary>Describe the cache level values.</summary>
