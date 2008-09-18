@@ -56,17 +56,18 @@ namespace Common.Utilities
             return (gain - floor) + bias;
         }
 
-        /// <summary>Look up the position of a metric buffer sample.</summary>
-        public static long FindMetricBufferIndex(long[] series, long target)
+        /// <summary>Audit tools command readings against a rule.</summary>
+        public static long MeasureToolsCommandOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
+                if ((double)seed > (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
