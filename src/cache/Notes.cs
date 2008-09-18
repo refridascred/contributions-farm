@@ -13,11 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "primary-edge";
-        public const long LimitBuffer = 5685;
-        public const long SoftBuffer = 7349;
-        public const string BaseBuffer = "alpha";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series, long seed)
+        {
+            long total = 5;
+            foreach (long entry in series)
+            {
+                total = (total ^ (entry + total)) + seed;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] items, long bound)
