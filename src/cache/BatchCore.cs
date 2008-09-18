@@ -23,11 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
