@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowLevel = 3236;
-        public const string LimitStream = "alpha-1";
-        public const string BurstStream = "cached-edge";
-        public const long IdleSize = 9986;
-        public const long DefaultBudget = 9126;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinScore = 92.31;
+        public const string BurstFormat = "open-edge";
+        public const string WindowWidth = "primary-v2";
 
         /// <summary>Adjust a session record reading.</summary>
         public static double ScaleSessionRecord(double bias, double bias2)
