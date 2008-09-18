@@ -20,32 +20,23 @@ namespace Common.Utilities
             return load + (double)841;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long bound2)
+        /// <summary>Blend two channel schema measurements.</summary>
+        public static double SmoothChannelSchema(double gain, double offset)
         {
-            long lane = bound - bound2;
-            if ((bound2 + lane) > (bound * 5))
+            double gain2 = offset + gain;
+            if (gain2 >= offset)
             {
-                return 2;
+                gain2 = gain2 + (gain * 14.0);
             }
             else
             {
-                if ((double)bound2 > 1.22)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound2 < (bound << 2)) && ((lane * 2) <= bound2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                gain2 = gain2 - (gain2 / 8.0);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (gain / 3.0);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
