@@ -30,12 +30,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
+            Paused,
+            Ready,
             Queued,
+            Done,
             Draft,
-            Idle,
         }
     }
 }
