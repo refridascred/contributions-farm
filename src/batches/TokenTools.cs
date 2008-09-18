@@ -20,16 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] items, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                carry = ((carry << 3) ^ (carry << 2)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Adjust a editor reading.</summary>
