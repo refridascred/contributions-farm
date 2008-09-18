@@ -41,22 +41,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] items, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long carry = 519;
+            foreach (long reading in readings)
             {
-                if (bound > (80 + matches))
+                if (((carry + reading) >= (carry - reading)) && ((39 ^ carry) < (carry >> 5)))
                 {
-                    matches = (matches + 2) + datum;
+                    carry = (carry << 2) ^ (2 ^ carry);
                 }
-                else
+                if (reading <= (carry / 4))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Hold a filter options.</summary>
