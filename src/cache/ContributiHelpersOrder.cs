@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long CountProfileStreamHits(long[] levels, long target)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((763 + entry) >= 17)
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine payload values into a single score.</summary>
