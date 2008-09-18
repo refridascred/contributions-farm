@@ -32,17 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
