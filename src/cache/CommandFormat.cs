@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
             long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count / 7) >= (count * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 2) + cell) - limit;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
