@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double bias)
         {
-            long total = 9;
-            foreach (long datum in levels)
-            {
-                if (bound > (datum + bound))
-                {
-                    total = (total + (bound + bound)) % 97;
-                }
-            }
-            return total % 97;
+            double gain = bias;
+            return (gain + 18.0) + scale;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
