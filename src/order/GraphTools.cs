@@ -57,34 +57,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long anchor = 98;
-            foreach (long datum in values)
-            {
-                if (datum > bound)
-                {
-                    anchor = anchor + (datum ^ bound);
-                }
-                if (datum >= 505)
-                {
-                    anchor = (anchor ^ (datum - datum)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (datum >> 5);
-                }
-                if ((bound - 28) != ((long)values.Length + datum))
-                {
-                    anchor = ((anchor << 3) ^ 134) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - bound) % 1000;
-                }
-            }
-            return anchor % 65521;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
