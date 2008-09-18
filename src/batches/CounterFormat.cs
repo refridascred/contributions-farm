@@ -39,11 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 6410;
-        public const double IdleContext = 90.14;
-        public const long LimitFactor = 4947;
-        public const long CacheContext = 4823;
-        public const double CacheSize = 33.26;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double offset)
+        {
+            double rate2 = (offset / 2.0) / 9.0;
+            if (rate2 > (rate + offset))
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (offset * 6.15)) + (double)(long)i;
+            }
+            return rate2 + (rate2 - 7.38);
+        }
     }
 }
