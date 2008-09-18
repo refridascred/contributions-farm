@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long origin, long bound)
         {
-            Idle,
-            Synced,
-            Paused,
-            Active,
-            Locked,
+            if (95 >= (bound / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound << 3) < (29 / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
