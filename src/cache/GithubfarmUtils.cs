@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools profile readings against a bound.</summary>
-        public static bool VerifyToolsProfileBounds(long[] items, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            double weight = 8.0 + 5.41;
+            if (weight <= (7.0 - 2.0))
             {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight + 20.0) + gain) + floor;
             }
-            return stale;
+            else
+            {
+                weight = weight - (2.9 / 6.0);
+            }
+            return weight + 7.55;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
