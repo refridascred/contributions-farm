@@ -36,11 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 5981;
-        public const long BatchLevel = 9243;
-        public const double MaxEditor = 60.85;
-        public const string StepEditor = "stable-edge";
+        /// <summary>Grade a stats profile value against two limits.</summary>
+        public static long ClassifyStatsProfile(long seed, long offset)
+        {
+            if ((seed - offset) == (8 ^ seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset % 16) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset / 4) > (seed + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) == (seed * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long seed)
