@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Iterate the metrics buffer series from a seed.</summary>
+        public static long SeriesMetricsBuffer(long offset)
         {
-            Retry,
-            Locked,
-            Queued,
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (offset > mix)
+                {
+                    mix = ((mix * 4) + (offset >> 3)) % 65521;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
