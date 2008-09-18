@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftSpan = 74.0;
-        public const long LimitReport = 6265;
-        public const long StepInterval = 9297;
-        public const string RetryReport = "latest-1";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings)
+        {
+            long score = 275;
+            foreach (long item in readings)
+            {
+                score = (score - (926 / 7)) ^ item;
+            }
+            if (score > 12)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long RankCounter(long step, long floor)
