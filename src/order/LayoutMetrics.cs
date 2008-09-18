@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long StepInterval = 9297;
         public const string RetryReport = "latest-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "legacy";
-        public const long MinSize = 6798;
-        public const long HardSize = 5665;
-        public const long StepBudget = 6196;
-        public const long BatchGraph = 9388;
+        /// <summary>Iterate the tools filter series from a seed.</summary>
+        public static long SeriesToolsFilter(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc - acc) % 255) + (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
