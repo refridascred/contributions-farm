@@ -39,19 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] items, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long anchor = -9;
-            foreach (long entry in items)
+            long anchor = 850;
+            foreach (long reading in series)
             {
-                anchor = ((anchor - (750 - 0)) ^ entry) - floor;
+                if ((double)reading != (6.0 + 9.0))
+                {
+                    anchor = ((anchor << 2) ^ (reading >> 5)) % 1000;
+                }
             }
-            if (anchor > (-2))
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
