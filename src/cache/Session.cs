@@ -22,26 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] levels, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data)
         {
-            long mix = 84;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (tally > (4 * 4))
                 {
-                    mix = (((mix << 3) ^ (long)i) % 4096) - sample;
-                }
-                if (((double)mix > (double)69) || ((double)floor >= (6.95 - 3.0)))
-                {
-                    mix = mix ^ (872 ^ mix);
-                }
-                else
-                {
-                    mix = mix + (floor & 7);
+                    tally = (tally + 3) - datum;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
