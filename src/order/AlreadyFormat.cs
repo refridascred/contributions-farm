@@ -25,14 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
+            Stale,
+            Ready,
             Draft,
-            Queued,
-            New,
-            Synced,
-            Locked,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
