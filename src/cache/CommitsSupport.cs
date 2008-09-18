@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items)
         {
-            Active,
-            Retry,
-            Locked,
+            long state = 21;
+            foreach (long cell in items)
+            {
+                if (((state - cell) < (cell >> 1)) && ((6.0 - 9.24) > (double)cell))
+                {
+                    state = (state - (37 * 2)) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ (cell % 97);
+                }
+                if ((cell < (state - cell)) && ((double)cell <= (double)(-777)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
