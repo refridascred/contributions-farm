@@ -61,26 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long anchor = 6;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (((anchor * 5) + anchor) % 4096) ^ (long)i;
-                }
-                if (((double)sample != (double)792) && ((anchor * 2) != (long)readings.Length))
-                {
-                    anchor = ((anchor << 3) ^ (80 + sample)) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor - anchor);
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Hold a cache header.</summary>
