@@ -17,12 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Retry,
-            New,
-            Locked,
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
