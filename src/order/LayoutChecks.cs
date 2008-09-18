@@ -71,12 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "fallback";
-        public const double LimitAccount = 85.36;
-        public const long SoftBudget = 8170;
-        public const long StepAccount = 8732;
-        public const long IdleInterval = 6639;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleScore = 9652;
+        public const long HardLevel = 8876;
+        public const string BurstInterval = "legacy-v2";
+        public const long HardFarm = 6519;
+        public const long WindowFarm = 6492;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesBounds(long[] readings, long limit)
