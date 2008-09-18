@@ -66,18 +66,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry / 5) != (tally * 2)))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 7291;
+        public const long MaxTools = 7479;
+        public const long DefaultFactor = 7611;
     }
 }
