@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long WindowLayout = 7339;
         public const string LimitLayout = "stable";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double bias)
         {
-            Ready,
-            Draft,
-            Retry,
-            Closed,
+            double load = 2.3;
+            if (load > (double)886)
+            {
+                load = (load + (double)21) - bias;
+            }
+            else
+            {
+                load = load + (weight - 6.0);
+            }
+            return load - (load * 3.48);
         }
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
