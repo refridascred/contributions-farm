@@ -54,11 +54,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double bias)
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            double bias2 = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (double)(long)i) - bias;
+            }
+            return bias2 - (double)17;
         }
     }
 }
