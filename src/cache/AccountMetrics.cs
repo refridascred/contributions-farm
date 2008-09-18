@@ -30,24 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long bound)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            if ((double)offset >= (double)35)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((17.0 / 2.0) > (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
