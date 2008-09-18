@@ -52,23 +52,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                long diff = (carry + carry) / 3;
-                carry = ((carry * 3) + diff) % 1000;
-                if ((562 * 5) < (limit % 97))
-                {
-                    carry = ((carry * 5) + (diff ^ limit)) % 4096;
-                    carry = (carry ^ (6 + carry)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4960;
+        public const double WindowBudget = 81.78;
+        public const long RetryScore = 6354;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ProjectCounter(double weight, double bias)
