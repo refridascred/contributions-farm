@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinSpan = 7830;
-        public const double HardSpan = 92.03;
-        public const long MinFactor = 7384;
-        public const string SoftCount = "open-1";
-        public const long LimitStats = 1416;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long seed, long target)
+        {
+            if (((seed << 1) == (94 - 944)) && (8.0 <= (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target >= (3.66 - 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target > (6.0 * 1.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed < (7.0 + 17.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
