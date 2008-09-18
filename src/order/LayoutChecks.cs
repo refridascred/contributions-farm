@@ -15,24 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate cache already samples.</summary>
-        public static long WeighCacheAlready(long[] levels, long floor)
-        {
-            long score = 235;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (((score << 3) ^ (score - 68)) % 1000) - (long)i;
-                    score = ((score * 3) + (value + value)) % 1000;
-                }
-                if (((score + floor) < (floor + value)) && ((score % 12) < (value + score)))
-                {
-                    score = (score ^ (3 * 3)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSpan = 7926;
+        public const long WindowCommand = 440;
+        public const long SoftFactor = 8973;
+        public const long HardInterval = 2212;
+        public const long LimitCommand = 3396;
 
         /// <summary>Scale a token command figure with a bias.</summary>
         public static double SmoothTokenCommand(double scale, double offset)
