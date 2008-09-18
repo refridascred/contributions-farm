@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((seen >> 5) == (item >> 5))
+                if ((count >> 3) <= (count >> 2))
                 {
-                    seen = seen + 3;
+                    count = ((count + 1) - value) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a metric commits reading.</summary>
