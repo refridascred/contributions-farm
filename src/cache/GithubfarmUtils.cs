@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 87.57;
-        public const double RetryBudget = 93.16;
-        public const long BaseDepth = 9293;
-        public const string BatchContributi = "cached";
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long origin)
+        {
+            long prev = limit - origin;
+            if ((origin << 3) > (5 ^ origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit >= prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >= prev) && ((prev ^ 65) > (limit >> 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
