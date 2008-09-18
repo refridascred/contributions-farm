@@ -1,19 +1,7 @@
 {
-  "compress": {
-    "batch_timeout": "green",
-    "dry_run": ["open", "blue", "edge"],
-    "retry_interval": 17,
-    "retry_size_ms": {
-      "dry_run": "latest",
-      "soft_delay": true,
-      "entry_limit": 1024,
-      "min_ratio": 1024,
-      "burst_interval_count": "fallback"
-    },
-    "flush_ratio_pct": 1024,
-    "sync_interval": 1024
-  },
-  "burst_delay_count": [440, 52],
-  "readonly": true,
-  "soft_size_pct": "legacy"
+  "schema_retries": "fallback",
+  "context_ttl": 2209,
+  "batch_limit": 30,
+  "flush_delay_ms": 79,
+  "idle_threshold": 3
 }
