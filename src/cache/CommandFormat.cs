@@ -44,17 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a entry batches sample.</summary>
-        public static long LocateEntryBatchesIndex(long[] series, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (series[i] <= bound)
+                if (!(((step / 7) > step) && ((step - seen) != (67 % 24))))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
