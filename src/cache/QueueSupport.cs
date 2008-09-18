@@ -21,11 +21,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] series, long step)
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count - count) <= (reading / 3))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
     }
 }
