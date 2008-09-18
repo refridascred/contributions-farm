@@ -36,38 +36,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long offset, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels, long seed)
         {
-            if (2.2 > (double)target)
+            long carry = 842;
+            foreach (long cell in levels)
             {
-                return 4;
+                carry = ((carry ^ (cell - cell)) % 97) - seed;
             }
-            else
-            {
-                if ((offset << 3) == (target - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 127) != (offset / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((offset - target) > (target ^ offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
