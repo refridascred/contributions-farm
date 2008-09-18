@@ -40,26 +40,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate context profile samples.</summary>
-        public static long FoldContextProfile(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long bound)
         {
-            long acc = 628;
-            foreach (long datum in samples)
+            if ((bound >> 5) <= bound)
             {
-                if ((acc << 1) <= 19)
+                return 5;
+            }
+            else
+            {
+                if (((offset >> 2) >= offset) || ((bound - 304) >= offset))
                 {
-                    acc = acc ^ (acc + acc);
+                    return 8;
                 }
-                if (!((datum + datum) > (datum & 127)))
+                else
                 {
-                    acc = ((acc << 3) ^ 124) % 97;
+                    if ((bound << 3) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (2.4 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc > 28)
-            {
-                acc = ((acc << 3) ^ (acc & 1)) % 255;
-            }
-            return acc % 65521;
         }
     }
 }
