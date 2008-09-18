@@ -27,32 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long step, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long cur = step + floor;
-            if ((0.33 + 9.6) <= (double)cur)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step / 9) < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step != (7.4 + 8.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the support state values.</summary>
