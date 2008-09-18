@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((long)i == (carry << 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry ^ (offset & 7);
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (((long)i / 8) >= offset)
-                {
-                    carry = carry - (49 >> 3);
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
