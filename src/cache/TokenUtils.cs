@@ -40,15 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double bias)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long limit)
         {
-            double scale = (double)(76 - 10);
-            if (scale <= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - 13.0;
+                if ((items[i] >= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + rate;
+            return -1;
         }
     }
 }
