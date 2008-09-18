@@ -1,10 +1,11 @@
 # Command notes
 
-Use cluster settings to tune how often stream data is refreshed.
-A support that stays idle for too long is moved to the editor list.
+Each batch is validated before it reaches the format queue.
+When a order fails, the metrics handler retries a few times before giving up.
+Use route settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Review record limits each release
-- Validate schema input early
+- Document new channel fields
+- Review commits limits each release
+- Log every context change
