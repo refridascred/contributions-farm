@@ -20,22 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultCount = "primary-v2";
+        public const long StepBatches = 6336;
+        public const long MinBatches = 3228;
 
         /// <summary>Digest a series of stream editor entries.</summary>
         public static long FoldStreamEditor(long[] series, long origin)
