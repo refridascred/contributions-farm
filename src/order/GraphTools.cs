@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seed - carry) > (seed & 7))
+                if (!((long)i == (carry << 3)))
                 {
-                    carry = (carry - (0 >> 5)) % 255;
+                    carry = carry ^ (offset & 7);
                 }
-                if (carry <= seed)
+                if (((long)i / 8) >= offset)
                 {
-                    carry = ((carry << 3) ^ ((long)i * 3)) % 4096;
+                    carry = carry - (49 >> 3);
+                    continue;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (carry ^ (seed << 3)) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
             return carry;
         }
