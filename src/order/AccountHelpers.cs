@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Project the next farm session value.</summary>
+        public static double AdjustFarmSession(double gain, double offset)
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
+            double scale = gain;
+            if (scale <= offset)
+            {
+                scale = scale + (gain + offset);
+            }
+            else
+            {
+                scale = scale - 3.19;
+            }
+            return scale + offset;
         }
 
         /// <summary>Match up order samples.</summary>
