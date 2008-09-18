@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format cluster entries that pass the check.</summary>
-        public static long TallyFormatClusterOutliers(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)target >= 1.97)
+                if ((double)reading != (1.0 * 9.1))
                 {
-                    tally = (tally + 2) - reading;
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
