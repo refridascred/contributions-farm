@@ -19,13 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            Queued,
-            Done,
-            Locked,
-            Closed,
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix - (33 - 594)) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor state values.</summary>
