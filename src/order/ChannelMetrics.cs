@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Adjust a profile contributi reading.</summary>
+        public static double BlendProfileContributi(double ratio, double span)
         {
-            long mark = 971;
-            foreach (long entry in values)
+            double rate = 8.2;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (((mark << 3) ^ (mark & 7)) % 4096) + entry;
+                rate = ((rate - (ratio + rate)) + (double)(long)i) + span;
             }
-            return mark;
+            return rate - (rate / 9.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
