@@ -17,20 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout order entry stays within the limit.</summary>
-        public static bool VerifyLayoutOrderBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftRatio = 7439;
+        public const long MinTimeout = 1055;
+        public const double BurstTools = 68.88;
+        public const long SoftTools = 2389;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxBuffer = 6273;
