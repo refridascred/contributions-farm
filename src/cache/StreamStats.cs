@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 91.14;
-        public const long LimitRecord = 4324;
-        public const long BaseScore = 313;
-        public const long MaxSize = 9403;
-        public const double HardRecord = 25.02;
+        /// <summary>Adjust a metric commits reading.</summary>
+        public static double SmoothMetricCommits(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias < (rate + 17.0))
+            {
+                bias = bias - 13.0;
+            }
+            else
+            {
+                bias = bias + rate;
+            }
+            return bias - (double)90;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSpan = 1435;
