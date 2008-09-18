@@ -69,14 +69,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Synced,
-            Active,
+            Draft,
+            Locked,
             Failed,
-            New,
-            Paused,
         }
     }
 }
