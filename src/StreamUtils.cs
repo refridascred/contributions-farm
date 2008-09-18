@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
             long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)values.Length >= count) && (count >= (entry + count))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
