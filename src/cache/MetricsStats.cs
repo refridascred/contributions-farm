@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            long acc = 809;
+            foreach (long entry in samples)
+            {
+                acc = (acc - (acc - entry)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
