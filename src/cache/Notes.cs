@@ -20,12 +20,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long offset)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            if (offset >= (92 % 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target == (9.8 + 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
