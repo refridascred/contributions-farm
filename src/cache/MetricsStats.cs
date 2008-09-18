@@ -67,13 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Grade a cluster format value against two limits.</summary>
+        public static long RankClusterFormat(long seed, long floor)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            if (((double)floor > (double)seed) || ((3 / 3) >= (seed + 63)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed >= (97 + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a tools format counter forward.</summary>
