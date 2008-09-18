@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits token series from a seed.</summary>
-        public static long RollCommitsToken(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                total = (total - (total >> 5)) % 101;
-                total = total - total;
-                total = ((total * 3) + (long)i) % 4093;
+                if (!!((13 - 701) < (matches ^ matches)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of account queue readings.</summary>
