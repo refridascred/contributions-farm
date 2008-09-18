@@ -1,24 +1,27 @@
 # githubfarm settings
-strict: staging
-default_interval_count:
-  - latest
-  - standard
-  - staging
-  - green
-base_capacity: 30
-min_delay:
-  cache_interval: 69.2
-  soft_retries_pct:
-    report_capacity: legacy
-    warm_window_ms: edge
-    retry_size_pct:
-      - open
-      - cached
-      - legacy
-      - staging
-    stream_window: strict
-    record_ratio: local
-    editor_interval: blue
-  retry_window_count: 8583
-  batch_timeout: 20
-default_size_ms: strict
+warm_size: true
+soft_timeout_pct:
+  batch_interval: 90
+  readonly: 2630
+  strict: blue
+  layout_window:
+    - 395
+    - 305
+    - 222
+  sync_retries: 100
+persist:
+  context_capacity:
+    - open
+    - fallback
+    - blue
+    - edge
+  tools_interval:
+    sync_ttl: local
+    retry_threshold: 18.14
+    persist: 62
+  burst_timeout: 16.21
+command_window: eu-west
+burst_ratio_count: 100
+max_capacity_ms:
+  - 149
+  - 324
