@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Paused,
-            Queued,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 5576;
+        public const long MinWidth = 2016;
+        public const long WindowSchema = 1235;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
