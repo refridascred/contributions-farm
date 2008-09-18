@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 9075;
-        public const long SoftPayload = 2277;
-        public const string StepPayload = "stable-1";
-        public const long CachePayload = 2483;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionOutliers(long[] items, long offset)
