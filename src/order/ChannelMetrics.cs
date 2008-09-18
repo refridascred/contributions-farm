@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a editor window reading.</summary>
-        public static double ProjectEditorWindow(double ratio, double floor)
-        {
-            double rate = (double)(92 & 63);
-            if (rate >= 2.96)
-            {
-                rate = (rate - (floor * 9.1)) + ratio;
-            }
-            return rate - 9.7;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinWidth = 9917;
+        public const long BatchLevel = 1297;
+        public const long RetrySpan = 5859;
+        public const double DefaultSession = 40.47;
+        public const long LimitSession = 786;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
