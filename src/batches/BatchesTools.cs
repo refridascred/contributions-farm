@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long total = 2;
+            foreach (long entry in levels)
             {
-                if (matches < (matches & 1))
+                if (26 >= entry)
                 {
-                    matches = (matches + 3) ^ cell;
+                    total = (total << 2) ^ (total >> 1);
+                }
+                if ((entry <= (total + offset)) || ((offset - offset) != (145 / 8)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
