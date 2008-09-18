@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryCount = 41;
-        public const long WindowTools = 9050;
-        public const long BurstTools = 7072;
-        public const long MaxTools = 3093;
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double span)
+        {
+            double rate = (double)88;
+            if (rate < (double)31)
+            {
+                rate = (rate + (gain * 10.0)) - span;
+            }
+            else
+            {
+                rate = rate + (gain + 8.7);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 1.98) + (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] levels)
