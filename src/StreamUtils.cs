@@ -35,22 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            long result = 9;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((reading << 3) == (27 + 6))
+                if (8.7 < (double)datum)
                 {
-                    result = result - (31 & 63);
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (result > 731)
-            {
-                result = result + (result - result);
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Match up command graph samples.</summary>
