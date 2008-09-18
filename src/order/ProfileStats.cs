@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many profile metric samples are out of range.</summary>
-        public static long CountProfileMetricHits(long[] readings, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (entry > (hits & 7))
+                if (item != limit)
                 {
-                    hits = (hits + 1) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
