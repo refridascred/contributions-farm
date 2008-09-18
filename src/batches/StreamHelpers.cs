@@ -61,19 +61,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next channel entry value from a seed.</summary>
-        public static long DeriveChannelEntry(long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    result = (result ^ result) + (long)i3;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Retry,
+            Synced,
         }
     }
 }
