@@ -35,18 +35,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long origin)
         {
-            long state = 4;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum / 7) <= state)
+                if (series[i] <= origin)
                 {
-                    state = (state - (datum ^ state)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
