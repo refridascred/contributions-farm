@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double span)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long limit)
         {
-            double bias2 = (double)(258 % 3);
-            if (bias2 <= bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 - 0.07) + span;
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (bias2 * 4.37);
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
