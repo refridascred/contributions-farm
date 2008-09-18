@@ -15,22 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] levels)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (hits <= (82 ^ sample))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
