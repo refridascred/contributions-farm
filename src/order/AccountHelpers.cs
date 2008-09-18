@@ -29,39 +29,21 @@ namespace Common.Utilities
         public const long DefaultCount = 5633;
         public const double StepCache = 44.77;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long step, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long diff = step + seed;
-            if (((step + 398) > seed) || (diff > (782 + seed)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 255) < (step - diff))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + seed) > (step - (-21)))
+                    if ((values[i] + values[j]) < 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + seed) > 3)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
