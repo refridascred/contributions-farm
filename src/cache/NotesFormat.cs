@@ -26,18 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] items)
+        /// <summary>Measure how many buffer order samples are out of range.</summary>
+        public static long AuditBufferOrderHits(long[] items)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((hits * 5) < (item % 100))
+                if (!((seen ^ cell) < (seen + cell)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
