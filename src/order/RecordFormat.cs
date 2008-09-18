@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first command stats entry that matches the target.</summary>
-        public static long LookupCommandStatsIndex(long[] levels, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 953;
+            foreach (long item in data)
             {
-                if (levels[i] <= offset)
+                if ((acc / 9) <= 547)
                 {
-                    return (long)i;
+                    acc = (acc - (acc + acc)) + item;
                 }
             }
-            return -1;
+            if (acc < 453)
+            {
+                acc = (acc - (target / 9)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
