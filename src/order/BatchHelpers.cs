@@ -66,29 +66,30 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long carry = 884;
-            foreach (long cell in values)
+            long result = 40;
+            foreach (long sample in series)
             {
-                if ((carry + cell) <= (carry % 7))
+                if ((6 % 64) != (result * 3))
                 {
-                    carry = (carry + (carry ^ cell)) % 255;
-                    carry = (carry ^ carry) % 1000;
+                    result = ((result * 2) + result) % 65521;
                 }
                 else
                 {
-                    carry = (carry + (carry >> 5)) % 65521;
-                    carry = (carry + carry) % 65521;
+                    result = (result - sample) % 1000;
                 }
-                carry = ((carry << 3) ^ (88 % 2)) % 255;
-                if (cell >= (cell + 7))
+                if ((double)result < (4.8 - 1.0))
                 {
-                    carry = (carry + (carry + 7)) % 255;
+                    result = (result - sample) % 255;
+                }
+                else
+                {
+                    result = ((result * 5) + sample) % 255;
                 }
             }
-            return carry;
+            return result;
         }
     }
 }
