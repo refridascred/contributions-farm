@@ -80,24 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] items, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples, long step)
         {
-            long anchor = -94;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((anchor + anchor) == (anchor * 4))
+                if ((hits + 8) == (hits ^ 4))
                 {
-                    anchor = ((anchor + (anchor * 3)) % 101) + datum;
+                    hits = ((hits + 2) + datum) + step;
                 }
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (anchor ^ (origin << 1)) + (long)i;
-                    anchor = ((anchor << 3) ^ (origin * 2)) % 4096;
-                }
-                anchor = anchor ^ (anchor & 3);
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
