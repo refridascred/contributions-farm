@@ -55,18 +55,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Look up the position of a cache format sample.</summary>
+        public static long LookupCacheFormatIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen ^ entry) != (entry * 5))
+                if (items[i] >= floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a profile header.</summary>
