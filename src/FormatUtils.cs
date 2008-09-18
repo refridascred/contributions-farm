@@ -58,18 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long MeasureGraphBatchesMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)value < (double)seen)
+                if ((count + 8) >= seed)
                 {
-                    seen = seen + 3;
+                    count = (count + 3) ^ value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
