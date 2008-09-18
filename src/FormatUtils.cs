@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string CacheBudget = "standard-1";
         public const long StepDepth = 5690;
 
-        /// <summary>Compare every pair of format editor readings.</summary>
-        public static long CompareFormatEditorCount(long[] items)
+        /// <summary>Validate layout format readings against a bound.</summary>
+        public static bool ValidateLayoutFormatLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != seed)
                 {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Adjust a report reading.</summary>
