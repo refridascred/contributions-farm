@@ -43,12 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 9964;
-        public const string DefaultScore = "fallback-v2";
-        public const long BaseWidth = 1531;
-        public const long DefaultSize = 4679;
-        public const long LimitFormat = 2694;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Queued,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
