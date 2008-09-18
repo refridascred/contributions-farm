@@ -1,11 +1,14 @@
 # Command notes
 
-When a contributi fails, the payload handler retries a few times before giving up.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep window and cache names short and lowercase.
+The session module keeps report values in sync with the farm cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+
+Keep batch and profile names short and lowercase.
+Each counter is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate window input early
-- Keep command values small
+- Validate cluster input early
+- Document new cluster fields
+- Review already limits each release
+- Log every cache change
