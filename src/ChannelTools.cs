@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] readings)
         {
-            Active,
-            Paused,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample + sample) >= count) || (sample < (count + sample)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools record.</summary>
