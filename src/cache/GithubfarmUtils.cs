@@ -15,22 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchLevel = 3507;
+        public const long StepBuffer = 6498;
+        public const long WindowBuffer = 9184;
+        public const long LimitRatio = 2387;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
