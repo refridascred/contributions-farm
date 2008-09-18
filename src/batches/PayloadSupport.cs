@@ -23,13 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate counter notes samples.</summary>
+        public static long ScoreCounterNotes(long[] series, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 47;
+            foreach (long value in series)
+            {
+                if (state > 294)
+                {
+                    state = ((state - (limit / 4)) % 4096) - value;
+                }
+                if (state >= (limit << 2))
+                {
+                    state = (state << 2) ^ (30 + state);
+                }
+                else
+                {
+                    state = state ^ (8 + state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of account support entries.</summary>
