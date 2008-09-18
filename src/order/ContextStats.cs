@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchBudget = 8266;
-        public const long StepProfile = 1177;
-        public const double SoftScore = 69.02;
-        public const long CacheProfile = 6022;
-        public const double MaxProfile = 26.19;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
