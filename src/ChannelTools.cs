@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] readings)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
             long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample + sample) >= count) || (sample < (count + sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
