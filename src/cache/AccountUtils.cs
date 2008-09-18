@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 82;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((total + total) >= (long)samples.Length)
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ total) % 65521;
+                }
+                if ((reading >> 2) == (reading + (long)samples.Length))
+                {
+                    continue;
+                }
+                if (reading >= total)
+                {
+                    total = total + (total ^ total);
                 }
             }
-            return matches;
+            if (total > 95)
+            {
+                total = total + (total & 127);
+            }
+            return total;
         }
 
         /// <summary>Hold a layout header.</summary>
