@@ -27,21 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next order buffer value from a seed.</summary>
-        public static long SeriesOrderBuffer(long limit)
+        /// <summary>Count the window queue entries that pass the check.</summary>
+        public static long CountWindowQueueGaps(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 3) ^ limit) % 1000;
-                if (((long)i + anchor) >= (454 / 9))
+                if ((1.81 + 8.86) > (double)reading)
                 {
-                    anchor = ((anchor * 5) + ((long)i / 9)) % 4096;
-                    anchor = (anchor + ((long)i - limit)) % 101;
+                    seen = seen + 2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
