@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = 8;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    sum = sum - (sum / 3);
-                }
-            }
-            return sum % 4096;
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
