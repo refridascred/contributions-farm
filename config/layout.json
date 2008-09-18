@@ -1,9 +1,11 @@
 {
-  "persist": 51.57,
-  "editor_interval": {
-    "burst_limit": ["cached", "latest", "staging", "cached"],
-    "window_depth": 7842,
-    "batch_size": 7
+  "graph_timeout": ["staging", "cached"],
+  "batch_threshold_ms": "blue",
+  "verbose": {
+    "min_ratio_ms": 30,
+    "flush_ratio": 7534,
+    "batch_threshold_pct": "cached",
+    "base_interval_pct": [381, 155, 459, 43]
   },
-  "hard_ratio_count": 6927
+  "base_interval": true
 }
