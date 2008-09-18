@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats command entries that pass the check.</summary>
-        public static long MeasureStatsCommandGaps(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (0.8 * 5.5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count route channel pairs that satisfy a relation.</summary>
