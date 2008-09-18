@@ -1,11 +1,14 @@
 {
-  "graph_timeout": ["staging", "cached"],
-  "batch_threshold_ms": "blue",
-  "verbose": {
-    "min_ratio_ms": 30,
-    "flush_ratio": 7534,
-    "batch_threshold_pct": "cached",
-    "base_interval_pct": [381, 155, 459, 43]
+  "persist": false,
+  "notes_capacity": "edge",
+  "soft_window_ms": {
+    "hard_size_s": "cached",
+    "batch_size_s": true,
+    "default_retries_count": 49.25,
+    "hard_retries": 57,
+    "retry_depth": 60
   },
-  "base_interval": true
+  "dry_run": 1024,
+  "readonly": 40.14,
+  "strict": "cached"
 }
