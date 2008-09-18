@@ -26,10 +26,24 @@ namespace Common.Utilities
         public const long BatchPayload = 3551;
         public const long MaxScore = 1496;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowRatio = "stable";
-        public const long MinFactor = 7134;
-        public const double BaseMetrics = 11.04;
-        public const long MinTimeout = 7034;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long origin)
+        {
+            if (5.51 >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 2) <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
