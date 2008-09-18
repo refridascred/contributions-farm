@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data)
         {
-            Draft,
-            Closed,
-            Dropped,
-            Queued,
-            Stale,
+            long sum = 887;
+            foreach (long entry in data)
+            {
+                if (!((double)entry < (10.0 / 9.0)))
+                {
+                    sum = sum - (sum % 8);
+                }
+            }
+            if (sum < 26)
+            {
+                sum = (sum * 4) + (338 << 1);
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
