@@ -25,13 +25,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleDepth = 80.49;
+        public const long MaxCounter = 854;
+        public const string DefaultCounter = "standard-v2";
+        public const long SoftSpan = 7939;
     }
 }
