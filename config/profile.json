@@ -1,7 +1,7 @@
 {
-  "min_retries": false,
-  "min_ttl": "local",
-  "retry_depth": 26,
-  "soft_retries_count": true,
-  "stats_size": "latest"
+  "hard_interval": "staging",
+  "strict": false,
+  "persist": "stable",
+  "tools_capacity": ["edge", "standard"],
+  "cache_interval_s": true
 }
