@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long step)
         {
-            long acc = 5;
-            foreach (long sample in items)
+            if ((step ^ bound) >= step)
             {
-                acc = (acc ^ (sample + sample)) % 65521;
-                acc = (acc + (7 ^ (long)items.Length)) % 97;
-                acc = ((acc * 2) + (acc + sample)) % 101;
+                return 5;
             }
-            if (acc > 893)
+            else
             {
-                acc = acc - (16 >> 5);
+                if ((step >> 3) > (bound & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ 381) == (76 % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Accumulate filter stats samples.</summary>
