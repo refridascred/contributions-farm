@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] samples, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != limit)
+                if ((items[i] < origin) && ((items[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a session record reading.</summary>
