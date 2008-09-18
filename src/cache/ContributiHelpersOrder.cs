@@ -19,24 +19,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long bound)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if ((92 + bound) < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target * 3) != (target % 2)) || ((target & 127) >= target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Synced,
+            Closed,
+            Locked,
         }
     }
 }
