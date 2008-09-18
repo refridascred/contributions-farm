@@ -1,6 +1,8 @@
 {
-  "poll_ttl_pct": "legacy",
-  "flush_interval": [333, 368],
-  "cluster_size": 5,
-  "strict": 11.82
+  "dry_run": "fallback",
+  "schema_retries": 8148,
+  "soft_timeout_s": 100,
+  "buffer_ttl": 33.83,
+  "max_delay_pct": ["cached", "stable"],
+  "warm_ratio": ["latest", "eu-west", "standard"]
 }
