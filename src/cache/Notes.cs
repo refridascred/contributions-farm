@@ -46,12 +46,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long bound)
         {
-            Paused,
-            Retry,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
