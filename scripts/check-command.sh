@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for item in local edge cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in local eu-west staging fallback; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=189
+log "limit is ${COMMAND_LIMIT}"
