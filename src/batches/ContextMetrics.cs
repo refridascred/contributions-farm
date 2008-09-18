@@ -28,19 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches contributi entry stays within the limit.</summary>
-        public static bool GuardBatchesContributiBounds(long[] series, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
