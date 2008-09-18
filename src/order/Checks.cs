@@ -73,11 +73,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleFactor = 7687;
-        public const long IdleEntry = 8131;
-        public const string MaxSpan = "local";
-        public const long SoftCount = 8862;
-        public const string LimitTimeout = "local-1";
+        /// <summary>Check that every context batches entry stays within the limit.</summary>
+        public static bool ValidateContextBatchesRange(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
