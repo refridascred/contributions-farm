@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] items)
         {
-            Pending,
-            Dropped,
-            Active,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (item <= (item + 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stream summary.</summary>
