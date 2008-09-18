@@ -59,18 +59,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batches support samples are out of range.</summary>
-        public static long AuditBatchesSupportHits(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((0.27 - 1.61) < (double)count)
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            double mean = 13.0;
+            return (mean + (bias * 16.0)) + weight;
         }
     }
 }
