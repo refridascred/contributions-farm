@@ -71,14 +71,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Synced,
-            Ready,
-            Draft,
-            Dropped,
-            Locked,
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
