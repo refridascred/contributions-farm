@@ -20,38 +20,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long step, long floor)
+        /// <summary>Scale a metric commits figure with a bias.</summary>
+        public static double AdjustMetricCommits(double bias, double bias2)
         {
-            if ((double)floor > 9.5)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step - 993) != (floor * 4)) && ((double)floor < (0.2 - 3.9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((78 << 1) == (step & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((924 + floor) <= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double rate = bias * 1.07;
+            return (rate - 2.22) + bias2;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
