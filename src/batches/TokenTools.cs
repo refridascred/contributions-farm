@@ -26,19 +26,11 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 5370;
+        public const double BatchCount = 55.51;
+        public const string MaxWidth = "cached-1";
+        public const long SoftSize = 5274;
+        public const string IdleDepth = "open-1";
     }
 }
