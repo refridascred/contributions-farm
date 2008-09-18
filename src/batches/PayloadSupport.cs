@@ -15,22 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] items, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 3;
+            foreach (long entry in samples)
             {
-                if (((tally & 31) <= floor) || (((double)floor >= (double)802) || ((entry / 6) < (floor ^ tally))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = result ^ (entry + entry);
             }
-            return tally;
+            if (result < 5)
+            {
+                result = ((result * 5) + (target - target)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
