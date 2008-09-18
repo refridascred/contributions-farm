@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const double RetrySpan = 65.28;
         public const long RetryBudget = 7004;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -79;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state + state) % 65521) ^ reading;
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Locate a already reading by value.</summary>
