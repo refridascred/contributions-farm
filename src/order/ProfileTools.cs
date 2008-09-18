@@ -34,11 +34,12 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleCount = 2055;
-        public const double CachePayload = 67.32;
-        public const long WindowInterval = 8379;
-        public const string LimitTimeout = "cached-v2";
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
