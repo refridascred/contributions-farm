@@ -31,18 +31,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 47.69;
+        public const long BurstGraph = 6450;
+        public const string MaxFactor = "strict-v2";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesOutliers(long[] readings)
