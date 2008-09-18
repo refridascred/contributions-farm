@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] readings)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0 % 8) >= (matches % 3))
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
