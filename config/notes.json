@@ -1,8 +1,16 @@
 {
-  "warm_ttl_count": true,
-  "sync_limit_count": false,
-  "idle_timeout_count": false,
-  "default_interval_count": [394, 21, 493, 333],
-  "idle_ratio_ms": 43,
-  "max_limit_pct": "staging"
+  "readonly": 8220,
+  "min_retries_count": [94, 398],
+  "metric_window": {
+    "metrics_ttl": 1176,
+    "metric_window": {
+      "enabled": "strict",
+      "base_threshold_count": 44.27,
+      "verbose": ["cached", "green", "primary"]
+    },
+    "flush_timeout_s": 93
+  },
+  "soft_threshold_ms": 15,
+  "poll_size": 68.78,
+  "verbose": true
 }
