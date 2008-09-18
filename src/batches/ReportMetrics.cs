@@ -34,19 +34,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] data, long offset)
+        /// <summary>Grade a githubfarm layout value against two limits.</summary>
+        public static long RankGithubfarmLayout(long seed, long bound)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if ((7.27 / 8.0) >= (double)bound)
             {
-                if (reading <= offset)
+                return 4;
+            }
+            else
+            {
+                if ((seed / 6) < bound)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < (double)728)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
