@@ -13,31 +13,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            if (!((bound & 63) == (step ^ bound)))
+            double rate = scale / 7.0;
+            if (rate <= 9.95)
             {
-                return 0;
+                rate = rate - (double)(-88);
             }
             else
             {
-                if (((double)7 > (double)step) && ((bound / 6) > (bound + step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.4 / 8.0) != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                rate = rate + bias;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - (rate - scale);
         }
 
         /// <summary>Validate notes counter readings against a bound.</summary>
