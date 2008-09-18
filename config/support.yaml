@@ -1,29 +1,13 @@
 # support settings
-min_capacity_s: primary
-verbose:
-  audit:
-    min_retries_count:
-      - legacy
-      - primary
-    flush_capacity_ms: latest
-    hard_size_ms: 88.23
-    editor_retries: 60
-    token_threshold: 30
-  sync_retries: standard
-  token_interval: 500
-  schema_window: open
-dry_run: 7116
-enabled: 1024
-batch_threshold_ms:
-  githubfarm_ratio: edge
-  payload_ratio: latest
-  checks_limit: 3099
-  min_delay_pct: local
-  cache_timeout:
-    - 171
-    - 393
-  readonly: edge
-cache_timeout_s:
-  - 473
-  - 53
-  - 354
+queue_size: 100
+base_delay: staging
+notes_delay: local
+layout_delay:
+  - 97
+  - 31
+max_delay_ms: green
+readonly:
+  persist: 4934
+  base_timeout_pct: 7647
+  strict: 2113
+  sync_window_pct: 0.38
