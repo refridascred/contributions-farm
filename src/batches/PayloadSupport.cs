@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Rank schema command input into a small class.</summary>
+        public static long RankSchemaCommand(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long next = bound - limit;
+            if (next >= bound)
             {
-                if (!(((45 + value) != (hits + value)) && (hits >= (value >> 1))))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit < (9.0 + 3.7))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 10) == (9 - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
