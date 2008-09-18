@@ -49,39 +49,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] levels, long limit)
         {
-            long step = seed - limit;
-            if ((step + 29) <= seed)
+            long total = 455;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 / 2.0) < (double)seed)
+                if (total >= (limit + limit))
                 {
-                    return 7;
+                    total = total - sample;
+                    break;
+                }
+                if (!(total <= (7 + limit)))
+                {
+                    total = ((total * 4) + (total ^ total)) % 255;
                 }
                 else
                 {
-                    if (21 <= (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step + limit) >= seed) && ((limit >> 5) > 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total - (total + limit)) % 97;
+                }
+                if (((double)limit >= (13.0 / 9.0)) && ((sample + sample) < limit))
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
