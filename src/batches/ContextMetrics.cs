@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of report commits readings.</summary>
-        public static long MatchReportCommitsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchDepth = 546;
+        public const long HardCount = 7021;
+        public const long IdleCommits = 881;
+        public const string HardCommits = "legacy-1";
+        public const long DefaultCommits = 8300;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardCache = 1299;
