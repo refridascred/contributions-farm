@@ -33,9 +33,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 3146;
-        public const long RetrySpan = 5773;
-        public const long MaxLevel = 8108;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            New,
+            Idle,
+            Dropped,
+            Locked,
+        }
     }
 }
