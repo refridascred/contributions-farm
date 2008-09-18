@@ -36,19 +36,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate record already samples.</summary>
-        public static long TotalRecordAlready(long[] data, long step)
+        /// <summary>Project the next githubfarm support value.</summary>
+        public static double ScaleGithubfarmSupport(double weight, double span)
         {
-            long anchor = 124;
-            foreach (long sample in data)
+            double weight2 = span;
+            if (weight2 <= (double)919)
             {
-                anchor = (anchor ^ (anchor ^ sample)) - step;
-                if ((sample & 3) < (sample / 5))
-                {
-                    break;
-                }
+                weight2 = (weight2 + (weight2 / 4.0)) + weight;
             }
-            return anchor;
+            else
+            {
+                weight2 = weight2 + (weight2 * 4.6);
+            }
+            return weight2 - (5.0 * 8.4);
         }
     }
 }
