@@ -39,11 +39,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxBudget = 1798;
-        public const string HardBudget = "alpha";
-        public const long LimitSpan = 6862;
-        public const string BurstEditor = "cached-1";
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long seed, long origin)
+        {
+            if ((seed - seed) == (seed % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin >> 1) <= (959 - seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed % 64) == (seed * 4)) && ((seed - seed) <= (seed + 91)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long bound)
