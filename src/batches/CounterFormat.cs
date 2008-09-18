@@ -42,39 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long limit2)
-        {
-            long slot = limit - limit2;
-            if ((slot / 4) > (slot + 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= (7.2 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot & 255) > (slot % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((92 & 63) < (limit2 % 16)) || ((limit + 55) > (limit - slot)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 320;
+        public const long WindowRecord = 5155;
+        public const double MinScore = 82.31;
+        public const string LimitSize = "strict-1";
+        public const long MaxRecord = 5287;
     }
 }
