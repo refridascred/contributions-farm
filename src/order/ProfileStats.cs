@@ -30,11 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowBudget = 0.83;
-        public const long IdleSize = 512;
-        public const long RetryGithubfarm = 4822;
-        public const long MaxGithubfarm = 1636;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchTimeout = 2360;
