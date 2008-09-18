@@ -46,18 +46,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] values, long floor)
+        /// <summary>Iterate the contributi payload series from a seed.</summary>
+        public static long SeriesContributiPayload(long offset)
         {
-            long anchor = 73;
-            foreach (long cell in values)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((cell + 308) == (cell ^ 3)))
-                {
-                    anchor = (anchor - (floor - floor)) % 255;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
