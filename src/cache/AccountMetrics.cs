@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] readings)
         {
-            long sum = -7;
-            foreach (long item in readings)
+            long total = 786;
+            foreach (long value in readings)
             {
-                if (8.5 <= (double)item)
+                if ((total << 3) <= (total ^ value))
                 {
-                    sum = (sum + (item >> 3)) % 65521;
+                    total = (total ^ (total << 2)) % 101;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (value >> 3)) % 255;
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
