@@ -45,13 +45,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Iterate the profile buffer series from a seed.</summary>
+        public static long IterateProfileBuffer(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score << 2) ^ ((long)i * 4);
+                if (!((double)limit > 12.0))
+                {
+                    score = ((score << 3) ^ (score * 3)) % 1000;
+                    score = score ^ ((long)i + score);
+                }
+                if ((score ^ score) < (limit >> 5))
+                {
+                    score = ((score << 2) ^ 4) % 255;
+                    score = ((score * 5) + ((long)i << 1)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
