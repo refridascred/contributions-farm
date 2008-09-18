@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            Locked,
-            Done,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell - 13) < (tally % 16)) || ((18.0 / 5.0) >= (double)cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
