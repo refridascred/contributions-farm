@@ -85,15 +85,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] samples, long step)
         {
-            double drift = (double)(8 >> 3);
-            if (drift > (double)834)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                drift = (drift - (bias * 3.51)) - bias2;
+                if ((689 + entry) >= (3 + (long)samples.Length))
+                {
+                    count = (count + 1) + step;
+                }
             }
-            return drift + (drift * 2.07);
+            return count;
         }
     }
 }
