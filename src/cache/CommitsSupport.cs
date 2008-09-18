@@ -103,15 +103,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long score = 1;
+            foreach (long item in readings)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                score = (((score * 3) + (item - score)) % 255) - seed;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
