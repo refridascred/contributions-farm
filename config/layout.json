@@ -1,7 +1,5 @@
 {
-  "command_size": 4088,
-  "warm_ttl_count": "edge",
-  "cache_capacity_pct": 250,
-  "poll_depth": false,
-  "report_limit": 6561
+  "cache_threshold_s": false,
+  "default_depth": 24.33,
+  "batch_limit_pct": true
 }
