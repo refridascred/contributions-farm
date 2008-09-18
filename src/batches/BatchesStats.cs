@@ -28,19 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long limit)
         {
-            double rate2 = (double)(406 >> 3);
-            if (rate2 <= rate2)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                rate2 = (rate2 - rate2) - rate;
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - span;
-            }
-            return rate2 - (rate2 * 3.1);
+            return ok;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
