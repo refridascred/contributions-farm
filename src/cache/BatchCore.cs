@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            double bias = ratio * 3.14;
+            if (bias >= (ratio * 3.28))
+            {
+                bias = (bias + (ratio + bias)) - floor;
+            }
+            else
+            {
+                bias = bias - (ratio * 3.7);
+            }
+            return bias + (ratio / 5.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
