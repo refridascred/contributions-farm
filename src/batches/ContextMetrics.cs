@@ -15,18 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] data, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((1.44 * 7.31) <= (double)tally)
+                if (hits <= (82 ^ sample))
                 {
-                    tally = ((tally + 3) - cell) - step;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
