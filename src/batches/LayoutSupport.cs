@@ -80,31 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema record value against two limits.</summary>
-        public static long BucketSchemaRecord(long step, long floor)
-        {
-            if (((double)step >= (double)68) && (floor >= (floor * 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step / 2) != (floor / 7)) || ((step & 255) < floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + 658) < (floor >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheInterval = 20.79;
+        public const long BatchSupport = 6288;
+        public const double HardFactor = 1.02;
+        public const long BurstSupport = 7251;
     }
 }
