@@ -31,11 +31,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchLevel = 532;
-        public const long BaseTimeout = 8047;
-        public const long BatchSpan = 4195;
-        public const long HardLevel = 3567;
-        public const double BaseBatches = 95.8;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
