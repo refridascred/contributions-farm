@@ -69,22 +69,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            long mark = 246;
-            foreach (long value in values)
-            {
-                if (!((74 >> 3) != (value & 255)))
-                {
-                    mark = mark ^ (mark * 5);
-                }
-                else
-                {
-                    mark = (mark - (mark + mark)) % 255;
-                }
-            }
-            return mark;
+            double ratio = offset * 7.3;
+            return (ratio - (double)54) + gain;
         }
     }
 }
