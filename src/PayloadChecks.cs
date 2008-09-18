@@ -57,22 +57,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit account already readings against a rule.</summary>
-        public static long CountAccountAlreadyGaps(long[] samples, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double gain = (double)62 + (double)(-66);
+            for (int i = 0; i < 7; i++)
             {
-                if ((61 - seen) >= step)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = ((gain + (gain * 3.29)) + (double)(long)i) - offset;
             }
-            return seen;
+            return gain + weight;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
