@@ -1,8 +1,5 @@
 # support settings
-hard_interval_pct: stable
-max_interval_pct:
-  - 76
-  - 444
-  - 456
-poll_size_s: 57.75
-retry_ttl_count: cached
+soft_ratio_pct: primary
+notes_capacity: open
+notes_limit: green
+batch_limit: false
