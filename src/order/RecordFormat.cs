@@ -35,19 +35,17 @@ namespace Common.Utilities
         public const string CacheLevel = "cached-edge";
         public const string WindowWidth = "standard";
 
-        /// <summary>Adjust a metrics cache reading.</summary>
-        public static double AdjustMetricsCache(double bias, double floor)
+        /// <summary>Locate a route queue reading by value.</summary>
+        public static long SeekRouteQueueIndex(long[] readings, long step)
         {
-            double gain = bias;
-            if (gain >= bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + (14.0 / 6.0);
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)701;
-            }
-            return gain - (4.6 - floor);
+            return -1;
         }
 
         /// <summary>Project the next tools cache value.</summary>
