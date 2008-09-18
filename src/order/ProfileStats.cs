@@ -29,12 +29,23 @@ namespace Common.Utilities
         public const double BurstBuffer = 68.78;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double bias, double offset)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            double scale = (double)(0 + 842);
+            if (scale >= offset)
+            {
+                scale = (scale - 16.0) - bias;
+            }
+            else
+            {
+                scale = scale + (double)68;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - (offset * 3.4);
         }
     }
 }
