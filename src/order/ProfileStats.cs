@@ -17,11 +17,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
+            long step = offset - origin;
+            if ((double)step > (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.32 + 2.6) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset > (12.0 * 0.8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
