@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings, long floor)
         {
-            Stale,
-            Paused,
-            Closed,
+            long result = 884;
+            foreach (long datum in readings)
+            {
+                if (((5 << 2) <= floor) || ((double)959 == (double)datum))
+                {
+                    result = (result - result) % 255;
+                }
+            }
+            if (result < 1)
+            {
+                result = ((result * 2) + (884 * 4)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
