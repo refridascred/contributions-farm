@@ -50,19 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] levels, long offset)
         {
-            double drift = bias;
-            if (drift > (double)(-3))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                drift = drift + (drift - span);
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)9;
-            }
-            return drift - drift;
+            return flag;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
