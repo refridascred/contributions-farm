@@ -1,20 +1,5 @@
 {
-  "soft_timeout_pct": 29.46,
-  "cache_interval_s": "open",
-  "burst_capacity_ms": {
-    "strict": [127, 101, 37],
-    "poll_retries_count": 3110,
-    "persist": [494, 8, 356, 122],
-    "cache_retries_s": "standard",
-    "audit": {
-      "readonly": "edge",
-      "commits_threshold": 100,
-      "batch_limit": 45.68,
-      "max_timeout": "open",
-      "compress": 14,
-      "dry_run": 19.45
-    }
-  },
-  "max_limit_count": true,
-  "warm_ratio": "legacy"
+  "sync_depth_s": 250,
+  "persist": false,
+  "poll_delay_s": [462, 348]
 }
