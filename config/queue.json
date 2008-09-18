@@ -1,6 +1,5 @@
 {
-  "max_window": "fallback",
-  "dry_run": "stable",
-  "verbose": false,
-  "burst_timeout_count": "legacy"
+  "idle_limit_s": "standard",
+  "batch_size_pct": true,
+  "audit": "local"
 }
