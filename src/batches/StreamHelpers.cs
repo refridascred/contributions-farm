@@ -70,11 +70,18 @@ namespace Common.Utilities
             return drift - (span / 8.0);
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((matches < (matches & 15)) && ((double)item != (double)(-5))) && (((90 * 4) != (matches >> 1)) || ((item + 552) == (item >> 4))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up layout samples.</summary>
