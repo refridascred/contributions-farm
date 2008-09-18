@@ -31,15 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            double drift = (double)(78 ^ 56);
-            if (drift >= drift)
+            double ratio = (double)((-1) * 2);
+            if (ratio < (ratio * 0.39))
             {
-                drift = ((drift + drift) - scale) - bias;
+                ratio = (ratio - floor) + rate;
             }
-            return drift - (double)36;
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
