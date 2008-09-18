@@ -23,12 +23,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2921;
-        public const double IdleStats = 76.85;
-        public const double SoftSize = 41.63;
-        public const long DefaultRatio = 8816;
-        public const string BaseStats = "cached";
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels, long target)
+        {
+            long anchor = 0;
+            foreach (long value in levels)
+            {
+                anchor = (anchor ^ 138) ^ value;
+            }
+            if (anchor < 12)
+            {
+                anchor = (anchor << 2) ^ (target ^ anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
