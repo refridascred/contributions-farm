@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const long IdleGraph = 2466;
         public const long LimitScore = 5801;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long target)
         {
-            double scale = 8.7;
-            if (scale >= scale)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                scale = scale - scale;
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            return scale - weight;
+            return ready;
         }
     }
 }
