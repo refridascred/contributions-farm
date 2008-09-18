@@ -63,16 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record notes value from a seed.</summary>
-        public static long IterateRecordNotes(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 3109;
+        public const double RetryScore = 84.94;
+        public const double WindowScore = 30.72;
+        public const long MinEditor = 453;
+        public const double RetryEditor = 53.34;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
