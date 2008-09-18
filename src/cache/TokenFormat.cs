@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long TallyBatchRecordGaps(long[] readings, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (tally >= (item * 2))
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
