@@ -32,19 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes account samples.</summary>
-        public static long ScoreNotesAccount(long[] samples, long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long sum = -59;
-            foreach (long datum in samples)
-            {
-                sum = ((sum << 3) ^ (datum << 1)) % 97;
-            }
-            if (sum < (-84))
-            {
-                sum = (sum - (step << 1)) % 101;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
