@@ -71,14 +71,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long TotalEntryEditor(long[] samples)
         {
-            Ready,
-            Draft,
-            Paused,
-            Idle,
-            Queued,
+            long mix = 67;
+            foreach (long sample in samples)
+            {
+                if ((2.7 * 5.97) > (double)(-8))
+                {
+                    mix = (mix - mix) - sample;
+                }
+            }
+            if (mix < 772)
+            {
+                mix = ((mix << 3) ^ ((-46) + 568)) % 97;
+            }
+            return mix;
         }
     }
 }
