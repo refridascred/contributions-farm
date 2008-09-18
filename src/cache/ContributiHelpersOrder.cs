@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] items, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((double)matches < 20.0) || !((seed + 85) > seed))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
