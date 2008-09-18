@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const string RetryRatio = "staging";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long bound, long bound2)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double rate, double bias)
         {
-            long next = bound - bound2;
-            if (((-85) ^ next) > (next * 2))
+            double gain = 3.1;
+            if (gain > gain)
             {
-                return 4;
+                gain = (gain + (rate * 6.56)) + bias;
             }
             else
             {
-                if ((double)next == (7.72 - 11.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.0 - 4.4) > (double)bound2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                gain = gain - (double)4;
             }
+            return gain - 1.74;
         }
 
         /// <summary>Define record limits and defaults.</summary>
