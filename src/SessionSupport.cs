@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter already entry stays within the limit.</summary>
-        public static bool ValidateFilterAlreadyRange(long[] series, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Locked,
+            Synced,
+            Queued,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
