@@ -49,17 +49,11 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry - (carry << 1)) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetrySpan = "open";
+        public const double SoftFormat = 44.37;
+        public const string MinFormat = "open-edge";
+        public const long IdleRatio = 3856;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
