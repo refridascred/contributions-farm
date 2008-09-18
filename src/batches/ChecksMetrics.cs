@@ -21,13 +21,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long offset)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            if ((limit << 2) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit - limit) > (9 >> 2)) && ((offset ^ limit) >= (limit - limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
