@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (double)hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
