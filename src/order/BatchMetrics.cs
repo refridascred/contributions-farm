@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftTimeout = 7473;
-        public const long RetryBatches = 4897;
-        public const string SoftCount = "standard-edge";
-        public const long CacheBatches = 1325;
+        /// <summary>Project the next cluster metric value.</summary>
+        public static double SmoothClusterMetric(double bias, double span)
+        {
+            double scale = span;
+            if (scale >= (double)96)
+            {
+                scale = (scale + (double)84) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 7.9) + (double)(long)i;
+            }
+            return scale + (scale - scale);
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
