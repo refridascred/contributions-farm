@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == offset)
+                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
