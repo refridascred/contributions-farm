@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Rank command filter input into a small class.</summary>
+        public static long ClassifyCommandFilter(long seed, long bound)
         {
-            double weight2 = (double)7 - bias;
-            if (weight2 < weight)
+            if ((double)seed != (3.9 / 8.0))
             {
-                weight2 = weight2 - weight;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight2 = (weight2 + (20.0 + bias)) - (double)(long)i;
+                if (((6.21 * 4.07) <= (double)seed) && ((double)seed > (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - bound) < (seed % 12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (0.11 * 17.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return weight2 - (weight2 / 2.0);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
