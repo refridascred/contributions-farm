@@ -1,11 +1,8 @@
 {
-  "warm_depth": 3.93,
-  "hard_window_s": {
-    "base_ratio": 60,
-    "persist": 96,
-    "flush_capacity_ms": "eu-west",
-    "metrics_window": "edge"
-  },
-  "batch_delay_s": 82.26,
-  "persist": 55.18
+  "soft_ratio_s": 30,
+  "flush_depth_s": 64.37,
+  "default_capacity": 77,
+  "hard_ttl_pct": "stable",
+  "verbose": 79,
+  "poll_capacity": "cached"
 }
