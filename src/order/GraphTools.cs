@@ -60,21 +60,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Scale a profile metric figure with a bias.</summary>
+        public static double ProjectProfileMetric(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (bias - 7.3) * 8.36;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = ((weight + (double)192) + (double)(long)i) + floor;
             }
-            return tally;
+            return weight + weight;
         }
 
         /// <summary>Derive the next checks account value from a seed.</summary>
