@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] data, long seed)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)seed < 3.49)
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
