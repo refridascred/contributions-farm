@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 7450;
-        public const long IdleCounter = 9440;
-        public const string DefaultCounter = "stable-edge";
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Closed,
+            Synced,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double AdjustGithubfarm(double bias, double bias2)
