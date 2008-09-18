@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = 3;
-            foreach (long entry in samples)
-            {
-                result = result ^ (entry + entry);
-            }
-            if (result < 5)
-            {
-                result = ((result * 5) + (target - target)) % 1000;
-            }
-            return result % 97;
+            Failed,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of account support entries.</summary>
