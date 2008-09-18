@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of batch metrics entries.</summary>
-        public static long ScoreBatchMetrics(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long sum = 57;
-            foreach (long reading in data)
+            long score = 324;
+            foreach (long cell in readings)
             {
-                sum = (sum << 2) ^ (sum >> 3);
-                if ((9.57 - 5.0) == (double)reading)
-                {
-                    sum = ((sum << 2) ^ ((-74) + reading)) % 101;
-                }
+                score = score - (cell >> 4);
             }
-            return sum;
+            if (score < (-980))
+            {
+                score = score + (score >> 2);
+            }
+            return score;
         }
 
         /// <summary>Adjust a channel reading.</summary>
