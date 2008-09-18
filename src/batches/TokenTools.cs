@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] values, long bound)
         {
-            Closed,
-            Synced,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((18 > reading) || ((reading * 2) <= (seen & 1)))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
