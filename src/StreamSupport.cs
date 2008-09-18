@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first format window entry that matches the target.</summary>
-        public static long LocateFormatWindowIndex(long[] series, long limit)
+        /// <summary>Count the format cluster entries that pass the check.</summary>
+        public static long TallyFormatClusterOutliers(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (series[i] < limit)
+                if ((double)target >= 1.97)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
