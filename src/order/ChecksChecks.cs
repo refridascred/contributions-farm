@@ -22,32 +22,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Scale a buffer metric figure with a bias.</summary>
+        public static double ProjectBufferMetric(double rate, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            double rate2 = rate;
+            if (rate2 >= (rate / 7.0))
             {
-                if ((sum & 1) >= (bound & 3))
-                {
-                    sum = (sum - (sum % 10)) % 101;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-                if ((sum << 2) > (8 >> 1))
-                {
-                    sum = sum ^ (2 ^ (long)i);
-                    break;
-                }
-                else
-                {
-                    sum = sum - (sum ^ sum);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                rate2 = (rate2 + (rate / 5.0)) - offset;
             }
-            return sum;
+            return rate2 + rate;
         }
     }
 }
