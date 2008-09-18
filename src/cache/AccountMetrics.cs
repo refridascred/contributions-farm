@@ -80,11 +80,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = -94;
+            foreach (long datum in items)
+            {
+                if ((anchor + anchor) == (anchor * 4))
+                {
+                    anchor = ((anchor + (anchor * 3)) % 101) + datum;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = (anchor ^ (origin << 1)) + (long)i;
+                    anchor = ((anchor << 3) ^ (origin * 2)) % 4096;
+                }
+                anchor = anchor ^ (anchor & 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of support readings.</summary>
