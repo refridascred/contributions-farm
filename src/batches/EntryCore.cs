@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long DefaultBatch = 7072;
         public const long DefaultInterval = 2683;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long bound)
         {
-            Active,
-            Closed,
-            Paused,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
