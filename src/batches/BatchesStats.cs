@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long MinDepth = 8654;
         public const double WindowStream = 66.12;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine commits report values into a single score.</summary>
+        public static long TallyCommitsReport(long[] data)
         {
-            Pending,
-            New,
-            Active,
-            Failed,
+            long state = 4;
+            foreach (long datum in data)
+            {
+                state = ((state * 5) + (state & 31)) + datum;
+            }
+            if (state < 38)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state;
         }
     }
 }
