@@ -55,18 +55,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "cached-1";
+        public const long WindowStream = 501;
+        public const long StepStream = 8555;
+        public const long BaseStream = 6860;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] values, long seed)
