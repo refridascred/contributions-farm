@@ -48,12 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
