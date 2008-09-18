@@ -1,8 +1,5 @@
 # support settings
-hard_delay:
-  - open
-  - open
-warm_capacity_ms: blue
-metrics_delay: 86
-warm_ttl: open
-githubfarm_threshold: 83.24
+graph_retries: 5300
+batch_ratio: cached
+persist: 30.12
+max_threshold_count: 59.06
