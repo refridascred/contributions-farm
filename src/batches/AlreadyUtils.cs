@@ -57,28 +57,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series, long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long mark = 6;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (18.0 >= (double)mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 5) + reading) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ (offset + mark);
-                }
-                mark = mark - (mark + mark);
-                mark = ((mark * 2) + (offset - 84)) % 65521;
-                if ((6.73 - 4.86) > (double)offset)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the stream mode values.</summary>
