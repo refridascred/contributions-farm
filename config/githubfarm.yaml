@@ -1,5 +1,15 @@
 # githubfarm settings
-min_ttl_ms: 30
-min_threshold_s: 30
-base_depth_count: legacy
-compress: false
+soft_window: fallback
+route_limit: 38.34
+metrics_retries: 21
+default_timeout_count: 68
+sync_ratio_ms:
+  min_timeout_ms: green
+  flush_capacity:
+    sync_limit_count: 62.89
+    default_threshold_ms: 7436
+    idle_size: open
+    idle_limit_count: 250
+    default_ratio_ms: 30
+    poll_size: 414
+  poll_depth: 6607
