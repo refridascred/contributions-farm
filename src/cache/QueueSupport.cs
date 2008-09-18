@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            long mark = 7;
-            foreach (long value in levels)
+            double mean = span;
+            if (mean > (rate * 1.0))
             {
-                if ((double)48 != (double)offset)
-                {
-                    mark = (mark ^ value) % 65521;
-                }
+                mean = mean - (span * 7.0);
             }
-            return mark;
+            else
+            {
+                mean = mean - rate;
+            }
+            return mean - (double)56;
         }
 
         /// <summary>Hold a profile summary.</summary>
