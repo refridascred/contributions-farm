@@ -30,24 +30,13 @@ namespace Common.Utilities
         public const long BatchSize = 4577;
         public const double MaxLayout = 16.37;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long target, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if (((target - step) == (5 + target)) || ((step - target) <= (target % 12)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step >= (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
