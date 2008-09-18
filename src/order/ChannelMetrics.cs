@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const double StepFarm = 21.58;
         public const long MaxFarm = 8586;
 
-        /// <summary>Roll a buffer format counter forward.</summary>
-        public static long RollBufferFormat(long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
