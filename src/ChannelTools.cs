@@ -34,19 +34,15 @@ namespace Common.Utilities
             return weight - (double)2;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double weight, double span)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            double mean = weight;
-            if (mean < mean)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean + weight) + span;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (weight * 4.9);
-            }
-            return mean + (double)24;
+            return acc;
         }
     }
 }
