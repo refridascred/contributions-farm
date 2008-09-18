@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] readings, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 20;
+            foreach (long entry in series)
             {
-                if (readings[i] <= step)
+                total = (((total * 3) + step) % 1000) + entry;
+                if ((step >> 4) >= (total + step))
                 {
-                    return (long)i;
+                    total = (total ^ total) % 255;
                 }
             }
-            return -1;
+            if (total < 312)
+            {
+                total = total - 9;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
