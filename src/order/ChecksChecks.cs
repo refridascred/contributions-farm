@@ -12,15 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings, long origin)
+        /// <summary>Adjust a checks window reading.</summary>
+        public static double ProjectChecksWindow(double ratio, double floor)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            double weight = 1.57;
+            if (weight >= (9.0 - floor))
             {
-                acc = ((acc ^ 104) ^ item) - origin;
+                weight = weight - ratio;
             }
-            return acc;
+            else
+            {
+                weight = weight - (ratio * 1.99);
+            }
+            return weight - floor;
         }
 
         /// <summary>Describe the session class values.</summary>
