@@ -25,15 +25,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double span)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            double rate = (span - bias) / 2.0;
-            for (int i = 0; i < 7; i++)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate - span) + (double)(long)i;
+                sum = (sum << 3) ^ ((long)i >> 3);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return rate - rate;
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
