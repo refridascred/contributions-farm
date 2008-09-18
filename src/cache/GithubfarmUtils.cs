@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long step)
+        /// <summary>Validate tools profile readings against a bound.</summary>
+        public static bool VerifyToolsProfileBounds(long[] items, long origin)
         {
-            if (((step + origin) >= step) && (2.08 <= (double)step))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (double)84)
+                if (cell < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
