@@ -59,13 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            Retry,
-            Failed,
-            Dropped,
-            Locked,
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
