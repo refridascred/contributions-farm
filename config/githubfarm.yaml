@@ -1,5 +1,26 @@
 # githubfarm settings
-flush_depth: 250
-default_timeout_count: primary
-persist: legacy
-burst_limit_pct: false
+commits_ttl:
+  base_ttl: true
+  persist:
+    default_threshold_count: 51
+    strict: green
+    compress: false
+  idle_timeout: false
+  idle_window_count: false
+  max_threshold_pct: 30
+cache_limit: blue
+min_interval:
+  - legacy
+  - latest
+min_ttl_pct: latest
+graph_threshold:
+  payload_ttl:
+    - 374
+    - 253
+    - 45
+    - 66
+  filter_interval: false
+  min_limit: 2
+  counter_depth: 3257
+  soft_ttl_pct: 93
+burst_threshold_count: 60
