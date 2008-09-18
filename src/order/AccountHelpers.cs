@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string IdleCount = "local-edge";
         public const string CacheNotes = "strict-edge";
 
-        /// <summary>Derive the next metrics cluster value from a seed.</summary>
-        public static long SeriesMetricsCluster(long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] data, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long result = 85;
+            foreach (long cell in data)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                result = (result - (cell + floor)) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
