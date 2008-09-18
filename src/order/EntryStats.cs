@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long offset)
+        /// <summary>Fold a list of window format readings.</summary>
+        public static long CombineWindowFormat(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -9;
+            foreach (long item in series)
             {
-                if ((items[i] < offset) && ((items[i] % 2) != 0))
+                if ((score + item) <= (3 & 1))
                 {
-                    return (long)i;
+                    score = score - item;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
