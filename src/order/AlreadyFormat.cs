@@ -44,18 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] data, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((double)(long)data.Length == (double)0) && ((floor / 3) <= (floor + tally)))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
