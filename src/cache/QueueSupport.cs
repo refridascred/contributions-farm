@@ -26,38 +26,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long floor2)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            if ((floor - floor2) >= floor)
+            long acc = 2;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 + floor) == (floor >> 2))
+                if ((8.71 - 12.0) > (double)datum)
                 {
-                    return 5;
+                    acc = ((acc * 5) + (7 + acc)) % 101;
+                }
+                if ((9.29 + 9.0) >= (double)acc)
+                {
+                    acc = (acc + datum) % 1000;
                 }
                 else
                 {
-                    if (floor2 > (floor2 & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)floor2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = acc - (datum ^ 625);
                 }
+                acc = ((acc << 3) ^ (datum ^ acc)) % 255;
             }
+            return acc;
         }
     }
 }
