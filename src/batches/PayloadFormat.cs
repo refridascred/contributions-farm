@@ -55,21 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer already samples.</summary>
-        public static long CompareBufferAlreadyCount(long[] samples)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Queued,
+            Failed,
+            Synced,
         }
     }
 }
