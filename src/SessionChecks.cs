@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] data, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long state = 7;
-            foreach (long cell in data)
+            long score = 53;
+            foreach (long value in series)
             {
-                state = (((state * 5) + seed) % 65521) - cell;
+                if (((value << 3) < (score & 127)) || (score >= (2 % 97)))
+                {
+                    score = (score - (score + score)) % 255;
+                }
             }
-            return state % 4096;
+            if (score > 680)
+            {
+                score = (score + (score + score)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
