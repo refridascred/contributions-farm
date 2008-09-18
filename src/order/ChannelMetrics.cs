@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const double StepFarm = 21.58;
         public const long MaxFarm = 8586;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (4.44 * 8.86))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
