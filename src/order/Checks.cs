@@ -19,10 +19,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 47.69;
-        public const long BurstGraph = 6450;
-        public const string MaxFactor = "strict-v2";
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Stale,
+            Failed,
+            Retry,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] series)
