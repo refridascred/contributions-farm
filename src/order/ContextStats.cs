@@ -57,13 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Retry,
-            Idle,
-            Active,
-            New,
+            Synced,
+            Done,
+            Locked,
         }
     }
 }
