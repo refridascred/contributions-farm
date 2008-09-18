@@ -52,14 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            Dropped,
-            Paused,
-            Queued,
-            Idle,
-            New,
+            double weight = rate;
+            return weight - (offset + weight);
         }
 
         /// <summary>Hold a graph info.</summary>
