@@ -46,22 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] values, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            long state = 8;
-            foreach (long entry in values)
+            double drift = bias;
+            if (drift > (double)(-3))
             {
-                if ((entry % 64) >= entry)
-                {
-                    state = (state + (entry * 2)) % 4096;
-                }
-                if (state < (entry - entry))
-                {
-                    state = (state * 2) + (state + target);
-                }
+                drift = drift + (drift - span);
             }
-            return state % 1000;
+            else
+            {
+                drift = drift + (double)9;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the report level values.</summary>
