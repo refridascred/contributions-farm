@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryDepth = 6210;
-        public const string StepProfile = "staging";
-        public const long DefaultProfile = 1220;
-        public const string BurstTimeout = "staging-v2";
-        public const string SoftScore = "cached-v2";
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double scale, double bias)
+        {
+            double rate = bias;
+            return (rate - rate) + scale;
+        }
     }
 }
