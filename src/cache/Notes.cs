@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 9108;
-        public const long LimitCache = 4753;
-        public const string MaxFactor = "open-v2";
-        public const long HardDepth = 1853;
-        public const long HardCache = 2238;
+        /// <summary>Combine order already values into a single score.</summary>
+        public static long CombineOrderAlready(long[] series)
+        {
+            long mix = 981;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) >= (reading >> 5))
+                {
+                    mix = (mix - (mix / 6)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (reading + 8);
+                }
+            }
+            if (mix > 7)
+            {
+                mix = ((mix << 3) ^ (490 + 966)) % 1000;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
