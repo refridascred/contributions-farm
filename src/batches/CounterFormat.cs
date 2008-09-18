@@ -22,13 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels)
         {
-            Retry,
-            Paused,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (double)48)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
