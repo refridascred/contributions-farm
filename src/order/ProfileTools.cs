@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Active,
-            Pending,
-            Retry,
-            Draft,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstSpan = 9142;
+        public const long HardRecord = 7144;
+        public const long SoftSpan = 3658;
+        public const double RetryRatio = 92.42;
+        public const long WindowRecord = 804;
 
         /// <summary>Fold a list of format batch readings.</summary>
         public static long WeighFormatBatch(long[] items)
