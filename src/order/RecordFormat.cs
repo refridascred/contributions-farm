@@ -55,19 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] series, long step)
+        /// <summary>Project the next tools cache value.</summary>
+        public static double SmoothToolsCache(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = (ratio / 8.0) + ratio;
+            return (weight - (weight + weight)) + floor;
         }
     }
 }
