@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long origin2)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long gap = origin - origin2;
-            if (gap <= origin2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin ^ origin2) < origin) && (origin <= gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2 + origin2) > (origin >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + gap) == (544 << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
