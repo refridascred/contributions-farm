@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = 5;
-            foreach (long cell in items)
-            {
-                if ((state - state) >= (state & 1))
-                {
-                    state = ((state << 3) ^ (state ^ cell)) % 101;
-                }
-            }
-            return state % 1000;
+            Closed,
+            Failed,
+            Ready,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the profile phase values.</summary>
