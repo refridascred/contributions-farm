@@ -20,14 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Active,
-            Ready,
+            Pending,
+            Draft,
+            Locked,
             Idle,
-            Queued,
-            Closed,
         }
 
         /// <summary>Accumulate channel samples.</summary>
