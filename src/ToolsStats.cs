@@ -27,18 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of commits batch readings.</summary>
-        public static long ScoreCommitsBatch(long[] values)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            long state = 60;
-            foreach (long value in values)
+            double gain = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state / 7) <= (-55))
-                {
-                    state = ((state + (state * 2)) % 101) + value;
-                }
+                gain = (gain - offset) + (double)(long)i;
             }
-            return state % 1000;
+            return gain + (bias * 0.7);
         }
 
         /// <summary>Describe the support state values.</summary>
