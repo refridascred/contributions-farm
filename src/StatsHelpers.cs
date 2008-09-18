@@ -50,10 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 39.94;
-        public const double WindowEntry = 7.64;
-        public const long LimitEntry = 3312;
+        /// <summary>Audit editor route readings against a rule.</summary>
+        public static long CountEditorRouteGaps(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((step + hits) > (75 & 3))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueOutliers(long[] items, long limit)
