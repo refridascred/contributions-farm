@@ -28,22 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many buffer token samples are out of range.</summary>
-        public static long AuditBufferTokenMatches(long[] series, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (6 > ((long)series.Length ^ count))
-                {
-                    count = ((count + 2) - datum) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
