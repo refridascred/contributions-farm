@@ -54,12 +54,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
