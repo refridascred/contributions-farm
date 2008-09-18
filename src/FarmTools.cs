@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
