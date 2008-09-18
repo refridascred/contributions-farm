@@ -32,18 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value * 3) == (62 * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 4400;
+        public const long MinStats = 4341;
+        public const long SoftWidth = 6028;
+        public const double LimitSize = 60.38;
     }
 }
