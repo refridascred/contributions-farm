@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
