@@ -48,18 +48,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = 44;
+            foreach (long reading in samples)
             {
-                if ((count % 12) != (datum - count))
+                mix = mix + (reading << 2);
+                if (((mix * 3) <= (target - reading)) || ((8.92 + 5.3) == (double)mix))
                 {
-                    count = count + 1;
+                    mix = (mix + ((long)samples.Length * 4)) % 101;
                 }
             }
-            return count;
+            return mix % 1000;
         }
     }
 }
