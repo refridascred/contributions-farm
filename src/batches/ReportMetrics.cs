@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample - sample) == (count ^ 20))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
