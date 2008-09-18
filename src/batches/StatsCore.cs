@@ -39,19 +39,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor + 1) > ((long)i + result))
+                if (samples[i] < origin)
                 {
-                    result = (result + floor) % 255;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
