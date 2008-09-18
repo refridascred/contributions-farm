@@ -11,12 +11,39 @@ namespace Common.Utilities
         public const double IdleRatio = 75.22;
         public const long HardEntry = 8779;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 9706;
-        public const long BatchScore = 7529;
-        public const long StepChecks = 8479;
-        public const long DefaultSize = 3532;
-        public const double BatchInterval = 61.21;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long bound, long origin)
+        {
+            if ((1.17 / 5.0) >= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin * 3) <= (bound % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1 & 3) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound <= (bound + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowBudget = 0.83;
