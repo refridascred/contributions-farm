@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank command filter input into a small class.</summary>
-        public static long ClassifyCommandFilter(long seed, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] samples, long seed)
         {
-            if ((double)seed != (3.9 / 8.0))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((6.21 * 4.07) <= (double)seed) && ((double)seed > (double)bound))
+                if (seed >= (reading & 31))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((bound - bound) < (seed % 12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (0.11 * 17.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate already format samples.</summary>
