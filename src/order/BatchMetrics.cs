@@ -25,18 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((0.16 / 5.0) >= (double)(long)values.Length)
+                if (seen >= (seen << 2))
                 {
-                    tally = (tally + 2) ^ item;
+                    seen = (seen + 1) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
