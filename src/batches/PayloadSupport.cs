@@ -25,15 +25,38 @@ namespace Common.Utilities
         public const long BurstRoute = 5689;
         public const long MinRoute = 4377;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Classify a notes stats pair into a bucket.</summary>
+        public static long GradeNotesStats(long seed, long limit)
         {
-            double rate = (double)(48 + 9);
-            if (rate < floor)
+            if (((limit - seed) >= (638 % 60)) && ((limit << 1) <= (limit + limit)))
             {
-                rate = (rate + 17.0) + gain;
+                return 4;
             }
-            return rate - (double)3;
+            else
+            {
+                if (!((double)seed >= 7.55))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 5) < limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)seed == (6.73 * 8.0)) && (1 < limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
