@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a stats window counter forward.</summary>
+        public static long DeriveStatsWindow(long limit)
         {
-            Stale,
-            Draft,
-            Paused,
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((mix & 31) < limit)
+                {
+                    mix = (mix - (limit - 461)) % 1000;
+                }
+                mix = (mix * 3) + (limit - mix);
+                mix = (mix + (0 & 63)) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
