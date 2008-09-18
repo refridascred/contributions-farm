@@ -1,20 +1,9 @@
 # support settings
-tools_size:
-  - 261
-  - 356
-base_depth_ms: edge
-strict: 250
-base_retries_ms:
-  - local
-  - edge
-  - latest
-  - latest
-hard_depth:
-  - strict
-  - edge
-  - cached
-readonly:
-  - 44
-  - 498
-  - 78
-  - 421
+idle_window: green
+record_retries: true
+route_timeout: 4830
+strict: true
+sync_interval_count:
+  - 128
+  - 357
+default_size_pct: 70
