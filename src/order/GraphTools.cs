@@ -35,18 +35,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheCount = 8309;
+        public const string CacheTimeout = "stable";
+        public const double RetryFarm = 8.82;
+        public const long IdleFarm = 8315;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
