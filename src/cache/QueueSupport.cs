@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double rate, double span)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double mean = span;
-            if (mean > (rate * 1.0))
-            {
-                mean = mean - (span * 7.0);
-            }
-            else
-            {
-                mean = mean - rate;
-            }
-            return mean - (double)56;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
