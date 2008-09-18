@@ -26,13 +26,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Iterate the filter cluster series from a seed.</summary>
+        public static long IterateFilterCluster(long step)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (step < (carry ^ step))
+                {
+                    carry = (carry + ((long)i % 3)) % 65521;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
