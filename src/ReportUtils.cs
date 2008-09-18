@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of commits graph entries.</summary>
-        public static long ScoreCommitsGraph(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 65;
-            foreach (long entry in items)
-            {
-                if ((mark + 65) <= (mark & 15))
-                {
-                    mark = (mark + mark) - entry;
-                }
-            }
-            return mark % 4096;
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Accumulate queue samples.</summary>
