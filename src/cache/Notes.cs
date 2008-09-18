@@ -21,11 +21,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 7872;
-        public const long LimitEntry = 9974;
-        public const long MinScore = 4079;
-        public const long BurstSpan = 5880;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Rank order stream input into a small class.</summary>
         public static long SortOrderStream(long seed, long target)
