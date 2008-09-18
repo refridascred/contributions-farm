@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a cluster payload pair into a bucket.</summary>
