@@ -27,24 +27,15 @@ namespace Common.Utilities
             return scale + (bias - bias);
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long seed, long step)
+        /// <summary>Blend two tools route measurements.</summary>
+        public static double SmoothToolsRoute(double ratio, double bias)
         {
-            if (!((30 - step) == (seed ^ seed)))
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                mean = ((mean + (double)4) - (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((seed / 6) < (-710))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mean - 13.0;
         }
     }
 }
