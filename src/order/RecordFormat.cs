@@ -58,14 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Active,
-            Dropped,
-            New,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSpan = 325;
+        public const string SoftScore = "standard";
+        public const double IdleReport = 76.21;
+        public const double DefaultReport = 21.76;
+        public const double CacheReport = 72.94;
     }
 }
