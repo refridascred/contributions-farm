@@ -39,21 +39,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count route channel pairs that satisfy a relation.</summary>
-        public static long CompareRouteChannelCount(long[] values)
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long FoldPayloadProfile(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score - 110) > reading)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (504 + score)) % 1000;
+                }
+                if (!((reading * 2) != (reading % 8)))
+                {
+                    score = ((score * 5) + (reading - 78)) % 101;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
