@@ -27,11 +27,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepCount = "legacy-v2";
-        public const long MinRecord = 1242;
-        public const string RetryDepth = "latest-edge";
-        public const double HardRecord = 0.5;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long DigestPayload(long[] samples, long seed)
