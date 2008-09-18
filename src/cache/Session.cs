@@ -39,11 +39,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Grade a tools githubfarm value against two limits.</summary>
+        public static long SortToolsGithubfarm(long floor, long origin)
         {
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
+            long cur = floor + origin;
+            if (((origin / 9) < (floor - origin)) && ((3.5 + 17.0) != (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((2.93 - 7.95) != (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (5.87 >= (double)cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((cur / 9) > origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
