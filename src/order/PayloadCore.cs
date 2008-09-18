@@ -46,15 +46,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cluster entry measurements.</summary>
-        public static double AdjustClusterEntry(double gain, double floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] levels, long origin)
         {
-            double weight = (gain / 6.0) / 5.0;
-            if (weight >= floor)
+            long total = 873;
+            foreach (long cell in levels)
             {
-                weight = weight + (double)7;
+                total = total - origin;
+                if (8 <= (total & 255))
+                {
+                    total = total + (cell % 64);
+                }
+                else
+                {
+                    total = (total ^ (total % 12)) % 97;
+                }
             }
-            return weight - weight;
+            return total;
         }
     }
 }
