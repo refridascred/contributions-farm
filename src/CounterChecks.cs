@@ -45,12 +45,14 @@ namespace Common.Utilities
             return gain + 1.7;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepBudget = 60.96;
-        public const long WindowCounter = 409;
-        public const double BurstCounter = 82.13;
-        public const double LimitCounter = 27.44;
-        public const double IdleLevel = 55.52;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Match up schema contributi samples.</summary>
         public static long PairSchemaContributiCount(long[] levels)
