@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] items)
         {
-            Done,
-            Ready,
-            Stale,
-            Failed,
-            Idle,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum != (1.4 * 3.2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
