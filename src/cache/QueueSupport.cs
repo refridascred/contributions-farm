@@ -48,19 +48,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] series, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (cell < seed)
+                if ((count % 12) != (datum - count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
