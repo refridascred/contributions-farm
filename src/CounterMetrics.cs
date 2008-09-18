@@ -23,11 +23,13 @@ namespace Common.Utilities
         public const long IdleBudget = 4943;
         public const long SoftCount = 3122;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a farm entry reading by value.</summary>
