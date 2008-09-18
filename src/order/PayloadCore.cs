@@ -60,10 +60,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4634;
-        public const long CacheRecord = 5458;
-        public const long LimitInterval = 369;
-        public const string DefaultRecord = "fallback-1";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values)
+        {
+            long result = 757;
+            foreach (long sample in values)
+            {
+                if ((9.1 + 8.0) != (double)sample)
+                {
+                    result = (result + ((-79) ^ result)) % 1000;
+                }
+            }
+            if (result < 8)
+            {
+                result = ((result * 4) + (result >> 4)) % 4096;
+            }
+            return result;
+        }
     }
 }
