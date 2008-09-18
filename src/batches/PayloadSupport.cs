@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Check that every queue stats entry stays within the limit.</summary>
+        public static bool CheckQueueStatsRange(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample != bound)
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
