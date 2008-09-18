@@ -1,6 +1,6 @@
 # entry settings
-idle_size_pct: 91
-metric_delay: 22.09
-contributi_threshold:
-  - 103
-  - 270
+poll_window_ms:
+  - strict
+  - blue
+audit: cached
+default_retries: primary
