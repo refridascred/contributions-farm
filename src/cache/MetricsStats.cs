@@ -65,23 +65,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long carry = 30;
-            foreach (long entry in values)
+            long anchor = 3;
+            foreach (long datum in readings)
             {
-                carry = (carry << 3) ^ (entry ^ carry);
-                if ((3.82 / 5.0) != (double)entry)
+                for (int i = 0; i < 2; i++)
                 {
-                    carry = (carry - (entry % 2)) % 97;
+                    anchor = ((anchor - 9) % 1000) + (long)i;
+                    anchor = (anchor << 2) ^ (datum + datum);
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long bound = anchor;
+                    anchor = (anchor + bound) + (long)i2;
+                }
+                if (!(9.6 >= (double)anchor))
+                {
+                    anchor = (anchor - (5 - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - datum) % 1000;
                 }
             }
-            if (carry < 695)
+            if (anchor < 0)
             {
-                carry = (carry * 2) + 6;
+                anchor = ((anchor * 4) + (anchor + 3)) % 65521;
             }
-            return carry;
+            return anchor % 4096;
         }
     }
 }
