@@ -1,11 +1,15 @@
 # Command notes
 
-Keep window and editor names short and lowercase.
-Defaults for graph live in the config folder and can be overridden per environment.
+The buffer report groups every cluster by format.
+Each buffer is validated before it reaches the profile queue.
+Run the commits check before changing any schema limits.
+
+Keep checks and stream names short and lowercase.
+A stream that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Document new report fields
-- Keep payload values small
-- Log every context change
-- Review batch limits each release
+- Prefer notes defaults
+- Log every entry change
+- Document new window fields
+- Keep already values small
