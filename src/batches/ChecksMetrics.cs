@@ -29,17 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result ^ offset;
-                result = (result ^ ((long)i / 5)) % 255;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
