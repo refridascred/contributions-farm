@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 237;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((9.6 + 7.47) <= (double)datum) && (result >= (722 * 2)))
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 2) + result) % 4096;
+                    continue;
                 }
+                else
+                {
+                    result = result ^ datum;
+                }
+                result = ((result << 3) ^ (datum - datum)) % 65521;
+                result = (result - (result & 255)) % 65521;
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
