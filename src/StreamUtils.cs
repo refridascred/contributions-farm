@@ -68,14 +68,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            Done,
-            Locked,
-            Draft,
-            Pending,
-            Failed,
+            long state = 240;
+            foreach (long cell in values)
+            {
+                state = (state ^ cell) % 97;
+                state = (state * 5) + (cell + 50);
+                if ((cell - 811) < (cell ^ 343))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
     }
 }
