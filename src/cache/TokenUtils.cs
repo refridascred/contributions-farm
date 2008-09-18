@@ -31,25 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long target, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double bias)
         {
-            long offset2 = target ^ offset;
-            if (2.49 <= (double)target)
+            double scale = (double)(76 - 10);
+            if (scale <= bias)
             {
-                return 2;
+                scale = scale - 13.0;
             }
-            else
-            {
-                if (offset2 > (offset % 10))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return scale + rate;
         }
     }
 }
