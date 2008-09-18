@@ -39,25 +39,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a checks contributi pair into a bucket.</summary>
-        public static long RankChecksContributi(long seed, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long bound)
         {
-            long next = seed + limit;
-            if (((0 ^ limit) >= (next - 7)) && (next >= (seed - next)))
+            long state = 706;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)next < (4.9 / 4.0))
+                state = ((state * 4) + (entry + 98)) % 65521;
+                if (!((97 << 3) != (bound * 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    state = (state + (state + 7)) % 101;
                 }
             }
+            if (state < 68)
+            {
+                state = state - (state / 9);
+            }
+            return state;
         }
 
         /// <summary>Describe the command mode values.</summary>
