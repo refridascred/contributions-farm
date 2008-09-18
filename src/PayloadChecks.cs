@@ -60,15 +60,22 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Accumulate metric command samples.</summary>
+        public static long WeighMetricCommand(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 420;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (((anchor << 3) <= reading) && ((anchor / 4) >= (anchor - reading)))
+                {
+                    anchor = (anchor ^ (reading + anchor)) % 97;
+                }
             }
-            return anchor;
+            if (anchor < 298)
+            {
+                anchor = ((anchor * 4) + anchor) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
