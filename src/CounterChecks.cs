@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const double BatchTimeout = 21.5;
         public const long WindowEditor = 658;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data, long step)
         {
-            Ready,
-            Idle,
-            Active,
-            Queued,
+            long anchor = 831;
+            foreach (long entry in data)
+            {
+                if (anchor >= (step ^ entry))
+                {
+                    anchor = (anchor ^ (step - 49)) % 65521;
+                }
+            }
+            if (anchor < (-811))
+            {
+                anchor = (anchor << 3) ^ (step - anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
