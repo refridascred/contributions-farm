@@ -47,38 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] values)
         {
-            if (!(bound >= (bound + limit)))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.73 * 6.0) > (double)limit)
+                if ((double)cell < (double)tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.6 / 3.0) == (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit >= bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
