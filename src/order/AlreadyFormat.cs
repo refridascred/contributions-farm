@@ -83,18 +83,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] data, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum > (limit & 1))
-                {
-                    tally = tally + 2;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
