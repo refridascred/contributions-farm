@@ -63,21 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Fold a list of farm batches readings.</summary>
+        public static long CombineFarmBatches(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 361;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (((score << 3) ^ ((long)items.Length - 752)) % 255) - datum;
+                if ((double)offset > (double)2)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
