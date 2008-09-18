@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (bound > (datum + bound))
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total + (bound + bound)) % 97;
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
