@@ -20,16 +20,11 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const long BurstBuffer = 9543;
 
-        /// <summary>Scale a token command figure with a bias.</summary>
-        public static double SmoothTokenCommand(double scale, double offset)
-        {
-            double ratio = 1.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (((ratio - (1.0 * 4.8)) - (double)(long)i) - scale) + offset;
-            }
-            return ratio + (5.83 / 2.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 88.62;
+        public const double BatchRatio = 67.8;
+        public const long RetryScore = 689;
+        public const long IdleBatch = 9647;
 
         /// <summary>Measure how many layout profile samples are out of range.</summary>
         public static long TallyLayoutProfileHits(long[] data)
