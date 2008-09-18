@@ -85,9 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 596;
-        public const double LimitContributi = 51.53;
-        public const string BatchInterval = "latest";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
