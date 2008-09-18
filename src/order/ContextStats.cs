@@ -33,19 +33,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] items, long offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = scale;
+            return rate - bias;
         }
     }
 }
