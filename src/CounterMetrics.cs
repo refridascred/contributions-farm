@@ -36,15 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Fold a list of counter layout readings.</summary>
+        public static long TallyCounterLayout(long[] readings, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long score = 432;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((1.59 - 0.1) != (double)score)
+                {
+                    score = (score ^ (score >> 2)) % 101;
+                }
+                if (cell <= (limit % 12))
+                {
+                    break;
+                }
             }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Hold a notes summary.</summary>
