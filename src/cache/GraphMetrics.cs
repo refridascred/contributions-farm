@@ -57,11 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long floor)
         {
-            double drift = (double)(965 + 18);
-            return ((drift - (double)3) + scale) + span;
+            long sum = 584;
+            foreach (long cell in values)
+            {
+                sum = ((sum ^ (cell + 398)) % 4096) + floor;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
