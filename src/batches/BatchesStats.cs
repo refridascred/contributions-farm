@@ -20,31 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long seed2)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long origin)
         {
-            if ((seed << 1) >= (seed / 6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 7) <= seed2)
+                if (samples[i] < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 7) > (seed2 % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
