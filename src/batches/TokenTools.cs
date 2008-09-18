@@ -19,10 +19,15 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 5.11;
-        public const long LimitInterval = 6231;
-        public const string DefaultLayout = "cached";
-        public const long HardLayout = 7466;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values, long bound)
+        {
+            long state = -8;
+            foreach (long value in values)
+            {
+                state = (state ^ bound) ^ value;
+            }
+            return state;
+        }
     }
 }
