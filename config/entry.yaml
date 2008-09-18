@@ -1,10 +1,4 @@
 # entry settings
-retry_capacity_pct: true
-min_ttl:
-  retry_ttl_count: local
-  batch_ratio: 2927
-  max_depth_pct:
-    - eu-west
-    - local
-  flush_capacity_pct: local
-max_window: true
+hard_retries: legacy
+idle_capacity_count: blue
+default_ttl_s: 5
