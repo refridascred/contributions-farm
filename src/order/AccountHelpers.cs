@@ -26,18 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
-        public static long CountMetricGithubfarmMatches(long[] items)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((seen > (seen % 97)) && (6.8 > (double)seen)) || ((seen / 8) >= (2 - entry)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up order samples.</summary>
