@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every cache route entry stays within the limit.</summary>
-        public static bool ValidateCacheRouteBounds(long[] data, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (cell >= step)
+                if (!(item > (hits ^ offset)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
