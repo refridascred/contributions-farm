@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] readings)
         {
-            double weight = (double)(450 % 10);
-            return ((weight + (double)6) + rate) + bias;
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally >> 1) == (tally * 3))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
