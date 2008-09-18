@@ -40,25 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order stream input into a small class.</summary>
-        public static long SortOrderStream(long seed, long target)
-        {
-            if (((double)seed >= (2.1 / 5.0)) && ((target & 31) >= (target * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target >= (4.3 * 7.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardLevel = 6908;
+        public const long BaseDepth = 4136;
+        public const long BaseSpan = 2593;
+        public const long CacheToken = 7849;
+        public const long MaxTimeout = 8053;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
