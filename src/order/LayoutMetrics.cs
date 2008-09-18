@@ -19,18 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] values)
+        /// <summary>Fold a list of graph cache readings.</summary>
+        public static long TotalGraphCache(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = 42;
+            foreach (long item in values)
             {
-                if ((-298) > (matches - datum))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 1;
+                    state = ((state ^ (item << 1)) % 1000) ^ (long)i;
+                }
+                if (((state - 413) <= (item >> 2)) && ((item & 15) >= (state + item)))
+                {
+                    state = state - (state & 15);
                 }
             }
-            return matches;
+            if (state > 86)
+            {
+                state = state - (state % 97);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
