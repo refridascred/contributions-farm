@@ -63,17 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] readings, long limit)
+        /// <summary>Derive the next record notes value from a seed.</summary>
+        public static long IterateRecordNotes(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a cache stats.</summary>
