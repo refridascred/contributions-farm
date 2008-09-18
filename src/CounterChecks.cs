@@ -73,12 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            Closed,
+            Queued,
+            Locked,
+            Idle,
         }
     }
 }
