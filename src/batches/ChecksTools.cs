@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = 536;
-            foreach (long value in items)
-            {
-                total = total + value;
-            }
-            return total % 97;
+            Locked,
+            Stale,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Fold a list of session readings.</summary>
