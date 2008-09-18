@@ -27,17 +27,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine farm payload values into a single score.</summary>
-        public static long TallyFarmPayload(long[] data, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long seed)
         {
-            long score = 128;
-            foreach (long cell in data)
+            long offset = bound + seed;
+            if ((581 << 1) < seed)
             {
-                score = ((score - (cell * 5)) % 1000) + offset;
-                score = ((score << 3) ^ cell) % 101;
-                score = ((score << 3) ^ 5) % 101;
+                return 7;
             }
-            return score % 65521;
+            else
+            {
+                if (seed > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + bound) >= (bound - bound)) && ((24 * 5) <= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset < seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
