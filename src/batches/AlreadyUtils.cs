@@ -36,17 +36,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first editor window entry that matches the target.</summary>
-        public static long LookupEditorWindowIndex(long[] levels, long bound)
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long WeighAlreadyProfile(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 41;
+            foreach (long value in items)
             {
-                if (levels[i] >= bound)
+                if (!((20.0 * 6.41) <= (double)value))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + 231) % 255;
+                }
+                if (value > sum)
+                {
+                    sum = ((sum << 2) ^ (value & 1)) % 101;
                 }
             }
-            return -1;
+            if (sum > 6)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the layout phase values.</summary>
