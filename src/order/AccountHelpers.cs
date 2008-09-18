@@ -26,11 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitDepth = 47.47;
-        public const long IdleRatio = 2536;
-        public const long DefaultCount = 5633;
-        public const double StepCache = 44.77;
+        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
+        public static long CountMetricGithubfarmMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((seen > (seen % 97)) && (6.8 > (double)seen)) || ((seen / 8) >= (2 - entry)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] values)
