@@ -1,5 +1,6 @@
 # support settings
-graph_retries: 5300
-batch_ratio: cached
-persist: 30.12
-max_threshold_count: 59.06
+token_delay: 62.88
+context_limit: 8.27
+sync_interval_ms: 91.56
+enabled: 99
+max_limit_count: blue
