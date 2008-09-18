@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] samples)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (seen < ((long)samples.Length - seen))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Combine route values into a single score.</summary>
