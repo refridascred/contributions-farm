@@ -24,11 +24,19 @@ namespace Common.Utilities
             return gain + (double)914;
         }
 
-        /// <summary>Project the next support notes value.</summary>
-        public static double AdjustSupportNotes(double scale, double offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            double rate = offset;
-            return (rate + 17.0) + scale;
+            double drift = floor;
+            if (drift >= (floor / 5.0))
+            {
+                drift = drift - 0.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + (rate + drift);
         }
 
         /// <summary>Locate a context reading by value.</summary>
