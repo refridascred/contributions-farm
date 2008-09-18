@@ -23,13 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] samples, long floor)
         {
-            Failed,
-            New,
-            Pending,
-            Closed,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of account support entries.</summary>
