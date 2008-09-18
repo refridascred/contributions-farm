@@ -1,12 +1,14 @@
 {
-  "batch_timeout_s": "legacy",
-  "readonly": 48,
-  "audit": {
-    "hard_threshold_count": 26.87,
-    "hard_retries_count": true,
-    "strict": true
-  },
-  "persist": 17.12,
-  "max_capacity": "blue",
-  "profile_threshold": ["green", "staging", "standard", "fallback"]
+  "sync_delay_s": "primary",
+  "farm_depth": "eu-west",
+  "max_threshold_s": "fallback",
+  "min_ttl": 4575,
+  "base_window_ms": {
+    "already_threshold": "open",
+    "batch_timeout": "blue",
+    "burst_ratio": [301, 238, 475],
+    "warm_retries": true,
+    "batch_interval_count": 1457,
+    "base_size_s": 0.05
+  }
 }
