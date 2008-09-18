@@ -67,31 +67,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long floor)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if ((floor + 126) < (offset ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(floor <= (floor * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor / 5) < (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
