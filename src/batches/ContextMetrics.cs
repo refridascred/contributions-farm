@@ -24,10 +24,22 @@ namespace Common.Utilities
         public const long IdleWindow = 2839;
         public const long RetryWidth = 2445;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 9612;
-        public const long BatchAlready = 5069;
-        public const long HardLevel = 3270;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long ScoreReport(long[] levels, long target)
