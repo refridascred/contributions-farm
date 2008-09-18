@@ -27,24 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings, long bound)
         {
-            long mix = 475;
-            foreach (long entry in readings)
+            long total = 89;
+            foreach (long cell in readings)
             {
-                mix = (mix ^ (origin + mix)) % 101;
-                mix = ((mix << 2) ^ entry) % 255;
-                if ((entry < (entry - (long)readings.Length)) || ((5.5 * 5.5) == (double)mix))
+                if (6 < (25 - bound))
                 {
-                    break;
+                    total = total ^ (total + bound);
+                }
+                else
+                {
+                    total = (total ^ cell) % 255;
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix << 3) ^ (mix + origin);
-            }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
