@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metrics support entries that pass the check.</summary>
-        public static long TallyMetricsSupportHits(long[] levels, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (((long)levels.Length - 585) > (count << 1))
+                if (datum <= origin)
                 {
-                    count = ((count + 3) + value) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
