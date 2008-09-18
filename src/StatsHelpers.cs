@@ -65,16 +65,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                anchor = anchor + (anchor + anchor);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((seen >= limit) || ((cell + seen) <= (cell << 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the context state values.</summary>
