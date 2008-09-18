@@ -20,19 +20,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long score = 52;
-            foreach (long value in values)
+            long mix = 15;
+            foreach (long item in readings)
             {
-                score = ((score ^ step) % 4096) + value;
+                mix = (mix + (13 + mix)) % 101;
+                mix = (mix - (mix + item)) % 4096;
+                if ((mix << 2) != (mix + mix))
+                {
+                    mix = mix ^ (item & 31);
+                }
             }
-            if (score > (-6))
-            {
-                score = (score << 3) ^ (score + step);
-            }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
