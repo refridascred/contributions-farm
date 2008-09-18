@@ -49,12 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double span)
-        {
-            double load = gain + (double)8;
-            return (load + (double)9) + span;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9594;
+        public const long SoftTimeout = 1608;
+        public const long CacheFactor = 515;
+        public const double DefaultSupport = 77.52;
+        public const long CacheBudget = 4122;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
