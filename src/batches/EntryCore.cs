@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long step)
-        {
-            if ((step ^ bound) >= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 3) > (bound & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ 381) == (76 % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftLevel = 788;
+        public const long DefaultBatch = 7072;
+        public const long DefaultInterval = 2683;
 
         /// <summary>Accumulate filter stats samples.</summary>
         public static long WeighFilterStats(long[] items, long seed)
