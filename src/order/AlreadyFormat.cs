@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long origin, long seed)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            if (((seed / 3) != (origin << 1)) || ((seed + 2) < origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed >= 8.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the payload state values.</summary>
