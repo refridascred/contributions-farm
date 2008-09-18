@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] levels, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 645;
+            foreach (long datum in data)
             {
-                if (levels[i] > seed)
+                if ((datum ^ anchor) <= (0 + anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (-696)) % 255;
                 }
             }
-            return -1;
+            if (anchor < 43)
+            {
+                anchor = ((anchor * 4) + (anchor / 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next editor value.</summary>
