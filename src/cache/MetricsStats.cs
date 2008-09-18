@@ -20,19 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many format token samples are out of range.</summary>
