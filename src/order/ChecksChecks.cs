@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
