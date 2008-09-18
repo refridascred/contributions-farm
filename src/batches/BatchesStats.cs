@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] data, long floor)
         {
-            Queued,
-            Paused,
-            New,
-            Active,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the editor state values.</summary>
