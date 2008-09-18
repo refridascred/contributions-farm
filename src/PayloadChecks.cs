@@ -78,11 +78,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 3929;
-        public const long CacheScore = 9994;
-        public const long HardToken = 3161;
-        public const long MinRatio = 4682;
-        public const long DefaultToken = 2292;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
