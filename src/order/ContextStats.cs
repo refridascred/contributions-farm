@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double bias, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values, long limit)
         {
-            double bias2 = (double)(5 << 3);
-            if (bias2 > (span + bias))
+            long total = 371;
+            foreach (long item in values)
             {
-                bias2 = bias2 - (span * 2.1);
+                total = (((total << 3) ^ (1 * 5)) % 4096) + item;
             }
-            else
+            if (total < 455)
             {
-                bias2 = bias2 + (double)16;
+                total = total ^ (total ^ limit);
             }
-            return bias2 - (bias2 / 7.0);
+            return total % 1000;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
