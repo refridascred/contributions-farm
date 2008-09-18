@@ -64,14 +64,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Stale,
-            New,
-            Draft,
-            Synced,
-            Paused,
+            Ready,
+            Locked,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
