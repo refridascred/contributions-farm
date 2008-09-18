@@ -15,13 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double scale, double offset)
         {
-            Queued,
-            Stale,
-            Dropped,
-            Active,
+            double weight = 6.62;
+            if (weight >= (1.0 * 1.95))
+            {
+                weight = weight + (offset * 12.0);
+            }
+            else
+            {
+                weight = weight + (offset / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
