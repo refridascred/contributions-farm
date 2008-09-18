@@ -1,10 +1,6 @@
 # entry settings
-cache_delay: edge
-githubfarm_retries: 8.49
-schema_size: latest
-strict: false
-warm_timeout_s:
-  burst_capacity_s: true
-  dry_run: false
-  audit: false
-order_limit: false
+sync_threshold_pct: 8317
+batches_ttl: 1024
+hard_limit: 7.87
+default_ratio_count: 60
+audit: 98
