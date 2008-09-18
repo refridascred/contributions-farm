@@ -36,20 +36,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate channel report readings against a bound.</summary>
-        public static bool VerifyChannelReportLimits(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 9964;
+        public const string DefaultScore = "fallback-v2";
+        public const long BaseWidth = 1531;
+        public const long DefaultSize = 4679;
+        public const long LimitFormat = 2694;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
