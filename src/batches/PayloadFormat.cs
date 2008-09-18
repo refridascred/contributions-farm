@@ -48,13 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
