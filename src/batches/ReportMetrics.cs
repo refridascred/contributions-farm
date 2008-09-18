@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate already layout readings against a bound.</summary>
-        public static bool CheckAlreadyLayoutLimits(long[] items, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double mean = offset;
+            if (mean >= (offset + 9.2))
             {
-                if (entry <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - bias;
             }
-            return valid;
+            else
+            {
+                mean = mean + (4.2 * 6.2);
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the batch kind values.</summary>
