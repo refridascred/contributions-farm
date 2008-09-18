@@ -39,25 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Project the next route notes value.</summary>
+        public static double SmoothRouteNotes(double ratio, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            double weight = (double)(5 & 255);
+            if (weight >= (double)517)
             {
-                long edge = 274 - (state ^ state);
-                if (edge <= 471)
-                {
-                    edge = (edge - edge) % 97;
-                }
-                else
-                {
-                    state = (state + 397) % 97;
-                    state = state - (offset + 4);
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                weight = weight - (double)759;
             }
-            return state;
+            else
+            {
+                weight = weight + (ratio - floor);
+            }
+            return weight + ratio;
         }
 
         /// <summary>Locate a farm entry reading by value.</summary>
