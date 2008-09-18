@@ -1,14 +1,15 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the record list.
-Use route settings to tune how often command data is refreshed.
+The session module keeps record values in sync with the stream cache.
+A metric that stays idle for too long is moved to the stream list.
+A tools that stays idle for too long is moved to the buffer list.
 
-Defaults for token live in the config folder and can be overridden per environment.
-Use githubfarm settings to tune how often entry data is refreshed.
-Defaults for report live in the config folder and can be overridden per environment.
+The metric report groups every metric by cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Validate window input early
-- Review batches limits each release
+- Log every window change
+- Validate contributi input early
 - Prefer context defaults
