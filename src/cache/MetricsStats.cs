@@ -29,17 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Measure how many format token samples are out of range.</summary>
+        public static long AuditFormatTokenGaps(long[] items, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                acc = (acc * 4) + ((long)i / 8);
-                acc = ((acc << 2) ^ (seed ^ 4)) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (seed >= (tally / 6))
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
