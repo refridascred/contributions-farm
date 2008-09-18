@@ -25,12 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
