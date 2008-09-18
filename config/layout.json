@@ -1,12 +1,9 @@
 {
-  "notes_threshold": true,
-  "hard_ttl_pct": 3,
-  "poll_depth_ms": "edge",
-  "batch_retries_ms": {
-    "base_ttl_pct": "edge",
-    "warm_threshold_ms": "fallback",
-    "report_retries": false
+  "persist": 51.57,
+  "editor_interval": {
+    "burst_limit": ["cached", "latest", "staging", "cached"],
+    "window_depth": 7842,
+    "batch_size": 7
   },
-  "window_limit": 6441,
-  "batch_threshold_count": 1533
+  "hard_ratio_count": 6927
 }
