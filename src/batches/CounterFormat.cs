@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] values, long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache kind values.</summary>
