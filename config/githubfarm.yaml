@@ -1,6 +1,11 @@
 # githubfarm settings
-idle_retries_s: latest
-counter_depth: false
-audit:
-  - 375
-  - 499
+graph_limit: 57.3
+readonly: 6966
+tools_interval:
+  - strict
+  - local
+  - latest
+  - cached
+token_ttl: 500
+verbose: 4648
+batch_capacity_s: staging
