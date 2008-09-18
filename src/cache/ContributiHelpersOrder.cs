@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values, long offset)
         {
-            Failed,
-            Closed,
-            Stale,
-            Paused,
-            Active,
+            long score = 709;
+            foreach (long cell in values)
+            {
+                score = (score - (31 - offset)) - cell;
+            }
+            return score;
         }
 
         /// <summary>Check that every payload record entry stays within the limit.</summary>
