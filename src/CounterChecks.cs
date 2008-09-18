@@ -45,17 +45,12 @@ namespace Common.Utilities
             return gain + 1.7;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result << 3) ^ (481 - result)) % 255;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepBudget = 60.96;
+        public const long WindowCounter = 409;
+        public const double BurstCounter = 82.13;
+        public const double LimitCounter = 27.44;
+        public const double IdleLevel = 55.52;
 
         /// <summary>Match up schema contributi samples.</summary>
         public static long PairSchemaContributiCount(long[] levels)
