@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinScore = 92.31;
-        public const string BurstFormat = "open-edge";
-        public const string WindowWidth = "primary-v2";
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a session record reading.</summary>
         public static double ScaleSessionRecord(double bias, double bias2)
