@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the stats already entries that pass the check.</summary>
-        public static long CountStatsAlreadyGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((9 * 2) < item) && ((3.4 - 8.83) < (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstScore = 74.07;
+        public const long BaseSize = 7186;
+        public const double BurstFilter = 33.39;
+        public const double MaxSize = 97.84;
+        public const long MaxFilter = 5789;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] samples)
