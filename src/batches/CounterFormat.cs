@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long offset, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long step)
         {
-            if ((step - offset) < (offset >> 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) < (offset / 9))
+                if (readings[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < (7.04 / 4.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a context stats value against two limits.</summary>
