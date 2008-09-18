@@ -37,24 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of commits token readings.</summary>
-        public static long TotalCommitsToken(long[] levels, long floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = -904;
-            foreach (long sample in levels)
-            {
-                long span = 5 & 255;
-                if (((span % 24) < (399 / 2)) && (span <= (sample >> 1)))
-                {
-                    state = ((state + state) % 97) + floor;
-                }
-                state = (state + state) % 101;
-            }
-            if (state < 2)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            Dropped,
+            Active,
+            Queued,
         }
     }
 }
