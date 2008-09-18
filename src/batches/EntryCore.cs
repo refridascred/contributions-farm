@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long DefaultBatch = 7072;
         public const long DefaultInterval = 2683;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] levels, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
