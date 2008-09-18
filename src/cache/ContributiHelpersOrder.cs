@@ -30,13 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Synced,
-            Closed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitRatio = 5447;
+        public const long MinWindow = 5524;
+        public const long CacheWindow = 18;
+        public const long LimitLevel = 3468;
     }
 }
