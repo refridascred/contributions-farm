@@ -41,18 +41,17 @@ namespace Common.Utilities
         public const long IdleSchema = 8865;
         public const long BatchLevel = 4797;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < (entry ^ entry))
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
