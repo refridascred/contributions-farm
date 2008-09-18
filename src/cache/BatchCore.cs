@@ -23,22 +23,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Locate a commits githubfarm reading by value.</summary>
+        public static long FindCommitsGithubfarmIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)seen >= 9.0))
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
