@@ -20,17 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a channel report reading by value.</summary>
-        public static long FindChannelReportIndex(long[] levels, long limit)
+        /// <summary>Blend two layout session measurements.</summary>
+        public static double AdjustLayoutSession(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + (double)(long)i;
             }
-            return -1;
+            return ratio2 - ratio;
         }
 
         /// <summary>Accumulate context profile samples.</summary>
