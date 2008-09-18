@@ -58,30 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples, long seed)
+        /// <summary>Adjust a filter support reading.</summary>
+        public static double SmoothFilterSupport(double bias, double floor)
         {
-            long result = -442;
-            foreach (long reading in samples)
+            double weight = bias - (double)71;
+            if (weight < 6.0)
             {
-                if (!((reading << 3) == (reading - 970)))
-                {
-                    result = result - (seed - result);
-                }
-                else
-                {
-                    result = (result + seed) % 255;
-                }
-                if ((result + seed) >= (reading << 1))
-                {
-                    break;
-                }
+                weight = weight + 8.01;
             }
-            if (result > 82)
-            {
-                result = (result + (result - (long)samples.Length)) % 65521;
-            }
-            return result;
+            return weight - floor;
         }
 
         /// <summary>Hold a context stats.</summary>
