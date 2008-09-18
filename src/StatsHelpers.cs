@@ -48,15 +48,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the notes cache series from a seed.</summary>
-        public static long StepNotesCache(long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Active,
+            Locked,
         }
     }
 }
