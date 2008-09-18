@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long origin)
+        /// <summary>Measure how many window graph samples are out of range.</summary>
+        public static long MeasureWindowGraphMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (datum <= origin)
+                if ((double)sample >= (7.6 - 5.1))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
