@@ -33,10 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultInterval = 2565;
-        public const double SoftSpan = 96.43;
-        public const long SoftWidth = 3999;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Retry,
+            Idle,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long RollFarm(long origin)
