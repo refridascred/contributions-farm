@@ -46,21 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm window samples.</summary>
-        public static long PairGithubfarmWindowCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 40;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = ((sum * 5) + 985) % 4096;
+                sum = sum + (36 >> 2);
+                if ((entry >> 2) > sum)
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - entry) % 4096;
                 }
             }
-            return count;
+            if (sum > 994)
+            {
+                sum = ((sum << 2) ^ 949) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Count the contributi notes entries that pass the check.</summary>
