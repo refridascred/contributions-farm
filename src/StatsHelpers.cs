@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the layout graph entries that pass the check.</summary>
+        public static long MeasureLayoutGraphMatches(long[] samples)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((638 / 8) <= ((long)samples.Length + matches)) && ((matches - matches) > (matches >> 5))) && ((entry + matches) >= (matches >> 5)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every entry route entry stays within the limit.</summary>
