@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long MaxCommand = 4017;
         public const string BaseTimeout = "legacy-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 1775;
-        public const double HardDepth = 37.61;
-        public const long MinBatches = 1345;
-        public const long HardBatches = 2230;
-        public const long WindowSpan = 3840;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (anchor % 2)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] readings)
