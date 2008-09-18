@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] samples)
         {
-            long score = 275;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                score = (score - (926 / 7)) ^ item;
+                if (seen < ((long)samples.Length - seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            if (score > 12)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
