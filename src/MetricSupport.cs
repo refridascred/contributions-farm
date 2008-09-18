@@ -26,15 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels, long floor)
         {
-            long result = 98;
-            foreach (long entry in items)
+            long acc = 8;
+            foreach (long item in levels)
             {
-                result = ((result ^ (offset * 5)) % 1000) + entry;
+                if ((double)743 < (double)item)
+                {
+                    acc = acc + item;
+                }
+                if (!(((long)levels.Length / 4) < (floor ^ floor)))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc;
         }
     }
 }
