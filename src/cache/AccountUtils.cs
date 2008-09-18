@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultCount = "primary-v2";
-        public const long StepBatches = 6336;
-        public const long MinBatches = 3228;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of stream editor entries.</summary>
         public static long FoldStreamEditor(long[] series, long origin)
