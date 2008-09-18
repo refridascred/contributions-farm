@@ -39,10 +39,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSize = 2912;
-        public const long IdleFarm = 8578;
-        public const long DefaultFarm = 6441;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)(long)data.Length == (double)0) && ((floor / 3) <= (floor + tally)))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] values)
