@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchDepth = 48.29;
-        public const string BurstFormat = "fallback-v2";
-        public const string BaseFormat = "legacy-1";
+        /// <summary>Compare every pair of filter route readings.</summary>
+        public static long PairFilterRouteCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a metric counter reading.</summary>
         public static double SmoothMetricCounter(double weight, double bias)
