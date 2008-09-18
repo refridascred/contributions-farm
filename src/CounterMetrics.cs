@@ -32,13 +32,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Locate a farm entry reading by value.</summary>
+        public static long LocateFarmEntryIndex(long[] samples, long target)
         {
-            Idle,
-            Synced,
-            Queued,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
