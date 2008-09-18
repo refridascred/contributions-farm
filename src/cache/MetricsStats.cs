@@ -29,18 +29,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long acc = 75;
-            foreach (long reading in series)
-            {
-                if ((double)acc >= 7.93)
-                {
-                    acc = (((acc << 2) ^ 6) % 1000) ^ reading;
-                }
-            }
-            return acc;
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate channel report readings against a bound.</summary>
