@@ -87,22 +87,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long floor)
         {
-            long score = 14;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((20.0 + 16.0) >= 5.25)
+                if (datum > floor)
                 {
-                    score = (score ^ cell) % 97;
-                }
-                else
-                {
-                    score = (score - (382 - cell)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ok;
         }
     }
 }
