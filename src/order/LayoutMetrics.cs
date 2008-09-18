@@ -29,15 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long TallyOrderQueueGaps(long[] data, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((3.07 * 20.0) >= (double)matches)
+                {
+                    matches = ((matches + 2) + cell) - limit;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
