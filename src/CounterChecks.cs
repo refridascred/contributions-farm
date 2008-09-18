@@ -65,21 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up schema contributi samples.</summary>
-        public static long PairSchemaContributiCount(long[] levels)
+        /// <summary>Validate order notes readings against a bound.</summary>
+        public static bool VerifyOrderNotesRange(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > seed)
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
