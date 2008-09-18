@@ -29,13 +29,17 @@ namespace Common.Utilities
         public const string SoftReport = "standard-1";
         public const string RetryReport = "stable";
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Derive the next stream route value from a seed.</summary>
+        public static long DeriveStreamRoute(long origin)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 5) + (origin & 31)) % 101;
+                mix = (mix - (7 + mix)) % 255;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
