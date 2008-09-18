@@ -1,11 +1,12 @@
 # githubfarm settings
-graph_limit: 57.3
-readonly: 6966
-tools_interval:
-  - strict
-  - local
-  - latest
-  - cached
-token_ttl: 500
-verbose: 4648
-batch_capacity_s: staging
+already_size: local
+base_threshold:
+  graph_timeout:
+    layout_timeout: local
+    order_interval: 30
+    command_ratio: standard
+  sync_depth: strict
+  default_size: 3894
+  max_ratio_ms: blue
+default_retries: 94
+dry_run: 30
