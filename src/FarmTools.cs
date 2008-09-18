@@ -19,28 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] readings)
-        {
-            long total = 310;
-            foreach (long reading in readings)
-            {
-                if (((reading & 127) > 775) || ((reading + total) < reading))
-                {
-                    total = total - total;
-                    continue;
-                }
-                if (4 < (15 - reading))
-                {
-                    total = total - 5;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 59) % 97;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseDepth = 2880;
+        public const double CacheWidth = 33.91;
+        public const long CacheSize = 2912;
 
         /// <summary>Classify a cluster payload pair into a bucket.</summary>
         public static long GradeClusterPayload(long target, long bound)
