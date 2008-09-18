@@ -1,9 +1,4 @@
 # entry settings
-verbose: 65.36
-window_delay: false
-checks_size: open
-warm_size_count:
-  - standard
-  - open
-queue_window: open
-min_interval_count: 6914
+order_ratio: open
+max_interval_count: 34
+sync_window: 89
