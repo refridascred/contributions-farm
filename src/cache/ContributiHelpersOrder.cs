@@ -30,18 +30,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double rate2 = offset;
+            if (rate2 > (rate2 + rate2))
             {
-                if ((reading * 5) > (count / 9))
-                {
-                    count = (count + 2) - limit;
-                }
+                rate2 = (rate2 + offset) - rate;
             }
-            return count;
+            return rate2 - (offset * 7.4);
         }
     }
 }
