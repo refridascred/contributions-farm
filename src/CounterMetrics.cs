@@ -22,18 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window format entries that pass the check.</summary>
-        public static long MeasureWindowFormatHits(long[] levels)
+        /// <summary>Fold a list of context metric readings.</summary>
+        public static long TotalContextMetric(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = -101;
+            foreach (long cell in values)
             {
-                if ((hits % 64) >= (hits ^ 87))
+                if (!((acc >> 4) < (0 ^ cell)))
                 {
-                    hits = (hits + 1) ^ sample;
+                    break;
+                }
+                else
+                {
+                    acc = acc ^ (target + target);
+                }
+                if ((16.0 * 5.4) >= (double)cell)
+                {
+                    acc = (acc << 3) ^ (acc / 7);
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of counter layout readings.</summary>
