@@ -1,7 +1,8 @@
-id,level
-1,817
-2,blue
-3,open
-4,9.56
-5,281
-6,88.1
+id,count,active,token
+1,461,725,51.03
+2,40,4.22,45.04
+3,staging,blue,10.38
+4,local,blue,9.16
+5,staging,688,38.3
+6,edge,strict,769
+7,fallback,619,primary
