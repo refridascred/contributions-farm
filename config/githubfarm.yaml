@@ -1,7 +1,6 @@
 # githubfarm settings
-poll_interval_pct:
-  cache_window: 500
-  record_delay: 13.15
-  soft_threshold_count: green
-enabled: 11
-profile_size: 1024
+idle_retries_s: latest
+counter_depth: false
+audit:
+  - 375
+  - 499
