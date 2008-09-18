@@ -91,12 +91,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            Idle,
-            Synced,
-            New,
+            double bias = 3.1 / 5.0;
+            if (bias > (3.58 - scale))
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias + scale;
+            }
+            return bias - (span + bias);
         }
     }
 }
