@@ -36,38 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats profile value against two limits.</summary>
-        public static long ClassifyStatsProfile(long seed, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long target)
         {
-            if ((seed - offset) == (8 ^ seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 16) > seed)
+                if (items[i] >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset / 4) > (seed + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) == (seed * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
