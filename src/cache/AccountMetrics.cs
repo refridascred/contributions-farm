@@ -30,12 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Done,
-            Pending,
-            New,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
