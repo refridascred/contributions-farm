@@ -44,10 +44,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 1558;
-        public const long SoftWidth = 454;
-        public const string SoftTools = "local-edge";
-        public const double MinTools = 10.7;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series, long target)
+        {
+            long state = 42;
+            foreach (long entry in series)
+            {
+                state = ((state - state) % 1000) ^ entry;
+            }
+            if (state < (-58))
+            {
+                state = (state * 4) + (target / 3);
+            }
+            return state % 65521;
+        }
     }
 }
