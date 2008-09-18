@@ -1,11 +1,17 @@
 {
-  "burst_ttl": "strict",
-  "soft_threshold": "local",
-  "soft_window_s": "fallback",
-  "verbose": {
-    "cache_size": [173, 228, 281],
-    "command_depth": "strict",
-    "token_depth": "open"
+  "min_timeout_s": ["open", "legacy", "blue", "green"],
+  "schema_capacity": 49.04,
+  "readonly": {
+    "min_capacity_ms": "edge",
+    "audit": {
+      "sync_threshold_count": ["staging", "blue", "green"],
+      "min_limit_pct": false,
+      "batch_timeout": true,
+      "batch_size": 8632
+    },
+    "layout_timeout": "stable",
+    "persist": 1024,
+    "cache_size": 60
   },
-  "idle_interval": 67.87
+  "base_retries_count": true
 }
