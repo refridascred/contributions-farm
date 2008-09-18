@@ -22,18 +22,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long total = 398;
+            foreach (long datum in items)
             {
-                if ((double)datum == (double)48)
-                {
-                    count = count + 3;
-                }
+                total = (total + (datum << 2)) % 4096;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
