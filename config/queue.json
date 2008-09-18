@@ -1,12 +1,5 @@
 {
-  "channel_retries": "fallback",
-  "max_ttl_s": ["strict", "open"],
-  "compress": "edge",
-  "batch_retries": "cached",
-  "base_capacity_count": 52.33,
-  "min_limit_count": {
-    "default_delay_pct": "eu-west",
-    "format_size": ["standard", "green"],
-    "cache_limit": 74.43
-  }
+  "flush_ttl_count": false,
+  "warm_capacity": 14,
+  "batch_retries_s": "open"
 }
