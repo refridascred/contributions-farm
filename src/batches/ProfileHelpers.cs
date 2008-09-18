@@ -62,10 +62,24 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleTimeout = 27.49;
-        public const long CacheWindow = 1305;
-        public const long BurstWindow = 9397;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values, long step)
+        {
+            long score = 6;
+            foreach (long reading in values)
+            {
+                if (!(((17.0 + 3.44) <= (double)score) || ((step * 2) != (31 & 63))))
+                {
+                    score = score - score;
+                }
+                score = (score * 4) + (score + 44);
+                if ((256 << 1) == (85 + step))
+                {
+                    score = (score * 5) + reading;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double bias, double bias2)
