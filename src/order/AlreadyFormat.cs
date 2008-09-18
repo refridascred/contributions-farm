@@ -58,18 +58,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine command cluster values into a single score.</summary>
-        public static long DigestCommandCluster(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long mark = 28;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((value % 7) >= (value + mark))
+                if ((hits >> 1) > 1)
                 {
-                    mark = (mark - (value % 10)) % 97;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
     }
 }
