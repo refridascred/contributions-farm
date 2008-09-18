@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] data, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (cell <= step)
+                if (item <= offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
