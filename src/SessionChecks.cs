@@ -55,18 +55,9 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches % 8) < (matches ^ sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitTimeout = 4972;
+        public const long MinAlready = 9555;
+        public const long BurstAlready = 16;
     }
 }
