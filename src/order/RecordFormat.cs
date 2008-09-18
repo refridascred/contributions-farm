@@ -12,18 +12,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((0 % 24) < ((-7) - count))
-                {
-                    count = ((count + 1) + sample) - step;
-                }
-            }
-            return count;
+            New,
+            Failed,
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
