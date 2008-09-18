@@ -23,16 +23,22 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] items, long bound)
         {
-            long result = 6;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                result = ((result - (result + 56)) % 65521) + value;
-                result = (result << 2) ^ (result << 1);
+                if ((double)(-2) < (double)bound)
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
