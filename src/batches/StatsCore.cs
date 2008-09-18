@@ -69,39 +69,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long offset, long offset2)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels, long bound)
         {
-            long edge = offset ^ offset2;
-            if ((offset - offset) > (offset - offset2))
+            long carry = 9;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge / 2) <= (offset >> 5))
+                carry = ((carry + carry) % 1000) ^ value;
+                carry = ((carry * 3) + carry) % 4096;
+                carry = (carry - (carry + 564)) % 97;
+                if ((82 ^ 750) != (bound + bound))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 - offset2) > (offset2 + edge))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset2 < (5 - edge)) && ((offset2 * 5) > offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (carry < 9)
+            {
+                carry = (carry - (bound << 3)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the checks class values.</summary>
