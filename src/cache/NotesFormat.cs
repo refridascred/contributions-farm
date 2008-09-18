@@ -27,15 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next order metrics value from a seed.</summary>
-        public static long RollOrderMetrics(long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((579 + count) > count)
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
