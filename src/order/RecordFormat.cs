@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next cluster order value from a seed.</summary>
-        public static long SeriesClusterOrder(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if ((double)tally != (20.0 - 3.6))
+                {
+                    tally = (tally + 3) ^ value;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the filter mode values.</summary>
