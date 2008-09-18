@@ -32,39 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            long offset = bound + seed;
-            if ((581 << 1) < seed)
+            double mean = 20.0 * 8.27;
+            if (mean < (mean / 6.0))
             {
-                return 7;
+                mean = (mean - (gain / 2.0)) + floor;
             }
-            else
-            {
-                if (seed > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed + bound) >= (bound - bound)) && ((24 * 5) <= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset < seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mean - mean;
         }
     }
 }
