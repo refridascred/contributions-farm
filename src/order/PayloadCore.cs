@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] data, long floor)
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long CountContextSessionHits(long[] items)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (item >= floor)
+                if ((((cell - (long)items.Length) > (259 + seen)) || ((double)cell < (double)782)) || ((7.0 - 7.77) < (double)cell))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every notes report entry stays within the limit.</summary>
