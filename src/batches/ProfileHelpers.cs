@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long CountNotesSupportMatches(long[] values, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((1.5 + 8.4) < (double)tally)
+                if ((double)seed > (2.31 / 5.0))
                 {
-                    tally = ((tally + 3) ^ sample) - bound;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
