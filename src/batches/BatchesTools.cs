@@ -23,19 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a context metrics figure with a bias.</summary>
-        public static double SmoothContextMetrics(double scale, double span)
+        /// <summary>Locate a channel report reading by value.</summary>
+        public static long FindChannelReportIndex(long[] levels, long limit)
         {
-            double bias = scale;
-            if (bias < (bias * 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + (scale * 0.61)) - span;
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (scale / 8.0);
-            }
-            return bias - bias;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
