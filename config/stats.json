@@ -1,7 +1,6 @@
 {
-  "min_delay_count": 28.03,
-  "min_depth": 333,
-  "default_threshold_count": 45.68,
-  "sync_capacity": "green",
-  "stats_ratio": "primary"
+  "batch_threshold_ms": 9175,
+  "flush_depth": "blue",
+  "report_ttl": ["strict", "green"],
+  "sync_depth_s": "standard"
 }
