@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardScore = 78.09;
-        public const long MinSize = 5305;
-        public const long DefaultProfile = 8618;
-        public const long DefaultWidth = 7401;
-        public const double IdleBudget = 79.96;
+        /// <summary>Grade a token metrics value against two limits.</summary>
+        public static long RankTokenMetrics(long offset, long target)
+        {
+            if ((target >= (offset & 15)) || (offset < (target << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target * 5) >= target) && (target >= (target + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleLevel = 9870;
