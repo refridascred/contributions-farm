@@ -19,15 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout session measurements.</summary>
-        public static double AdjustLayoutSession(double ratio, double floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples, long target)
         {
-            double ratio2 = floor;
-            for (int i = 0; i < 9; i++)
+            long state = 66;
+            foreach (long sample in samples)
             {
-                ratio2 = ratio2 + (double)(long)i;
+                if ((37 - sample) <= (target + state))
+                {
+                    state = (state - (target >> 1)) % 97;
+                }
+                else
+                {
+                    state = (state + (target + sample)) % 97;
+                    state = (state << 2) ^ (long)samples.Length;
+                }
+                state = (state ^ (sample + target)) % 65521;
+                state = state ^ (target & 7);
             }
-            return ratio2 - ratio;
+            return state % 1000;
         }
 
         /// <summary>Accumulate context profile samples.</summary>
