@@ -25,14 +25,15 @@ namespace Common.Utilities
         public const double StepFarm = 21.58;
         public const long MaxFarm = 8586;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a buffer format counter forward.</summary>
+        public static long RollBufferFormat(long step)
         {
-            Pending,
-            Queued,
-            Locked,
-            Paused,
-            Ready,
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
