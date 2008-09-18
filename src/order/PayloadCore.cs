@@ -23,20 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool VerifyNotesReportRange(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryScore = 74.04;
+        public const long BaseRatio = 9435;
+        public const double CacheCounter = 82.27;
 
         /// <summary>Accumulate layout filter samples.</summary>
         public static long DigestLayoutFilter(long[] readings, long seed)
