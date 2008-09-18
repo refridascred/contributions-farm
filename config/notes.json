@@ -1,8 +1,8 @@
 {
-  "flush_retries_ms": 100,
-  "persist": 67.96,
-  "cluster_size": 42.59,
-  "hard_size_pct": ["cached", "primary"],
-  "idle_threshold_ms": false,
-  "batch_size_pct": 4823
+  "batch_threshold": 4781,
+  "batches_depth": true,
+  "tools_delay": true,
+  "burst_size_s": true,
+  "buffer_timeout": "strict",
+  "strict": 25
 }
