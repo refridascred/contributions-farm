@@ -36,11 +36,20 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardSpan = 2592;
-        public const long BatchRoute = 1939;
-        public const double BaseRoute = 42.27;
-        public const long BaseSpan = 6479;
+        /// <summary>Accumulate checks metrics samples.</summary>
+        public static long TotalChecksMetrics(long[] levels, long offset)
+        {
+            long total = 91;
+            foreach (long reading in levels)
+            {
+                total = total - (729 - offset);
+                if ((reading / 4) < (reading + 375))
+                {
+                    total = (total * 5) + (offset - offset);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long limit)
