@@ -60,19 +60,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of farm batches readings.</summary>
-        public static long CombineFarmBatches(long[] items, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] values, long offset)
         {
-            long score = 361;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (((score << 3) ^ ((long)items.Length - 752)) % 255) - datum;
-                if ((double)offset > (double)2)
+                if (values[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
