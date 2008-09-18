@@ -14,10 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 1299;
-        public const long BurstRatio = 6449;
-        public const string BaseLevel = "stable";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((1.44 * 7.31) <= (double)tally)
+                {
+                    tally = ((tally + 3) - cell) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batches contributi entry stays within the limit.</summary>
         public static bool GuardBatchesContributiBounds(long[] series, long limit)
