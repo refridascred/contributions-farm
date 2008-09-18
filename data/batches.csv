@@ -1,7 +1,7 @@
-id,level,rank
-1,582,20.15
-2,84,local
-3,614,cached
-4,14.24,77.74
-5,8.37,425
-6,394,11.08
+id,owner,score,active
+1,561,898,open
+2,legacy,436,strict
+3,green,staging,81.25
+4,stable,49.24,10.2
+5,strict,78.82,937
+6,129,29.95,582
