@@ -42,12 +42,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Find the first order window entry that matches the target.</summary>
-        public static long FindOrderWindowIndex(long[] series, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= seed)
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
