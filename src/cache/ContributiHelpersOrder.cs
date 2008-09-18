@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const double RetryReport = 72.96;
         public const string BaseLevel = "stable-v2";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
             Stale,
-            Ready,
+            Dropped,
+            Paused,
+            Idle,
             Pending,
-            Closed,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
