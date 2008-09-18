@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count + 3) == (count >> 5))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
