@@ -32,16 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry << 2) ^ (carry * 2);
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 63.61;
+        public const long DefaultFactor = 8892;
+        public const long BurstNotes = 6880;
+        public const string MaxNotes = "primary";
     }
 }
