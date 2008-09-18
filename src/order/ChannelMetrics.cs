@@ -31,12 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Grade a context session value against two limits.</summary>
+        public static long ClassifyContextSession(long seed, long floor)
         {
-            Stale,
-            Done,
-            Failed,
+            long gap = seed - floor;
+            if ((seed >> 1) != (seed * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)gap > (4.0 - 5.76))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((floor / 7) != (floor << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor >= 8.3)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
