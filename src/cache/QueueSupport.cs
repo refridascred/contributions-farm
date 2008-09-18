@@ -48,18 +48,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (hits > (value + hits))
+                if (cell < seed)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
