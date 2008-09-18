@@ -28,14 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Queued,
-            Done,
-            Ready,
-            Closed,
-            Active,
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
