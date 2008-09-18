@@ -40,21 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command metrics pairs that satisfy a relation.</summary>
-        public static long CompareCommandMetricsCount(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 8;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor + bound) % 4096) ^ entry;
             }
-            return matches;
+            if (anchor > 24)
+            {
+                anchor = (anchor << 2) ^ bound;
+            }
+            return anchor % 97;
         }
     }
 }
