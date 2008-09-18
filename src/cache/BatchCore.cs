@@ -49,19 +49,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every record channel entry stays within the limit.</summary>
-        public static bool CheckRecordChannelLimits(long[] values, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double ratio2 = (ratio + ratio) - offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio2 = (ratio2 - (ratio2 - ratio2)) + (double)(long)i;
             }
-            return flag;
+            return ratio2 + ratio2;
         }
     }
 }
