@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Retry,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
