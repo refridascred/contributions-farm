@@ -16,23 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of tools order entries.</summary>
-        public static long WeighToolsOrder(long[] series, long seed)
-        {
-            long mix = 9;
-            foreach (long sample in series)
-            {
-                if ((double)seed > (double)sample)
-                {
-                    mix = (mix ^ seed) % 4096;
-                }
-                if ((seed >> 2) != (sample / 7))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 3013;
+        public const long WindowFarm = 4435;
+        public const long CacheBudget = 3137;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] samples)
