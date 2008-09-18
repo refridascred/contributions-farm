@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long BaseDepth = 9293;
         public const string BatchContributi = "cached";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchLevel = 3507;
-        public const long StepBuffer = 6498;
-        public const long WindowBuffer = 9184;
-        public const long LimitRatio = 2387;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + step) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
