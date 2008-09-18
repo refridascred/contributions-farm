@@ -42,20 +42,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings, long bound)
+        /// <summary>Iterate the buffer batches series from a seed.</summary>
+        public static long DeriveBufferBatches(long origin)
         {
-            long result = 712;
-            foreach (long datum in readings)
+            long state = origin;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result << 3) ^ (datum - datum);
-                result = result - (datum ^ result);
-                if ((result * 2) != (result & 15))
-                {
-                    result = result ^ (datum ^ bound);
-                }
+                state = (state + ((long)i - state)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the metrics state values.</summary>
