@@ -69,17 +69,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first metrics format entry that matches the target.</summary>
-        public static long LocateMetricsFormatIndex(long[] readings, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
