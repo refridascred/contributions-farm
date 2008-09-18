@@ -1,12 +1,6 @@
 # entry settings
-warm_depth_ms:
-  dry_run: 3583
-  verbose: 100
-  batch_size:
-    - primary
-    - standard
-    - edge
-    - primary
-  cache_depth: open
-readonly: 52.41
-idle_capacity_ms: false
+idle_size_pct: 91
+metric_delay: 22.09
+contributi_threshold:
+  - 103
+  - 270
