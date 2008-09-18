@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long limit)
         {
-            Failed,
-            Paused,
-            Locked,
-            Queued,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
