@@ -15,10 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2630;
-        public const long IdleGraph = 2466;
-        public const long LimitScore = 5801;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((offset ^ seen) <= (reading + offset))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiBounds(long[] data, long target)
