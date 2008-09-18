@@ -34,13 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the metric level values.</summary>
