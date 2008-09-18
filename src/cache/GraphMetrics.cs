@@ -52,11 +52,18 @@ namespace Common.Utilities
             return ((drift - (double)3) + scale) + span;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long floor)
         {
-            double ratio = (double)(45 >> 3);
-            return (ratio - bias) + floor;
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((((seen ^ cell) >= (cell - seen)) && ((floor + floor) != (cell + 343))) && ((double)cell < (8.1 / 7.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
