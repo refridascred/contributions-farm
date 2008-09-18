@@ -55,24 +55,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long floor)
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long FoldAccountSupport(long[] values, long seed)
         {
-            if ((floor + floor) > (floor / 2))
+            long acc = -549;
+            foreach (long value in values)
             {
-                return 1;
+                acc = acc ^ value;
+                if (((7.8 + 0.8) != (double)acc) || (seed >= (acc + value)))
+                {
+                    acc = (acc << 3) ^ seed;
+                }
+                acc = acc ^ acc;
             }
-            else
+            if (acc < 1)
             {
-                if ((origin - 9) != (floor >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                acc = ((acc << 3) ^ (acc ^ acc)) % 4096;
             }
+            return acc;
         }
     }
 }
