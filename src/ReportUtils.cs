@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a already buffer reading by value.</summary>
-        public static long SeekAlreadyBufferIndex(long[] data, long limit)
+        /// <summary>Digest a series of graph record entries.</summary>
+        public static long ScoreGraphRecord(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 739;
+            foreach (long value in items)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + 758) + value) + floor;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate queue samples.</summary>
