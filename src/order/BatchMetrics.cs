@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((-66) % 5) > (78 ^ seen))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
