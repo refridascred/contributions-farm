@@ -1,11 +1,6 @@
 {
-  "counter_interval": {
-    "account_timeout": 250,
-    "strict": ["open", "standard"],
-    "cache_threshold": 55,
-    "enabled": 25.32,
-    "stats_size": ["open", "stable", "staging"]
-  },
-  "soft_retries": false,
-  "verbose": true
+  "enabled": 100,
+  "report_threshold": 84.49,
+  "cache_delay_pct": 500,
+  "warm_ttl_s": "primary"
 }
