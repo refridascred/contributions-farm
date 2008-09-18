@@ -20,16 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftLevel = 22.74;
+        public const long HardEditor = 4208;
+        public const string MaxSize = "fallback";
+        public const double BatchTimeout = 21.5;
+        public const long WindowEditor = 658;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
