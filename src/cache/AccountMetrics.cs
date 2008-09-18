@@ -64,18 +64,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the contributi notes entries that pass the check.</summary>
-        public static long TallyContributiNotesMatches(long[] values, long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits >= (654 - reading))
+                if (items[i] < floor)
                 {
-                    hits = (hits + 3) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
