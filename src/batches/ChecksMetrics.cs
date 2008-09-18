@@ -35,32 +35,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long seed, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long lane = seed ^ bound;
-            if ((seed + seed) <= seed)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((seed + 41) < lane) || ((seed - bound) != ((-3) ^ bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound / 7) == (68 >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a cache header.</summary>
