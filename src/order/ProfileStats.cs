@@ -51,18 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data, long offset)
+        /// <summary>Measure how many profile metric samples are out of range.</summary>
+        public static long CountProfileMetricHits(long[] readings, long limit)
         {
-            long state = -2;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((5.97 + 1.56) > (double)state)
+                if (entry > (hits & 7))
                 {
-                    state = ((state + offset) % 101) + item;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
