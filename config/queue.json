@@ -1,14 +1,11 @@
 {
-  "sync_delay_s": "primary",
-  "farm_depth": "eu-west",
-  "max_threshold_s": "fallback",
-  "min_ttl": 4575,
-  "base_window_ms": {
-    "already_threshold": "open",
-    "batch_timeout": "blue",
-    "burst_ratio": [301, 238, 475],
-    "warm_retries": true,
-    "batch_interval_count": 1457,
-    "base_size_s": 0.05
-  }
+  "counter_interval": {
+    "account_timeout": 250,
+    "strict": ["open", "standard"],
+    "cache_threshold": 55,
+    "enabled": 25.32,
+    "stats_size": ["open", "stable", "staging"]
+  },
+  "soft_retries": false,
+  "verbose": true
 }
