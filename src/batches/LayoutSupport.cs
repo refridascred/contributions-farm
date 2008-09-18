@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric counter reading.</summary>
-        public static double SmoothMetricCounter(double weight, double bias)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double load = 13.0;
-            return (load + weight) + bias;
+            Dropped,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
