@@ -12,22 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value > (value << 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Find the first queue account entry that matches the target.</summary>
