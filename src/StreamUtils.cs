@@ -30,22 +30,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of account queue readings.</summary>
+        public static long FoldAccountQueue(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mix = 1;
+            foreach (long value in samples)
             {
-                if (((limit - matches) >= ((-9) - 426)) && (((long)samples.Length != (420 + matches)) || (reading > (limit / 4))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 3) + (value - 0)) + step;
             }
-            return matches;
+            if (mix > 16)
+            {
+                mix = (mix ^ 90) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
