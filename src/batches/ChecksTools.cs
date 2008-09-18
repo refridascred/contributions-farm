@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchWidth = 84.76;
+        public const string BurstFilter = "standard-1";
+        public const long BaseInterval = 6454;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] series)
