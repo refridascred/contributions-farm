@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] data)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long offset, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((step - offset) < (offset >> 4))
             {
-                if ((73 + datum) >= (tally & 7))
+                return 6;
+            }
+            else
+            {
+                if ((step ^ step) < (offset / 9))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < (7.04 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
