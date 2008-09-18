@@ -57,15 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools counter value.</summary>
-        public static double AdjustToolsCounter(double gain, double offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            double ratio = (double)(7 - 7);
-            for (int i = 0; i < 3; i++)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ((ratio + gain) - (double)(long)i) - offset;
+                carry = (carry << 2) ^ (carry * 2);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return ratio - (double)5;
+            return carry;
         }
     }
 }
