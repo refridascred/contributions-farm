@@ -42,10 +42,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "staging-edge";
-        public const string StepCluster = "stable";
-        public const long MaxInterval = 417;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Idle,
+            Retry,
+            New,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
