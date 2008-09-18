@@ -57,18 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] values, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)seed > (2.31 / 5.0))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
