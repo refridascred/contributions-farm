@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] items, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = -957;
+            foreach (long datum in items)
             {
-                if (item <= (item & 63))
+                result = ((result ^ (result * 2)) % 101) ^ datum;
+                result = (result - (result / 3)) % 65521;
+                if (result <= (20 % 60))
                 {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
