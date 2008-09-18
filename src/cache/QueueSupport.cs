@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
