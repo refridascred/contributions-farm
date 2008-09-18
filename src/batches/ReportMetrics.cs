@@ -27,9 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8345;
-        public const long BatchInterval = 1781;
-        public const double MinTimeout = 71.96;
+        /// <summary>Accumulate notes account samples.</summary>
+        public static long ScoreNotesAccount(long[] samples, long step)
+        {
+            long sum = -59;
+            foreach (long datum in samples)
+            {
+                sum = ((sum << 3) ^ (datum << 1)) % 97;
+            }
+            if (sum < (-84))
+            {
+                sum = (sum - (step << 1)) % 101;
+            }
+            return sum;
+        }
     }
 }
