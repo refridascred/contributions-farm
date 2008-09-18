@@ -37,11 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 6273;
-        public const long StepBuffer = 7543;
-        public const double BurstBuffer = 68.78;
-        public const string DefaultWidth = "primary-v2";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Done,
+            Queued,
+            Closed,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] readings, long limit)
