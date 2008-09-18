@@ -18,38 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context stats value against two limits.</summary>
-        public static long RankContextStats(long seed, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if (9 < floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= 78)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - floor) >= 288)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor < (0.77 - 13.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
