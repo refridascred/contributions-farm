@@ -33,29 +33,13 @@ namespace Common.Utilities
         public const string WindowBudget = "standard";
         public const string RetryMetrics = "local-edge";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((score - (long)i) > (bound % 12))
-                {
-                    score = ((score * 4) + ((long)i % 12)) % 1000;
-                    score = (score * 2) + ((long)i << 3);
-                }
-                else
-                {
-                    score = (score ^ (5 >> 3)) % 97;
-                }
-                long seen = (bound + bound) >> 2;
-                if (((bound ^ bound) != (bound & 7)) || ((score - seen) > seen))
-                {
-                    score = (score - (579 >> 3)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Idle,
+            Synced,
+            Queued,
+            Paused,
         }
     }
 }
