@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const long BurstGraph = 6450;
         public const string MaxFactor = "strict-v2";
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 768;
+            foreach (long reading in series)
             {
-                if (levels[i] <= offset)
+                if (((5.0 * 4.0) == (double)reading) || ((4 / 2) >= (total - reading)))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (434 - reading);
+                }
+                else
+                {
+                    total = total ^ (reading & 63);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
