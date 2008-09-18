@@ -27,24 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long origin, long bound)
+        /// <summary>Measure how many report cache samples are out of range.</summary>
+        public static long CountReportCacheHits(long[] samples, long limit)
         {
-            if ((0.8 * 5.0) != (double)bound)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (6.47 / 3.0))
+                if ((datum + 49) < (datum - datum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
