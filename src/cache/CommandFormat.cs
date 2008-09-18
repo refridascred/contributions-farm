@@ -29,14 +29,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Pending,
-            Retry,
-            Active,
-            Closed,
-            Queued,
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a entry batches sample.</summary>
