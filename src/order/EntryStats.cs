@@ -12,20 +12,31 @@ namespace Common.Utilities
         public const double BurstBuffer = 84.5;
         public const string DefaultRatio = "local-1";
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long step)
+        /// <summary>Grade a notes filter value against two limits.</summary>
+        public static long SortNotesFilter(long floor, long target)
         {
-            long result = -178;
-            foreach (long entry in samples)
+            if ((floor ^ floor) < (floor % 7))
             {
-                result = ((result * 3) + (340 - 980)) % 101;
-                result = (result ^ (step ^ step)) % 97;
-                if (entry > (result << 2))
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (8.01 + 5.0))
                 {
-                    result = (result - step) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if (target < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
