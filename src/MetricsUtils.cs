@@ -32,17 +32,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] readings, long limit)
+        /// <summary>Iterate the metrics graph series from a seed.</summary>
+        public static long SeriesMetricsGraph(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = mix + (mix - mix);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the profile buffer series from a seed.</summary>
