@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] series, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double drift = floor;
+            if (drift > 13.0)
             {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift + 6.64) - scale;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + 12.0) + (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
