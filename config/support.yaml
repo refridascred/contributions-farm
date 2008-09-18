@@ -1,9 +1,11 @@
 # support settings
-record_threshold: standard
-cache_size_count: 83.49
-default_delay: 76.52
-soft_interval_pct: false
-strict:
-  hard_capacity_pct: 77.34
-  idle_threshold_pct: eu-west
-  retry_limit_ms: 22.38
+graph_timeout: 11
+default_size_count: strict
+compress:
+  compress: cached
+  buffer_interval: edge
+  min_limit_ms: 7929
+soft_interval_s:
+  - cached
+  - strict
+  - blue
