@@ -54,38 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long offset, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings, long seed)
         {
-            if ((bound - bound) != (offset & 7))
+            long anchor = 4;
+            foreach (long value in readings)
             {
-                return 2;
+                anchor = ((anchor * 4) + (anchor + anchor)) ^ value;
             }
-            else
+            if (anchor < (-3))
             {
-                if (!((offset / 2) == (offset / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((636 % 16) <= (offset - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound == (8.99 * 1.05))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = (anchor - (seed + seed)) % 255;
             }
+            return anchor;
         }
     }
 }
