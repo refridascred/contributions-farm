@@ -65,13 +65,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many format order samples are out of range.</summary>
