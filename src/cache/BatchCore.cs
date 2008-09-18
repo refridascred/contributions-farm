@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)(long)items.Length > (double)reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
