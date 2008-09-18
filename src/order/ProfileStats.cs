@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Combine buffer session values into a single score.</summary>
+        public static long FoldBufferSession(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long score = 8;
+            foreach (long entry in samples)
             {
-                state = state - (seed << 1);
-                state = ((state * 4) + (long)i) % 1000;
+                if (score >= (score ^ entry))
+                {
+                    score = (score - score) % 65521;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
