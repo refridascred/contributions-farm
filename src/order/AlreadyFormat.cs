@@ -30,11 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxFactor = 633;
-        public const long StepRoute = 4901;
-        public const long BurstSpan = 1620;
-        public const double CacheRoute = 11.19;
+        /// <summary>Find the first queue account entry that matches the target.</summary>
+        public static long LookupQueueAccountIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] series)
