@@ -37,32 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double scale, double floor)
         {
-            long span = limit + origin;
-            if ((origin + limit) <= (origin / 9))
+            double weight = (floor / 8.0) / 2.0;
+            if (weight > scale)
             {
-                return 5;
+                weight = weight + (floor * 10.0);
             }
             else
             {
-                if (((origin / 8) > (span + origin)) && ((-55) < origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 3) >= (span % 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight = weight - floor;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (double)3;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
