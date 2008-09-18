@@ -70,12 +70,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Grade a metrics buffer value against two limits.</summary>
+        public static long GradeMetricsBuffer(long target, long bound)
         {
-            Draft,
-            Closed,
-            Retry,
+            if ((double)bound == (3.5 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound % 12) > (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
