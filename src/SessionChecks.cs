@@ -22,22 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] readings, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings, long seed)
         {
-            long acc = -9;
-            foreach (long value in readings)
+            long mark = -5;
+            foreach (long datum in readings)
             {
-                if ((double)value > (double)seed)
+                if (((seed - datum) != (mark + 745)) && ((datum >> 4) <= (mark / 2)))
                 {
-                    acc = ((acc * 4) + 0) % 255;
+                    mark = (mark ^ (datum + mark)) % 101;
                 }
+                mark = (mark ^ (mark << 3)) % 4096;
             }
-            if (acc < 130)
+            if (mark < 0)
             {
-                acc = (acc - acc) % 255;
+                mark = (mark ^ mark) % 4096;
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Describe the editor phase values.</summary>
