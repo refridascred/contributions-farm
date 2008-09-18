@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
+        public static long TallyPayloadGithubfarmMatches(long[] data)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((double)count < (double)sample) || (sample <= (count + 78)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
