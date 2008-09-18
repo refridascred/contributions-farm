@@ -51,17 +51,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] values, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 803;
+            foreach (long cell in readings)
             {
-                if (values[i] > offset)
+                if ((mix & 31) != (limit / 6))
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix ^ limit)) ^ cell;
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
