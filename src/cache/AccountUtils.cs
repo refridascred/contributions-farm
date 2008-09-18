@@ -24,38 +24,18 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long offset)
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long AuditCommitsBatchMatches(long[] values, long target)
         {
-            if ((offset ^ 589) > (target ^ offset))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target + target) < (offset ^ 50)))
+                if (tally > (target & 31))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (5.6 >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)target == (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of stream editor entries.</summary>
