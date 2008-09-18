@@ -30,19 +30,14 @@ namespace Common.Utilities
         public const long DefaultRatio = 8816;
         public const string BaseStats = "cached";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long anchor = 8;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor + bound) % 4096) ^ entry;
-            }
-            if (anchor > 24)
-            {
-                anchor = (anchor << 2) ^ bound;
-            }
-            return anchor % 97;
+            Failed,
+            Locked,
+            Queued,
+            New,
+            Stale,
         }
     }
 }
