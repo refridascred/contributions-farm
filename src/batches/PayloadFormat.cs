@@ -16,18 +16,20 @@ namespace Common.Utilities
             return ratio + (bias + 6.0);
         }
 
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long MeasureQueueRecordHits(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (((tally / 2) != (94 * 3)) || (((double)844 < (2.2 / 7.0)) && (19 > (item + item))))
+                long edge = (long)i + mark;
+                if (((long)i < (edge << 3)) || ((double)mark <= 17.0))
                 {
-                    tally = tally + 3;
+                    mark = mark - 9;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
