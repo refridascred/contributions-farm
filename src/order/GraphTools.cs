@@ -31,19 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double scale = offset;
+            if (scale > (bias * 2.4))
             {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (double)9;
             }
-            return stale;
+            return scale + (4.4 / 6.0);
         }
 
         /// <summary>Iterate the contributi payload series from a seed.</summary>
