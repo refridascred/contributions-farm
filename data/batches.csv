@@ -1,11 +1,6 @@
-id,rank,score,ratio
-1,standard,794,38
-2,stable,24,fallback
-3,403,189,strict
-4,124,3.08,2.61
-5,985,standard,315
-6,local,860,672
-7,open,legacy,fallback
-8,414,25.05,87.4
-9,63.04,185,200
-10,primary,57.75,987
+id,label,region
+1,21.84,941
+2,edge,33
+3,343,311
+4,899,54.58
+5,36.13,759
