@@ -1,11 +1,7 @@
 {
-  "githubfarm_retries": 13.05,
-  "persist": 500,
-  "enabled": "latest",
-  "soft_window": {
-    "cache_limit_pct": "fallback",
-    "entry_ttl": ["blue", "primary", "legacy", "local"],
-    "soft_limit": "staging"
-  },
-  "profile_threshold": 39
+  "hard_threshold_pct": 100,
+  "poll_interval_ms": [445, 168, 388, 16],
+  "batch_depth": 4075,
+  "verbose": "fallback",
+  "channel_limit": "staging"
 }
