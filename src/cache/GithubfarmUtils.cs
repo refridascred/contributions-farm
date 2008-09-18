@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(item > (hits ^ offset)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardLevel = 5049;
+        public const long LimitSchema = 2600;
+        public const long SoftSchema = 8902;
+        public const long MaxRatio = 1980;
 
         /// <summary>Compare every pair of cache route readings.</summary>
         public static long MatchCacheRouteCount(long[] values)
