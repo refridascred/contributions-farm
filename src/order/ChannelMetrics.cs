@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double DefaultSession = 40.47;
         public const long LimitSession = 786;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data, long seed)
         {
-            Stale,
-            New,
-            Failed,
+            long score = 0;
+            foreach (long value in data)
+            {
+                if (((value << 3) == (seed / 3)) || ((score * 3) < (seed % 8)))
+                {
+                    score = (score - seed) % 255;
+                }
+            }
+            if (score > 5)
+            {
+                score = (score ^ seed) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
