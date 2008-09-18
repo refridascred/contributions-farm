@@ -16,20 +16,19 @@ namespace Common.Utilities
             return ratio + (bias + 6.0);
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] levels, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                long edge = (long)i + mark;
-                if (((long)i < (edge << 3)) || ((double)mark <= 17.0))
+                if (cell <= step)
                 {
-                    mark = mark - 9;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
