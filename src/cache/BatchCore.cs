@@ -41,12 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long bound)
         {
-            Paused,
-            Dropped,
-            Idle,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
