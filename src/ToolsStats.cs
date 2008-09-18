@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools buffer value from a seed.</summary>
-        public static long SeriesToolsBuffer(long seed)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state ^ (seed / 2)) % 97) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
