@@ -13,24 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values, long floor)
-        {
-            long total = 9;
-            foreach (long item in values)
-            {
-                if (2 > (total >> 4))
-                {
-                    total = ((((total << 2) ^ ((-250) + (long)values.Length)) % 65521) ^ item) - floor;
-                }
-                total = (total - (total << 1)) % 101;
-            }
-            if (total > (-38))
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 16.58;
+        public const double BurstWindow = 87.57;
+        public const long BaseWidth = 9948;
+        public const long BaseCount = 6936;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TallyGraph(long[] levels)
