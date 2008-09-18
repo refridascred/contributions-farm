@@ -51,17 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support token reading by value.</summary>
-        public static long FindSupportTokenIndex(long[] levels, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
