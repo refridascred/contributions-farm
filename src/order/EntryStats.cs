@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double BurstBuffer = 84.5;
         public const string DefaultRatio = "local-1";
 
-        /// <summary>Fold a list of window format readings.</summary>
-        public static long CombineWindowFormat(long[] series)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = -9;
-            foreach (long item in series)
-            {
-                if ((score + item) <= (3 & 1))
-                {
-                    score = score - item;
-                }
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
