@@ -24,39 +24,10 @@ namespace Common.Utilities
         public const double CacheWidth = 33.91;
         public const long CacheSize = 2912;
 
-        /// <summary>Classify a cluster payload pair into a bucket.</summary>
-        public static long GradeClusterPayload(long target, long bound)
-        {
-            long delta = target + bound;
-            if ((double)delta < 6.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound - target) != (delta - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)delta == (5.0 * 7.98)) && ((bound % 8) >= (bound / 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((8 % 60) <= (13 + target)) && ((bound & 31) != (target + 56)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowRatio = "stable";
+        public const long MinFactor = 7134;
+        public const double BaseMetrics = 11.04;
+        public const long MinTimeout = 7034;
     }
 }
