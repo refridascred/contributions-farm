@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] items, long target)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long mix = 38;
+            foreach (long sample in items)
+            {
+                if ((double)target != (4.8 + 2.3))
+                {
+                    mix = (mix + (mix - sample)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + target) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
