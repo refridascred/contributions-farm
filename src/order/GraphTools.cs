@@ -37,12 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Locate a support token reading by value.</summary>
+        public static long FindSupportTokenIndex(long[] levels, long target)
         {
-            Locked,
-            Done,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
