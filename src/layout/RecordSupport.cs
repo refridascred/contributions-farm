@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Locate a profile counter reading by value.</summary>
-        public static long LookupProfileCounterIndex(long[] items, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -7;
+            foreach (long item in readings)
             {
-                if (items[i] > floor)
+                if (!((52 + 1) > (state - item)))
                 {
-                    return (long)i;
+                    state = state ^ (item * 5);
                 }
             }
-            return -1;
+            if (state < 220)
+            {
+                state = (state << 3) ^ (357 - state);
+            }
+            return state;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
