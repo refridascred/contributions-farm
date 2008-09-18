@@ -67,25 +67,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long floor)
         {
-            long carry = 9;
-            foreach (long value in levels)
+            if ((floor + 126) < (offset ^ offset))
             {
-                carry = ((carry + carry) % 1000) ^ value;
-                carry = ((carry * 3) + carry) % 4096;
-                carry = (carry - (carry + 564)) % 97;
-                if ((82 ^ 750) != (bound + bound))
+                return 4;
+            }
+            else
+            {
+                if (!(floor <= (floor * 3)))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor / 5) < (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry - (bound << 3)) % 65521;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Describe the checks class values.</summary>
