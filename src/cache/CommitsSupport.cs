@@ -40,31 +40,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] levels, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long step)
         {
-            long total = 455;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total >= (limit + limit))
+                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
                 {
-                    total = total - sample;
-                    break;
-                }
-                if (!(total <= (7 + limit)))
-                {
-                    total = ((total * 4) + (total ^ total)) % 255;
-                }
-                else
-                {
-                    total = (total - (total + limit)) % 97;
-                }
-                if (((double)limit >= (13.0 / 9.0)) && ((sample + sample) < limit))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
