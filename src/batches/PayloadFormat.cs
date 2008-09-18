@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] levels)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double bias2 = (double)(258 % 3);
+            if (bias2 <= bias)
             {
-                if ((((double)value > (double)(long)levels.Length) && ((4.0 * 3.09) >= (double)matches)) || (((213 + matches) == (matches + matches)) && ((double)matches <= 6.2)))
-                {
-                    matches = matches + 2;
-                }
+                bias2 = (bias2 - 0.07) + span;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (bias2 * 4.37);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
