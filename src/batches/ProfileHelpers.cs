@@ -49,15 +49,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double rate, double bias)
+        /// <summary>Digest a series of tools metric entries.</summary>
+        public static long TallyToolsMetric(long[] readings)
         {
-            double weight = (double)(36 - 125);
-            if (weight <= rate)
+            long mark = 201;
+            foreach (long value in readings)
             {
-                weight = weight - (bias + bias);
+                if (!((29 % 10) > (mark - mark)))
+                {
+                    mark = ((mark * 3) + value) % 65521;
+                }
+                mark = (mark + (907 / 4)) % 1000;
             }
-            return weight - bias;
+            if (mark < 7)
+            {
+                mark = (mark * 4) + (mark * 2);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
