@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)tally <= (7.0 + 10.0))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a batches options.</summary>
