@@ -57,11 +57,19 @@ namespace Common.Utilities
         public const long WindowBudget = 6611;
         public const double HardToken = 84.23;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every farm token entry stays within the limit.</summary>
+        public static bool CheckFarmTokenBounds(long[] series, long offset)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
