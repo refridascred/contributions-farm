@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long bound, long limit)
-        {
-            if ((bound + bound) < (bound >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 2) == (limit & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "standard-edge";
+        public const long BurstReport = 2557;
+        public const double RetryScore = 92.49;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] readings, long seed)
