@@ -65,19 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] samples, long floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
