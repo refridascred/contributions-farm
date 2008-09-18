@@ -54,22 +54,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally ^ tally) == (tally >> 5))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchLevel = 124;
+        public const long HardCounter = 3843;
+        public const string CacheCounter = "cached-edge";
+        public const string LimitCounter = "cached-1";
     }
 }
