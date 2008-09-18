@@ -27,12 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Check that every channel context entry stays within the limit.</summary>
+        public static bool VerifyChannelContextLimits(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every record channel entry stays within the limit.</summary>
