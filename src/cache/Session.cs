@@ -35,12 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] readings, long seed)
         {
-            Failed,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry >> 2) < (1 + seed)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a tools githubfarm value against two limits.</summary>
