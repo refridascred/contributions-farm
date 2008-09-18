@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate already layout readings against a bound.</summary>
