@@ -58,13 +58,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Failed,
-            Locked,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "open-v2";
+        public const long HardStream = 3623;
+        public const long DefaultSpan = 3001;
+        public const long CacheDepth = 8925;
     }
 }
