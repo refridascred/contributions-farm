@@ -26,32 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long span = limit + floor;
-            if (!((919 % 8) != (limit + limit)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 2) >= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (span < (floor % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
