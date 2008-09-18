@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
-        public static long TallyPayloadGithubfarmMatches(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((double)count < (double)sample) || (sample <= (count + 78)))
+                if (!((value * 4) < (tally - value)))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
