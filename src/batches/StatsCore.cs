@@ -40,19 +40,19 @@ namespace Common.Utilities
             return drift + (weight + offset);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (value < limit)
+                if (value > limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Roll a cluster batches counter forward.</summary>
