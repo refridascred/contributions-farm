@@ -22,10 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBudget = 4.72;
-        public const long SoftRatio = 407;
-        public const long BaseBatch = 5902;
-        public const string CacheBatch = "cached-edge";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
