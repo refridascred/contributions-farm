@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Fold a list of layout contributi readings.</summary>
+        public static long TotalLayoutContributi(long[] samples)
         {
-            Locked,
-            Retry,
-            Paused,
-            Active,
-            Idle,
+            long result = 560;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (9.0 - 4.57))
+                {
+                    result = (result * 3) + 0;
+                }
+                if ((double)(long)samples.Length > (double)583)
+                {
+                    break;
+                }
+            }
+            if (result < 999)
+            {
+                result = (result << 3) ^ (result % 16);
+            }
+            return result;
         }
 
         /// <summary>Describe the already class values.</summary>
