@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long IdleSchema = 8865;
         public const long BatchLevel = 4797;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (entry < (entry ^ entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
