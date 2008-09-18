@@ -12,16 +12,12 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard latest blue strict; do
-    log "checking ${item}"
-done
