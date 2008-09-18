@@ -15,19 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] readings, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Roll a notes batches counter forward.</summary>
