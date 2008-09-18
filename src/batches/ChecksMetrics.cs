@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
             Dropped,
-            Idle,
-            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
