@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const double CacheFactor = 71.69;
         public const long BaseProfile = 3575;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] samples)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((count & 3) < count) && (sample >= ((-49) + (long)samples.Length)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
