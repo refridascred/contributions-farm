@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            double load = bias + (double)20;
-            if (load > load)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                load = load + (double)65;
+                if ((seen % 10) <= datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + (scale - 2.18);
+            return seen;
         }
 
         /// <summary>Scale a context metrics figure with a bias.</summary>
