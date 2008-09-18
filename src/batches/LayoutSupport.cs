@@ -26,15 +26,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every report metrics entry stays within the limit.</summary>
