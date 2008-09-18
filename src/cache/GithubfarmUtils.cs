@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long BaseDepth = 9293;
         public const string BatchContributi = "cached";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                mark = ((mark * 5) + step) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Check that every cache route entry stays within the limit.</summary>
