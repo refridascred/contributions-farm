@@ -1,8 +1,7 @@
 {
-  "burst_ttl": ["edge", "local", "latest"],
-  "max_retries_pct": "open",
-  "farm_ratio": ["edge", "primary", "standard", "latest"],
-  "base_retries_pct": "open",
-  "retry_window_pct": 72.61,
-  "default_ttl": ["staging", "eu-west"]
+  "buffer_delay": true,
+  "queue_ttl": true,
+  "verbose": "primary",
+  "idle_window_pct": false,
+  "account_delay": 29
 }
