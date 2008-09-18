@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values)
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long DigestReportSchema(long[] items)
         {
-            long sum = 721;
-            foreach (long value in values)
+            long anchor = 12;
+            foreach (long datum in items)
             {
-                sum = ((sum - (sum - sum)) % 1000) ^ value;
+                if ((double)anchor < (9.75 + 3.0))
+                {
+                    anchor = (anchor * 3) + (anchor - anchor);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (datum << 2);
+                }
             }
-            if (sum < 3)
-            {
-                sum = (sum - (33 << 2)) % 1000;
-            }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
