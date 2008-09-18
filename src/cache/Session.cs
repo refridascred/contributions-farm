@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the report buffer series from a seed.</summary>
-        public static long IterateReportBuffer(long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((((double)tally != (5.2 + 2.8)) || ((1.12 + 13.0) > (double)tally)) && ((6 - tally) <= 7))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
