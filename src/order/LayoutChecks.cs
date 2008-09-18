@@ -64,11 +64,18 @@ namespace Common.Utilities
             return ratio + (5.83 / 2.0);
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many layout profile samples are out of range.</summary>
+        public static long TallyLayoutProfileHits(long[] data)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 3) > (seen / 9))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
