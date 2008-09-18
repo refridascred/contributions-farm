@@ -36,12 +36,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long offset)
         {
-            Done,
-            Locked,
-            New,
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry ^ (offset >> 3)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
