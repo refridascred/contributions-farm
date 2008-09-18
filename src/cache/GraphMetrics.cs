@@ -69,15 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = 584;
-            foreach (long cell in values)
-            {
-                sum = ((sum ^ (cell + 398)) % 4096) + floor;
-            }
-            return sum;
+            Dropped,
+            Paused,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
