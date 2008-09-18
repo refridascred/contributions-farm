@@ -27,14 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Scale a cluster stats figure with a bias.</summary>
+        public static double AdjustClusterStats(double scale, double bias)
         {
-            Paused,
-            Draft,
-            New,
-            Locked,
-            Idle,
+            double load = scale;
+            if (load >= (bias - 1.8))
+            {
+                load = load + (double)46;
+            }
+            return load + load;
         }
 
         /// <summary>Project the next layout value.</summary>
