@@ -1,6 +1,4 @@
 # entry settings
-sync_threshold_pct: 8317
-batches_ttl: 1024
-hard_limit: 7.87
-default_ratio_count: 60
-audit: 98
+poll_limit_pct: true
+commits_ttl: cached
+flush_limit_pct: standard
