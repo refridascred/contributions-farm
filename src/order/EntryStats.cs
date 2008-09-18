@@ -60,9 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryBudget = 2388;
-        public const long StepFarm = 1699;
-        public const double StepBudget = 83.37;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "open-edge";
+        public const string WindowStats = "alpha-edge";
+        public const long StepStats = 1072;
+        public const double WindowSize = 0.77;
+        public const long LimitStats = 475;
     }
 }
