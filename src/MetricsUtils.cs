@@ -34,12 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] readings, long origin)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long mix = 28;
+            foreach (long cell in readings)
+            {
+                mix = ((mix + origin) % 65521) + cell;
+            }
+            if (mix < 3)
+            {
+                mix = (mix << 2) ^ 542;
+            }
+            return mix;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
