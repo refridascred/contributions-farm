@@ -36,21 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics schema samples.</summary>
-        public static long CompareMetricsSchemaCount(long[] levels)
+        /// <summary>Accumulate context profile samples.</summary>
+        public static long FoldContextProfile(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 628;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc << 1) <= 19)
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (acc + acc);
+                }
+                if (!((datum + datum) > (datum & 127)))
+                {
+                    acc = ((acc << 3) ^ 124) % 97;
                 }
             }
-            return count;
+            if (acc > 28)
+            {
+                acc = ((acc << 3) ^ (acc & 1)) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
