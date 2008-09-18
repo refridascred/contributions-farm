@@ -47,10 +47,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 9.24;
-        public const string SoftFactor = "fallback-v2";
-        public const string RetryBuffer = "standard-v2";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long limit, long limit2)
+        {
+            long offset = limit + limit2;
+            if ((2.0 < (double)limit) && (limit > (limit2 + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) >= (limit2 ^ limit2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((42 + limit) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] values, long offset)
