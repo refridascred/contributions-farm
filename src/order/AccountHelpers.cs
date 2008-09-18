@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 41;
-            foreach (long item in samples)
-            {
-                if ((double)score < (7.39 - 4.0))
-                {
-                    score = ((score ^ (score & 3)) % 255) + item;
-                }
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
