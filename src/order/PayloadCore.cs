@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            long mix = 577;
-            foreach (long entry in values)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix << 3) ^ (entry - entry)) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (mix < (-215))
-            {
-                mix = (mix ^ (mix * 5)) % 4096;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
