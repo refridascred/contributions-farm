@@ -1,5 +1,7 @@
 {
-  "idle_ratio": "fallback",
-  "counter_depth": 1901,
-  "sync_timeout_pct": false
+  "sync_size_count": 13,
+  "hard_delay_s": "stable",
+  "sync_limit_count": ["open", "edge", "blue", "green"],
+  "idle_depth_count": 3.11,
+  "compress": ["blue", "cached", "blue"]
 }
