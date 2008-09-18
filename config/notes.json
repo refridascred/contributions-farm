@@ -1,16 +1,6 @@
 {
-  "readonly": 8220,
-  "min_retries_count": [94, 398],
-  "metric_window": {
-    "metrics_ttl": 1176,
-    "metric_window": {
-      "enabled": "strict",
-      "base_threshold_count": 44.27,
-      "verbose": ["cached", "green", "primary"]
-    },
-    "flush_timeout_s": 93
-  },
-  "soft_threshold_ms": 15,
-  "poll_size": 68.78,
-  "verbose": true
+  "poll_ttl_pct": "legacy",
+  "flush_interval": [333, 368],
+  "cluster_size": 5,
+  "strict": 11.82
 }
