@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstScore = 19.32;
-        public const long StepSupport = 6035;
-        public const long MaxTimeout = 523;
-        public const long MinSupport = 4181;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a tools context pair into a bucket.</summary>
         public static long RankToolsContext(long step, long offset)
