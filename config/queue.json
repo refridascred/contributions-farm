@@ -1,6 +1,11 @@
 {
-  "strict": true,
-  "flush_capacity_count": 250,
-  "poll_capacity_pct": 305,
-  "readonly": "standard"
+  "compress": "eu-west",
+  "graph_capacity": 47.18,
+  "strict": false,
+  "hard_capacity_ms": {
+    "flush_window_pct": 60,
+    "persist": [284, 142],
+    "hard_interval": "local",
+    "burst_window_ms": false
+  }
 }
