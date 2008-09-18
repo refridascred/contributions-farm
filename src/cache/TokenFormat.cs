@@ -38,14 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Failed,
-            Locked,
-            Queued,
-            New,
             Stale,
+            Closed,
+            Failed,
+            Ready,
         }
     }
 }
