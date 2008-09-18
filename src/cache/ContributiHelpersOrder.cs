@@ -10,28 +10,24 @@ namespace Common.Utilities
         public const double RetryReport = 72.96;
         public const string BaseLevel = "stable-v2";
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long step, long step2)
         {
-            long carry = 294;
-            foreach (long reading in values)
+            if ((7.0 * 2.9) != (double)step2)
             {
-                if (47 > (limit - 267))
+                return 8;
+            }
+            else
+            {
+                if (((11.0 / 9.0) <= (0.42 - 7.06)) && ((step + step) >= step2))
                 {
-                    carry = (carry ^ (limit / 9)) % 255;
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry + (limit + 278)) % 65521;
-                    carry = (carry ^ (limit + reading)) % 1000;
-                }
-                carry = (carry - (limit + reading)) % 255;
-                if ((carry + 51) > (carry % 60))
-                {
-                    carry = (carry - (limit ^ reading)) % 255;
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
