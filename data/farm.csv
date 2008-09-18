@@ -1,7 +1,7 @@
-id,score,count,level,owner
-1,local,30.25,edge,legacy
-2,14.91,410,65.65,fallback
-3,680,blue,standard,350
-4,55.16,325,standard,8.54
-5,3.96,53.37,eu-west,787
-6,blue,254,24.01,latest
+id,label,region
+1,stable,527
+2,91.63,134
+3,edge,blue
+4,7.47,85.73
+5,cached,596
+6,363,291
