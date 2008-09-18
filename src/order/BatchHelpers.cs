@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 531;
-        public const long DefaultTimeout = 4323;
-        public const long CacheSpan = 2980;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long bound)
+        {
+            long edge = seed - bound;
+            if ((edge + 28) >= (seed << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound <= (edge + 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - edge) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed & 15) >= (edge - edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
