@@ -50,15 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
