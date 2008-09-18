@@ -83,22 +83,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples, long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((-91) < (seen >> 1))
-                {
-                    seen = ((seen + 3) ^ reading) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
