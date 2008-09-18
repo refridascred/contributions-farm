@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels)
         {
-            Dropped,
-            Idle,
-            Active,
-            Draft,
+            long mark = 605;
+            foreach (long entry in levels)
+            {
+                if ((mark + 2) > entry)
+                {
+                    mark = (mark + (entry / 6)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
