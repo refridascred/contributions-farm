@@ -53,10 +53,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4960;
-        public const double WindowBudget = 81.78;
-        public const long RetryScore = 6354;
+        /// <summary>Roll a cluster batches counter forward.</summary>
+        public static long SeriesClusterBatches(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next account batches value from a seed.</summary>
         public static long SeriesAccountBatches(long bound)
