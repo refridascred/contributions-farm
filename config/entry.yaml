@@ -1,11 +1,4 @@
 # entry settings
-default_timeout:
-  - legacy
-  - open
-  - blue
-  - fallback
-warm_retries_pct: cached
-retry_limit_s:
-  base_size_ms: standard
-  base_timeout_count: false
-  base_interval_ms: primary
+counter_interval: 1.71
+command_ratio: false
+enabled: 9101
