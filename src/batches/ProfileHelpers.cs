@@ -23,38 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data)
         {
-            if ((target ^ bound) <= (63 / 6))
+            long mix = -86;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((3.1 * 9.73) < (double)target) || ((double)target == (3.21 + 6.9)))
+                if ((mix % 64) >= mix)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 / 9.0) != (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound + target) <= (target & 31)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = ((mix << 3) ^ sample) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a metrics stats.</summary>
