@@ -57,23 +57,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double span)
+        /// <summary>Accumulate editor command samples.</summary>
+        public static long TotalEditorCommand(long[] items)
         {
-            double load = (double)(191 + 70);
-            if (load >= (double)460)
+            long carry = 54;
+            foreach (long datum in items)
             {
-                load = (load + (double)327) - span;
+                if ((datum + carry) <= (carry + (-6)))
+                {
+                    carry = (carry << 2) ^ (datum / 2);
+                }
             }
-            else
+            if (carry > 675)
             {
-                load = load + (load / 7.0);
+                carry = (carry + (carry << 1)) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (scale - scale)) + (double)(long)i;
-            }
-            return load + (scale - load);
+            return carry;
         }
     }
 }
