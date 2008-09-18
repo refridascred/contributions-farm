@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the context githubfarm series from a seed.</summary>
-        public static long StepContextGithubfarm(long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc - (acc >> 4);
-                acc = acc + 795;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Active,
+            Queued,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
