@@ -32,10 +32,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 63.61;
-        public const long DefaultFactor = 8892;
-        public const long BurstNotes = 6880;
-        public const string MaxNotes = "primary";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor - (26 & 127);
+                anchor = anchor + origin;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
