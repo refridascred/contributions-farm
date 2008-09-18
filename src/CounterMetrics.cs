@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metric session samples.</summary>
-        public static long MatchMetricSessionCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseDepth = 4.24;
+        public const long IdleBudget = 4943;
+        public const long SoftCount = 3122;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
