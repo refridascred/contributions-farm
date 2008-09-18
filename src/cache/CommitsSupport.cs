@@ -103,13 +103,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
