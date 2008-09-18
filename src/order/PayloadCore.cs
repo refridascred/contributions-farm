@@ -25,12 +25,11 @@ namespace Common.Utilities
             return drift - (double)36;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8664;
-        public const long WindowSpan = 9748;
-        public const long SoftFactor = 4752;
-        public const string LimitContext = "latest-v2";
-        public const long WindowContext = 7073;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "fallback-1";
+        public const double MinSpan = 37.42;
+        public const double LimitCommits = 36.85;
+        public const double WindowDepth = 55.73;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double floor)
