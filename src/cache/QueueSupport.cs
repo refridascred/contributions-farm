@@ -21,18 +21,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] series, long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((floor - floor2) >= floor)
             {
-                if ((count - count) <= (reading / 3))
+                return 7;
+            }
+            else
+            {
+                if ((floor2 + floor) == (floor >> 2))
                 {
-                    count = (count + 1) - step;
+                    return 5;
+                }
+                else
+                {
+                    if (floor2 > (floor2 & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)floor2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
