@@ -55,17 +55,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 4;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if ((datum / 7) <= state)
                 {
-                    return (long)i;
+                    state = (state - (datum ^ state)) % 4096;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first metrics format entry that matches the target.</summary>
