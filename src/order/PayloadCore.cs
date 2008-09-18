@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long CountContextSessionHits(long[] items)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((((cell - (long)items.Length) > (259 + seen)) || ((double)cell < (double)782)) || ((7.0 - 7.77) < (double)cell))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
