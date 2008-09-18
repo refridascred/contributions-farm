@@ -1,17 +1,7 @@
 {
-  "min_timeout_s": ["open", "legacy", "blue", "green"],
-  "schema_capacity": 49.04,
-  "readonly": {
-    "min_capacity_ms": "edge",
-    "audit": {
-      "sync_threshold_count": ["staging", "blue", "green"],
-      "min_limit_pct": false,
-      "batch_timeout": true,
-      "batch_size": 8632
-    },
-    "layout_timeout": "stable",
-    "persist": 1024,
-    "cache_size": 60
-  },
-  "base_retries_count": true
+  "base_timeout_s": ["green", "strict", "staging", "eu-west"],
+  "githubfarm_ratio": "fallback",
+  "cache_limit_s": true,
+  "compress": 31,
+  "base_ratio_pct": 96.34
 }
