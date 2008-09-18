@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
