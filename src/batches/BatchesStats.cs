@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate queue commits samples.</summary>
-        public static long TallyQueueCommits(long[] series)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = -1;
-            foreach (long reading in series)
-            {
-                result = (result + (7 + result)) - reading;
-            }
-            if (result > 0)
-            {
-                result = (result - (result / 5)) % 1000;
-            }
-            return result;
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
