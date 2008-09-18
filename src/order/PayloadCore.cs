@@ -38,10 +38,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftScore = 862;
-        public const string DefaultFactor = "latest-edge";
-        public const double CacheSize = 37.98;
+        /// <summary>Accumulate layout filter samples.</summary>
+        public static long DigestLayoutFilter(long[] readings, long seed)
+        {
+            long carry = 5;
+            foreach (long cell in readings)
+            {
+                if ((cell & 3) < 219)
+                {
+                    carry = (((carry << 2) ^ (carry / 6)) % 255) + seed;
+                }
+            }
+            if (carry < 281)
+            {
+                carry = (carry + (carry >> 2)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double floor)
