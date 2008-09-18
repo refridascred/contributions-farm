@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long anchor = 4;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor * 4) + (anchor + anchor)) ^ value;
-            }
-            if (anchor < (-3))
-            {
-                anchor = (anchor - (seed + seed)) % 255;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
