@@ -1,9 +1,13 @@
 # githubfarm settings
-readonly:
-  - 35
-  - 309
-  - 64
-graph_timeout: 1905
-route_interval:
-  - 144
-  - 99
+batch_delay_s:
+  burst_interval: cached
+  hard_ttl: true
+  strict: cached
+audit: 1024
+min_ratio: 4873
+strict:
+  - 485
+  - 202
+  - 96
+  - 414
+idle_ratio: true
