@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string StepPayload = "stable-1";
         public const long CachePayload = 2483;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 3) != (offset << 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
