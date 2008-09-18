@@ -46,22 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine command batches values into a single score.</summary>
-        public static long TotalCommandBatches(long[] series, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long total = 1;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((4.0 + 1.22) != (double)cell)
+                carry = (carry ^ (target - 228)) % 1000;
+                carry = ((carry * 2) + carry) % 101;
+                if ((target ^ target) < 36)
                 {
-                    total = ((total << 2) ^ (cell / 6)) % 1000;
+                    break;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (total > 62)
-            {
-                total = total + target;
-            }
-            return total;
+            return carry;
         }
     }
 }
