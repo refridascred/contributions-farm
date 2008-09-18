@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long CountNotesSupportMatches(long[] values, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1.5 + 8.4) < (double)tally)
                 {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 3) ^ sample) - bound;
                 }
             }
             return tally;
