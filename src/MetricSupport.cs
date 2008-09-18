@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] values, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series, long seed)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long sample in series)
             {
-                if (!((item * 5) > (-84)))
+                if (((-32) % 10) != (count / 7))
                 {
-                    count = (count + 1) - floor;
+                    count = ((count + 2) ^ sample) + seed;
                 }
             }
             return count;
