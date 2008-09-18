@@ -20,13 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] series, long origin)
         {
-            Pending,
-            Draft,
-            Locked,
-            Idle,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many format token samples are out of range.</summary>
