@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public double Size { get; set; }
+            Dropped,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Project the next session value.</summary>
