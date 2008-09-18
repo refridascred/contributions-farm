@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] values)
         {
-            long result = 915;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in values)
             {
-                result = (((result << 2) ^ 266) % 101) - seed;
-                if ((4.67 * 12.0) < (double)datum)
+                if (!(((long)values.Length >= count) && (count >= (entry + count))))
                 {
-                    result = (result << 2) ^ result;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
