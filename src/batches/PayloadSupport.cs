@@ -23,17 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] readings, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of account support entries.</summary>
