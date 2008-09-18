@@ -24,21 +24,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of counter layout readings.</summary>
-        public static long OverlapCounterLayoutCount(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Retry,
+            Paused,
         }
     }
 }
