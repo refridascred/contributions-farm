@@ -58,21 +58,24 @@ namespace Common.Utilities
         public const double WindowBudget = 81.78;
         public const long RetryScore = 6354;
 
-        /// <summary>Count entry session pairs that satisfy a relation.</summary>
-        public static long CompareEntrySessionCount(long[] readings)
+        /// <summary>Derive the next account batches value from a seed.</summary>
+        public static long SeriesAccountBatches(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state + state) % 4096;
+                if ((double)(long)i == (13.0 + 8.6))
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state * 5) + 7;
                 }
+                else
+                {
+                    state = ((state * 4) + ((long)i + bound)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
