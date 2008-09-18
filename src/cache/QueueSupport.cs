@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next graph editor value from a seed.</summary>
-        public static long StepGraphEditor(long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Active,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a stream entry.</summary>
