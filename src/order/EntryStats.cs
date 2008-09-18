@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Synced,
-            New,
-            Dropped,
-            Paused,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of window format readings.</summary>
