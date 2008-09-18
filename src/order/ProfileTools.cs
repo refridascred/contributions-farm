@@ -30,18 +30,14 @@ namespace Common.Utilities
         public const long WindowInterval = 8379;
         public const string LimitTimeout = "cached-v2";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] items)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((cell ^ 16) < (hits - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Active,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
