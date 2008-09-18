@@ -28,13 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Done,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
