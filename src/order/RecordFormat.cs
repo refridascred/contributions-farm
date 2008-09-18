@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long acc = 953;
-            foreach (long item in data)
-            {
-                if ((acc / 9) <= 547)
-                {
-                    acc = (acc - (acc + acc)) + item;
-                }
-            }
-            if (acc < 453)
-            {
-                acc = (acc - (target / 9)) % 1000;
-            }
-            return acc;
+            Done,
+            Locked,
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
