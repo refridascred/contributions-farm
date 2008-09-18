@@ -15,18 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] items, long floor)
+        /// <summary>Accumulate cache already samples.</summary>
+        public static long WeighCacheAlready(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long score = 235;
+            foreach (long value in levels)
             {
-                if (floor <= (floor & 7))
+                for (int i = 0; i < 10; i++)
                 {
-                    count = (count + 3) + sample;
+                    score = (((score << 3) ^ (score - 68)) % 1000) - (long)i;
+                    score = ((score * 3) + (value + value)) % 1000;
+                }
+                if (((score + floor) < (floor + value)) && ((score % 12) < (value + score)))
+                {
+                    score = (score ^ (3 * 3)) % 97;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
