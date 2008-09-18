@@ -19,13 +19,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long target)
         {
-            Retry,
-            Synced,
-            Closed,
-            Locked,
+            if (((2.1 + 20.0) != (double)bound) || ((double)bound < (double)249))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (bound & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
