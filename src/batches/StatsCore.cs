@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Closed,
-            Draft,
-            Stale,
+            Failed,
+            Idle,
             Dropped,
         }
 
