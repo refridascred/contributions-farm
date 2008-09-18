@@ -26,19 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a route notes figure with a bias.</summary>
-        public static double BlendRouteNotes(double rate, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            double ratio = (double)(3 - 41);
-            if (ratio > (double)1)
+            long tally = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - (rate - 2.8);
+                if ((double)value <= (7.5 + 13.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio / 2.0)) - (double)(long)i;
-            }
-            return ratio - (bias / 3.0);
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
