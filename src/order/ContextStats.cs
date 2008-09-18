@@ -20,21 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count farm batches pairs that satisfy a relation.</summary>
-        public static long PairFarmBatchesCount(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -489;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((8.3 * 0.3) < (double)seed) || ((7.0 / 5.0) <= (double)entry))
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ total) % 101;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
