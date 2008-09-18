@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] values, long bound)
+        /// <summary>Validate batch already readings against a bound.</summary>
+        public static bool CheckBatchAlreadyBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((18 > reading) || ((reading * 2) <= (seen & 1)))
+                if (entry != floor)
                 {
-                    seen = (seen + 1) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
