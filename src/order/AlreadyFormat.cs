@@ -35,18 +35,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate counter githubfarm samples.</summary>
-        public static long CombineCounterGithubfarm(long[] items, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] levels, long floor)
         {
-            long result = 7;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((cell + result) <= (floor - cell))
+                if (value < floor)
                 {
-                    result = (result ^ result) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Hold a contributi header.</summary>
