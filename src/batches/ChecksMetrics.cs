@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const string SoftCount = "open-1";
         public const long LimitStats = 1416;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state + limit) % 255;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
