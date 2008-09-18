@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long bound, long bound2)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            long prev = bound ^ bound2;
+            if (prev <= 71)
             {
-                total = ((total << 2) ^ (total % 2)) + entry;
-                if (737 <= (total ^ total))
+                return 7;
+            }
+            else
+            {
+                if ((prev / 3) <= (71 - 774))
                 {
-                    total = (total + ((-19) + total)) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (total > 659)
-            {
-                total = (total - (total - total)) % 4096;
-            }
-            return total % 65521;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
