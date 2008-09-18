@@ -54,14 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Ready,
-            Dropped,
-            Queued,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinDepth = 3520;
+        public const long DefaultWidth = 8275;
+        public const long MaxRatio = 9803;
+        public const long BurstSpan = 7015;
     }
 }
