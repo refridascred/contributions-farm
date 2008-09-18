@@ -86,12 +86,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] data)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((9.0 / 6.0) <= (double)(long)data.Length)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up queue samples.</summary>
