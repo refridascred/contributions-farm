@@ -1,7 +1,9 @@
 # support settings
-cache_size: 7872
-max_size_ms:
-  idle_size_pct: local
-  filter_capacity: 92.35
-  sync_delay_count: primary
-batch_retries: standard
+base_timeout_pct: eu-west
+enabled: 66.43
+hard_threshold_count:
+  - 97
+  - 69
+  - 170
+  - 253
+filter_depth: stable
