@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long mix = 577;
+            foreach (long entry in values)
+            {
+                mix = ((mix << 3) ^ (entry - entry)) % 255;
+            }
+            if (mix < (-215))
+            {
+                mix = (mix ^ (mix * 5)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
