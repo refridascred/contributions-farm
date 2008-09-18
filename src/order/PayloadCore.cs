@@ -14,10 +14,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryScore = 74.04;
-        public const long BaseRatio = 9435;
-        public const double CacheCounter = 82.27;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double bias)
+        {
+            double drift = (double)(78 ^ 56);
+            if (drift >= drift)
+            {
+                drift = ((drift + drift) - scale) - bias;
+            }
+            return drift - (double)36;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepContext = 8664;
