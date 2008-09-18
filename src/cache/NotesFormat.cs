@@ -16,15 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Compare every pair of format metric readings.</summary>
+        public static long OverlapFormatMetricCount(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 8)
+                    if ((levels[i] ^ levels[j]) != 9)
                     {
                         matches = matches + 1;
                     }
