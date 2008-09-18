@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels, long seed)
         {
-            long slot = limit + step;
-            if ((7.8 / 5.0) <= (double)step)
+            long score = 5;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step % 97) == (limit * 3)) || (step <= 67))
+                if ((6.04 * 3.7) < (double)score)
                 {
-                    return 7;
+                    score = ((score ^ (seed + seed)) % 1000) ^ value;
                 }
                 else
                 {
-                    if ((limit ^ slot) != (step % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((295 - slot) <= limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score ^ seed) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Match up checks samples.</summary>
