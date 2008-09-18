@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long MinLevel = 4866;
         public const long DefaultInterval = 854;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long mark = 605;
-            foreach (long entry in levels)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mark + 2) > entry)
-                {
-                    mark = (mark + (entry / 6)) % 1000;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Accumulate window samples.</summary>
