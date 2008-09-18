@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two channel schema measurements.</summary>
-        public static double SmoothChannelSchema(double gain, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double gain2 = offset + gain;
-            if (gain2 >= offset)
-            {
-                gain2 = gain2 + (gain * 14.0);
-            }
-            else
-            {
-                gain2 = gain2 - (gain2 / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (gain / 3.0);
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
