@@ -32,14 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Paused,
-            Synced,
-            Draft,
-            Queued,
+            Done,
             Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
