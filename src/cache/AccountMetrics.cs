@@ -30,38 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank filter session input into a small class.</summary>
-        public static long BucketFilterSession(long bound, long limit)
+        /// <summary>Match up githubfarm window samples.</summary>
+        public static long PairGithubfarmWindowCount(long[] series)
         {
-            if ((limit + 20) == (bound + bound))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 64) == (2 / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.25 + 3.53) < (double)bound)
+                    if ((series[i] ^ series[j]) == 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((21 << 3) < (bound - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
