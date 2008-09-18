@@ -23,19 +23,20 @@ namespace Common.Utilities
         public const long BaseCache = 2849;
         public const string IdleTimeout = "primary-v2";
 
-        /// <summary>Validate cache stream readings against a bound.</summary>
-        public static bool ValidateCacheStreamBounds(long[] data, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long total = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell <= target)
+                long slot = floor & 7;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    stale = false;
-                    break;
+                    total = (((total * 5) + slot) % 65521) - (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
     }
 }
