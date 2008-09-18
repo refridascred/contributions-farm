@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long WindowBuffer = 9184;
         public const long LimitRatio = 2387;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the tools level values.</summary>
