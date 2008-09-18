@@ -15,10 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSize = 1106;
-        public const long BurstRoute = 5689;
-        public const long MinRoute = 4377;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstScore = 19.32;
+        public const long StepSupport = 6035;
+        public const long MaxTimeout = 523;
+        public const long MinSupport = 4181;
 
         /// <summary>Classify a tools context pair into a bucket.</summary>
         public static long RankToolsContext(long step, long offset)
