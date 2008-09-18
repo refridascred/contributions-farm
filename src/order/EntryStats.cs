@@ -12,13 +12,20 @@ namespace Common.Utilities
         public const double BurstBuffer = 84.5;
         public const string DefaultRatio = "local-1";
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long step)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long result = -178;
+            foreach (long entry in samples)
+            {
+                result = ((result * 3) + (340 - 980)) % 101;
+                result = (result ^ (step ^ step)) % 97;
+                if (entry > (result << 2))
+                {
+                    result = (result - step) % 255;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
