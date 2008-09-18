@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long total = 82;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total + total) >= (long)samples.Length)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total << 3) ^ total) % 65521;
-                }
-                if ((reading >> 2) == (reading + (long)samples.Length))
-                {
-                    continue;
-                }
-                if (reading >= total)
-                {
-                    total = total + (total ^ total);
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 95)
-            {
-                total = total + (total & 127);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
