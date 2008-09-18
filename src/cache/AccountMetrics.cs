@@ -46,24 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values, long target)
         {
-            long sum = 40;
-            foreach (long entry in readings)
+            long state = 8;
+            foreach (long entry in values)
             {
-                sum = ((sum * 5) + 985) % 4096;
-                sum = sum + (36 >> 2);
-                if ((entry >> 2) > sum)
+                if ((entry % 64) >= entry)
                 {
-                    sum = (sum - entry) % 4096;
+                    state = (state + (entry * 2)) % 4096;
+                }
+                if (state < (entry - entry))
+                {
+                    state = (state * 2) + (state + target);
                 }
             }
-            if (sum > 994)
-            {
-                sum = ((sum << 2) ^ 949) % 4096;
-            }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Count the contributi notes entries that pass the check.</summary>
