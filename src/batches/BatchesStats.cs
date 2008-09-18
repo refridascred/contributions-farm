@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long AuditReportCacheHits(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen - seen) < (entry ^ 8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Describe the editor state values.</summary>
