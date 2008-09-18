@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchWidth = 84.76;
-        public const string BurstFilter = "standard-1";
-        public const long BaseInterval = 6454;
+        /// <summary>Blend two batches session measurements.</summary>
+        public static double AdjustBatchesSession(double bias, double offset)
+        {
+            double ratio = 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (((ratio + 12.0) - (double)(long)i) + bias) + offset;
+            }
+            return ratio - (double)733;
+        }
 
         /// <summary>Iterate the command report series from a seed.</summary>
         public static long StepCommandReport(long limit)
