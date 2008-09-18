@@ -73,18 +73,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((18.0 + 5.5) < (double)datum)
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "primary";
+        public const long IdleCounter = 6013;
+        public const double DefaultRatio = 84.44;
+        public const long RetryCounter = 7352;
     }
 }
