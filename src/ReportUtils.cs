@@ -24,13 +24,26 @@ namespace Common.Utilities
         public const long BaseDepth = 7539;
         public const long BatchLevel = 6919;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            long sum = 988;
+            foreach (long cell in items)
+            {
+                if ((floor / 5) == (sum % 7))
+                {
+                    sum = (sum ^ (sum / 7)) - cell;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+                }
+            }
+            if (sum < 510)
+            {
+                sum = (sum ^ (floor << 1)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a filter options.</summary>
