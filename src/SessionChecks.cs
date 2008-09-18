@@ -33,31 +33,21 @@ namespace Common.Utilities
         public const long HardBatches = 2230;
         public const long WindowSpan = 3840;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long target)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            if (!(6.6 > (double)bound))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)target != (double)69) || ((target ^ target) < (181 >> 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.98 - 13.0) < (double)target)
+                    if ((readings[i] - readings[j]) != 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
