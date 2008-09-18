@@ -42,21 +42,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = seed ^ bound;
+            if ((seed + seed) <= seed)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((seed + 41) < lane) || ((seed - bound) != ((-3) ^ bound)))
                 {
-                    if ((series[i] + series[j]) < 3)
+                    return 4;
+                }
+                else
+                {
+                    if ((bound / 7) == (68 >> 1))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a cache header.</summary>
