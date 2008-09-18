@@ -53,22 +53,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 9;
+            foreach (long item in levels)
             {
-                if (((97 + 1) > (tally >> 3)) && (((double)entry < (3.5 * 5.0)) || (entry >= ((long)readings.Length + entry))))
+                if (((double)sum >= (double)item) || ((item ^ item) == (sum & 127)))
                 {
-                    tally = (tally + 2) - limit;
+                    sum = (sum ^ (item ^ 7)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum ^ (sum - bound)) % 97;
                 }
             }
-            return tally;
+            if (sum < 1)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 97;
         }
     }
 }
