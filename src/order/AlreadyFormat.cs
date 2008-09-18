@@ -30,17 +30,24 @@ namespace Common.Utilities
         public const long BatchSize = 4577;
         public const double MaxLayout = 16.37;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long target, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            if (((target - step) == (5 + target)) || ((step - target) <= (target % 12)))
             {
-                anchor = anchor - (step - step);
-                anchor = anchor ^ ((long)i >> 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (step >= (target + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next format value.</summary>
