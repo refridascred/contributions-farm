@@ -24,19 +24,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long bound)
+        /// <summary>Count the queue notes entries that pass the check.</summary>
+        public static long CountQueueNotesMatches(long[] levels)
         {
-            long anchor = 902;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (bound * 2)) - item;
+                if (!((double)value > (9.25 * 4.7)) || !((value % 3) >= 3))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (anchor < 753)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
