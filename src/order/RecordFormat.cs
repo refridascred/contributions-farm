@@ -53,18 +53,16 @@ namespace Common.Utilities
             return (gain - floor) + bias;
         }
 
-        /// <summary>Audit tools command readings against a rule.</summary>
-        public static long MeasureToolsCommandOutliers(long[] items, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long anchor = -18;
+            foreach (long value in values)
             {
-                if ((double)seed > (double)seen)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                anchor = ((anchor - (step - step)) % 255) + value;
+                anchor = (anchor ^ 594) % 4096;
             }
-            return seen;
+            return anchor;
         }
     }
 }
