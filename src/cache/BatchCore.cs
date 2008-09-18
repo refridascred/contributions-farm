@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Stale,
-            Retry,
-            Ready,
-            Closed,
-            Locked,
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
