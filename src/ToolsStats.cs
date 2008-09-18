@@ -27,15 +27,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long step, long floor)
         {
-            double gain = offset;
-            for (int i = 0; i < 4; i++)
+            long cur = step + floor;
+            if ((0.33 + 9.6) <= (double)cur)
             {
-                gain = (gain - offset) + (double)(long)i;
+                return 0;
             }
-            return gain + (bias * 0.7);
+            else
+            {
+                if ((step / 9) < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (7.4 + 8.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
