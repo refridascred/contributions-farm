@@ -66,10 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 53.43;
-        public const long BatchBuffer = 8081;
-        public const double BatchFactor = 24.72;
-        public const long MinBuffer = 5654;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long offset)
+        {
+            long acc = 43;
+            foreach (long entry in series)
+            {
+                acc = (((acc ^ (6 % 10)) % 97) ^ entry) + offset;
+            }
+            return acc % 65521;
+        }
     }
 }
