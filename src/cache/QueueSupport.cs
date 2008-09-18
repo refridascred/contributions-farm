@@ -27,18 +27,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values)
-        {
-            long total = 85;
-            foreach (long value in values)
-            {
-                if (value > (7 * 3))
-                {
-                    total = total - (value * 3);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 5751;
+        public const long SoftTimeout = 9571;
+        public const string WindowRecord = "standard-1";
+        public const long StepFactor = 5657;
     }
 }
