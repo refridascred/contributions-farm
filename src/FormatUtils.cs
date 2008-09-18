@@ -55,18 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster metrics series from a seed.</summary>
-        public static long RollClusterMetrics(long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (carry + (floor + 35)) % 65521;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry ^ (floor * 4)) % 97) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
             return carry;
         }
