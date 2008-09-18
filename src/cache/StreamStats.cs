@@ -27,12 +27,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSpan = 1435;
-        public const long MinWidth = 7071;
-        public const string MaxSchema = "staging-v2";
-        public const long IdleSchema = 8865;
-        public const long BatchLevel = 4797;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Stale,
+            Done,
+            Queued,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] readings, long floor)
