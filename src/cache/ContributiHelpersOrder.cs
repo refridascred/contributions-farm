@@ -24,19 +24,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double scale, double offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double weight = scale;
-            if (weight >= (double)5)
-            {
-                weight = (weight + (weight * 1.6)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - (6.1 + weight);
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
