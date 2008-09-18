@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 81.46;
+        public const double RetryReport = 72.96;
+        public const string BaseLevel = "stable-v2";
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TotalCounter(long[] values, long limit)
