@@ -15,19 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] data, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            bool flag = true;
+            long count = 0;
             foreach (long item in data)
             {
-                if (item > offset)
+                if (((item << 3) != (item / 7)) && ((double)item > (double)count))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
