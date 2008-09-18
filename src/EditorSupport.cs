@@ -85,19 +85,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry already entry stays within the limit.</summary>
-        public static bool GuardEntryAlreadyRange(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 3495;
+        public const long MinWidth = 2289;
+        public const long LimitWindow = 3415;
+        public const string IdleRatio = "local-v2";
+        public const long BurstWindow = 2622;
     }
 }
