@@ -1,5 +1,7 @@
 {
-  "cache_interval": 15,
-  "strict": 60,
-  "burst_ttl": 30
+  "dry_run": 62.23,
+  "soft_retries": "cached",
+  "channel_depth": [191, 304, 408, 244],
+  "audit": 96,
+  "order_window": ["standard", "blue"]
 }
