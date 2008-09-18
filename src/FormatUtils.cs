@@ -58,18 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi route entries that pass the check.</summary>
-        public static long TallyContributiRouteHits(long[] readings, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((offset >> 2) >= (cell - 621))
+                if ((double)value < (double)seen)
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
