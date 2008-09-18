@@ -1,7 +1,7 @@
 # support settings
-dry_run: false
-soft_delay_count: 30
-retry_window_ms: true
-soft_interval_ms: 43
-route_retries: false
-entry_capacity: 31.6
+stream_ratio: 73.69
+min_size_s: true
+min_limit: 1.1
+max_retries_pct: false
+entry_ttl: 250
+hard_window: 65.48
