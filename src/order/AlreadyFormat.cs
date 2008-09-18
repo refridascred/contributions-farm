@@ -53,26 +53,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] data, long limit)
         {
-            long carry = 7;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((265 * 3) != (160 - cell))
+                if (datum > (limit & 1))
                 {
-                    carry = ((carry * 2) + carry) % 97;
-                }
-                else
-                {
-                    carry = (carry - (4 + 6)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (carry < 929)
-            {
-                carry = ((carry << 2) ^ (8 - 64)) % 101;
-            }
-            return carry;
+            return tally;
         }
     }
 }
