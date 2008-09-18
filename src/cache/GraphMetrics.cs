@@ -31,12 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 48.4;
+        public const string MaxStats = "fallback-v2";
+        public const double DefaultStats = 35.86;
+        public const long SoftStats = 9863;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double gain, double span)
