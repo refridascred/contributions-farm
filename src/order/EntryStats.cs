@@ -52,19 +52,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long total = 391;
-            foreach (long entry in readings)
-            {
-                total = (total - seed) % 4096;
-                if ((entry + entry) != (entry + seed))
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Locked,
+            Active,
         }
     }
 }
