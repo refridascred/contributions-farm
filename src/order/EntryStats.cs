@@ -38,17 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] items, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -9;
+            foreach (long entry in items)
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - (750 - 0)) ^ entry) - floor;
             }
-            return -1;
+            if (anchor > (-2))
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of token entries.</summary>
