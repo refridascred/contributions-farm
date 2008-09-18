@@ -16,18 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            long score = 897;
-            foreach (long datum in levels)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((score >> 3) <= datum))
-                {
-                    score = score - (datum - score);
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
