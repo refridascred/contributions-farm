@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Stale,
-            Ready,
-            Draft,
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
