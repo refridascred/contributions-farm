@@ -44,22 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data, long step)
+        /// <summary>Digest a series of order report entries.</summary>
+        public static long FoldOrderReport(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = 2;
+            foreach (long cell in items)
             {
-                if (!(((step / 7) > step) && ((step - seen) != (67 % 24))))
+                if ((cell < mix) && (8.0 < (double)cell))
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix * 2) + (310 & 15);
                 }
             }
-            return seen;
+            if (mix < 61)
+            {
+                mix = mix + mix;
+            }
+            return mix % 97;
         }
     }
 }
