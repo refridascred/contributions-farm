@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate command route readings against a bound.</summary>
-        public static bool VerifyCommandRouteLimits(long[] levels, long offset)
+        /// <summary>Locate a context counter reading by value.</summary>
+        public static long SeekContextCounterIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > offset)
+                if (samples[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Match up metric session samples.</summary>
