@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every filter already entry stays within the limit.</summary>
+        public static bool ValidateFilterAlreadyRange(long[] series, long bound)
         {
-            Paused,
-            Pending,
-            Done,
-            New,
-            Ready,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
