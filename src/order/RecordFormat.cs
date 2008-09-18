@@ -33,17 +33,12 @@ namespace Common.Utilities
         public const string CacheLevel = "cached-edge";
         public const string WindowWidth = "standard";
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Project the next tools cache value.</summary>
