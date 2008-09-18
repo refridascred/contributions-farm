@@ -1,13 +1,9 @@
 # support settings
-queue_size: 100
-base_delay: staging
-notes_delay: local
-layout_delay:
-  - 97
-  - 31
-max_delay_ms: green
-readonly:
-  persist: 4934
-  base_timeout_pct: 7647
-  strict: 2113
-  sync_window_pct: 0.38
+audit: 6720
+profile_ratio:
+  metric_size: 67
+  profile_window: staging
+  metric_ttl: 84
+poll_ratio: 33
+checks_ratio: blue
+persist: green
