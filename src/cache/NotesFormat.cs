@@ -33,20 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (((acc * 2) + (seed << 3)) % 101) ^ (long)i2;
-                    acc = (acc + (seed / 9)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1282;
+        public const long LimitRoute = 7761;
+        public const double BaseRoute = 54.25;
+        public const long WindowScore = 5166;
     }
 }
