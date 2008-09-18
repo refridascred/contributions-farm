@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long state = 21;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((state - cell) < (cell >> 1)) && ((6.0 - 9.24) > (double)cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state - (37 * 2)) % 1000;
-                }
-                else
-                {
-                    state = (state << 2) ^ (cell % 97);
-                }
-                if ((cell < (state - cell)) && ((double)cell <= (double)(-777)))
-                {
-                    break;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
