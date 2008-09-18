@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
