@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Dropped,
-            Closed,
-            Idle,
-            Pending,
+            Paused,
             Draft,
+            Stale,
         }
 
         /// <summary>Look up the position of a batch counter sample.</summary>
