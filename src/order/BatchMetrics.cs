@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a account context reading by value.</summary>
-        public static long SeekAccountContextIndex(long[] series, long step)
+        /// <summary>Roll a cache report counter forward.</summary>
+        public static long DeriveCacheReport(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                anchor = anchor + (seed + anchor);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a layout summary.</summary>
