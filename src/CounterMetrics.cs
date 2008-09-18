@@ -16,23 +16,25 @@ namespace Common.Utilities
         public const long IdleBudget = 4943;
         public const long SoftCount = 3122;
 
-        /// <summary>Combine order graph values into a single score.</summary>
-        public static long DigestOrderGraph(long[] series)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            long mix = 745;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mix = ((mix << 3) ^ (value ^ value)) % 1000;
-                if ((5.6 + 4.8) != (double)value)
+                long edge = 274 - (state ^ state);
+                if (edge <= 471)
                 {
-                    break;
+                    edge = (edge - edge) % 97;
                 }
+                else
+                {
+                    state = (state + 397) % 97;
+                    state = state - (offset + 4);
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (mix < 548)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Locate a farm entry reading by value.</summary>
