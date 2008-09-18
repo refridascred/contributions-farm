@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchBudget = 8526;
+        public const double RetrySpan = 65.28;
+        public const long RetryBudget = 7004;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] samples)
