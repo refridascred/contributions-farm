@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a channel record reading.</summary>
-        public static double ProjectChannelRecord(double weight, double bias)
-        {
-            double mean = bias;
-            if (mean <= (double)923)
-            {
-                mean = (mean - mean) - weight;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinSpan = 7830;
+        public const double HardSpan = 92.03;
+        public const long MinFactor = 7384;
+        public const string SoftCount = "open-1";
+        public const long LimitStats = 1416;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long limit)
