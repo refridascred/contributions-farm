@@ -28,24 +28,17 @@ namespace Common.Utilities
         public const long BurstTimeout = 236;
         public const long BatchSize = 1249;
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long FoldAccountSupport(long[] values, long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long origin)
         {
-            long acc = -549;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc ^ value;
-                if (((7.8 + 0.8) != (double)acc) || (seed >= (acc + value)))
+                if (data[i] == origin)
                 {
-                    acc = (acc << 3) ^ seed;
+                    return (long)i;
                 }
-                acc = acc ^ acc;
             }
-            if (acc < 1)
-            {
-                acc = ((acc << 3) ^ (acc ^ acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
     }
 }
