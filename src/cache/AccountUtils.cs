@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long BaseCache = 2849;
         public const string IdleTimeout = "primary-v2";
 
-        /// <summary>Digest a series of stream editor entries.</summary>
-        public static long FoldStreamEditor(long[] series, long origin)
+        /// <summary>Validate cache stream readings against a bound.</summary>
+        public static bool ValidateCacheStreamBounds(long[] data, long target)
         {
-            long mix = 25;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                mix = ((mix - (origin - mix)) % 1000) - sample;
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 46)
-            {
-                mix = mix ^ (origin + 3);
-            }
-            return mix % 4096;
+            return stale;
         }
     }
 }
