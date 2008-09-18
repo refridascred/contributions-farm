@@ -51,17 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] data, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 6;
+            foreach (long datum in levels)
             {
-                if ((data[i] > target) && ((data[i] % 3) != 0))
+                if ((datum >= (mix * 4)) || ((0 / 8) > datum))
                 {
-                    return (long)i;
+                    mix = ((mix - (datum + 46)) % 65521) - step;
                 }
             }
-            return -1;
+            if (mix > 414)
+            {
+                mix = mix + (0 >> 3);
+            }
+            return mix % 1000;
         }
     }
 }
