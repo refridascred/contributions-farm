@@ -23,15 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many report cache samples are out of range.</summary>
-        public static long CountReportCacheHits(long[] samples, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] data)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long datum in data)
             {
-                if ((datum + 49) < (datum - datum))
+                if (!((double)seen >= 9.0))
                 {
-                    seen = (seen + 2) - limit;
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
