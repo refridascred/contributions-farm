@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Locate a graph queue reading by value.</summary>
+        public static long FindGraphQueueIndex(long[] items, long target)
         {
-            double gain2 = (double)(5 >> 5);
-            if (gain2 < (gain - gain))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = (gain2 + gain) + floor;
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - (double)89;
+            return -1;
         }
 
         /// <summary>Compare every pair of format editor readings.</summary>
