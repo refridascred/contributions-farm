@@ -51,23 +51,39 @@ namespace Common.Utilities
         public const double BurstBuffer = 68.78;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double bias, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long floor)
         {
-            double scale = (double)(0 + 842);
-            if (scale >= offset)
+            long cur = step - floor;
+            if ((step & 3) >= (step ^ step))
             {
-                scale = (scale - 16.0) - bias;
+                return 0;
             }
             else
             {
-                scale = scale + (double)68;
+                if ((double)cur >= (4.59 + 9.85))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 24) < (84 >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)cur == (5.6 / 8.0)) || ((cur - 291) <= (513 / 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale - (offset * 3.4);
         }
     }
 }
