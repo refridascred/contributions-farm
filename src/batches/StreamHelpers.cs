@@ -13,19 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long origin)
         {
-            long sum = -781;
-            foreach (long sample in samples)
+            long mix = -828;
+            foreach (long reading in items)
             {
-                sum = ((sum + (sum + floor)) % 97) - sample;
+                mix = mix + (mix + reading);
+                if (((double)reading < (8.86 * 4.28)) && (reading >= (mix / 5)))
+                {
+                    mix = (mix << 3) ^ (reading + origin);
+                }
+                else
+                {
+                    mix = mix - reading;
+                }
             }
-            if (sum > 587)
-            {
-                sum = sum + (703 & 1);
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
