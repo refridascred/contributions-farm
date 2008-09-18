@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepCount = "local-edge";
-        public const double IdleLevel = 15.85;
-        public const double BurstMetric = 25.97;
-        public const long LimitMetric = 5885;
+        /// <summary>Validate stats editor readings against a bound.</summary>
+        public static bool ValidateStatsEditorBounds(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] items)
