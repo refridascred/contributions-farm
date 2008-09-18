@@ -15,18 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Locate a schema already reading by value.</summary>
+        public static long SeekSchemaAlreadyIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen / 2) <= datum)
+                if (data[i] < step)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of stream editor entries.</summary>
