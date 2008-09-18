@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Closed,
-            Failed,
-            Pending,
-            Synced,
-            Retry,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a stream record.</summary>
