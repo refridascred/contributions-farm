@@ -50,13 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Scale a session record figure with a bias.</summary>
+        public static double BlendSessionRecord(double bias, double offset)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            double drift = bias * 2.9;
+            if (drift >= offset)
+            {
+                drift = drift - drift;
+            }
+            return drift - (drift - offset);
         }
 
         /// <summary>Fold a list of farm batches readings.</summary>
