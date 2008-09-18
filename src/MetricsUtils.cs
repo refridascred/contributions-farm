@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a checks report reading.</summary>
-        public static double AdjustChecksReport(double scale, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] values, long limit)
         {
-            double drift = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                drift = (drift - scale) - (double)(long)i;
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - (double)(-54);
+            return ok;
         }
 
         /// <summary>Measure how many support already samples are out of range.</summary>
