@@ -44,9 +44,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitTimeout = 4972;
-        public const long MinAlready = 9555;
-        public const long BurstAlready = 16;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long bound, long target)
+        {
+            if (!(6.6 > (double)bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target != (double)69) || ((target ^ target) < (181 >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.98 - 13.0) < (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
