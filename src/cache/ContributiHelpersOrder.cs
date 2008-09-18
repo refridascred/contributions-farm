@@ -20,24 +20,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            if (((2.1 + 20.0) != (double)bound) || ((double)bound < (double)249))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (bound & 15))
+                if (value > (value / 9))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
