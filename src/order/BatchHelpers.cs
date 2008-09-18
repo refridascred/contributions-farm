@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const double SoftChannel = 45.55;
         public const long RetrySize = 8899;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long bound)
         {
-            Locked,
-            Retry,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
