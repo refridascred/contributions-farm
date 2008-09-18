@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const long StepInterval = 9297;
         public const string RetryReport = "latest-1";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long step, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if ((double)floor > 9.5)
             {
-                if ((seen / 4) != (1 + seen))
+                return 8;
+            }
+            else
+            {
+                if (((step - 993) != (floor * 4)) && ((double)floor < (0.2 - 3.9)))
                 {
-                    seen = (seen + 1) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if ((78 << 1) == (step & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((924 + floor) <= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
