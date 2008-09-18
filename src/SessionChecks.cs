@@ -41,22 +41,32 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit metrics context readings against a rule.</summary>
-        public static long MeasureMetricsContextHits(long[] samples, long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long span = limit + origin;
+            if ((origin + limit) <= (origin / 9))
             {
-                if ((cell << 1) != ((-173) & 15))
+                return 5;
+            }
+            else
+            {
+                if (((origin / 8) > (span + origin)) && ((-55) < origin))
                 {
-                    hits = (hits + 3) - step;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((origin >> 3) >= (span % 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
