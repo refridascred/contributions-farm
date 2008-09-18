@@ -1,6 +1,6 @@
 # support settings
-token_delay: 62.88
-context_limit: 8.27
-sync_interval_ms: 91.56
-enabled: 99
-max_limit_count: blue
+strict: stable
+audit: 406
+batch_ratio: 92
+idle_size: true
+batch_depth_ms: 250
