@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate batch already readings against a bound.</summary>
-        public static bool CheckBatchAlreadyBounds(long[] data, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] data, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (entry != floor)
+                if (cell <= step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
