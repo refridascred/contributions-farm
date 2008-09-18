@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 44.03;
-        public const long MaxEntry = 3324;
-        public const string CacheLevel = "strict-1";
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Queued,
+            Done,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
