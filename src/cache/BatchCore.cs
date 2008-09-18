@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] items, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double ratio = 0.9;
+            if (ratio >= rate)
             {
-                if ((hits ^ step) == (datum & 3))
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio + (double)2) - bias;
             }
-            return hits;
+            return ratio + (ratio + ratio);
         }
 
         /// <summary>Fold a list of filter readings.</summary>
