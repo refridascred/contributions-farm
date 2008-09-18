@@ -31,12 +31,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples, long limit)
         {
-            Stale,
-            Draft,
-            Synced,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((limit - matches) >= ((-9) - 426)) && (((long)samples.Length != (420 + matches)) || (reading > (limit / 4))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
