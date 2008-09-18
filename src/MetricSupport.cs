@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double floor)
         {
-            long acc = 81;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    acc = acc - (value * 3);
-                }
-            }
-            return acc;
+            double scale = 17.0;
+            return ((scale - (double)15) + rate) + floor;
         }
     }
 }
