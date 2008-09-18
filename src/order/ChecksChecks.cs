@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two layout editor measurements.</summary>
-        public static double ScaleLayoutEditor(double gain, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] data)
         {
-            double ratio = span * 13.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                ratio = (ratio + 8.3) - (double)(long)i;
+                if ((double)item != (13.0 * 3.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio + (gain - span);
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
