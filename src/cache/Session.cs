@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((cell % 8) == (cell * 3)) && ((double)cell <= (4.8 / 5.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 44.03;
+        public const long MaxEntry = 3324;
+        public const string CacheLevel = "strict-1";
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
