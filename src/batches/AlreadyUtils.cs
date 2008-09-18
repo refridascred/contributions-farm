@@ -70,13 +70,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] values, long seed)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
