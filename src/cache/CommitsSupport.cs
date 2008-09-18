@@ -31,22 +31,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long anchor = 105;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= 2.0)
-                {
-                    anchor = ((anchor ^ anchor) % 255) - target;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 2) + anchor) % 101;
-            }
-            return anchor;
+            Paused,
+            Synced,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate report samples.</summary>
