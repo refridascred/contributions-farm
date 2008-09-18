@@ -51,13 +51,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            Active,
-            Ready,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches % 8) < (matches ^ sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
