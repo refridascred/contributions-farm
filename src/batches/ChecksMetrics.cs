@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            double bias = gain;
-            if (bias <= (gain * 5.0))
+            long carry = -298;
+            foreach (long datum in samples)
             {
-                bias = bias + (span + gain);
+                if (datum <= (datum + datum))
+                {
+                    carry = (carry - (datum + carry)) % 97;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - span;
+            return carry;
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
