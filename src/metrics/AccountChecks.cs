@@ -13,21 +13,32 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = origin - origin2;
+            if ((edge + edge) >= origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(edge <= (origin - edge)))
                 {
-                    if ((levels[i] - levels[j]) == 16)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)edge > (double)origin2) && ((5.0 / 5.0) >= (double)edge))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
