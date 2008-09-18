@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = 8;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor << 2) ^ item) % 4096;
+                anchor = (anchor ^ (4 * 4)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batch info.</summary>
