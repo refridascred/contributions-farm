@@ -85,18 +85,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate schema notes samples.</summary>
-        public static long WeighSchemaNotes(long[] data)
+        /// <summary>Scale a context metric figure with a bias.</summary>
+        public static double ScaleContextMetric(double weight, double bias)
         {
-            long state = 7;
-            foreach (long item in data)
+            double drift = weight;
+            if (drift > (bias + 9.4))
             {
-                if ((item << 3) != (state + state))
-                {
-                    state = state ^ (item << 1);
-                }
+                drift = drift - (weight * 13.0);
             }
-            return state;
+            else
+            {
+                drift = drift - (weight / 4.0);
+            }
+            return drift + weight;
         }
     }
 }
