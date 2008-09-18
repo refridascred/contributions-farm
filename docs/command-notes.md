@@ -1,12 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often already data is refreshed.
-Keep already and session names short and lowercase.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Use metrics settings to tune how often account data is refreshed.
+Use payload settings to tune how often batch data is refreshed.
+Each queue is validated before it reaches the editor queue.
+
+The payload module keeps buffer values in sync with the token cache.
+A queue that stays idle for too long is moved to the context list.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every context change
-- Prefer account defaults
-- Keep account values small
-- Document new layout fields
+- Prefer session defaults
+- Validate editor input early
+- Log every batches change
