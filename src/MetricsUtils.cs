@@ -50,21 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 287;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor * 5) + datum) % 4096) - bound;
             }
-            return seen;
+            if (anchor < 21)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
