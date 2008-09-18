@@ -61,20 +61,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a buffer record reading.</summary>
-        public static double ProjectBufferRecord(double rate, double bias)
-        {
-            double weight = (double)50 - (double)2;
-            if (weight < (weight + rate))
-            {
-                weight = weight - (bias * 9.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetrySpan = "primary-v2";
+        public const long StepToken = 8586;
+        public const long MaxSize = 5025;
+        public const long WindowBudget = 6611;
+        public const double HardToken = 84.23;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
