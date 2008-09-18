@@ -36,14 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Locked,
-            Synced,
-            Active,
-            Draft,
-            Stale,
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
