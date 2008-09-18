@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] items, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (7.5 >= (double)(long)items.Length)
+                if (cell <= origin)
                 {
-                    tally = ((tally + 2) + cell) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first editor window entry that matches the target.</summary>
