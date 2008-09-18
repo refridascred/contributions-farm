@@ -1,17 +1,18 @@
 # githubfarm settings
-enabled: green
-readonly: 8906
-burst_size_s: eu-west
-persist:
-  - 308
-  - 83
-  - 308
-window_ttl:
-  token_depth: 2637
-  compress:
-    default_ttl_pct: 9857
-    window_threshold: 27
-    already_timeout: true
-  hard_retries_ms: strict
-  poll_delay_ms: 9212
-hard_delay_s: 1024
+base_interval_ms: false
+readonly: true
+poll_ratio_ms: local
+farm_threshold:
+  poll_delay_count: 44.78
+  sync_delay: edge
+  min_threshold_count: 28
+  base_timeout: strict
+  report_limit: green
+  idle_delay_pct:
+    soft_timeout_s: true
+    audit: blue
+    batch_timeout_ms: green
+    flush_timeout: false
+    soft_timeout_count: 1024
+    default_limit: cached
+enabled: stable
