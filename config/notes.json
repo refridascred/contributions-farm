@@ -1,11 +1,17 @@
 {
-  "max_interval": 8.19,
-  "compress": {
-    "report_ratio": true,
-    "strict": 7917,
-    "retry_depth": "strict",
-    "warm_delay_s": 1024,
-    "cache_depth_s": [66, 180, 250]
+  "dry_run": {
+    "enabled": 7901,
+    "hard_depth_s": false,
+    "idle_capacity_ms": {
+      "sync_ttl_s": [484, 121, 89, 263],
+      "burst_depth_ms": 38.32,
+      "flush_delay_count": 42.09
+    },
+    "soft_window_count": "local",
+    "persist": [184, 285],
+    "retry_ttl_count": 5514
   },
-  "persist": 34.18
+  "buffer_timeout": 97,
+  "max_limit_s": 87,
+  "soft_timeout": 35.41
 }
