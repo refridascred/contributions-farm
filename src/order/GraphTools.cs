@@ -53,11 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheCount = 8309;
-        public const string CacheTimeout = "stable";
-        public const double RetryFarm = 8.82;
-        public const long IdleFarm = 8315;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Paused,
+            Stale,
+            Pending,
+            Done,
+            Idle,
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] items)
