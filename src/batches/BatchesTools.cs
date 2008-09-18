@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            long score = 18;
-            foreach (long sample in series)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample + sample) == ((long)series.Length << 2))
-                {
-                    score = (score - (score + sample)) % 1000;
-                }
+                anchor = (anchor + anchor) % 101;
+                anchor = (anchor * 4) + target;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Combine support values into a single score.</summary>
