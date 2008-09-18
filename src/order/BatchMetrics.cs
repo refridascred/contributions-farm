@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next cluster metric value.</summary>
-        public static double SmoothClusterMetric(double bias, double span)
-        {
-            double scale = span;
-            if (scale >= (double)96)
-            {
-                scale = (scale + (double)84) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 7.9) + (double)(long)i;
-            }
-            return scale + (scale - scale);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 8013;
+        public const long IdleQueue = 3170;
+        public const double CacheQueue = 88.42;
+        public const long CacheSpan = 7756;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
