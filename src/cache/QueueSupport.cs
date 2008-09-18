@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
