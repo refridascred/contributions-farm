@@ -59,15 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double span)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] items, long bound)
         {
-            double drift = (double)(4 ^ 3);
-            for (int i = 0; i < 3; i++)
+            long carry = 919;
+            foreach (long reading in items)
             {
-                drift = ((drift + span) + (double)(long)i) - bias;
+                carry = (carry + (carry << 3)) + reading;
+                carry = carry - (bound + bound);
             }
-            return drift - (span / 8.0);
+            return carry;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
