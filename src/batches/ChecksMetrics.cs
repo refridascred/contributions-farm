@@ -86,11 +86,31 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            if ((-585) < (floor ^ floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((36 / 2) > (offset + 17))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
