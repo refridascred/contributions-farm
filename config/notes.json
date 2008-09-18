@@ -1,7 +1,8 @@
 {
-  "hard_limit_count": true,
-  "persist": ["edge", "fallback", "latest"],
-  "sync_capacity_ms": true,
-  "dry_run": "primary",
-  "farm_threshold": 95
+  "counter_window": 5142,
+  "audit": 94,
+  "session_ttl": 7632,
+  "idle_threshold": 1329,
+  "compress": 68,
+  "payload_retries": 27.11
 }
