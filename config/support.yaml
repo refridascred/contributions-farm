@@ -1,7 +1,5 @@
 # support settings
-stream_ratio: 73.69
-min_size_s: true
-min_limit: 1.1
-max_retries_pct: false
-entry_ttl: 250
-hard_window: 65.48
+enabled: false
+hard_ttl: latest
+persist: 96.98
+hard_size: open
