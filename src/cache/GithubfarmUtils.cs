@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double rate, double span)
         {
-            double weight = 8.0 + 5.41;
-            if (weight <= (7.0 - 2.0))
+            double gain = (rate * 7.3) * 18.0;
+            if (gain <= span)
             {
-                weight = ((weight + 20.0) + gain) + floor;
+                gain = gain + span;
             }
-            else
-            {
-                weight = weight - (2.9 / 6.0);
-            }
-            return weight + 7.55;
+            return gain + (double)914;
         }
 
         /// <summary>Project the next support notes value.</summary>
