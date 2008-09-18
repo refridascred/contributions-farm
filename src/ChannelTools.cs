@@ -30,21 +30,31 @@ namespace Common.Utilities
             return weight - (double)2;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((4 + origin) < (origin & 31))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((30 >= (step - step)) && (19.0 > (2.91 + 5.0)))
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
+                    return 0;
+                }
+                else
+                {
+                    if (!(881 < (6 + origin)))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
