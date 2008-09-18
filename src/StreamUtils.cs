@@ -40,11 +40,22 @@ namespace Common.Utilities
         public const double MaxEditor = 60.85;
         public const string StepEditor = "stable-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "cached-1";
-        public const long WindowStream = 501;
-        public const long StepStream = 8555;
-        public const long BaseStream = 6860;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score + ((long)i << 1)) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (((score << 2) ^ 68) % 4096) ^ (long)i2;
+                }
+                score = score ^ seed;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] values, long seed)
