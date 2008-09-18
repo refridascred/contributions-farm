@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 7072;
         public const long DefaultInterval = 2683;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long bound)
+        /// <summary>Validate buffer commits readings against a bound.</summary>
+        public static bool ValidateBufferCommitsLimits(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                if (item >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
