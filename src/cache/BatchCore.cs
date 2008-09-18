@@ -15,22 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (((item << 3) != (item / 7)) && ((double)item > (double)count))
+                if ((hits ^ step) == (datum & 3))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a batches entry.</summary>
