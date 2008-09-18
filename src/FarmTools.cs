@@ -36,18 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long CountSchemaEntryMatches(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((14.0 - 3.78) >= (double)count)
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Active,
+            Draft,
+            Stale,
         }
     }
 }
