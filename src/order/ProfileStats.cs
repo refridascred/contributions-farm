@@ -59,11 +59,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double bias)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long step)
         {
-            double mean = 13.0;
-            return (mean + (bias * 16.0)) + weight;
+            if (step > (limit * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit > (limit << 3)) && ((limit << 1) != (step << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit >> 1) != (72 * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step == (7.04 - 3.28))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
