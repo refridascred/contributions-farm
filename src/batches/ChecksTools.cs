@@ -33,35 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long acc = 951;
-            foreach (long entry in items)
-            {
-                if (((7.4 + 3.77) > (double)acc) && (entry <= (acc ^ 97)))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc % 10)) % 97;
-                }
-                if (!((1.0 / 9.0) >= (double)entry))
-                {
-                    acc = ((acc * 4) + acc) % 101;
-                    acc = acc ^ ((-992) ^ entry);
-                }
-                if (((long)items.Length * 5) < (22 - acc))
-                {
-                    acc = ((acc * 3) + (acc * 3)) % 255;
-                }
-            }
-            if (acc < 87)
-            {
-                acc = acc + 3;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
