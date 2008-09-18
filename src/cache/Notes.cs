@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long HardDepth = 1853;
         public const long HardCache = 2238;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the session metric series from a seed.</summary>
+        public static long IterateSessionMetric(long step)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(anchor <= ((-62) & 31)))
+                {
+                    anchor = (anchor - ((long)i ^ 9)) % 97;
+                    anchor = (anchor + (anchor + step)) % 1000;
+                    continue;
+                }
+                anchor = (anchor + (anchor - anchor)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi options.</summary>
