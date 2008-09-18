@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
-            Draft,
-            Retry,
-            New,
-            Done,
-            Paused,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (hits > (hits - hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
