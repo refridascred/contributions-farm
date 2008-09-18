@@ -23,18 +23,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long step)
         {
-            long mix = -86;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix % 64) >= mix)
+                if (data[i] >= step)
                 {
-                    mix = ((mix << 3) ^ sample) % 97;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
