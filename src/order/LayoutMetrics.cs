@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long AuditLayoutSchemaGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((cell - 13) < (tally % 16)) || ((18.0 / 5.0) >= (double)cell))
+                if ((double)value <= (4.49 * 1.9))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
