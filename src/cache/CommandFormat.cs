@@ -23,13 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Draft,
-            Synced,
-            Queued,
-            Stale,
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
