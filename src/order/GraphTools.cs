@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                if (levels[i] >= bound)
                 {
                     return (long)i;
                 }
