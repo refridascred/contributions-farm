@@ -43,21 +43,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of format schema readings.</summary>
-        public static long MatchFormatSchemaCount(long[] series)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = bias;
+            return (scale - (double)30) + weight;
         }
 
         /// <summary>Accumulate checks samples.</summary>
