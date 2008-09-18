@@ -1,13 +1,22 @@
 # githubfarm settings
-batch_delay_s:
-  burst_interval: cached
-  hard_ttl: true
-  strict: cached
-audit: 1024
-min_ratio: 4873
-strict:
-  - 485
-  - 202
-  - 96
-  - 414
-idle_ratio: true
+readonly: 21
+support_ratio: strict
+warm_depth:
+  burst_delay_count:
+    burst_limit: stable
+    sync_threshold_s: 40
+    channel_capacity: true
+  editor_ratio: strict
+  readonly: 58
+  strict: 82.71
+  compress:
+    - primary
+    - primary
+    - local
+    - local
+record_ratio:
+  - 12
+  - 499
+  - 75
+  - 489
+stream_window: 53.07
