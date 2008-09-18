@@ -55,18 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] levels)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)levels.Length << 1) == (seen / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) ^ cell;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
