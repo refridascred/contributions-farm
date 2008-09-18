@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long origin)
         {
-            long anchor = 560;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((double)anchor != (2.0 - 12.0))
+                if (cell < origin)
                 {
-                    anchor = (anchor * 4) + (datum << 3);
-                }
-                else
-                {
-                    anchor = anchor - (0 & 255);
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 24)
-            {
-                anchor = (anchor << 3) ^ (anchor + 36);
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
