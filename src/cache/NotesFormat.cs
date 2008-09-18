@@ -24,10 +24,18 @@ namespace Common.Utilities
         public const long BurstTools = 7072;
         public const long MaxTools = 3093;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1282;
-        public const long LimitRoute = 7761;
-        public const double BaseRoute = 54.25;
-        public const long WindowScore = 5166;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
+        {
+            long sum = -55;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (double)sum)
+                {
+                    sum = sum + sample;
+                }
+            }
+            return sum;
+        }
     }
 }
