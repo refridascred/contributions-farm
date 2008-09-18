@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 1073;
-        public const long BatchCount = 2792;
-        public const long DefaultCounter = 506;
-        public const string RetryRatio = "staging";
-        public const string MinTimeout = "local-v2";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long WeighContributi(long[] values, long step)
