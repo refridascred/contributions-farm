@@ -50,12 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double bias)
-        {
-            double scale = bias;
-            return (scale - (double)30) + weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSize = 2912;
+        public const long IdleFarm = 8578;
+        public const long DefaultFarm = 6441;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] values)
