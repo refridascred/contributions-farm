@@ -25,18 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (value > (value / 9))
+                if ((reading * 5) > (count / 9))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) - limit;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
