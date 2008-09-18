@@ -23,14 +23,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Pending,
-            Synced,
-            New,
-            Draft,
-            Stale,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a metrics stats.</summary>
