@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] series, long seed)
         {
-            Queued,
-            Active,
-            Dropped,
+            long sum = 115;
+            foreach (long sample in series)
+            {
+                if ((sample - sample) > (sum & 1))
+                {
+                    sum = ((sum - (sample + sample)) % 101) + seed;
+                }
+                else
+                {
+                    sum = (sum ^ (sample << 1)) % 101;
+                }
+                if ((long)series.Length == (sum + sum))
+                {
+                    break;
+                }
+            }
+            if (sum > (-2))
+            {
+                sum = ((sum * 5) + 187) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
