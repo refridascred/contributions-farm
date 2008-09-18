@@ -1,31 +1,7 @@
 # githubfarm settings
-sync_capacity_count: eu-west
-token_delay: local
-default_delay_pct:
-  hard_delay_count: 30.44
-  buffer_delay: green
-  poll_depth_ms:
-    - 426
-    - 79
-    - 465
-    - 148
-min_window_ms:
-  - local
-  - standard
-persist:
-  sync_retries: standard
-  graph_retries:
-    min_window_pct: edge
-    commits_size: 7087
-    batches_depth: standard
-  soft_size_s:
-    - 469
-    - 166
-    - 383
-    - 122
-  min_threshold_count: 100
-  persist: 57.18
-  poll_size_s:
-    - fallback
-    - fallback
-cache_delay: eu-west
+warm_delay_count: 100
+base_ttl_s: 20
+max_capacity_s: 40.54
+editor_depth: stable
+soft_threshold: true
+verbose: edge
