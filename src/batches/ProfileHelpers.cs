@@ -89,18 +89,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] data)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.0 / 6.0) <= (double)(long)data.Length)
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
                 {
-                    count = (count + 2) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
