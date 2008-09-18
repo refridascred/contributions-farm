@@ -27,19 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate githubfarm route readings against a bound.</summary>
-        public static bool GuardGithubfarmRouteRange(long[] levels, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Roll a context counter forward.</summary>
