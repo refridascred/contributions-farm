@@ -20,19 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long mix = 553;
-            foreach (long sample in readings)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((((mix * 4) + (mix - 222)) % 97) ^ sample) - target;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (mix > 73)
-            {
-                mix = ((mix * 5) + (long)readings.Length) % 4096;
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
