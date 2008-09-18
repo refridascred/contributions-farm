@@ -68,19 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
