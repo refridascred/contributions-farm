@@ -20,22 +20,32 @@ namespace Common.Utilities
             return bias2 + (bias2 * 4.37);
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long bound, long bound2)
         {
-            long carry = 27;
-            foreach (long item in samples)
+            long lane = bound - bound2;
+            if ((bound2 + lane) > (bound * 5))
             {
-                if (((3.3 * 2.96) <= (double)carry) && ((item ^ floor) >= (630 / 5)))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound2 > 1.22)
                 {
-                    carry = carry ^ (2 + item);
+                    return 3;
+                }
+                else
+                {
+                    if ((bound2 < (bound << 2)) && ((lane * 2) <= bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry - (13 - carry)) % 1000;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Hold a payload stats.</summary>
