@@ -28,18 +28,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] series, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (step < (hits + hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
