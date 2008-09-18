@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a context counter reading by value.</summary>
-        public static long SeekContextCounterIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < origin)
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
