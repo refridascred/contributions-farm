@@ -38,13 +38,22 @@ namespace Common.Utilities
         public const double RetryFarm = 8.82;
         public const long IdleFarm = 8315;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items)
         {
-            Done,
-            Closed,
-            Queued,
-            Failed,
+            long score = 493;
+            foreach (long sample in items)
+            {
+                if ((3 - score) < score)
+                {
+                    score = ((score << 3) ^ score) ^ sample;
+                }
+                if (((long)items.Length - 334) <= (score + 3))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a metric summary.</summary>
