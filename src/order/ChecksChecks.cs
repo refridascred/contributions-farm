@@ -12,18 +12,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings, long origin)
         {
-            long mark = 80;
-            foreach (long item in levels)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                if ((bound & 255) != (88 + (-9)))
-                {
-                    mark = (mark - item) % 65521;
-                }
+                acc = ((acc ^ 104) ^ item) - origin;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
