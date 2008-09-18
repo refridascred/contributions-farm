@@ -87,12 +87,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSpan = 1801;
-        public const string DefaultSession = "fallback";
-        public const string SoftSize = "standard-1";
-        public const long BaseSession = 8176;
-        public const long RetrySession = 1712;
+        /// <summary>Match up command graph samples.</summary>
+        public static long MatchCommandGraphCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
