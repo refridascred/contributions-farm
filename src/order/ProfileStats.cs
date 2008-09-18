@@ -24,14 +24,10 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 4822;
         public const long MaxGithubfarm = 1636;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Done,
-            Locked,
-            Draft,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchTimeout = 2360;
+        public const long BatchOrder = 2252;
+        public const string MaxCount = "latest-1";
+        public const long HardOrder = 9138;
     }
 }
