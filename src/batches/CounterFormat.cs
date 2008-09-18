@@ -22,26 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = 66;
-            foreach (long datum in values)
-            {
-                if (carry > datum)
-                {
-                    carry = ((carry << 2) ^ datum) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 97;
-                }
-                if ((double)datum >= (5.65 + 2.0))
-                {
-                    carry = ((carry << 3) ^ (3 % 8)) % 97;
-                }
-            }
-            return carry % 65521;
+            Retry,
+            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
