@@ -44,19 +44,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] items, long step)
+        /// <summary>Check that every schema route entry stays within the limit.</summary>
+        public static bool ValidateSchemaRouteLimits(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (cell != step)
+                if (cell != offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Audit checks command readings against a rule.</summary>
