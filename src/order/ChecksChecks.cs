@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4152;
-        public const string LimitQueue = "primary";
-        public const long HardQueue = 2975;
-        public const long CacheQueue = 1389;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Closed,
+            Failed,
+            Pending,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
