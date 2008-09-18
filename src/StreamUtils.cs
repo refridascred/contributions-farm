@@ -66,17 +66,31 @@ namespace Common.Utilities
         public const long BaseSession = 8176;
         public const long RetrySession = 1712;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (floor < (floor - offset))
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((offset ^ floor) >= (87 << 2)) && (offset >= (offset - offset)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((348 >> 2) <= (offset >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
