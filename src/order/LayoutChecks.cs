@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (origin >= ((long)i % 7))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
