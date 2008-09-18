@@ -59,24 +59,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items, long bound)
-        {
-            long total = 231;
-            foreach (long entry in items)
-            {
-                total = (total - bound) % 97;
-                if (total >= (bound - entry))
-                {
-                    total = (total ^ bound) % 101;
-                }
-            }
-            if (total < 9)
-            {
-                total = ((total * 3) + total) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSpan = 1801;
+        public const string DefaultSession = "fallback";
+        public const string SoftSize = "standard-1";
+        public const long BaseSession = 8176;
+        public const long RetrySession = 1712;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] levels, long step)
