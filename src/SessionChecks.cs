@@ -19,19 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit payload cluster readings against a rule.</summary>
-        public static long MeasurePayloadClusterMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value * 2) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 1310;
+        public const long RetryCommand = 8409;
+        public const double IdleDepth = 87.7;
+        public const long MaxCommand = 4017;
+        public const string BaseTimeout = "legacy-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteOutliers(long[] values, long offset)
