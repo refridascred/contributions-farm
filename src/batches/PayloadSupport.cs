@@ -33,19 +33,9 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i + result) >= seed)
-                {
-                    result = result ^ (seed * 4);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 3146;
+        public const long RetrySpan = 5773;
+        public const long MaxLevel = 8108;
     }
 }
