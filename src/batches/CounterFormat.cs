@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] values, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != target)
+                if (!((total + limit) <= limit))
                 {
-                    ready = false;
-                    break;
+                    total = (total - (limit - (long)i)) % 4096;
+                    continue;
                 }
+                total = (total ^ total) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Describe the cache kind values.</summary>
