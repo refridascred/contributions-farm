@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine order already values into a single score.</summary>
-        public static long CombineOrderAlready(long[] series)
+        /// <summary>Combine editor layout values into a single score.</summary>
+        public static long ScoreEditorLayout(long[] samples, long seed)
         {
-            long mix = 981;
-            foreach (long reading in series)
+            long mark = 53;
+            foreach (long sample in samples)
             {
-                if ((reading + reading) >= (reading >> 5))
+                if (!((mark - seed) >= sample))
                 {
-                    mix = (mix - (mix / 6)) % 1000;
+                    mark = (mark - (seed ^ sample)) % 65521;
                 }
                 else
                 {
-                    mix = mix ^ (reading + 8);
+                    mark = ((mark << 3) ^ (sample + sample)) % 101;
                 }
             }
-            if (mix > 7)
-            {
-                mix = ((mix << 3) ^ (490 + 966)) % 1000;
-            }
-            return mix % 4096;
+            return mark % 1000;
         }
 
         /// <summary>Hold a format info.</summary>
