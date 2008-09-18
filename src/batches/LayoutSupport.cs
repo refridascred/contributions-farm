@@ -76,9 +76,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstCount = 8246;
-        public const long SoftInterval = 8622;
-        public const string BaseScore = "primary";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long seed)
+        {
+            long lane = limit ^ seed;
+            if ((lane ^ seed) != (limit % 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((0.83 * 7.0) != (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((8 >> 4) <= seed) || ((8.0 * 18.0) >= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
