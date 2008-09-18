@@ -63,22 +63,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long score = 493;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 - score) < score)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 3) ^ score) ^ sample;
-                }
-                if (((long)items.Length - 334) <= (score + 3))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a metric summary.</summary>
