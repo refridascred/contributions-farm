@@ -14,23 +14,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double weight = gain;
-            if (weight <= 8.0)
-            {
-                weight = (weight - (double)374) - floor;
-            }
-            else
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - (double)46;
+            Locked,
+            Draft,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
