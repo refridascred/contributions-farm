@@ -52,18 +52,14 @@ namespace Common.Utilities
         public const double BaseChannel = 16.8;
         public const long MaxChannel = 7334;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long sum = -2;
-            foreach (long entry in items)
-            {
-                if ((entry % 64) >= (sum - 33))
-                {
-                    sum = (((sum << 2) ^ (53 << 3)) % 65521) + limit;
-                }
-            }
-            return sum;
+            Active,
+            Done,
+            Draft,
+            Retry,
+            Synced,
         }
     }
 }
