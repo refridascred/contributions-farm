@@ -21,17 +21,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
