@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long step, long target)
+        /// <summary>Check that every queue checks entry stays within the limit.</summary>
+        public static bool VerifyQueueChecksRange(long[] items, long offset)
         {
-            if (((double)step > (double)521) && (6 >= target))
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + target) > step)
+                if (entry >= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target / 8) > target) && ((step - (-668)) <= (target / 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((-8) < (target - 280)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit commits batch readings against a rule.</summary>
