@@ -55,14 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Match up buffer already samples.</summary>
+        public static long CompareBufferAlreadyCount(long[] samples)
         {
-            Ready,
-            Idle,
-            Paused,
-            Stale,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
