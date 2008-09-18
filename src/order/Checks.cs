@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long score = 324;
-            foreach (long cell in readings)
-            {
-                score = score - (cell >> 4);
-            }
-            if (score < (-980))
-            {
-                score = score + (score >> 2);
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a channel reading.</summary>
