@@ -61,14 +61,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            Ready,
-            Locked,
-            Retry,
-            Closed,
-            Done,
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
