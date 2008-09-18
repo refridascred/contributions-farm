@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] data, long seed)
         {
-            long edge = target + step;
-            if ((4.0 - 8.46) >= (double)edge)
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (edge >= (645 - step))
+                if ((double)seed < 3.49)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
