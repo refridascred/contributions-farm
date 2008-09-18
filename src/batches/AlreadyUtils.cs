@@ -57,21 +57,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Adjust a contributi record reading.</summary>
+        public static double BlendContributiRecord(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(17 << 2);
+            if (ratio >= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ((ratio - (ratio / 2.0)) + rate) - span;
             }
-            return hits;
+            return ratio + ratio;
         }
 
         /// <summary>Hold a batch stats.</summary>
