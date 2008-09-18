@@ -15,24 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a payload commits value against two limits.</summary>
-        public static long ClassifyPayloadCommits(long bound, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] items, long floor)
         {
-            if ((origin * 3) <= 146)
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) < (6 + origin))
+                if (floor <= (floor & 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 3) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
