@@ -21,18 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long floor)
+        /// <summary>Check that every report metrics entry stays within the limit.</summary>
+        public static bool ValidateReportMetricsBounds(long[] data, long bound)
         {
-            long result = 704;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((cell + floor) != (result ^ result))
+                if (value < bound)
                 {
-                    result = ((result * 3) + (result + cell)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
