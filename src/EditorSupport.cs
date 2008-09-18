@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate metrics support samples.</summary>
-        public static long FoldMetricsSupport(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] samples, long limit)
         {
-            long sum = 9;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ (sample ^ sample)) % 101;
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
