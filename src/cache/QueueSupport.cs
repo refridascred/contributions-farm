@@ -33,18 +33,24 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Count the account queue entries that pass the check.</summary>
-        public static long TallyAccountQueueGaps(long[] items, long limit)
+        /// <summary>Classify a stream cluster pair into a bucket.</summary>
+        public static long SortStreamCluster(long bound, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if (((-5) - step) <= (step + step))
             {
-                if (!!((double)entry >= (3.0 / 9.0)))
+                return 0;
+            }
+            else
+            {
+                if ((329 % 60) < (step - step))
                 {
-                    matches = (matches + 1) - limit;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
