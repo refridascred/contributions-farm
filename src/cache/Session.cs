@@ -26,18 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] levels, long floor)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            long mix = 84;
+            foreach (long sample in levels)
             {
-                if ((93 + seed) == (seed + seed))
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = ((sum << 3) ^ (seed - datum)) % 1000;
+                    mix = (((mix << 3) ^ (long)i) % 4096) - sample;
+                }
+                if (((double)mix > (double)69) || ((double)floor >= (6.95 - 3.0)))
+                {
+                    mix = mix ^ (872 ^ mix);
+                }
+                else
+                {
+                    mix = mix + (floor & 7);
                 }
             }
-            return sum % 1000;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
