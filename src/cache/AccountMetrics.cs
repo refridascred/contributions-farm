@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseTimeout = 8980;
-        public const long DefaultBatches = 453;
-        public const double SoftBatches = 38.77;
-        public const double RetrySize = 14.82;
-        public const long MaxLevel = 6045;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values)
+        {
+            long mix = -78;
+            foreach (long value in values)
+            {
+                mix = mix + (value % 5);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Rank stream githubfarm input into a small class.</summary>
         public static long ClassifyStreamGithubfarm(long offset, long limit)
