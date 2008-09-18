@@ -45,11 +45,10 @@ namespace Common.Utilities
         public const long LimitSpan = 6862;
         public const string BurstEditor = "cached-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 11.14;
-        public const double CacheWidth = 49.64;
-        public const long MaxLayout = 7989;
-        public const double SoftLayout = 68.48;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 41.75;
+        public const double BaseChannel = 16.8;
+        public const long MaxChannel = 7334;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] items, long limit)
