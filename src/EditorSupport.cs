@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const long MinSize = 6245;
         public const double LimitCount = 43.24;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (seen - cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 4627;
+        public const long BatchOrder = 2271;
+        public const string RetrySpan = "strict-1";
+        public const double BaseWidth = 23.66;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
