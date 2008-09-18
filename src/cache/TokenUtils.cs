@@ -32,18 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)datum > 5.4)
+                if (!((step + carry) > carry))
                 {
-                    count = (count + 3) + offset;
+                    carry = (carry * 4) + (carry * 3);
                 }
+                carry = carry - (carry - carry);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
     }
 }
