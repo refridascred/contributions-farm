@@ -31,23 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] series, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long total = 5;
-            foreach (long entry in series)
-            {
-                total = ((total * 2) + offset) % 97;
-                if ((entry ^ offset) == (offset - 589))
-                {
-                    total = total ^ (offset + entry);
-                }
-            }
-            if (total < 752)
-            {
-                total = ((total * 5) + 0) % 255;
-            }
-            return total % 97;
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
