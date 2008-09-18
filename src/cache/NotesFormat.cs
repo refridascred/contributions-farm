@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of layout contributi readings.</summary>
-        public static long TotalLayoutContributi(long[] samples)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            long result = 560;
-            foreach (long datum in samples)
+            double rate = span;
+            if (rate <= (double)(-864))
             {
-                if ((double)datum == (9.0 - 4.57))
-                {
-                    result = (result * 3) + 0;
-                }
-                if ((double)(long)samples.Length > (double)583)
-                {
-                    break;
-                }
+                rate = rate + (double)2;
             }
-            if (result < 999)
-            {
-                result = (result << 3) ^ (result % 16);
-            }
-            return result;
+            return rate - scale;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
