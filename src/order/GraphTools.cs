@@ -22,32 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long next = floor + target;
-            if ((floor & 127) >= (379 / 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 3) >= 246)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(6.5 <= (double)next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the profile status values.</summary>
