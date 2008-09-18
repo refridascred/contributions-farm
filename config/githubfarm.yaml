@@ -1,22 +1,15 @@
 # githubfarm settings
-readonly: 21
-support_ratio: strict
-warm_depth:
-  burst_delay_count:
-    burst_limit: stable
-    sync_threshold_s: 40
-    channel_capacity: true
-  editor_ratio: strict
-  readonly: 58
-  strict: 82.71
-  compress:
-    - primary
-    - primary
-    - local
-    - local
-record_ratio:
-  - 12
-  - 499
-  - 75
-  - 489
-stream_window: 53.07
+audit:
+  retry_ttl: 1686
+  min_interval_ms: open
+  soft_capacity_s:
+    retry_ratio: 72.13
+    idle_delay_pct: 5866
+    idle_ttl: cached
+  burst_window_count: green
+  flush_interval_count: green
+  flush_ttl_pct: blue
+cache_interval_pct: 4235
+metric_capacity: legacy
+strict: 84
+verbose: 7.54
