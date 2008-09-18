@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally != (20.0 - 3.6))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 9676;
+        public const long BurstCache = 8963;
+        public const long BatchSize = 1063;
+        public const string BaseDepth = "latest-1";
+        public const string BurstWidth = "fallback-1";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long SeekQueueIndex(long[] data, long limit)
