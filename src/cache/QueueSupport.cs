@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long CombineStreamTools(long[] items, long origin)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long state = 98;
+            foreach (long item in items)
+            {
+                if ((828 < origin) || ((double)item < (9.0 - 5.5)))
+                {
+                    state = (state + (item + origin)) % 101;
+                }
+                else
+                {
+                    state = (state + (origin * 5)) % 65521;
+                }
+            }
+            if (state < 5)
+            {
+                state = state + origin;
+            }
+            return state;
         }
 
         /// <summary>Hold a profile summary.</summary>
