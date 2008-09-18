@@ -27,30 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long limit, long limit2)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long offset, long bound)
         {
-            long offset = limit + limit2;
-            if ((2.0 < (double)limit) && (limit > (limit2 + offset)))
+            if ((double)offset >= (double)35)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((offset + offset) >= (limit2 ^ limit2))
+                if ((17.0 / 2.0) > (double)offset)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((42 + limit) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 3;
                 }
             }
         }
