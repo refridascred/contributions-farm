@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate metric cache samples.</summary>
-        public static long TotalMetricCache(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = 30;
-            foreach (long cell in items)
-            {
-                mix = (mix + (29 + cell)) % 101;
-            }
-            if (mix < 656)
-            {
-                mix = ((mix * 3) + ((long)items.Length - mix)) % 1000;
-            }
-            return mix % 65521;
+            Idle,
+            Synced,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Combine format values into a single score.</summary>
