@@ -32,18 +32,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((matches > 95) || ((double)sample < (double)matches)) || ((double)matches >= (4.0 - 5.0)))
+                if ((1.0 - 6.1) < 20.0)
                 {
-                    matches = matches + 2;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
