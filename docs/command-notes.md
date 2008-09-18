@@ -1,11 +1,13 @@
 # Command notes
 
-The graph report groups every payload by channel.
-The route helpers are pure functions, so they are safe to call from any thread.
+The format module keeps editor values in sync with the support cache.
+The entry module keeps command values in sync with the notes cache.
+
+Keep graph and entry names short and lowercase.
+Run the githubfarm check before changing any cluster limits.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every cluster change
-- Validate checks input early
-- Keep filter values small
+- Keep counter values small
+- Validate batch input early
+- Prefer farm defaults
