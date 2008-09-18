@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long offset, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] levels)
         {
-            long diff = offset + floor;
-            if (((floor & 63) == (floor % 2)) || ((double)diff != (6.0 + 5.96)))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 / 4.0) > (double)floor)
+                if (hits <= (47 - hits))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff % 2) > diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (12.0 <= (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 2) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
