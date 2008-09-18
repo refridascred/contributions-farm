@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double span)
-        {
-            double rate = span;
-            if (rate <= (double)(-864))
-            {
-                rate = rate + (double)2;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinBudget = 344;
+        public const string LimitInterval = "latest-1";
+        public const long CacheLevel = 5561;
+        public const long BurstLevel = 1398;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] values)
