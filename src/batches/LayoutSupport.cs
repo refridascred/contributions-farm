@@ -92,22 +92,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] values, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (7 >= (bound + sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
