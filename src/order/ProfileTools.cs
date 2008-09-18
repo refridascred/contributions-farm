@@ -37,11 +37,16 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark ^ (mark % 8)) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate record route readings against a bound.</summary>
