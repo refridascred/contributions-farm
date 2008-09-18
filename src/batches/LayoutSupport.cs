@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long bound, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] readings)
         {
-            long edge = bound ^ origin;
-            if (((6.0 - 9.1) <= (double)edge) || ((origin + origin) == (edge + origin)))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)edge <= (5.3 / 2.0))
+                if ((0 % 8) >= (matches % 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
