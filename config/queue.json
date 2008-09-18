@@ -1,5 +1,5 @@
 {
-  "idle_limit_s": "standard",
-  "batch_size_pct": true,
-  "audit": "local"
+  "buffer_retries": 57,
+  "soft_size_count": 69,
+  "cache_window_count": 76.14
 }
