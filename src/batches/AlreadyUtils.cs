@@ -31,17 +31,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] < offset)
+                if ((56 - datum) > (datum % 8))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit checks command readings against a rule.</summary>
