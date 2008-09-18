@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen ^ cell) > seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitSpan = 9490;
+        public const long DefaultBatches = 1212;
+        public const string BatchLevel = "legacy-v2";
+        public const double SoftWidth = 64.08;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BaseDepth = 4.24;
