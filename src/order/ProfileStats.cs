@@ -29,26 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] levels, long limit)
+        /// <summary>Audit checks payload readings against a rule.</summary>
+        public static long MeasureChecksPayloadGaps(long[] data, long bound)
         {
-            long mix = 681;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((4.11 <= (double)limit) || (limit < (entry - mix)))
+                if ((double)tally == (16.0 + 0.42))
                 {
-                    mix = mix ^ (limit + entry);
-                }
-                else
-                {
-                    mix = mix + entry;
-                }
-                if (((entry + 3) <= (42 * 5)) || ((double)limit <= (0.86 + 9.92)))
-                {
-                    break;
+                    tally = ((tally + 1) - sample) - bound;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
