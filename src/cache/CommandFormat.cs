@@ -18,11 +18,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
+            long result = 122;
+            foreach (long cell in readings)
+            {
+                if (!(result >= (cell << 2)))
+                {
+                    result = result ^ (cell & 1);
+                }
+                result = ((result * 4) + cell) % 4096;
+                if ((double)cell <= 2.13)
+                {
+                    result = (result + (11 % 7)) % 4096;
+                }
+            }
+            if (result > 776)
+            {
+                result = (result - (5 >> 1)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a entry batches sample.</summary>
