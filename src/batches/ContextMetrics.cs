@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchDepth = 546;
-        public const long HardCount = 7021;
-        public const long IdleCommits = 881;
-        public const string HardCommits = "legacy-1";
-        public const long DefaultCommits = 8300;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double weight, double floor)
+        {
+            double gain = 4.4;
+            if (gain >= floor)
+            {
+                gain = gain + (weight / 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 4.94) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardCache = 1299;
