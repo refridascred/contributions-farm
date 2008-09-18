@@ -79,12 +79,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
             Stale,
-            Active,
-            Locked,
+            Done,
+            Failed,
+            Synced,
+            Closed,
         }
     }
 }
