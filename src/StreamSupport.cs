@@ -13,13 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Done,
-            Closed,
-            New,
-            Synced,
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
