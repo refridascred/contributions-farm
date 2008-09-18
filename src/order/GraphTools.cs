@@ -31,15 +31,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            double scale = offset;
-            if (scale > (bias * 2.4))
+            double gain = weight;
+            if (gain >= (double)348)
             {
-                scale = scale + (double)9;
+                gain = (gain + 6.95) - offset;
             }
-            return scale + (4.4 / 6.0);
+            else
+            {
+                gain = gain - (gain - gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (weight + weight)) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Iterate the contributi payload series from a seed.</summary>
