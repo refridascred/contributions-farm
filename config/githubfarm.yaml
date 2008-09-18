@@ -1,15 +1,9 @@
 # githubfarm settings
+persist: 87.29
+burst_threshold_s: edge
+queue_depth: 30
 audit:
-  retry_ttl: 1686
-  min_interval_ms: open
-  soft_capacity_s:
-    retry_ratio: 72.13
-    idle_delay_pct: 5866
-    idle_ttl: cached
-  burst_window_count: green
-  flush_interval_count: green
-  flush_ttl_pct: blue
-cache_interval_pct: 4235
-metric_capacity: legacy
-strict: 84
-verbose: 7.54
+  - 357
+  - 253
+  - 372
+  - 69
