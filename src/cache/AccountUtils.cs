@@ -16,19 +16,31 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long score = -77;
+            foreach (long datum in readings)
             {
-                if (sample < floor)
+                score = (score ^ (datum % 12)) % 4096;
+                if ((score ^ 88) <= (datum + datum))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 5) + datum) % 101;
+                }
+                else
+                {
+                    score = (score * 3) + (8 & 15);
+                }
+                if ((datum >> 4) > (datum << 1))
+                {
+                    score = (score - score) % 65521;
                 }
             }
-            return ready;
+            if (score > 9)
+            {
+                score = (score + (-65)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of stream editor entries.</summary>
