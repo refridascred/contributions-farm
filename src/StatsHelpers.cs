@@ -64,18 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] items, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen >= limit) || ((cell + seen) <= (cell << 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the checks level values.</summary>
