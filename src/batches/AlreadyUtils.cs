@@ -44,20 +44,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every schema route entry stays within the limit.</summary>
-        public static bool ValidateSchemaRouteLimits(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultRatio = "primary-edge";
+        public const long WindowDepth = 2738;
+        public const string SoftBatch = "strict-v2";
+        public const long BatchWidth = 7625;
+        public const string LimitBatch = "legacy-edge";
 
         /// <summary>Audit checks command readings against a rule.</summary>
         public static long AuditChecksCommandGaps(long[] data)
