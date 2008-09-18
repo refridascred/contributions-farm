@@ -58,18 +58,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph batches readings against a rule.</summary>
-        public static long MeasureGraphBatchesMatches(long[] readings, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long step, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if (((floor << 2) < (floor % 10)) && ((27 - step) >= step))
             {
-                if ((count + 8) >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((0.8 >= (5.5 + 10.0)) && ((5.4 / 6.0) > (double)step))
                 {
-                    count = (count + 3) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    if ((step * 4) >= (floor - 607))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
