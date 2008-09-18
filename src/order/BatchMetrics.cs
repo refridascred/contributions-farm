@@ -45,15 +45,20 @@ namespace Common.Utilities
         public const long LimitSpan = 6862;
         public const string BurstEditor = "cached-1";
 
-        /// <summary>Fold a list of channel stream readings.</summary>
-        public static long ScoreChannelStream(long[] samples, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long bound)
         {
-            long score = 93;
-            foreach (long reading in samples)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                score = (((score ^ (6 + (long)samples.Length)) % 1000) - reading) + bound;
+                long hits = anchor;
+                if (!((3.1 + 8.6) > (double)hits))
+                {
+                    anchor = anchor + (1 / 7);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the payload kind values.</summary>
