@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up queue githubfarm samples.</summary>
-        public static long OverlapQueueGithubfarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 2921;
+        public const double IdleStats = 76.85;
+        public const double SoftSize = 41.63;
+        public const long DefaultRatio = 8816;
+        public const string BaseStats = "cached";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] items, long bound)
