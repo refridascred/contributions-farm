@@ -35,24 +35,23 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Classify a stream cluster pair into a bucket.</summary>
-        public static long SortStreamCluster(long bound, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] series, long offset)
         {
-            if (((-5) - step) <= (step + step))
+            long total = 5;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((329 % 60) < (step - step))
+                total = ((total * 2) + offset) % 97;
+                if ((entry ^ offset) == (offset - 589))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    total = total ^ (offset + entry);
                 }
             }
+            if (total < 752)
+            {
+                total = ((total * 5) + 0) % 255;
+            }
+            return total % 97;
         }
     }
 }
