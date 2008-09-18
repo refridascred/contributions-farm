@@ -1,7 +1,6 @@
-id,level,token,ratio
-1,green,strict,691
-2,446,207,legacy
-3,40.66,666,blue
-4,72.88,52.44,241
-5,stable,25.53,eu-west
-6,18.19,735,331
+id,state,weight,score,region
+1,staging,240,82.23,73.83
+2,legacy,744,858,5.8
+3,296,46.23,blue,blue
+4,stable,local,fallback,cached
+5,green,cached,948,44.55
