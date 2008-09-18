@@ -24,17 +24,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] data, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -67;
+            foreach (long sample in items)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (result - sample)) % 97;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
