@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of filter route readings.</summary>
-        public static long PairFilterRouteCount(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = bound ^ origin;
+            if (((6.0 - 9.1) <= (double)edge) || ((origin + origin) == (edge + origin)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)edge <= (5.3 / 2.0))
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a metric counter reading.</summary>
