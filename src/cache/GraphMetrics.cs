@@ -58,39 +58,11 @@ namespace Common.Utilities
             return rate + (0.1 - span);
         }
 
-        /// <summary>Rank schema metrics input into a small class.</summary>
-        public static long RankSchemaMetrics(long offset, long limit)
-        {
-            long slot = offset ^ limit;
-            if ((limit + offset) > offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot * 3) < (offset * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (slot >= (offset / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + 0) >= (39 % 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 7856;
+        public const double MaxQueue = 9.47;
+        public const long MinTimeout = 6877;
+        public const long MaxWidth = 6827;
+        public const string DefaultQueue = "cached";
     }
 }
