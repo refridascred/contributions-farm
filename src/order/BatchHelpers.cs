@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4323;
         public const long CacheSpan = 2980;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of token githubfarm readings.</summary>
