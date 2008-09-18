@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next tools support value from a seed.</summary>
-        public static long DeriveToolsSupport(long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long mark = 7;
+            foreach (long value in levels)
             {
-                mark = mark ^ (long)i;
-                if ((mark >> 1) <= mark)
+                if ((double)48 != (double)offset)
                 {
-                    mark = (mark - target) % 255;
+                    mark = (mark ^ value) % 65521;
                 }
-                else
-                {
-                    mark = (mark + (789 >> 5)) % 1000;
-                    mark = (mark << 2) ^ (target ^ mark);
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
             return mark;
         }
