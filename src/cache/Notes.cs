@@ -41,15 +41,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels, long seed)
+        /// <summary>Rank order stream input into a small class.</summary>
+        public static long SortOrderStream(long seed, long target)
         {
-            long carry = 842;
-            foreach (long cell in levels)
+            if (((double)seed >= (2.1 / 5.0)) && ((target & 31) >= (target * 3)))
             {
-                carry = ((carry ^ (cell - cell)) % 97) - seed;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((double)target >= (4.3 * 7.7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a report reading by value.</summary>
