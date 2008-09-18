@@ -23,22 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long result = 5;
-            foreach (long datum in levels)
-            {
-                if (!((5.3 - 8.7) == (double)datum))
-                {
-                    result = result ^ (datum - result);
-                }
-                else
-                {
-                    result = (result + (result - datum)) % 4096;
-                }
-            }
-            return result;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a checks record.</summary>
