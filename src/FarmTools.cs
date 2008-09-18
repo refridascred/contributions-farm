@@ -42,17 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi report sample.</summary>
-        public static long LookupContributiReportIndex(long[] levels, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long sample in readings)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + sample) % 4096;
             }
-            return -1;
+            return state;
         }
     }
 }
