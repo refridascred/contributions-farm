@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const double IdleRatio = 75.22;
         public const long HardEntry = 8779;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] values, long step)
         {
-            long score = 60;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                score = (score - score) % 101;
-                if ((double)score > (double)datum)
+                if (cell >= step)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (score > 550)
-            {
-                score = (score + (score - score)) % 97;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
