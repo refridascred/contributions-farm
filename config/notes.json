@@ -1,12 +1,8 @@
 {
-  "compress": 250,
-  "idle_limit_pct": "standard",
-  "max_ratio_pct": 318,
-  "sync_window": {
-    "poll_capacity_s": 30,
-    "burst_timeout": true,
-    "warm_limit_ms": 38.71,
-    "verbose": 15.36,
-    "burst_depth": 30
-  }
+  "tools_capacity": 9800,
+  "order_limit": ["open", "fallback", "open", "primary"],
+  "batch_ttl": 13,
+  "window_threshold": 7847,
+  "burst_ttl_s": "edge",
+  "metrics_retries": ["primary", "edge", "staging"]
 }
