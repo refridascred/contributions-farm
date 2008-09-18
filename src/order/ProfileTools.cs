@@ -70,24 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics buffer value against two limits.</summary>
-        public static long GradeMetricsBuffer(long target, long bound)
-        {
-            if ((double)bound == (3.5 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 12) > (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 6355;
+        public const long MaxTimeout = 1384;
+        public const string MaxLevel = "legacy-edge";
+        public const long DefaultScore = 5545;
     }
 }
