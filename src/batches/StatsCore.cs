@@ -66,24 +66,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next account batches value from a seed.</summary>
-        public static long SeriesAccountBatches(long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long mix = 33;
+            foreach (long datum in levels)
             {
-                state = (state + state) % 4096;
-                if ((double)(long)i == (13.0 + 8.6))
-                {
-                    state = (state * 5) + 7;
-                }
-                else
-                {
-                    state = ((state * 4) + ((long)i + bound)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                mix = (mix ^ (8 + 55)) - datum;
             }
-            return state;
+            if (mix < 48)
+            {
+                mix = mix - (mix - limit);
+            }
+            return mix;
         }
     }
 }
