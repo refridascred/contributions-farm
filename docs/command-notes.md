@@ -1,13 +1,10 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
-
-The graph module keeps order values in sync with the farm cache.
-Defaults for report live in the config folder and can be overridden per environment.
+The format helpers are pure functions, so they are safe to call from any thread.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep account values small
-- Document new filter fields
+- Prefer commits defaults
+- Document new already fields
+- Review checks limits each release
