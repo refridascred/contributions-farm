@@ -35,13 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] samples, long origin)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a cluster already figure with a bias.</summary>
