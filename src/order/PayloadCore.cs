@@ -46,21 +46,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Blend two cluster entry measurements.</summary>
+        public static double AdjustClusterEntry(double gain, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            double weight = (gain / 6.0) / 5.0;
+            if (weight >= floor)
             {
-                carry = (carry ^ (target - 228)) % 1000;
-                carry = ((carry * 2) + carry) % 101;
-                if ((target ^ target) < 36)
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                weight = weight + (double)7;
             }
-            return carry;
+            return weight - weight;
         }
     }
 }
