@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] series, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > limit)
+                if (readings[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
