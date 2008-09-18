@@ -32,20 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = 215;
-            foreach (long item in series)
-            {
-                mix = ((mix * 4) + floor) % 1000;
-                mix = (mix ^ (item * 4)) % 255;
-            }
-            if (mix > 2)
-            {
-                mix = mix + floor;
-            }
-            return mix % 4096;
+            Closed,
+            Idle,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the cluster class values.</summary>
