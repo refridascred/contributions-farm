@@ -1,4 +1,8 @@
 # support settings
-compress: 18
-batch_limit_count: stable
-warm_capacity_s: true
+hard_interval_pct: stable
+max_interval_pct:
+  - 76
+  - 444
+  - 456
+poll_size_s: 57.75
+retry_ttl_count: cached
