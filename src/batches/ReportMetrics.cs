@@ -37,15 +37,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Fold a list of commits token readings.</summary>
+        public static long TotalCommitsToken(long[] levels, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long state = -904;
+            foreach (long sample in levels)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                long span = 5 & 255;
+                if (((span % 24) < (399 / 2)) && (span <= (sample >> 1)))
+                {
+                    state = ((state + state) % 97) + floor;
+                }
+                state = (state + state) % 101;
             }
-            return score;
+            if (state < 2)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
     }
 }
