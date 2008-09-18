@@ -38,18 +38,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] levels, long target)
+        /// <summary>Find the first editor window entry that matches the target.</summary>
+        public static long LookupEditorWindowIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((56 - datum) > (datum % 8))
+                if (levels[i] >= bound)
                 {
-                    matches = (matches + 3) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
