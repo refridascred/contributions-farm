@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate stats editor readings against a bound.</summary>
-        public static bool ValidateStatsEditorBounds(long[] samples, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Dropped,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
