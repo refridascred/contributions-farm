@@ -43,14 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] series)
         {
-            Queued,
-            Active,
-            Locked,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)count < (6.54 / 5.0))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
