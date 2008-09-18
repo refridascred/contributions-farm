@@ -51,20 +51,18 @@ namespace Common.Utilities
             return gain - (double)91;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((long)i << 3) >= (long)i)
+                if (!((hits + hits) > hits))
                 {
-                    carry = (carry ^ (5 & 15)) % 65521;
+                    hits = (hits + 1) - value;
                 }
-                carry = (carry + carry) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
     }
 }
