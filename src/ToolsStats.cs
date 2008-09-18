@@ -85,21 +85,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Accumulate schema notes samples.</summary>
+        public static long WeighSchemaNotes(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item << 3) != (state + state))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (item << 1);
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
