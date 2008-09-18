@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] series, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((reading - bound) < matches) || ((matches ^ 87) == ((-469) >> 3)))
+                if (entry > target)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a window header.</summary>
