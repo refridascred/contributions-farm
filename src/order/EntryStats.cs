@@ -46,18 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long floor)
         {
-            long anchor = 850;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading != (6.0 + 9.0))
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
-                    anchor = ((anchor << 2) ^ (reading >> 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
