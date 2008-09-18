@@ -28,18 +28,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value ^ tally) < 633)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
