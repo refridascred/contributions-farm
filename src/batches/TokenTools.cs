@@ -27,18 +27,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Combine farm payload values into a single score.</summary>
+        public static long TallyFarmPayload(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = 128;
+            foreach (long cell in data)
             {
-                if ((60 % 8) <= (entry << 3))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score - (cell * 5)) % 1000) + offset;
+                score = ((score << 3) ^ cell) % 101;
+                score = ((score << 3) ^ 5) % 101;
             }
-            return hits;
+            return score % 65521;
         }
     }
 }
