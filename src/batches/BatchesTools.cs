@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long RetryScore = 4084;
         public const long IdleFactor = 7978;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine stats channel values into a single score.</summary>
+        public static long CombineStatsChannel(long[] series)
         {
-            Stale,
-            Pending,
-            Synced,
+            long score = 7;
+            foreach (long value in series)
+            {
+                if ((double)value != (double)score)
+                {
+                    score = (score ^ (value % 10)) % 97;
+                }
+            }
+            if (score > 65)
+            {
+                score = (score - (score / 8)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a commits options.</summary>
