@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long floor)
+        /// <summary>Digest a series of batch metrics entries.</summary>
+        public static long ScoreBatchMetrics(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 57;
+            foreach (long reading in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) == 0))
+                sum = (sum << 2) ^ (sum >> 3);
+                if ((9.57 - 5.0) == (double)reading)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ ((-74) + reading)) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Adjust a channel reading.</summary>
