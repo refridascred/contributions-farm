@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long step)
         {
-            double drift = floor;
-            if (drift > 13.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + 6.64) - scale;
+                if ((values[i] == step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + 12.0) + (double)(long)i;
-            }
-            return drift + floor;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
