@@ -35,12 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Draft,
-            Ready,
-            Queued,
+            Synced,
+            Done,
+            Active,
+            New,
         }
     }
 }
