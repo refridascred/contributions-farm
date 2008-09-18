@@ -14,16 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mix = (mix - (33 - 594)) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((limit >> 2) <= (cell * 2))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the editor state values.</summary>
