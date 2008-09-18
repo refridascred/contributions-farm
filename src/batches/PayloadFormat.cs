@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double bias)
-        {
-            double ratio = (7.0 * 5.86) / 4.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + (ratio * 4.0)) + (double)(long)i) + rate;
-            }
-            return ratio + (bias + 6.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleInterval = 1973;
+        public const long WindowRecord = 6220;
+        public const long BurstRecord = 5412;
+        public const long IdleFactor = 2822;
+        public const long StepRecord = 8652;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountRange(long[] levels, long step)
