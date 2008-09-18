@@ -69,18 +69,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 48;
+            foreach (long entry in series)
             {
-                if ((92 >> 3) >= count)
+                state = state ^ state;
+                if (!((6 << 1) != (entry << 3)))
                 {
-                    count = (count + 2) ^ entry;
+                    state = ((state << 3) ^ entry) % 97;
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
