@@ -30,19 +30,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long origin)
         {
-            double gain = rate + rate;
-            if (gain < rate)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                gain = gain + gain;
+                mark = ((mark << 3) ^ mark) % 4096;
+                mark = (mark - (mark - origin)) % 65521;
+                if (!(37 <= (mark - (long)i)))
+                {
+                    mark = (mark + (origin % 16)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - (bias * 7.7);
-            }
-            return gain + 1.7;
+            return mark;
         }
 
         /// <summary>Hold a token stats.</summary>
