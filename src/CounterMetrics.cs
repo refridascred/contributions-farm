@@ -22,26 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context metric readings.</summary>
-        public static long TotalContextMetric(long[] values, long target)
+        /// <summary>Digest a series of record filter entries.</summary>
+        public static long ScoreRecordFilter(long[] samples, long origin)
         {
-            long acc = -101;
-            foreach (long cell in values)
+            long acc = 983;
+            foreach (long value in samples)
             {
-                if (!((acc >> 4) < (0 ^ cell)))
+                if ((value / 9) >= ((long)samples.Length - acc))
                 {
-                    break;
+                    acc = (acc - (acc - origin)) % 255;
                 }
                 else
                 {
-                    acc = acc ^ (target + target);
-                }
-                if ((16.0 * 5.4) >= (double)cell)
-                {
-                    acc = (acc << 3) ^ (acc / 7);
+                    acc = (acc * 2) + (0 >> 5);
                 }
             }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Fold a list of counter layout readings.</summary>
