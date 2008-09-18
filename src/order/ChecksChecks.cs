@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long mark = 80;
+            foreach (long item in levels)
+            {
+                if ((bound & 255) != (88 + (-9)))
+                {
+                    mark = (mark - item) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
