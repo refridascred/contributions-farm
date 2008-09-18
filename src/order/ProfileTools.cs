@@ -41,14 +41,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every farm metrics entry stays within the limit.</summary>
+        public static bool GuardFarmMetricsRange(long[] items, long origin)
         {
-            Queued,
-            Active,
-            Paused,
-            Stale,
-            Closed,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
