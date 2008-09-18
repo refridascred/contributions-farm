@@ -22,32 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings)
-        {
-            long score = -77;
-            foreach (long datum in readings)
-            {
-                score = (score ^ (datum % 12)) % 4096;
-                if ((score ^ 88) <= (datum + datum))
-                {
-                    score = ((score * 5) + datum) % 101;
-                }
-                else
-                {
-                    score = (score * 3) + (8 & 15);
-                }
-                if ((datum >> 4) > (datum << 1))
-                {
-                    score = (score - score) % 65521;
-                }
-            }
-            if (score > 9)
-            {
-                score = (score + (-65)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepSize = "legacy-v2";
+        public const long BaseCache = 2849;
+        public const string IdleTimeout = "primary-v2";
 
         /// <summary>Digest a series of stream editor entries.</summary>
         public static long FoldStreamEditor(long[] series, long origin)
