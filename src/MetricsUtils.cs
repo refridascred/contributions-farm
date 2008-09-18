@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many support already samples are out of range.</summary>
-        public static long MeasureSupportAlreadyMatches(long[] data, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (!((double)tally <= (19.0 + 3.0)))
+                if (!((double)datum == (5.84 - 19.0)))
                 {
-                    tally = ((tally + 3) + value) - limit;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
