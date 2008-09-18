@@ -24,10 +24,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5540;
-        public const string BatchMetric = "strict";
-        public const double DefaultMetric = 56.91;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long SeekCommandIndex(long[] readings, long limit)
