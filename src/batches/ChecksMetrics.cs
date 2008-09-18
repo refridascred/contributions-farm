@@ -65,11 +65,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "cached-1";
-        public const long HardLevel = 4601;
-        public const long RetryWidth = 1073;
-        public const double StepMetric = 6.6;
-        public const long BatchFactor = 8329;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Idle,
+            Synced,
+            New,
+        }
     }
 }
