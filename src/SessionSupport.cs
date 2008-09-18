@@ -22,22 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long step, long bound)
         {
-            long total = 258;
-            foreach (long datum in samples)
+            long edge = step + bound;
+            if ((bound - 78) == (bound * 5))
             {
-                if ((limit * 3) <= (limit * 2))
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ 2) < step)
                 {
-                    total = ((total << 3) ^ (total & 31)) ^ datum;
+                    return 2;
                 }
                 else
                 {
-                    total = ((total * 4) + 2) % 1000;
+                    if ((2 & 63) > (step ^ edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((step << 3) >= (259 & 127)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Project the next tools counter value.</summary>
