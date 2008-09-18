@@ -83,15 +83,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((-91) < (seen >> 1))
+                {
+                    seen = ((seen + 3) ^ reading) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the support phase values.</summary>
