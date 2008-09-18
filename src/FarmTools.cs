@@ -42,11 +42,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double scale, double bias)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long floor2)
         {
-            double rate = bias;
-            return (rate - rate) + scale;
+            long gap = floor - floor2;
+            if ((16.0 / 5.0) >= (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor > (floor + gap))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)gap == (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.54 + 5.0) == (double)floor2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
