@@ -20,23 +20,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long bound)
+        /// <summary>Look up the position of a payload graph sample.</summary>
+        public static long LocatePayloadGraphIndex(long[] data, long limit)
         {
-            long state = 706;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + (entry + 98)) % 65521;
-                if (!((97 << 3) != (bound * 5)))
+                if ((data[i] == limit) && ((data[i] % 3) == 0))
                 {
-                    state = (state + (state + 7)) % 101;
+                    return (long)i;
                 }
             }
-            if (state < 68)
-            {
-                state = state - (state / 9);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
