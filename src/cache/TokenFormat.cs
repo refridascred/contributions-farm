@@ -38,13 +38,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Stale,
-            Closed,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 22.04;
+        public const long BurstGithubfarm = 2063;
+        public const long LimitGithubfarm = 2256;
     }
 }
