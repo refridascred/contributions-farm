@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of account counter readings.</summary>
-        public static long CompareAccountCounterCount(long[] samples)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
