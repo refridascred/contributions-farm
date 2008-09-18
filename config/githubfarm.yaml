@@ -1,10 +1,9 @@
 # githubfarm settings
-notes_interval:
-  - 433
-  - 218
-  - 81
-  - 123
-soft_window_s: strict
-route_ttl: false
-editor_timeout: 6.74
-order_size: edge
+burst_window:
+  - 421
+  - 70
+  - 305
+  - 200
+retry_interval: false
+poll_ratio_pct: 78.63
+batch_ratio_s: 80.77
