@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long sum = 1;
+            foreach (long datum in data)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((93 + seed) == (seed + seed))
+                {
+                    sum = ((sum << 3) ^ (seed - datum)) % 1000;
+                }
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
