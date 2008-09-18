@@ -72,13 +72,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] series, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data, long floor)
         {
-            long anchor = 727;
-            foreach (long value in series)
+            long anchor = -61;
+            foreach (long value in data)
             {
-                anchor = (((anchor * 4) + (anchor + step)) % 65521) - value;
+                if ((225 & 15) <= anchor)
+                {
+                    anchor = ((anchor + floor) % 4096) - value;
+                }
             }
             return anchor % 4096;
         }
