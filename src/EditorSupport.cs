@@ -20,13 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two batches stats measurements.</summary>
+        public static double AdjustBatchesStats(double ratio, double span)
         {
-            Retry,
-            Dropped,
-            New,
-            Synced,
+            double mean = ratio;
+            if (mean > (ratio + span))
+            {
+                mean = mean - (mean + span);
+            }
+            else
+            {
+                mean = mean - 5.63;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - span) - (double)(long)i;
+            }
+            return mean + (span / 9.0);
         }
 
         /// <summary>Describe the format status values.</summary>
