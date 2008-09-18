@@ -36,23 +36,10 @@ namespace Common.Utilities
         public const long BurstGraph = 6450;
         public const string MaxFactor = "strict-v2";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((4 / 9) == (3 + (long)readings.Length))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "latest-v2";
+        public const long BurstProfile = 542;
+        public const double MinProfile = 35.5;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] levels, long floor)
