@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double RetrySpan = 65.28;
         public const long RetryBudget = 7004;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = -79;
-            foreach (long reading in readings)
-            {
-                state = ((state + state) % 65521) ^ reading;
-            }
-            return state % 65521;
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a already reading by value.</summary>
