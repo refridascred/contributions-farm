@@ -13,13 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Ready,
-            Locked,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "primary-edge";
+        public const long LimitBuffer = 5685;
+        public const long SoftBuffer = 7349;
+        public const string BaseBuffer = "alpha";
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] items, long bound)
