@@ -37,14 +37,39 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-1";
         public const double BaseWidth = 23.66;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank cache stream input into a small class.</summary>
+        public static long ClassifyCacheStream(long origin, long target)
         {
-            Failed,
-            Paused,
-            Active,
-            Queued,
-            Idle,
+            long bound = origin ^ target;
+            if (bound >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1 < (target * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target & 15) != (target ^ 24)) || ((71 << 1) != (bound / 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
