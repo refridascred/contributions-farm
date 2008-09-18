@@ -25,11 +25,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long floor, long target)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long next = floor + target;
+            if ((floor & 127) >= (379 / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor / 3) >= 246)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(6.5 <= (double)next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
