@@ -46,23 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((limit / 8) == (573 + limit))
-                {
-                    carry = (carry * 5) + (carry + carry);
-                }
-                else
-                {
-                    carry = (carry - (153 - limit)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            double load = gain + (double)8;
+            return (load + (double)9) + span;
         }
 
         /// <summary>Describe the stats kind values.</summary>
