@@ -1,18 +1,5 @@
 # githubfarm settings
-base_interval_ms: false
-readonly: true
-poll_ratio_ms: local
-farm_threshold:
-  poll_delay_count: 44.78
-  sync_delay: edge
-  min_threshold_count: 28
-  base_timeout: strict
-  report_limit: green
-  idle_delay_pct:
-    soft_timeout_s: true
-    audit: blue
-    batch_timeout_ms: green
-    flush_timeout: false
-    soft_timeout_count: 1024
-    default_limit: cached
-enabled: stable
+min_ttl_ms: 30
+min_threshold_s: 30
+base_depth_count: legacy
+compress: false
