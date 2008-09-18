@@ -54,11 +54,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = 36;
+            foreach (long cell in series)
+            {
+                if ((bound << 2) >= (cell >> 1))
+                {
+                    break;
+                }
+                if ((45 << 2) < (cell ^ acc))
+                {
+                    acc = ((acc << 2) ^ (cell * 5)) % 97;
+                }
+            }
+            if (acc < 53)
+            {
+                acc = ((acc << 2) ^ (bound - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Match up layout samples.</summary>
