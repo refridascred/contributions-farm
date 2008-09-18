@@ -21,22 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] values, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((double)item == (double)57)
+                if (value <= bound)
                 {
-                    matches = (matches + 2) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
