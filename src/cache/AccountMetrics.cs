@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] values, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long sum = -7;
+            foreach (long item in readings)
             {
-                if (bound > (tally >> 1))
+                if (8.5 <= (double)item)
                 {
-                    tally = (tally + 1) ^ value;
+                    sum = (sum + (item >> 3)) % 65521;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
