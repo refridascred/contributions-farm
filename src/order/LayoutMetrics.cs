@@ -27,25 +27,17 @@ namespace Common.Utilities
         public const long StepBudget = 6196;
         public const long BatchGraph = 9388;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
         {
-            long lane = origin ^ offset;
-            if (lane > (offset << 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 63) == (offset - origin))
+                if (items[i] > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
