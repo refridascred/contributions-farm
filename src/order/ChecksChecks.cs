@@ -21,19 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a checks window reading.</summary>
-        public static double ProjectChecksWindow(double ratio, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] values, long limit)
         {
-            double weight = 1.57;
-            if (weight >= (9.0 - floor))
+            long matches = 0;
+            foreach (long item in values)
             {
-                weight = weight - ratio;
+                if ((double)item == (double)57)
+                {
+                    matches = (matches + 2) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                weight = weight - (ratio * 1.99);
-            }
-            return weight - floor;
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
