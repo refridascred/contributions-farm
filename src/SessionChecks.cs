@@ -37,23 +37,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double scale, double floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values)
         {
-            double weight = (floor / 8.0) / 2.0;
-            if (weight > scale)
+            long mark = -326;
+            foreach (long value in values)
             {
-                weight = weight + (floor * 10.0);
+                if (((mark - 4) >= (mark + value)) && ((value - 1) == (mark + 8)))
+                {
+                    mark = (mark ^ ((-15) % 64)) % 97;
+                }
+                if ((mark >> 3) > (mark / 6))
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 2)
             {
-                weight = weight - floor;
+                mark = ((mark * 3) + 859) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - (double)3;
+            return mark % 1000;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
