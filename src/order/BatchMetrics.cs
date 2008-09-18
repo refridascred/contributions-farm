@@ -87,14 +87,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] items)
         {
-            Active,
-            Done,
-            Draft,
-            Retry,
-            Synced,
+            long score = 14;
+            foreach (long cell in items)
+            {
+                if ((20.0 + 16.0) >= 5.25)
+                {
+                    score = (score ^ cell) % 97;
+                }
+                else
+                {
+                    score = (score - (382 - cell)) % 101;
+                }
+            }
+            return score % 97;
         }
     }
 }
