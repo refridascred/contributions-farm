@@ -19,19 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cache filter readings against a rule.</summary>
-        public static long CountCacheFilterHits(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count - 302) != (count + offset))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftInterval = 1910;
+        public const long StepCounter = 1749;
+        public const double CacheCounter = 50.03;
+        public const long MinCounter = 1751;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
