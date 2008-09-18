@@ -60,26 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long acc = 36;
-            foreach (long cell in series)
-            {
-                if ((bound << 2) >= (cell >> 1))
-                {
-                    break;
-                }
-                if ((45 << 2) < (cell ^ acc))
-                {
-                    acc = ((acc << 2) ^ (cell * 5)) % 97;
-                }
-            }
-            if (acc < 53)
-            {
-                acc = ((acc << 2) ^ (bound - acc)) % 97;
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
