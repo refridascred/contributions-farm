@@ -1,8 +1,15 @@
 {
-  "contributi_threshold": "green",
-  "flush_interval_pct": true,
-  "cache_ratio": false,
-  "default_ttl_s": 66.72,
-  "retry_capacity": false,
-  "warm_interval_s": false
+  "sync_size_pct": 44.22,
+  "buffer_depth": {
+    "default_interval_s": {
+      "warm_ratio_ms": 5032,
+      "context_ttl": 67,
+      "batch_limit": 500,
+      "default_depth_pct": "strict"
+    },
+    "already_size": 10,
+    "max_ttl_s": 8.32,
+    "persist": true
+  },
+  "contributi_capacity": "green"
 }
