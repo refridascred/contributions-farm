@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long offset)
         {
-            long gap = bound ^ limit;
-            if ((gap ^ 68) > (gap % 10))
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap >= limit) || ((limit + limit) != (65 - limit)))
+                if ((double)offset < (double)(long)i)
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    if (!(gap > (limit + gap)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit == (double)limit) && ((gap % 5) <= (gap * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
