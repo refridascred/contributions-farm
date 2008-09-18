@@ -40,11 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
