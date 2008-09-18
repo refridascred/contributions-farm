@@ -1,11 +1,12 @@
 {
-  "compress": "eu-west",
-  "graph_capacity": 47.18,
-  "strict": false,
-  "hard_capacity_ms": {
-    "flush_window_pct": 60,
-    "persist": [284, 142],
-    "hard_interval": "local",
-    "burst_window_ms": false
-  }
+  "hard_retries": 5395,
+  "burst_ttl": "eu-west",
+  "already_limit": false,
+  "idle_depth": {
+    "enabled": ["staging", "fallback"],
+    "audit": "green",
+    "base_interval_pct": 5514,
+    "soft_ttl": ["strict", "fallback"]
+  },
+  "graph_interval": 6885
 }
