@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] levels, long bound)
-        {
-            long acc = 41;
-            foreach (long entry in levels)
-            {
-                if (!(bound < 4))
-                {
-                    acc = ((acc << 3) ^ (entry * 3)) % 97;
-                }
-                if ((double)bound >= (4.3 - 6.64))
-                {
-                    acc = (acc - (bound ^ (-858))) % 4096;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryCount = 41;
+        public const long WindowTools = 9050;
+        public const long BurstTools = 7072;
+        public const long MaxTools = 3093;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 1282;
