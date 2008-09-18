@@ -39,20 +39,11 @@ namespace Common.Utilities
             return gain2 + (gain / 3.0);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "local-1";
+        public const long MaxChecks = 4121;
+        public const long BatchChecks = 7937;
+        public const long SoftFactor = 4218;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BatchLevel = 124;
