@@ -1,11 +1,17 @@
 # entry settings
-warm_timeout_count: fallback
-cache_window_s: false
-hard_ratio: cached
-hard_depth_s: 12.39
-command_size:
-  - 351
-  - 332
-  - 430
-  - 205
-dry_run: 78
+compress: eu-west
+flush_interval:
+  layout_delay:
+    - local
+    - strict
+    - latest
+  max_capacity:
+    - strict
+    - cached
+  route_ttl: 6998
+  cache_limit_ms: stable
+  window_delay: false
+min_limit_count: false
+dry_run: green
+persist: 8628
+soft_retries_count: standard
