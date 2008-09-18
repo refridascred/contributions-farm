@@ -28,14 +28,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Paused,
-            Pending,
-            Dropped,
-            Failed,
-            Draft,
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
