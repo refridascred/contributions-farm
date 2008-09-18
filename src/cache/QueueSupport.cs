@@ -27,10 +27,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 5751;
-        public const long SoftTimeout = 9571;
-        public const string WindowRecord = "standard-1";
-        public const long StepFactor = 5657;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (hits > (value + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
