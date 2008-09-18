@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout graph entries that pass the check.</summary>
-        public static long MeasureLayoutGraphMatches(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((638 / 8) <= ((long)samples.Length + matches)) && ((matches - matches) > (matches >> 5))) && ((entry + matches) >= (matches >> 5)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit editor route readings against a rule.</summary>
