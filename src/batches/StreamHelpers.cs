@@ -59,17 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(4 ^ 3);
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                drift = ((drift + span) + (double)(long)i) - bias;
             }
-            return -1;
+            return drift - (span / 8.0);
         }
 
         /// <summary>Hold a stats options.</summary>
