@@ -1,11 +1,8 @@
 {
-  "buffer_delay": ["blue", "strict"],
-  "warm_interval": 31.79,
-  "retry_interval": [104, 145],
-  "contributi_size": "standard",
-  "report_ratio": {
-    "warm_retries": 5256,
-    "checks_interval": 28.52,
-    "burst_limit_count": "eu-west"
-  }
+  "burst_interval_s": [242, 457],
+  "burst_depth": 4407,
+  "default_ratio_ms": 9007,
+  "min_interval_ms": 1024,
+  "batch_threshold": 1104,
+  "idle_depth_s": [55, 88]
 }
