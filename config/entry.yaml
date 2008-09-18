@@ -1,4 +1,12 @@
 # entry settings
-counter_interval: 1.71
-command_ratio: false
-enabled: 9101
+default_limit:
+  - cached
+  - legacy
+  - primary
+idle_limit: local
+default_threshold_s:
+  - 199
+  - 246
+  - 226
+  - 235
+cache_interval_s: 75
