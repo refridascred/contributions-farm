@@ -54,39 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools githubfarm value against two limits.</summary>
-        public static long SortToolsGithubfarm(long floor, long origin)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] levels, long bound)
         {
-            long cur = floor + origin;
-            if (((origin / 9) < (floor - origin)) && ((3.5 + 17.0) != (double)origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((2.93 - 7.95) != (double)origin))
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (5.87 >= (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((cur / 9) > origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
