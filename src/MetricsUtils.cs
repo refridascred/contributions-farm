@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the farm level values.</summary>
