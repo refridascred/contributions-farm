@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] levels, long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long state = 6;
-            foreach (long datum in levels)
-            {
-                if (!((datum >> 1) > (datum << 1)))
-                {
-                    state = ((state << 2) ^ (seed + state)) % 1000;
-                }
-            }
-            return state;
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
