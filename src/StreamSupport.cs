@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Locked,
-            Dropped,
-            Synced,
-            Retry,
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
