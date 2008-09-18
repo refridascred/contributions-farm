@@ -13,23 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long sum = 65;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum ^ datum) % 65521) ^ (long)i;
-                }
-                sum = (sum + sum) % 65521;
-                if (((double)origin >= (15.0 + 19.0)) || ((datum - datum) == (datum + origin)))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
