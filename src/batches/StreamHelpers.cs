@@ -23,10 +23,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 815;
-        public const string DefaultTimeout = "legacy";
-        public const long IdleEntry = 8352;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
