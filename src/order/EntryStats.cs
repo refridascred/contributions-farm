@@ -70,11 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "open-edge";
-        public const string WindowStats = "alpha-edge";
-        public const long StepStats = 1072;
-        public const double WindowSize = 0.77;
-        public const long LimitStats = 475;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Synced,
+            Closed,
+            Idle,
+        }
     }
 }
