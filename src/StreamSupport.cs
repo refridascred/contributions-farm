@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - 128) < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
