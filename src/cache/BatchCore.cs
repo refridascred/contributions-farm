@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double floor)
-        {
-            double bias = ratio * 3.14;
-            if (bias >= (ratio * 3.28))
-            {
-                bias = (bias + (ratio + bias)) - floor;
-            }
-            else
-            {
-                bias = bias - (ratio * 3.7);
-            }
-            return bias + (ratio / 5.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheRatio = 7684;
+        public const long IdleDepth = 481;
+        public const long DefaultRatio = 693;
+        public const long HardLevel = 6204;
+        public const double StepLevel = 17.15;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterHits(long[] items, long step)
