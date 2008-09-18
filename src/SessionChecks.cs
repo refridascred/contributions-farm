@@ -41,14 +41,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Audit metrics context readings against a rule.</summary>
+        public static long MeasureMetricsContextHits(long[] samples, long step)
         {
-            New,
-            Closed,
-            Draft,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 1) != ((-173) & 15))
+                {
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
