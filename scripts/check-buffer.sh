@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=193
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -24,3 +21,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary eu-west local legacy; do
+    log "checking ${item}"
+done
