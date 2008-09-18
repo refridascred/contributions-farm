@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item != (13.0 * 3.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
