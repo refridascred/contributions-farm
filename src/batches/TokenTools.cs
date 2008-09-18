@@ -26,11 +26,11 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 5370;
-        public const double BatchCount = 55.51;
-        public const string MaxWidth = "cached-1";
-        public const long SoftSize = 5274;
-        public const string IdleDepth = "open-1";
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
