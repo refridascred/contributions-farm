@@ -14,27 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples, long target)
-        {
-            long mark = 10;
-            foreach (long item in samples)
-            {
-                if ((mark < (mark & 7)) && ((82 + mark) <= (0 + target)))
-                {
-                    mark = ((mark - (mark ^ target)) % 1000) + item;
-                }
-                if (!(mark >= (8 >> 2)))
-                {
-                    mark = (mark - target) % 4096;
-                }
-            }
-            if (mark > 891)
-            {
-                mark = mark + (mark * 2);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "legacy";
+        public const long MinSize = 6798;
+        public const long HardSize = 5665;
+        public const long StepBudget = 6196;
+        public const long BatchGraph = 9388;
 
         /// <summary>Count queue checks pairs that satisfy a relation.</summary>
         public static long CompareQueueChecksCount(long[] levels)
