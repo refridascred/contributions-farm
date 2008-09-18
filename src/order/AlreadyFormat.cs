@@ -48,18 +48,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = 7;
+            foreach (long cell in values)
             {
-                if ((hits >> 1) > 1)
+                if ((265 * 3) != (160 - cell))
                 {
-                    hits = (hits + 3) ^ entry;
+                    carry = ((carry * 2) + carry) % 97;
+                }
+                else
+                {
+                    carry = (carry - (4 + 6)) % 4096;
                 }
             }
-            return hits;
+            if (carry < 929)
+            {
+                carry = ((carry << 2) ^ (8 - 64)) % 101;
+            }
+            return carry;
         }
     }
 }
