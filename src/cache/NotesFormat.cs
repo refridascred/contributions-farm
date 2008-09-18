@@ -33,14 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Dropped,
-            Ready,
-            Idle,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowWidth = "cached-edge";
+        public const long BatchCount = 7238;
+        public const string SoftFarm = "alpha";
+        public const long CacheDepth = 3165;
+        public const string BaseFactor = "strict-1";
     }
 }
