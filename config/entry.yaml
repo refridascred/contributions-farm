@@ -1,4 +1,10 @@
 # entry settings
-context_limit: 8910
-dry_run: 4094
-burst_ttl: 3579
+cache_delay: edge
+githubfarm_retries: 8.49
+schema_size: latest
+strict: false
+warm_timeout_s:
+  burst_capacity_s: true
+  dry_run: false
+  audit: false
+order_limit: false
