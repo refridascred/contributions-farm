@@ -68,15 +68,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
