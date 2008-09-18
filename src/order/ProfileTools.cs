@@ -21,24 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)mix == (3.0 - 4.5))
-                {
-                    mix = ((mix * 4) + offset) % 101;
-                }
-                if ((336 / 4) >= (offset >> 3))
-                {
-                    mix = (mix << 3) ^ (mix ^ (long)i);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleCount = 2055;
+        public const double CachePayload = 67.32;
+        public const long WindowInterval = 8379;
+        public const string LimitTimeout = "cached-v2";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesOutliers(long[] items)
