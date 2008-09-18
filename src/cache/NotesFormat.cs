@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Locate a context layout reading by value.</summary>
+        public static long LookupContextLayoutIndex(long[] series, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
