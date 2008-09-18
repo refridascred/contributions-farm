@@ -67,22 +67,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long AuditToolsCounterOutliers(long[] data, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!((6.7 - 6.1) >= (double)target))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
