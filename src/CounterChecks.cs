@@ -37,18 +37,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = 260;
+            foreach (long entry in samples)
             {
-                if (15 < cell)
+                if ((state ^ 314) != (entry + seed))
                 {
-                    tally = tally + 1;
+                    state = (state + 562) % 65521;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
