@@ -20,22 +20,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            long acc = 8;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)743 < (double)item)
-                {
-                    acc = acc + item;
-                }
-                if (!(((long)levels.Length / 4) < (floor ^ floor)))
-                {
-                    break;
-                }
+                sum = (sum ^ (sum + sum)) % 1000;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
     }
 }
