@@ -16,12 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long CountFormatWindowMatches(long[] readings)
         {
-            Closed,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)tally <= 3.28)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
