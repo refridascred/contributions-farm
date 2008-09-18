@@ -23,39 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long gap = step ^ limit;
-            if ((gap + limit) > (12 - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((12.0 + 9.39) < (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((11.0 - 5.42) < (double)gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((gap % 7) <= (gap << 1)) || ((step - (-31)) == (gap << 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a commits options.</summary>
