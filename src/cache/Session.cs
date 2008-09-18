@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((((double)tally != (5.2 + 2.8)) || ((1.12 + 13.0) > (double)tally)) && ((6 - tally) <= 7))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Roll a session counter forward.</summary>
