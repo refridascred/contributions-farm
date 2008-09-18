@@ -49,24 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools metric entries.</summary>
-        public static long TallyToolsMetric(long[] readings)
-        {
-            long mark = 201;
-            foreach (long value in readings)
-            {
-                if (!((29 % 10) > (mark - mark)))
-                {
-                    mark = ((mark * 3) + value) % 65521;
-                }
-                mark = (mark + (907 / 4)) % 1000;
-            }
-            if (mark < 7)
-            {
-                mark = (mark * 4) + (mark * 2);
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9899;
+        public const double HardRatio = 30.03;
+        public const string RetryBudget = "cached-v2";
+        public const long WindowBudget = 262;
+        public const long BurstReport = 5937;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
