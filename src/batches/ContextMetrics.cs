@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double weight, double floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double gain = 4.4;
-            if (gain >= floor)
-            {
-                gain = gain + (weight / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 4.94) + (double)(long)i;
-            }
-            return gain + gain;
+            Draft,
+            Closed,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
