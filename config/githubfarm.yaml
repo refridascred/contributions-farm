@@ -1,19 +1,8 @@
 # githubfarm settings
-batch_timeout:
-  - open
-  - stable
-  - standard
-contributi_delay:
-  - eu-west
-  - blue
-  - open
-  - local
-burst_ttl_pct: 19.28
-burst_threshold_ms:
-  audit: 3527
-  burst_threshold:
-    - 412
-    - 201
-  account_size: 82
-strict: primary
-audit: 98.18
+hard_size_s:
+  context_size: local
+  report_timeout: blue
+  farm_interval: 83.43
+idle_limit_pct: true
+flush_depth: strict
+cache_depth: 1006
