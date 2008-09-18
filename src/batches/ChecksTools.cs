@@ -64,19 +64,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks payload entry stays within the limit.</summary>
-        public static bool GuardChecksPayloadBounds(long[] values, long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
