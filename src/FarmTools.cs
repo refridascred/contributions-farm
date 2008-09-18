@@ -42,39 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long floor2)
+        /// <summary>Look up the position of a contributi report sample.</summary>
+        public static long LookupContributiReportIndex(long[] levels, long target)
         {
-            long gap = floor - floor2;
-            if ((16.0 / 5.0) >= (double)floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor > (floor + gap))
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)gap == (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.54 + 5.0) == (double)floor2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
