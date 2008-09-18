@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] values, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (values[i] > offset)
+                if (!((offset & 127) == (offset % 7)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate already layout readings against a bound.</summary>
