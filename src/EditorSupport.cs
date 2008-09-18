@@ -68,14 +68,11 @@ namespace Common.Utilities
         public const long WindowBudget = 6611;
         public const double HardToken = 84.23;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Paused,
-            Queued,
-            Dropped,
-            Ready,
-            Closed,
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
