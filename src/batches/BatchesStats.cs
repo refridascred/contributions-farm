@@ -39,17 +39,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first cluster token entry that matches the target.</summary>
-        public static long LocateClusterTokenIndex(long[] readings, long bound)
+        /// <summary>Classify a checks contributi pair into a bucket.</summary>
+        public static long RankChecksContributi(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = seed + limit;
+            if (((0 ^ limit) >= (next - 7)) && (next >= (seed - next)))
             {
-                if (readings[i] >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)next < (4.9 / 4.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
