@@ -23,15 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a buffer metric figure with a bias.</summary>
-        public static double ProjectBufferMetric(double rate, double offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double rate2 = rate;
-            if (rate2 >= (rate / 7.0))
-            {
-                rate2 = (rate2 + (rate / 5.0)) - offset;
-            }
-            return rate2 + rate;
+            Retry,
+            Dropped,
+            Ready,
         }
     }
 }
