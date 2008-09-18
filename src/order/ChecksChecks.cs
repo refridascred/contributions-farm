@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the entry order series from a seed.</summary>
+        public static long RollEntryOrder(long offset)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc << 3) ^ ((long)i % 8)) % 101;
+                if (acc >= (offset << 2))
+                {
+                    acc = (acc ^ ((long)i + acc)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a checks window reading.</summary>
