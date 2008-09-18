@@ -51,19 +51,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] levels, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Ready,
+            Stale,
+            Draft,
         }
     }
 }
