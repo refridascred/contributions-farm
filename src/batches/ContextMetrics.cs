@@ -50,15 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session record figure with a bias.</summary>
-        public static double BlendSessionRecord(double bias, double offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double drift = bias * 2.9;
-            if (drift >= offset)
-            {
-                drift = drift - drift;
-            }
-            return drift - (drift - offset);
+            Ready,
+            Paused,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Fold a list of farm batches readings.</summary>
