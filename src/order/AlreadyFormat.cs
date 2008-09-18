@@ -50,13 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
