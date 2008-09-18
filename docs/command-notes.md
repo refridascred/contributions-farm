@@ -1,11 +1,12 @@
 # Command notes
 
-Use support settings to tune how often contributi data is refreshed.
-The profile module keeps command values in sync with the metric cache.
-The order module keeps support values in sync with the format cache.
+Use notes settings to tune how often already data is refreshed.
+Keep already and session names short and lowercase.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new support fields
-- Validate channel input early
-- Prefer profile defaults
+- Log every context change
+- Prefer account defaults
+- Keep account values small
+- Document new layout fields
