@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] < origin)
+                if ((tally >> 3) >= limit)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
