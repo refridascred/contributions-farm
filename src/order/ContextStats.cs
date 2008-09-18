@@ -37,31 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if (((floor - step) != (floor % 5)) || ((floor + step) != (step - step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + floor) <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= (floor / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the metric level values.</summary>
