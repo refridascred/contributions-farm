@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values, long floor)
         {
-            Active,
-            Draft,
-            Dropped,
+            long total = 9;
+            foreach (long item in values)
+            {
+                if (2 > (total >> 4))
+                {
+                    total = ((((total << 2) ^ ((-250) + (long)values.Length)) % 65521) ^ item) - floor;
+                }
+                total = (total - (total << 1)) % 101;
+            }
+            if (total > (-38))
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
