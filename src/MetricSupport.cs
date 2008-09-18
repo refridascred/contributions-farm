@@ -17,16 +17,17 @@ namespace Common.Utilities
             return scale + (bias - bias);
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] items, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (sum + sum)) % 1000;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((items[i] < target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
