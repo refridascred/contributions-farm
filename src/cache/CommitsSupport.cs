@@ -94,14 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            Idle,
-            Active,
-            Pending,
-            Draft,
-            New,
+            long mix = 1;
+            foreach (long datum in values)
+            {
+                if (mix < 990)
+                {
+                    mix = ((mix ^ (mix + 656)) % 97) ^ datum;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
