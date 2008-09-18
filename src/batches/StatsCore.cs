@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            double drift = offset * 0.7;
-            if (drift > weight)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + offset;
+                if ((floor + 1) > ((long)i + result))
+                {
+                    result = (result + floor) % 255;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift - offset)) + (double)(long)i;
-            }
-            return drift + (weight + offset);
+            return result;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
