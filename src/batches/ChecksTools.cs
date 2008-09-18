@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Dropped,
+            Closed,
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
