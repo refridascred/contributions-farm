@@ -23,12 +23,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            Paused,
-            Active,
-            Ready,
+            double drift = bias;
+            if (drift >= (bias - bias))
+            {
+                drift = (drift + (drift - drift)) - floor;
+            }
+            return drift - (double)9;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
