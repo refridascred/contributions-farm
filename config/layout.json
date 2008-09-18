@@ -1,18 +1,12 @@
 {
-  "counter_size": ["cached", "latest"],
-  "cache_ttl": 30,
-  "soft_threshold": 1024,
-  "route_retries": {
-    "base_interval": [89, 27],
-    "support_delay": ["cached", "strict", "fallback", "fallback"],
-    "contributi_capacity": "edge",
-    "warm_window_s": ["legacy", "edge", "primary"],
-    "commits_interval": {
-      "min_ttl": false,
-      "strict": 39,
-      "min_capacity": 9520
-    },
-    "warm_capacity": "staging"
+  "notes_threshold": true,
+  "hard_ttl_pct": 3,
+  "poll_depth_ms": "edge",
+  "batch_retries_ms": {
+    "base_ttl_pct": "edge",
+    "warm_threshold_ms": "fallback",
+    "report_retries": false
   },
-  "retry_window_count": "standard"
+  "window_limit": 6441,
+  "batch_threshold_count": 1533
 }
