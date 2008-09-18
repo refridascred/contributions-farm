@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] levels, long target)
-        {
-            long carry = 6;
-            foreach (long cell in levels)
-            {
-                if (((347 + 3) < (cell >> 5)) && ((target - carry) == (cell + carry)))
-                {
-                    carry = carry + (carry - cell);
-                }
-                carry = (carry + (cell / 5)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 44;
+        public const string RetrySize = "stable";
+        public const long IdleMetric = 2376;
+        public const string WindowMetric = "primary-v2";
+        public const long IdleSpan = 8505;
     }
 }
