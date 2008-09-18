@@ -1,6 +1,6 @@
 {
-  "hard_depth_pct": "latest",
-  "retry_timeout_ms": false,
-  "burst_size": ["stable", "edge", "edge"],
-  "report_window": "blue"
+  "batch_delay": 5369,
+  "min_depth": 5662,
+  "retry_timeout": [89, 359, 54],
+  "sync_capacity": false
 }
