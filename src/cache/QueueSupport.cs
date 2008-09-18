@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 16.58;
-        public const double BurstWindow = 87.57;
-        public const long BaseWidth = 9948;
-        public const long BaseCount = 6936;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TallyGraph(long[] levels)
