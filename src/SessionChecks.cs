@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double ratio, double floor)
+        /// <summary>Count the metrics checks entries that pass the check.</summary>
+        public static long AuditMetricsChecksHits(long[] levels, long limit)
         {
-            double drift = (double)(2 / 7);
-            if (drift > floor)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                drift = (drift + (drift + 2.79)) + ratio;
+                if (((double)entry != (5.33 - 2.0)) || ((double)entry == (double)684))
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            return drift - (drift + drift);
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
