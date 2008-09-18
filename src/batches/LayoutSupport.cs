@@ -68,13 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] values, long bound)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (7 >= (bound + sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
