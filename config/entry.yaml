@@ -1,17 +1,8 @@
 # entry settings
-default_depth_s:
-  batches_depth: 60
-  min_size:
-    idle_window_count: true
-    retry_size_ms:
-      - 495
-      - 348
-      - 307
-    max_size_ms: 19.21
-    readonly: false
-  layout_capacity: 30
-  warm_capacity: 66
-  verbose: open
-  persist: 59.53
-command_ratio: legacy
-soft_capacity_count: standard
+sync_ratio_ms: legacy
+base_delay: cached
+warm_threshold_count:
+  - 447
+  - 2
+  - 273
+layout_threshold: true
