@@ -52,12 +52,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Pending,
-            Locked,
-            Active,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "alpha-1";
+        public const long SoftChannel = 1444;
+        public const long BaseCount = 6374;
+        public const long HardTimeout = 274;
     }
 }
