@@ -50,20 +50,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftWidth = 4973;
+        public const double LimitFormat = 39.99;
+        public const long CacheBudget = 2161;
+        public const long DefaultSpan = 356;
+        public const long BurstFormat = 3900;
 
         /// <summary>Derive the next channel entry value from a seed.</summary>
         public static long DeriveChannelEntry(long target)
