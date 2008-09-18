@@ -36,10 +36,18 @@ namespace Common.Utilities
         public const long BurstGraph = 6450;
         public const string MaxFactor = "strict-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "latest-v2";
-        public const long BurstProfile = 542;
-        public const double MinProfile = 35.5;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] levels, long floor)
