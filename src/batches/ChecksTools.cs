@@ -18,14 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
         {
-            Locked,
-            Stale,
-            Paused,
-            Dropped,
-            Pending,
+            long score = 0;
+            foreach (long value in series)
+            {
+                score = score + ((long)series.Length * 5);
+                if ((double)value != (9.0 / 5.0))
+                {
+                    score = (score ^ (score >> 5)) % 1000;
+                }
+            }
+            if (score > 939)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
