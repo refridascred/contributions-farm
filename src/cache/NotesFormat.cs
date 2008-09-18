@@ -15,18 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((offset ^ seen) <= (reading + offset))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
