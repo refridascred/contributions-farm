@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long limit)
         {
-            Queued,
-            Dropped,
-            Draft,
-            Ready,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
