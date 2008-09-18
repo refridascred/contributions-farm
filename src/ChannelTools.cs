@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = 4.0;
+            if (weight > (4.0 + bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (bias / 5.0)) - floor;
             }
-            return count;
+            return weight - (double)2;
         }
 
         /// <summary>Describe the tools phase values.</summary>
