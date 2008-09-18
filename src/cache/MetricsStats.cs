@@ -70,24 +70,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a tools format counter forward.</summary>
-        public static long DeriveToolsFormat(long step)
+        /// <summary>Adjust a contributi githubfarm reading.</summary>
+        public static double ProjectContributiGithubfarm(double ratio, double bias)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            double drift = 2.0 - (double)89;
+            if (drift > drift)
             {
-                if (((mark >> 2) >= (long)i) && ((59 + mark) >= mark))
-                {
-                    mark = (mark - (mark - mark)) % 1000;
-                    mark = (mark - (step + step)) % 65521;
-                }
-                if (!((mark + mark) != (long)i))
-                {
-                    mark = mark ^ ((long)i % 24);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                drift = (drift - ratio) - bias;
             }
-            return mark;
+            return drift - 2.7;
         }
     }
 }
