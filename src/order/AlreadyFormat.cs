@@ -32,16 +32,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
-        {
-            long total = 402;
-            foreach (long value in items)
-            {
-                total = ((total - (total >> 4)) % 65521) ^ value;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryTimeout = 8746;
+        public const double SoftLayout = 18.76;
+        public const long BatchBudget = 5172;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] values)
