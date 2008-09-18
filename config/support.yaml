@@ -1,9 +1,7 @@
 # support settings
-audit: 6720
-profile_ratio:
-  metric_size: 67
-  profile_window: staging
-  metric_ttl: 84
-poll_ratio: 33
-checks_ratio: blue
-persist: green
+dry_run: false
+soft_delay_count: 30
+retry_window_ms: true
+soft_interval_ms: 43
+route_retries: false
+entry_capacity: 31.6
