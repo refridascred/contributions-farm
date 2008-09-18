@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 8244;
-        public const long DefaultNotes = 2153;
-        public const double BatchBudget = 66.67;
-        public const string IdleCount = "local-edge";
-        public const string CacheNotes = "strict-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
+        {
+            long score = 41;
+            foreach (long item in samples)
+            {
+                if ((double)score < (7.39 - 4.0))
+                {
+                    score = ((score ^ (score & 3)) % 255) + item;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long ScorePayload(long[] data, long floor)
