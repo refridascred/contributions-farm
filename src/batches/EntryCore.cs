@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long DefaultBatch = 7072;
         public const long DefaultInterval = 2683;
 
-        /// <summary>Accumulate filter stats samples.</summary>
-        public static long WeighFilterStats(long[] items, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] levels, long offset)
         {
-            long anchor = 86;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)anchor <= (17.0 + 2.4))
+                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
                 {
-                    anchor = anchor + (value - seed);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
