@@ -23,36 +23,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of already session entries.</summary>
-        public static long CombineAlreadySession(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 6;
-            foreach (long datum in items)
-            {
-                if ((result ^ result) < datum)
-                {
-                    result = (result << 3) ^ (datum + datum);
-                    result = ((result << 2) ^ (955 - result)) % 65521;
-                }
-                else
-                {
-                    result = (result - 276) % 1000;
-                }
-                if (!((datum + result) >= result))
-                {
-                    result = (result + (result - 3)) % 4096;
-                    continue;
-                }
-                if ((datum > (datum * 5)) && ((datum << 3) < (result << 3)))
-                {
-                    result = ((result * 4) + result) % 97;
-                }
-            }
-            if (result > 456)
-            {
-                result = ((result * 3) + (result % 8)) % 101;
-            }
-            return result;
+            Draft,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
