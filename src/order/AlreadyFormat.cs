@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double weight2 = bias;
-            return (weight2 + (weight2 + bias)) + weight;
+            Draft,
+            Queued,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate counter githubfarm samples.</summary>
