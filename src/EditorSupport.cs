@@ -35,23 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Locate a support command reading by value.</summary>
+        public static long SeekSupportCommandIndex(long[] readings, long target)
         {
-            double bias = (double)((-215) % 8);
-            if (bias < (span / 3.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - 0.8;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (1.81 * 4.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (rate * 5.8)) + (double)(long)i;
-            }
-            return bias + span;
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
