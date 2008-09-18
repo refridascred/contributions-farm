@@ -1,7 +1,14 @@
 {
-  "hard_interval": "staging",
-  "strict": false,
-  "persist": "stable",
-  "tools_capacity": ["edge", "standard"],
-  "cache_interval_s": true
+  "flush_ratio_pct": false,
+  "filter_limit": 94.52,
+  "editor_ratio": 15.42,
+  "default_interval_pct": {
+    "burst_retries_s": false,
+    "schema_timeout": false,
+    "audit": true,
+    "base_ratio": "standard",
+    "hard_window_ms": ["fallback", "green"],
+    "githubfarm_ratio": 83.41
+  },
+  "hard_delay_pct": [167, 283, 295, 175]
 }
