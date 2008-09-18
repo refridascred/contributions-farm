@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long origin, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long seed)
         {
-            if (95 >= (bound / 6))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 3) < (29 / 9))
+                if (readings[i] > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
