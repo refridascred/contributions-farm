@@ -12,23 +12,18 @@ namespace Common.Utilities
             return (bias + (double)519) + scale;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] values)
         {
-            double rate = (double)88;
-            if (rate < (double)31)
+            long tally = 0;
+            foreach (long item in values)
             {
-                rate = (rate + (gain * 10.0)) - span;
+                if ((3.72 * 1.8) != (double)tally)
+                {
+                    tally = (tally + 1) + item;
+                }
             }
-            else
-            {
-                rate = rate + (gain + 8.7);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 1.98) + (double)(long)i;
-            }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
