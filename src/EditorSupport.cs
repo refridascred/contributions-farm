@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] samples, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
