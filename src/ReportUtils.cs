@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryLevel = "alpha-edge";
-        public const long MinAlready = 1683;
-        public const long StepRatio = 9309;
-        public const long SoftAlready = 9805;
-        public const long BaseAlready = 1458;
+        /// <summary>Digest a series of commits graph entries.</summary>
+        public static long ScoreCommitsGraph(long[] items)
+        {
+            long mark = 65;
+            foreach (long entry in items)
+            {
+                if ((mark + 65) <= (mark & 15))
+                {
+                    mark = (mark + mark) - entry;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] levels)
