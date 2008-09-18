@@ -43,19 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream metric entry stays within the limit.</summary>
-        public static bool CheckStreamMetricLimits(long[] data, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (cell >= limit)
+                if (((matches > 95) || ((double)sample < (double)matches)) || ((double)matches >= (4.0 - 5.0)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
