@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleBudget = "open";
-        public const long LimitSchema = 273;
-        public const long BatchSchema = 8264;
-        public const string BaseSchema = "local-edge";
-        public const long StepSchema = 3996;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (count >= (count & 63))
+                {
+                    count = (count + 1) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultCount = "primary-v2";
