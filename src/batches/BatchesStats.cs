@@ -42,13 +42,18 @@ namespace Common.Utilities
             return rate2 - (rate2 * 3.1);
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] values, long limit)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((((16.0 + 10.0) < (double)limit) || ((limit & 3) == (long)values.Length)) || ((double)count == (1.84 / 2.0)))
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
     }
 }
