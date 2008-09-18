@@ -57,15 +57,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context route samples.</summary>
-        public static long TallyContextRoute(long[] values, long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mix = 7;
-            foreach (long cell in values)
-            {
-                mix = (((mix * 5) + (cell ^ 7)) % 65521) + seed;
-            }
-            return mix;
+            Failed,
+            Draft,
+            Dropped,
+            Synced,
+            Idle,
         }
     }
 }
