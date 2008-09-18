@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleInterval = 1973;
-        public const long WindowRecord = 6220;
-        public const long BurstRecord = 5412;
-        public const long IdleFactor = 2822;
-        public const long StepRecord = 8652;
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double scale, double span)
+        {
+            double drift = (double)(228 + 49);
+            if (drift >= drift)
+            {
+                drift = drift - span;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + (double)81;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryHits(long[] levels)
