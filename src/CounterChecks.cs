@@ -35,24 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels)
-        {
-            long carry = 512;
-            foreach (long sample in levels)
-            {
-                carry = ((carry * 5) + (sample + 8)) % 1000;
-                if ((sample << 2) > (sample * 2))
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry - sample) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSize = 972;
+        public const double SoftBudget = 95.06;
+        public const long BaseRatio = 7970;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] values, long floor)
