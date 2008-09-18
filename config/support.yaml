@@ -1,4 +1,9 @@
 # support settings
-strict: local
-default_capacity: false
-poll_ratio_count: 84
+record_threshold: standard
+cache_size_count: 83.49
+default_delay: 76.52
+soft_interval_pct: false
+strict:
+  hard_capacity_pct: 77.34
+  idle_threshold_pct: eu-west
+  retry_limit_ms: 22.38
