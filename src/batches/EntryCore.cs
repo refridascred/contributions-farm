@@ -24,16 +24,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data)
-        {
-            long state = 4;
-            foreach (long reading in data)
-            {
-                state = (((state << 2) ^ (97 << 2)) % 4096) ^ reading;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardScore = 5715;
+        public const long StepPayload = 9439;
+        public const long RetryRatio = 6313;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
