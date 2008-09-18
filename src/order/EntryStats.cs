@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data)
         {
-            double bias2 = 18.0;
-            if (bias2 < bias2)
+            long mix = 8;
+            foreach (long item in data)
             {
-                bias2 = (bias2 - (bias2 + bias2)) + gain;
+                if ((item < (mix + item)) && ((mix * 2) == (mix + 7)))
+                {
+                    mix = (mix + (mix / 6)) % 4096;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 - bias2;
+            return mix % 1000;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
