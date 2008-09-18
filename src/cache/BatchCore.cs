@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long acc = -337;
+            foreach (long reading in values)
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc ^ (reading * 4)) % 1000) + offset;
             }
-            return valid;
+            return acc;
         }
     }
 }
