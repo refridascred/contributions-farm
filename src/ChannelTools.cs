@@ -19,18 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] levels, long limit)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally + tally) < (limit * 5))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a tools record.</summary>
