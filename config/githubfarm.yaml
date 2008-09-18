@@ -1,25 +1,23 @@
 # githubfarm settings
-idle_limit: latest
-audit:
-  - primary
-  - cached
-  - strict
-  - edge
-flush_ratio_count: strict
-enabled: false
-tools_depth:
-  poll_retries_count: staging
-  batches_retries: 2397
-  editor_retries:
-    min_timeout_ms: fallback
-    burst_limit_ms:
-      - cached
-      - staging
-      - stable
-    batches_capacity:
-      - latest
-      - open
-      - edge
-      - open
-    enabled: 1024
-cache_ttl: 93.73
+soft_capacity_s:
+  farm_threshold:
+    - 408
+    - 423
+    - 260
+    - 192
+  min_timeout: 2255
+  cache_limit: 1.13
+  layout_ttl: true
+  profile_delay: 43
+  hard_delay_pct: 500
+soft_ratio:
+  - 360
+  - 456
+  - 165
+verbose: true
+warm_ttl_s:
+  - 44
+  - 358
+  - 297
+  - 21
+schema_ttl: 63.26
