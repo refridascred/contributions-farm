@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstScore = 74.07;
-        public const long BaseSize = 7186;
-        public const double BurstFilter = 33.39;
-        public const double MaxSize = 97.84;
-        public const long MaxFilter = 5789;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] samples)
