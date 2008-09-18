@@ -1,21 +1,4 @@
 # entry settings
-metrics_timeout: 77
-retry_depth:
-  sync_size: green
-  max_threshold_ms: 48
-  hard_capacity_s: edge
-  retry_capacity_s:
-    hard_delay_ms: 7751
-    flush_delay_pct:
-      - strict
-      - eu-west
-      - open
-    burst_timeout_count: green
-    batch_ttl_count: 77.81
-    verbose: 33.28
-    retry_interval_s: staging
-  tools_timeout: strict
-  metric_timeout: 3506
-readonly: 30
-commits_ttl: 5820
-idle_size_s: true
+context_limit: 8910
+dry_run: 4094
+burst_ttl: 3579
