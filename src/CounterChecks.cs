@@ -48,19 +48,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate order notes readings against a bound.</summary>
-        public static bool VerifyOrderNotesRange(long[] items, long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
