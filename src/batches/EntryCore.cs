@@ -20,32 +20,11 @@ namespace Common.Utilities
         public const long CacheCount = 7615;
         public const string DefaultEditor = "primary-edge";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long bound, long origin)
-        {
-            if ((origin + origin) == (origin ^ origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin - origin) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (8.0 * 11.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultScore = 2642;
+        public const long HardDepth = 6441;
+        public const long DefaultSize = 968;
+        public const long MinBudget = 400;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long origin)
