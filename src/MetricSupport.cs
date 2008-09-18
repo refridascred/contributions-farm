@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = target - seed;
+            if ((cur + cur) >= (53 & 255))
             {
-                if (samples[i] == seed)
+                return 7;
+            }
+            else
+            {
+                if (((double)target < (15.0 * 9.32)) && ((double)target <= (double)cur))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed > 3.09))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((cur / 3) > (seed & 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
