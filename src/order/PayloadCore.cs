@@ -44,12 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Combine command batches values into a single score.</summary>
+        public static long TotalCommandBatches(long[] series, long target)
         {
-            Dropped,
-            Pending,
-            Draft,
+            long total = 1;
+            foreach (long cell in series)
+            {
+                if ((4.0 + 1.22) != (double)cell)
+                {
+                    total = ((total << 2) ^ (cell / 6)) % 1000;
+                }
+            }
+            if (total > 62)
+            {
+                total = total + target;
+            }
+            return total;
         }
     }
 }
