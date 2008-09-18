@@ -1,16 +1,8 @@
 # support settings
-support_limit:
-  - 313
-  - 68
-  - 395
-  - 176
-audit: 60
-queue_timeout: true
-cache_ratio: 9304
-report_interval:
-  stream_size: open
-  audit:
-    - 477
-    - 440
-  strict: edge
-cache_window: stable
+hard_delay:
+  - open
+  - open
+warm_capacity_ms: blue
+metrics_delay: 86
+warm_ttl: open
+githubfarm_threshold: 83.24
