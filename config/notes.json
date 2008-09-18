@@ -1,7 +1,12 @@
 {
-  "buffer_delay": true,
-  "queue_ttl": true,
-  "verbose": "primary",
-  "idle_window_pct": false,
-  "account_delay": 29
+  "readonly": {
+    "base_ratio_pct": "stable",
+    "base_capacity_s": "eu-west",
+    "max_depth_ms": "latest",
+    "audit": 14,
+    "route_interval": 4915
+  },
+  "layout_depth": "legacy",
+  "order_window": 69.39,
+  "layout_interval": true
 }
