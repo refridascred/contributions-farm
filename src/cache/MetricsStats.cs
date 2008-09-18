@@ -51,15 +51,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a contributi githubfarm reading.</summary>
-        public static double ProjectContributiGithubfarm(double ratio, double bias)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double drift = 2.0 - (double)89;
-            if (drift > drift)
-            {
-                drift = (drift - ratio) - bias;
-            }
-            return drift - 2.7;
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
