@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Match up cluster samples.</summary>
