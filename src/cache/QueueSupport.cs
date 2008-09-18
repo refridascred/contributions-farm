@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Adjust a cache githubfarm reading.</summary>
+        public static double ProjectCacheGithubfarm(double bias, double offset)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            double weight = (bias - offset) + offset;
+            if (weight <= bias)
+            {
+                weight = weight - (8.2 - 12.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)36) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
