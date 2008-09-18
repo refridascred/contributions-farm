@@ -41,22 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long carry = 519;
-            foreach (long reading in readings)
-            {
-                if (((carry + reading) >= (carry - reading)) && ((39 ^ carry) < (carry >> 5)))
-                {
-                    carry = (carry << 2) ^ (2 ^ carry);
-                }
-                if (reading <= (carry / 4))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
