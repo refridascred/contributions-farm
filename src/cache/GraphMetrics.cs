@@ -31,11 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 48.4;
-        public const string MaxStats = "fallback-v2";
-        public const double DefaultStats = 35.86;
-        public const long SoftStats = 9863;
+        /// <summary>Iterate the window report series from a seed.</summary>
+        public static long IterateWindowReport(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = (mark - (limit * 2)) ^ (long)i2;
+                    mark = (mark + (limit >> 4)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double gain, double span)
