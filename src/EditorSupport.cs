@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long sum = 7;
+            foreach (long value in values)
             {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (((sum - sum) % 65521) - value) + limit;
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Locate a support command reading by value.</summary>
