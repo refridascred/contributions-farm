@@ -16,21 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of format metric readings.</summary>
-        public static long OverlapFormatMetricCount(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 41;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(bound < 4))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (entry * 3)) % 97;
+                }
+                if ((double)bound >= (4.3 - 6.64))
+                {
+                    acc = (acc - (bound ^ (-858))) % 4096;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
