@@ -35,17 +35,13 @@ namespace Common.Utilities
             return ((mean - (double)7) + weight) + offset;
         }
 
-        /// <summary>Look up the position of a stream session sample.</summary>
-        public static long LocateStreamSessionIndex(long[] series, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the notes cache series from a seed.</summary>
