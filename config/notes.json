@@ -1,5 +1,11 @@
 {
-  "compress": 25,
-  "hard_interval_pct": "latest",
-  "sync_delay_count": "stable"
+  "burst_ttl": "strict",
+  "soft_threshold": "local",
+  "soft_window_s": "fallback",
+  "verbose": {
+    "cache_size": [173, 228, 281],
+    "command_depth": "strict",
+    "token_depth": "open"
+  },
+  "idle_interval": 67.87
 }
