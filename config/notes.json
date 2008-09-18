@@ -1,8 +1,8 @@
 {
-  "dry_run": "fallback",
-  "schema_retries": 8148,
-  "soft_timeout_s": 100,
-  "buffer_ttl": 33.83,
-  "max_delay_pct": ["cached", "stable"],
-  "warm_ratio": ["latest", "eu-west", "standard"]
+  "base_limit": true,
+  "already_threshold": 37.56,
+  "stream_depth": false,
+  "hard_size_s": ["standard", "green", "strict"],
+  "stream_window": 49,
+  "farm_timeout": "blue"
 }
