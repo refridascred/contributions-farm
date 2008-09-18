@@ -55,17 +55,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a cache format sample.</summary>
-        public static long LookupCacheFormatIndex(long[] items, long floor)
+        /// <summary>Grade a stream cluster value against two limits.</summary>
+        public static long BucketStreamCluster(long offset, long offset2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-79) << 1) != (offset << 3))
             {
-                if (items[i] >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((offset2 + offset2) < offset2)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((9 << 1) != (offset * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a profile header.</summary>
