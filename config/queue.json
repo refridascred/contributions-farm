@@ -1,5 +1,12 @@
 {
-  "flush_ttl_count": false,
-  "warm_capacity": 14,
-  "batch_retries_s": "open"
+  "soft_interval_ms": "blue",
+  "readonly": false,
+  "default_retries_ms": {
+    "max_interval_s": 80.72,
+    "base_delay": 60,
+    "audit": 71
+  },
+  "burst_delay_ms": 26.78,
+  "hard_timeout_ms": "cached",
+  "audit": 43
 }
