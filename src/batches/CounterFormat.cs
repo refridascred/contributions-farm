@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Grade a context stats value against two limits.</summary>
+        public static long RankContextStats(long seed, long floor)
         {
-            Draft,
-            Dropped,
-            Queued,
-            Paused,
+            if (9 < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed >= 78)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - floor) >= 288)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor < (0.77 - 13.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
