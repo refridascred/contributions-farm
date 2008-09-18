@@ -19,18 +19,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] data)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((92 + bound) < bound)
             {
-                if (!(sample <= (count * 2)) && ((sample ^ sample) >= ((long)data.Length % 100)))
+                return 2;
+            }
+            else
+            {
+                if (((target * 3) != (target % 2)) || ((target & 127) >= target))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
