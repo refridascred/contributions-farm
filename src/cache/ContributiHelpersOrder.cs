@@ -24,11 +24,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Compare every pair of counter layout readings.</summary>
+        public static long OverlapCounterLayoutCount(long[] samples)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
