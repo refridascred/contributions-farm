@@ -1,6 +1,6 @@
 # githubfarm settings
-graph_interval: 4142
-command_ttl: 12.14
-persist: 97
-readonly: local
-default_depth_count: stable
+base_retries: 83.05
+enabled: 26.3
+warm_capacity_ms: 62.23
+farm_window: 8460
+warm_window_s: 60
