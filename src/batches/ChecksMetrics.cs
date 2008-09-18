@@ -15,13 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long CountBatchCacheOutliers(long[] readings)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 97) <= (sample + sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
