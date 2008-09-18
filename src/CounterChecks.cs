@@ -50,13 +50,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long floor)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
