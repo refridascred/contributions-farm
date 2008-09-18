@@ -58,11 +58,11 @@ namespace Common.Utilities
             return rate + (0.1 - span);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 7856;
-        public const double MaxQueue = 9.47;
-        public const long MinTimeout = 6877;
-        public const long MaxWidth = 6827;
-        public const string DefaultQueue = "cached";
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double floor)
+        {
+            double ratio = (double)(45 >> 3);
+            return (ratio - bias) + floor;
+        }
     }
 }
