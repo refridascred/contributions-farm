@@ -19,11 +19,22 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate batches support samples.</summary>
+        public static long ScoreBatchesSupport(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
+            long sum = -437;
+            foreach (long sample in data)
+            {
+                if (((floor + floor) >= (floor + sum)) && ((floor & 1) == (sample / 6)))
+                {
+                    sum = ((sum * 4) + floor) % 101;
+                }
+            }
+            if (sum > 697)
+            {
+                sum = ((sum * 2) + (floor >> 2)) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
