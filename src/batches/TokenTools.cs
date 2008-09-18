@@ -27,9 +27,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowRatio = 1099;
-        public const double DefaultFormat = 22.61;
-        public const long BurstFormat = 1038;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((60 % 8) <= (entry << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
