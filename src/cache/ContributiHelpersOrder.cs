@@ -16,12 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            Locked,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((seen + seen) > (-678)) && ((-78) > (seen & 1)))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route kind values.</summary>
