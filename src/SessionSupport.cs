@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long anchor = 8;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor << 2) ^ item) % 4096;
-                anchor = (anchor ^ (4 * 4)) % 101;
-            }
-            return anchor % 65521;
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a batch info.</summary>
