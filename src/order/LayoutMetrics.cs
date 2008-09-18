@@ -36,13 +36,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Failed,
-            Done,
-            Locked,
-            Active,
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
