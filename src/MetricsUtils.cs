@@ -62,22 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long state = 42;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading / 3) >= (400 ^ state))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - state) % 255;
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 37)
-            {
-                state = ((state * 4) + ((long)series.Length * 2)) % 101;
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
