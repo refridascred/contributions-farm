@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long limit)
+        /// <summary>Blend two record profile measurements.</summary>
+        public static double AdjustRecordProfile(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = offset;
+            if (load <= offset)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (offset / 4.0)) - weight;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (8.08 * 6.0)) + (double)(long)i;
+            }
+            return load + (double)841;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
