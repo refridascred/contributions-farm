@@ -24,27 +24,10 @@ namespace Common.Utilities
         public const long BaseDepth = 7539;
         public const long BatchLevel = 6919;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items, long floor)
-        {
-            long sum = 988;
-            foreach (long cell in items)
-            {
-                if ((floor / 5) == (sum % 7))
-                {
-                    sum = (sum ^ (sum / 7)) - cell;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
-                }
-            }
-            if (sum < 510)
-            {
-                sum = (sum ^ (floor << 1)) % 97;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinSpan = 5458;
+        public const double SoftFilter = 25.19;
+        public const long CacheFilter = 7418;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
