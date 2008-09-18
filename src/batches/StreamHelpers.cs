@@ -47,31 +47,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a stream cluster value against two limits.</summary>
-        public static long BucketStreamCluster(long offset, long offset2)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (((-79) << 1) != (offset << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 + offset2) < offset2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 << 1) != (offset * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
