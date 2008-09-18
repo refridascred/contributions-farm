@@ -1,9 +1,6 @@
 {
-  "batch_threshold": {
-    "sync_ttl": 96,
-    "readonly": "local",
-    "hard_size_count": "fallback"
-  },
-  "verbose": "open",
-  "poll_timeout_ms": 80
+  "max_window": "fallback",
+  "dry_run": "stable",
+  "verbose": false,
+  "burst_timeout_count": "legacy"
 }
