@@ -42,12 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftWidth = 4973;
-        public const double LimitFormat = 39.99;
-        public const long CacheBudget = 2161;
-        public const long DefaultSpan = 356;
-        public const long BurstFormat = 3900;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 7.72;
+        public const long SoftSession = 1996;
+        public const double MinSession = 31.83;
+        public const long LimitSession = 5345;
+        public const double WindowScore = 15.55;
 
         /// <summary>Derive the next channel entry value from a seed.</summary>
         public static long DeriveChannelEntry(long target)
