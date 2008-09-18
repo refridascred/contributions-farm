@@ -58,10 +58,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "open-v2";
-        public const long HardStream = 3623;
-        public const long DefaultSpan = 3001;
-        public const long CacheDepth = 8925;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseScore = 6752;
+        public const string HardFarm = "local-edge";
+        public const long IdleFarm = 643;
+        public const double BurstSize = 64.66;
     }
 }
