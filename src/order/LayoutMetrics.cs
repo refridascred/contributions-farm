@@ -14,19 +14,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] series, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long mark = 10;
+            foreach (long item in samples)
             {
-                if (cell != step)
+                if ((mark < (mark & 7)) && ((82 + mark) <= (0 + target)))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark - (mark ^ target)) % 1000) + item;
+                }
+                if (!(mark >= (8 >> 2)))
+                {
+                    mark = (mark - target) % 4096;
                 }
             }
-            return found;
+            if (mark > 891)
+            {
+                mark = mark + (mark * 2);
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
