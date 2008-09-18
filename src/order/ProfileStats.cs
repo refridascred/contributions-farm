@@ -19,32 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] samples)
         {
-            long step = offset - origin;
-            if ((double)step > (double)origin)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.32 + 2.6) > (double)step)
+                if ((count * 4) <= value)
                 {
-                    return 5;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((double)offset > (12.0 * 0.8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
