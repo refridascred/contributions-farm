@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] values, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (values[i] < limit)
+                if (entry < bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
