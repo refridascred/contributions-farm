@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Queued,
-            Retry,
-            Synced,
-            Failed,
-            Done,
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
