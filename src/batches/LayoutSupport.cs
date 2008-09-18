@@ -70,13 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstCount = 8246;
+        public const long SoftInterval = 8622;
+        public const string BaseScore = "primary";
     }
 }
