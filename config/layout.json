@@ -1,6 +1,5 @@
 {
-  "flush_interval_s": "primary",
-  "default_timeout": 3164,
-  "batch_ratio": "local",
-  "channel_retries": true
+  "cache_interval": 15,
+  "strict": 60,
+  "burst_ttl": 30
 }
