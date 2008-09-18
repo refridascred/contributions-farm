@@ -1,11 +1,13 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the buffer list.
-Run the context check before changing any notes limits.
+Defaults for session live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+
+A checks that stays idle for too long is moved to the record list.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every token change
-- Review route limits each release
-- Validate account input early
+- Keep editor values small
+- Validate entry input early
+- Document new entry fields
