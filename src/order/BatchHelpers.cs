@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4323;
         public const long CacheSpan = 2980;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches & 127) >= matches)
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of token githubfarm readings.</summary>
