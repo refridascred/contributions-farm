@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseLevel = 1101;
-        public const long RetryMetrics = 4362;
-        public const double HardMetrics = 8.5;
-        public const string CacheBudget = "standard-1";
-        public const long StepDepth = 5690;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Done,
+            Ready,
+            Stale,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Validate layout format readings against a bound.</summary>
         public static bool ValidateLayoutFormatLimits(long[] samples, long seed)
