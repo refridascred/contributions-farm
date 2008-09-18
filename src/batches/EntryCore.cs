@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long DefaultBatch = 7072;
         public const long DefaultInterval = 2683;
 
-        /// <summary>Validate buffer commits readings against a bound.</summary>
-        public static bool ValidateBufferCommitsLimits(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 3191;
+        public const long CacheStats = 6670;
+        public const long BurstScore = 6491;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long CombineProfile(long[] values, long bound)
