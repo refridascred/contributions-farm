@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long CountFormatWindowMatches(long[] readings)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)tally <= 3.28)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Adjust a stats reading.</summary>
