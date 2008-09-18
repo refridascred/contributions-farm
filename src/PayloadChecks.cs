@@ -69,11 +69,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double gain, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            double ratio = offset * 7.3;
-            return (ratio - (double)54) + gain;
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((92 >> 3) >= count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
