@@ -60,36 +60,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 3;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = ((anchor - 9) % 1000) + (long)i;
-                    anchor = (anchor << 2) ^ (datum + datum);
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    long bound = anchor;
-                    anchor = (anchor + bound) + (long)i2;
-                }
-                if (!(9.6 >= (double)anchor))
-                {
-                    anchor = (anchor - (5 - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - datum) % 1000;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = ((anchor * 4) + (anchor + 3)) % 65521;
-            }
-            return anchor % 4096;
+            Done,
+            Retry,
+            Stale,
+            New,
+            Queued,
         }
     }
 }
