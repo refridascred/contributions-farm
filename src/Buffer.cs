@@ -34,19 +34,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result ^ (target % 10)) % 65521) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
