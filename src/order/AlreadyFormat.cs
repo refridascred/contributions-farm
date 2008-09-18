@@ -33,19 +33,32 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] levels, long floor)
+        /// <summary>Classify a entry notes pair into a bucket.</summary>
+        public static long ClassifyEntryNotes(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long gap = bound ^ bound2;
+            if (bound2 > (57 * 4))
             {
-                if (value < floor)
+                return 0;
+            }
+            else
+            {
+                if ((gap & 1) < (gap % 2))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound2 % 7) < (gap / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the commits mode values.</summary>
