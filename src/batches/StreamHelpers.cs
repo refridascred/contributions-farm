@@ -55,14 +55,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            New,
-            Failed,
-            Paused,
-            Queued,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen ^ entry) != (entry * 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
