@@ -48,15 +48,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two profile stats measurements.</summary>
-        public static double SmoothProfileStats(double scale, double offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            double mean = (12.0 + scale) - (double)3;
-            if (mean <= (mean - mean))
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean + 3.6) - offset;
+                result = result ^ offset;
+                result = (result ^ ((long)i / 5)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mean + scale;
+            return result;
         }
 
         /// <summary>Fold a list of window readings.</summary>
