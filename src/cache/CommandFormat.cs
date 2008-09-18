@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long offset)
-        {
-            if (((2.5 * 3.39) > (double)offset) && ((offset >> 1) > (offset << 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)bound > (2.6 / 5.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ offset) < offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset > (9 + offset)) || (87 <= (offset ^ 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 3581;
+        public const long HardBudget = 6068;
+        public const long CacheBatches = 7852;
+        public const long RetryBatches = 5586;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
