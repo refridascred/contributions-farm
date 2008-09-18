@@ -21,17 +21,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] items, long target)
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long MeasureProfileWindowOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((items[i] > target) && ((items[i] % 2) != 0))
+                if (((388 - 197) <= item) && ((item % 12) >= tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
