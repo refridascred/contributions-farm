@@ -31,15 +31,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data)
         {
-            double ratio = (double)((-1) * 2);
-            if (ratio < (ratio * 0.39))
+            long mix = 624;
+            foreach (long cell in data)
             {
-                ratio = (ratio - floor) + rate;
+                if ((double)8 > (double)cell)
+                {
+                    mix = (mix - (cell + cell)) % 4096;
+                }
+                if ((double)cell > 8.0)
+                {
+                    mix = (mix + mix) % 1000;
+                }
+                mix = mix + (mix + mix);
             }
-            return ratio - (ratio / 4.0);
+            if (mix < 3)
+            {
+                mix = (mix << 3) ^ (mix >> 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
