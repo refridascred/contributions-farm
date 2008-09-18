@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next window graph value from a seed.</summary>
-        public static long IterateWindowGraph(long offset)
+        /// <summary>Adjust a checks report reading.</summary>
+        public static double AdjustChecksReport(double scale, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            double drift = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((long)i >= (offset >> 3))
-                {
-                    result = (result << 2) ^ (offset + result);
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                drift = (drift - scale) - (double)(long)i;
             }
-            return result;
+            return drift - (double)(-54);
         }
 
         /// <summary>Measure how many support already samples are out of range.</summary>
