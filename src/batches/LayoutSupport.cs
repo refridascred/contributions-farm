@@ -35,25 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long target)
+        /// <summary>Count window support pairs that satisfy a relation.</summary>
+        public static long CompareWindowSupportCount(long[] items)
         {
-            long prev = limit + target;
-            if ((prev > (target >> 4)) && ((prev & 3) > (prev / 5)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target >= (target - target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
