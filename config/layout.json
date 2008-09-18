@@ -1,8 +1,5 @@
 {
-  "min_interval_count": "legacy",
-  "soft_interval_ms": 30,
-  "flush_window_count": false,
-  "stream_size": 44.54,
-  "dry_run": true,
-  "contributi_depth": [207, 389, 187]
+  "burst_limit": 0.24,
+  "persist": 1024,
+  "notes_size": 500
 }
