@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] series, long target)
         {
-            Queued,
-            Failed,
-            Stale,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a profile header.</summary>
