@@ -1,14 +1,8 @@
 {
-  "persist": false,
-  "notes_capacity": "edge",
-  "soft_window_ms": {
-    "hard_size_s": "cached",
-    "batch_size_s": true,
-    "default_retries_count": 49.25,
-    "hard_retries": 57,
-    "retry_depth": 60
-  },
-  "dry_run": 1024,
-  "readonly": 40.14,
-  "strict": "cached"
+  "sync_depth_count": 13.69,
+  "dry_run": ["local", "cached", "edge", "cached"],
+  "enabled": "local",
+  "base_interval": "fallback",
+  "audit": ["legacy", "blue", "open"],
+  "layout_delay": 401
 }
