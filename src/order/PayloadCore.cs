@@ -13,27 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Measure how many editor tools samples are out of range.</summary>
+        public static long CountEditorToolsGaps(long[] values)
         {
-            long mix = 624;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)8 > (double)cell)
+                if (seen <= (reading - seen))
                 {
-                    mix = (mix - (cell + cell)) % 4096;
+                    seen = seen + 2;
                 }
-                if ((double)cell > 8.0)
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                mix = mix + (mix + mix);
             }
-            if (mix < 3)
-            {
-                mix = (mix << 3) ^ (mix >> 2);
-            }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
