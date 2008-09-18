@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
