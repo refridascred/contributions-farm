@@ -91,15 +91,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long carry = -66;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + carry) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return tally;
         }
     }
 }
