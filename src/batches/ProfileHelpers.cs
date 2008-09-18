@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((hits + datum) > hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
