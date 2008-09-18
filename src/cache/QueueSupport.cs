@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
