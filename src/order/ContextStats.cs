@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] values, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long score = 7;
+            foreach (long datum in data)
             {
-                if (!((bound >> 3) > 339))
+                score = (score ^ ((long)data.Length ^ 212)) ^ datum;
+                if (8.24 > (double)score)
                 {
-                    tally = (tally + 1) + sample;
+                    score = (score ^ (score * 5)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 255;
                 }
             }
-            return tally;
+            if (score > 130)
+            {
+                score = ((score << 2) ^ score) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
