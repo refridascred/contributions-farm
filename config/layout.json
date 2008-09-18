@@ -1,7 +1,5 @@
 {
-  "dry_run": 62.23,
-  "soft_retries": "cached",
-  "channel_depth": [191, 304, 408, 244],
-  "audit": 96,
-  "order_window": ["standard", "blue"]
+  "warm_threshold_s": 49.17,
+  "warm_capacity": "cached",
+  "sync_window_count": ["local", "latest", "open", "local"]
 }
