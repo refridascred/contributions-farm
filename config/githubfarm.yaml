@@ -1,9 +1,4 @@
 # githubfarm settings
-burst_window:
-  - 421
-  - 70
-  - 305
-  - 200
-retry_interval: false
-poll_ratio_pct: 78.63
-batch_ratio_s: 80.77
+poll_retries: 94
+batch_window_ms: latest
+soft_window_count: false
