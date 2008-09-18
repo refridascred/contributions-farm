@@ -1,5 +1,7 @@
 {
-  "min_threshold_ms": "blue",
-  "flush_capacity_pct": 74,
-  "soft_interval_ms": "strict"
+  "max_size_s": 1024,
+  "token_timeout": "fallback",
+  "idle_timeout": 52,
+  "flush_threshold_ms": ["local", "eu-west"],
+  "token_ttl": true
 }
