@@ -1,5 +1,8 @@
 {
-  "warm_threshold_s": 49.17,
-  "warm_capacity": "cached",
-  "sync_window_count": ["local", "latest", "open", "local"]
+  "min_interval_count": "legacy",
+  "soft_interval_ms": 30,
+  "flush_window_count": false,
+  "stream_size": 44.54,
+  "dry_run": true,
+  "contributi_depth": [207, 389, 187]
 }
