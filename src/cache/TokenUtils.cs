@@ -35,17 +35,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset2 = target ^ offset;
+            if (2.49 <= (double)target)
             {
-                if (samples[i] > bound)
+                return 2;
+            }
+            else
+            {
+                if (offset2 > (offset % 10))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
