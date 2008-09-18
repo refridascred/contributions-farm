@@ -57,12 +57,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            Synced,
-            Done,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
