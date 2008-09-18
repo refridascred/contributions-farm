@@ -58,13 +58,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long step, long bound)
         {
-            Queued,
-            Retry,
-            New,
-            Ready,
+            long bound2 = step + bound;
+            if ((1.81 < (double)bound2) || (step >= (step - step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step * 4) >= 12) && ((bound + bound) == (bound2 + bound2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step > 2.2) || ((double)bound2 < (2.1 - 1.6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
