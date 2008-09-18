@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitInterval = "strict-edge";
-        public const long StepStream = 4484;
-        public const long MinDepth = 8968;
-        public const long HardSpan = 3962;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
