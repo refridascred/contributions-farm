@@ -1,5 +1,9 @@
 {
-  "max_ratio_s": [86, 423, 482, 340],
-  "profile_window": "primary",
-  "cache_threshold": [4, 332, 104]
+  "base_threshold": "staging",
+  "editor_capacity": {
+    "dry_run": false,
+    "checks_threshold": ["local", "standard"],
+    "window_interval": 16
+  },
+  "warm_limit": 15
 }
