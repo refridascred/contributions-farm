@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] samples)
         {
-            long result = -957;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                result = ((result ^ (result * 2)) % 101) ^ datum;
-                result = (result - (result / 3)) % 65521;
-                if (result <= (20 % 60))
+                if ((682 - item) != (item >> 1))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
