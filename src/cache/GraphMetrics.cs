@@ -61,21 +61,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 3)
+                    if ((samples[i] - samples[j]) > 6)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
