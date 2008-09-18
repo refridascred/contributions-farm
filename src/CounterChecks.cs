@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series, long offset)
         {
-            Locked,
-            Failed,
-            Closed,
+            long state = 9;
+            foreach (long datum in series)
+            {
+                state = (((state << 2) ^ datum) % 255) - offset;
+                if ((double)state < (2.41 / 2.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
