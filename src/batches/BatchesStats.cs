@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long AuditReportCacheHits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen - seen) < (entry ^ 8))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
