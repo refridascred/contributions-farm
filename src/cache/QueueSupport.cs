@@ -27,15 +27,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue commits series from a seed.</summary>
-        public static long RollQueueCommits(long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long total = 85;
+            foreach (long value in values)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (value > (7 * 3))
+                {
+                    total = total - (value * 3);
+                }
             }
-            return sum;
+            return total;
         }
     }
 }
