@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every batch batches entry stays within the limit.</summary>
-        public static bool ValidateBatchBatchesLimits(long[] values, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate cache metrics samples.</summary>
