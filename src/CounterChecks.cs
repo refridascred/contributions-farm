@@ -35,19 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = 512;
+            foreach (long sample in levels)
             {
-                if (entry > target)
+                carry = ((carry * 5) + (sample + 8)) % 1000;
+                if ((sample << 2) > (sample * 2))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 3) ^ (carry + carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry - sample) % 255;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Locate a context reading by value.</summary>
