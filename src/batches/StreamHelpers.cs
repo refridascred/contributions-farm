@@ -67,12 +67,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 7.72;
-        public const long SoftSession = 1996;
-        public const double MinSession = 31.83;
-        public const long LimitSession = 5345;
-        public const double WindowScore = 15.55;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Derive the next channel entry value from a seed.</summary>
         public static long DeriveChannelEntry(long target)
