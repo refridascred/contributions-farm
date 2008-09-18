@@ -1,12 +1,11 @@
 # Command notes
 
-Each context is validated before it reaches the commits queue.
-Run the payload check before changing any counter limits.
-The already module keeps account values in sync with the profile cache.
+The graph report groups every payload by channel.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new token fields
-- Validate editor input early
-- Keep githubfarm values small
+- Review queue limits each release
+- Log every cluster change
+- Validate checks input early
+- Keep filter values small
