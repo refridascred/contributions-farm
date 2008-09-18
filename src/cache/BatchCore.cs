@@ -23,17 +23,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a commits githubfarm reading by value.</summary>
-        public static long FindCommitsGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
