@@ -18,19 +18,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of token githubfarm readings.</summary>
-        public static long FoldTokenGithubfarm(long[] levels)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long step)
         {
-            long score = 5;
-            foreach (long datum in levels)
+            if (!((origin & 3) < (origin << 3)))
             {
-                score = score ^ (datum << 1);
+                return 5;
             }
-            if (score > 3)
+            else
             {
-                score = score - 7;
+                if ((938 ^ origin) < (173 & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - origin) < (step / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return score % 4096;
         }
     }
 }
