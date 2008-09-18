@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double bias)
         {
-            Queued,
-            Failed,
-            Ready,
-            Pending,
-            Done,
+            double scale = bias;
+            if (scale > scale)
+            {
+                scale = scale + (ratio * 3.6);
+            }
+            else
+            {
+                scale = scale - (2.8 * 3.6);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (double)8;
         }
 
         /// <summary>Locate a schema already reading by value.</summary>
