@@ -33,19 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            double scale = 10.0 + gain;
-            if (scale >= floor)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + (2.4 * 18.0);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = (((acc * 2) + (seed << 3)) % 101) ^ (long)i2;
+                    acc = (acc + (seed / 9)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + (scale + floor);
+            return acc;
         }
     }
 }
