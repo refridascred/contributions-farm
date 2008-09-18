@@ -66,15 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long acc = 43;
-            foreach (long entry in series)
-            {
-                acc = (((acc ^ (6 % 10)) % 97) ^ entry) + offset;
-            }
-            return acc % 65521;
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
