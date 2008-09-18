@@ -47,22 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] readings, long limit)
+        /// <summary>Measure how many batches support samples are out of range.</summary>
+        public static long AuditBatchesSupportHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((sample % 24) == (263 + limit))
+                if ((0.27 - 1.61) < (double)count)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + entry;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
