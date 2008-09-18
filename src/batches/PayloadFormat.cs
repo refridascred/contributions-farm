@@ -20,19 +20,22 @@ namespace Common.Utilities
             return bias2 + (bias2 * 4.37);
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long carry = 27;
+            foreach (long item in samples)
             {
-                if (item != origin)
+                if (((3.3 * 2.96) <= (double)carry) && ((item ^ floor) >= (630 / 5)))
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ (2 + item);
                 }
             }
-            return valid;
+            if (carry < 1)
+            {
+                carry = (carry - (13 - carry)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a payload stats.</summary>
