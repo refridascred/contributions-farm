@@ -15,18 +15,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (!((double)origin > (4.0 / 9.0)))
             {
-                if ((datum - origin) <= datum)
+                return 4;
+            }
+            else
+            {
+                if (origin2 < (origin / 9))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (80 >= (origin2 ^ origin2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a token command figure with a bias.</summary>
