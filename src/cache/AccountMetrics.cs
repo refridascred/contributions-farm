@@ -48,22 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] values, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long next = floor - floor2;
+            if ((double)floor2 <= (15.0 / 7.0))
             {
-                if (((item + item) < seen) || ((13.0 / 4.0) == (double)offset))
+                return 2;
+            }
+            else
+            {
+                if (((next * 5) <= floor2) || (9.0 <= (double)floor))
                 {
-                    seen = seen + 3;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((next + floor2) != (floor >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
