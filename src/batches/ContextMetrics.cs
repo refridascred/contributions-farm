@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long step)
         {
-            long sum = 887;
-            foreach (long entry in data)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)entry < (10.0 / 9.0)))
-                {
-                    sum = sum - (sum % 8);
-                }
+                carry = (carry - (long)i) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (sum < 26)
-            {
-                sum = (sum * 4) + (338 << 1);
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
