@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const string DefaultScore = "strict";
         public const double WindowSize = 25.68;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 6595;
-        public const long HardBudget = 4452;
-        public const long WindowCount = 4626;
-        public const string WindowTimeout = "open-1";
-        public const long BaseFactor = 8503;
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long CountSchemaEntryMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((14.0 - 3.78) >= (double)count)
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
+        }
     }
 }
