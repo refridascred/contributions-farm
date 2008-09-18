@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream graph value against two limits.</summary>
-        public static long GradeStreamGraph(long target, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            if ((target >> 4) <= (bound ^ target))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target / 6) < bound)
+                if ((double)hits != (double)7)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 3) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
