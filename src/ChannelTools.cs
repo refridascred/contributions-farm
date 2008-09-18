@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of commits graph readings.</summary>
-        public static long DigestCommitsGraph(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] items, long step)
         {
-            long result = 7;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((result ^ sample) <= sample) || (result >= (sample - 7)))
+                if (!((count - 74) < datum) || ((46 + step) > (1 & 127)))
                 {
-                    result = result - 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Project the next batch value.</summary>
