@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
-        {
-            long state = 37;
-            foreach (long value in items)
-            {
-                if (value < (value & 3))
-                {
-                    state = (state - (state + state)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardTimeout = 3284;
+        public const long StepSize = 1716;
+        public const string CacheLayout = "legacy-1";
+        public const long BatchLayout = 5858;
+        public const double MaxBudget = 95.78;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
