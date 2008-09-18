@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long MeasureQueueRecordHits(long[] values)
         {
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((tally / 2) != (94 * 3)) || (((double)844 < (2.2 / 7.0)) && (19 > (item + item))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
