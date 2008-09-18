@@ -38,10 +38,11 @@ namespace Common.Utilities
         public const long LimitSpan = 6862;
         public const string BurstEditor = "cached-1";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 41.75;
-        public const double BaseChannel = 16.8;
-        public const long MaxChannel = 7334;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 6564;
+        public const double StepLevel = 30.73;
+        public const double BurstStats = 25.41;
+        public const long LimitStats = 3998;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
