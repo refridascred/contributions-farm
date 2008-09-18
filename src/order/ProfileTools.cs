@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstSpan = 9142;
-        public const long HardRecord = 7144;
-        public const long SoftSpan = 3658;
-        public const double RetryRatio = 92.42;
-        public const long WindowRecord = 804;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Queued,
+            Dropped,
+            Draft,
+            Ready,
+            Active,
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
