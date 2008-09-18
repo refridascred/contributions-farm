@@ -20,35 +20,28 @@ namespace Common.Utilities
         public const long BurstRoute = 5689;
         public const long MinRoute = 4377;
 
-        /// <summary>Classify a notes stats pair into a bucket.</summary>
-        public static long GradeNotesStats(long seed, long limit)
+        /// <summary>Classify a tools context pair into a bucket.</summary>
+        public static long RankToolsContext(long step, long offset)
         {
-            if (((limit - seed) >= (638 % 60)) && ((limit << 1) <= (limit + limit)))
+            if ((10 % 3) >= offset)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (!((double)seed >= 7.55))
+                if ((step >> 4) > (step - step))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit >> 5) < limit)
+                    if ((offset >> 2) == (597 + step))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        if (((double)seed == (6.73 * 8.0)) && (1 < limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 3;
                     }
                 }
             }
