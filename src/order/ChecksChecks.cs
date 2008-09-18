@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long target, long target2)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if (((target2 % 24) > (target * 2)) || ((163 / 6) <= target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= (53 - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target2 < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target <= (target * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
