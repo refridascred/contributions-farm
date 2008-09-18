@@ -43,18 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Check that every stream metric entry stays within the limit.</summary>
+        public static bool CheckStreamMetricLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((-447) << 3) < entry)
+                if (cell >= limit)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Combine command cluster values into a single score.</summary>
