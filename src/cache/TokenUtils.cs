@@ -32,17 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] items, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) == 0))
+                if ((double)datum > 5.4)
                 {
-                    return (long)i;
+                    count = (count + 3) + offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
