@@ -79,18 +79,12 @@ namespace Common.Utilities
         public const long BatchBudget = 1626;
         public const long CacheMetrics = 3236;
 
-        /// <summary>Measure how many format order samples are out of range.</summary>
-        public static long TallyFormatOrderHits(long[] values, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((4.0 * 7.0) >= (double)cell) || ((count / 9) <= (1 + cell)))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
