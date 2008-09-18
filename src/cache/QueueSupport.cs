@@ -5,31 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long origin)
+        /// <summary>Derive the next tools support value from a seed.</summary>
+        public static long DeriveToolsSupport(long target)
         {
-            if ((origin * 4) > bound)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-828) ^ origin) <= bound)
+                mark = mark ^ (long)i;
+                if ((mark >> 1) <= mark)
                 {
-                    return 1;
+                    mark = (mark - target) % 255;
                 }
                 else
                 {
-                    if ((bound < (bound / 4)) && (origin >= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark + (789 >> 5)) % 1000;
+                    mark = (mark << 2) ^ (target ^ mark);
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
