@@ -24,17 +24,38 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Locate a schema already reading by value.</summary>
-        public static long SeekSchemaAlreadyIndex(long[] data, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset ^ 589) > (target ^ offset))
             {
-                if (data[i] < step)
+                return 5;
+            }
+            else
+            {
+                if (!((target + target) < (offset ^ 50)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (5.6 >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)target == (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of stream editor entries.</summary>
