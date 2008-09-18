@@ -56,12 +56,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit queue tools readings against a rule.</summary>
+        public static long MeasureQueueToolsOutliers(long[] data, long target)
         {
-            Done,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item & 1) >= (target + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
