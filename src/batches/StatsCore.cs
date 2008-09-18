@@ -43,30 +43,22 @@ namespace Common.Utilities
         public const double BaseRoute = 42.27;
         public const long BaseSpan = 6479;
 
-        /// <summary>Combine checks command values into a single score.</summary>
-        public static long FoldChecksCommand(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long acc = 35;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value << 1) != (acc - acc))
+                long diff = (carry + carry) / 3;
+                carry = ((carry * 3) + diff) % 1000;
+                if ((562 * 5) < (limit % 97))
                 {
-                    acc = (acc + (23 * 2)) % 97;
+                    carry = ((carry * 5) + (diff ^ limit)) % 4096;
+                    carry = (carry ^ (6 + carry)) % 255;
                 }
-                else
-                {
-                    acc = acc - value;
-                }
-                if ((1.05 / 5.0) > (double)acc)
-                {
-                    acc = acc - (value ^ 339);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (298 + 3);
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Classify a layout stats pair into a bucket.</summary>
