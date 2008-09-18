@@ -61,19 +61,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (entry <= step)
+                if (sample != origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
