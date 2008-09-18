@@ -67,29 +67,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long seed)
+        /// <summary>Grade a schema record value against two limits.</summary>
+        public static long BucketSchemaRecord(long step, long floor)
         {
-            long lane = limit ^ seed;
-            if ((lane ^ seed) != (limit % 7))
+            if (((double)step >= (double)68) && (floor >= (floor * 5)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((0.83 * 7.0) != (double)limit)
+                if (((step / 2) != (floor / 7)) || ((step & 255) < floor))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (((8 >> 4) <= seed) || ((8.0 * 18.0) >= (double)seed))
+                    if ((step + 658) < (floor >> 1))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        return 0;
                     }
                 }
             }
