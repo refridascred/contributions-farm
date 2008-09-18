@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long bound, long bound2)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            long prev = bound ^ bound2;
-            if (prev <= 71)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev / 3) <= (71 - 774))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
