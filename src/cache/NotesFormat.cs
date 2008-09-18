@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a context layout reading by value.</summary>
-        public static long LookupContextLayoutIndex(long[] series, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = span;
+            return (bias + (double)519) + scale;
         }
 
         /// <summary>Adjust a format reading.</summary>
