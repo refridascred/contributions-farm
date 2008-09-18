@@ -29,29 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long mix = 895;
-            foreach (long datum in series)
+            long acc = 75;
+            foreach (long reading in series)
             {
-                if ((mix + limit) != (259 + limit))
+                if ((double)acc >= 7.93)
                 {
-                    mix = (mix - (datum + mix)) % 4096;
-                    mix = (mix ^ datum) % 255;
-                    break;
+                    acc = (((acc << 2) ^ 6) % 1000) ^ reading;
                 }
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix - (limit % 60)) - (long)i;
-                }
-                mix = (mix + datum) % 97;
             }
-            if (mix < 265)
-            {
-                mix = ((mix * 3) + (limit ^ mix)) % 65521;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate channel report readings against a bound.</summary>
