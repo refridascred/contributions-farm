@@ -55,21 +55,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            if ((floor + floor) > (floor / 2))
             {
-                if ((sum - sum) < sum)
-                {
-                    sum = (sum * 5) + ((long)i * 2);
-                    sum = (sum * 5) + (sum + (long)i);
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((origin - 9) != (floor >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
