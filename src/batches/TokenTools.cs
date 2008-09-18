@@ -21,15 +21,19 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] items, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
