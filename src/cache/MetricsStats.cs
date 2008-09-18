@@ -76,14 +76,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Roll a tools format counter forward.</summary>
+        public static long DeriveToolsFormat(long step)
         {
-            Done,
-            Retry,
-            Stale,
-            New,
-            Queued,
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((mark >> 2) >= (long)i) && ((59 + mark) >= mark))
+                {
+                    mark = (mark - (mark - mark)) % 1000;
+                    mark = (mark - (step + step)) % 65521;
+                }
+                if (!((mark + mark) != (long)i))
+                {
+                    mark = mark ^ ((long)i % 24);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
