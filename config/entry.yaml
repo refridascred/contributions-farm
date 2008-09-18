@@ -1,4 +1,6 @@
 # entry settings
-order_ratio: open
-max_interval_count: 34
-sync_window: 89
+warm_delay_pct: blue
+tools_size: 250
+verbose: false
+hard_size: false
+batch_size_s: 95
