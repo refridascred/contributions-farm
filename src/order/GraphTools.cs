@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double RetrySpan = 65.28;
         public const long RetryBudget = 7004;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value ^ tally) < 633)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a already reading by value.</summary>
