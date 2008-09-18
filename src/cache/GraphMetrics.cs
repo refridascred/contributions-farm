@@ -14,20 +14,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of report schema entries.</summary>
-        public static long WeighReportSchema(long[] series, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long floor)
         {
-            long sum = 84;
-            foreach (long datum in series)
+            long delta = target + floor;
+            if ((6.89 - 0.9) > (double)delta)
             {
-                double ratio = (17.0 * 9.5) - (double)limit;
-                if (!((ratio + 6.1) <= (ratio + ratio)))
-                {
-                    sum = (sum + datum) % 101;
-                }
-                sum = (sum + (limit << 2)) % 97;
+                return 2;
             }
-            return sum % 97;
+            else
+            {
+                if ((double)delta <= 9.95)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (0 > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
