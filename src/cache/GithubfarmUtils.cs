@@ -37,12 +37,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] readings, long limit)
         {
-            Pending,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally % 16) > (limit << 3))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
