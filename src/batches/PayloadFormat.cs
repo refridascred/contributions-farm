@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double bias)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            double ratio = (7.0 * 5.86) / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio + (ratio * 4.0)) + (double)(long)i) + rate;
+            }
+            return ratio + (bias + 6.0);
         }
 
         /// <summary>Measure how many queue record samples are out of range.</summary>
