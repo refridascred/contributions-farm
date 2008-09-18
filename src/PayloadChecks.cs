@@ -35,12 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] data, long target)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
