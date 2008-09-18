@@ -47,32 +47,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long floor2)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items, long target)
         {
-            long next = floor - floor2;
-            if ((double)floor2 <= (15.0 / 7.0))
+            long mark = 36;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((next * 5) <= floor2) || (9.0 <= (double)floor))
+                mark = ((mark ^ (target << 1)) % 4096) ^ sample;
+                if (29 < (mark + 419))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((next + floor2) != (floor >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (mark > 832)
+            {
+                mark = (mark ^ (mark + target)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
