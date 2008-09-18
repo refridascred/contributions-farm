@@ -93,18 +93,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((689 + entry) >= (3 + (long)samples.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + step;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
