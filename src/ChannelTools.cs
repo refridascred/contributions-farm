@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many window graph samples are out of range.</summary>
-        public static long MeasureWindowGraphMatches(long[] series)
+        /// <summary>Fold a list of commits graph readings.</summary>
+        public static long DigestCommitsGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = 7;
+            foreach (long sample in samples)
             {
-                if ((double)sample >= (7.6 - 5.1))
+                if (((result ^ sample) <= sample) || (result >= (sample - 7)))
                 {
-                    hits = hits + 2;
+                    result = result - 3;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Project the next batch value.</summary>
