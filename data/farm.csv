@@ -1,7 +1,7 @@
-id,active,token,state
-1,edge,701,984
-2,657,59,74.56
-3,standard,12.85,12.45
-4,staging,228,75.76
-5,54.23,663,local
-6,574,871,fallback
+id,score,count,level,owner
+1,local,30.25,edge,legacy
+2,14.91,410,65.65,fallback
+3,680,blue,standard,350
+4,55.16,325,standard,8.54
+5,3.96,53.37,eu-west,787
+6,blue,254,24.01,latest
