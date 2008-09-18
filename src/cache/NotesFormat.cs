@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double span)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            double bias = span;
-            return (bias + (double)519) + scale;
+            double load = gain;
+            return (load - (double)934) + offset;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
