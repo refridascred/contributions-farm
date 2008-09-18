@@ -39,17 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long bound)
+        /// <summary>Accumulate already format samples.</summary>
+        public static long TotalAlreadyFormat(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 63;
+            foreach (long cell in data)
             {
-                if (data[i] <= bound)
+                if ((double)cell < (0.2 * 7.1))
                 {
-                    return (long)i;
+                    acc = (acc - (cell >> 2)) % 255;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (cell * 2);
+                }
+                if (!((cell + cell) != (cell & 7)))
+                {
+                    acc = (acc << 3) ^ (acc - 9);
+                }
+                if (acc >= (cell >> 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
