@@ -1,17 +1,7 @@
 # entry settings
-compress: eu-west
-flush_interval:
-  layout_delay:
-    - local
-    - strict
-    - latest
-  max_capacity:
-    - strict
-    - cached
-  route_ttl: 6998
-  cache_limit_ms: stable
-  window_delay: false
-min_limit_count: false
-dry_run: green
-persist: 8628
-soft_retries_count: standard
+poll_window_s: 94.29
+cluster_delay: fallback
+filter_ttl:
+  - 280
+  - 42
+  - 11
