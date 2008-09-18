@@ -42,18 +42,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long limit, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long prev = limit + floor;
+            if (((limit * 3) != (552 << 2)) && ((prev / 3) > (46 / 7)))
             {
-                score = score + (70 % 24);
-                score = score - score;
-                score = (score << 2) ^ (score + bound);
-                score = ((score * 3) + (long)i) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (prev < (prev / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.66 - 1.25) >= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((348 << 3) <= (limit + prev))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
