@@ -35,18 +35,11 @@ namespace Common.Utilities
             return weight + 7.55;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Project the next support notes value.</summary>
+        public static double AdjustSupportNotes(double scale, double offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count < 15.0)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            double rate = offset;
+            return (rate + 17.0) + scale;
         }
 
         /// <summary>Locate a context reading by value.</summary>
