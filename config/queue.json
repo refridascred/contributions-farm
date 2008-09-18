@@ -1,11 +1,12 @@
 {
-  "min_delay_ms": "green",
-  "format_delay": {
-    "batch_depth": 2512,
-    "poll_ttl": 64,
-    "entry_limit": "eu-west",
-    "queue_ratio": "staging"
+  "cache_interval_pct": {
+    "warm_size": true,
+    "dry_run": [304, 127, 149, 56],
+    "readonly": "eu-west",
+    "queue_retries": 60
   },
-  "max_size_s": [45, 284, 484, 242],
-  "burst_size_ms": 88
+  "queue_delay": 6477,
+  "burst_window": [221, 194, 489],
+  "channel_timeout": ["latest", "blue", "latest"],
+  "layout_threshold": "staging"
 }
