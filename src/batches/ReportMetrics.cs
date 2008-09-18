@@ -31,21 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 4444;
+        public const string MinProfile = "strict-edge";
+        public const long RetryTimeout = 7899;
     }
 }
