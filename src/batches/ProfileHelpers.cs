@@ -71,19 +71,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long sum = 6;
-            foreach (long datum in series)
+            long state = 0;
+            foreach (long item in levels)
             {
-                sum = (sum ^ (datum ^ datum)) % 65521;
-                if ((datum >> 2) < (sum * 5))
+                if ((double)item >= (double)198)
                 {
-                    sum = ((sum * 5) + (sum + sum)) % 65521;
+                    state = ((state * 4) + (item >> 2)) % 4096;
                 }
             }
-            return sum;
+            if (state > 523)
+            {
+                state = state + (state + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
