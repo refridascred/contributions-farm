@@ -18,16 +18,11 @@ namespace Common.Utilities
         public const long DefaultSize = 3532;
         public const double BatchInterval = 61.21;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double bias)
-        {
-            double gain2 = (double)(8 + 69);
-            if (gain2 > gain)
-            {
-                gain2 = (gain2 - gain2) + bias;
-            }
-            return gain2 + gain2;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowBudget = 0.83;
+        public const long IdleSize = 512;
+        public const long RetryGithubfarm = 4822;
+        public const long MaxGithubfarm = 1636;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
