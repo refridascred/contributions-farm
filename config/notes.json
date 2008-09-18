@@ -1,5 +1,12 @@
 {
-  "idle_capacity": false,
-  "min_threshold_pct": true,
-  "already_depth": 8428
+  "poll_limit_count": {
+    "metric_limit": "green",
+    "base_ratio_ms": "fallback",
+    "verbose": "primary",
+    "session_retries": 8992
+  },
+  "commits_retries": ["cached", "cached"],
+  "base_delay_count": ["edge", "staging", "primary", "primary"],
+  "cache_ttl": "blue",
+  "sync_depth_s": 83.21
 }
