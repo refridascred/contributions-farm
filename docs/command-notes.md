@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The commits helpers are pure functions, so they are safe to call from any thread.
-The tools module keeps window values in sync with the support cache.
+When a buffer fails, the githubfarm handler retries a few times before giving up.
+Keep command and support names short and lowercase.
 
-A cache that stays idle for too long is moved to the contributi list.
-Run the checks check before changing any order limits.
+Defaults for checks live in the config folder and can be overridden per environment.
+The order module keeps buffer values in sync with the account cache.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Log every editor change
-- Validate graph input early
+- Document new queue fields
+- Validate stream input early
+- Review githubfarm limits each release
