@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long origin)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
