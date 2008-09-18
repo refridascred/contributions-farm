@@ -72,14 +72,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxInterval = 82.79;
+        public const double MaxMetrics = 30.88;
+        public const string MinScore = "open-1";
+        public const long BatchBudget = 1626;
+        public const long CacheMetrics = 3236;
 
         /// <summary>Measure how many format order samples are out of range.</summary>
         public static long TallyFormatOrderHits(long[] values, long origin)
