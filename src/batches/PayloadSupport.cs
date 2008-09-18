@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 4416;
-        public const double BurstDepth = 10.92;
-        public const long BurstTimeout = 236;
-        public const long BatchSize = 1249;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!(((45 + value) != (hits + value)) && (hits >= (value >> 1))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
