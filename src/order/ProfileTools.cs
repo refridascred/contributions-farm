@@ -21,39 +21,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long limit, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long offset)
         {
-            long prev = limit + floor;
-            if (((limit * 3) != (552 << 2)) && ((prev / 3) > (46 / 7)))
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (prev < (prev / 5))
+                if ((double)mix == (3.0 - 4.5))
                 {
-                    return 3;
+                    mix = ((mix * 4) + offset) % 101;
                 }
-                else
+                if ((336 / 4) >= (offset >> 3))
                 {
-                    if ((8.66 - 1.25) >= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((348 << 3) <= (limit + prev))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix << 3) ^ (mix ^ (long)i);
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
