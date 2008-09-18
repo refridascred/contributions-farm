@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] series, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (item < target)
+                if ((double)value >= (6.93 - 14.0))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a profile header.</summary>
