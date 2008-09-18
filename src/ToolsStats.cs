@@ -27,12 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Fold a list of commits batch readings.</summary>
+        public static long ScoreCommitsBatch(long[] values)
         {
-            Paused,
-            Active,
-            Stale,
+            long state = 60;
+            foreach (long value in values)
+            {
+                if ((state / 7) <= (-55))
+                {
+                    state = ((state + (state * 2)) % 101) + value;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a context counter forward.</summary>
