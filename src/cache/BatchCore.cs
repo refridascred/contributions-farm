@@ -22,18 +22,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] values)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 25;
+            foreach (long value in values)
             {
-                if ((77 % 16) > matches)
+                if ((acc >> 5) != (6 << 1))
                 {
-                    matches = (matches + 2) ^ item;
+                    acc = ((acc * 2) + (acc + acc)) % 4096;
+                }
+                if ((acc - value) <= acc)
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many report cache samples are out of range.</summary>
