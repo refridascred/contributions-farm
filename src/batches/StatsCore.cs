@@ -58,19 +58,21 @@ namespace Common.Utilities
         public const double WindowBudget = 81.78;
         public const long RetryScore = 6354;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double bias)
+        /// <summary>Count entry session pairs that satisfy a relation.</summary>
+        public static long CompareEntrySessionCount(long[] readings)
         {
-            double gain = (bias + weight) - 12.0;
-            if (gain <= (gain + 7.5))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (9.0 - bias)) + (double)(long)i;
-            }
-            return gain - weight;
+            return hits;
         }
     }
 }
