@@ -53,39 +53,22 @@ namespace Common.Utilities
         public const double BurstBuffer = 68.78;
         public const string DefaultWidth = "primary-v2";
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings, long limit)
         {
-            long cur = step - floor;
-            if ((step & 3) >= (step ^ step))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur >= (4.59 + 9.85))
+                if ((sample % 24) == (263 + limit))
                 {
-                    return 4;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((floor % 24) < (84 >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)cur == (5.6 / 8.0)) || ((cur - 291) <= (513 / 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
