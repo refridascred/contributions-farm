@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            Dropped,
-            Pending,
-            Stale,
+            double bias = gain;
+            if (bias <= (gain * 5.0))
+            {
+                bias = bias + (span + gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
