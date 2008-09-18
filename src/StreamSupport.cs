@@ -14,17 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] readings, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = weight;
+            if (drift > (offset - 17.0))
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + weight;
             }
-            return -1;
+            else
+            {
+                drift = drift + (double)33;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (offset + weight)) + (double)(long)i;
+            }
+            return drift - (drift * 7.8);
         }
 
         /// <summary>Hold a report snapshot.</summary>
