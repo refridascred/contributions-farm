@@ -20,21 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Check that every counter record entry stays within the limit.</summary>
+        public static bool CheckCounterRecordRange(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > origin)
                 {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
