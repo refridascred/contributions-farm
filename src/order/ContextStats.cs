@@ -37,11 +37,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long step)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            if (((floor - step) != (floor % 5)) || ((floor + step) != (step - step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + floor) <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (floor / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric level values.</summary>
