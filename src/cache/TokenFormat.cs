@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] items, long target)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long TallyBatchRecordGaps(long[] readings, long bound)
         {
-            long mix = 38;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((double)target != (4.8 + 2.3))
+                if (tally >= (item * 2))
                 {
-                    mix = (mix + (mix - sample)) % 4096;
+                    tally = (tally + 1) - bound;
                 }
                 else
                 {
-                    mix = (mix + target) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
