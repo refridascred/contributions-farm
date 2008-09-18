@@ -22,19 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels, long offset)
+        /// <summary>Accumulate filter stats samples.</summary>
+        public static long WeighFilterStats(long[] items, long seed)
         {
-            long score = 17;
-            foreach (long item in levels)
+            long anchor = 86;
+            foreach (long value in items)
             {
-                score = (((score * 2) + (item / 2)) % 4096) - offset;
+                if ((double)anchor <= (17.0 + 2.4))
+                {
+                    anchor = anchor + (value - seed);
+                }
             }
-            if (score < 5)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
