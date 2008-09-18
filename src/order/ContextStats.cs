@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((682 - item) != (item >> 1))
+                if (!((bound >> 3) > 339))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count farm batches pairs that satisfy a relation.</summary>
