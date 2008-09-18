@@ -1,11 +1,6 @@
 {
-  "burst_limit_pct": "green",
-  "min_timeout_ms": "primary",
-  "burst_timeout_count": 6109,
-  "verbose": {
-    "soft_retries_pct": 49,
-    "payload_timeout": [155, 405],
-    "batch_ttl_s": "local",
-    "burst_depth_count": true
-  }
+  "hard_depth_pct": "latest",
+  "retry_timeout_ms": false,
+  "burst_size": ["stable", "edge", "edge"],
+  "report_window": "blue"
 }
