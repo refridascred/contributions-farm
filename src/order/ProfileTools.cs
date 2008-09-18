@@ -34,21 +34,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up batch editor samples.</summary>
-        public static long CompareBatchEditorCount(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)target >= 2.4)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) >= target)
                 {
-                    if ((samples[i] - samples[j]) != 6)
+                    return 6;
+                }
+                else
+                {
+                    if ((target / 6) > (target2 - target))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
