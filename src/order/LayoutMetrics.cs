@@ -27,17 +27,12 @@ namespace Common.Utilities
         public const long StepBudget = 6196;
         public const long BatchGraph = 9388;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] items, long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
