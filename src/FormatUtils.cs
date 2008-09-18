@@ -15,19 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate layout format readings against a bound.</summary>
-        public static bool ValidateLayoutFormatLimits(long[] samples, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Locked,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
