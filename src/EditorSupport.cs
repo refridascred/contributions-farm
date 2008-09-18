@@ -40,17 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum ^ sum;
-                sum = ((sum << 2) ^ origin) % 97;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Failed,
+            Paused,
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
