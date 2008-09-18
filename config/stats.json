@@ -1,11 +1,11 @@
 {
-  "audit": ["legacy", "open", "blue", "latest"],
-  "default_window": 60,
-  "poll_ttl_ms": "standard",
-  "burst_limit": {
-    "checks_ttl": ["stable", "strict", "primary", "fallback"],
-    "warm_interval_pct": 250,
-    "verbose": 1024
+  "cache_interval_pct": 52,
+  "sync_limit_s": {
+    "sync_threshold_ms": "blue",
+    "base_interval_count": 2866,
+    "max_capacity_count": [323, 141]
   },
-  "soft_ttl_pct": 2661
+  "burst_limit_pct": 3659,
+  "poll_size": "eu-west",
+  "hard_timeout_s": 1024
 }
