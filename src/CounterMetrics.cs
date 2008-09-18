@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitSpan = 9490;
-        public const long DefaultBatches = 1212;
-        public const string BatchLevel = "legacy-v2";
-        public const double SoftWidth = 64.08;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8831;
+        public const long IdleSpan = 885;
+        public const long CacheSize = 5472;
+        public const long MinContext = 797;
 
         /// <summary>Rank payload session input into a small class.</summary>
         public static long BucketPayloadSession(long limit, long floor)
