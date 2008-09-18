@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Active,
-            Pending,
-            Paused,
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the cache phase values.</summary>
