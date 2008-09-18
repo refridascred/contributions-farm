@@ -47,18 +47,14 @@ namespace Common.Utilities
         public const string StepCluster = "stable";
         public const long MaxInterval = 417;
 
-        /// <summary>Audit cache counter readings against a rule.</summary>
-        public static long CountCacheCounterHits(long[] items, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (step >= seen)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a farm info.</summary>
