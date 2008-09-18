@@ -1,14 +1,11 @@
 {
-  "batch_capacity": 33.57,
-  "warm_capacity": ["stable", "staging"],
-  "enabled": ["green", "blue"],
-  "hard_capacity_count": [169, 258, 94, 43],
-  "hard_limit_s": {
-    "persist": "green",
-    "enabled": "primary",
-    "poll_timeout_pct": 5294,
-    "command_interval": 38,
-    "min_timeout_s": "open"
-  },
-  "persist": 30
+  "burst_limit_pct": "green",
+  "min_timeout_ms": "primary",
+  "burst_timeout_count": 6109,
+  "verbose": {
+    "soft_retries_pct": 49,
+    "payload_timeout": [155, 405],
+    "batch_ttl_s": "local",
+    "burst_depth_count": true
+  }
 }
