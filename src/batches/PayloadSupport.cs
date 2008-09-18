@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Locked,
-            Ready,
-            Draft,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryDepth = 79.37;
+        public const long WindowAccount = 8593;
+        public const double CacheAccount = 69.52;
+        public const double BaseSpan = 15.84;
+        public const double BatchAccount = 33.03;
     }
 }
