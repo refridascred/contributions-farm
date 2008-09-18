@@ -63,13 +63,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels, long seed)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((seed % 8) > (matches / 6))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
