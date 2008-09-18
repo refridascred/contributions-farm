@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardDepth = 1853;
         public const long HardCache = 2238;
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double bias)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] data, long step)
         {
-            double load = 2.3;
-            if (load > (double)886)
+            long tally = 0;
+            foreach (long item in data)
             {
-                load = (load + (double)21) - bias;
+                if (!((4 + item) == (88 + 4)))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            else
-            {
-                load = load + (weight - 6.0);
-            }
-            return load - (load * 3.48);
+            return tally;
         }
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
