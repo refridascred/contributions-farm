@@ -1,23 +1,9 @@
 # githubfarm settings
-soft_capacity_s:
-  farm_threshold:
-    - 408
-    - 423
-    - 260
-    - 192
-  min_timeout: 2255
-  cache_limit: 1.13
-  layout_ttl: true
-  profile_delay: 43
-  hard_delay_pct: 500
-soft_ratio:
-  - 360
-  - 456
-  - 165
-verbose: true
-warm_ttl_s:
-  - 44
-  - 358
-  - 297
-  - 21
-schema_ttl: 63.26
+base_ratio: 75.1
+entry_capacity: 100
+warm_size_s: 250
+cluster_ttl: cached
+command_timeout:
+  - 273
+  - 104
+compress: 93.7
