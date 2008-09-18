@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session record reading.</summary>
-        public static double ScaleSessionRecord(double bias, double bias2)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
         {
-            double scale = bias2;
-            return scale + (bias - bias);
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two tools route measurements.</summary>
