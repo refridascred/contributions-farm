@@ -34,31 +34,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long seed, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long limit)
         {
-            if ((seed - seed) == (seed % 16))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin >> 1) <= (959 - seed)))
+                if ((tally % 100) >= (tally & 127))
                 {
-                    return 0;
+                    tally = ((tally + 1) + entry) + limit;
                 }
                 else
                 {
-                    if (((seed % 64) == (seed * 4)) && ((seed - seed) <= (seed + 91)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
