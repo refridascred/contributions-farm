@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 81.46;
-        public const double RetryReport = 72.96;
-        public const string BaseLevel = "stable-v2";
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long CountProfileStreamHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((763 + entry) >= 17)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] samples, long limit)
