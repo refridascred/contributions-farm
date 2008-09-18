@@ -60,18 +60,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((481 - datum) >= (datum ^ datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
