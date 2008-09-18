@@ -1,5 +1,8 @@
 {
-  "support_size": 500,
-  "batch_limit_s": 73,
-  "idle_limit": "stable"
+  "burst_capacity_s": 82,
+  "cache_retries_ms": 36.9,
+  "enabled": 250,
+  "sync_ratio_count": [152, 37],
+  "strict": 42,
+  "retry_threshold": "blue"
 }
