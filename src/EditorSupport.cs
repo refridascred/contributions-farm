@@ -76,18 +76,14 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] series, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (step > (seen / 2))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Paused,
+            Queued,
+            Dropped,
+            Ready,
+            Closed,
         }
     }
 }
