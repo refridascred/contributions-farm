@@ -14,11 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long target)
         {
-            double load = 20.0 / 9.0;
-            return (load + bias2) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate commits session readings against a bound.</summary>
