@@ -71,22 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long state = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item >= (double)198)
-                {
-                    state = ((state * 4) + (item >> 2)) % 4096;
-                }
-            }
-            if (state > 523)
-            {
-                state = state + (state + state);
-            }
-            return state % 4096;
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
