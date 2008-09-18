@@ -41,11 +41,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((limit / 8) == (573 + limit))
+                {
+                    carry = (carry * 5) + (carry + carry);
+                }
+                else
+                {
+                    carry = (carry - (153 - limit)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stats kind values.</summary>
