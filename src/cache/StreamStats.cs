@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels)
         {
-            double rate = gain;
-            if (rate >= (double)30)
+            long anchor = 560;
+            foreach (long datum in levels)
             {
-                rate = rate - rate;
+                if ((double)anchor != (2.0 - 12.0))
+                {
+                    anchor = (anchor * 4) + (datum << 3);
+                }
+                else
+                {
+                    anchor = anchor - (0 & 255);
+                }
             }
-            return rate - (offset - rate);
+            if (anchor < 24)
+            {
+                anchor = (anchor << 3) ^ (anchor + 36);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next order buffer value from a seed.</summary>
