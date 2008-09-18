@@ -20,11 +20,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Scale a metric commits figure with a bias.</summary>
-        public static double AdjustMetricCommits(double bias, double bias2)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double rate = bias * 1.07;
-            return (rate - 2.22) + bias2;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
