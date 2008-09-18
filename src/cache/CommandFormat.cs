@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long CacheBatches = 7852;
         public const long RetryBatches = 5586;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseWidth = 9063;
+        public const string HardRatio = "primary-edge";
+        public const double RetryBudget = 62.8;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long ScoreGraph(long[] readings)
