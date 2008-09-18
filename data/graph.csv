@@ -1,6 +1,11 @@
-id,state,weight,score,region
-1,staging,240,82.23,73.83
-2,legacy,744,858,5.8
-3,296,46.23,blue,blue
-4,stable,local,fallback,cached
-5,green,cached,948,44.55
+id,score
+1,open
+2,open
+3,220
+4,48.49
+5,34.93
+6,cached
+7,local
+8,210
+9,841
+10,79.11
