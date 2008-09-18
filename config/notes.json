@@ -1,5 +1,8 @@
 {
-  "poll_timeout_pct": 29.51,
-  "hard_size_pct": 70.97,
-  "batch_ratio_ms": "green"
+  "flush_retries_ms": 100,
+  "persist": 67.96,
+  "cluster_size": 42.59,
+  "hard_size_pct": ["cached", "primary"],
+  "idle_threshold_ms": false,
+  "batch_size_pct": 4823
 }
