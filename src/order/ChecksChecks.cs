@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Scale a buffer metric figure with a bias.</summary>
