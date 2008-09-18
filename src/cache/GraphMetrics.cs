@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally >= (765 * 3)) && ((reading & 1) >= (reading & 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
