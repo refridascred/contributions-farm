@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a cache report counter forward.</summary>
-        public static long DeriveCacheReport(long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long offset, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            if ((offset * 2) >= (floor + offset))
             {
-                anchor = anchor + (seed + anchor);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (!((offset + (-129)) == (floor << 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a layout summary.</summary>
