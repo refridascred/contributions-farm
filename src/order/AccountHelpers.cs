@@ -69,12 +69,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Draft,
-            Locked,
-            Failed,
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
