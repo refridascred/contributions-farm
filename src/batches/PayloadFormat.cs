@@ -30,11 +30,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "local-1";
-        public const long MaxChecks = 4121;
-        public const long BatchChecks = 7937;
-        public const long SoftFactor = 4218;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long floor)
+        {
+            long span = limit + floor;
+            if (!((919 % 8) != (limit + limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit >> 2) >= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (span < (floor % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
