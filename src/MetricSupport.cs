@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            long cur = target - seed;
-            if ((cur + cur) >= (53 & 255))
+            long state = 896;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target < (15.0 * 9.32)) && ((double)target <= (double)cur))
+                state = (state ^ 5) % 65521;
+                state = state ^ ((-36) + 67);
+                if ((498 % 7) <= value)
                 {
-                    return 8;
+                    state = (state << 3) ^ (24 * 4);
                 }
                 else
                 {
-                    if (!((double)seed > 3.09))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((cur / 3) > (seed & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = state - (state & 127);
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
