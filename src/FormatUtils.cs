@@ -30,38 +30,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data, long target)
         {
-            if ((floor > (floor + bound)) || ((882 + floor) > bound))
+            long sum = 55;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((524 + floor) >= (bound & 1))
+                sum = ((sum << 2) ^ (482 * 2)) % 255;
+                sum = (sum - (sum - target)) % 255;
+                if ((reading / 5) >= (target + reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - bound) <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor - 487) >= (26 % 10))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum > 11)
+            {
+                sum = ((sum << 3) ^ (sum >> 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
