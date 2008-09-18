@@ -1,8 +1,17 @@
 # entry settings
-sync_ratio_ms: legacy
-base_delay: cached
-warm_threshold_count:
-  - 447
-  - 2
-  - 273
-layout_threshold: true
+default_interval: 4452
+compress:
+  warm_delay_s: 70.93
+  batch_ratio_s: primary
+  enabled:
+    report_interval: cached
+    batch_size: 100
+    profile_size: 50.29
+    contributi_retries: open
+retry_delay_pct:
+  - 39
+  - 295
+  - 20
+default_ttl: 79
+soft_threshold: 1.73
+hard_capacity_ms: true
