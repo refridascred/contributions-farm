@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5576;
-        public const long MinWidth = 2016;
-        public const long WindowSchema = 1235;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches ^ bound) != ((-90) ^ matches))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
