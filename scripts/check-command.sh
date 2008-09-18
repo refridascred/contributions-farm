@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary fallback staging; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-open}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=147
-log "limit is ${COMMAND_LIMIT}"
