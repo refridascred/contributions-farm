@@ -26,15 +26,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long seed)
         {
-            double scale = 3.1;
-            if (scale < 8.1)
+            long gap = limit + seed;
+            if ((gap * 4) <= 14)
             {
-                scale = scale + bias;
+                return 3;
             }
-            return scale + offset;
+            else
+            {
+                if (((0 + seed) >= gap) && (seed > (gap - gap)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((gap % 16) == (gap - (-410)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
