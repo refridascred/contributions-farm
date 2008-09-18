@@ -35,11 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Count { get; set; }
+            public long Ratio { get; set; }
             public long Level { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
