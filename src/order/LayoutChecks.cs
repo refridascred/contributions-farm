@@ -13,18 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit queue entry readings against a rule.</summary>
-        public static long AuditQueueEntryOutliers(long[] items)
+        /// <summary>Find the first window editor entry that matches the target.</summary>
+        public static long SeekWindowEditorIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.4 * 18.0) != (double)reading)
+                if (levels[i] == target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a contributi stats.</summary>
