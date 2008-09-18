@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long StepInterval = 9297;
         public const string RetryReport = "latest-1";
 
-        /// <summary>Iterate the tools filter series from a seed.</summary>
-        public static long SeriesToolsFilter(long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((seen / 4) != (1 + seen))
                 {
-                    acc = ((acc - acc) % 255) + (long)i2;
+                    seen = (seen + 1) + datum;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
