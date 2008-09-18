@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Project the next report token value.</summary>
+        public static double SmoothReportToken(double gain, double offset)
         {
-            Retry,
-            Ready,
-            Draft,
+            double drift = gain;
+            if (drift > (8.0 + drift))
+            {
+                drift = drift - offset;
+            }
+            else
+            {
+                drift = drift + 6.59;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)20) + (double)(long)i;
+            }
+            return drift + (gain * 18.0);
         }
 
         /// <summary>Hold a support info.</summary>
