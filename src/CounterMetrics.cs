@@ -22,10 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryInterval = 39.33;
-        public const string BatchCache = "staging-edge";
-        public const string RetrySize = "legacy";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchSpan = "local-v2";
+        public const long IdleBudget = 5276;
+        public const long BurstLevel = 9066;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
