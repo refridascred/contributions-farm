@@ -84,21 +84,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)entry == (6.79 * 12.0))
                 {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
