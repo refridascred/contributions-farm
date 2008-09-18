@@ -32,22 +32,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = 402;
+            foreach (long value in items)
             {
-                if ((1.0 - 6.1) < 20.0)
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total - (total >> 4)) % 65521) ^ value;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate checks samples.</summary>
