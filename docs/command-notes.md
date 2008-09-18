@@ -1,13 +1,11 @@
 # Command notes
 
-Use metrics settings to tune how often session data is refreshed.
-Each counter is validated before it reaches the report queue.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Keep support and tools names short and lowercase.
+Use support settings to tune how often contributi data is refreshed.
+The profile module keeps command values in sync with the metric cache.
+The order module keeps support values in sync with the format cache.
 
 ## Guidelines
 
-- Review session limits each release
-- Log every editor change
-- Keep metrics values small
+- Document new support fields
+- Validate channel input early
+- Prefer profile defaults
