@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long BurstRoute = 5689;
         public const long MinRoute = 4377;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryDepth = 79.37;
-        public const long WindowAccount = 8593;
-        public const double CacheAccount = 69.52;
-        public const double BaseSpan = 15.84;
-        public const double BatchAccount = 33.03;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double floor)
+        {
+            double rate = (double)(48 + 9);
+            if (rate < floor)
+            {
+                rate = (rate + 17.0) + gain;
+            }
+            return rate - (double)3;
+        }
     }
 }
