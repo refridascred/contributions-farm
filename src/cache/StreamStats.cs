@@ -41,17 +41,38 @@ namespace Common.Utilities
         public const long IdleSchema = 8865;
         public const long BatchLevel = 4797;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target + floor) >= (target % 60))
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((target << 1) > (275 + target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((9.0 * 8.1) < (double)target) || (target > (floor + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((910 - floor) > floor) || (target >= floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
