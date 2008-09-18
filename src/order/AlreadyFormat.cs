@@ -34,13 +34,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor - (step - step);
+                anchor = anchor ^ ((long)i >> 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next format value.</summary>
