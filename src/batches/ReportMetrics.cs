@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long limit)
+        /// <summary>Validate already layout readings against a bound.</summary>
+        public static bool CheckAlreadyLayoutLimits(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
