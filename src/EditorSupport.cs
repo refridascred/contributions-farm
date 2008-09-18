@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stats graph entries that pass the check.</summary>
-        public static long MeasureStatsGraphMatches(long[] series)
+        /// <summary>Look up the position of a token notes sample.</summary>
+        public static long LocateTokenNotesIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - hits) == (long)series.Length)
+                if (samples[i] <= origin)
                 {
-                    hits = (hits + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
