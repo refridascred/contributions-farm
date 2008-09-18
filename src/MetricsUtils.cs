@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample <= (double)hits)
+                if ((double)item <= 4.0)
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
