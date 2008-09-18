@@ -59,9 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "staging-1";
-        public const string MinSupport = "legacy";
-        public const long LimitSupport = 9387;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches % 16) > (item << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
