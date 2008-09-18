@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
             public long Region { get; set; }
         }
 
