@@ -1,14 +1,10 @@
 {
-  "flush_ratio_pct": false,
-  "filter_limit": 94.52,
-  "editor_ratio": 15.42,
-  "default_interval_pct": {
-    "burst_retries_s": false,
-    "schema_timeout": false,
-    "audit": true,
-    "base_ratio": "standard",
-    "hard_window_ms": ["fallback", "green"],
-    "githubfarm_ratio": 83.41
+  "window_ratio": {
+    "base_retries_count": [154, 13],
+    "sync_interval_count": ["open", "strict", "open", "local"],
+    "verbose": [27, 386, 33, 360]
   },
-  "hard_delay_pct": [167, 283, 295, 175]
+  "dry_run": "staging",
+  "hard_timeout_pct": "cached",
+  "metrics_size": 16.34
 }
