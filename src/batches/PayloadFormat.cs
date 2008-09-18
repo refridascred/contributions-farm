@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleFactor = 2822;
         public const long StepRecord = 8652;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] levels, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (cell <= step)
+                if ((reading * 5) < count)
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
