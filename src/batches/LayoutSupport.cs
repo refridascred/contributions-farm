@@ -32,12 +32,25 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long target)
         {
-            Synced,
-            Stale,
-            Failed,
+            long prev = limit + target;
+            if ((prev > (target >> 4)) && ((prev & 3) > (prev / 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target >= (target - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
