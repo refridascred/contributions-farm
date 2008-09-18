@@ -1,5 +1,18 @@
 {
-  "cache_threshold_s": false,
-  "default_depth": 24.33,
-  "batch_limit_pct": true
+  "base_window": "local",
+  "hard_window_count": 3700,
+  "dry_run": 64.31,
+  "verbose": {
+    "min_depth": 42,
+    "hard_delay_ms": 14.97,
+    "batch_window_s": 95.92,
+    "persist": {
+      "flush_ratio": 58.35,
+      "readonly": 8747,
+      "schema_threshold": 10,
+      "filter_interval": 2738,
+      "burst_retries_ms": 2436
+    },
+    "hard_size_s": false
+  }
 }
