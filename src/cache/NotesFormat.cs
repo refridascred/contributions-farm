@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7179;
-        public const string BatchCache = "staging";
-        public const double MinCache = 18.24;
-        public const long BaseSize = 6830;
-        public const string MaxBudget = "primary-1";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
