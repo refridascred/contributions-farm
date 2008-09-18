@@ -23,23 +23,12 @@ namespace Common.Utilities
         public const double StepFarm = 21.58;
         public const long MaxFarm = 8586;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)step != (double)sum)
-                {
-                    sum = (sum * 3) + (sum & 31);
-                }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    sum = ((sum << 3) ^ (step & 63)) - (long)i3;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Stale,
+            Done,
+            Failed,
         }
     }
 }
