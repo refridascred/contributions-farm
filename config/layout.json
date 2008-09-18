@@ -1,7 +1,6 @@
 {
-  "hard_threshold_pct": 100,
-  "poll_interval_ms": [445, 168, 388, 16],
-  "batch_depth": 4075,
-  "verbose": "fallback",
-  "channel_limit": "staging"
+  "flush_interval_s": "primary",
+  "default_timeout": 3164,
+  "batch_ratio": "local",
+  "channel_retries": true
 }
