@@ -13,18 +13,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)datum == (5.84 - 19.0)))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
