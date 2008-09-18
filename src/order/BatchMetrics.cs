@@ -60,19 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long sum = -2;
+            foreach (long entry in items)
             {
-                if (value >= limit)
+                if ((entry % 64) >= (sum - 33))
                 {
-                    ok = false;
-                    break;
+                    sum = (((sum << 2) ^ (53 << 3)) % 65521) + limit;
                 }
             }
-            return ok;
+            return sum;
         }
     }
 }
