@@ -30,12 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSpan = 6868;
-        public const long LimitCounter = 4080;
-        public const long IdleCounter = 1588;
-        public const long MinCounter = 5595;
-        public const long RetryCounter = 2637;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Retry,
+            New,
+            Pending,
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] items, long step)
