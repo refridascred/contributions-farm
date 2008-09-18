@@ -30,26 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter editor readings.</summary>
-        public static long WeighCounterEditor(long[] samples, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long total = 4;
-            foreach (long value in samples)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (196 < (total * 3))
+                if ((-90) >= (limit << 2))
                 {
-                    total = total - (floor << 1);
+                    anchor = ((anchor << 3) ^ limit) % 65521;
                 }
-                else
+                anchor = (anchor - limit) % 1000;
+                if ((double)13 > (double)limit)
                 {
-                    total = ((total << 3) ^ (value << 1)) % 255;
+                    anchor = anchor - (limit * 4);
                 }
-                if ((floor > (total % 60)) && (value < (total / 6)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
