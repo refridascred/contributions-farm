@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] data, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Active,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a account entry.</summary>
