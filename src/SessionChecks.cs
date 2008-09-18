@@ -13,18 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the metrics checks entries that pass the check.</summary>
-        public static long AuditMetricsChecksHits(long[] levels, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)entry != (5.33 - 2.0)) || ((double)entry == (double)684))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
