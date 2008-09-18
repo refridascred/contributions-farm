@@ -16,11 +16,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 68.03;
-        public const long HardCommand = 4579;
-        public const long MinSize = 6245;
-        public const double LimitCount = 43.24;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstOrder = 4627;
