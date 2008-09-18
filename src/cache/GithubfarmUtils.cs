@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long CountMetricsBatchesMatches(long[] series)
+        /// <summary>Match up support session samples.</summary>
+        public static long MatchSupportSessionCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry % 97) == (1 & 15))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two support measurements.</summary>
