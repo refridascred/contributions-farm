@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
