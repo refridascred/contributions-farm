@@ -15,17 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first window editor entry that matches the target.</summary>
-        public static long SeekWindowEditorIndex(long[] levels, long target)
+        /// <summary>Grade a payload commits value against two limits.</summary>
+        public static long ClassifyPayloadCommits(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin * 3) <= 146)
             {
-                if (levels[i] == target)
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) < (6 + origin))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a contributi stats.</summary>
