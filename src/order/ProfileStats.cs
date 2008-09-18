@@ -17,11 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftRatio = 7439;
-        public const long MinTimeout = 1055;
-        public const double BurstTools = 68.88;
-        public const long SoftTools = 2389;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Retry,
+            New,
+            Locked,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxBuffer = 6273;
