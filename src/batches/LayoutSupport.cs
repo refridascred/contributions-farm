@@ -17,12 +17,22 @@ namespace Common.Utilities
             return (load + weight) + bias;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            Dropped,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) != (count >> 4))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
