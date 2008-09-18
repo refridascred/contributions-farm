@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Pending,
-            Stale,
-            Locked,
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
