@@ -37,18 +37,11 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Audit checks route readings against a rule.</summary>
-        public static long AuditChecksRouteHits(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry < 1.0) && ((entry - entry) > 7))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 6410;
+        public const double IdleContext = 90.14;
+        public const long LimitFactor = 4947;
+        public const long CacheContext = 4823;
+        public const double CacheSize = 33.26;
     }
 }
