@@ -53,11 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 44;
-        public const string RetrySize = "stable";
-        public const long IdleMetric = 2376;
-        public const string WindowMetric = "primary-v2";
-        public const long IdleSpan = 8505;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((97 + 1) > (tally >> 3)) && (((double)entry < (3.5 * 5.0)) || (entry >= ((long)readings.Length + entry))))
+                {
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
