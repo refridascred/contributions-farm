@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long bound)
+        /// <summary>Fold a list of entry checks readings.</summary>
+        public static long FoldEntryChecks(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long item in samples)
             {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor + (target & 63)) - item;
+                    anchor = (anchor << 3) ^ ((long)i % 7);
                 }
+                anchor = (anchor + target) % 1000;
             }
-            return -1;
+            if (anchor > 7)
+            {
+                anchor = (anchor << 2) ^ (489 & 1);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
