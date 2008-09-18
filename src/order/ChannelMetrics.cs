@@ -14,17 +14,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] levels, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target >= (target - origin))
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((target >> 2) <= target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (1.0 > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a context session value against two limits.</summary>
