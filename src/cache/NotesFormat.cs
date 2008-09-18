@@ -28,13 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Audit commits tools readings against a rule.</summary>
+        public static long TallyCommitsToolsOutliers(long[] readings, long seed)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading > (seed + reading)) || !((seed + reading) >= (seed * 5)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
