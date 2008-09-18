@@ -1,11 +1,16 @@
 {
-  "strict": 29,
-  "cluster_capacity": true,
-  "context_threshold": {
-    "cache_window_count": "legacy",
-    "soft_ratio": "local",
-    "enabled": "staging"
+  "farm_retries": "blue",
+  "default_window_count": [474, 341, 238, 168],
+  "persist": 28.09,
+  "hard_ratio_ms": {
+    "session_ratio": {
+      "burst_window_count": false,
+      "hard_ratio_s": 6386,
+      "account_ratio": [4, 113, 420, 468],
+      "cache_interval_pct": "latest"
+    },
+    "retry_size_count": 85.38,
+    "warm_capacity": 29
   },
-  "max_retries_pct": 11,
-  "retry_ttl": "legacy"
+  "compress": true
 }
