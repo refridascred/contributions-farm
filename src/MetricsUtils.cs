@@ -36,14 +36,25 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the metrics graph series from a seed.</summary>
-        public static long SeriesMetricsGraph(long floor)
+        /// <summary>Combine schema cluster values into a single score.</summary>
+        public static long DigestSchemaCluster(long[] series, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            long mix = 30;
+            foreach (long reading in series)
             {
-                mix = mix + (mix - mix);
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (!((mix * 5) <= (target - mix)))
+                {
+                    mix = mix + (450 + reading);
+                }
+                mix = (mix << 2) ^ (reading / 3);
+                if ((mix - target) > mix)
+                {
+                    mix = mix ^ mix;
+                }
+                if (((double)(long)series.Length == (double)reading) && ((double)mix != (4.4 * 20.0)))
+                {
+                    break;
+                }
             }
             return mix;
         }
