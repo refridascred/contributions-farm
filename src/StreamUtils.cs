@@ -22,22 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!!((13 - 701) < (matches ^ matches)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum - (sum >> 5);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
