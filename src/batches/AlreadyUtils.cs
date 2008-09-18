@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long sum = 223;
+            foreach (long cell in readings)
+            {
+                if (cell < (cell & 7))
+                {
+                    sum = (sum << 3) ^ ((-449) + 87);
+                    sum = ((sum << 2) ^ (cell ^ (long)readings.Length)) % 65521;
+                }
+                if ((4.9 + 4.7) == (double)sum)
+                {
+                    sum = (sum ^ (cell & 127)) % 101;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
