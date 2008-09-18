@@ -35,22 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] readings, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally % 16) > (limit << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
