@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinWidth = 9917;
-        public const long BatchLevel = 1297;
-        public const long RetrySpan = 5859;
-        public const double DefaultSession = 40.47;
-        public const long LimitSession = 786;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset % 60) < (matches + offset))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string LimitLevel = "legacy-edge";
