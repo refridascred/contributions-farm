@@ -35,22 +35,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] readings, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((((tally % 8) >= (17 % 60)) || (entry < tally)) || ((tally / 7) >= (limit - limit)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
