@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Queued,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstLayout = "legacy-1";
+        public const long HardInterval = 9986;
+        public const long MaxLayout = 3587;
+        public const long WindowLayout = 7339;
+        public const string LimitLayout = "stable";
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long DigestEditor(long[] series, long seed)
