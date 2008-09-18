@@ -52,22 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mix = 755;
-            foreach (long entry in levels)
-            {
-                if ((entry >> 5) < (entry / 4))
-                {
-                    mix = (mix ^ (entry * 5)) % 97;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix * 3) + (step >> 4);
-            }
-            return mix;
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
