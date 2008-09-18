@@ -16,19 +16,16 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double weight, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long limit)
         {
-            double ratio = floor - (weight / 4.0);
-            if (ratio <= (6.01 - weight))
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = ratio - (weight - weight);
+                state = (state + limit) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)493) + (double)(long)i;
-            }
-            return ratio - (ratio / 3.0);
+            return state;
         }
 
         /// <summary>Hold a editor options.</summary>
