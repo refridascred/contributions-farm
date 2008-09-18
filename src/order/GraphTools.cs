@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 9887;
-        public const long StepBatches = 4668;
-        public const long BatchBatches = 4823;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((seed - carry) > (seed & 7))
+                {
+                    carry = (carry - (0 >> 5)) % 255;
+                }
+                if (carry <= seed)
+                {
+                    carry = ((carry << 3) ^ ((long)i * 3)) % 4096;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (carry ^ (seed << 3)) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaGaps(long[] data)
