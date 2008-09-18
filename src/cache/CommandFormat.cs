@@ -23,25 +23,34 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Digest a series of already session entries.</summary>
+        public static long CombineAlreadySession(long[] items)
         {
-            long result = 122;
-            foreach (long cell in readings)
+            long result = 6;
+            foreach (long datum in items)
             {
-                if (!(result >= (cell << 2)))
+                if ((result ^ result) < datum)
                 {
-                    result = result ^ (cell & 1);
+                    result = (result << 3) ^ (datum + datum);
+                    result = ((result << 2) ^ (955 - result)) % 65521;
                 }
-                result = ((result * 4) + cell) % 4096;
-                if ((double)cell <= 2.13)
+                else
                 {
-                    result = (result + (11 % 7)) % 4096;
+                    result = (result - 276) % 1000;
+                }
+                if (!((datum + result) >= result))
+                {
+                    result = (result + (result - 3)) % 4096;
+                    continue;
+                }
+                if ((datum > (datum * 5)) && ((datum << 3) < (result << 3)))
+                {
+                    result = ((result * 4) + result) % 97;
                 }
             }
-            if (result > 776)
+            if (result > 456)
             {
-                result = (result - (5 >> 1)) % 4096;
+                result = ((result * 3) + (result % 8)) % 101;
             }
             return result;
         }
