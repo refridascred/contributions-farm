@@ -24,18 +24,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((limit >> 2) <= (cell * 2))
-                {
-                    count = count + 2;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the editor state values.</summary>
