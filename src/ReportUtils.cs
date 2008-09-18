@@ -34,15 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((3.6 - 9.11) <= (double)seen)
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
