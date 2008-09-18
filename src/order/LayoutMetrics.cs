@@ -27,21 +27,25 @@ namespace Common.Utilities
         public const long StepBudget = 6196;
         public const long BatchGraph = 9388;
 
-        /// <summary>Count queue checks pairs that satisfy a relation.</summary>
-        public static long CompareQueueChecksCount(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = origin ^ offset;
+            if (lane > (offset << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin & 63) == (offset - origin))
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
