@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a batches queue pair into a bucket.</summary>
-        public static long GradeBatchesQueue(long limit, long bound)
-        {
-            long step = limit ^ bound;
-            if (((bound * 2) != (43 - step)) && (bound > (bound / 9)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 255) < (limit * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-v2";
+        public const long MinLevel = 4866;
+        public const long DefaultInterval = 854;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long FoldStats(long[] levels)
