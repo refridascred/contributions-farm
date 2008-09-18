@@ -36,12 +36,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Find the first cluster token entry that matches the target.</summary>
+        public static long LocateClusterTokenIndex(long[] readings, long bound)
         {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
