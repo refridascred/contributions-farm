@@ -34,22 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = 424;
-            foreach (long sample in series)
-            {
-                if ((double)sample > (double)total)
-                {
-                    total = (total - (153 << 1)) % 1000;
-                }
-                else
-                {
-                    total = total - (51 << 1);
-                }
-            }
-            return total;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
