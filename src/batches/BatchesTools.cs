@@ -54,34 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long offset, long bound)
         {
-            long result = -7;
-            foreach (long value in levels)
+            if ((bound - bound) != (offset & 7))
             {
-                if ((value <= (-30)) && ((result + result) > (floor ^ value)))
+                return 2;
+            }
+            else
+            {
+                if (!((offset / 2) == (offset / 3)))
                 {
-                    result = (result ^ (value + floor)) % 255;
-                }
-                if (!((4.4 * 8.4) == (double)value))
-                {
-                    result = (result << 2) ^ (3 - value);
+                    return 3;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (59 + value)) % 101;
-                }
-                if ((floor <= (value + value)) || ((long)levels.Length > (result - value)))
-                {
-                    break;
+                    if (!((636 % 16) <= (offset - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound == (8.99 * 1.05))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (result < 6)
-            {
-                result = ((result << 3) ^ (result + result)) % 65521;
-            }
-            return result % 4096;
         }
     }
 }
