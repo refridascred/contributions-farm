@@ -31,12 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 226;
-        public const double BaseSpan = 93.64;
-        public const string BatchRatio = "stable-edge";
-        public const long MinDepth = 8654;
-        public const double WindowStream = 66.12;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine commits report values into a single score.</summary>
         public static long TallyCommitsReport(long[] data)
