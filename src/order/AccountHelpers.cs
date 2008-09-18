@@ -41,19 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] values, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
