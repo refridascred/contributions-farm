@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data)
-        {
-            long mix = 8;
-            foreach (long item in data)
-            {
-                if ((item < (mix + item)) && ((mix * 2) == (mix + 7)))
-                {
-                    mix = (mix + (mix / 6)) % 4096;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSpan = 6868;
+        public const long LimitCounter = 4080;
+        public const long IdleCounter = 1588;
+        public const long MinCounter = 5595;
+        public const long RetryCounter = 2637;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] items, long step)
