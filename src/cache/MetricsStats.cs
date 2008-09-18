@@ -29,11 +29,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc * 4) + ((long)i / 8);
+                acc = ((acc << 2) ^ (seed ^ 4)) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
