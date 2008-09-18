@@ -68,14 +68,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many already format samples are out of range.</summary>
+        public static long CountAlreadyFormatHits(long[] data, long step)
         {
-            Closed,
-            Retry,
-            Stale,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((6 % 10) >= (count / 2))
+                {
+                    count = ((count + 2) - entry) + step;
+                }
+            }
+            return count;
         }
     }
 }
