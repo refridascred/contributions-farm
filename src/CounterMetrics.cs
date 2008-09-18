@@ -40,23 +40,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of counter layout readings.</summary>
-        public static long TallyCounterLayout(long[] readings, long limit)
-        {
-            long score = 432;
-            foreach (long cell in readings)
-            {
-                if ((1.59 - 0.1) != (double)score)
-                {
-                    score = (score ^ (score >> 2)) % 101;
-                }
-                if (cell <= (limit % 12))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 6352;
+        public const long BaseMetrics = 9965;
+        public const string WindowBudget = "standard";
+        public const string RetryMetrics = "local-edge";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long step, long bound)
