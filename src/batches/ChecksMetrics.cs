@@ -21,24 +21,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long offset)
+        /// <summary>Blend two profile stats measurements.</summary>
+        public static double SmoothProfileStats(double scale, double offset)
         {
-            if ((limit << 2) < limit)
+            double mean = (12.0 + scale) - (double)3;
+            if (mean <= (mean - mean))
             {
-                return 1;
+                mean = (mean + 3.6) - offset;
             }
-            else
-            {
-                if (((limit - limit) > (9 >> 2)) && ((offset ^ limit) >= (limit - limit)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mean + scale;
         }
 
         /// <summary>Fold a list of window readings.</summary>
