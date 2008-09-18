@@ -31,13 +31,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the buffer batches series from a seed.</summary>
