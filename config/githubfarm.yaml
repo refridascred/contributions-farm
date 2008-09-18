@@ -1,4 +1,6 @@
 # githubfarm settings
-poll_retries: 94
-batch_window_ms: latest
-soft_window_count: false
+burst_depth_pct: 33.19
+sync_limit: false
+cache_retries: 82.73
+base_depth_pct: 79.03
+warm_retries: 40
