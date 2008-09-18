@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long seed, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if (((seed << 1) == (94 - 944)) && (8.0 <= (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target >= (3.66 - 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target > (6.0 * 1.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed < (7.0 + 17.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
