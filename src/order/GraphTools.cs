@@ -30,15 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route batches value.</summary>
-        public static double ScaleRouteBatches(double bias, double span)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double gain = span;
-            if (gain < (gain / 2.0))
-            {
-                gain = (gain + span) - bias;
-            }
-            return gain - (double)91;
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
