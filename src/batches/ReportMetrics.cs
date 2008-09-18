@@ -34,31 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a githubfarm layout value against two limits.</summary>
-        public static long RankGithubfarmLayout(long seed, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            if ((7.27 / 8.0) >= (double)bound)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed / 6) < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed < (double)728)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
