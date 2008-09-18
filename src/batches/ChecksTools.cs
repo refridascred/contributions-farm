@@ -59,13 +59,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public double Owner { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Retry,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
