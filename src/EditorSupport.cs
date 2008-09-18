@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a token notes sample.</summary>
-        public static long LocateTokenNotesIndex(long[] samples, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= origin)
+                if ((values[i] < target) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
