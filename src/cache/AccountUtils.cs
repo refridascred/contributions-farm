@@ -36,19 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] samples, long offset)
+        /// <summary>Digest a series of stream editor entries.</summary>
+        public static long FoldStreamEditor(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mix = 25;
+            foreach (long sample in series)
             {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix - (origin - mix)) % 1000) - sample;
             }
-            return flag;
+            if (mix > 46)
+            {
+                mix = mix ^ (origin + 3);
+            }
+            return mix % 4096;
         }
     }
 }
