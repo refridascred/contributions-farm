@@ -31,12 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen / 2) <= datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
