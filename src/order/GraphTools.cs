@@ -53,18 +53,34 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = 98;
+            foreach (long datum in values)
             {
-                if (!((hits + hits) > hits))
+                if (datum > bound)
                 {
-                    hits = (hits + 1) - value;
+                    anchor = anchor + (datum ^ bound);
+                }
+                if (datum >= 505)
+                {
+                    anchor = (anchor ^ (datum - datum)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + (datum >> 5);
+                }
+                if ((bound - 28) != ((long)values.Length + datum))
+                {
+                    anchor = ((anchor << 3) ^ 134) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - bound) % 1000;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
