@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const long BaseDepth = 7539;
         public const long BatchLevel = 6919;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinSpan = 5458;
-        public const double SoftFilter = 25.19;
-        public const long CacheFilter = 7418;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardSpan = 7361;
+        public const double RetryCounter = 4.27;
+        public const string StepBudget = "local-edge";
+        public const double DefaultCounter = 88.97;
+        public const long MaxCount = 8530;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
