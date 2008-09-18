@@ -68,23 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values, long step)
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long AuditToolsCounterOutliers(long[] data, long target)
         {
-            long score = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (!(((17.0 + 3.44) <= (double)score) || ((step * 2) != (31 & 63))))
+                if (!((6.7 - 6.1) >= (double)target))
                 {
-                    score = score - score;
+                    hits = (hits + 2) ^ datum;
                 }
-                score = (score * 4) + (score + 44);
-                if ((256 << 1) == (85 + step))
+                else
                 {
-                    score = (score * 5) + reading;
+                    hits = hits - 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
