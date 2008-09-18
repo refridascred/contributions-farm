@@ -48,12 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Fold a list of already stream readings.</summary>
+        public static long FoldAlreadyStream(long[] samples)
         {
-            Closed,
-            Draft,
-            Paused,
+            long acc = 4;
+            foreach (long value in samples)
+            {
+                if ((long)samples.Length >= (acc - acc))
+                {
+                    acc = ((acc ^ (acc * 5)) % 4096) - value;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter options.</summary>
