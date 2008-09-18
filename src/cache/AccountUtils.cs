@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every queue checks entry stays within the limit.</summary>
-        public static bool VerifyQueueChecksRange(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleBudget = "open";
+        public const long LimitSchema = 273;
+        public const long BatchSchema = 8264;
+        public const string BaseSchema = "local-edge";
+        public const long StepSchema = 3996;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string DefaultCount = "primary-v2";
