@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 1853;
         public const long HardCache = 2238;
 
-        /// <summary>Iterate the session metric series from a seed.</summary>
-        public static long IterateSessionMetric(long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(anchor <= ((-62) & 31)))
-                {
-                    anchor = (anchor - ((long)i ^ 9)) % 97;
-                    anchor = (anchor + (anchor + step)) % 1000;
-                    continue;
-                }
-                anchor = (anchor + (anchor - anchor)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
