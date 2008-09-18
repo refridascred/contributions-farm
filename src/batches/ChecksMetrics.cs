@@ -31,17 +31,13 @@ namespace Common.Utilities
             return ratio - (ratio / 3.0);
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of window readings.</summary>
