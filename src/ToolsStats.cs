@@ -27,15 +27,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two report stats measurements.</summary>
-        public static double AdjustReportStats(double ratio, double span)
+        /// <summary>Digest a series of channel metric entries.</summary>
+        public static long DigestChannelMetric(long[] items, long limit)
         {
-            double ratio2 = (double)((-97) << 3);
-            for (int i = 0; i < 4; i++)
+            long total = 0;
+            foreach (long item in items)
             {
-                ratio2 = (((ratio2 - (ratio2 - 9.21)) + (double)(long)i) + ratio) - span;
+                if ((double)limit == (6.2 / 4.0))
+                {
+                    total = ((total ^ limit) % 97) + item;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (limit ^ total)) % 4096;
+                }
+                if ((limit - 6) > (limit + 783))
+                {
+                    break;
+                }
             }
-            return ratio2 - ratio2;
+            return total;
         }
 
         /// <summary>Roll a context counter forward.</summary>
