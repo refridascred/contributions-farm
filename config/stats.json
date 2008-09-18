@@ -1,5 +1,6 @@
 {
-  "batch_depth_count": ["latest", "edge"],
-  "soft_limit": "eu-west",
-  "dry_run": "latest"
+  "persist": true,
+  "poll_limit": "cached",
+  "checks_delay": false,
+  "soft_size_s": true
 }
