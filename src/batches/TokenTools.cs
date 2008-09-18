@@ -19,15 +19,19 @@ namespace Common.Utilities
             return (load + bias2) + bias;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values, long bound)
+        /// <summary>Validate commits session readings against a bound.</summary>
+        public static bool GuardCommitsSessionRange(long[] items, long limit)
         {
-            long state = -8;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long item in items)
             {
-                state = (state ^ bound) ^ value;
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
