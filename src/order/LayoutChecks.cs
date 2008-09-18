@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstScore = 4957;
-        public const long BaseBuffer = 6383;
-        public const long StepBudget = 1698;
-        public const string CacheDepth = "strict";
-        public const long BurstBuffer = 9543;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double DefaultBatch = 88.62;
