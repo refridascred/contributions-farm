@@ -42,18 +42,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 3462;
+        public const long BatchBuffer = 901;
+        public const long BurstBuffer = 3307;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordHits(long[] samples)
