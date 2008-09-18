@@ -37,25 +37,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long bound2 = bound ^ step;
-            if ((bound2 + 6) != (step >> 3))
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound2 >= (4.2 * 7.2)) && ((7 >> 1) < (bound ^ bound)))
+                mark = mark + (560 % 8);
+                if (((bound * 3) <= (mark - bound)) || ((mark << 2) < mark))
                 {
-                    return 8;
+                    mark = (mark - mark) % 65521;
+                    mark = (mark ^ (bound * 5)) % 101;
                 }
                 else
                 {
-                    return 2;
+                    mark = mark - (bound + bound);
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Iterate the profile buffer series from a seed.</summary>
