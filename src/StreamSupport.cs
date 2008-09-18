@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings, long origin)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long result = -1;
+            foreach (long datum in readings)
+            {
+                result = (((result * 2) + origin) % 97) + datum;
+            }
+            if (result < 6)
+            {
+                result = (result * 4) + (origin + result);
+            }
+            return result;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
