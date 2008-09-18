@@ -16,18 +16,21 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((579 + count) > count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + datum;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next layout value.</summary>
