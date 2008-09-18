@@ -27,11 +27,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score * 2) + (score + (long)i);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
