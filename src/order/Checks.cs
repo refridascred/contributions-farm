@@ -73,13 +73,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleFactor = 7687;
+        public const long IdleEntry = 8131;
+        public const string MaxSpan = "local";
+        public const long SoftCount = 8862;
+        public const string LimitTimeout = "local-1";
     }
 }
