@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string BurstFilter = "standard-1";
         public const long BaseInterval = 6454;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the command report series from a seed.</summary>
+        public static long StepCommandReport(long limit)
         {
-            Closed,
-            Active,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total << 3) ^ (limit - (long)i)) % 65521;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of session readings.</summary>
