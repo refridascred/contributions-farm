@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count format counter pairs that satisfy a relation.</summary>
-        public static long CompareFormatCounterCount(long[] values)
+        /// <summary>Adjust a channel record reading.</summary>
+        public static double ProjectChannelRecord(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias;
+            if (mean <= (double)923)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - mean) - weight;
             }
-            return tally;
+            return mean + bias;
         }
 
         /// <summary>Project the next layout value.</summary>
