@@ -1,8 +1,7 @@
-id,score,active
-1,83,45
-2,latest,50.43
-3,3.43,619
-4,33.67,120
-5,eu-west,70.69
-6,417,edge
-7,91,58.83
+id,active,token,state
+1,edge,701,984
+2,657,59,74.56
+3,standard,12.85,12.45
+4,staging,228,75.76
+5,54.23,663,local
+6,574,871,fallback
