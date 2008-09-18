@@ -1,12 +1,17 @@
 # githubfarm settings
-already_size: local
-base_threshold:
-  graph_timeout:
-    layout_timeout: local
-    order_interval: 30
-    command_ratio: standard
-  sync_depth: strict
-  default_size: 3894
-  max_ratio_ms: blue
-default_retries: 94
-dry_run: 30
+enabled: green
+readonly: 8906
+burst_size_s: eu-west
+persist:
+  - 308
+  - 83
+  - 308
+window_ttl:
+  token_depth: 2637
+  compress:
+    default_ttl_pct: 9857
+    window_threshold: 27
+    already_timeout: true
+  hard_retries_ms: strict
+  poll_delay_ms: 9212
+hard_delay_s: 1024
