@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 8244;
+        public const long DefaultNotes = 2153;
+        public const double BatchBudget = 66.67;
+        public const string IdleCount = "local-edge";
+        public const string CacheNotes = "strict-edge";
 
         /// <summary>Derive the next metrics cluster value from a seed.</summary>
         public static long SeriesMetricsCluster(long step)
