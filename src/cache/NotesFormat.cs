@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinBudget = 344;
-        public const string LimitInterval = "latest-1";
-        public const long CacheLevel = 5561;
-        public const long BurstLevel = 1398;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] values)
