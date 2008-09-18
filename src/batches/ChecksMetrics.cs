@@ -77,31 +77,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long offset)
-        {
-            if ((-585) < (floor ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((36 / 2) > (offset + 17))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "cached-1";
+        public const long HardLevel = 4601;
+        public const long RetryWidth = 1073;
+        public const double StepMetric = 6.6;
+        public const long BatchFactor = 8329;
     }
 }
