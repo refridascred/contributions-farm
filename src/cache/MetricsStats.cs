@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool ValidateBatchMetricsLimits(long[] data, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (item != target)
+                if ((3.0 / 6.0) <= (double)datum)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + seed;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
