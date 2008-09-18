@@ -37,15 +37,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Audit checks route readings against a rule.</summary>
+        public static long AuditChecksRouteHits(long[] data, long floor)
         {
-            long carry = 2;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                carry = ((carry ^ carry) % 4096) + datum;
+                if (((double)entry < 1.0) && ((entry - entry) > 7))
+                {
+                    count = (count + 3) + floor;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
