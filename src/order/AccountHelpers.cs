@@ -28,15 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Paused,
-            Failed,
-            Done,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitDepth = 47.47;
+        public const long IdleRatio = 2536;
+        public const long DefaultCount = 5633;
+        public const double StepCache = 44.77;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long floor)
