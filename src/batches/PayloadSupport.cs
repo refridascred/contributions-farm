@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits <= (47 - hits))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitInterval = "strict-edge";
+        public const long StepStream = 4484;
+        public const long MinDepth = 8968;
+        public const long HardSpan = 3962;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
