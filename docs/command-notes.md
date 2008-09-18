@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-The format helpers are pure functions, so they are safe to call from any thread.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any commits limits.
+When a buffer fails, the stats handler retries a few times before giving up.
+Use schema settings to tune how often stats data is refreshed.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Each window is validated before it reaches the notes queue.
-Each batches is validated before it reaches the record queue.
+A token that stays idle for too long is moved to the token list.
+Run the order check before changing any buffer limits.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Keep entry values small
-- Validate context input early
-- Log every format change
+- Review cache limits each release
+- Keep checks values small
+- Validate githubfarm input early
