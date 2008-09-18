@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 8013;
-        public const long IdleQueue = 3170;
-        public const double CacheQueue = 88.42;
-        public const long CacheSpan = 7756;
+        /// <summary>Measure how many queue metrics samples are out of range.</summary>
+        public static long CountQueueMetricsGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading % 2) < (86 * 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
