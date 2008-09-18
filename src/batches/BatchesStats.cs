@@ -60,19 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series, long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long state = 42;
-            foreach (long entry in series)
-            {
-                state = ((state - state) % 1000) ^ entry;
-            }
-            if (state < (-58))
-            {
-                state = (state * 4) + (target / 3);
-            }
-            return state % 65521;
+            Closed,
+            Failed,
+            Dropped,
+            Synced,
         }
     }
 }
