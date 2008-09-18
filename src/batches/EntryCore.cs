@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long CacheCount = 7615;
         public const string DefaultEditor = "primary-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultScore = 2642;
-        public const long HardDepth = 6441;
-        public const long DefaultSize = 968;
-        public const long MinBudget = 400;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!(count < (cell ^ count)))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long origin)
