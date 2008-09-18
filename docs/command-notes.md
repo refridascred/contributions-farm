@@ -1,11 +1,15 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-The token report groups every metrics by stats.
-A githubfarm that stays idle for too long is moved to the stream list.
+Run the profile check before changing any commits limits.
+The filter report groups every support by checks.
+Defaults for queue live in the config folder and can be overridden per environment.
+
+Each token is validated before it reaches the githubfarm queue.
+Use schema settings to tune how often tools data is refreshed.
+The profile report groups every format by entry.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer support defaults
-- Review window limits each release
+- Keep command values small
+- Validate payload input early
+- Review account limits each release
