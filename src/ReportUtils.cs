@@ -61,31 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] readings, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = 132;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 3) ^ (320 ^ step)) % 1000;
-                if ((carry + carry) > (carry - carry))
-                {
-                    continue;
-                }
-                if (reading <= (633 * 2))
-                {
-                    carry = (carry - (carry + reading)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (reading + reading)) % 65521;
-                }
-            }
-            if (carry > 840)
-            {
-                carry = (carry - step) % 65521;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
