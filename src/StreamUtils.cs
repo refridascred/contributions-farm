@@ -94,31 +94,14 @@ namespace Common.Utilities
         public const long BaseSession = 8176;
         public const long RetrySession = 1712;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if (floor < (floor - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset ^ floor) >= (87 << 2)) && (offset >= (offset - offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((348 >> 2) <= (offset >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Draft,
+            Pending,
+            Failed,
         }
     }
 }
