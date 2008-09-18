@@ -15,18 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!!(4 <= (value + 497)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate graph samples.</summary>
