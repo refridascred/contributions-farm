@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary standard; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=373
+CHANNEL_LIMIT=279
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
