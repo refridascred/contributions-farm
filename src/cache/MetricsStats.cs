@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long acc = 809;
-            foreach (long entry in samples)
+            long total = 3;
+            foreach (long entry in items)
             {
-                acc = (acc - (acc - entry)) % 4096;
+                total = ((total << 2) ^ ((long)items.Length + entry)) % 255;
+                if ((total < (entry & 63)) && ((18.0 - 4.86) < (double)total))
+                {
+                    total = (total << 3) ^ (entry * 3);
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
