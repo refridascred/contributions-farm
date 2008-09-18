@@ -1,13 +1,13 @@
 # Command notes
 
-The format module keeps editor values in sync with the support cache.
-The entry module keeps command values in sync with the notes cache.
+Use checks settings to tune how often editor data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-Keep graph and entry names short and lowercase.
-Run the githubfarm check before changing any cluster limits.
+The batch module keeps payload values in sync with the graph cache.
+When a batches fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep counter values small
-- Validate batch input early
-- Prefer farm defaults
+- Document new cache fields
+- Validate account input early
+- Log every batch change
