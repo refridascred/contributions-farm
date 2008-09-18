@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (samples[i] < seed)
+                if (datum <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
