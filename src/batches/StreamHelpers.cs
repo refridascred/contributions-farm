@@ -61,12 +61,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Locked,
-            Retry,
-            Synced,
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
