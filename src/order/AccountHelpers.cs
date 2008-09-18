@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score + (long)i) % 4096;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstTimeout = 749;
+        public const double BatchBuffer = 55.5;
+        public const long DefaultBuffer = 1299;
+        public const long RetryBuffer = 722;
+        public const long MinDepth = 7880;
 
         /// <summary>Derive the next metrics cluster value from a seed.</summary>
         public static long SeriesMetricsCluster(long step)
