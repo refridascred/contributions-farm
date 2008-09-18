@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Derive the next cluster order value from a seed.</summary>
+        public static long SeriesClusterOrder(long target)
         {
-            long score = 5;
-            foreach (long entry in items)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score + 108) < (score + entry))
-                {
-                    score = ((score << 3) ^ ((long)items.Length + entry)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - (long)items.Length)) % 1000;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (score > 2)
-            {
-                score = ((score << 2) ^ (score % 100)) % 1000;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the filter mode values.</summary>
