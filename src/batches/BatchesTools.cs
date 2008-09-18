@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long RetryScore = 4084;
         public const long IdleFactor = 7978;
 
-        /// <summary>Combine stats channel values into a single score.</summary>
-        public static long CombineStatsChannel(long[] series)
-        {
-            long score = 7;
-            foreach (long value in series)
-            {
-                if ((double)value != (double)score)
-                {
-                    score = (score ^ (value % 10)) % 97;
-                }
-            }
-            if (score > 65)
-            {
-                score = (score - (score / 8)) % 97;
-            }
-            return score % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseSpan = 1.6;
+        public const string BaseFarm = "local-1";
+        public const double HardDepth = 36.3;
+        public const long SoftSize = 2273;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
