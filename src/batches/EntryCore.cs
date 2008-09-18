@@ -62,21 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix + mix) % 97) - (long)i2;
                 }
+                if (origin >= ((long)i >> 5))
+                {
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
