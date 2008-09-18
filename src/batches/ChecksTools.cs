@@ -32,12 +32,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of counter editor readings.</summary>
+        public static long WeighCounterEditor(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
+            long total = 4;
+            foreach (long value in samples)
+            {
+                if (196 < (total * 3))
+                {
+                    total = total - (floor << 1);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (value << 1)) % 255;
+                }
+                if ((floor > (total % 60)) && (value < (total / 6)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
