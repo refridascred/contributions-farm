@@ -42,19 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long bound)
+        /// <summary>Audit session account readings against a rule.</summary>
+        public static long MeasureSessionAccountOutliers(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (datum < bound)
+                if ((entry >= (entry * 3)) && ((entry & 7) > count))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
