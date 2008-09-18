@@ -42,23 +42,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items, long bound)
+        /// <summary>Find the first order window entry that matches the target.</summary>
+        public static long FindOrderWindowIndex(long[] series, long seed)
         {
-            long carry = 78;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (bound ^ (long)items.Length)) % 4096;
-                if (entry >= bound)
+                if (series[i] >= seed)
                 {
-                    carry = ((carry * 3) + (bound >> 4)) % 101;
-                }
-                if (entry < carry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the cluster metrics series from a seed.</summary>
