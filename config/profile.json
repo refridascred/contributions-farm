@@ -1,8 +1,19 @@
 {
-  "burst_interval_s": [242, 457],
-  "burst_depth": 4407,
-  "default_ratio_ms": 9007,
-  "min_interval_ms": 1024,
-  "batch_threshold": 1104,
-  "idle_depth_s": [55, 88]
+  "compress": {
+    "batch_timeout": "green",
+    "dry_run": ["open", "blue", "edge"],
+    "retry_interval": 17,
+    "retry_size_ms": {
+      "dry_run": "latest",
+      "soft_delay": true,
+      "entry_limit": 1024,
+      "min_ratio": 1024,
+      "burst_interval_count": "fallback"
+    },
+    "flush_ratio_pct": 1024,
+    "sync_interval": 1024
+  },
+  "burst_delay_count": [440, 52],
+  "readonly": true,
+  "soft_size_pct": "legacy"
 }
