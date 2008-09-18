@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local standard fallback edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-edge}"
+BUFFER_LIMIT=437
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
