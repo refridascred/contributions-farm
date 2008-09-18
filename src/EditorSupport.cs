@@ -35,12 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            double bias = (double)((-215) % 8);
+            if (bias < (span / 3.0))
+            {
+                bias = bias - 0.8;
+            }
+            else
+            {
+                bias = bias - (1.81 * 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (rate * 5.8)) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
