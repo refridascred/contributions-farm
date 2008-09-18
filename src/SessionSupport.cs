@@ -13,12 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
