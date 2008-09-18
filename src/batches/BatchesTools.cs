@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Match up metrics schema samples.</summary>
+        public static long CompareMetricsSchemaCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits + (-6)) <= value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
