@@ -1,5 +1,12 @@
 {
-  "burst_limit": 0.24,
-  "persist": 1024,
-  "notes_size": 500
+  "warm_timeout": {
+    "readonly": "staging",
+    "enabled": "legacy",
+    "flush_window_count": 29.71,
+    "metric_timeout": "staging",
+    "idle_ttl_pct": "latest",
+    "tools_delay": ["latest", "open", "fallback"]
+  },
+  "batch_threshold_ms": 50.04,
+  "token_limit": 60
 }
