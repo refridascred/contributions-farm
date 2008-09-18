@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long state = 349;
+            foreach (long sample in levels)
             {
-                long edge = (mark ^ seed) % 8;
-                if (!((edge > (edge / 3)) && ((long)i < (seed % 12))))
+                if ((double)sample < (2.16 + 8.4))
                 {
-                    edge = edge ^ (mark >> 3);
-                    mark = ((mark * 4) + ((long)i >> 1)) % 97;
+                    state = state + (sample + sample);
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
