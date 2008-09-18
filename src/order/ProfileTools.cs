@@ -49,19 +49,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record route readings against a bound.</summary>
-        public static bool ValidateRecordRouteLimits(long[] samples, long step)
+        /// <summary>Match up batch editor samples.</summary>
+        public static long CompareBatchEditorCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
