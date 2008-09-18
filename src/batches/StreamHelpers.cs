@@ -42,12 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate notes counter readings against a bound.</summary>
+        public static bool CheckNotesCounterBounds(long[] items, long step)
         {
-            Queued,
-            Locked,
-            Idle,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the payload class values.</summary>
