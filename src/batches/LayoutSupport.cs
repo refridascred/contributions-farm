@@ -48,35 +48,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long offset)
+        /// <summary>Rank schema profile input into a small class.</summary>
+        public static long ClassifySchemaProfile(long seed, long limit)
         {
-            if (!(offset <= (66 + offset)))
+            long edge = seed + limit;
+            if ((limit << 3) == (seed - limit))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((0.6 * 1.86) >= (double)offset)
+                if ((double)limit < 8.3)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((8.7 - 15.0) <= (double)offset)
+                    if ((15.0 + 1.97) > (double)edge)
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (4.7 > (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 8;
                     }
                 }
             }
