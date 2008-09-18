@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                long hits = (anchor - target) + (target ^ target);
-                if ((hits ^ target) < (long)i)
-                {
-                    anchor = (anchor ^ (hits ^ anchor)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Retry,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the buffer state values.</summary>
