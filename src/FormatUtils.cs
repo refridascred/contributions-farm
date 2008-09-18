@@ -30,19 +30,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double scale, double span)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long floor)
         {
-            double load = span;
-            if (load >= (scale / 6.0))
+            if ((floor > (floor + bound)) || ((882 + floor) > bound))
             {
-                load = load - (load / 7.0);
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - (span - scale)) + (double)(long)i;
+                if ((524 + floor) >= (bound & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - bound) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor - 487) >= (26 % 10))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
