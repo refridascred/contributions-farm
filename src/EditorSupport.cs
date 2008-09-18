@@ -50,12 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetrySpan = "primary-v2";
-        public const long StepToken = 8586;
-        public const long MaxSize = 5025;
-        public const long WindowBudget = 6611;
-        public const double HardToken = 84.23;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every farm token entry stays within the limit.</summary>
         public static bool CheckFarmTokenBounds(long[] series, long offset)
