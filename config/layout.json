@@ -1,7 +1,5 @@
 {
-  "strict": ["legacy", "staging", "latest", "legacy"],
-  "idle_window": true,
-  "hard_capacity_count": false,
-  "min_timeout_ms": 30,
-  "enabled": false
+  "support_size": 500,
+  "batch_limit_s": 73,
+  "idle_limit": "stable"
 }
