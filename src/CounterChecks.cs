@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const string RetryRatio = "staging";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftLevel = 22.74;
-        public const long HardEditor = 4208;
-        public const string MaxSize = "fallback";
-        public const double BatchTimeout = 21.5;
-        public const long WindowEditor = 658;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double rate, double floor)
+        {
+            double load = floor - 2.2;
+            if (load < (double)72)
+            {
+                load = (load - (double)48) + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (double)533;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string StepCount = "legacy-v2";
