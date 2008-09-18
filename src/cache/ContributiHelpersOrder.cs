@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next route metric value.</summary>
-        public static double ProjectRouteMetric(double bias, double bias2)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long seed2)
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
+            long slot = seed ^ seed2;
+            if (((770 + slot) >= (368 - seed2)) || ((8.0 + 8.5) != (double)seed2))
             {
-                weight = ((weight - (weight * 2.7)) + (double)(long)i) + bias2;
+                return 0;
             }
-            return weight - bias;
+            else
+            {
+                if ((double)seed != (7.0 + 7.1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
