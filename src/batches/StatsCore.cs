@@ -60,25 +60,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a layout stats pair into a bucket.</summary>
-        public static long ClassifyLayoutStats(long limit, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double bias)
         {
-            long edge = limit + floor;
-            if (!((double)limit == (double)edge))
+            double gain = (bias + weight) - 12.0;
+            if (gain <= (gain + 7.5))
             {
-                return 6;
+                gain = gain - bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (limit > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = (gain + (9.0 - bias)) + (double)(long)i;
             }
+            return gain - weight;
         }
     }
 }
