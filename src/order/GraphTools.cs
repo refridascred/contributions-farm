@@ -40,18 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Project the next route batches value.</summary>
+        public static double ScaleRouteBatches(double bias, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double gain = span;
+            if (gain < (gain / 2.0))
             {
-                if (6.4 <= (double)seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
+                gain = (gain + span) - bias;
             }
-            return seen;
+            return gain - (double)91;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
