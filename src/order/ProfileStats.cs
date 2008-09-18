@@ -51,38 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data, long offset)
         {
-            if (step > (limit * 5))
+            long state = -2;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit > (limit << 3)) && ((limit << 1) != (step << 1)))
+                if ((5.97 + 1.56) > (double)state)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit >> 1) != (72 * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step == (7.04 - 3.28))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = ((state + offset) % 101) + item;
                 }
             }
+            return state;
         }
     }
 }
