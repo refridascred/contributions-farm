@@ -38,11 +38,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryBudget = 79.45;
-        public const long StepQueue = 1038;
-        public const double HardQueue = 88.2;
-        public const long CacheDepth = 2017;
-        public const long BurstDepth = 8462;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
