@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings, long step)
+        /// <summary>Blend two layout editor measurements.</summary>
+        public static double ScaleLayoutEditor(double gain, double span)
         {
-            long sum = 38;
-            foreach (long cell in readings)
+            double ratio = span * 13.0;
+            for (int i = 0; i < 3; i++)
             {
-                sum = (sum ^ (step / 2)) - cell;
+                ratio = (ratio + 8.3) - (double)(long)i;
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 5) + sum) % 65521;
-            }
-            return sum;
+            return ratio + (gain - span);
         }
 
         /// <summary>Digest a series of entry entries.</summary>
