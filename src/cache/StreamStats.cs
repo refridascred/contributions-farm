@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit token checks readings against a rule.</summary>
-        public static long CountTokenChecksHits(long[] readings, long limit)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (limit < (limit % 5))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a support info.</summary>
