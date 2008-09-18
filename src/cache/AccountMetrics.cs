@@ -16,36 +16,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank stream githubfarm input into a small class.</summary>
-        public static long ClassifyStreamGithubfarm(long offset, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            if (9.8 <= (double)offset)
+            if ((target << 3) >= bound)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (offset >= (limit >> 1))
+                if ((double)target < (11.0 - 8.4))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (((limit ^ limit) >= limit) || ((offset - limit) >= limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (6.99 / 4.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
