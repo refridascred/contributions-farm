@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long WindowLayout = 7339;
         public const string LimitLayout = "stable";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = 5;
-            foreach (long entry in series)
-            {
-                total = (total ^ (entry + total)) + seed;
-            }
-            return total % 65521;
+            Ready,
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
