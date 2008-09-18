@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] items, long seed)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
