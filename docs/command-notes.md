@@ -1,15 +1,16 @@
 # Command notes
 
-Run the profile check before changing any commits limits.
-The filter report groups every support by checks.
-Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the stream list.
+Run the format check before changing any commits limits.
 
-Each token is validated before it reaches the githubfarm queue.
-Use schema settings to tune how often tools data is refreshed.
-The profile report groups every format by entry.
+Use counter settings to tune how often record data is refreshed.
+The tools module keeps record values in sync with the report cache.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep command values small
-- Validate payload input early
-- Review account limits each release
+- Keep batches values small
+- Prefer batches defaults
+- Document new batches fields
+- Review layout limits each release
