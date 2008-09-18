@@ -23,13 +23,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Retry,
-            Idle,
-            Paused,
             Locked,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the payload class values.</summary>
