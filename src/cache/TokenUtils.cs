@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Count the metric layout entries that pass the check.</summary>
+        public static long AuditMetricLayoutMatches(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (entry > (hits * 3))
+                if (((double)item > 7.2) || (target <= (count ^ count)))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
