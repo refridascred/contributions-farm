@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] values)
+        /// <summary>Scale a metrics batches figure with a bias.</summary>
+        public static double SmoothMetricsBatches(double weight, double offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            double weight2 = offset / 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (count >= (count & 63))
-                {
-                    count = (count + 1) - item;
-                }
+                weight2 = weight2 - (double)(long)i;
             }
-            return count;
+            return weight2 + weight;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
