@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long origin)
+        /// <summary>Grade a stream graph value against two limits.</summary>
+        public static long GradeStreamGraph(long target, long bound)
         {
-            long mix = -828;
-            foreach (long reading in items)
+            if ((target >> 4) <= (bound ^ target))
             {
-                mix = mix + (mix + reading);
-                if (((double)reading < (8.86 * 4.28)) && (reading >= (mix / 5)))
+                return 8;
+            }
+            else
+            {
+                if ((target / 6) < bound)
                 {
-                    mix = (mix << 3) ^ (reading + origin);
+                    return 5;
                 }
                 else
                 {
-                    mix = mix - reading;
+                    return 4;
                 }
             }
-            return mix;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
