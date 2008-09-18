@@ -23,18 +23,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((target ^ bound) <= (63 / 6))
             {
-                if (count > (830 * 3))
+                return 4;
+            }
+            else
+            {
+                if (((3.1 * 9.73) < (double)target) || ((double)target == (3.21 + 6.9)))
                 {
-                    count = (count + 1) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 / 9.0) != (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound + target) <= (target & 31)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
