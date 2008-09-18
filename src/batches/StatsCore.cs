@@ -58,19 +58,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] series, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in series)
+            long result = -442;
+            foreach (long reading in samples)
             {
-                if (value > limit)
+                if (!((reading << 3) == (reading - 970)))
                 {
-                    found = false;
+                    result = result - (seed - result);
+                }
+                else
+                {
+                    result = (result + seed) % 255;
+                }
+                if ((result + seed) >= (reading << 1))
+                {
                     break;
                 }
             }
-            return found;
+            if (result > 82)
+            {
+                result = (result + (result - (long)samples.Length)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a context stats.</summary>
