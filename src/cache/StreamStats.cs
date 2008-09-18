@@ -27,19 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the window queue entries that pass the check.</summary>
-        public static long CountWindowQueueGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((1.81 + 8.86) > (double)reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 91.14;
+        public const long LimitRecord = 4324;
+        public const long BaseScore = 313;
+        public const long MaxSize = 9403;
+        public const double HardRecord = 25.02;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSpan = 1435;
