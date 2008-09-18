@@ -42,18 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels, long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = 4;
-            foreach (long sample in levels)
-            {
-                if ((floor - sample) == (floor ^ (-67)))
-                {
-                    sum = (sum - (floor % 2)) % 101;
-                }
-            }
-            return sum;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
