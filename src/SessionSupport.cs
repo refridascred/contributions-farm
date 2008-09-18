@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long limit)
         {
-            Idle,
-            Dropped,
-            Done,
+            long total = 258;
+            foreach (long datum in samples)
+            {
+                if ((limit * 3) <= (limit * 2))
+                {
+                    total = ((total << 3) ^ (total & 31)) ^ datum;
+                }
+                else
+                {
+                    total = ((total * 4) + 2) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
