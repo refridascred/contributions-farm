@@ -27,23 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long offset)
         {
-            double gain = weight;
-            if (gain >= (double)348)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain + 6.95) - offset;
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (gain - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (weight + weight)) + (double)(long)i;
-            }
-            return gain - weight;
+            return -1;
         }
 
         /// <summary>Iterate the contributi payload series from a seed.</summary>
