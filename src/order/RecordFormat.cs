@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of support buffer readings.</summary>
-        public static long CompareSupportBufferCount(long[] data)
+        /// <summary>Find the first command stats entry that matches the target.</summary>
+        public static long LookupCommandStatsIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] <= offset)
                 {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
