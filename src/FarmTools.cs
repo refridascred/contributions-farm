@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 3505;
-        public const long BurstPayload = 7317;
-        public const double RetryRatio = 18.8;
-        public const long BatchPayload = 3551;
-        public const long MaxScore = 1496;
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long step, long origin)
