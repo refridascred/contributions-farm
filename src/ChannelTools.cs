@@ -36,13 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            Stale,
+            Locked,
+            Retry,
+            Active,
+            Idle,
         }
     }
 }
