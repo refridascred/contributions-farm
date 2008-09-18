@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry << 3) ^ (carry << 2)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
