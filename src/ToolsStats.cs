@@ -59,21 +59,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmToolsCount(long[] series)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many format order samples are out of range.</summary>
