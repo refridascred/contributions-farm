@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long bound)
         {
-            Paused,
-            Retry,
-            Closed,
-            Dropped,
-            Synced,
+            long sum = -17;
+            foreach (long reading in values)
+            {
+                sum = (((sum * 5) + (bound ^ 0)) % 1000) - reading;
+                sum = ((sum << 3) ^ 5) % 4096;
+            }
+            if (sum > (-675))
+            {
+                sum = (sum - (bound % 24)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
