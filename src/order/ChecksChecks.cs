@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 38;
+            foreach (long cell in readings)
+            {
+                sum = (sum ^ (step / 2)) - cell;
+            }
+            if (sum > 2)
+            {
+                sum = ((sum * 5) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
