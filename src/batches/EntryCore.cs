@@ -45,13 +45,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            Queued,
+            Active,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
