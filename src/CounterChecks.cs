@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long limit)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long gap = bound ^ limit;
+            if ((gap ^ 68) > (gap % 10))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap >= limit) || ((limit + limit) != (65 - limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(gap > (limit + gap)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit == (double)limit) && ((gap % 5) <= (gap * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
