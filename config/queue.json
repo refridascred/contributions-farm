@@ -1,16 +1,6 @@
 {
-  "strict": 838,
-  "audit": {
-    "report_capacity": 76,
-    "session_window": 86.52,
-    "order_window": false
-  },
-  "compress": 35.3,
-  "retry_delay": {
-    "farm_timeout": 50,
-    "queue_ttl": "open",
-    "base_delay": "edge"
-  },
-  "record_capacity": 6142,
-  "batch_retries": "stable"
+  "sync_interval_count": "legacy",
+  "hard_limit": "latest",
+  "report_ratio": 75.26,
+  "poll_retries_pct": 9398
 }
