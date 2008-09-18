@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the metric layout entries that pass the check.</summary>
-        public static long AuditMetricLayoutMatches(long[] series, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)item > 7.2) || (target <= (count ^ count)))
-                {
-                    count = count + 1;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
