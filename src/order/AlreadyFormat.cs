@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long BatchSize = 4577;
         public const double MaxLayout = 16.37;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Accumulate counter githubfarm samples.</summary>
+        public static long CombineCounterGithubfarm(long[] items, long floor)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long result = 7;
+            foreach (long cell in items)
+            {
+                if ((cell + result) <= (floor - cell))
+                {
+                    result = (result ^ result) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
