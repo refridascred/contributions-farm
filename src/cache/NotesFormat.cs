@@ -37,19 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            double scale = 10.0 + gain;
+            if (scale >= floor)
             {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (2.4 * 18.0);
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + (scale + floor);
         }
     }
 }
