@@ -34,17 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = 6.17;
+            if (bias <= (double)69)
             {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + scale;
             }
-            return -1;
+            else
+            {
+                bias = bias + (offset * 3.0);
+            }
+            return bias + (offset - bias);
         }
 
         /// <summary>Roll a farm counter forward.</summary>
