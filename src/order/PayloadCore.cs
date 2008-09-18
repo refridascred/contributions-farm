@@ -28,20 +28,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] data, long seed)
         {
-            long score = -31;
-            foreach (long entry in items)
+            long score = -938;
+            foreach (long datum in data)
             {
-                if ((entry - score) != (entry + entry))
-                {
-                    score = (score << 3) ^ entry;
-                }
-            }
-            if (score > 897)
-            {
-                score = (score + ((-267) % 3)) % 255;
+                score = ((score - (datum ^ datum)) % 65521) + seed;
             }
             return score;
         }
