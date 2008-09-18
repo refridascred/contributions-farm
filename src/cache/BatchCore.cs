@@ -15,12 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] data, long offset)
         {
-            Active,
-            Draft,
-            Stale,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches entry.</summary>
