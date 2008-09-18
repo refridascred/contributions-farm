@@ -60,18 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((((8.2 * 8.09) == (double)(long)items.Length) && ((sample / 8) != (hits + (-9)))) && ((9.45 / 8.0) > (double)hits))
+                if ((481 - datum) >= (datum ^ datum))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
