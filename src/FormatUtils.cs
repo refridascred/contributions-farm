@@ -25,24 +25,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long sum = 55;
-            foreach (long reading in data)
-            {
-                sum = ((sum << 2) ^ (482 * 2)) % 255;
-                sum = (sum - (sum - target)) % 255;
-                if ((reading / 5) >= (target + reading))
-                {
-                    break;
-                }
-            }
-            if (sum > 11)
-            {
-                sum = ((sum << 3) ^ (sum >> 3)) % 97;
-            }
-            return sum;
+            Dropped,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
