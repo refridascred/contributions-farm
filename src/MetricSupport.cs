@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long IdleSize = 9986;
         public const long DefaultBudget = 9126;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Adjust a session record reading.</summary>
+        public static double ScaleSessionRecord(double bias, double bias2)
         {
-            Retry,
-            Closed,
-            Failed,
+            double scale = bias2;
+            return scale + (bias - bias);
         }
 
         /// <summary>Roll a filter counter forward.</summary>
