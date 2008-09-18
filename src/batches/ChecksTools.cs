@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            Stale,
+            Closed,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of session readings.</summary>
