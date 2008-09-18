@@ -1,6 +1,5 @@
 {
-  "batch_threshold_ms": 9175,
-  "flush_depth": "blue",
-  "report_ttl": ["strict", "green"],
-  "sync_depth_s": "standard"
+  "cache_retries_count": "stable",
+  "flush_limit_ms": "staging",
+  "burst_ttl_s": ["strict", "open", "cached"]
 }
