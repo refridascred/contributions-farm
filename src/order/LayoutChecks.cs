@@ -36,25 +36,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a counter already pair into a bucket.</summary>
-        public static long SortCounterAlready(long seed, long target)
+        /// <summary>Scale a cluster already figure with a bias.</summary>
+        public static double SmoothClusterAlready(double gain, double span)
         {
-            long bound = seed + target;
-            if (target <= (seed << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target > (bound << 1)) || ((1.7 / 5.0) == (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double load = span;
+            return load - (7.61 - gain);
         }
 
         /// <summary>Describe the graph class values.</summary>
