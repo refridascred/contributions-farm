@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardLevel = 5049;
-        public const long LimitSchema = 2600;
-        public const long SoftSchema = 8902;
-        public const long MaxRatio = 1980;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count < 15.0)
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of cache route readings.</summary>
         public static long MatchCacheRouteCount(long[] values)
