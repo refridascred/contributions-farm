@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double rate, double span)
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long CountMetricsBatchesMatches(long[] series)
         {
-            double gain = (rate * 7.3) * 18.0;
-            if (gain <= span)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                gain = gain + span;
+                if ((entry % 97) == (1 & 15))
+                {
+                    seen = seen + 1;
+                }
             }
-            return gain + (double)914;
+            return seen;
         }
 
         /// <summary>Blend two support measurements.</summary>
