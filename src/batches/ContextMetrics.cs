@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long BurstRatio = 6449;
         public const string BaseLevel = "stable";
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Pending,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "fallback-1";
+        public const long BatchCluster = 5371;
+        public const long BaseBudget = 1329;
+        public const string SoftScore = "latest-v2";
+        public const long CacheCluster = 6783;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] levels)
