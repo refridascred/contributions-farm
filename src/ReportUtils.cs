@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of graph record entries.</summary>
-        public static long ScoreGraphRecord(long[] items, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long carry = 739;
-            foreach (long value in items)
-            {
-                carry = ((carry + 758) + value) + floor;
-            }
-            return carry;
+            Paused,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
