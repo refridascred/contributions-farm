@@ -28,12 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Retry,
-            New,
-            Pending,
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
