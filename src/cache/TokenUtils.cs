@@ -34,20 +34,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((step + carry) > carry))
+                if ((value * 3) == (62 * 2))
                 {
-                    carry = (carry * 4) + (carry * 3);
+                    hits = hits + 2;
                 }
-                carry = carry - (carry - carry);
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
     }
 }
