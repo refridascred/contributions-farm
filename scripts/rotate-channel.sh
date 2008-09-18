@@ -7,14 +7,18 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
+for item in fallback cached legacy local; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
