@@ -59,11 +59,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 6607;
-        public const long IdleLevel = 2017;
-        public const long WindowFactor = 4690;
-        public const double SoftTimeout = 56.08;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmToolsCount(long[] series)
