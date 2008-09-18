@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 1853;
         public const long HardCache = 2238;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
