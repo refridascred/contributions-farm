@@ -1,7 +1,17 @@
 {
-  "base_timeout_s": ["green", "strict", "staging", "eu-west"],
-  "githubfarm_ratio": "fallback",
-  "cache_limit_s": true,
-  "compress": 31,
-  "base_ratio_pct": 96.34
+  "idle_interval": 15,
+  "default_ratio_count": 250,
+  "max_retries_count": [358, 487, 323, 21],
+  "flush_capacity": {
+    "flush_ratio": 60,
+    "batch_size": "cached",
+    "cache_threshold_ms": 6.09,
+    "soft_size_ms": {
+      "idle_ttl": "staging",
+      "batch_size_ms": [159, 440],
+      "warm_timeout_ms": [358, 174]
+    }
+  },
+  "min_threshold_pct": [348, 472],
+  "readonly": "fallback"
 }
