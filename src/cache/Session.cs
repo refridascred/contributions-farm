@@ -58,10 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseScore = 6752;
-        public const string HardFarm = "local-edge";
-        public const long IdleFarm = 643;
-        public const double BurstSize = 64.66;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((0 - seen) > seen)
+                {
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
