@@ -14,22 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            long result = 884;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((5 << 2) <= floor) || ((double)959 == (double)datum))
+                if ((-298) > (matches - datum))
                 {
-                    result = (result - result) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (result < 1)
-            {
-                result = ((result * 2) + (884 * 4)) % 101;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
