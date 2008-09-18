@@ -1,12 +1,5 @@
 {
-  "cache_interval_pct": {
-    "warm_size": true,
-    "dry_run": [304, 127, 149, 56],
-    "readonly": "eu-west",
-    "queue_retries": 60
-  },
-  "queue_delay": 6477,
-  "burst_window": [221, 194, 489],
-  "channel_timeout": ["latest", "blue", "latest"],
-  "layout_threshold": "staging"
+  "poll_interval_count": [309, 42],
+  "default_retries_count": 29.82,
+  "batch_limit_pct": 31
 }
