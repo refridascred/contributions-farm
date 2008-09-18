@@ -41,21 +41,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 53.43;
+        public const long BatchBuffer = 8081;
+        public const double BatchFactor = 24.72;
+        public const long MinBuffer = 5654;
     }
 }
