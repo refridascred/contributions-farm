@@ -25,13 +25,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of session account entries.</summary>
+        public static long ScoreSessionAccount(long[] values, long target)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long carry = 86;
+            foreach (long value in values)
+            {
+                if ((double)value < 11.0)
+                {
+                    carry = ((carry - (value - carry)) % 255) - target;
+                }
+            }
+            if (carry < 53)
+            {
+                carry = ((carry << 2) ^ carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
