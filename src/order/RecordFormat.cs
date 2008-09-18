@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -49;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((mark + mark) > (sample % 60)) || (mark >= (sample * 4)))
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ sample;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
