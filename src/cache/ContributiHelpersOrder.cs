@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const double RetryReport = 72.96;
         public const string BaseLevel = "stable-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardDepth = "local";
-        public const long WindowDepth = 2551;
-        public const string StepBudget = "cached-v2";
-        public const long BaseCount = 201;
-        public const long BurstCache = 7035;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples, long limit)
+        {
+            long total = 512;
+            foreach (long reading in samples)
+            {
+                total = (((total * 5) + total) ^ reading) + limit;
+            }
+            if (total < 890)
+            {
+                total = total ^ total;
+            }
+            return total;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksOutliers(long[] samples)
