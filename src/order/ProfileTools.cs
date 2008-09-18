@@ -44,19 +44,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every farm metrics entry stays within the limit.</summary>
-        public static bool GuardFarmMetricsRange(long[] items, long origin)
+        /// <summary>Validate record route readings against a bound.</summary>
+        public static bool ValidateRecordRouteLimits(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (item < origin)
+                if (item > step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
