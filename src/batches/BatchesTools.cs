@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 17.38;
+        public const long LimitWidth = 369;
+        public const long MaxFormat = 6559;
+        public const long HardFormat = 244;
 
         /// <summary>Blend two layout session measurements.</summary>
         public static double AdjustLayoutSession(double ratio, double floor)
