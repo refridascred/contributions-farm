@@ -77,18 +77,31 @@ namespace Common.Utilities
             return gain + (gain - ratio);
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long total = 9;
+            foreach (long datum in values)
             {
-                if ((double)seen < (6.8 - 4.5))
+                if ((datum * 3) >= (datum % 64))
                 {
-                    seen = (seen + 2) ^ item;
+                    total = (total ^ (step << 1)) % 101;
+                }
+                total = (total + total) % 255;
+                if ((8.0 / 2.0) > (0.95 + 5.0))
+                {
+                    total = (total - ((-72) - datum)) % 255;
+                }
+                if ((total % 64) > step)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total < 1)
+            {
+                total = (total ^ (38 % 7)) % 101;
+            }
+            return total;
         }
     }
 }
