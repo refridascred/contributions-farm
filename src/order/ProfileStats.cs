@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine buffer session values into a single score.</summary>
-        public static long FoldBufferSession(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long score = 8;
-            foreach (long entry in samples)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (score >= (score ^ entry))
-                {
-                    score = (score - score) % 65521;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
