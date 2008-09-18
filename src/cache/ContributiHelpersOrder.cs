@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] readings)
+        /// <summary>Check that every payload record entry stays within the limit.</summary>
+        public static bool CheckPayloadRecordLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((tally >> 1) == (tally * 3))
+                if (cell >= seed)
                 {
-                    tally = (tally + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
