@@ -1,9 +1,20 @@
 # support settings
-idle_window: green
-record_retries: true
-route_timeout: 4830
-strict: true
-sync_interval_count:
-  - 128
-  - 357
-default_size_pct: 70
+retry_size_count:
+  - primary
+  - green
+  - green
+retry_size_s: 250
+default_retries: 30
+record_limit: 250
+default_depth_pct:
+  dry_run: 7185
+  poll_delay_count:
+    hard_ratio_s: primary
+    flush_size_ms: 84
+    burst_retries_ms: staging
+    dry_run: staging
+    retry_window_pct: 91.16
+  max_timeout: false
+  default_window_s: 1024
+  strict: false
+max_size: false
