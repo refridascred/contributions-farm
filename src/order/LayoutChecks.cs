@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            Retry,
-            Stale,
-            Paused,
-            Failed,
-            Ready,
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (origin >= ((long)i % 7))
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
