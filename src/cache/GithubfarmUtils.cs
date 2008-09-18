@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long origin)
+        /// <summary>Roll a cluster graph counter forward.</summary>
+        public static long SeriesClusterGraph(long origin)
         {
-            long prev = limit - origin;
-            if ((origin << 3) > (5 ^ origin))
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (limit >= prev)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >= prev) && ((prev ^ 65) > (limit >> 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
