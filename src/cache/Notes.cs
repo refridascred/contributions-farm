@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long HardDepth = 1853;
         public const long HardCache = 2238;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] data, long step)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((4 + item) == (88 + 4)))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
