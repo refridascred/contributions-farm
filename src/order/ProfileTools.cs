@@ -70,18 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] items)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches % 16) > (item << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Retry,
         }
     }
 }
