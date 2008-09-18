@@ -33,14 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] levels, long origin)
         {
-            New,
-            Draft,
-            Closed,
-            Queued,
-            Idle,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
