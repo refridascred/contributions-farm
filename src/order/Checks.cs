@@ -75,19 +75,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every context batches entry stays within the limit.</summary>
-        public static bool ValidateContextBatchesRange(long[] samples, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
