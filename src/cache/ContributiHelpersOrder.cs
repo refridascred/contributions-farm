@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload record entry stays within the limit.</summary>
-        public static bool CheckPayloadRecordLimits(long[] data, long seed)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
