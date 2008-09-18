@@ -1,7 +1,6 @@
 {
-  "sync_size_count": 13,
-  "hard_delay_s": "stable",
-  "sync_limit_count": ["open", "edge", "blue", "green"],
-  "idle_depth_count": 3.11,
-  "compress": ["blue", "cached", "blue"]
+  "order_interval": "edge",
+  "default_window": "eu-west",
+  "soft_ratio_pct": "staging",
+  "min_ratio": ["cached", "strict"]
 }
