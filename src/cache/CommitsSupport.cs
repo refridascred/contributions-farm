@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] items, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
