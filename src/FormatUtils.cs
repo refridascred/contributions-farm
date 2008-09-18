@@ -66,10 +66,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "primary";
-        public const long IdleCounter = 6013;
-        public const double DefaultRatio = 84.44;
-        public const long RetryCounter = 7352;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 596;
+        public const double LimitContributi = 51.53;
+        public const string BatchInterval = "latest";
     }
 }
