@@ -61,19 +61,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long origin)
+        /// <summary>Iterate the cluster metrics series from a seed.</summary>
+        public static long RollClusterMetrics(long floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample != origin)
+                carry = (carry + (floor + 35)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry ^ (floor * 4)) % 97) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
