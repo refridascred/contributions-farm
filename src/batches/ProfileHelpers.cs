@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every counter record entry stays within the limit.</summary>
-        public static bool CheckCounterRecordRange(long[] samples, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = 553;
+            foreach (long sample in readings)
             {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((((mix * 4) + (mix - 222)) % 97) ^ sample) - target;
             }
-            return valid;
+            if (mix > 73)
+            {
+                mix = ((mix * 5) + (long)readings.Length) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
