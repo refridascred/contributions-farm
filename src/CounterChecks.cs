@@ -45,13 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] samples)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!((5 & 31) != (5 + sample)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up schema contributi samples.</summary>
