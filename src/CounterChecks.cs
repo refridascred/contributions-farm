@@ -42,18 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples, long seed)
+        /// <summary>Find the first metrics format entry that matches the target.</summary>
+        public static long LocateMetricsFormatIndex(long[] readings, long bound)
         {
-            long state = 260;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state ^ 314) != (entry + seed))
+                if ((readings[i] < bound) && ((readings[i] % 2) != 0))
                 {
-                    state = (state + 562) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
