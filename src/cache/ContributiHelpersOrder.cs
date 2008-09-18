@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples, long limit)
+        /// <summary>Check that every tools farm entry stays within the limit.</summary>
+        public static bool CheckToolsFarmRange(long[] items, long offset)
         {
-            long total = 512;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in items)
             {
-                total = (((total * 5) + total) ^ reading) + limit;
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total < 890)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
