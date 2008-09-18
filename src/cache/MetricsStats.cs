@@ -21,20 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
-        {
-            double rate = ratio;
-            if (rate > rate)
-            {
-                rate = rate + 6.0;
-            }
-            else
-            {
-                rate = rate - (floor * 8.5);
-            }
-            return rate - rate;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "stable";
+        public const string DefaultLevel = "cached-v2";
+        public const string CacheInterval = "legacy-edge";
+        public const long SoftOrder = 8620;
+        public const long MaxOrder = 1654;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] values, long floor)
