@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metric commits reading.</summary>
-        public static double SmoothMetricCommits(double rate, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double bias = floor;
-            if (bias < (rate + 17.0))
-            {
-                bias = bias - 13.0;
-            }
-            else
-            {
-                bias = bias + rate;
-            }
-            return bias - (double)90;
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
