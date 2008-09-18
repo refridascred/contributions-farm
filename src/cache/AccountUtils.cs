@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double bias)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long target)
         {
-            double scale = bias;
-            if (scale > scale)
+            if (((double)step > (double)521) && (6 >= target))
             {
-                scale = scale + (ratio * 3.6);
+                return 6;
             }
             else
             {
-                scale = scale - (2.8 * 3.6);
+                if ((step + target) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target / 8) > target) && ((step - (-668)) <= (target / 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((-8) < (target - 280)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (double)8;
         }
 
         /// <summary>Audit commits batch readings against a rule.</summary>
