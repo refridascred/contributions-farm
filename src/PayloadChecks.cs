@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] samples, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double drift = offset;
+            if (drift < (offset + 0.24))
             {
-                if (!(((bound / 7) < (bound + matches)) || ((matches - bound) <= matches)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + gain;
             }
-            return matches;
+            return drift + (drift + offset);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
