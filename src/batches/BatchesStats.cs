@@ -20,17 +20,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a payload graph sample.</summary>
-        public static long LocatePayloadGraphIndex(long[] data, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = (double)(406 >> 3);
+            if (rate2 <= rate2)
             {
-                if ((data[i] == limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - rate2) - rate;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - span;
+            }
+            return rate2 - (rate2 * 3.1);
         }
 
         /// <summary>Describe the command mode values.</summary>
