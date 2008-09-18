@@ -1,14 +1,13 @@
 # Command notes
 
-Each cluster is validated before it reaches the already queue.
-The entry module keeps support values in sync with the notes cache.
+Defaults for record live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
 
-Keep notes and channel names short and lowercase.
-A notes that stays idle for too long is moved to the checks list.
+The graph module keeps order values in sync with the farm cache.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every contributi change
-- Keep farm values small
-- Document new window fields
-- Review payload limits each release
+- Review format limits each release
+- Keep account values small
+- Document new filter fields
