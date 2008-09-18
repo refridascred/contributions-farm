@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Match up queue already samples.</summary>
+        public static long PairQueueAlreadyCount(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc + (990 + 5)) % 1000;
-                acc = acc + (acc + bound);
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
