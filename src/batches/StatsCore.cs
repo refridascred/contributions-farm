@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] data, long step)
+        /// <summary>Classify a already command pair into a bucket.</summary>
+        public static long GradeAlreadyCommand(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((target >> 5) >= offset) && ((298 / 9) <= target))
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((double)target >= 10.0) || ((offset >> 4) == (offset + offset)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((43 - 6) > (0 + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
