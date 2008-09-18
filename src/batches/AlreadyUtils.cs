@@ -74,14 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Active,
-            Failed,
-            Pending,
-            Idle,
-            Retry,
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
