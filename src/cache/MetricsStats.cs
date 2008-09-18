@@ -29,18 +29,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many format token samples are out of range.</summary>
-        public static long AuditFormatTokenGaps(long[] items, long seed)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (seed >= (tally / 6))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
