@@ -1,9 +1,8 @@
 {
-  "hard_retries_ms": {
-    "editor_size": true,
-    "sync_timeout_pct": false,
-    "idle_size_pct": [323, 364, 14, 326]
-  },
-  "warm_retries": 34,
-  "graph_threshold": ["blue", "blue", "cached", "primary"]
+  "batches_limit": "eu-west",
+  "verbose": "green",
+  "poll_threshold_count": "open",
+  "session_size": false,
+  "cache_depth": 1467,
+  "cache_ttl_count": true
 }
