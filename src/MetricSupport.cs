@@ -15,17 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((series[i] < offset) && ((series[i] % 5) != 0))
+                if (!((item * 5) > (-84)))
                 {
-                    return (long)i;
+                    count = (count + 1) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
