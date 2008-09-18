@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long limit)
         {
-            Done,
-            Locked,
-            Ready,
-            Closed,
-            Dropped,
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((9.12 - 1.59) < (double)limit)
+                {
+                    mark = (mark ^ (limit + mark)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (limit << 1)) % 97;
+                    mark = mark ^ (limit * 4);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
