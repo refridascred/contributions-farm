@@ -22,23 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long ScoreRecordFilter(long[] samples, long origin)
-        {
-            long acc = 983;
-            foreach (long value in samples)
-            {
-                if ((value / 9) >= ((long)samples.Length - acc))
-                {
-                    acc = (acc - (acc - origin)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 2) + (0 >> 5);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryInterval = 39.33;
+        public const string BatchCache = "staging-edge";
+        public const string RetrySize = "legacy";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 6352;
