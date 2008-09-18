@@ -111,15 +111,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 1;
-            foreach (long item in readings)
-            {
-                score = (((score * 3) + (item - score)) % 255) - seed;
-            }
-            return score % 65521;
+            Idle,
+            Active,
+            Pending,
+            Draft,
+            New,
         }
     }
 }
