@@ -1,11 +1,9 @@
 # entry settings
-warm_window_count:
-  - 54
-  - 476
-  - 81
-  - 420
-order_limit: 15.08
-min_window_s: true
-base_retries: 94.92
-retry_interval_count: 93
-flush_capacity_count: 25.18
+flush_threshold_ms:
+  burst_depth_count: true
+  warm_ttl: 24.69
+  cache_interval_ms: fallback
+enabled: false
+compress: strict
+burst_threshold: stable
+persist: true
