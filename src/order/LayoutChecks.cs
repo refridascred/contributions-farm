@@ -44,13 +44,14 @@ namespace Common.Utilities
             return load - (7.61 - gain);
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Queued,
-            Idle,
-            Active,
-            New,
+            Synced,
+            Ready,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
