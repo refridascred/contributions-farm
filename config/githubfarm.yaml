@@ -1,9 +1,10 @@
 # githubfarm settings
-base_ratio: 75.1
-entry_capacity: 100
-warm_size_s: 250
-cluster_ttl: cached
-command_timeout:
-  - 273
-  - 104
-compress: 93.7
+notes_interval:
+  - 433
+  - 218
+  - 81
+  - 123
+soft_window_s: strict
+route_ttl: false
+editor_timeout: 6.74
+order_size: edge
