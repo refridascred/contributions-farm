@@ -33,15 +33,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mark = 66;
-            foreach (long sample in series)
-            {
-                mark = ((mark + (912 * 5)) % 255) ^ sample;
-            }
-            return mark;
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the cache phase values.</summary>
