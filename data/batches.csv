@@ -1,7 +1,6 @@
-id,token,active,ratio,level
-1,27,standard,stable,220
-2,32.71,58.97,378,stable
-3,818,green,5.52,677
-4,936,673,81.08,eu-west
-5,515,legacy,3.17,49.47
-6,fallback,legacy,19,774
+id,ratio,level
+1,275,138
+2,87,174
+3,64.81,blue
+4,630,standard
+5,396,713
