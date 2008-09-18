@@ -35,11 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 1331;
-        public const long LimitRecord = 7830;
-        public const long BurstScore = 9560;
-        public const long IdleRecord = 7696;
-        public const long DefaultRecord = 9081;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Draft,
+            Ready,
+            Queued,
+        }
     }
 }
