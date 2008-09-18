@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double drift = weight;
-            if (drift > (offset - 17.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)33;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (offset + weight)) + (double)(long)i;
-            }
-            return drift - (drift * 7.8);
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
