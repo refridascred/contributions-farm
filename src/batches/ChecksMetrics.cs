@@ -51,19 +51,17 @@ namespace Common.Utilities
         public const long WindowInterval = 9201;
         public const long SoftBudget = 9248;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long origin)
         {
-            double bias = 3.1 / 5.0;
-            if (bias > (3.58 - scale))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - bias;
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + scale;
-            }
-            return bias - (span + bias);
+            return -1;
         }
     }
 }
