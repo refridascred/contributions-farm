@@ -70,21 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Count the counter githubfarm entries that pass the check.</summary>
+        public static long TallyCounterGithubfarmGaps(long[] items, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                acc = acc ^ origin;
-                acc = acc + (acc + origin);
-                if (acc >= origin)
+                if ((double)(long)items.Length != (double)step)
                 {
-                    acc = acc ^ (168 + acc);
+                    matches = (matches + 1) - sample;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
