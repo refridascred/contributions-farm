@@ -22,21 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 66;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (carry > datum)
                 {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ datum) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 97;
+                }
+                if ((double)datum >= (5.65 + 2.0))
+                {
+                    carry = ((carry << 3) ^ (3 % 8)) % 97;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
