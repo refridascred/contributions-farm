@@ -1,10 +1,7 @@
 {
-  "schema_interval": {
-    "poll_retries": 500,
-    "sync_timeout": "primary",
-    "strict": 1024
-  },
-  "flush_threshold_count": "edge",
-  "retry_delay_s": "standard",
-  "sync_threshold_s": "staging"
+  "strict": ["legacy", "staging", "latest", "legacy"],
+  "idle_window": true,
+  "hard_capacity_count": false,
+  "min_timeout_ms": 30,
+  "enabled": false
 }
