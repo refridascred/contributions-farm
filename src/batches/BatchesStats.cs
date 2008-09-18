@@ -20,12 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long seed2)
         {
-            Locked,
-            Synced,
-            Done,
+            if ((seed << 1) >= (seed / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 7) <= seed2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed % 7) > (seed2 % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up commits samples.</summary>
