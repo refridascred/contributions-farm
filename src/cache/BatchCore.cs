@@ -31,15 +31,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long offset)
+        /// <summary>Check that every record channel entry stays within the limit.</summary>
+        public static bool CheckRecordChannelLimits(long[] values, long floor)
         {
-            long acc = -337;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                acc = ((acc ^ (reading * 4)) % 1000) + offset;
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
     }
 }
