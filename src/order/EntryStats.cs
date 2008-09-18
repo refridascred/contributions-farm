@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public double Size { get; set; }
+            Synced,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Fold a list of window format readings.</summary>
