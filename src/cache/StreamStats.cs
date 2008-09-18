@@ -45,38 +45,19 @@ namespace Common.Utilities
         public const long IdleSchema = 8865;
         public const long BatchLevel = 4797;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long floor, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] readings, long floor)
         {
-            if ((target + floor) >= (target % 60))
+            long mark = 1;
+            foreach (long reading in readings)
             {
-                return 1;
+                mark = (((mark + (mark >> 1)) % 255) - reading) - floor;
             }
-            else
+            if (mark < 570)
             {
-                if ((target << 1) > (275 + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((9.0 * 8.1) < (double)target) || (target > (floor + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((910 - floor) > floor) || (target >= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mark = (mark * 2) + ((-309) - (long)readings.Length);
             }
+            return mark;
         }
     }
 }
