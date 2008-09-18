@@ -1,37 +1,4 @@
 # support settings
-retry_threshold_count: 84.01
-min_capacity_s:
-  flush_threshold_pct:
-    - latest
-    - blue
-    - fallback
-    - strict
-  hard_size: false
-  poll_ttl_pct: false
-  cache_delay: edge
-base_threshold_pct:
-  audit: edge
-  payload_limit:
-    commits_size: 61
-    readonly: green
-    hard_delay_ms: edge
-    default_ratio_ms: 500
-  poll_ttl_s:
-    - 325
-    - 123
-    - 364
-  soft_retries_pct: cached
-  hard_capacity_count:
-    - eu-west
-    - legacy
-  metrics_capacity:
-    verbose: 500
-    idle_timeout_pct: fallback
-    max_capacity_s:
-      - cached
-      - eu-west
-    poll_interval_pct:
-      - green
-      - cached
-      - green
-    burst_ratio_s: 100
+strict: local
+default_capacity: false
+poll_ratio_count: 84
