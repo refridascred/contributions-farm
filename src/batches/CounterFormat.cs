@@ -35,10 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleDepth = 80.49;
-        public const long MaxCounter = 854;
-        public const string DefaultCounter = "standard-v2";
-        public const long SoftSpan = 7939;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 1331;
+        public const long LimitRecord = 7830;
+        public const long BurstScore = 9560;
+        public const long IdleRecord = 7696;
+        public const long DefaultRecord = 9081;
     }
 }
