@@ -35,13 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] values)
         {
-            Retry,
-            Locked,
-            Active,
-            Queued,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (hits < datum)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
