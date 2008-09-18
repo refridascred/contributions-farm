@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine order channel values into a single score.</summary>
-        public static long TotalOrderChannel(long[] samples, long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 419;
-            foreach (long item in samples)
-            {
-                if (item < (2 << 2))
-                {
-                    total = (total * 4) + (item & 31);
-                }
-                if ((double)total != (3.0 * 6.76))
-                {
-                    break;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total ^ (limit * 2)) % 65521;
-            }
-            return total % 97;
+            Pending,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the counter level values.</summary>
