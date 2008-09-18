@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor tools samples are out of range.</summary>
-        public static long CountEditorToolsGaps(long[] values)
+        /// <summary>Roll a record channel counter forward.</summary>
+        public static long StepRecordChannel(long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (seen <= (reading - seen))
-                {
-                    seen = seen + 2;
-                }
+                score = (score - (seed + seed)) % 65521;
+                score = score + ((long)i & 3);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
