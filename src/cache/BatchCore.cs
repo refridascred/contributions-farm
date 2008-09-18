@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double bias)
-        {
-            double ratio = 0.9;
-            if (ratio >= rate)
-            {
-                ratio = (ratio + (double)2) - bias;
-            }
-            return ratio + (ratio + ratio);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleWidth = "cached-1";
+        public const long SoftRatio = 2993;
+        public const long HardGithubfarm = 3103;
+        public const double LimitGithubfarm = 7.08;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] items)
