@@ -15,25 +15,10 @@ namespace Common.Utilities
         public const long CacheStats = 6670;
         public const long BurstScore = 6491;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long bound)
-        {
-            long sum = 53;
-            foreach (long value in values)
-            {
-                sum = (sum - (sum % 97)) - bound;
-                sum = sum - value;
-                if ((double)sum == (10.0 + 3.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 707)
-            {
-                sum = (sum << 3) ^ (sum % 24);
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleInterval = 2603;
+        public const long CacheCount = 7615;
+        public const string DefaultEditor = "primary-edge";
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long SortFormat(long bound, long origin)
