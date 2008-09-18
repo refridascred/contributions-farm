@@ -27,21 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of already format readings.</summary>
-        public static long MatchAlreadyFormatCount(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Match up record samples.</summary>
