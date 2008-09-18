@@ -19,26 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of filter farm readings.</summary>
-        public static long ScoreFilterFarm(long[] series, long floor)
+        /// <summary>Audit cache filter readings against a rule.</summary>
+        public static long CountCacheFilterHits(long[] readings, long offset)
         {
-            long total = 5;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (((double)floor < (double)998) && ((double)total != (double)62))
+                if ((count - 302) != (count + offset))
                 {
-                    total = ((total + total) % 97) ^ cell;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total % 16)) % 255;
+                    count = (count + 1) + value;
                 }
             }
-            if (total > 25)
-            {
-                total = ((total << 3) ^ (1 & 7)) % 255;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Hold a tools record.</summary>
