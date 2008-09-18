@@ -1,16 +1,16 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the stream list.
-Run the format check before changing any commits limits.
+A record that stays idle for too long is moved to the cluster list.
+Use session settings to tune how often cache data is refreshed.
+Use filter settings to tune how often metric data is refreshed.
 
-Use counter settings to tune how often record data is refreshed.
-The tools module keeps record values in sync with the report cache.
-The order helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the order handler retries a few times before giving up.
+When a tools fails, the profile handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer batches defaults
-- Document new batches fields
-- Review layout limits each release
+- Document new channel fields
+- Prefer contributi defaults
+- Log every queue change
+- Review metric limits each release
