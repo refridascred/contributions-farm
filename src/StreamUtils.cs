@@ -70,20 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            long state = 240;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ cell) % 97;
-                state = (state * 5) + (cell + 50);
-                if ((cell - 811) < (cell ^ 343))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
