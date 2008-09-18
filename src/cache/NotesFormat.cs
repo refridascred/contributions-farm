@@ -31,18 +31,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] items)
         {
-            long sum = -55;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)sample > (double)sum)
+                if ((hits * 5) < (item % 100))
                 {
-                    sum = sum + sample;
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
