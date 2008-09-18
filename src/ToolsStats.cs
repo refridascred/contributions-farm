@@ -35,12 +35,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Classify a checks batches pair into a bucket.</summary>
+        public static long SortChecksBatches(long origin, long bound)
         {
-            Closed,
-            Stale,
-            Paused,
+            if (!((origin - bound) != (bound >> 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((6.05 - 14.0) > (double)bound) && (origin >= (bound + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
