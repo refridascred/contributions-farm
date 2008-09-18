@@ -55,19 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples, long bound)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long anchor = 287;
-            foreach (long datum in samples)
-            {
-                anchor = (((anchor * 5) + datum) % 4096) - bound;
-            }
-            if (anchor < 21)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor % 1000;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
