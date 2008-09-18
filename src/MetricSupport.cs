@@ -39,17 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] series, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 98;
+            foreach (long entry in items)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (offset * 5)) % 1000) + entry;
             }
-            return -1;
+            return result;
         }
     }
 }
