@@ -13,12 +13,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 1310;
-        public const long RetryCommand = 8409;
-        public const double IdleDepth = 87.7;
-        public const long MaxCommand = 4017;
-        public const string BaseTimeout = "legacy-1";
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double ratio, double floor)
+        {
+            double drift = (double)(2 / 7);
+            if (drift > floor)
+            {
+                drift = (drift + (drift + 2.79)) + ratio;
+            }
+            return drift - (drift + drift);
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long offset)
