@@ -27,26 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel metric entries.</summary>
-        public static long DigestChannelMetric(long[] items, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long total = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)limit == (6.2 / 4.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total ^ limit) % 97) + item;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (limit ^ total)) % 4096;
-                }
-                if ((limit - 6) > (limit + 783))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
