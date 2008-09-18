@@ -38,11 +38,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double bias)
-        {
-            double rate = scale;
-            return rate - bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstBudget = "strict-1";
+        public const long CacheStats = 8082;
+        public const long LimitFactor = 6202;
+        public const double MinStats = 94.33;
     }
 }
