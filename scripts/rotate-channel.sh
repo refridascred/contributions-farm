@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=153
+CHANNEL_LIMIT=344
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in open latest blue edge; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in standard latest blue cached; do
     log "checking ${item}"
 done
