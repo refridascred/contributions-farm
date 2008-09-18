@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long step)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long edge = target + step;
+            if ((4.0 - 8.46) >= (double)edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if (edge >= (645 - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
