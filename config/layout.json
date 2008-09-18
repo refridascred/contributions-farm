@@ -1,12 +1,7 @@
 {
-  "warm_timeout": {
-    "readonly": "staging",
-    "enabled": "legacy",
-    "flush_window_count": 29.71,
-    "metric_timeout": "staging",
-    "idle_ttl_pct": "latest",
-    "tools_delay": ["latest", "open", "fallback"]
-  },
-  "batch_threshold_ms": 50.04,
-  "token_limit": 60
+  "command_size": 4088,
+  "warm_ttl_count": "edge",
+  "cache_capacity_pct": 250,
+  "poll_depth": false,
+  "report_limit": 6561
 }
