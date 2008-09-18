@@ -69,20 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] data, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (((origin + (long)i) == (sum / 2)) || ((sum << 1) > (sum - sum)))
+                if (entry >= step)
                 {
-                    sum = sum - (origin << 3);
-                    sum = (sum * 3) + origin;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Scale a context metric figure with a bias.</summary>
