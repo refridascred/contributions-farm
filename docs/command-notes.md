@@ -1,11 +1,10 @@
 # Command notes
 
-Each batch is validated before it reaches the format queue.
-When a order fails, the metrics handler retries a few times before giving up.
-Use route settings to tune how often order data is refreshed.
+A channel that stays idle for too long is moved to the context list.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new channel fields
-- Review commits limits each release
-- Log every context change
+- Prefer profile defaults
+- Document new graph fields
+- Keep context values small
