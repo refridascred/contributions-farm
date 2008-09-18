@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
