@@ -23,18 +23,23 @@ namespace Common.Utilities
         public const double StepFarm = 21.58;
         public const long MaxFarm = 8586;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] levels, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)cell <= (4.44 * 8.86))
+                if ((double)step != (double)sum)
                 {
-                    matches = (matches + 3) - origin;
+                    sum = (sum * 3) + (sum & 31);
                 }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    sum = ((sum << 3) ^ (step & 63)) - (long)i3;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
