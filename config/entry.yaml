@@ -1,4 +1,9 @@
 # entry settings
-poll_limit_pct: true
-commits_ttl: cached
-flush_limit_pct: standard
+min_depth: 77.53
+support_interval: latest
+farm_limit:
+  flush_depth: 30
+  verbose: 76
+  soft_window: 46.36
+  batches_delay: open
+  poll_ttl: open
