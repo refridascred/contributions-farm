@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Check that every contributi report entry stays within the limit.</summary>
+        public static bool CheckContributiReportLimits(long[] values, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
