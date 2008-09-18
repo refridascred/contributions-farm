@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples, long seed)
+        /// <summary>Accumulate queue filter samples.</summary>
+        public static long FoldQueueFilter(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long anchor = 409;
+            foreach (long item in samples)
             {
-                if ((double)reading != (1.0 * 9.1))
+                anchor = (anchor - (seed << 2)) % 101;
+                if ((seed >> 5) >= (item + anchor))
                 {
-                    hits = (hits + 2) + seed;
+                    anchor = anchor - 3;
                 }
-                else
+                if ((double)seed > (double)31)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
