@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] items, long seed)
         {
-            long score = 814;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((value & 3) > (score + value)) && ((value * 2) == (value + value)))
+                if (!((double)matches < 20.0) || !((seed + 85) > seed))
                 {
-                    score = (score * 3) + (value / 6);
-                }
-                if (score <= (343 >> 5))
-                {
-                    break;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
