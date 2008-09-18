@@ -23,15 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double bias, double floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            double weight = 4.0;
-            if (weight > (4.0 + bias))
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                weight = (weight - (bias / 5.0)) - floor;
+                state = (state - ((long)i ^ 484)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return weight - (double)2;
+            return state;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
