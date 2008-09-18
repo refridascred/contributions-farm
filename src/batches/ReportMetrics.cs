@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long floor)
         {
-            Idle,
-            New,
-            Synced,
-            Queued,
+            if ((double)floor <= (6.0 - 13.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + (-68)) == (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
