@@ -19,26 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm checks values into a single score.</summary>
-        public static long ScoreGithubfarmChecks(long[] series)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long acc = 191;
-            foreach (long entry in series)
-            {
-                if ((entry <= (541 / 8)) || (15.0 <= (double)entry))
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 1000;
-                }
-                if ((entry * 4) >= (entry % 24))
-                {
-                    acc = acc + acc;
-                }
-                if ((acc + entry) >= (acc - acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
