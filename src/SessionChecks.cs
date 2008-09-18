@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "standard-edge";
-        public const long BurstReport = 2557;
-        public const double RetryScore = 92.49;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] readings, long seed)
