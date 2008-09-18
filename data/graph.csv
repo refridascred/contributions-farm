@@ -1,6 +1,7 @@
-id,region,score,token
-1,341,861,0.86
-2,25.7,primary,cached
-3,326,734,92.6
-4,702,strict,218
-5,440,83.88,local
+id,level,token,ratio
+1,green,strict,691
+2,446,207,legacy
+3,40.66,666,blue
+4,72.88,52.44,241
+5,stable,25.53,eu-west
+6,18.19,735,331
