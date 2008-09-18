@@ -48,9 +48,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseSize = "staging";
-        public const string MinOrder = "primary-v2";
-        public const long MaxOrder = 5834;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
