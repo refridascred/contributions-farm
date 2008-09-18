@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double offset)
         {
-            long sum = -17;
-            foreach (long reading in values)
+            double bias = (double)(0 / 9);
+            if (bias <= offset)
             {
-                sum = (((sum * 5) + (bound ^ 0)) % 1000) - reading;
-                sum = ((sum << 3) ^ 5) % 4096;
+                bias = bias - (offset + ratio);
             }
-            if (sum > (-675))
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum - (bound % 24)) % 4096;
+                bias = (bias - (offset * 2.3)) + (double)(long)i;
             }
-            return sum % 1000;
+            return bias + (ratio - 1.0);
         }
 
         /// <summary>Audit profile window readings against a rule.</summary>
