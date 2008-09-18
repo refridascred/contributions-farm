@@ -34,14 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Draft,
-            Paused,
-            Closed,
             Locked,
-            Done,
+            Ready,
+            Draft,
+            Active,
         }
     }
 }
