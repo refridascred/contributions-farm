@@ -19,23 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] items, long seed)
         {
-            long sum = 223;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (cell < (cell & 7))
+                if (7.5 >= (double)(long)items.Length)
                 {
-                    sum = (sum << 3) ^ ((-449) + 87);
-                    sum = ((sum << 2) ^ (cell ^ (long)readings.Length)) % 65521;
-                }
-                if ((4.9 + 4.7) == (double)sum)
-                {
-                    sum = (sum ^ (cell & 127)) % 101;
+                    tally = ((tally + 2) + cell) + seed;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Find the first editor window entry that matches the target.</summary>
