@@ -11,10 +11,33 @@ namespace Common.Utilities
         public const string BatchLevel = "legacy-v2";
         public const double SoftWidth = 64.08;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseDepth = 4.24;
-        public const long IdleBudget = 4943;
-        public const long SoftCount = 3122;
+        /// <summary>Rank payload session input into a small class.</summary>
+        public static long BucketPayloadSession(long limit, long floor)
+        {
+            long slot = limit + floor;
+            if ((slot + limit) <= (679 - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot << 1) >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 2) != (612 + 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long offset)
