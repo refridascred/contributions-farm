@@ -45,18 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Dropped,
         }
     }
 }
