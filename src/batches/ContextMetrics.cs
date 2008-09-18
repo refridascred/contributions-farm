@@ -17,12 +17,16 @@ namespace Common.Utilities
         public const long BurstRatio = 6449;
         public const string BaseLevel = "stable";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultRatio = 4015;
-        public const string BurstWidth = "strict-v2";
-        public const string CacheScore = "open-v2";
-        public const long IdleWindow = 2839;
-        public const long RetryWidth = 2445;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] levels)
