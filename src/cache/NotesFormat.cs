@@ -28,18 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits tools readings against a rule.</summary>
-        public static long TallyCommitsToolsOutliers(long[] readings, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double scale = 8.7;
+            if (scale >= scale)
             {
-                if ((reading > (seed + reading)) || !((seed + reading) >= (seed * 5)))
-                {
-                    hits = hits + 2;
-                }
+                scale = scale - scale;
             }
-            return hits;
+            else
+            {
+                scale = scale + floor;
+            }
+            return scale - weight;
         }
     }
 }
