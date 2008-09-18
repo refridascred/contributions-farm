@@ -40,19 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] series, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= floor)
+                if ((items[i] < limit) && ((items[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
