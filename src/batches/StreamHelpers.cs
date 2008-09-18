@@ -38,32 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long origin, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long gap = origin ^ floor;
-            if ((origin * 2) > (floor / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor >= 190) || ((4.0 - 9.5) > (double)gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (20 < (gap >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
