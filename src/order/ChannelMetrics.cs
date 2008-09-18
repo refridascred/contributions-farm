@@ -16,12 +16,13 @@ namespace Common.Utilities
             return rate - (rate / 9.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitLevel = "legacy-edge";
-        public const long SoftFarm = 635;
-        public const long HardFarm = 4449;
-        public const double StepFarm = 21.58;
-        public const long MaxFarm = 8586;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Idle,
+            New,
+            Retry,
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
