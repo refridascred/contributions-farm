@@ -85,9 +85,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4130;
-        public const string MaxScore = "open-1";
-        public const string LimitCount = "alpha-edge";
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
