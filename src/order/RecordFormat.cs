@@ -15,17 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
+                if ((0 % 24) < ((-7) - count))
                 {
-                    return (long)i;
+                    count = ((count + 1) + sample) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
