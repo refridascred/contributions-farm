@@ -15,22 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long offset)
         {
-            long sum = 60;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum / 2) <= (sum ^ sum))
+                if ((series[i] < offset) && ((series[i] % 5) != 0))
                 {
-                    sum = ((sum << 2) ^ (floor + value)) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum > 74)
-            {
-                sum = ((sum * 2) + sum) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
