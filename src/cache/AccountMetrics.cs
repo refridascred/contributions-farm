@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] series, long offset)
         {
-            Draft,
-            Active,
-            New,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
