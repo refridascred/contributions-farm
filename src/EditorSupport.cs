@@ -16,15 +16,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Done,
-            Retry,
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 68.03;
+        public const long HardCommand = 4579;
+        public const long MinSize = 6245;
+        public const double LimitCount = 43.24;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportHits(long[] data)
