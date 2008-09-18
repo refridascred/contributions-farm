@@ -64,32 +64,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route payload entries.</summary>
-        public static long TallyRoutePayload(long[] readings, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] items)
         {
-            long sum = 309;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = (sum * 3) + (sum - bound);
-                sum = ((sum * 5) + (bound % 16)) % 97;
-                if ((17.0 >= (double)bound) && ((0.5 - 0.98) >= (double)sample))
+                if (item <= (hits >> 4))
                 {
-                    sum = (sum - (sample ^ bound)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ (sample + sum);
-                }
-                if (!(bound >= sample))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (sum < (-33))
-            {
-                sum = sum ^ (bound + bound);
-            }
-            return sum;
+            return hits;
         }
     }
 }
