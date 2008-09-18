@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (load - (double)934) + offset;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((3.72 * 1.8) != (double)tally)
+                if ((cell + matches) == (matches + matches))
                 {
-                    tally = (tally + 1) + item;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many buffer order samples are out of range.</summary>
