@@ -1,6 +1,23 @@
 # support settings
-strict: stable
-audit: 406
-batch_ratio: 92
-idle_size: true
-batch_depth_ms: 250
+sync_ratio_count:
+  commits_ttl: blue
+  poll_timeout_ms: primary
+  notes_ratio: 30
+compress:
+  cache_window: 70
+  flush_retries:
+    strict: 66.4
+    warm_threshold: 46
+    poll_window_s: true
+    batch_window: 6066
+  compress: 5.22
+audit: true
+tools_window:
+  - 334
+  - 281
+  - 214
+route_size: green
+retry_timeout_count:
+  counter_size: true
+  enabled: true
+  burst_threshold_pct: fallback
