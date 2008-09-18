@@ -27,16 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long mix = -8;
+            foreach (long cell in items)
             {
-                score = (score * 2) + (score + (long)i);
-                score = ((score * 3) + (long)i) % 101;
+                if (((long)items.Length + limit) < (mix % 12))
+                {
+                    mix = (mix - (mix + cell)) % 255;
+                }
             }
-            return score;
+            return mix % 65521;
         }
     }
 }
