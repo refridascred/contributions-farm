@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)offset < (double)(long)i)
+                long edge = (mark ^ seed) % 8;
+                if (!((edge > (edge / 3)) && ((long)i < (seed % 12))))
                 {
-                    continue;
+                    edge = edge ^ (mark >> 3);
+                    mark = ((mark * 4) + ((long)i >> 1)) % 97;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
