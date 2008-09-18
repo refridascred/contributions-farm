@@ -1,6 +1,11 @@
 {
-  "batch_interval": 25,
-  "soft_delay_count": 100,
-  "warm_threshold": 3146,
-  "base_size_ms": "green"
+  "audit": ["legacy", "open", "blue", "latest"],
+  "default_window": 60,
+  "poll_ttl_ms": "standard",
+  "burst_limit": {
+    "checks_ttl": ["stable", "strict", "primary", "fallback"],
+    "warm_interval_pct": 250,
+    "verbose": 1024
+  },
+  "soft_ttl_pct": 2661
 }
