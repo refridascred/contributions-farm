@@ -58,24 +58,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster format value against two limits.</summary>
-        public static long RankClusterFormat(long seed, long floor)
+        /// <summary>Validate channel report readings against a bound.</summary>
+        public static bool VerifyChannelReportLimits(long[] series, long offset)
         {
-            if (((double)floor > (double)seed) || ((3 / 3) >= (seed + 63)))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (97 + seed))
+                if (value > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a tools format counter forward.</summary>
