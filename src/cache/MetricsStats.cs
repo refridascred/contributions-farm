@@ -49,20 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((offset & 3) != ((long)i / 7)))
-                {
-                    sum = (sum * 2) + (sum + offset);
-                    sum = sum - (77 + 241);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                carry = (carry - (carry << 1)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Fold a list of account readings.</summary>
