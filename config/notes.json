@@ -1,12 +1,11 @@
 {
-  "poll_limit_count": {
-    "metric_limit": "green",
-    "base_ratio_ms": "fallback",
-    "verbose": "primary",
-    "session_retries": 8992
+  "max_interval": 8.19,
+  "compress": {
+    "report_ratio": true,
+    "strict": 7917,
+    "retry_depth": "strict",
+    "warm_delay_s": 1024,
+    "cache_depth_s": [66, 180, 250]
   },
-  "commits_retries": ["cached", "cached"],
-  "base_delay_count": ["edge", "staging", "primary", "primary"],
-  "cache_ttl": "blue",
-  "sync_depth_s": 83.21
+  "persist": 34.18
 }
