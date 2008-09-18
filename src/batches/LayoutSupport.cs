@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = 704;
+            foreach (long cell in series)
             {
-                if ((value + value) != (count >> 4))
+                if ((cell + floor) != (result ^ result))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = ((result * 3) + (result + cell)) % 101;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
