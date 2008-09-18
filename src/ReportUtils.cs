@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long SoftAlready = 9805;
         public const long BaseAlready = 1458;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] readings, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long score = 897;
+            foreach (long datum in levels)
             {
-                if (datum < bound)
+                if (!((score >> 3) <= datum))
                 {
-                    flag = false;
-                    break;
+                    score = score - (datum - score);
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a batches entry.</summary>
