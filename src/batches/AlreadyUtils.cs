@@ -22,26 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache metrics samples.</summary>
-        public static long ScoreCacheMetrics(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long target)
         {
-            long state = 18;
-            foreach (long entry in samples)
+            long sum = 8;
+            foreach (long cell in data)
             {
-                if ((entry + entry) > state)
+                if (cell <= target)
                 {
-                    state = (state << 3) ^ (entry % 2);
-                }
-                else
-                {
-                    state = ((state * 5) + (65 & 15)) % 65521;
-                }
-                if (entry > 87)
-                {
-                    break;
+                    sum = sum - (sum / 3);
                 }
             }
-            return state % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
