@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every cache route entry stays within the limit.</summary>
+        public static bool ValidateCacheRouteBounds(long[] data, long step)
         {
-            Stale,
-            Pending,
-            Paused,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the tools level values.</summary>
