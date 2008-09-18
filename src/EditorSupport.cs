@@ -51,12 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = sum ^ sum;
+                sum = ((sum << 2) ^ origin) % 97;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a support info.</summary>
