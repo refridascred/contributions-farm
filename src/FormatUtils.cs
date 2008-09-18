@@ -55,15 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Count the contributi route entries that pass the check.</summary>
+        public static long TallyContributiRouteHits(long[] readings, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((offset >> 2) >= (cell - 621))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
