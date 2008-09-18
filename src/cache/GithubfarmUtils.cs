@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long BaseDepth = 9293;
         public const string BatchContributi = "cached";
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every cache route entry stays within the limit.</summary>
