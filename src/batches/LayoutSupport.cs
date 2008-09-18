@@ -53,21 +53,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window support pairs that satisfy a relation.</summary>
-        public static long CompareWindowSupportCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(offset <= (66 + offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((0.6 * 1.86) >= (double)offset)
                 {
-                    if ((items[i] + items[j]) == 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((8.7 - 15.0) <= (double)offset)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4.7 > (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
