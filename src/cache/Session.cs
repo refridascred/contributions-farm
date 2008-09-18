@@ -34,11 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the stats command entries that pass the check.</summary>
+        public static long MeasureStatsCommandGaps(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (0.8 * 5.5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count route channel pairs that satisfy a relation.</summary>
