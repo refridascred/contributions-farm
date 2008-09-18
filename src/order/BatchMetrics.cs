@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many queue metrics samples are out of range.</summary>
-        public static long CountQueueMetricsGaps(long[] readings)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading % 2) < (86 * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
