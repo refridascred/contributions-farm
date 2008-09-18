@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools farm entry stays within the limit.</summary>
-        public static bool CheckToolsFarmRange(long[] items, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double bias)
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = (double)(450 % 10);
+            return ((weight + (double)6) + rate) + bias;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
