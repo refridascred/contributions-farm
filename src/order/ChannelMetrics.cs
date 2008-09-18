@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] readings, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset % 60) < (matches + offset))
+                if (samples[i] <= limit)
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
