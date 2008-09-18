@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound + bound) < (bound >> 5))
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit << 2) == (limit & 15))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine record editor values into a single score.</summary>
