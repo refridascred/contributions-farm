@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up queue already samples.</summary>
-        public static long PairQueueAlreadyCount(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
