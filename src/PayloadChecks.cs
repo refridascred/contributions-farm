@@ -58,21 +58,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 7;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor - 82) ^ cell;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Combine already values into a single score.</summary>
