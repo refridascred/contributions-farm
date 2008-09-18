@@ -32,11 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double offset)
+        /// <summary>Check that every entry route entry stays within the limit.</summary>
+        public static bool VerifyEntryRouteRange(long[] levels, long offset)
         {
-            double mean = 7.1;
-            return ((mean - (double)7) + weight) + offset;
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a tools options.</summary>
