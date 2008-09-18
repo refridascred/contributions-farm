@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = 814;
+            foreach (long value in readings)
+            {
+                if (((value & 3) > (score + value)) && ((value * 2) == (value + value)))
+                {
+                    score = (score * 3) + (value / 6);
+                }
+                if (score <= (343 >> 5))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
