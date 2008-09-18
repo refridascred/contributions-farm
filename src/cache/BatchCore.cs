@@ -33,12 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long origin, long bound)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            if ((0.8 * 5.0) != (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (6.47 / 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a graph stats.</summary>
