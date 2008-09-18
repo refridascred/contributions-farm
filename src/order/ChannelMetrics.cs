@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const double DefaultSession = 40.47;
         public const long LimitSession = 786;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] levels, long origin)
         {
-            long score = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((value << 3) == (seed / 3)) || ((score * 3) < (seed % 8)))
+                if ((count + count) != (8 ^ origin))
                 {
-                    score = (score - seed) % 255;
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score > 5)
-            {
-                score = (score ^ seed) % 97;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
