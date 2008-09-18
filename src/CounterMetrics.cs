@@ -46,11 +46,16 @@ namespace Common.Utilities
         public const string WindowBudget = "standard";
         public const string RetryMetrics = "local-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowTimeout = 7860;
-        public const long MaxTimeout = 71;
-        public const long IdleRatio = 5441;
-        public const long WindowLevel = 9147;
-        public const double RetryTimeout = 79.96;
+        /// <summary>Digest a series of cache already entries.</summary>
+        public static long DigestCacheAlready(long[] readings, long seed)
+        {
+            long anchor = 20;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor * 3) + (31 + seed)) - cell;
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 1000;
+        }
     }
 }
