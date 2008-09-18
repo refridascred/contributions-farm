@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long reading in data)
             {
-                if ((tally < reading) || ((52 << 1) > (reading % 12)))
+                if ((tally >= (765 * 3)) && ((reading & 1) >= (reading & 3)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
