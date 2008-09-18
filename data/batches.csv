@@ -1,7 +1,9 @@
-id,owner,score,active
-1,561,898,open
-2,legacy,436,strict
-3,green,staging,81.25
-4,stable,49.24,10.2
-5,strict,78.82,937
-6,129,29.95,582
+id,state,score
+1,595,open
+2,17.25,120
+3,302,edge
+4,291,fallback
+5,641,standard
+6,standard,868
+7,401,21.73
+8,864,704
