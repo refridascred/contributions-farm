@@ -34,19 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] samples, long origin)
+        /// <summary>Scale a token command figure with a bias.</summary>
+        public static double SmoothTokenCommand(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double ratio = 1.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (((ratio - (1.0 * 4.8)) - (double)(long)i) - scale) + offset;
             }
-            return ready;
+            return ratio + (5.83 / 2.0);
         }
 
         /// <summary>Scale a cluster already figure with a bias.</summary>
