@@ -25,22 +25,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long ScoreSessionAccount(long[] values, long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long carry = 86;
-            foreach (long value in values)
-            {
-                if ((double)value < 11.0)
-                {
-                    carry = ((carry - (value - carry)) % 255) - target;
-                }
-            }
-            if (carry < 53)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
