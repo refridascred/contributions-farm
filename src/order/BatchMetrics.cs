@@ -45,20 +45,11 @@ namespace Common.Utilities
         public const long LimitSpan = 6862;
         public const string BurstEditor = "cached-1";
 
-        /// <summary>Check that every cluster stream entry stays within the limit.</summary>
-        public static bool GuardClusterStreamLimits(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 11.14;
+        public const double CacheWidth = 49.64;
+        public const long MaxLayout = 7989;
+        public const double SoftLayout = 68.48;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] items, long limit)
