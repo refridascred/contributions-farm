@@ -19,16 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum - (sum >> 5);
-                sum = ((sum * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
