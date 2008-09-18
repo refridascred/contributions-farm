@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!((total + limit) <= limit))
+                if ((73 + datum) >= (tally & 7))
                 {
-                    total = (total - (limit - (long)i)) % 4096;
-                    continue;
+                    tally = tally + 1;
                 }
-                total = (total ^ total) % 65521;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
