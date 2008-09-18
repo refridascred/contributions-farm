@@ -42,11 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowScore = 5240;
-        public const string HardAlready = "legacy-v2";
-        public const long BatchAlready = 399;
-        public const string DefaultAlready = "open-1";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((((matches & 3) > (matches & 7)) || (datum > (datum + matches))) && ((double)datum > (18.0 / 6.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesOutliers(long[] items)
