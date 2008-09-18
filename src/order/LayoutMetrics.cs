@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Closed,
-            New,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftSpan = 74.0;
+        public const long LimitReport = 6265;
+        public const long StepInterval = 9297;
+        public const string RetryReport = "latest-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MaxGraph = "legacy";
