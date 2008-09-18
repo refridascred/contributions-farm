@@ -25,14 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Active,
-            New,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLevel = 9870;
+        public const long BatchSize = 4577;
+        public const double MaxLayout = 16.37;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long step)
