@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a metrics batches figure with a bias.</summary>
-        public static double SmoothMetricsBatches(double weight, double offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            double weight2 = offset / 9.0;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 - (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 + weight;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
