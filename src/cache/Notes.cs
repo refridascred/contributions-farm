@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Failed,
-            Dropped,
-            Idle,
-            Paused,
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
