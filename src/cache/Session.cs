@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((mark / 5) <= origin)
-                {
-                    mark = mark + (286 >> 1);
-                    mark = mark + (mark % 8);
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
