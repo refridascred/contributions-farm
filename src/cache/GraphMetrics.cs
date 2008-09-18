@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            Stale,
-            Closed,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally < reading) || ((52 << 1) > (reading % 12)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
