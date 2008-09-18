@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] levels, long target)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((3.2 * 2.52) < (double)target)
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Locked,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
