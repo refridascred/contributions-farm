@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long IdleSize = 9986;
         public const long DefaultBudget = 9126;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series, long seed)
+        /// <summary>Match up stream commits samples.</summary>
+        public static long CompareStreamCommitsCount(long[] samples)
         {
             long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-32) % 10) != (count / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 2) ^ sample) + seed;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
