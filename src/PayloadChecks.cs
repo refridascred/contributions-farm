@@ -48,18 +48,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] items, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (6.96 / 3.0))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit account already readings against a rule.</summary>
