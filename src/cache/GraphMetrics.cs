@@ -51,22 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session account readings against a rule.</summary>
-        public static long MeasureSessionAccountOutliers(long[] values, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry >= (entry * 3)) && ((entry & 7) > count))
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
