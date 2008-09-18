@@ -1,5 +1,6 @@
 # support settings
-soft_ratio_pct: primary
-notes_capacity: open
-notes_limit: green
-batch_limit: false
+counter_limit: fallback
+tools_delay: 60.86
+soft_depth_pct: 9
+max_interval_pct: false
+githubfarm_size: 47
