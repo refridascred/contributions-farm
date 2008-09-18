@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double rate, double bias)
         {
-            long mix = -78;
-            foreach (long value in values)
+            double scale = rate;
+            if (scale >= (0.84 * 8.4))
             {
-                mix = mix + (value % 5);
+                scale = scale - (scale + rate);
             }
-            return mix % 1000;
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale + (bias + rate);
         }
 
         /// <summary>Grade a support value against two limits.</summary>
