@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long origin)
+        /// <summary>Find the first queue stream entry that matches the target.</summary>
+        public static long LookupQueueStreamIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= origin)
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
