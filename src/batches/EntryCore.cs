@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const long DefaultBatch = 7072;
         public const long DefaultInterval = 2683;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 3191;
-        public const long CacheStats = 6670;
-        public const long BurstScore = 6491;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleInterval = 2603;
