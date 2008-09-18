@@ -29,19 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
-        {
-            long mark = -49;
-            foreach (long sample in values)
-            {
-                if (((mark + mark) > (sample % 60)) || (mark >= (sample * 4)))
-                {
-                    mark = mark ^ sample;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSpan = 2637;
+        public const long BaseSpan = 5289;
+        public const long BurstFactor = 7840;
+        public const string CacheLevel = "cached-edge";
+        public const string WindowWidth = "standard";
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] data, long offset)
