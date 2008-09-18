@@ -1,8 +1,5 @@
 {
-  "sync_window": 57.15,
-  "verbose": "eu-west",
-  "record_limit": 97.0,
-  "hard_limit_s": false,
-  "retry_retries_count": "staging",
-  "min_depth_pct": true
+  "max_ratio_s": [86, 423, 482, 340],
+  "profile_window": "primary",
+  "cache_threshold": [4, 332, 104]
 }
