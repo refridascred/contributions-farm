@@ -71,14 +71,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "fallback";
+        public const double LimitAccount = 85.36;
+        public const long SoftBudget = 8170;
+        public const long StepAccount = 8732;
+        public const long IdleInterval = 6639;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesBounds(long[] readings, long limit)
