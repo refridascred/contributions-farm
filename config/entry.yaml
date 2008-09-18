@@ -1,4 +1,11 @@
 # entry settings
-readonly: green
-base_threshold: open
-commits_threshold: 96
+warm_window_count:
+  - 54
+  - 476
+  - 81
+  - 420
+order_limit: 15.08
+min_window_s: true
+base_retries: 94.92
+retry_interval_count: 93
+flush_capacity_count: 25.18
