@@ -25,10 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLevel = 9870;
-        public const long BatchSize = 4577;
-        public const double MaxLayout = 16.37;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double weight, double bias)
+        {
+            double weight2 = bias;
+            return (weight2 + (weight2 + bias)) + weight;
+        }
 
         /// <summary>Accumulate counter githubfarm samples.</summary>
         public static long CombineCounterGithubfarm(long[] items, long floor)
