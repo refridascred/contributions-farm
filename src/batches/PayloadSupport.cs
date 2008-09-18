@@ -33,13 +33,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            New,
-            Idle,
-            Dropped,
-            Locked,
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((sum - sum) < sum)
+                {
+                    sum = (sum * 5) + ((long)i * 2);
+                    sum = (sum * 5) + (sum + (long)i);
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
