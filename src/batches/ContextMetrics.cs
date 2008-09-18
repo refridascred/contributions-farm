@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Done,
+            Dropped,
+            Active,
             Locked,
-            Ready,
-            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
