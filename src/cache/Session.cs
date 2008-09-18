@@ -39,22 +39,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long FoldPayloadProfile(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = 7;
-            foreach (long reading in readings)
-            {
-                if ((score - 110) > reading)
-                {
-                    score = (score + (504 + score)) % 1000;
-                }
-                if (!((reading * 2) != (reading % 8)))
-                {
-                    score = ((score * 5) + (reading - 78)) % 101;
-                }
-            }
-            return score;
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
