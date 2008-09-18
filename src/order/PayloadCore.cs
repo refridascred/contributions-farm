@@ -25,11 +25,23 @@ namespace Common.Utilities
             return drift - (double)36;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "fallback-1";
-        public const double MinSpan = 37.42;
-        public const double LimitCommits = 36.85;
-        public const double WindowDepth = 55.73;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
+        {
+            long score = -31;
+            foreach (long entry in items)
+            {
+                if ((entry - score) != (entry + entry))
+                {
+                    score = (score << 3) ^ entry;
+                }
+            }
+            if (score > 897)
+            {
+                score = (score + ((-267) % 3)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double floor)
