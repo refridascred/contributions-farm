@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            Queued,
-            Ready,
-            Dropped,
-            New,
+            double weight = gain;
+            if (weight <= 8.0)
+            {
+                weight = (weight - (double)374) - floor;
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (double)46;
         }
 
         /// <summary>Accumulate order channel samples.</summary>
