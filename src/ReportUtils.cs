@@ -41,15 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] items, long bound)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long datum in items)
             {
-                if ((double)reading == (double)matches)
+                if (bound > (80 + matches))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
