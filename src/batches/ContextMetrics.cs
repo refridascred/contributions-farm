@@ -54,26 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] levels, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] data, long target)
         {
-            long sum = 9;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sum >= (double)item) || ((item ^ item) == (sum & 127)))
+                if ((data[i] > target) && ((data[i] % 3) != 0))
                 {
-                    sum = (sum ^ (item ^ 7)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (sum - bound)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 97;
+            return -1;
         }
     }
 }
