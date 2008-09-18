@@ -27,22 +27,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long state = 514;
-            foreach (long entry in samples)
+            long result = 6;
+            foreach (long value in levels)
             {
-                if ((state + limit) <= (state + 6))
-                {
-                    state = (state ^ limit) ^ entry;
-                }
+                result = ((result - (result + 56)) % 65521) + value;
+                result = (result << 2) ^ (result << 1);
             }
-            if (state < 0)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
