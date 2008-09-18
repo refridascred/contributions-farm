@@ -41,14 +41,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] levels, long limit)
         {
-            Pending,
-            Ready,
-            Locked,
-            Paused,
-            Queued,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
