@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "standard";
+        public const long IdleFactor = 6619;
+        public const double IdleRatio = 75.22;
+        public const long HardEntry = 8779;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsGaps(long[] samples)
