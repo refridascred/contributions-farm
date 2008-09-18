@@ -1,8 +1,19 @@
 # githubfarm settings
-hard_size_s:
-  context_size: local
-  report_timeout: blue
-  farm_interval: 83.43
-idle_limit_pct: true
-flush_depth: strict
-cache_depth: 1006
+poll_retries_ms:
+  persist: 79.5
+  idle_delay:
+    - 16
+    - 44
+    - 425
+    - 77
+  min_window_ms: true
+  min_timeout_pct: 45
+  retry_capacity_pct: 55.76
+  retry_threshold_ms: eu-west
+retry_threshold: false
+sync_ttl_count: standard
+idle_limit_s:
+  - 157
+  - 85
+hard_threshold_s: 250
+persist: stable
