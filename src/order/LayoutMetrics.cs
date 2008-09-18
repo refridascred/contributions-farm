@@ -33,13 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            New,
+            Draft,
+            Closed,
+            Queued,
+            Idle,
         }
     }
 }
