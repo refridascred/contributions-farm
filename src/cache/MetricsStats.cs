@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next support metrics value from a seed.</summary>
-        public static long DeriveSupportMetrics(long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((((long)i >> 1) == (12 << 2)) || ((result * 4) < (716 & 15))))
-                {
-                    result = (result + (result + step)) % 255;
-                    result = (result ^ 8) % 255;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
