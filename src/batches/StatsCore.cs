@@ -36,19 +36,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Accumulate checks metrics samples.</summary>
-        public static long TotalChecksMetrics(long[] levels, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] data, long limit)
         {
-            long total = 91;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                total = total - (729 - offset);
-                if ((reading / 4) < (reading + 375))
+                if (value < limit)
                 {
-                    total = (total * 5) + (offset - offset);
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
