@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            Closed,
-            Active,
-            Ready,
-            Synced,
+            long total = 6;
+            foreach (long entry in levels)
+            {
+                total = ((total << 2) ^ (total % 2)) + entry;
+                if (737 <= (total ^ total))
+                {
+                    total = (total + ((-19) + total)) % 4096;
+                }
+            }
+            if (total > 659)
+            {
+                total = (total - (total - total)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
