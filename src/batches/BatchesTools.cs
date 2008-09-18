@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = 18;
+            foreach (long sample in series)
             {
-                if ((item ^ matches) > (item - item))
+                if ((sample + sample) == ((long)series.Length << 2))
                 {
-                    matches = matches + 3;
+                    score = (score - (score + sample)) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Combine support values into a single score.</summary>
