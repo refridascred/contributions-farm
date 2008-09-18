@@ -51,18 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] values)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)reading >= (15.0 + 3.39)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a support info.</summary>
