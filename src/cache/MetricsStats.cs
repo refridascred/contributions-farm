@@ -33,19 +33,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long origin)
         {
-            double bias = 6.17;
-            if (bias <= (double)69)
+            if ((origin > (origin >> 1)) && ((double)origin <= (11.0 + 2.0)))
             {
-                bias = bias + scale;
+                return 7;
             }
             else
             {
-                bias = bias + (offset * 3.0);
+                if (((-19) / 3) > (origin << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (2.29 < (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((((-22) << 3) < origin) && (origin < (origin - origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias + (offset - bias);
         }
 
         /// <summary>Hold a command options.</summary>
