@@ -1,5 +1,11 @@
 {
-  "poll_interval_count": [309, 42],
-  "default_retries_count": 29.82,
-  "batch_limit_pct": 31
+  "warm_depth": 3.93,
+  "hard_window_s": {
+    "base_ratio": 60,
+    "persist": 96,
+    "flush_capacity_ms": "eu-west",
+    "metrics_window": "edge"
+  },
+  "batch_delay_s": 82.26,
+  "persist": 55.18
 }
