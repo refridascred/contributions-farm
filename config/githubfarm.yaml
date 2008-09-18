@@ -1,9 +1,5 @@
 # githubfarm settings
-persist: 87.29
-burst_threshold_s: edge
-queue_depth: 30
-audit:
-  - 357
-  - 253
-  - 372
-  - 69
+flush_depth: 250
+default_timeout_count: primary
+persist: legacy
+burst_limit_pct: false
