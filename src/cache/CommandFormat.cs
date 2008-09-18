@@ -55,18 +55,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((8.88 * 17.0) <= (double)reading) || ((double)reading >= (6.2 / 7.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + offset;
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
