@@ -64,31 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] samples)
         {
-            if ((origin & 7) < origin)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 4) < (seed << 3))
+                if (((count & 3) < count) && (sample >= ((-49) + (long)samples.Length)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (942 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
