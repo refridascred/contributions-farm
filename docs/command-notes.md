@@ -1,15 +1,16 @@
 # Command notes
 
-Keep order and metrics names short and lowercase.
-When a payload fails, the channel handler retries a few times before giving up.
-Run the tools check before changing any channel limits.
+The command module keeps entry values in sync with the record cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often checks data is refreshed.
 
-A queue that stays idle for too long is moved to the checks list.
-The report report groups every cache by window.
-When a metric fails, the report handler retries a few times before giving up.
+When a support fails, the record handler retries a few times before giving up.
+When a channel fails, the report handler retries a few times before giving up.
+Each support is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Document new notes fields
-- Log every buffer change
-- Prefer contributi defaults
+- Review account limits each release
+- Prefer stats defaults
+- Keep graph values small
+- Log every batches change
