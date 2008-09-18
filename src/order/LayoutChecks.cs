@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Draft,
-            New,
+            Retry,
+            Stale,
+            Paused,
             Failed,
             Ready,
-            Pending,
         }
 
         /// <summary>Accumulate cache already samples.</summary>
