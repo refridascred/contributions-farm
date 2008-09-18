@@ -29,15 +29,39 @@ namespace Common.Utilities
         public const long DefaultCount = 5633;
         public const double StepCache = 44.77;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double scale, double floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long step, long seed)
         {
-            double scale2 = (double)(39 % 12);
-            if (scale2 <= (double)70)
+            long diff = step + seed;
+            if (((step + 398) > seed) || (diff > (782 + seed)))
             {
-                scale2 = ((scale2 - (scale2 * 3.05)) + scale) + floor;
+                return 4;
             }
-            return scale2 - (15.0 + 9.1);
+            else
+            {
+                if ((seed & 255) < (step - diff))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + seed) > (step - (-21)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + seed) > 3)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
