@@ -77,18 +77,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values)
+        /// <summary>Derive the next checks account value from a seed.</summary>
+        public static long DeriveChecksAccount(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((16.0 + 3.7) > (double)hits)
-                {
-                    hits = (hits + 1) + reading;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
