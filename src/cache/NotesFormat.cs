@@ -13,17 +13,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] readings, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 43;
+            foreach (long reading in values)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                sum = ((((sum << 2) ^ (long)values.Length) % 65521) - reading) - step;
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Hold a stats stats.</summary>
