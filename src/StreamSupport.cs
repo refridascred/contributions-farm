@@ -33,12 +33,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
