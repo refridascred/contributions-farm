@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
-        public static bool VerifyBufferMetricLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchRatio = 13.5;
+        public const string LimitStream = "staging-v2";
+        public const long SoftStream = 7320;
+        public const long SoftDepth = 6980;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double rate, double span)
