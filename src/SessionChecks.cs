@@ -33,26 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values, long offset)
         {
-            long mark = -326;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((mark - 4) >= (mark + value)) && ((value - 1) == (mark + 8)))
+                if ((424 > matches) || ((double)(-50) != (double)reading))
                 {
-                    mark = (mark ^ ((-15) % 64)) % 97;
+                    matches = (matches + 3) - offset;
                 }
-                if ((mark >> 3) > (mark / 6))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (mark > 2)
-            {
-                mark = ((mark * 3) + 859) % 255;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
