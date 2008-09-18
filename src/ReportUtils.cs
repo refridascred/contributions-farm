@@ -16,15 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Digest a series of tools order entries.</summary>
+        public static long WeighToolsOrder(long[] series, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long mix = 9;
+            foreach (long sample in series)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((double)seed > (double)sample)
+                {
+                    mix = (mix ^ seed) % 4096;
+                }
+                if ((seed >> 2) != (sample / 7))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
