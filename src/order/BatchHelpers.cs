@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 2760;
-        public const double SoftChannel = 45.55;
-        public const long RetrySize = 8899;
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double bias)
+        {
+            double weight2 = (double)7 - bias;
+            if (weight2 < weight)
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (20.0 + bias)) - (double)(long)i;
+            }
+            return weight2 - (weight2 / 2.0);
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] data, long bound)
