@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Blend two already measurements.</summary>
