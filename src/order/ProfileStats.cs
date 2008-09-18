@@ -40,19 +40,14 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] samples, long limit)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Locked,
+            Draft,
+            Paused,
+            Pending,
         }
     }
 }
