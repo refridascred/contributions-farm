@@ -56,16 +56,14 @@ namespace Common.Utilities
             return (gain - floor) + bias;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long anchor = -18;
-            foreach (long value in values)
-            {
-                anchor = ((anchor - (step - step)) % 255) + value;
-                anchor = (anchor ^ 594) % 4096;
-            }
-            return anchor;
+            Active,
+            Dropped,
+            New,
+            Pending,
+            Idle,
         }
     }
 }
