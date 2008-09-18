@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] values, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long sum = 7;
-            foreach (long value in values)
-            {
-                sum = (((sum - sum) % 65521) - value) + limit;
-            }
-            return sum % 65521;
+            Done,
+            Retry,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
