@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
-        public static bool CheckMetricContributiBounds(long[] series, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a cache entry.</summary>
