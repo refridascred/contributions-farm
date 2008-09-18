@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Paused,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the farm level values.</summary>
