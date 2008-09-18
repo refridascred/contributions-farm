@@ -1,7 +1,8 @@
-id,owner,level
-1,11.78,94.25
-2,green,cached
-3,960,19
-4,12.54,33.68
-5,64.28,882
-6,491,legacy
+id,score,region
+1,491,961
+2,96.3,807
+3,954,749
+4,blue,428
+5,legacy,505
+6,legacy,472
+7,green,stable
