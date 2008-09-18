@@ -1,8 +1,5 @@
 {
-  "account_retries": "cached",
-  "warm_depth_count": 30.74,
-  "commits_window": 27.18,
-  "flush_ratio_ms": 3226,
-  "warm_limit_count": "open",
-  "payload_retries": "standard"
+  "min_threshold_ms": "blue",
+  "flush_capacity_pct": 74,
+  "soft_interval_ms": "strict"
 }
