@@ -29,19 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] readings, long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] values, long step)
         {
-            long mix = 28;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix + origin) % 65521) + cell;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 3)
-            {
-                mix = (mix << 2) ^ 542;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
