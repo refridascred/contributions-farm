@@ -1,6 +1,18 @@
 {
-  "persist": true,
-  "poll_limit": "cached",
-  "checks_delay": false,
-  "soft_size_s": true
+  "flush_depth_s": 94,
+  "filter_retries": {
+    "dry_run": {
+      "warm_retries_count": "green",
+      "retry_limit": [142, 209],
+      "retry_window_count": "open",
+      "min_delay_ms": true,
+      "sync_retries_s": 35.61,
+      "base_depth_s": 94
+    },
+    "burst_ratio": "green",
+    "soft_depth": 86.0,
+    "stats_threshold": 23.7
+  },
+  "strict": 53.69,
+  "max_delay": 1024
 }
