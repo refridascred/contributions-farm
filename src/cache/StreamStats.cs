@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long origin)
+        /// <summary>Match up payload channel samples.</summary>
+        public static long PairPayloadChannelCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
