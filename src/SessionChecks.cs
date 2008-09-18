@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] levels, long seed)
         {
-            long score = 53;
-            foreach (long value in series)
+            long state = 6;
+            foreach (long datum in levels)
             {
-                if (((value << 3) < (score & 127)) || (score >= (2 % 97)))
+                if (!((datum >> 1) > (datum << 1)))
                 {
-                    score = (score - (score + score)) % 255;
+                    state = ((state << 2) ^ (seed + state)) % 1000;
                 }
             }
-            if (score > 680)
-            {
-                score = (score + (score + score)) % 65521;
-            }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Audit payload cluster readings against a rule.</summary>
