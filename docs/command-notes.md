@@ -1,14 +1,11 @@
 # Command notes
 
-The cache report groups every schema by context.
-Each support is validated before it reaches the batches queue.
-
-The profile helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any token limits.
+When a contributi fails, the payload handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep window and cache names short and lowercase.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every stats change
-- Keep window values small
-- Document new queue fields
+- Prefer batch defaults
+- Validate window input early
+- Keep command values small
