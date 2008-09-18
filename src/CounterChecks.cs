@@ -60,13 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples, long step)
         {
-            Pending,
-            Active,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((((matches >> 3) < 400) || ((3.0 / 3.0) > (double)step)) && ((step >= 197) || ((5 * 3) == (reading - reading))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
