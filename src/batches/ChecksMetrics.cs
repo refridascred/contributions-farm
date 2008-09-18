@@ -63,18 +63,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long anchor = -61;
-            foreach (long value in data)
-            {
-                if ((225 & 15) <= anchor)
-                {
-                    anchor = ((anchor + floor) % 4096) - value;
-                }
-            }
-            return anchor % 4096;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
