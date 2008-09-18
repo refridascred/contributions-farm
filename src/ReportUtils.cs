@@ -26,13 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
