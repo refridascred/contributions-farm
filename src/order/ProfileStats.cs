@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double IdleRatio = 75.22;
         public const long HardEntry = 8779;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count * 4) <= value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 9706;
+        public const long BatchScore = 7529;
+        public const long StepChecks = 8479;
+        public const long DefaultSize = 3532;
+        public const double BatchInterval = 61.21;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double gain, double bias)
