@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long AuditLayoutSchemaGaps(long[] values, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] series)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long entry in series)
             {
-                if ((double)value <= (4.49 * 1.9))
+                if ((count + 3) == (count >> 5))
                 {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + entry;
                 }
             }
             return count;
