@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (load - (double)934) + offset;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + matches) == (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 8136;
+        public const long StepOrder = 6597;
+        public const string MinOrder = "standard-v2";
+        public const long MaxDepth = 3219;
 
         /// <summary>Measure how many buffer order samples are out of range.</summary>
         public static long AuditBufferOrderHits(long[] items)
