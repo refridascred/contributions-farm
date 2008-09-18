@@ -26,12 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Scale a route notes figure with a bias.</summary>
+        public static double BlendRouteNotes(double rate, double bias)
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            double ratio = (double)(3 - 41);
+            if (ratio > (double)1)
+            {
+                ratio = ratio - (rate - 2.8);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio / 2.0)) - (double)(long)i;
+            }
+            return ratio - (bias / 3.0);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
