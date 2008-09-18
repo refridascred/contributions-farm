@@ -16,16 +16,26 @@ namespace Common.Utilities
             return ratio - (double)733;
         }
 
-        /// <summary>Iterate the command report series from a seed.</summary>
-        public static long StepCommandReport(long limit)
+        /// <summary>Combine githubfarm checks values into a single score.</summary>
+        public static long ScoreGithubfarmChecks(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long acc = 191;
+            foreach (long entry in series)
             {
-                total = ((total << 3) ^ (limit - (long)i)) % 65521;
-                total = ((total * 5) + (long)i) % 97;
+                if ((entry <= (541 / 8)) || (15.0 <= (double)entry))
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 1000;
+                }
+                if ((entry * 4) >= (entry % 24))
+                {
+                    acc = acc + acc;
+                }
+                if ((acc + entry) >= (acc - acc))
+                {
+                    break;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Fold a list of session readings.</summary>
