@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            Paused,
+            Dropped,
+            Idle,
         }
     }
 }
