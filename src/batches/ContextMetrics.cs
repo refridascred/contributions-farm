@@ -34,23 +34,10 @@ namespace Common.Utilities
         public const long IdleWindow = 2839;
         public const long RetryWidth = 2445;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen < 323) && ((double)sample < (0.7 - 3.0)))
-                {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 9612;
+        public const long BatchAlready = 5069;
+        public const long HardLevel = 3270;
 
         /// <summary>Accumulate report samples.</summary>
         public static long ScoreReport(long[] levels, long target)
