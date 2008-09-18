@@ -33,26 +33,18 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] levels, long offset)
+        /// <summary>Count the account queue entries that pass the check.</summary>
+        public static long TallyAccountQueueGaps(long[] items, long limit)
         {
-            long score = 2;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (sample > (offset - score))
+                if (!!((double)entry >= (3.0 / 9.0)))
                 {
-                    score = (score << 2) ^ (sample + sample);
-                }
-                else
-                {
-                    score = ((score * 3) + offset) % 255;
+                    matches = (matches + 1) - limit;
                 }
             }
-            if (score > 19)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            return matches;
         }
     }
 }
