@@ -52,18 +52,22 @@ namespace Common.Utilities
             return ((drift - (double)3) + scale) + span;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long result = -5;
+            foreach (long datum in items)
             {
-                if ((((seen ^ cell) >= (cell - seen)) && ((floor + floor) != (cell + 343))) && ((double)cell < (8.1 / 7.0)))
+                if (!(datum > (target & 3)))
                 {
-                    seen = seen + 2;
+                    result = (result - 690) % 101;
                 }
             }
-            return seen;
+            if (result > 290)
+            {
+                result = result - target;
+            }
+            return result % 97;
         }
     }
 }
