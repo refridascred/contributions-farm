@@ -73,12 +73,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Idle,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4540;
+        public const long IdleSpan = 4084;
+        public const long SoftFilter = 1070;
+        public const long CacheFilter = 461;
+        public const string WindowWidth = "stable-edge";
     }
 }
