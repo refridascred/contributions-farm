@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((7.5 - 1.34) >= (double)matches)
+                double weight = (2.2 / 4.0) / 4.0;
+                if (6.05 <= weight)
                 {
-                    matches = ((matches + 3) ^ entry) + target;
+                    weight = weight + weight;
                 }
+                else
+                {
+                    weight = weight + (weight * 0.15);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Match up order samples.</summary>
