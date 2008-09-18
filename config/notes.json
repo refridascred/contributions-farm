@@ -1,8 +1,10 @@
 {
-  "tools_capacity": 9800,
-  "order_limit": ["open", "fallback", "open", "primary"],
-  "batch_ttl": 13,
-  "window_threshold": 7847,
-  "burst_ttl_s": "edge",
-  "metrics_retries": ["primary", "edge", "staging"]
+  "idle_retries_count": {
+    "enabled": 6.65,
+    "burst_size_pct": "local",
+    "sync_delay_pct": 9676,
+    "soft_ratio": false
+  },
+  "verbose": "latest",
+  "enabled": [457, 301]
 }
