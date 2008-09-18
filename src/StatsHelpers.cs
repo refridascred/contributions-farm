@@ -65,13 +65,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long floor)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = anchor + (anchor + anchor);
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
