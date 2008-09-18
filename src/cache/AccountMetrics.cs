@@ -30,12 +30,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank filter session input into a small class.</summary>
+        public static long BucketFilterSession(long bound, long limit)
         {
-            Retry,
-            Active,
-            Dropped,
+            if ((limit + 20) == (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit % 64) == (2 / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0.25 + 3.53) < (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((21 << 3) < (bound - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
