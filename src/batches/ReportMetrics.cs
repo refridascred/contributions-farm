@@ -34,9 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 4444;
-        public const string MinProfile = "strict-edge";
-        public const long RetryTimeout = 7899;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
