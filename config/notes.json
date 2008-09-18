@@ -1,8 +1,5 @@
 {
-  "retry_limit": 100,
-  "record_interval": 15.3,
-  "channel_delay": "local",
-  "sync_delay_count": true,
-  "idle_threshold": 84,
-  "max_window_s": "eu-west"
+  "compress": 25,
+  "hard_interval_pct": "latest",
+  "sync_delay_count": "stable"
 }
