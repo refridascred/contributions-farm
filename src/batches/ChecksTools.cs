@@ -32,10 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
             public double Label { get; set; }
         }
 
