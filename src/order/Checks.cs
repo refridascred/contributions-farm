@@ -57,22 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] readings, long limit)
         {
-            long total = 768;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (((5.0 * 4.0) == (double)reading) || ((4 / 2) >= (total - reading)))
+                if ((((tally % 8) >= (17 % 60)) || (entry < tally)) || ((tally / 7) >= (limit - limit)))
                 {
-                    total = (total << 3) ^ (434 - reading);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = total ^ (reading & 63);
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
