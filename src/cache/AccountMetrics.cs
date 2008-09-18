@@ -64,17 +64,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] items, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
