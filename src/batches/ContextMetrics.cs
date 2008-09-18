@@ -63,15 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            double mean = bias + (double)5;
-            if (mean >= (bias2 * 5.25))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + mean;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return hits;
         }
     }
 }
