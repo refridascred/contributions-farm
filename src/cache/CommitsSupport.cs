@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every contributi report entry stays within the limit.</summary>
-        public static bool CheckContributiReportLimits(long[] values, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
