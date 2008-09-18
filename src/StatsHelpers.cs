@@ -50,20 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry route entry stays within the limit.</summary>
-        public static bool VerifyEntryRouteRange(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 39.94;
+        public const double WindowEntry = 7.64;
+        public const long LimitEntry = 3312;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueOutliers(long[] items, long limit)
