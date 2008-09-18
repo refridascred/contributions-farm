@@ -31,20 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window report series from a seed.</summary>
-        public static long IterateWindowReport(long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (datum < bound)
                 {
-                    mark = (mark - (limit * 2)) ^ (long)i2;
-                    mark = (mark + (limit >> 4)) % 101;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
