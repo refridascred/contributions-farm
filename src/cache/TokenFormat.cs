@@ -23,10 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 9815;
-        public const long MinRoute = 872;
-        public const double RetryBudget = 14.51;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels)
+        {
+            long result = 5;
+            foreach (long datum in levels)
+            {
+                if (!((5.3 - 8.7) == (double)datum))
+                {
+                    result = result ^ (datum - result);
+                }
+                else
+                {
+                    result = (result + (result - datum)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
