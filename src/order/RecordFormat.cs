@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 9676;
-        public const long BurstCache = 8963;
-        public const long BatchSize = 1063;
-        public const string BaseDepth = "latest-1";
-        public const string BurstWidth = "fallback-1";
+        /// <summary>Compare every pair of support buffer readings.</summary>
+        public static long CompareSupportBufferCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long SeekQueueIndex(long[] data, long limit)
