@@ -48,23 +48,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
         {
-            long state = 83;
-            foreach (long value in data)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                state = (((state * 5) + (value + 218)) % 255) + origin;
-                if ((double)state != (double)value)
+                if ((sum & 1) >= (bound & 3))
                 {
-                    state = state - 82;
+                    sum = (sum - (sum % 10)) % 101;
                 }
                 else
                 {
-                    state = (state ^ (368 >> 4)) % 4096;
+                    sum = sum + sum;
                 }
+                if ((sum << 2) > (8 >> 1))
+                {
+                    sum = sum ^ (2 ^ (long)i);
+                    break;
+                }
+                else
+                {
+                    sum = sum - (sum ^ sum);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
     }
 }
