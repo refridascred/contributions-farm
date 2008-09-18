@@ -24,15 +24,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            double rate2 = offset;
-            if (rate2 > (rate2 + rate2))
-            {
-                rate2 = (rate2 + offset) - rate;
-            }
-            return rate2 - (offset * 7.4);
+            double scale = (double)(5 % 16);
+            return scale + (floor + gain);
         }
     }
 }
