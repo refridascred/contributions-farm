@@ -21,10 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 14.8;
-        public const long CacheScore = 2306;
-        public const long BaseWidth = 4924;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchBudget = 8266;
+        public const long StepProfile = 1177;
+        public const double SoftScore = 69.02;
+        public const long CacheProfile = 6022;
+        public const double MaxProfile = 26.19;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
