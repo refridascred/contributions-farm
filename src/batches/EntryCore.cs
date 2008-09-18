@@ -19,10 +19,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardScore = 5715;
-        public const long StepPayload = 9439;
-        public const long RetryRatio = 6313;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long bound)
+        {
+            long sum = 53;
+            foreach (long value in values)
+            {
+                sum = (sum - (sum % 97)) - bound;
+                sum = sum - value;
+                if ((double)sum == (10.0 + 3.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 707)
+            {
+                sum = (sum << 3) ^ (sum % 24);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
