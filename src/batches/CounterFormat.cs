@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up queue order samples.</summary>
-        public static long OverlapQueueOrderCount(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
