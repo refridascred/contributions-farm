@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
