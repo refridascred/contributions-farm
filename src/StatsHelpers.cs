@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long seed, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] data, long step)
         {
-            if ((double)889 == (double)seed)
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (step ^ seed)) || ((seed - seed) != (step % 60)))
+                if ((double)item <= (10.0 + 1.34))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((3.2 / 9.0) <= (double)step) && ((step * 2) > 89))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = (tally + 2) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
