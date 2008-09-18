@@ -59,22 +59,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (reading < matches)
+                if (step > (seen / 2))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
