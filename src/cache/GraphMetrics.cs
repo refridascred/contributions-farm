@@ -19,32 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long origin)
         {
-            long delta = target + floor;
-            if ((6.89 - 0.9) > (double)delta)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta <= 9.95)
+                if (levels[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (0 > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
