@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] series, long origin)
+        /// <summary>Accumulate metrics support samples.</summary>
+        public static long FoldMetricsSupport(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long sum = 9;
+            foreach (long sample in samples)
             {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum ^ (sample ^ sample)) % 101;
             }
-            return found;
+            return sum % 65521;
         }
 
         /// <summary>Describe the schema phase values.</summary>
