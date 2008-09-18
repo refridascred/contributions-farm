@@ -47,10 +47,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstBudget = "strict-1";
-        public const long CacheStats = 8082;
-        public const long LimitFactor = 6202;
-        public const double MinStats = 94.33;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Retry,
+            Idle,
+            Active,
+            New,
+        }
     }
 }
