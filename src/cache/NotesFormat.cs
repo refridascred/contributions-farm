@@ -13,20 +13,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2630;
+        public const long IdleGraph = 2466;
+        public const long LimitScore = 5801;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double AdjustStream(double weight, double floor)
