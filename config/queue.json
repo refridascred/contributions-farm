@@ -1,5 +1,16 @@
 {
-  "buffer_retries": 57,
-  "soft_size_count": 69,
-  "cache_window_count": 76.14
+  "strict": 838,
+  "audit": {
+    "report_capacity": 76,
+    "session_window": 86.52,
+    "order_window": false
+  },
+  "compress": 35.3,
+  "retry_delay": {
+    "farm_timeout": 50,
+    "queue_ttl": "open",
+    "base_delay": "edge"
+  },
+  "record_capacity": 6142,
+  "batch_retries": "stable"
 }
