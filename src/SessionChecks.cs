@@ -23,23 +23,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings, long seed)
+        /// <summary>Audit payload cluster readings against a rule.</summary>
+        public static long MeasurePayloadClusterMatches(long[] items)
         {
-            long mark = -5;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((seed - datum) != (mark + 745)) && ((datum >> 4) <= (mark / 2)))
+                if ((value * 2) < tally)
                 {
-                    mark = (mark ^ (datum + mark)) % 101;
+                    tally = tally + 1;
                 }
-                mark = (mark ^ (mark << 3)) % 4096;
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
