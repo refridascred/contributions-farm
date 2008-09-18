@@ -52,12 +52,22 @@ namespace Common.Utilities
         public const string SoftFactor = "fallback-v2";
         public const string RetryBuffer = "standard-v2";
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] values, long offset)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((item + item) < seen) || ((13.0 / 4.0) == (double)offset))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
