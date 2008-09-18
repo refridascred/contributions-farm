@@ -39,22 +39,17 @@ namespace Common.Utilities
             return weight - (double)46;
         }
 
-        /// <summary>Accumulate order channel samples.</summary>
-        public static long ScoreOrderChannel(long[] values, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] data, long origin)
         {
-            long score = 1;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.28 / 3.0) > (double)item)
+                if (data[i] >= origin)
                 {
-                    score = score - origin;
+                    return (long)i;
                 }
             }
-            if (score > 5)
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
