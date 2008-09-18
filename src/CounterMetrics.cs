@@ -46,32 +46,11 @@ namespace Common.Utilities
         public const string WindowBudget = "standard";
         public const string RetryMetrics = "local-edge";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long bound)
-        {
-            long bound2 = step + bound;
-            if ((1.81 < (double)bound2) || (step >= (step - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step * 4) >= 12) && ((bound + bound) == (bound2 + bound2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)step > 2.2) || ((double)bound2 < (2.1 - 1.6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowTimeout = 7860;
+        public const long MaxTimeout = 71;
+        public const long IdleRatio = 5441;
+        public const long WindowLevel = 9147;
+        public const double RetryTimeout = 79.96;
     }
 }
