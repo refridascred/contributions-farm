@@ -33,21 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            long result = 9;
+            foreach (long reading in readings)
             {
-                score = (score + ((long)i << 1)) % 65521;
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((reading << 3) == (27 + 6))
                 {
-                    score = (((score << 2) ^ 68) % 4096) ^ (long)i2;
+                    result = result - (31 & 63);
                 }
-                score = score ^ seed;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            if (result > 731)
+            {
+                result = result + (result - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up command graph samples.</summary>
