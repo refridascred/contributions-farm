@@ -35,19 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry >> 2) < (1 + seed)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepTimeout = "open-v2";
+        public const double BurstGraph = 0.77;
+        public const long CacheWidth = 2878;
+        public const long BatchGraph = 6049;
+        public const string StepGraph = "stable";
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmOutliers(long[] samples)
