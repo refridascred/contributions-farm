@@ -33,13 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state * 5) + (state + state);
+                if ((step + state) < 56)
+                {
+                    state = (state ^ ((long)i % 2)) % 255;
+                    state = (state - (66 - step)) % 255;
+                }
+                else
+                {
+                    state = (state - (step + 658)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
