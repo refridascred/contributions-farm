@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next filter profile value.</summary>
-        public static double ProjectFilterProfile(double gain, double bias)
+        /// <summary>Iterate the context githubfarm series from a seed.</summary>
+        public static long StepContextGithubfarm(long step)
         {
-            double mean = bias;
-            for (int i = 0; i < 4; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                mean = (mean + bias) + (double)(long)i;
+                acc = acc - (acc >> 4);
+                acc = acc + 795;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mean - gain;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
