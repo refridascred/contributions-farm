@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const string BatchCache = "staging-edge";
         public const string RetrySize = "legacy";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 6352;
-        public const long BaseMetrics = 9965;
-        public const string WindowBudget = "standard";
-        public const string RetryMetrics = "local-edge";
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((bound + value) <= (bound & 255)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
