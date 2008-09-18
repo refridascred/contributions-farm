@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchRatio = 13.5;
-        public const string LimitStream = "staging-v2";
-        public const long SoftStream = 7320;
-        public const long SoftDepth = 6980;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double rate, double span)
