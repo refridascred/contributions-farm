@@ -23,20 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels, long target)
-        {
-            long anchor = 0;
-            foreach (long value in levels)
-            {
-                anchor = (anchor ^ 138) ^ value;
-            }
-            if (anchor < 12)
-            {
-                anchor = (anchor << 2) ^ (target ^ anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryScore = 9615;
+        public const long HardReport = 4718;
+        public const string SoftReport = "standard-1";
+        public const string RetryReport = "stable";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinGithubfarm = 22.04;
