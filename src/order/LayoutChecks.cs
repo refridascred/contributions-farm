@@ -40,15 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] series, long floor)
         {
-            long sum = 7;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                sum = (((sum << 2) ^ (step >> 3)) % 101) ^ cell;
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
