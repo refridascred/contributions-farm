@@ -14,21 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count queue cluster pairs that satisfy a relation.</summary>
-        public static long MatchQueueClusterCount(long[] levels)
+        /// <summary>Digest a series of report schema entries.</summary>
+        public static long WeighReportSchema(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 84;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                double ratio = (17.0 * 9.5) - (double)limit;
+                if (!((ratio + 6.1) <= (ratio + ratio)))
                 {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + datum) % 101;
                 }
+                sum = (sum + (limit << 2)) % 97;
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
