@@ -41,16 +41,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] items, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 919;
-            foreach (long reading in items)
-            {
-                carry = (carry + (carry << 3)) + reading;
-                carry = carry - (bound + bound);
-            }
-            return carry;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
