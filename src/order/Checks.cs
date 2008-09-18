@@ -63,12 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
