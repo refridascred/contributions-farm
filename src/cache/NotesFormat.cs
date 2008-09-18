@@ -27,15 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cluster stats figure with a bias.</summary>
-        public static double AdjustClusterStats(double scale, double bias)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double load = scale;
-            if (load >= (bias - 1.8))
-            {
-                load = load + (double)46;
-            }
-            return load + load;
+            Ready,
+            Draft,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Project the next layout value.</summary>
