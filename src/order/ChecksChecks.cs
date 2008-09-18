@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 5898;
-        public const long BurstMetric = 2649;
-        public const string BurstInterval = "legacy";
-        public const long DefaultMetric = 5574;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long target, long target2)
+        {
+            if (((target2 % 24) > (target * 2)) || ((163 / 6) <= target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= (53 - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target2 < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target <= (target * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowMatches(long[] data)
