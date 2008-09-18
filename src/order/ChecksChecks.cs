@@ -25,19 +25,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long state = 14;
-            foreach (long item in samples)
-            {
-                state = (state * 3) + (item - item);
-            }
-            if (state < 2)
-            {
-                state = ((state << 2) ^ (state % 60)) % 97;
-            }
-            return state % 4096;
+            Paused,
+            Synced,
+            Queued,
+            Idle,
+            Stale,
         }
     }
 }
