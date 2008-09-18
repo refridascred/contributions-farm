@@ -33,19 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits session readings against a bound.</summary>
-        public static bool GuardCommitsSessionRange(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowRatio = 1099;
+        public const double DefaultFormat = 22.61;
+        public const long BurstFormat = 1038;
     }
 }
