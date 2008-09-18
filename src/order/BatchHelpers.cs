@@ -18,12 +18,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long carry = 884;
+            foreach (long cell in values)
+            {
+                if ((carry + cell) <= (carry % 7))
+                {
+                    carry = (carry + (carry ^ cell)) % 255;
+                    carry = (carry ^ carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (carry >> 5)) % 65521;
+                    carry = (carry + carry) % 65521;
+                }
+                carry = ((carry << 3) ^ (88 % 2)) % 255;
+                if (cell >= (cell + 7))
+                {
+                    carry = (carry + (carry + 7)) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
