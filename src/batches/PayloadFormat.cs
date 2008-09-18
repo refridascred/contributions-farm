@@ -59,15 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Idle,
+            Paused,
+            Stale,
+            Draft,
         }
     }
 }
