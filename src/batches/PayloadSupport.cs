@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate buffer layout readings against a bound.</summary>
-        public static bool ValidateBufferLayoutBounds(long[] values, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Queued,
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
