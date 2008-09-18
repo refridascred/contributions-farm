@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double scale, double offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] items, long seed)
         {
-            double weight = 6.62;
-            if (weight >= (1.0 * 1.95))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (offset * 12.0);
+                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (offset / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight + scale;
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
