@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels, long offset)
-        {
-            long total = 2;
-            foreach (long entry in levels)
-            {
-                if (26 >= entry)
-                {
-                    total = (total << 2) ^ (total >> 1);
-                }
-                if ((entry <= (total + offset)) || ((offset - offset) != (145 / 8)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 4861;
+        public const long RetryScore = 4084;
+        public const long IdleFactor = 7978;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
