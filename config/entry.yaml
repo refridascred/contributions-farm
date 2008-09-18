@@ -1,4 +1,4 @@
 # entry settings
-warm_delay_s: true
-persist: green
-retry_ttl_s: 10.39
+readonly: green
+base_threshold: open
+commits_threshold: 96
