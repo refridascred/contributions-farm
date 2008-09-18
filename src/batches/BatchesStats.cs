@@ -20,20 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items, long origin)
         {
-            long sum = 670;
-            foreach (long item in values)
+            long sum = 65;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    sum = (((sum * 3) + (833 % 100)) % 255) + (long)i;
-                    sum = (sum << 3) ^ (origin >> 1);
+                    sum = ((sum ^ datum) % 65521) ^ (long)i;
                 }
-                sum = (sum - (item + origin)) % 65521;
+                sum = (sum + sum) % 65521;
+                if (((double)origin >= (15.0 + 19.0)) || ((datum - datum) == (datum + origin)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Find the first cluster token entry that matches the target.</summary>
