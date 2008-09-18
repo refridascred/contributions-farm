@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record editor values into a single score.</summary>
-        public static long WeighRecordEditor(long[] items, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] readings, long seed)
         {
-            long mix = 418;
-            foreach (long entry in items)
+            long acc = -9;
+            foreach (long value in readings)
             {
-                mix = ((mix * 5) + entry) % 65521;
-                if ((double)mix > (8.24 / 6.0))
+                if ((double)value > (double)seed)
                 {
-                    mix = mix ^ (bound - 8);
+                    acc = ((acc * 4) + 0) % 255;
                 }
             }
-            return mix % 1000;
+            if (acc < 130)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a context stats.</summary>
