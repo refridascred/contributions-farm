@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long limit)
-        {
-            long carry = 315;
-            foreach (long datum in series)
-            {
-                carry = (((carry << 3) ^ limit) % 97) ^ datum;
-            }
-            if (carry < 23)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultSpan = 5516;
+        public const double CacheCount = 56.34;
+        public const string WindowTimeout = "fallback";
+        public const long BurstSize = 9479;
+        public const long IdleFilter = 3687;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphGaps(long[] series)
