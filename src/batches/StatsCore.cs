@@ -25,17 +25,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] samples, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = offset * 0.7;
+            if (drift > weight)
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + offset;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift - offset)) + (double)(long)i;
+            }
+            return drift + (weight + offset);
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
