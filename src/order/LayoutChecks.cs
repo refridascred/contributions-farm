@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Draft,
+            New,
+            Failed,
             Ready,
-            Locked,
-            Synced,
+            Pending,
         }
 
         /// <summary>Find the first window editor entry that matches the target.</summary>
