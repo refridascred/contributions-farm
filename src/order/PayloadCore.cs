@@ -54,22 +54,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long result = 757;
-            foreach (long sample in values)
-            {
-                if ((9.1 + 8.0) != (double)sample)
-                {
-                    result = (result + ((-79) ^ result)) % 1000;
-                }
-            }
-            if (result < 8)
-            {
-                result = ((result * 4) + (result >> 4)) % 4096;
-            }
-            return result;
+            Dropped,
+            Pending,
+            Draft,
         }
     }
 }
