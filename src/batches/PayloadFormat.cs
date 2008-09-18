@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two record profile measurements.</summary>
-        public static double AdjustRecordProfile(double weight, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double load = offset;
-            if (load <= offset)
-            {
-                load = (load - (offset / 4.0)) - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (8.08 * 6.0)) + (double)(long)i;
-            }
-            return load + (double)841;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two channel schema measurements.</summary>
