@@ -1,10 +1,12 @@
 {
-  "window_ratio": {
-    "base_retries_count": [154, 13],
-    "sync_interval_count": ["open", "strict", "open", "local"],
-    "verbose": [27, 386, 33, 360]
+  "readonly": 2204,
+  "layout_delay": "latest",
+  "command_limit": {
+    "warm_threshold": 1024,
+    "flush_depth_pct": false,
+    "already_delay": 84.32,
+    "default_retries_s": [271, 295, 6, 343],
+    "channel_depth": [498, 466, 428, 33]
   },
-  "dry_run": "staging",
-  "hard_timeout_pct": "cached",
-  "metrics_size": 16.34
+  "compress": "staging"
 }
