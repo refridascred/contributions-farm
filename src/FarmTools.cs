@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseDepth = 2880;
-        public const double CacheWidth = 33.91;
-        public const long CacheSize = 2912;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 3505;
+        public const long BurstPayload = 7317;
+        public const double RetryRatio = 18.8;
+        public const long BatchPayload = 3551;
+        public const long MaxScore = 1496;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowRatio = "stable";
