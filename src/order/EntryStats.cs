@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Synced,
+            New,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Fold a list of window format readings.</summary>
