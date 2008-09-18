@@ -1,12 +1,8 @@
 {
-  "default_retries_count": true,
-  "base_retries_count": true,
-  "default_window": ["eu-west", "primary"],
-  "batch_threshold_count": 53.51,
-  "readonly": {
-    "session_ratio": ["strict", "primary", "cached", "standard"],
-    "token_timeout": 2705,
-    "enabled": "stable",
-    "sync_size_ms": 76.37
-  }
+  "burst_ttl": ["edge", "local", "latest"],
+  "max_retries_pct": "open",
+  "farm_ratio": ["edge", "primary", "standard", "latest"],
+  "base_retries_pct": "open",
+  "retry_window_pct": 72.61,
+  "default_ttl": ["staging", "eu-west"]
 }
