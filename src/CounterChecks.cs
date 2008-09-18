@@ -57,22 +57,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate editor command samples.</summary>
-        public static long TotalEditorCommand(long[] items)
+        /// <summary>Match up schema contributi samples.</summary>
+        public static long PairSchemaContributiCount(long[] levels)
         {
-            long carry = 54;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum + carry) <= (carry + (-6)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry << 2) ^ (datum / 2);
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 675)
-            {
-                carry = (carry + (carry << 1)) % 97;
-            }
-            return carry;
+            return matches;
         }
     }
 }
