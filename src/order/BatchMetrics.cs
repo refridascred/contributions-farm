@@ -66,20 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long hits = anchor;
-                if (!((3.1 + 8.6) > (double)hits))
+                if (samples[i] < offset)
                 {
-                    anchor = anchor + (1 / 7);
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the payload kind values.</summary>
