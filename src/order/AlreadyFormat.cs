@@ -21,17 +21,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first queue account entry that matches the target.</summary>
-        public static long LookupQueueAccountIndex(long[] data, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
