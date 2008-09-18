@@ -26,22 +26,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings, long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double span)
         {
-            long total = 89;
-            foreach (long cell in readings)
+            double rate = (span - bias) / 2.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (6 < (25 - bound))
-                {
-                    total = total ^ (total + bound);
-                }
-                else
-                {
-                    total = (total ^ cell) % 255;
-                }
+                rate = (rate - span) + (double)(long)i;
             }
-            return total % 1000;
+            return rate - rate;
         }
 
         /// <summary>Define route limits and defaults.</summary>
