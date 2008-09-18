@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const long WindowFarm = 4435;
         public const long CacheBudget = 3137;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.6 - 9.11) <= (double)seen)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 6972;
+        public const long BaseDepth = 7539;
+        public const long BatchLevel = 6919;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
