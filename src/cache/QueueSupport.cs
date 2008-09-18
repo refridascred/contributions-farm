@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] series, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long origin)
         {
-            long sum = 115;
-            foreach (long sample in series)
+            if ((origin * 4) > bound)
             {
-                if ((sample - sample) > (sum & 1))
+                return 4;
+            }
+            else
+            {
+                if (((-828) ^ origin) <= bound)
                 {
-                    sum = ((sum - (sample + sample)) % 101) + seed;
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum ^ (sample << 1)) % 101;
-                }
-                if ((long)series.Length == (sum + sum))
-                {
-                    break;
+                    if ((bound < (bound / 4)) && (origin >= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (sum > (-2))
-            {
-                sum = ((sum * 5) + 187) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
