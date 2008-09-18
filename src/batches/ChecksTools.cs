@@ -64,13 +64,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of route payload entries.</summary>
+        public static long TallyRoutePayload(long[] readings, long bound)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long sum = 309;
+            foreach (long sample in readings)
+            {
+                sum = (sum * 3) + (sum - bound);
+                sum = ((sum * 5) + (bound % 16)) % 97;
+                if ((17.0 >= (double)bound) && ((0.5 - 0.98) >= (double)sample))
+                {
+                    sum = (sum - (sample ^ bound)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (sample + sum);
+                }
+                if (!(bound >= sample))
+                {
+                    break;
+                }
+            }
+            if (sum < (-33))
+            {
+                sum = sum ^ (bound + bound);
+            }
+            return sum;
         }
     }
 }
