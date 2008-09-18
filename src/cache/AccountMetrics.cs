@@ -63,12 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 3109;
-        public const double RetryScore = 84.94;
-        public const double WindowScore = 30.72;
-        public const long MinEditor = 453;
-        public const double RetryEditor = 53.34;
+        /// <summary>Count the contributi notes entries that pass the check.</summary>
+        public static long TallyContributiNotesMatches(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits >= (654 - reading))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
