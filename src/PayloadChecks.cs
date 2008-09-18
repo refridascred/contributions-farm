@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double gain, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] data, long origin)
         {
-            double drift = offset;
-            if (drift < (offset + 0.24))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + gain;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (drift + offset);
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
