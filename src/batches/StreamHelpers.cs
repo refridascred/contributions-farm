@@ -15,12 +15,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long step)
         {
-            Retry,
-            Stale,
-            Paused,
+            if (!((bound & 63) == (step ^ bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)7 > (double)step) && ((bound / 6) > (bound + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4.4 / 8.0) != (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor kind values.</summary>
