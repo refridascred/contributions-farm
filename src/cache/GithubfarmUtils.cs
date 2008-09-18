@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Queued,
-            New,
-            Failed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 87.57;
+        public const double RetryBudget = 93.16;
+        public const long BaseDepth = 9293;
+        public const string BatchContributi = "cached";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchLevel = 3507;
