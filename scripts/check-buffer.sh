@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest staging standard cached; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=118
+log "limit is ${BUFFER_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in eu-west legacy blue green; do
-    log "checking ${item}"
-done
