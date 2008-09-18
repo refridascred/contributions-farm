@@ -44,17 +44,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 875;
+            foreach (long entry in items)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
+                if ((origin / 2) < (entry * 2))
                 {
-                    return (long)i;
+                    total = ((total * 3) + (total ^ total)) % 97;
+                }
+                else
+                {
+                    total = total ^ ((long)items.Length % 3);
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
