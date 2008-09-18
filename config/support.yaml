@@ -1,5 +1,21 @@
 # support settings
-enabled: false
-hard_ttl: latest
-persist: 96.98
-hard_size: open
+strict:
+  audit: open
+  warm_capacity_count:
+    retry_timeout_s: primary
+    readonly: false
+    sync_timeout_count: true
+  enabled: fallback
+  counter_limit: standard
+idle_depth_ms:
+  default_capacity_ms: strict
+  burst_ttl_s:
+    - primary
+    - eu-west
+    - latest
+    - stable
+  base_limit_count: 68.65
+  idle_capacity_ms: local
+  verbose: true
+max_ratio: edge
+batch_depth_count: primary
