@@ -55,21 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Derive the next tools buffer value from a seed.</summary>
+        public static long SeriesToolsBuffer(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state ^ (seed / 2)) % 97) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
