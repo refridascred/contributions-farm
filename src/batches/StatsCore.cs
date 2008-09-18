@@ -55,15 +55,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cluster batches counter forward.</summary>
-        public static long SeriesClusterBatches(long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long offset, long offset2)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long edge = offset ^ offset2;
+            if ((offset - offset) > (offset - offset2))
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((edge / 2) <= (offset >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 - offset2) > (offset2 + edge))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset2 < (5 - edge)) && ((offset2 * 5) > offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks class values.</summary>
