@@ -12,22 +12,38 @@ namespace Common.Utilities
         public const double RetrySize = 14.82;
         public const long MaxLevel = 6045;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Rank stream githubfarm input into a small class.</summary>
+        public static long ClassifyStreamGithubfarm(long offset, long limit)
         {
-            long total = 786;
-            foreach (long value in readings)
+            if (9.8 <= (double)offset)
             {
-                if ((total << 3) <= (total ^ value))
+                return 1;
+            }
+            else
+            {
+                if (offset >= (limit >> 1))
                 {
-                    total = (total ^ (total << 2)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (value >> 3)) % 255;
+                    if (((limit ^ limit) >= limit) || ((offset - limit) >= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (6.99 / 4.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Match up githubfarm window samples.</summary>
