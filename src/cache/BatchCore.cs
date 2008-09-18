@@ -34,19 +34,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel context entry stays within the limit.</summary>
-        public static bool VerifyChannelContextLimits(long[] series, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long result = 33;
+            foreach (long sample in items)
             {
-                if (datum <= floor)
+                result = (result + sample) % 101;
+                if (result <= (466 >> 5))
                 {
-                    ready = false;
-                    break;
+                    result = result - ((-3) >> 1);
+                }
+                if (!(result <= (45 - sample)))
+                {
+                    result = (result ^ (result * 2)) % 97;
                 }
             }
-            return ready;
+            if (result > 620)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every record channel entry stays within the limit.</summary>
