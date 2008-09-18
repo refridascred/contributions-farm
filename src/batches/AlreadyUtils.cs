@@ -59,22 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long TotalEntryEditor(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 67;
-            foreach (long sample in samples)
-            {
-                if ((2.7 * 5.97) > (double)(-8))
-                {
-                    mix = (mix - mix) - sample;
-                }
-            }
-            if (mix < 772)
-            {
-                mix = ((mix << 3) ^ ((-46) + 568)) % 97;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Ready,
+            Pending,
         }
     }
 }
