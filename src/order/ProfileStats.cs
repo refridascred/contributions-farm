@@ -37,14 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] levels, long limit)
         {
-            Done,
-            Queued,
-            Closed,
-            Pending,
-            Synced,
+            long mix = 681;
+            foreach (long entry in levels)
+            {
+                if ((4.11 <= (double)limit) || (limit < (entry - mix)))
+                {
+                    mix = mix ^ (limit + entry);
+                }
+                else
+                {
+                    mix = mix + entry;
+                }
+                if (((entry + 3) <= (42 * 5)) || ((double)limit <= (0.86 + 9.92)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many batches support samples are out of range.</summary>
