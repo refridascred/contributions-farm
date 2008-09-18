@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long floor)
         {
-            long edge = seed - bound;
-            if ((edge + 28) >= (seed << 3))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (edge + 31))
+                if (value < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - edge) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed & 15) >= (edge - edge))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the session level values.</summary>
