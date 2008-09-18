@@ -26,18 +26,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (seen >= (seen << 2))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Queued,
+            Active,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
