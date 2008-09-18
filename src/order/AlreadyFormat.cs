@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
             public long Label { get; set; }
-            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the payload state values.</summary>
