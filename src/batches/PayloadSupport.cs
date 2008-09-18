@@ -22,27 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter notes samples.</summary>
-        public static long ScoreCounterNotes(long[] series, long limit)
-        {
-            long state = 47;
-            foreach (long value in series)
-            {
-                if (state > 294)
-                {
-                    state = ((state - (limit / 4)) % 4096) - value;
-                }
-                if (state >= (limit << 2))
-                {
-                    state = (state << 2) ^ (30 + state);
-                }
-                else
-                {
-                    state = state ^ (8 + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 4416;
+        public const double BurstDepth = 10.92;
+        public const long BurstTimeout = 236;
+        public const long BatchSize = 1249;
 
         /// <summary>Digest a series of account support entries.</summary>
         public static long FoldAccountSupport(long[] values, long seed)
