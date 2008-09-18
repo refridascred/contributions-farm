@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 50.91;
-        public const double MinDepth = 49.2;
-        public const double BaseTimeout = 51.81;
-        public const long HardDepth = 8808;
-        public const string RetryBudget = "cached-v2";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
+        {
+            long state = 37;
+            foreach (long value in items)
+            {
+                if (value < (value & 3))
+                {
+                    state = (state - (state + state)) % 101;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheSize = "open-1";
