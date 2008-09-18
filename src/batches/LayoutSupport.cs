@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of entry checks readings.</summary>
-        public static long FoldEntryChecks(long[] samples, long target)
+        /// <summary>Classify a batches queue pair into a bucket.</summary>
+        public static long GradeBatchesQueue(long limit, long bound)
         {
-            long anchor = 6;
-            foreach (long item in samples)
+            long step = limit ^ bound;
+            if (((bound * 2) != (43 - step)) && (bound > (bound / 9)))
             {
-                for (int i = 0; i < 9; i++)
+                return 0;
+            }
+            else
+            {
+                if ((limit & 255) < (limit * 4))
                 {
-                    anchor = (anchor + (target & 63)) - item;
-                    anchor = (anchor << 3) ^ ((long)i % 7);
+                    return 1;
                 }
-                anchor = (anchor + target) % 1000;
+                else
+                {
+                    return 2;
+                }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor << 2) ^ (489 & 1);
-            }
-            return anchor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
