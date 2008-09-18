@@ -29,11 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double scale, double span)
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            double load = span;
+            if (load >= (scale / 6.0))
+            {
+                load = load - (load / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (span - scale)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Find the first order window entry that matches the target.</summary>
