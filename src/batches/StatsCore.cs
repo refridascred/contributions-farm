@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Failed,
-            Idle,
-            Dropped,
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
