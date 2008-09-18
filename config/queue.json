@@ -1,12 +1,14 @@
 {
-  "soft_interval_ms": "blue",
-  "readonly": false,
-  "default_retries_ms": {
-    "max_interval_s": 80.72,
-    "base_delay": 60,
-    "audit": 71
+  "batch_capacity": 33.57,
+  "warm_capacity": ["stable", "staging"],
+  "enabled": ["green", "blue"],
+  "hard_capacity_count": [169, 258, 94, 43],
+  "hard_limit_s": {
+    "persist": "green",
+    "enabled": "primary",
+    "poll_timeout_pct": 5294,
+    "command_interval": 38,
+    "min_timeout_s": "open"
   },
-  "burst_delay_ms": 26.78,
-  "hard_timeout_ms": "cached",
-  "audit": 43
+  "persist": 30
 }
