@@ -43,13 +43,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Queued,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepBudget = 661;
+        public const long StepChannel = 927;
+        public const double LimitScore = 68.57;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
