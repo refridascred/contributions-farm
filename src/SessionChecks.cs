@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (((state * 5) + seed) % 65521) - cell;
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
