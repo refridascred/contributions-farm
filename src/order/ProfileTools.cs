@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
