@@ -45,18 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks command readings against a rule.</summary>
-        public static long AuditChecksCommandGaps(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = 755;
+            foreach (long entry in levels)
             {
-                if ((double)cell == (7.25 * 5.1))
+                if ((entry >> 5) < (entry / 4))
                 {
-                    matches = matches + 2;
+                    mix = (mix ^ (entry * 5)) % 97;
                 }
             }
-            return matches;
+            if (mix > 5)
+            {
+                mix = (mix * 3) + (step >> 4);
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm phase values.</summary>
