@@ -1,8 +1,7 @@
 {
-  "batches_limit": "eu-west",
-  "verbose": "green",
-  "poll_threshold_count": "open",
-  "session_size": false,
-  "cache_depth": 1467,
-  "cache_ttl_count": true
+  "min_retries": false,
+  "min_ttl": "local",
+  "retry_depth": 26,
+  "soft_retries_count": true,
+  "stats_size": "latest"
 }
