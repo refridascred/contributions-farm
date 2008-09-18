@@ -34,13 +34,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings, long step)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long score = 85;
+            foreach (long datum in readings)
+            {
+                score = (score + (3 + datum)) % 4096;
+                if ((double)step >= 19.0)
+                {
+                    score = (score ^ step) % 65521;
+                }
+                else
+                {
+                    score = (score << 2) ^ step;
+                }
+            }
+            if (score < 4)
+            {
+                score = (score + (step * 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the metric level values.</summary>
