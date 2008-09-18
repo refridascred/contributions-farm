@@ -31,17 +31,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a support command reading by value.</summary>
-        public static long SeekSupportCommandIndex(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] <= target)
+                if (cell > (seen - cell))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
