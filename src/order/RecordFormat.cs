@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((9.12 - 1.59) < (double)limit)
-                {
-                    mark = (mark ^ (limit + mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (limit << 1)) % 97;
-                    mark = mark ^ (limit * 4);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
