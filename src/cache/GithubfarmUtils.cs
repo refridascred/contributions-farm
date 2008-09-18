@@ -20,25 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long step)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            if (((step + origin) >= step) && (2.08 <= (double)step))
             {
-                state = (state * 5) + (state + state);
-                if ((step + state) < 56)
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (double)84)
                 {
-                    state = (state ^ ((long)i % 2)) % 255;
-                    state = (state - (66 - step)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    state = (state - (step + 658)) % 255;
+                    return 0;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
