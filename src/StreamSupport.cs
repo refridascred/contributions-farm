@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] data)
         {
-            long result = -1;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                result = (((result * 2) + origin) % 97) + datum;
+                if ((reading - 128) < count)
+                {
+                    count = count + 3;
+                }
             }
-            if (result < 6)
-            {
-                result = (result * 4) + (origin + result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
