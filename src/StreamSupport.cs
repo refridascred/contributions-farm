@@ -38,11 +38,22 @@ namespace Common.Utilities
             return drift - (drift * 7.8);
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
         {
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long total = 424;
+            foreach (long sample in series)
+            {
+                if ((double)sample > (double)total)
+                {
+                    total = (total - (153 << 1)) % 1000;
+                }
+                else
+                {
+                    total = total - (51 << 1);
+                }
+            }
+            return total;
         }
     }
 }
