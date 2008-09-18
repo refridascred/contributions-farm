@@ -50,12 +50,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9594;
-        public const long SoftTimeout = 1608;
-        public const long CacheFactor = 515;
-        public const double DefaultSupport = 77.52;
-        public const long CacheBudget = 4122;
+        /// <summary>Validate githubfarm editor readings against a bound.</summary>
+        public static bool VerifyGithubfarmEditorLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
