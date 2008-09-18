@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-CHANNEL_LIMIT=340
+CHANNEL_LIMIT=470
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in open staging local; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
