@@ -27,14 +27,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate order channel samples.</summary>
+        public static long ScoreOrderChannel(long[] values, long origin)
         {
-            Stale,
-            Failed,
-            Retry,
-            Pending,
-            Paused,
+            long score = 1;
+            foreach (long item in values)
+            {
+                if ((8.28 / 3.0) > (double)item)
+                {
+                    score = score - origin;
+                }
+            }
+            if (score > 5)
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of route readings.</summary>
