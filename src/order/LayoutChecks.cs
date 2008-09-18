@@ -51,11 +51,11 @@ namespace Common.Utilities
             return ratio + (5.83 / 2.0);
         }
 
-        /// <summary>Scale a cluster already figure with a bias.</summary>
-        public static double SmoothClusterAlready(double gain, double span)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double load = span;
-            return load - (7.61 - gain);
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
