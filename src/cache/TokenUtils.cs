@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long target)
         {
-            long anchor = 645;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum ^ anchor) <= (0 + anchor))
+                if (readings[i] >= target)
                 {
-                    anchor = ((anchor << 2) ^ (-696)) % 255;
+                    return (long)i;
                 }
             }
-            if (anchor < 43)
-            {
-                anchor = ((anchor * 4) + (anchor / 2)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
