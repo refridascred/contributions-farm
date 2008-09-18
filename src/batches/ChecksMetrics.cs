@@ -46,13 +46,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftSize = 59.45;
+        public const long WindowInterval = 9201;
+        public const long SoftBudget = 9248;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double scale, double span)
