@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric profile entries that pass the check.</summary>
-        public static long MeasureMetricProfileMatches(long[] series)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((-83) < seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
