@@ -49,21 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache route readings.</summary>
-        public static long MatchCacheRouteCount(long[] values)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long seed)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] >= seed)
                 {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
