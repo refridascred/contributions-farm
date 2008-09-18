@@ -19,11 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftInterval = 1910;
-        public const long StepCounter = 1749;
-        public const double CacheCounter = 50.03;
-        public const long MinCounter = 1751;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally + tally) < (limit * 5))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
