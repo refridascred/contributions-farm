@@ -55,22 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order report entries.</summary>
-        public static long FoldOrderReport(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] samples, long offset)
         {
-            long mix = 2;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((cell < mix) && (8.0 < (double)cell))
+                if (((8.88 * 17.0) <= (double)reading) || ((double)reading >= (6.2 / 7.0)))
                 {
-                    mix = (mix * 2) + (310 & 15);
+                    hits = (hits + 2) + offset;
                 }
             }
-            if (mix < 61)
-            {
-                mix = mix + mix;
-            }
-            return mix % 97;
+            return hits;
         }
     }
 }
