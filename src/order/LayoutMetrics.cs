@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph cache readings.</summary>
-        public static long TotalGraphCache(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            long state = 42;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (((long)readings.Length + matches) == (matches % 64))
                 {
-                    state = ((state ^ (item << 1)) % 1000) ^ (long)i;
-                }
-                if (((state - 413) <= (item >> 2)) && ((item & 15) >= (state + item)))
-                {
-                    state = state - (state & 15);
+                    matches = (matches + 3) - entry;
                 }
             }
-            if (state > 86)
-            {
-                state = state - (state % 97);
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
