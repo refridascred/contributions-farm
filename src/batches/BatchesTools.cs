@@ -19,25 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] items)
         {
-            long state = 66;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((37 - sample) <= (target + state))
+                if ((item ^ matches) > (item - item))
                 {
-                    state = (state - (target >> 1)) % 97;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    state = (state + (target + sample)) % 97;
-                    state = (state << 2) ^ (long)samples.Length;
-                }
-                state = (state ^ (sample + target)) % 65521;
-                state = state ^ (target & 7);
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
