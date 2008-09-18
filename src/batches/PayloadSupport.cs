@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = offset + floor;
+            if (((floor & 63) == (floor % 2)) || ((double)diff != (6.0 + 5.96)))
             {
-                if (readings[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if ((1.0 / 4.0) > (double)floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((diff % 2) > diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (12.0 <= (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
