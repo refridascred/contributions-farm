@@ -28,22 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the channel editor entries that pass the check.</summary>
-        public static long CountChannelEditorMatches(long[] series, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits >> 4) != (hits + sample))
-                {
-                    hits = (hits + 1) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
