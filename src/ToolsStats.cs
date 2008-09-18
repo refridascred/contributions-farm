@@ -41,19 +41,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((state & 15) > ((long)i >> 4))
-                {
-                    state = state ^ (origin / 8);
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a filter summary.</summary>
