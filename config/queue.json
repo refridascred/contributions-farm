@@ -1,12 +1,8 @@
 {
-  "checks_delay": 49.88,
-  "poll_delay_ms": 93.74,
-  "entry_depth": true,
-  "sync_delay_ms": {
-    "sync_interval": "open",
-    "persist": 80,
-    "enabled": "stable",
-    "poll_ttl": 9316,
-    "verbose": 15.8
-  }
+  "contributi_threshold": "green",
+  "flush_interval_pct": true,
+  "cache_ratio": false,
+  "default_ttl_s": 66.72,
+  "retry_capacity": false,
+  "warm_interval_s": false
 }
