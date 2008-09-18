@@ -71,14 +71,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "staging-edge";
+        public const string StepCluster = "stable";
+        public const long MaxInterval = 417;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long LimitSupport = 4571;
