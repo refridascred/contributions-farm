@@ -60,19 +60,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double floor)
-        {
-            double load = floor;
-            if (load >= (double)0)
-            {
-                load = (load + floor) + weight;
-            }
-            else
-            {
-                load = load - 12.0;
-            }
-            return load + (7.5 / 4.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4634;
+        public const long CacheRecord = 5458;
+        public const long LimitInterval = 369;
+        public const string DefaultRecord = "fallback-1";
     }
 }
