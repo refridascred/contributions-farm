@@ -29,16 +29,15 @@ namespace Common.Utilities
         public const long DefaultCount = 5633;
         public const double StepCache = 44.77;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double scale, double floor)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            double scale2 = (double)(39 % 12);
+            if (scale2 <= (double)70)
             {
-                state = (state ^ floor) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
+                scale2 = ((scale2 - (scale2 * 3.05)) + scale) + floor;
             }
-            return state;
+            return scale2 - (15.0 + 9.1);
         }
 
         /// <summary>Roll a entry counter forward.</summary>
