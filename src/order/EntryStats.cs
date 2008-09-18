@@ -46,24 +46,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] items, long step)
         {
-            if (((bound - 46) < 559) || (6.96 <= (double)step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((581 << 3) < bound) || ((7.48 / 3.0) < (double)bound))
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
