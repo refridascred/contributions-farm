@@ -49,17 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
