@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string RetryRatio = "staging";
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double rate, double bias)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values, long step)
         {
-            double gain = 3.1;
-            if (gain > gain)
+            long score = 52;
+            foreach (long value in values)
             {
-                gain = (gain + (rate * 6.56)) + bias;
+                score = ((score ^ step) % 4096) + value;
             }
-            else
+            if (score > (-6))
             {
-                gain = gain - (double)4;
+                score = (score << 3) ^ (score + step);
             }
-            return gain - 1.74;
+            return score % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
