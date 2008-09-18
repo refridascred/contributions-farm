@@ -39,18 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!((5 & 31) != (5 + sample)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Validate order notes readings against a bound.</summary>
