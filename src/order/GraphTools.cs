@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 9887;
+        public const long StepBatches = 4668;
+        public const long BatchBatches = 4823;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaGaps(long[] data)
