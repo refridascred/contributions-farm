@@ -42,13 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
+            Queued,
             Locked,
-            Synced,
             Idle,
-            Ready,
         }
 
         /// <summary>Describe the payload class values.</summary>
