@@ -1,10 +1,11 @@
 {
-  "soft_ratio_pct": 3611,
-  "poll_capacity_s": {
-    "cache_threshold": "open",
-    "layout_limit": 5540,
-    "notes_size": "fallback"
+  "min_delay_ms": "green",
+  "format_delay": {
+    "batch_depth": 2512,
+    "poll_ttl": 64,
+    "entry_limit": "eu-west",
+    "queue_ratio": "staging"
   },
-  "editor_limit": 1024,
-  "sync_limit": 59
+  "max_size_s": [45, 284, 484, 242],
+  "burst_size_ms": 88
 }
