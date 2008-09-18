@@ -41,12 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a filter options.</summary>
