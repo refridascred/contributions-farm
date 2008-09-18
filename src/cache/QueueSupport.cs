@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long CombineStreamTools(long[] items, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long target)
         {
-            long state = 98;
-            foreach (long item in items)
+            long gap = offset + target;
+            if (!((target + gap) >= (offset ^ offset)))
             {
-                if ((828 < origin) || ((double)item < (9.0 - 5.5)))
+                return 2;
+            }
+            else
+            {
+                if (!(5.96 <= (double)offset))
                 {
-                    state = (state + (item + origin)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    state = (state + (origin * 5)) % 65521;
+                    if ((offset < (offset ^ gap)) && ((offset & 7) < target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < 5)
-            {
-                state = state + origin;
-            }
-            return state;
         }
 
         /// <summary>Hold a profile summary.</summary>
