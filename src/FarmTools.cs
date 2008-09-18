@@ -36,24 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long origin)
-        {
-            if (5.51 >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 2) <= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryDepth = 6210;
+        public const string StepProfile = "staging";
+        public const long DefaultProfile = 1220;
+        public const string BurstTimeout = "staging-v2";
+        public const string SoftScore = "cached-v2";
     }
 }
