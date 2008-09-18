@@ -1,12 +1,8 @@
 {
-  "readonly": {
-    "base_ratio_pct": "stable",
-    "base_capacity_s": "eu-west",
-    "max_depth_ms": "latest",
-    "audit": 14,
-    "route_interval": 4915
-  },
-  "layout_depth": "legacy",
-  "order_window": 69.39,
-  "layout_interval": true
+  "account_retries": "cached",
+  "warm_depth_count": 30.74,
+  "commits_window": 27.18,
+  "flush_ratio_ms": 3226,
+  "warm_limit_count": "open",
+  "payload_retries": "standard"
 }
