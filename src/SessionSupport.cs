@@ -36,32 +36,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long limit, long seed)
-        {
-            long gap = limit + seed;
-            if ((gap * 4) <= 14)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((0 + seed) >= gap) && (seed > (gap - gap)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap % 16) == (gap - (-410)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9602;
+        public const long WindowLevel = 8393;
+        public const double IdleScore = 86.46;
     }
 }
