@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long origin)
+        /// <summary>Check that every stats route entry stays within the limit.</summary>
+        public static bool ValidateStatsRouteBounds(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (item <= origin)
+                if (cell >= bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
