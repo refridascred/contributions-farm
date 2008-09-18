@@ -37,28 +37,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long seed, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long origin, long floor)
         {
-            if ((seed / 6) >= (origin + origin))
+            long gap = origin ^ floor;
+            if ((origin * 2) > (floor / 2))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((origin < seed) || ((origin << 3) >= origin))
+                if ((floor >= 190) || ((4.0 - 9.5) > (double)gap))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((seed + seed) != (origin + origin))
+                    if (20 < (gap >> 5))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        return 2;
                     }
                 }
             }
