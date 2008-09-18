@@ -50,15 +50,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            double gain = (double)62 + (double)(-66);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = ((gain + (gain * 3.29)) + (double)(long)i) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + weight;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
