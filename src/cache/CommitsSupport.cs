@@ -42,10 +42,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 3462;
-        public const long BatchBuffer = 901;
-        public const long BurstBuffer = 3307;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 4737;
+        public const long RetryScore = 6420;
+        public const double CacheFactor = 71.69;
+        public const long BaseProfile = 3575;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordHits(long[] samples)
