@@ -49,11 +49,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long offset)
         {
-            double gain = (double)(147 + 657);
-            return (gain - floor) + bias;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
