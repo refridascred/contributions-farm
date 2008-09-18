@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "legacy-1";
-        public const long HardInterval = 9986;
-        public const long MaxLayout = 3587;
-        public const long WindowLayout = 7339;
-        public const string LimitLayout = "stable";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 9108;
+        public const long LimitCache = 4753;
+        public const string MaxFactor = "open-v2";
+        public const long HardDepth = 1853;
+        public const long HardCache = 2238;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double weight, double bias)
