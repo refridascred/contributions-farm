@@ -76,22 +76,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long result = -5;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(datum > (target & 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - 690) % 101;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 290)
-            {
-                result = result - target;
-            }
-            return result % 97;
+            return seen;
         }
     }
 }
