@@ -13,17 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a batch counter sample.</summary>
-        public static long SeekBatchCounterIndex(long[] series, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of counter editor readings.</summary>
