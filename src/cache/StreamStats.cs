@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] items, long limit)
+        /// <summary>Audit token checks readings against a rule.</summary>
+        public static long CountTokenChecksHits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((count >> 3) <= (count >> 2))
+                if (limit < (limit % 5))
                 {
-                    count = ((count + 1) - value) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
