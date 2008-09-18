@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 5898;
+        public const long BurstMetric = 2649;
+        public const string BurstInterval = "legacy";
+        public const long DefaultMetric = 5574;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowMatches(long[] data)
