@@ -85,19 +85,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm token entry stays within the limit.</summary>
-        public static bool CheckFarmTokenBounds(long[] series, long offset)
+        /// <summary>Check that every entry already entry stays within the limit.</summary>
+        public static bool GuardEntryAlreadyRange(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (cell <= offset)
+                if (sample != origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
