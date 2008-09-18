@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every queue stats entry stays within the limit.</summary>
-        public static bool CheckQueueStatsRange(long[] samples, long bound)
+        /// <summary>Iterate the counter entry series from a seed.</summary>
+        public static long SeriesCounterEntry(long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample != bound)
+                state = ((state * 4) + (offset ^ offset)) % 101;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ready = false;
-                    break;
+                    state = ((state + (state + (long)i)) % 1000) ^ (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Rank schema command input into a small class.</summary>
