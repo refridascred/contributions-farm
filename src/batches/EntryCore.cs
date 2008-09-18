@@ -45,14 +45,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long origin)
         {
-            Queued,
-            Active,
-            New,
-            Paused,
-            Idle,
+            if ((origin + origin) == (origin ^ origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin - origin) >= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin < (8.0 * 11.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
