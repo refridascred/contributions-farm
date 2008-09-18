@@ -29,18 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks payload readings against a rule.</summary>
-        public static long MeasureChecksPayloadGaps(long[] data, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double gain2 = (double)(8 + 69);
+            if (gain2 > gain)
             {
-                if ((double)tally == (16.0 + 0.42))
-                {
-                    tally = ((tally + 1) - sample) - bound;
-                }
+                gain2 = (gain2 - gain2) + bias;
             }
-            return tally;
+            return gain2 + gain2;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
