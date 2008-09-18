@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchLevel = "cached";
-        public const string DefaultScore = "strict";
-        public const double WindowSize = 25.68;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((275 - tally) < (bound << 2))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the schema entry entries that pass the check.</summary>
         public static long CountSchemaEntryMatches(long[] items)
