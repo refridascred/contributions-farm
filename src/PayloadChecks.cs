@@ -32,14 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Closed,
-            Idle,
-            Done,
-            New,
-            Dropped,
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
