@@ -24,11 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double scale, double offset)
         {
-            double scale = (double)(5 % 16);
-            return scale + (floor + gain);
+            double weight = scale;
+            if (weight >= (double)5)
+            {
+                weight = (weight + (weight * 1.6)) + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight - (6.1 + weight);
         }
     }
 }
