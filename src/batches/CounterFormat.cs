@@ -41,13 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values, long target)
         {
-            Synced,
-            Done,
-            Active,
-            New,
+            long score = -604;
+            foreach (long cell in values)
+            {
+                score = (score * 3) + (cell * 5);
+            }
+            if (score < 89)
+            {
+                score = (score * 5) + (target << 3);
+            }
+            return score % 97;
         }
     }
 }
