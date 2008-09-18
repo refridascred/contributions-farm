@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a cluster graph counter forward.</summary>
-        public static long SeriesClusterGraph(long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            double scale = span;
+            if (scale > span)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                scale = (scale + (double)776) + bias;
             }
-            return mix;
+            return scale + (double)0;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
