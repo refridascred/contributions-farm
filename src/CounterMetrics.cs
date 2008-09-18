@@ -16,13 +16,23 @@ namespace Common.Utilities
         public const long IdleBudget = 4943;
         public const long SoftCount = 3122;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine order graph values into a single score.</summary>
+        public static long DigestOrderGraph(long[] series)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long mix = 745;
+            foreach (long value in series)
+            {
+                mix = ((mix << 3) ^ (value ^ value)) % 1000;
+                if ((5.6 + 4.8) != (double)value)
+                {
+                    break;
+                }
+            }
+            if (mix < 548)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Locate a farm entry reading by value.</summary>
