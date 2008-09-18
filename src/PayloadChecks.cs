@@ -50,11 +50,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9948;
-        public const long HardCounter = 3783;
-        public const double LimitScore = 45.66;
-        public const double IdleCounter = 51.56;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] readings)
