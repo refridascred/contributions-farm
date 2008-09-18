@@ -40,9 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9602;
-        public const long WindowLevel = 8393;
-        public const double IdleScore = 86.46;
+        /// <summary>Project the next tools counter value.</summary>
+        public static double AdjustToolsCounter(double gain, double offset)
+        {
+            double ratio = (double)(7 - 7);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + gain) - (double)(long)i) - offset;
+            }
+            return ratio - (double)5;
+        }
     }
 }
