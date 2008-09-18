@@ -15,12 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheSpan = 7926;
-        public const long WindowCommand = 440;
-        public const long SoftFactor = 8973;
-        public const long HardInterval = 2212;
-        public const long LimitCommand = 3396;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - origin) <= datum)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a token command figure with a bias.</summary>
         public static double SmoothTokenCommand(double scale, double offset)
