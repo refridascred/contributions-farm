@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Adjust a order reading.</summary>
