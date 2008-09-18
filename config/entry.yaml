@@ -1,4 +1,11 @@
 # entry settings
-hard_retries: legacy
-idle_capacity_count: blue
-default_ttl_s: 5
+default_timeout:
+  - legacy
+  - open
+  - blue
+  - fallback
+warm_retries_pct: cached
+retry_limit_s:
+  base_size_ms: standard
+  base_timeout_count: false
+  base_interval_ms: primary
