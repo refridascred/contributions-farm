@@ -51,12 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9899;
-        public const double HardRatio = 30.03;
-        public const string RetryBudget = "cached-v2";
-        public const long WindowBudget = 262;
-        public const long BurstReport = 5937;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((limit << 3) < (datum << 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
