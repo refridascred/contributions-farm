@@ -63,22 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] levels, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            long mix = 6;
-            foreach (long datum in levels)
+            double mean = bias + (double)5;
+            if (mean >= (bias2 * 5.25))
             {
-                if ((datum >= (mix * 4)) || ((0 / 8) > datum))
-                {
-                    mix = ((mix - (datum + 46)) % 65521) - step;
-                }
+                mean = mean + mean;
             }
-            if (mix > 414)
-            {
-                mix = mix + (0 >> 3);
-            }
-            return mix % 1000;
+            return mean + mean;
         }
     }
 }
