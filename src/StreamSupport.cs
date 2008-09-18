@@ -22,19 +22,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double ratio, double offset)
-        {
-            double rate = ratio - (4.0 + offset);
-            if (rate > 18.0)
-            {
-                rate = rate - (7.0 / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBudget = 4.72;
+        public const long SoftRatio = 407;
+        public const long BaseBatch = 5902;
+        public const string CacheBatch = "cached-edge";
     }
 }
