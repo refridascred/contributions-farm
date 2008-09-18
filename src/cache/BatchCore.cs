@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] series, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long total = 830;
+            foreach (long entry in readings)
             {
-                if (entry >= target)
+                if (!((5.34 - 3.4) > (double)total))
                 {
-                    ready = false;
+                    total = (total * 3) + (total >> 2);
+                    total = (total + (565 + entry)) % 97;
                     break;
                 }
+                if (!((entry >> 5) > (54 / 9)))
+                {
+                    total = (total << 3) ^ total;
+                }
+                total = (total ^ (long)readings.Length) % 255;
             }
-            return ready;
+            if (total < 175)
+            {
+                total = ((total * 3) + (total & 255)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
