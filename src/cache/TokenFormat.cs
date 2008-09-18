@@ -23,11 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryScore = 9615;
-        public const long HardReport = 4718;
-        public const string SoftReport = "standard-1";
-        public const string RetryReport = "stable";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 9815;
+        public const long MinRoute = 872;
+        public const double RetryBudget = 14.51;
 
         /// <summary>Derive the next stream route value from a seed.</summary>
         public static long DeriveStreamRoute(long origin)
