@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already stream readings.</summary>
-        public static long FoldAlreadyStream(long[] samples)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long acc = 4;
-            foreach (long value in samples)
-            {
-                if ((long)samples.Length >= (acc - acc))
-                {
-                    acc = ((acc ^ (acc * 5)) % 4096) - value;
-                }
-            }
-            return acc;
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a filter options.</summary>
