@@ -7,16 +7,12 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in standard strict staging fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-fallback}"
 case "${mode}" in
     green)
         log "fast path"
@@ -25,3 +21,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached primary fallback; do
+    log "checking ${item}"
+done
