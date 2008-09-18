@@ -41,11 +41,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSpan = 3125;
-        public const long WindowTimeout = 662;
-        public const long StepProfile = 4361;
-        public const long BurstProfile = 7733;
-        public const double MaxBudget = 0.49;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Pending,
+            Dropped,
+            New,
+        }
     }
 }
