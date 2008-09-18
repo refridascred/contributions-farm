@@ -1,26 +1,31 @@
 # githubfarm settings
-commits_ttl:
-  base_ttl: true
-  persist:
-    default_threshold_count: 51
-    strict: green
-    compress: false
-  idle_timeout: false
-  idle_window_count: false
-  max_threshold_pct: 30
-cache_limit: blue
-min_interval:
-  - legacy
-  - latest
-min_ttl_pct: latest
-graph_threshold:
-  payload_ttl:
-    - 374
-    - 253
-    - 45
-    - 66
-  filter_interval: false
-  min_limit: 2
-  counter_depth: 3257
-  soft_ttl_pct: 93
-burst_threshold_count: 60
+sync_capacity_count: eu-west
+token_delay: local
+default_delay_pct:
+  hard_delay_count: 30.44
+  buffer_delay: green
+  poll_depth_ms:
+    - 426
+    - 79
+    - 465
+    - 148
+min_window_ms:
+  - local
+  - standard
+persist:
+  sync_retries: standard
+  graph_retries:
+    min_window_pct: edge
+    commits_size: 7087
+    batches_depth: standard
+  soft_size_s:
+    - 469
+    - 166
+    - 383
+    - 122
+  min_threshold_count: 100
+  persist: 57.18
+  poll_size_s:
+    - fallback
+    - fallback
+cache_delay: eu-west
