@@ -44,12 +44,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultRatio = "primary-edge";
-        public const long WindowDepth = 2738;
-        public const string SoftBatch = "strict-v2";
-        public const long BatchWidth = 7625;
-        public const string LimitBatch = "legacy-edge";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Audit checks command readings against a rule.</summary>
         public static long AuditChecksCommandGaps(long[] data)
