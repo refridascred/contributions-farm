@@ -76,11 +76,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchLevel = 914;
-        public const long BurstMetric = 50;
-        public const double WindowLevel = 28.71;
-        public const long IdleSize = 5011;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long seed)
+        {
+            if ((origin & 7) < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed * 4) < (seed << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin > (942 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
