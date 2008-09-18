@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Find the first format window entry that matches the target.</summary>
+        public static long LocateFormatWindowIndex(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
