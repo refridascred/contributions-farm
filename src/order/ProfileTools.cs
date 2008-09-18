@@ -31,16 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark ^ (mark % 8)) % 65521;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up batch editor samples.</summary>
