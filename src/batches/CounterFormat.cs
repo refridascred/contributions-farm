@@ -39,19 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double offset)
-        {
-            double rate2 = (offset / 2.0) / 9.0;
-            if (rate2 > (rate + offset))
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - (offset * 6.15)) + (double)(long)i;
-            }
-            return rate2 + (rate2 - 7.38);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchLevel = 532;
+        public const long BaseTimeout = 8047;
+        public const long BatchSpan = 4195;
+        public const long HardLevel = 3567;
+        public const double BaseBatches = 95.8;
     }
 }
