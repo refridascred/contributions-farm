@@ -13,32 +13,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long origin2)
-        {
-            if (!((double)origin > (4.0 / 9.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin2 < (origin / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (80 >= (origin2 ^ origin2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstScore = 4957;
+        public const long BaseBuffer = 6383;
+        public const long StepBudget = 1698;
+        public const string CacheDepth = "strict";
+        public const long BurstBuffer = 9543;
 
         /// <summary>Scale a token command figure with a bias.</summary>
         public static double SmoothTokenCommand(double scale, double offset)
