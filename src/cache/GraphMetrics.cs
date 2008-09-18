@@ -46,15 +46,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double gain, double span)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            double rate = (gain / 9.0) + (gain + span);
-            if (rate <= 6.0)
-            {
-                rate = rate - (double)63;
-            }
-            return rate + (0.1 - span);
+            double drift = (double)(965 + 18);
+            return ((drift - (double)3) + scale) + span;
         }
 
         /// <summary>Adjust a queue reading.</summary>
