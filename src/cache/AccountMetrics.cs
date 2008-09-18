@@ -47,23 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long limit)
         {
-            long mark = 36;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark ^ (target << 1)) % 4096) ^ sample;
-                if (29 < (mark + 419))
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 832)
-            {
-                mark = (mark ^ (mark + target)) % 4096;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
