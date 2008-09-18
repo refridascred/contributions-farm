@@ -23,12 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] data, long offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > offset)
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
