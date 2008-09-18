@@ -36,19 +36,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next githubfarm support value.</summary>
-        public static double ScaleGithubfarmSupport(double weight, double span)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            double weight2 = span;
-            if (weight2 <= (double)919)
+            double rate = ratio - (4.0 + offset);
+            if (rate > 18.0)
             {
-                weight2 = (weight2 + (weight2 / 4.0)) + weight;
+                rate = rate - (7.0 / 4.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                weight2 = weight2 + (weight2 * 4.6);
+                rate = (rate - offset) + (double)(long)i;
             }
-            return weight2 - (5.0 * 8.4);
+            return rate - ratio;
         }
     }
 }
