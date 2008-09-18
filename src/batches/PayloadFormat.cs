@@ -37,10 +37,13 @@ namespace Common.Utilities
         public const long BatchChecks = 7937;
         public const long SoftFactor = 4218;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchLevel = 124;
-        public const long HardCounter = 3843;
-        public const string CacheCounter = "cached-edge";
-        public const string LimitCounter = "cached-1";
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Retry,
+            Failed,
+            Dropped,
+            Locked,
+        }
     }
 }
