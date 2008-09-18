@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 971;
+            foreach (long entry in values)
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 3) ^ (mark & 7)) % 4096) + entry;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
