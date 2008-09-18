@@ -17,19 +17,12 @@ namespace Common.Utilities
             return (load + weight) + bias;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long score = 2;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (score + (score + score)) ^ (long)i;
-                }
-                score = (score + (datum ^ offset)) % 65521;
-            }
-            return score % 97;
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
