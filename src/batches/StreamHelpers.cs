@@ -32,19 +32,31 @@ namespace Common.Utilities
             return rate - (rate - scale);
         }
 
-        /// <summary>Validate notes counter readings against a bound.</summary>
-        public static bool CheckNotesCounterBounds(long[] items, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long seed, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            if ((seed / 6) >= (origin + origin))
             {
-                if (value >= step)
+                return 2;
+            }
+            else
+            {
+                if ((origin < seed) || ((origin << 3) >= origin))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed) != (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
