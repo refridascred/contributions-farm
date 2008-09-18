@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const double DefaultSession = 40.47;
         public const long LimitSession = 786;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count + count) != (8 ^ origin))
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitLevel = "legacy-edge";
+        public const long SoftFarm = 635;
+        public const long HardFarm = 4449;
+        public const double StepFarm = 21.58;
+        public const long MaxFarm = 8586;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long DeriveProfile(long target)
