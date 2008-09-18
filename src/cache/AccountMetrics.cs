@@ -84,19 +84,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] levels, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long carry = -66;
+            foreach (long reading in levels)
             {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + carry) + reading;
             }
-            return found;
+            return carry % 65521;
         }
     }
 }
