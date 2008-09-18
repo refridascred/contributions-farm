@@ -72,17 +72,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] == limit)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    total = ((total + (969 + offset)) % 255) + (long)i2;
+                    total = (total ^ total) % 101;
                 }
+                if ((offset * 3) == ((-67) + offset))
+                {
+                    total = (total + (offset ^ 5)) % 97;
+                }
+                total = (total + (total - (long)i)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
