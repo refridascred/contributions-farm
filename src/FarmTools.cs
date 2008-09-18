@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (item <= (item + 5))
+                if ((7.5 - 1.34) >= (double)matches)
                 {
-                    count = count + 3;
+                    matches = ((matches + 3) ^ entry) + target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a stream summary.</summary>
