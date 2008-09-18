@@ -76,17 +76,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long bound)
+        /// <summary>Classify a layout stats pair into a bucket.</summary>
+        public static long ClassifyLayoutStats(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = limit + floor;
+            if (!((double)limit == (double)edge))
             {
-                if (series[i] == bound)
+                return 6;
+            }
+            else
+            {
+                if (limit > floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
