@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the channel editor entries that pass the check.</summary>
