@@ -1,7 +1,6 @@
-id,rank,active,level
-1,36.28,strict,local
-2,570,852,115
-3,25.04,91,51.85
-4,edge,301,70.74
-5,153,233,21.55
-6,fallback,standard,82.89
+id,token,active,owner
+1,latest,464,750
+2,368,5.8,879
+3,blue,499,83.19
+4,853,28.0,622
+5,119,64,staging
