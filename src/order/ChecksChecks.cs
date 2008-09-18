@@ -48,14 +48,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data, long origin)
         {
-            Paused,
-            Synced,
-            Queued,
-            Idle,
-            Stale,
+            long state = 83;
+            foreach (long value in data)
+            {
+                state = (((state * 5) + (value + 218)) % 255) + origin;
+                if ((double)state != (double)value)
+                {
+                    state = state - 82;
+                }
+                else
+                {
+                    state = (state ^ (368 >> 4)) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
