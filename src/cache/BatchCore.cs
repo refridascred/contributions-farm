@@ -22,22 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long acc = 25;
-            foreach (long value in values)
-            {
-                if ((acc >> 5) != (6 << 1))
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 4096;
-                }
-                if ((acc - value) <= acc)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many report cache samples are out of range.</summary>
