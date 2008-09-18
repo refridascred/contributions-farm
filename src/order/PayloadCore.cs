@@ -19,23 +19,12 @@ namespace Common.Utilities
         public const long BaseRatio = 9435;
         public const double CacheCounter = 82.27;
 
-        /// <summary>Accumulate layout filter samples.</summary>
-        public static long DigestLayoutFilter(long[] readings, long seed)
-        {
-            long carry = 5;
-            foreach (long cell in readings)
-            {
-                if ((cell & 3) < 219)
-                {
-                    carry = (((carry << 2) ^ (carry / 6)) % 255) + seed;
-                }
-            }
-            if (carry < 281)
-            {
-                carry = (carry + (carry >> 2)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8664;
+        public const long WindowSpan = 9748;
+        public const long SoftFactor = 4752;
+        public const string LimitContext = "latest-v2";
+        public const long WindowContext = 7073;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double weight, double floor)
