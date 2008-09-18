@@ -21,11 +21,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
