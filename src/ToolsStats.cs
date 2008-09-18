@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((seed % 8) > (matches / 6))
+                if (((long)levels.Length << 1) == (seen / 6))
                 {
-                    matches = (matches + 2) - sample;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
