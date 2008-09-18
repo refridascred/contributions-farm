@@ -13,23 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples, long floor)
         {
-            double rate = scale / 7.0;
-            if (rate <= 9.95)
+            long sum = -781;
+            foreach (long sample in samples)
             {
-                rate = rate - (double)(-88);
+                sum = ((sum + (sum + floor)) % 97) - sample;
             }
-            else
+            if (sum > 587)
             {
-                rate = rate + bias;
+                sum = sum + (703 & 1);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - (rate - scale);
+            return sum % 65521;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
