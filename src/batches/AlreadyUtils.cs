@@ -59,15 +59,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a contributi record reading.</summary>
-        public static double BlendContributiRecord(double rate, double span)
+        /// <summary>Audit checks command readings against a rule.</summary>
+        public static long AuditChecksCommandGaps(long[] data)
         {
-            double ratio = (double)(17 << 2);
-            if (ratio >= ratio)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                ratio = ((ratio - (ratio / 2.0)) + rate) - span;
+                if ((double)cell == (7.25 * 5.1))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
