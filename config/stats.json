@@ -1,11 +1,7 @@
 {
-  "readonly": 26,
-  "warm_limit_s": 3968,
-  "persist": {
-    "warm_size": "legacy",
-    "warm_ratio_s": 30,
-    "cluster_interval": 82.63,
-    "default_depth_count": 57
-  },
-  "batch_limit_s": "staging"
+  "min_delay_count": 28.03,
+  "min_depth": 333,
+  "default_threshold_count": 45.68,
+  "sync_capacity": "green",
+  "stats_ratio": "primary"
 }
