@@ -11,38 +11,23 @@ namespace Common.Utilities
         public const double IdleRatio = 75.22;
         public const long HardEntry = 8779;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long bound, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series)
         {
-            if ((1.17 / 5.0) >= (double)bound)
+            long score = 60;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 3) <= (bound % 2))
+                score = (score - score) % 101;
+                if ((double)score > (double)datum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1 & 3) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound <= (bound + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 550)
+            {
+                score = (score + (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
