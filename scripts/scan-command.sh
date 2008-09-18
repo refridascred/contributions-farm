@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=277
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict staging; do
+    log "checking ${item}"
+done
