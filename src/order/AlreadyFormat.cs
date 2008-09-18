@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long origin, long seed)
-        {
-            if (((seed / 3) != (origin << 1)) || ((seed + 2) < origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed >= 8.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardScore = 78.09;
+        public const long MinSize = 5305;
+        public const long DefaultProfile = 8618;
+        public const long DefaultWidth = 7401;
+        public const double IdleBudget = 79.96;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleLevel = 9870;
