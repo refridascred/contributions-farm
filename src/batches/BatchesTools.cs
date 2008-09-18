@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] readings, long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (item >= step)
+                if (matches < (matches & 1))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Blend two layout session measurements.</summary>
