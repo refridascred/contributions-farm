@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items, long offset)
+        /// <summary>Count the stats already entries that pass the check.</summary>
+        public static long CountStatsAlreadyGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((entry * 3) != (offset << 1))
+                if (((9 * 2) < item) && ((3.4 - 8.83) < (double)tally))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
