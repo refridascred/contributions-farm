@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const long BaseDepth = 7539;
         public const long BatchLevel = 6919;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Done,
-            Idle,
-            Retry,
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
