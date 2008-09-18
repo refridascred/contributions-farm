@@ -57,9 +57,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 7291;
-        public const long MaxTools = 7479;
-        public const long DefaultFactor = 7611;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
