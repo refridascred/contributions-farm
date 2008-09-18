@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry - (long)i) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
