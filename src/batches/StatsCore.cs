@@ -66,19 +66,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mix = 33;
-            foreach (long datum in levels)
-            {
-                mix = (mix ^ (8 + 55)) - datum;
-            }
-            if (mix < 48)
-            {
-                mix = mix - (mix - limit);
-            }
-            return mix;
+            Stale,
+            Pending,
+            Failed,
         }
     }
 }
