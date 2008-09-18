@@ -20,12 +20,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "stable";
-        public const string DefaultLevel = "cached-v2";
-        public const string CacheInterval = "legacy-edge";
-        public const long SoftOrder = 8620;
-        public const long MaxOrder = 1654;
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool ValidateBatchMetricsLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] values, long floor)
