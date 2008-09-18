@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            New,
+            Ready,
             Idle,
-            Pending,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a already stats.</summary>
