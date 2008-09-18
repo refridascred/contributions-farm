@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long target)
         {
-            long total = 398;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + (datum << 2)) % 4096;
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
