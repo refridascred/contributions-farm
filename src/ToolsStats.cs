@@ -77,12 +77,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxInterval = 82.79;
-        public const double MaxMetrics = 30.88;
-        public const string MinScore = "open-1";
-        public const long BatchBudget = 1626;
-        public const long CacheMetrics = 3236;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((origin + (long)i) == (sum / 2)) || ((sum << 1) > (sum - sum)))
+                {
+                    sum = sum - (origin << 3);
+                    sum = (sum * 3) + origin;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 4130;
