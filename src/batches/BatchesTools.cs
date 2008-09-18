@@ -19,17 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long gap = step ^ limit;
+            if ((gap + limit) > (12 - step))
             {
-                anchor = (anchor + anchor) % 101;
-                anchor = (anchor * 4) + target;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((12.0 + 9.39) < (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((11.0 - 5.42) < (double)gap)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((gap % 7) <= (gap << 1)) || ((step - (-31)) == (gap << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
