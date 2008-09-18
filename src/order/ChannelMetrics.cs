@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a profile contributi reading.</summary>
-        public static double BlendProfileContributi(double ratio, double span)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double rate = 8.2;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate - (ratio + rate)) + (double)(long)i) + span;
-            }
-            return rate - (rate / 9.0);
+            Ready,
+            Dropped,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
