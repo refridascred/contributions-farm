@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long target)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long mark = 1;
+            foreach (long item in series)
+            {
+                mark = (mark - (7 >> 4)) % 1000;
+                if (((item + mark) == (mark + mark)) && (item <= (mark / 7)))
+                {
+                    mark = ((mark * 3) + (target >> 4)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (item - 7)) % 4096;
+                }
+                if (item <= target)
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate already layout readings against a bound.</summary>
