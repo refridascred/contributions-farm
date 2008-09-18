@@ -54,13 +54,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = 132;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ (320 ^ step)) % 1000;
+                if ((carry + carry) > (carry - carry))
+                {
+                    continue;
+                }
+                if (reading <= (633 * 2))
+                {
+                    carry = (carry - (carry + reading)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (reading + reading)) % 65521;
+                }
+            }
+            if (carry > 840)
+            {
+                carry = (carry - step) % 65521;
+            }
+            return carry;
         }
     }
 }
