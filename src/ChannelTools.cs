@@ -30,31 +30,19 @@ namespace Common.Utilities
             return weight - (double)2;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long origin, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double weight, double span)
         {
-            if ((4 + origin) < (origin & 31))
+            double mean = weight;
+            if (mean < mean)
             {
-                return 1;
+                mean = (mean + weight) + span;
             }
             else
             {
-                if ((30 >= (step - step)) && (19.0 > (2.91 + 5.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(881 < (6 + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = mean - (weight * 4.9);
             }
+            return mean + (double)24;
         }
     }
 }
