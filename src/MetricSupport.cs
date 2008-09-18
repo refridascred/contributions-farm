@@ -27,17 +27,24 @@ namespace Common.Utilities
             return scale + (bias - bias);
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long seed, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((30 - step) == (seed ^ seed)))
             {
-                if ((items[i] < target) && ((items[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((seed / 6) < (-710))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
