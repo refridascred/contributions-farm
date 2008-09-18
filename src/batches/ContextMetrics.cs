@@ -22,12 +22,20 @@ namespace Common.Utilities
         public const long BurstRatio = 6449;
         public const string BaseLevel = "stable";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "fallback-1";
-        public const long BatchCluster = 5371;
-        public const long BaseBudget = 1329;
-        public const string SoftScore = "latest-v2";
-        public const long CacheCluster = 6783;
+        /// <summary>Check that every batches contributi entry stays within the limit.</summary>
+        public static bool GuardBatchesContributiBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] levels)
