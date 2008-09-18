@@ -40,12 +40,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Closed,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
