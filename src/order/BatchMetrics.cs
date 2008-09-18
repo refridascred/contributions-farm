@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string SoftCount = "standard-edge";
         public const long CacheBatches = 1325;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= 8.84)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
