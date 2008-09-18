@@ -71,19 +71,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema context entry stays within the limit.</summary>
-        public static bool CheckSchemaContextBounds(long[] values, long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Draft,
+            Paused,
+            Idle,
+            Queued,
         }
     }
 }
