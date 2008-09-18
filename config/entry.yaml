@@ -1,10 +1,9 @@
 # entry settings
-max_ttl_count:
-  - 494
-  - 1
-min_capacity_pct: primary
-cache_timeout:
-  - stable
-  - strict
+verbose: 65.36
+window_delay: false
+checks_size: open
+warm_size_count:
+  - standard
   - open
-checks_threshold: 250
+queue_window: open
+min_interval_count: 6914
