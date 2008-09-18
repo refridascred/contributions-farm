@@ -77,12 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((16.0 + 3.7) > (double)hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
