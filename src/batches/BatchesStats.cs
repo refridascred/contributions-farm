@@ -44,22 +44,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items, long origin)
-        {
-            long total = 875;
-            foreach (long entry in items)
-            {
-                if ((origin / 2) < (entry * 2))
-                {
-                    total = ((total * 3) + (total ^ total)) % 97;
-                }
-                else
-                {
-                    total = total ^ ((long)items.Length % 3);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 1558;
+        public const long SoftWidth = 454;
+        public const string SoftTools = "local-edge";
+        public const double MinTools = 10.7;
     }
 }
