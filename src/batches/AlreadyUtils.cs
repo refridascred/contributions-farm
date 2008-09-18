@@ -73,19 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] values, long seed)
+        /// <summary>Check that every schema context entry stays within the limit.</summary>
+        public static bool CheckSchemaContextBounds(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (sample < seed)
+                if (item < origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
