@@ -1,9 +1,4 @@
 # entry settings
-min_depth: 77.53
-support_interval: latest
-farm_limit:
-  flush_depth: 30
-  verbose: 76
-  soft_window: 46.36
-  batches_delay: open
-  poll_ttl: open
+warm_delay_s: true
+persist: green
+retry_ttl_s: 10.39
