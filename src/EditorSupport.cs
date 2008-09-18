@@ -39,13 +39,12 @@ namespace Common.Utilities
             return mean + (span / 9.0);
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Retry,
-            Idle,
-            Closed,
-            Draft,
+            public double Token { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
