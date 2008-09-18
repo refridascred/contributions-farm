@@ -23,16 +23,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a notes batches counter forward.</summary>
-        public static long RollNotesBatches(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 815;
+        public const string DefaultTimeout = "legacy";
+        public const long IdleEntry = 8352;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
