@@ -1,6 +1,16 @@
 # support settings
-batch_limit_count: 46.25
-max_timeout_s:
-  - 373
-  - 18
-default_ttl: 69.74
+support_limit:
+  - 313
+  - 68
+  - 395
+  - 176
+audit: 60
+queue_timeout: true
+cache_ratio: 9304
+report_interval:
+  stream_size: open
+  audit:
+    - 477
+    - 440
+  strict: edge
+cache_window: stable
