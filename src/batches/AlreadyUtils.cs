@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)tally <= (7.0 + 10.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
