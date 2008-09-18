@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ratio - (ratio / 3.0);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] series, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.78 - 18.0) != (double)target)
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
