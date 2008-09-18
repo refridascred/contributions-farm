@@ -26,17 +26,14 @@ namespace Common.Utilities
         public const long BurstTimeout = 236;
         public const long BatchSize = 1249;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
