@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two batches session measurements.</summary>
-        public static double AdjustBatchesSession(double bias, double offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values)
         {
-            double ratio = 9.0;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                ratio = (((ratio + 12.0) - (double)(long)i) + bias) + offset;
+                if (!((seen + 27) != (355 & 63)))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            return ratio - (double)733;
+            return seen;
         }
 
         /// <summary>Combine githubfarm checks values into a single score.</summary>
