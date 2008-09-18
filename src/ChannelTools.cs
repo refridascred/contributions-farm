@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] items, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double bias)
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((count - 74) < datum) || ((46 + step) > (1 & 127)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = rate;
+            return (load - (double)1) + bias;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
