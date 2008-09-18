@@ -41,27 +41,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema cluster values into a single score.</summary>
-        public static long DigestSchemaCluster(long[] series, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long step)
         {
-            long mix = 30;
-            foreach (long reading in series)
+            long bound2 = bound ^ step;
+            if ((bound2 + 6) != (step >> 3))
             {
-                if (!((mix * 5) <= (target - mix)))
+                return 7;
+            }
+            else
+            {
+                if (((double)bound2 >= (4.2 * 7.2)) && ((7 >> 1) < (bound ^ bound)))
                 {
-                    mix = mix + (450 + reading);
+                    return 8;
                 }
-                mix = (mix << 2) ^ (reading / 3);
-                if ((mix - target) > mix)
+                else
                 {
-                    mix = mix ^ mix;
-                }
-                if (((double)(long)series.Length == (double)reading) && ((double)mix != (4.4 * 20.0)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            return mix;
         }
 
         /// <summary>Iterate the profile buffer series from a seed.</summary>
