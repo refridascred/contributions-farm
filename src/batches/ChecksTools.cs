@@ -57,18 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already format samples are out of range.</summary>
-        public static long CountAlreadyFormatHits(long[] data, long step)
+        /// <summary>Check that every checks payload entry stays within the limit.</summary>
+        public static bool GuardChecksPayloadBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((6 % 10) >= (count / 2))
+                if (reading >= floor)
                 {
-                    count = ((count + 2) - entry) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
