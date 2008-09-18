@@ -42,18 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] data)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((matches & 3) > (matches & 7)) || (datum > (datum + matches))) && ((double)datum > (18.0 / 6.0)))
-                {
-                    matches = matches + 1;
-                }
+                score = score + (70 % 24);
+                score = score - score;
+                score = (score << 2) ^ (score + bound);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
