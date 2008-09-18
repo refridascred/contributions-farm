@@ -89,18 +89,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4571;
+        public const long BaseRatio = 578;
+        public const string RetrySupport = "staging-1";
+        public const string BurstSupport = "local";
+        public const long RetryRatio = 1782;
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] readings)
