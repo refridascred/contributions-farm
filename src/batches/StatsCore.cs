@@ -25,16 +25,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] samples, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 3) ^ ((long)i >> 3);
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
