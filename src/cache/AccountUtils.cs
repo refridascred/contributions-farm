@@ -45,14 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] samples, long offset)
         {
-            Paused,
-            Ready,
-            Queued,
-            Done,
-            Draft,
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
