@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((datum + 4) < (993 - target)) || !(target > (datum >> 4)))
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of window format readings.</summary>
