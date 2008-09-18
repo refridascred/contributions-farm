@@ -40,20 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account queue readings.</summary>
-        public static long FoldAccountQueue(long[] samples, long step)
-        {
-            long mix = 1;
-            foreach (long value in samples)
-            {
-                mix = ((mix * 3) + (value - 0)) + step;
-            }
-            if (mix > 16)
-            {
-                mix = (mix ^ 90) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 5981;
+        public const long BatchLevel = 9243;
+        public const double MaxEditor = 60.85;
+        public const string StepEditor = "stable-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "cached-1";
