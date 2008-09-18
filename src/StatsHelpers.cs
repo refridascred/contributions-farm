@@ -30,24 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long floor, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            if (((double)floor == (7.1 * 1.7)) || (floor < (17 - step)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step / 6) > (step ^ floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support mode values.</summary>
