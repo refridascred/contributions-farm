@@ -36,18 +36,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long TallyOrderQueueGaps(long[] data, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((3.07 * 20.0) >= (double)matches)
-                {
-                    matches = ((matches + 2) + cell) - limit;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Locked,
+            Active,
         }
     }
 }
