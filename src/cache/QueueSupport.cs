@@ -27,27 +27,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Iterate the queue commits series from a seed.</summary>
+        public static long RollQueueCommits(long step)
         {
-            long acc = 2;
-            foreach (long datum in levels)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.71 - 12.0) > (double)datum)
-                {
-                    acc = ((acc * 5) + (7 + acc)) % 101;
-                }
-                if ((9.29 + 9.0) >= (double)acc)
-                {
-                    acc = (acc + datum) % 1000;
-                }
-                else
-                {
-                    acc = acc - (datum ^ 625);
-                }
-                acc = ((acc << 3) ^ (datum ^ acc)) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
     }
 }
