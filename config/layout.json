@@ -1,9 +1,11 @@
 {
-  "base_threshold": "staging",
-  "editor_capacity": {
-    "dry_run": false,
-    "checks_threshold": ["local", "standard"],
-    "window_interval": 16
+  "persist": true,
+  "cache_window_count": {
+    "soft_threshold_s": 92,
+    "verbose": 16,
+    "soft_capacity_pct": "strict",
+    "warm_timeout_count": ["latest", "stable", "primary", "stable"]
   },
-  "warm_limit": 15
+  "poll_threshold": 100,
+  "sync_window": 2
 }
