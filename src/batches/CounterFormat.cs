@@ -29,12 +29,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > target)
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
