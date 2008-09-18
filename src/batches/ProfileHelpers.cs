@@ -51,12 +51,19 @@ namespace Common.Utilities
         public const string StepCluster = "stable";
         public const long MaxInterval = 417;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4571;
-        public const long BaseRatio = 578;
-        public const string RetrySupport = "staging-1";
-        public const string BurstSupport = "local";
-        public const long RetryRatio = 1782;
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long CountCacheCounterHits(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (step >= seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
