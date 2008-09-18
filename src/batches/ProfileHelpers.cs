@@ -71,18 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] samples, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = 6;
+            foreach (long datum in series)
             {
-                if (!((limit << 3) < (datum << 3)))
+                sum = (sum ^ (datum ^ datum)) % 65521;
+                if ((datum >> 2) < (sum * 5))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 5) + (sum + sum)) % 65521;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
