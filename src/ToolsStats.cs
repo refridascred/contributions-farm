@@ -84,12 +84,9 @@ namespace Common.Utilities
         public const long BatchBudget = 1626;
         public const long CacheMetrics = 3236;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Draft,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4130;
+        public const string MaxScore = "open-1";
+        public const string LimitCount = "alpha-edge";
     }
 }
