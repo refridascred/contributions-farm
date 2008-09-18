@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4323;
         public const long CacheSpan = 2980;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] readings)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches & 127) >= matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of token githubfarm readings.</summary>
