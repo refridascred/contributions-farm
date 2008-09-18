@@ -45,22 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long score = 93;
-            foreach (long value in levels)
-            {
-                if ((score * 4) <= ((long)levels.Length - value))
-                {
-                    score = ((score * 2) + (score >> 1)) % 101;
-                }
-                else
-                {
-                    score = score + (seed >> 3);
-                }
-            }
-            return score;
+            Pending,
+            New,
+            Active,
+            Failed,
         }
     }
 }
