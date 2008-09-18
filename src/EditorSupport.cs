@@ -34,22 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultInterval = 2565;
+        public const double SoftSpan = 96.43;
+        public const long SoftWidth = 3999;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long RollFarm(long origin)
