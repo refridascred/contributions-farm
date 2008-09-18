@@ -27,18 +27,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items, long limit)
+        /// <summary>Classify a cluster payload pair into a bucket.</summary>
+        public static long GradeClusterPayload(long target, long bound)
         {
-            long mix = -8;
-            foreach (long cell in items)
+            long delta = target + bound;
+            if ((double)delta < 6.0)
             {
-                if (((long)items.Length + limit) < (mix % 12))
+                return 5;
+            }
+            else
+            {
+                if ((bound - target) != (delta - target))
                 {
-                    mix = (mix - (mix + cell)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)delta == (5.0 * 7.98)) && ((bound % 8) >= (bound / 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((8 % 60) <= (13 + target)) && ((bound & 31) != (target + 56)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
     }
 }
