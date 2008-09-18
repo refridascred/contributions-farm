@@ -76,11 +76,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long limit)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
