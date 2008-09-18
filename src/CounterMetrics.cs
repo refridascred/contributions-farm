@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const string BatchCache = "staging-edge";
         public const string RetrySize = "legacy";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] samples, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((bound + value) <= (bound & 255)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the command class values.</summary>
