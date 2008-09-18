@@ -15,26 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] items, long floor)
         {
-            long acc = 9;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 6; i++)
+                if (((tally & 31) <= floor) || (((double)floor >= (double)802) || ((entry / 6) < (floor ^ tally))))
                 {
-                    acc = ((acc - (acc - 655)) % 4096) - (long)i;
+                    tally = tally + 1;
                 }
-                if ((double)reading != (double)139)
+                else
                 {
-                    acc = (acc + acc) % 1000;
-                }
-                if (!((reading << 2) <= (acc + acc)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
