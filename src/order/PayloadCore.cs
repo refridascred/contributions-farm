@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a record channel counter forward.</summary>
-        public static long StepRecordChannel(long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long mark = 8;
+            foreach (long sample in values)
             {
-                score = (score - (seed + seed)) % 65521;
-                score = score + ((long)i & 3);
-                score = ((score * 4) + (long)i) % 4093;
+                mark = (mark - 4) % 4096;
+                if ((sample * 5) <= (sample + 0))
+                {
+                    mark = (mark - (mark + sample)) % 4096;
+                }
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
