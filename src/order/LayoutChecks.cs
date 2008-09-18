@@ -65,12 +65,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleScore = 9652;
-        public const long HardLevel = 8876;
-        public const string BurstInterval = "legacy-v2";
-        public const long HardFarm = 6519;
-        public const long WindowFarm = 6492;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data, long step)
+        {
+            long sum = 7;
+            foreach (long cell in data)
+            {
+                sum = (((sum << 2) ^ (step >> 3)) % 101) ^ cell;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool CheckBatchesBounds(long[] readings, long limit)
