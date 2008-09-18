@@ -26,23 +26,12 @@ namespace Common.Utilities
         public const long MaxCommand = 4017;
         public const string BaseTimeout = "legacy-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((424 > matches) || ((double)(-50) != (double)reading))
-                {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 1775;
+        public const double HardDepth = 37.61;
+        public const long MinBatches = 1345;
+        public const long HardBatches = 2230;
+        public const long WindowSpan = 3840;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long BucketRecord(long bound, long target)
