@@ -51,13 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the token status values.</summary>
