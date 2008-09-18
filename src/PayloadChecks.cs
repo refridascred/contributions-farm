@@ -61,22 +61,22 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Accumulate metric command samples.</summary>
-        public static long WeighMetricCommand(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long anchor = 420;
-            foreach (long reading in series)
+            long mark = 246;
+            foreach (long value in values)
             {
-                if (((anchor << 3) <= reading) && ((anchor / 4) >= (anchor - reading)))
+                if (!((74 >> 3) != (value & 255)))
                 {
-                    anchor = (anchor ^ (reading + anchor)) % 97;
+                    mark = mark ^ (mark * 5);
+                }
+                else
+                {
+                    mark = (mark - (mark + mark)) % 255;
                 }
             }
-            if (anchor < 298)
-            {
-                anchor = ((anchor * 4) + anchor) % 4096;
-            }
-            return anchor % 97;
+            return mark;
         }
     }
 }
