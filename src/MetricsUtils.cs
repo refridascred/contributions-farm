@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Accumulate order payload samples.</summary>
+        public static long DigestOrderPayload(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long score = 685;
+            foreach (long reading in data)
             {
-                mix = mix - (mix << 3);
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = mix ^ (floor * 3);
-                    mix = (mix << 2) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                score = ((score + 6) % 1000) - reading;
+                score = (score * 4) + (score + (long)data.Length);
             }
-            return mix;
+            if (score < 378)
+            {
+                score = (score << 3) ^ (score >> 4);
+            }
+            return score % 1000;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
