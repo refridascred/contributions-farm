@@ -38,27 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels, long seed)
         {
-            long result = 33;
-            foreach (long sample in items)
+            long score = 86;
+            foreach (long sample in levels)
             {
-                result = (result + sample) % 101;
-                if (result <= (466 >> 5))
-                {
-                    result = result - ((-3) >> 1);
-                }
-                if (!(result <= (45 - sample)))
-                {
-                    result = (result ^ (result * 2)) % 97;
-                }
+                score = (score + (seed << 2)) - sample;
             }
-            if (result > 620)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result % 4096;
+            return score;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
