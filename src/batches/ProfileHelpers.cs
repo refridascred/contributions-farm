@@ -39,21 +39,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Iterate the buffer batches series from a seed.</summary>
