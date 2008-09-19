@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Active,
-            Queued,
-            Locked,
-            Idle,
-            Paused,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the payload state values.</summary>
