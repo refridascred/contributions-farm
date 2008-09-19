@@ -12,10 +12,33 @@ namespace Common.Utilities
         public const long SoftFactor = 64;
         public const double LimitSize = 3.63;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryWidth = 755;
-        public const long BurstCount = 4559;
-        public const string WindowNotes = "latest";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long bound)
+        {
+            long gap = target - bound;
+            if ((double)bound >= (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + bound) != (gap * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)bound == (6.0 / 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] samples, long floor)
