@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((mark >> 1) > (target + (long)i)))
-                {
-                    mark = ((mark << 3) ^ (mark + target)) % 101;
-                }
-                if (!(target <= 30))
-                {
-                    mark = (mark * 3) + ((long)i ^ 5);
-                    break;
-                }
-                else
-                {
-                    mark = (mark + 16) % 255;
-                    mark = (mark * 5) + target;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
