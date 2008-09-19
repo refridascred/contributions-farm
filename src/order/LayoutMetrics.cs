@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples, long seed)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.0 * 3.34) >= (double)count)
+                {
+                    count = ((count + 2) + sample) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route options.</summary>
