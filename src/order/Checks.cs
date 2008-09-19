@@ -39,22 +39,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double ratio, double bias)
         {
-            long anchor = 502;
-            foreach (long sample in samples)
+            double mean = bias;
+            if (mean >= (ratio + bias))
             {
-                if (((sample + sample) < sample) || (16.0 >= (double)anchor))
-                {
-                    anchor = (anchor ^ (0 % 64)) % 101;
-                }
+                mean = mean + ratio;
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            return mean + mean;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
