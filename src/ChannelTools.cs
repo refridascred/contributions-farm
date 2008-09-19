@@ -16,12 +16,15 @@ namespace Common.Utilities
             return bias + (double)546;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 187;
-        public const long MaxOrder = 3211;
-        public const string DefaultOrder = "latest-edge";
-        public const long RetryInterval = 5070;
-        public const string BatchOrder = "alpha-edge";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Queued,
+            New,
+            Closed,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] levels)
