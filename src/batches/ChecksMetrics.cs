@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank stream route input into a small class.</summary>
-        public static long RankStreamRoute(long floor, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long seed)
         {
-            if (!(step > (floor - 159)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= 3.1)
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
