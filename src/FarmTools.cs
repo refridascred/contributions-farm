@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)(long)readings.Length >= (6.58 / 5.0)))
                 {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (cell + cell)) % 4096;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
