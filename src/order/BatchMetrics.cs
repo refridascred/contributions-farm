@@ -55,31 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long offset, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            if ((offset >> 4) >= (0 + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5 - offset) != (seed + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed < (seed + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
