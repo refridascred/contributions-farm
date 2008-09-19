@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double rate, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            double weight = 11.0;
-            if (weight <= (rate * 7.99))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)815) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (double)4;
-            }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
