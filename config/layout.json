@@ -1,16 +1,5 @@
 {
-  "contributi_depth": 5519,
-  "dry_run": 9030,
-  "poll_limit": "green",
-  "min_ttl_s": true,
-  "cache_size_count": {
-    "warm_ratio_ms": 1535,
-    "soft_window_pct": true,
-    "cluster_interval": ["staging", "blue"],
-    "stats_size": {
-      "retry_limit_pct": 6000,
-      "base_ttl": "open",
-      "record_limit": 41.94
-    }
-  }
+  "idle_threshold_s": 80.99,
+  "retry_retries_pct": 43.22,
+  "route_capacity": 647
 }
