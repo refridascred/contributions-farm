@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate command samples.</summary>
