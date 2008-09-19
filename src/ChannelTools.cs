@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if (!((double)limit >= 8.0))
             {
-                if ((((seed / 3) <= (seed & 1)) || ((sample + hits) == (hits << 1))) || ((sample + 46) >= (hits * 5)))
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ target) < limit)
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
