@@ -18,22 +18,15 @@ namespace Common.Utilities
         public const long IdleBatches = 1059;
         public const long WindowInterval = 6818;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry - 2) <= (matches + entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
