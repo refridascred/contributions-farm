@@ -32,18 +32,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine payload commits values into a single score.</summary>
-        public static long DigestPayloadCommits(long[] samples, long offset)
+        /// <summary>Look up the position of a already token sample.</summary>
+        public static long FindAlreadyTokenIndex(long[] samples, long step)
         {
-            long carry = 639;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum / 2) >= (carry % 2))
+                if (samples[i] < step)
                 {
-                    carry = (((carry << 3) ^ (datum + (long)samples.Length)) % 1000) - offset;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
