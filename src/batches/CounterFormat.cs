@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Synced,
-            Stale,
-            Idle,
-            Queued,
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
