@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine route metric values into a single score.</summary>
-        public static long TallyRouteMetric(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] samples, long step)
         {
-            long mark = 31;
-            foreach (long cell in values)
+            long sum = -981;
+            foreach (long reading in samples)
             {
-                mark = (mark * 3) + cell;
-                if ((cell - mark) != (mark + mark))
+                if ((sum >> 3) < (step << 3))
                 {
-                    break;
+                    sum = ((sum * 3) + (753 + 6)) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (step + reading)) % 101;
                 }
             }
-            if (mark > 7)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
