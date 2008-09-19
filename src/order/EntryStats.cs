@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardDepth = 3390;
-        public const string BaseDepth = "primary-edge";
-        public const long MinSchema = 2228;
-        public const long LimitDepth = 7899;
-        public const long IdleScore = 6032;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long floor)
+        {
+            long prev = seed + floor;
+            if (!((seed + seed) <= floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)868 == (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (prev < (floor >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 5067;
