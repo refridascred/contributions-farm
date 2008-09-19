@@ -47,15 +47,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next checks account value from a seed.</summary>
-        public static long DeriveChecksAccount(long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                carry = carry ^ carry;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
     }
 }
