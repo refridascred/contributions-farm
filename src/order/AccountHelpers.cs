@@ -23,19 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next farm session value.</summary>
-        public static double AdjustFarmSession(double gain, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double scale = gain;
-            if (scale <= offset)
-            {
-                scale = scale + (gain + offset);
-            }
-            else
-            {
-                scale = scale - 3.19;
-            }
-            return scale + offset;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
