@@ -27,22 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)count < (6.54 / 5.0))
+                if (!((seen >> 2) != (reading - seen)))
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
