@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = -2;
-            foreach (long entry in readings)
-            {
-                if (!(9.6 > (double)state))
-                {
-                    state = (state ^ (entry - entry)) % 101;
-                }
-                else
-                {
-                    state = state ^ (entry + state);
-                }
-            }
-            return state;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
