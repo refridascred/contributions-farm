@@ -29,14 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Locked,
-            Done,
-            Paused,
-            Queued,
+            Synced,
             Dropped,
+            New,
+            Retry,
         }
     }
 }
