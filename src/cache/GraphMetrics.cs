@@ -34,22 +34,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long carry = 90;
-            foreach (long cell in values)
-            {
-                if ((cell + carry) >= (carry ^ cell))
-                {
-                    carry = (carry * 2) + cell;
-                }
-            }
-            if (carry < 52)
-            {
-                carry = carry - (91 << 2);
-            }
-            return carry;
+            New,
+            Synced,
+            Failed,
+            Active,
+            Pending,
         }
 
         /// <summary>Match up window samples.</summary>
