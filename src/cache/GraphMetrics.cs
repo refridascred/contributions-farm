@@ -16,12 +16,20 @@ namespace Common.Utilities
             return scale + (scale + 3.66);
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            Idle,
-            Synced,
-            Ready,
+            long mix = 770;
+            foreach (long sample in values)
+            {
+                if ((double)mix <= 7.0)
+                {
+                    mix = (mix ^ (sample - mix)) % 1000;
+                    continue;
+                }
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
