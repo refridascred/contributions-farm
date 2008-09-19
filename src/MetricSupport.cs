@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two githubfarm window measurements.</summary>
-        public static double ProjectGithubfarmWindow(double gain, double bias)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            double scale = (double)(97 ^ 32);
-            if (scale > (4.5 + bias))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + scale) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale + 2.0;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
