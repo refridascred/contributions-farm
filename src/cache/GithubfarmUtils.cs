@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long BurstCount = 4559;
         public const string WindowNotes = "latest";
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] samples, long floor)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
