@@ -26,17 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long floor)
+        /// <summary>Validate checks channel readings against a bound.</summary>
+        public static bool CheckChecksChannelBounds(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                if (value > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
