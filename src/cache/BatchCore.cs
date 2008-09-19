@@ -50,17 +50,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a checks route reading by value.</summary>
-        public static long LookupChecksRouteIndex(long[] values, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Ready,
+            Done,
+            Queued,
         }
     }
 }
