@@ -52,27 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] data, long step)
         {
-            long score = 860;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!((9.0 - 5.0) > (double)datum))
+                if ((double)seen < (4.15 - 4.0))
                 {
-                    score = ((score * 2) + (step - score)) % 101;
-                    score = score ^ datum;
-                }
-                if ((step ^ datum) >= datum)
-                {
-                    score = (score << 2) ^ (score ^ step);
-                }
-                else
-                {
-                    score = ((score << 3) ^ ((-6) >> 4)) % 1000;
+                    seen = ((seen + 3) + item) + step;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
