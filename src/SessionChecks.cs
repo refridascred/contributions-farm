@@ -23,11 +23,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSize = 9323;
-        public const long StepBatch = 3512;
-        public const long HardWidth = 9379;
-        public const double RetryBatch = 75.03;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long offset)
