@@ -48,15 +48,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a report options.</summary>
