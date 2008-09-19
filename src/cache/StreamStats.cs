@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] readings, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = 1;
-            foreach (long reading in readings)
-            {
-                mark = (((mark + (mark >> 1)) % 255) - reading) - floor;
-            }
-            if (mark < 570)
-            {
-                mark = (mark * 2) + ((-309) - (long)readings.Length);
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
