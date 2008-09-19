@@ -1,17 +1,7 @@
 # support settings
-retry_capacity_count:
-  - stable
-  - stable
-  - standard
-  - legacy
-audit: 8735
-dry_run:
-  readonly: stable
-  flush_size: 6152
-  persist: true
-  audit:
-    - edge
-    - legacy
-  record_delay: local
-readonly: cached
-default_capacity_count: 1741
+compress: false
+base_limit_ms:
+  command_ttl: 14
+  hard_interval: stable
+  strict: 6112
+buffer_retries: latest
