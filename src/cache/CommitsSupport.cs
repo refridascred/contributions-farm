@@ -27,12 +27,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] levels, long step)
         {
-            Closed,
-            Done,
-            Pending,
+            long anchor = 40;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor ^ (item + item)) % 4096) - step;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a notes stream value against two limits.</summary>
