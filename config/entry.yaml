@@ -1,5 +1,7 @@
 # entry settings
-poll_capacity_ms: 1024
-base_delay: 100
-compress: 17.14
-commits_retries: false
+dry_run:
+  - 56
+  - 370
+  - 42
+buffer_limit: legacy
+flush_limit_pct: 49.17
