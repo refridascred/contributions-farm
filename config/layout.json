@@ -1,12 +1,7 @@
 {
-  "report_interval": [343, 85, 299],
-  "contributi_size": "green",
-  "verbose": 6999,
-  "batch_interval": true,
-  "queue_limit": {
-    "notes_capacity": 14.29,
-    "burst_interval": "legacy",
-    "strict": 1.86
-  },
-  "compress": ["standard", "legacy"]
+  "verbose": "staging",
+  "audit": "strict",
+  "batch_limit": 48,
+  "idle_window": 7424,
+  "token_timeout": false
 }
