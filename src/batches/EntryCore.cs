@@ -43,9 +43,17 @@ namespace Common.Utilities
         public const long HardOrder = 9560;
         public const string IdleOrder = "cached-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5153;
-        public const long DefaultNotes = 5979;
-        public const string SoftNotes = "staging";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
