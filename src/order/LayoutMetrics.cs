@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a window graph counter forward.</summary>
-        public static long StepWindowGraph(long step)
+        /// <summary>Combine route metric values into a single score.</summary>
+        public static long TallyRouteMetric(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long mark = 31;
+            foreach (long cell in values)
             {
-                if (step >= (mix ^ step))
+                mark = (mark * 3) + cell;
+                if ((cell - mark) != (mark + mark))
                 {
-                    mix = mix ^ (step >> 3);
+                    break;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ (step % 64)) % 255;
-                }
-                mix = (mix ^ mix) % 65521;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            if (mark > 7)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
