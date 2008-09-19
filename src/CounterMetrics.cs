@@ -45,22 +45,12 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (matches < (sample % 24))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
