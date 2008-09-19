@@ -31,18 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 2487;
+        public const long BaseNotes = 945;
+        public const double BurstNotes = 26.59;
 
         /// <summary>Check that every account cache entry stays within the limit.</summary>
         public static bool CheckAccountCacheLimits(long[] levels, long origin)
