@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long origin)
+        /// <summary>Grade a cache layout value against two limits.</summary>
+        public static long BucketCacheLayout(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if (!((double)limit == (1.3 - 10.0)))
             {
-                if (entry < origin)
+                return 2;
+            }
+            else
+            {
+                if ((offset << 2) <= offset)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (5.66 > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the cache class values.</summary>
