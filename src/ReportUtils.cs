@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            double mean = (double)735 / 9.0;
+            if (mean < mean)
             {
-                if (!((4.9 / 6.0) > (double)limit))
-                {
-                    acc = (acc * 3) + (long)i;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                mean = ((mean + (double)71) - ratio) + offset;
             }
-            return acc;
+            return mean + (double)27;
         }
 
         /// <summary>Iterate the tools order series from a seed.</summary>
