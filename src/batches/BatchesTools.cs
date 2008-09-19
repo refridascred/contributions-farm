@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] values)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long mix = 783;
+            foreach (long reading in values)
+            {
+                mix = (mix ^ (mix - reading)) % 255;
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = mix - (mix ^ (long)i);
+                }
+                mix = mix + reading;
+            }
+            return mix;
         }
 
         /// <summary>Check that every notes window entry stays within the limit.</summary>
