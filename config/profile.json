@@ -1,11 +1,7 @@
 {
-  "persist": {
-    "max_retries": [324, 1],
-    "cache_capacity": "open",
-    "batches_capacity": 60.33
-  },
-  "session_window": 23.46,
-  "soft_depth_count": true,
-  "batch_ratio": 2876,
-  "poll_delay_ms": "staging"
+  "hard_ratio": false,
+  "soft_threshold_count": 17.77,
+  "audit": 29,
+  "max_ratio_s": "edge",
+  "cache_timeout_pct": 30
 }
