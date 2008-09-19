@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long StepAccount = 8253;
         public const string BatchAccount = "stable-edge";
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Grade a notes stream value against two limits.</summary>
