@@ -28,22 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (((datum ^ 7) > bound) || ((datum - bound) == (58 + anchor)))
+                if ((double)mark >= (6.0 * 7.0))
                 {
-                    anchor = anchor - anchor;
+                    mark = (mark ^ ((long)i + seed)) % 97;
                 }
-                if (datum > (datum ^ 830))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
