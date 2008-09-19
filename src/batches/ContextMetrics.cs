@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] data, long limit)
         {
-            Dropped,
-            Active,
-            Locked,
-            Idle,
-            Stale,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
