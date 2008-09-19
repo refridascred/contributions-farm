@@ -33,19 +33,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long carry = 281;
+            foreach (long value in readings)
             {
-                if (entry != offset)
+                carry = (carry - (carry % 100)) % 97;
+                if ((value / 6) < (carry % 3))
                 {
-                    valid = false;
-                    break;
+                    carry = carry - value;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (value + value)) % 1000;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
