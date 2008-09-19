@@ -32,9 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 4208;
-        public const long WindowScore = 3419;
-        public const long DefaultBudget = 1231;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 1100;
+        public const double IdleFactor = 50.25;
+        public const long BatchRatio = 7194;
+        public const string RetryScore = "open";
     }
 }
