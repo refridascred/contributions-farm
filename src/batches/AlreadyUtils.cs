@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the metrics buffer series from a seed.</summary>
-        public static long SeriesMetricsBuffer(long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] series, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (offset > mix)
+                if ((double)matches <= (8.0 + 3.4))
                 {
-                    mix = ((mix * 4) + (offset >> 3)) % 65521;
-                    break;
+                    matches = ((matches + 1) ^ datum) - offset;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
