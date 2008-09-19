@@ -1,15 +1,4 @@
 # entry settings
-hard_ratio_pct: false
-min_window_s:
-  max_delay:
-    verbose: eu-west
-    enabled: standard
-    graph_threshold: strict
-    commits_timeout: standard
-    contributi_limit: eu-west
-    flush_timeout: green
-  burst_retries_count: strict
-  burst_limit: primary
-  cache_limit_s: 93
-  route_size: fallback
-batch_delay_ms: 250
+sync_delay: 60
+base_size_ms: 18.75
+poll_timeout_pct: true
