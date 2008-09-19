@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long seed)
         {
-            Synced,
-            Paused,
-            Idle,
+            long cur = step + seed;
+            if ((step << 2) < cur)
+            {
+                return 3;
+            }
+            else
+            {
+                if (step <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.1 / 6.0) == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(240 < (cur - step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm record.</summary>
