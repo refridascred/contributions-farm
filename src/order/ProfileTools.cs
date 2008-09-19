@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double ratio = (rate * 4.3) * 0.51;
-            return (ratio - rate) + bias;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the session report entries that pass the check.</summary>
