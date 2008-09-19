@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((((sample + count) >= (941 / 4)) && ((double)count <= 4.78)) || (((long)samples.Length & 7) < (sample * 4)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 55.53;
+        public const double BaseLevel = 50.11;
+        public const double MaxFilter = 56.71;
+        public const double RetryFilter = 91.88;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long seed, long limit)
