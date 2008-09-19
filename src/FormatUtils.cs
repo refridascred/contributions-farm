@@ -47,32 +47,11 @@ namespace Common.Utilities
         public const long BatchStream = 6162;
         public const double SoftStream = 43.74;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long step, long floor)
-        {
-            if (((floor << 2) < (floor % 10)) && ((27 - step) >= step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0.8 >= (5.5 + 10.0)) && ((5.4 / 6.0) > (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step * 4) >= (floor - 607))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "strict-1";
+        public const long BatchContributi = 2034;
+        public const long DefaultContributi = 5964;
+        public const long SoftContributi = 6955;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
