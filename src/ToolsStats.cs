@@ -22,10 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "strict-v2";
-        public const long MaxCommits = 2751;
-        public const long DefaultScore = 3903;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total * 5) + target;
+                if (((target & 3) <= target) && ((total / 9) > target))
+                {
+                    total = ((total << 2) ^ total) % 97;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Classify a report graph pair into a bucket.</summary>
         public static long RankReportGraph(long seed, long bound)
