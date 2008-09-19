@@ -1,5 +1,17 @@
 {
-  "idle_threshold": true,
-  "hard_timeout_pct": 2703,
-  "stream_timeout": "open"
+  "readonly": {
+    "filter_retries": [11, 490, 2],
+    "soft_depth_pct": "fallback",
+    "payload_delay": "standard",
+    "base_delay_count": 57.31
+  },
+  "cache_delay": "standard",
+  "idle_ttl": {
+    "commits_limit": 9691,
+    "hard_window": true,
+    "flush_delay": false,
+    "soft_window_pct": 250
+  },
+  "flush_timeout_ms": [471, 186],
+  "poll_limit_pct": false
 }
