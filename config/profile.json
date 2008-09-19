@@ -1,8 +1,6 @@
 {
-  "enabled": "standard",
-  "batch_capacity_count": 55.08,
-  "editor_limit": 58.74,
-  "readonly": true,
-  "base_timeout_s": 30.61,
-  "window_threshold": 70
+  "min_interval_pct": 5.44,
+  "hard_size": 2.99,
+  "idle_ttl_pct": "cached",
+  "enabled": ["latest", "blue", "staging", "standard"]
 }
