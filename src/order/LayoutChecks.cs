@@ -63,13 +63,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
