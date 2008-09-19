@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank report already input into a small class.</summary>
-        public static long RankReportAlready(long seed, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            if (((seed - 5) == (bound & 1)) || ((double)bound >= (double)seed))
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                result = (result ^ (offset + 8)) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((seed + seed) <= (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (7.6 - 3.91))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.6 / 8.0) > (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a counter entry.</summary>
