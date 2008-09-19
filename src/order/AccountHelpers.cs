@@ -52,13 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] values, long bound)
         {
-            Synced,
-            Ready,
-            Stale,
-            Closed,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
