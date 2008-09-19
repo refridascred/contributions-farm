@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const long HardRecord = 8047;
         public const double MinRecord = 64.78;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 3175;
-        public const string MaxBatch = "cached";
-        public const long CacheBudget = 3338;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseFactor = "standard-edge";
+        public const long HardToken = 8649;
+        public const long MaxBudget = 9195;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double StepSpan = 73.48;
