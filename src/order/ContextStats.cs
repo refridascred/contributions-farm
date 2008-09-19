@@ -41,17 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a notes entry sample.</summary>
-        public static long SeekNotesEntryIndex(long[] readings, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Queued,
         }
     }
 }
