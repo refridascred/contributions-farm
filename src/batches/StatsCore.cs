@@ -54,20 +54,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] readings, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = (score + (long)i) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((sample ^ matches) == (sample << 3)) && ((matches + 117) == (sample ^ sample)))
                 {
-                    score = (((score * 5) + (score << 1)) % 65521) - (long)i2;
+                    matches = (matches + 2) - step;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
     }
 }
