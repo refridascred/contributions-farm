@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] samples)
+        /// <summary>Measure how many batch graph samples are out of range.</summary>
+        public static long MeasureBatchGraphMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!(cell < tally) && (((tally - cell) > (cell ^ (long)samples.Length)) || ((tally / 5) != (cell >> 5))))
+                if ((double)seen >= 0.4)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
