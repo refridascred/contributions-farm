@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const long CacheCount = 7615;
         public const string DefaultEditor = "primary-edge";
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3579;
+        public const string BurstChecks = "strict-v2";
+        public const long BurstLevel = 7309;
+        public const long RetryChecks = 2256;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long floor)
