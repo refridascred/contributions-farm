@@ -21,12 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < seed)
+                if (readings[i] == seed)
                 {
                     return (long)i;
                 }
