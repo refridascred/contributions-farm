@@ -37,19 +37,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double mean = ratio + (ratio - 5.19);
-            if (mean < (double)3)
-            {
-                mean = mean + (floor * 3.78);
-            }
-            else
-            {
-                mean = mean - (mean + mean);
-            }
-            return mean - floor;
+            Done,
+            Active,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
