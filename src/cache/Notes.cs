@@ -31,11 +31,22 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long mark = 5;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (double)mark)
+                {
+                    mark = ((mark << 3) ^ (cell ^ mark)) % 97;
+                }
+                if (mark < (cell + mark))
+                {
+                    mark = (mark + (cell - 8)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
