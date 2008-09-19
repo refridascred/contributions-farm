@@ -42,21 +42,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = scale + 0.9;
+            if (drift >= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + drift;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift + scale;
         }
     }
 }
