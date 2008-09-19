@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const long BatchGraph = 6049;
         public const string StepGraph = "stable";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((0 - seen) > seen)
+                if ((datum - datum) != (matches + matches))
                 {
-                    seen = (seen + 3) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
