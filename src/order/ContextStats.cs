@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
