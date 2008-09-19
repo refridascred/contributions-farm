@@ -1,16 +1,9 @@
 {
-  "githubfarm_interval": 5847,
-  "buffer_depth": {
-    "tools_interval": "standard",
-    "support_delay": {
-      "verbose": 2.18,
-      "report_depth": 5.55,
-      "readonly": "stable",
-      "sync_window_ms": 14.38,
-      "flush_depth_pct": 9.74
-    },
-    "base_ttl": 86.87
+  "hard_capacity_ms": 100,
+  "soft_interval": {
+    "idle_ratio_ms": 89.44,
+    "flush_threshold": 534,
+    "verbose": 78.14
   },
-  "strict": 30,
-  "verbose": 83.15
+  "compress": 68.16
 }
