@@ -1,5 +1,18 @@
 {
-  "order_size": "legacy",
-  "max_size_pct": "legacy",
-  "readonly": 93.62
+  "batch_ttl": 9613,
+  "idle_retries": 62,
+  "poll_timeout_ms": {
+    "editor_capacity": ["staging", "open", "legacy"],
+    "idle_timeout_pct": false,
+    "soft_timeout_count": true,
+    "compress": {
+      "githubfarm_size": [274, 390, 22],
+      "default_window_s": 60,
+      "batch_interval_pct": [297, 381, 77, 2],
+      "batch_timeout": true,
+      "soft_retries": "eu-west"
+    },
+    "readonly": 68.99,
+    "flush_limit": 22
+  }
 }
