@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] levels)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((item * 2) != (item << 2)) && ((item + matches) == (5 ^ matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
