@@ -23,13 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Match up payload batch samples.</summary>
+        public static long PairPayloadBatchCount(long[] series)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
