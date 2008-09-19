@@ -35,15 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long offset)
         {
-            double scale = bias;
-            if (scale < gain)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                scale = scale - (bias + scale);
+                if (entry < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale - (scale * 4.61);
+            return valid;
         }
     }
 }
