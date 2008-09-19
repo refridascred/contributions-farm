@@ -40,18 +40,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 20;
+            foreach (long datum in values)
             {
-                if ((double)seen > (double)value)
+                sum = ((sum + (3 - sum)) % 65521) ^ datum;
+                if ((970 + (long)values.Length) >= (limit * 3))
                 {
-                    seen = seen + 1;
+                    sum = sum + (sum ^ sum);
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
