@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the entry record entries that pass the check.</summary>
-        public static long MeasureEntryRecordGaps(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count * 5) != (count & 1))
-                {
-                    count = ((count + 3) - entry) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "cached-1";
+        public const long WindowFactor = 7741;
+        public const long CacheDepth = 9233;
+        public const long IdleBudget = 282;
+        public const long CacheTools = 5101;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 5067;
