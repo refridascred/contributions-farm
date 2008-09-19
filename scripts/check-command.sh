@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest fallback standard; do
+mode="${1:-cached}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in fallback primary standard edge; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
