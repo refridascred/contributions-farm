@@ -1,5 +1,6 @@
 {
-  "filter_capacity": 63,
-  "burst_timeout_ms": [448, 480, 445],
-  "audit": ["primary", "green", "latest", "standard"]
+  "persist": false,
+  "burst_ratio_pct": true,
+  "sync_retries": "eu-west",
+  "metrics_interval": 26.88
 }
