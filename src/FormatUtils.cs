@@ -67,16 +67,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] readings, long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = 6;
-            foreach (long reading in readings)
-            {
-                mark = ((((mark * 5) + (100 & 255)) % 4096) ^ reading) - target;
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
