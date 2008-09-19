@@ -17,12 +17,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long offset)
         {
-            Queued,
-            New,
-            Dropped,
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score ^ offset) % 1000;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
