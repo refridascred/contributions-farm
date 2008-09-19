@@ -20,19 +20,21 @@ namespace Common.Utilities
             return bias - (span * 10.0);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] items, long origin)
+        /// <summary>Match up notes cache samples.</summary>
+        public static long MatchNotesCacheCount(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
