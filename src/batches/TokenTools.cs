@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] items, long step)
+        /// <summary>Digest a series of notes channel entries.</summary>
+        public static long TallyNotesChannel(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = 730;
+            foreach (long value in readings)
             {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state + (value & 255)) % 255;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Adjust a editor reading.</summary>
