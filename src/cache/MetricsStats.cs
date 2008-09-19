@@ -29,12 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double weight, double bias)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            double weight2 = weight / 6.0;
+            return (weight2 - (8.19 - weight2)) + bias;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
