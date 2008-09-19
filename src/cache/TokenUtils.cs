@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long result = 43;
+            foreach (long sample in data)
             {
-                if (!((limit - limit) < (883 * 2)))
-                {
-                    acc = ((acc * 5) + ((long)i % 5)) % 65521;
-                }
-                acc = acc ^ limit;
-                if (!((1.7 * 6.0) <= (double)acc))
-                {
-                    acc = acc - (limit - 46);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                result = (result ^ (0 ^ (-16))) - sample;
+                result = (result + 220) % 97;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Audit buffer payload readings against a rule.</summary>
