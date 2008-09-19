@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] values, long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Locked,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
