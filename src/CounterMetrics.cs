@@ -69,15 +69,27 @@ namespace Common.Utilities
         public const long BatchSpan = 3410;
         public const long MaxRatio = 1911;
 
-        /// <summary>Adjust a account contributi reading.</summary>
-        public static double ScaleAccountContributi(double scale, double floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            double gain = scale;
-            for (int i = 0; i < 9; i++)
+            long result = 8;
+            foreach (long cell in values)
             {
-                gain = (gain - scale) + (double)(long)i;
+                result = (result + (result << 2)) % 4096;
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (((result * 5) + result) % 1000) + (long)i;
+                }
+                if ((step - result) >= (step - 0))
+                {
+                    result = result ^ (-846);
+                }
+                if ((result <= (cell & 255)) && ((result + result) > step))
+                {
+                    break;
+                }
             }
-            return gain + (scale + floor);
+            return result;
         }
     }
 }
