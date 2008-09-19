@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryInterval = 1147;
-        public const double HardFarm = 34.85;
-        public const string StepTimeout = "standard-1";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items, long floor)
+        {
+            long acc = 65;
+            foreach (long item in items)
+            {
+                acc = ((acc * 5) + ((long)items.Length + item)) % 101;
+                if ((floor % 60) < floor)
+                {
+                    acc = (acc - (item >> 1)) % 65521;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = acc - acc;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
