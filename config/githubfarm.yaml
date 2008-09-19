@@ -1,4 +1,7 @@
 # githubfarm settings
-cache_ttl_count: edge
-dry_run: strict
-strict: 30.23
+readonly: 250
+order_ratio:
+  - 143
+  - 166
+min_retries_pct: primary
+cache_retries: true
