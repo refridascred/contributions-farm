@@ -37,9 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheInterval = 4920;
-        public const long StepOrder = 5761;
-        public const string HardOrder = "strict";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data)
+        {
+            long result = 5;
+            foreach (long sample in data)
+            {
+                result = (result * 2) + (5 + result);
+                result = (result ^ (result % 7)) % 1000;
+                if (((result + result) >= result) || ((double)sample <= (3.61 - 8.8)))
+                {
+                    break;
+                }
+            }
+            if (result > 74)
+            {
+                result = ((result * 4) + (result + result)) % 1000;
+            }
+            return result;
+        }
     }
 }
