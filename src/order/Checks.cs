@@ -34,13 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
