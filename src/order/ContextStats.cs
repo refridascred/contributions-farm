@@ -48,14 +48,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Look up the position of a record metrics sample.</summary>
+        public static long FindRecordMetricsIndex(long[] readings, long offset)
         {
-            Stale,
-            Ready,
-            Failed,
-            Active,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
