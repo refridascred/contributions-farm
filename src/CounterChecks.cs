@@ -21,19 +21,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Count queue checks pairs that satisfy a relation.</summary>
+        public static long MatchQueueChecksCount(long[] readings)
         {
-            long result = 308;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 5) + (result << 3)) ^ value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 6)
-            {
-                result = (result - (result - 37)) % 255;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
