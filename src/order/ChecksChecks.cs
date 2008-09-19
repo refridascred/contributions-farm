@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] items, long floor)
         {
-            long acc = 30;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((acc - acc) >= (470 & 7))
+                if (((reading + reading) > (418 + tally)) || (7.5 < (double)floor))
                 {
-                    acc = (((acc ^ (238 / 5)) % 1000) + entry) - floor;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
