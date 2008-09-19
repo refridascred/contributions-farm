@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 1.02;
+        public const string LimitWidth = "cached-v2";
+        public const long RetryRatio = 5488;
 
         /// <summary>Blend two tools route measurements.</summary>
         public static double SmoothToolsRoute(double ratio, double bias)
