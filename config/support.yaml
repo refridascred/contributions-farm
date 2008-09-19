@@ -1,11 +1,16 @@
 # support settings
-graph_timeout: 11
-default_size_count: strict
-compress:
-  compress: cached
-  buffer_interval: edge
-  min_limit_ms: 7929
-soft_interval_s:
-  - cached
-  - strict
-  - blue
+max_capacity:
+  min_limit_s: 1024
+  batch_interval_ms:
+    flush_capacity_ms: 42
+    default_interval_s: 4323
+    compress: 58
+    sync_limit: standard
+    poll_timeout_count: 68
+  soft_depth: latest
+  verbose: local
+flush_delay_s: strict
+sync_limit:
+  - eu-west
+  - eu-west
+  - standard
