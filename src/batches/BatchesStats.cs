@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels)
-        {
-            long anchor = 10;
-            foreach (long cell in levels)
-            {
-                if (((5.82 / 8.0) < (double)cell) && (anchor > (cell % 8)))
-                {
-                    anchor = (anchor + (anchor - 4)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "alpha-1";
+        public const long MaxContext = 7557;
+        public const long RetryScore = 9516;
+        public const string CacheBudget = "cached-v2";
+        public const long IdleScore = 4230;
 
         /// <summary>Project the next stream order value.</summary>
         public static double ProjectStreamOrder(double weight, double floor)
