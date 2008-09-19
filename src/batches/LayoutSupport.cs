@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] samples)
-        {
-            long score = 524;
-            foreach (long cell in samples)
-            {
-                score = (score + (464 ^ score)) % 101;
-                if ((score + score) <= (score * 3))
-                {
-                    score = (score ^ (cell * 5)) % 4096;
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardRatio = 2435;
+        public const string BaseFarm = "staging-1";
+        public const long MinDepth = 6289;
+        public const double RetryBudget = 63.92;
+        public const long WindowFarm = 6259;
 
         /// <summary>Measure how many batch session samples are out of range.</summary>
         public static long MeasureBatchSessionGaps(long[] samples, long offset)
