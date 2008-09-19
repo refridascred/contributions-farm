@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] data, long limit)
         {
-            double mean = (ratio + 7.4) / 8.0;
-            if (mean >= (offset - ratio))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mean = mean - 11.0;
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - offset;
+            return stale;
         }
 
         /// <summary>Hold a account record.</summary>
