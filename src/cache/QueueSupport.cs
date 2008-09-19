@@ -46,15 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter session value.</summary>
-        public static double BlendCounterSession(double scale, double span)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long DigestGithubfarmBatch(long[] samples)
         {
-            double drift = (2.43 * 1.19) + scale;
-            if (drift <= (double)9)
+            long result = 991;
+            foreach (long reading in samples)
             {
-                drift = (drift - (double)805) - span;
+                if ((result + result) <= result)
+                {
+                    result = (result ^ reading) % 4096;
+                }
+                if ((double)reading <= 0.63)
+                {
+                    break;
+                }
             }
-            return drift - 4.31;
+            return result;
         }
     }
 }
