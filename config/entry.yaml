@@ -1,15 +1,15 @@
 # entry settings
-enabled:
-  max_capacity: strict
-  max_window_ms:
-    - 430
-    - 208
-    - 320
-    - 147
-  idle_timeout_ms: false
-  max_size: 98.64
-  poll_threshold_pct: latest
-soft_window: primary
-order_ttl: true
-base_ratio_count: 60
-format_ttl: local
+hard_ratio_pct: false
+min_window_s:
+  max_delay:
+    verbose: eu-west
+    enabled: standard
+    graph_threshold: strict
+    commits_timeout: standard
+    contributi_limit: eu-west
+    flush_timeout: green
+  burst_retries_count: strict
+  burst_limit: primary
+  cache_limit_s: 93
+  route_size: fallback
+batch_delay_ms: 250
