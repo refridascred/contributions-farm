@@ -67,18 +67,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long AuditMetricChannelOutliers(long[] data, long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)datum == (8.7 + 6.4)))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
