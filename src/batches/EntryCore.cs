@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data, long origin)
         {
-            long acc = 579;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                acc = acc - item;
+                if ((sample + tally) < (sample - sample))
+                {
+                    tally = (tally + 3) - origin;
+                }
             }
-            if (acc < 349)
-            {
-                acc = (acc - (719 - acc)) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
