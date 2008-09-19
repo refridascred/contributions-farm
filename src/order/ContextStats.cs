@@ -20,11 +20,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
