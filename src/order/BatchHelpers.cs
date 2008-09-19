@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (items[i] > origin)
+                if (value < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Combine order values into a single score.</summary>
