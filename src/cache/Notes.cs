@@ -61,18 +61,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] data)
         {
-            long score = 24;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((datum << 2) > (score >> 3))
+                if ((double)count <= (5.0 * 8.5))
                 {
-                    score = (score << 3) ^ (origin - score);
+                    count = (count + 1) ^ value;
                 }
             }
-            return score % 4096;
+            return count;
         }
     }
 }
