@@ -18,13 +18,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches != (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
