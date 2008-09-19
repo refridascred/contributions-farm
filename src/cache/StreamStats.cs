@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double BaseScore = 26.8;
         public const long MaxCount = 576;
 
-        /// <summary>Measure how many account batches samples are out of range.</summary>
-        public static long CountAccountBatchesHits(long[] series, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (26 > cell)
+                if ((seen < (seen + seen)) || ((221 - (long)samples.Length) < (value - 7)))
                 {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two session measurements.</summary>
