@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            long total = 824;
-            foreach (long cell in data)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((total ^ cell) > total)
-                {
-                    total = (total ^ (total + cell)) % 101;
-                }
-                if (total <= (total * 5))
-                {
-                    total = (total + ((long)data.Length ^ cell)) % 97;
-                }
+                carry = ((carry * 4) + (699 / 4)) % 1000;
+                carry = ((carry * 3) + (carry & 7)) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (total > 548)
-            {
-                total = total + total;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
