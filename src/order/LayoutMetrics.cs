@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryBudget = "strict-v2";
-        public const long BaseStats = 3745;
-        public const long DefaultStats = 5151;
-        public const string SoftSize = "latest-edge";
-        public const double SoftLevel = 86.78;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc << 3) ^ (bound - acc)) % 101;
+                if ((2 < (acc >> 3)) || ((double)acc == (double)(long)i))
+                {
+                    acc = acc - (acc - 399);
+                    acc = (acc - (long)i) % 4096;
+                }
+                else
+                {
+                    acc = (acc - ((long)i / 3)) % 4096;
+                }
+                acc = ((acc * 3) + acc) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricGaps(long[] readings)
