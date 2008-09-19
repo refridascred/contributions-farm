@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultSize = 89.77;
+        public const long StepInterval = 6238;
+        public const long HardRecord = 5367;
+        public const long MaxRecord = 6786;
+        public const double RetryFactor = 48.06;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 138;
