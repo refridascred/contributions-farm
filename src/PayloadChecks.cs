@@ -47,15 +47,19 @@ namespace Common.Utilities
         public const long RetryChecks = 2238;
         public const long IdleCount = 6717;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long step)
         {
-            long anchor = 7;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long cell in data)
             {
-                anchor = (anchor - 82) ^ cell;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
