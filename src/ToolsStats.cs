@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] values, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
