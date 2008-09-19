@@ -23,18 +23,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long target)
+        /// <summary>Count the graph editor entries that pass the check.</summary>
+        public static long MeasureGraphEditorHits(long[] series, long seed)
         {
-            long sum = 1;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)cell < 8.25)
+                if (!(seed <= (hits * 2)) || (11.0 >= (double)seed))
                 {
-                    sum = (sum + (cell + target)) % 255;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a counter summary.</summary>
