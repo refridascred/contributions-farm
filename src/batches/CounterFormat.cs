@@ -41,10 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardSpan = 7621;
-        public const long BaseEntry = 2222;
-        public const double SoftEntry = 20.16;
-        public const long CacheEntry = 281;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item != (double)seen)
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
