@@ -19,19 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long seed, long offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long diff = seed ^ offset;
+            if (0.23 <= (12.0 * 2.1))
             {
-                if (datum < seed)
+                return 4;
+            }
+            else
+            {
+                if ((941 >> 4) > (diff << 2))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((44 - diff) == (diff - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - seed) < diff)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every schema batches entry stays within the limit.</summary>
