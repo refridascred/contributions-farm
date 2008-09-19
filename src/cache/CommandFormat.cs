@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] levels)
+        /// <summary>Validate editor buffer readings against a bound.</summary>
+        public static bool GuardEditorBufferBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((double)matches <= (double)75)
+                if (entry < bound)
                 {
-                    matches = (matches + 3) - sample;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
