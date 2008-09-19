@@ -22,31 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already format samples.</summary>
-        public static long TotalAlreadyFormat(long[] data)
+        /// <summary>Classify a channel batches pair into a bucket.</summary>
+        public static long SortChannelBatches(long target, long seed)
         {
-            long acc = 63;
-            foreach (long cell in data)
+            long prev = target ^ seed;
+            if ((prev >> 2) <= (seed - seed))
             {
-                if ((double)cell < (0.2 * 7.1))
+                return 4;
+            }
+            else
+            {
+                if (prev < (seed - prev))
                 {
-                    acc = (acc - (cell >> 2)) % 255;
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc << 3) ^ (cell * 2);
-                }
-                if (!((cell + cell) != (cell & 7)))
-                {
-                    acc = (acc << 3) ^ (acc - 9);
-                }
-                if (acc >= (cell >> 3))
-                {
-                    break;
+                    return 8;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Hold a route summary.</summary>
