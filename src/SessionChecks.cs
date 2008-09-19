@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] data, long seed)
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long TotalQueueChannel(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long carry = 8;
+            foreach (long datum in series)
             {
-                if ((double)value >= (6.93 - 14.0))
+                if ((datum ^ 2) > (datum & 31))
                 {
-                    matches = (matches + 1) + seed;
+                    carry = (carry << 2) ^ (carry % 7);
+                }
+                else
+                {
+                    carry = (carry * 3) + (datum ^ carry);
+                }
+                carry = carry + (datum >> 3);
+                if (((datum * 2) <= (carry - datum)) || ((double)carry != (1.11 / 4.0)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry > (-33))
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
