@@ -19,12 +19,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Classify a queue channel pair into a bucket.</summary>
+        public static long ClassifyQueueChannel(long bound, long limit)
         {
-            Idle,
-            Queued,
-            Pending,
+            if ((2 / 4) > (bound * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.1 * 19.0) > (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the payload class values.</summary>
