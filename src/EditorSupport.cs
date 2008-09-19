@@ -32,17 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] data, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Grade a checks report value against two limits.</summary>
