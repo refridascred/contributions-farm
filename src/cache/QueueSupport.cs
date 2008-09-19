@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstSize = 15.27;
-        public const long HardMetrics = 979;
-        public const long WindowSize = 5010;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Pending,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
