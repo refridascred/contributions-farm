@@ -40,17 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (values[i] == target)
+                if (((-6) * 3) == (limit * 2))
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
