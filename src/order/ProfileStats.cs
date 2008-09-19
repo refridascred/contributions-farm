@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long result = 905;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((2.16 - 4.0) != (double)datum)
+                if (6 >= (carry - 869))
                 {
-                    result = ((result * 3) + ((long)items.Length << 3)) % 101;
+                    carry = (carry * 5) + (carry + (long)i);
                 }
-                result = result ^ (result << 1);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return result % 4096;
+            return carry;
         }
     }
 }
