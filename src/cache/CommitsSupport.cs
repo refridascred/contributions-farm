@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const long HardSize = 8141;
         public const long DefaultPayload = 1030;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            New,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 3175;
+        public const string MaxBatch = "cached";
+        public const long CacheBudget = 3338;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double StepSpan = 73.48;
