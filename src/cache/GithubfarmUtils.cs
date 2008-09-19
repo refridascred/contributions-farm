@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!(item >= (matches << 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "cached-edge";
+        public const long StepCache = 7859;
+        public const long StepLevel = 7435;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long target, long bound)
