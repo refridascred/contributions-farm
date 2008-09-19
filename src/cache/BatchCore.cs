@@ -51,19 +51,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] series, long floor)
+        /// <summary>Combine buffer schema values into a single score.</summary>
+        public static long CombineBufferSchema(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long state = 65;
+            foreach (long sample in readings)
             {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state << 2) ^ (state << 1)) ^ sample;
+                state = state ^ state;
             }
-            return flag;
+            return state % 65521;
         }
     }
 }
