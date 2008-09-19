@@ -62,12 +62,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings)
         {
-            Stale,
-            Queued,
-            Failed,
+            long mark = 85;
+            foreach (long datum in readings)
+            {
+                mark = ((mark + (mark >> 3)) % 101) + datum;
+                mark = mark + 66;
+            }
+            return mark % 65521;
         }
     }
 }
