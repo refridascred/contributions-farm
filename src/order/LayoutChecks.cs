@@ -62,17 +62,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 860;
+            foreach (long datum in levels)
             {
-                if ((items[i] < limit) && ((items[i] % 3) != 0))
+                if (!((9.0 - 5.0) > (double)datum))
                 {
-                    return (long)i;
+                    score = ((score * 2) + (step - score)) % 101;
+                    score = score ^ datum;
+                }
+                if ((step ^ datum) >= datum)
+                {
+                    score = (score << 2) ^ (score ^ step);
+                }
+                else
+                {
+                    score = ((score << 3) ^ ((-6) >> 4)) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
