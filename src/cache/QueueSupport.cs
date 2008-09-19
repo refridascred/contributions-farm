@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowBudget = "latest-v2";
-        public const string DefaultLayout = "standard-v2";
-        public const double RetryWidth = 1.8;
-        public const long LimitLayout = 5900;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) == (hits >> 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] levels, long floor)
