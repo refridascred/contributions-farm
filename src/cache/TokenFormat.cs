@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstLevel = 1737;
-        public const string WindowScore = "staging";
-        public const long StepGithubfarm = 4009;
-        public const string WindowInterval = "stable";
+        /// <summary>Measure how many schema farm samples are out of range.</summary>
+        public static long CountSchemaFarmHits(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (item >= (8 % 97))
+                {
+                    seen = (seen + 1) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of report already entries.</summary>
         public static long TallyReportAlready(long[] samples, long floor)
