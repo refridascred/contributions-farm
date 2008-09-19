@@ -48,13 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long bound)
         {
-            Synced,
-            Stale,
-            Locked,
-            Active,
+            long lane = origin + bound;
+            if (((lane - 202) > bound) || ((double)bound <= 20.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - 6) < (origin - origin)) && ((5.92 / 4.0) >= (double)lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 7) <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((lane * 3) == (lane + 32)) || ((lane ^ lane) >= 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
