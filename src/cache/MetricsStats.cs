@@ -44,20 +44,17 @@ namespace Common.Utilities
         public const long LimitSpan = 9408;
         public const long LimitLevel = 6117;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed - (long)i) < (anchor >> 4))
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
-                    anchor = (anchor - seed) % 65521;
-                    anchor = (anchor + (anchor ^ anchor)) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
