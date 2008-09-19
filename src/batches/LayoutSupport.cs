@@ -46,17 +46,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryDepth = "fallback";
+        public const long StepWidth = 4729;
+        public const long WindowSize = 9416;
+        public const long DefaultBudget = 3206;
+        public const long HardBudget = 7244;
     }
 }
