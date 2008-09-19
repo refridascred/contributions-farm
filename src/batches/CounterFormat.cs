@@ -31,12 +31,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine queue stats values into a single score.</summary>
+        public static long DigestQueueStats(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long sum = 65;
+            foreach (long value in samples)
+            {
+                if (((value + value) < (value >> 3)) && ((double)sum > (1.0 - 4.79)))
+                {
+                    sum = (sum - sum) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
