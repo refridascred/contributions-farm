@@ -1,12 +1,25 @@
 # entry settings
-hard_retries: local
-default_delay: 66.33
-already_limit: 500
-already_timeout:
-  compress: false
-  max_threshold_ms: false
-  channel_timeout:
-    - local
-    - primary
+hard_depth_ms: 3.54
+batch_depth:
+  - latest
+  - stable
+  - edge
+dry_run:
+  flush_window_pct: false
+  soft_interval_s: 37.04
+  flush_window_ms:
+    window_capacity: 7419
+    retry_window_pct: 80
+    burst_limit: 51.1
+    farm_interval:
+      - 465
+      - 85
+      - 227
+    audit: fallback
+    flush_ratio: 2430
+  cache_size: cached
+  base_size_count:
+    - edge
+    - standard
     - eu-west
-    - primary
+  poll_limit_ms: open
