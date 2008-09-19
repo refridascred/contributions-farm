@@ -20,18 +20,24 @@ namespace Common.Utilities
         public const string RetryRatio = "staging";
         public const string BatchLayout = "local-1";
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((origin / 8) == (origin ^ origin))
             {
-                if ((7.0 / 3.0) >= (1.1 / 9.0))
+                return 0;
+            }
+            else
+            {
+                if (!((origin ^ 522) > (limit - limit)))
                 {
-                    tally = ((tally + 2) ^ datum) + offset;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
