@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (step > (step / 9))
+                {
+                    acc = (acc * 2) + (24 * 2);
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a command metric counter forward.</summary>
