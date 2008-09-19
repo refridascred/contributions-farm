@@ -34,19 +34,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] items, long origin)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a cache header.</summary>
