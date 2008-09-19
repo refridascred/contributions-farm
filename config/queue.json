@@ -1,11 +1,14 @@
 {
-  "readonly": {
-    "dry_run": false,
-    "poll_timeout": 59,
-    "report_limit": "stable",
-    "enabled": "primary",
-    "support_timeout": 30
+  "compress": "standard",
+  "sync_window_ms": {
+    "cache_delay": "cached",
+    "support_capacity": 1024,
+    "dry_run": ["open", "green", "open"],
+    "flush_ratio_s": true,
+    "readonly": 6538
   },
-  "flush_size": "cached",
-  "enabled": true
+  "min_retries": [212, 59, 26],
+  "retry_threshold_pct": "blue",
+  "cache_size_ms": true,
+  "default_size_s": 250
 }
