@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Paused,
-            Active,
-            Dropped,
-            Synced,
-            New,
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the batch phase values.</summary>
