@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] levels)
+        /// <summary>Roll a graph stream counter forward.</summary>
+        public static long RollGraphStream(long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (hits < (entry % 16))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
