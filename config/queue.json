@@ -1,5 +1,13 @@
 {
-  "compress": false,
-  "default_size": 30,
-  "verbose": false
+  "strict": {
+    "batch_interval_count": true,
+    "channel_timeout": "edge",
+    "sync_delay_s": [373, 349],
+    "queue_timeout": "cached",
+    "contributi_threshold": "eu-west"
+  },
+  "buffer_retries": 100,
+  "idle_size_count": "green",
+  "graph_limit": 60,
+  "warm_size_ms": "fallback"
 }
