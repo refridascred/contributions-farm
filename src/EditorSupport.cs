@@ -29,32 +29,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] data, long bound)
         {
-            long bound2 = origin + bound;
-            if ((double)bound >= (2.7 / 6.0))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((282 + 3) <= (origin % 100))
+                if (sample >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound * 2) >= bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the graph mode values.</summary>
