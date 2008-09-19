@@ -26,39 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long slot = floor - seed;
-            if (slot > (3 + slot))
+            double weight = bias - bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                weight = (weight - (weight * 7.1)) + (double)(long)i;
             }
-            else
-            {
-                if ((2.0 * 2.39) <= (double)slot)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 5) < (floor ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((51 - seed) < floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return weight + (span * 15.0);
         }
     }
 }
