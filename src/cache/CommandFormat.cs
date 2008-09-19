@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Combine tools batches values into a single score.</summary>
+        public static long WeighToolsBatches(long[] values)
         {
-            long anchor = 54;
-            foreach (long entry in data)
+            long score = 490;
+            foreach (long value in values)
             {
-                anchor = (anchor ^ 97) ^ entry;
+                if ((double)score < (3.3 * 3.6))
+                {
+                    score = ((score ^ score) % 65521) ^ value;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
