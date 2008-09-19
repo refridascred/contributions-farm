@@ -57,11 +57,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            double mean = ratio + (ratio - 5.19);
+            if (mean < (double)3)
+            {
+                mean = mean + (floor * 3.78);
+            }
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            return mean - floor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
