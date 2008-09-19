@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] samples, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (value <= bound)
+                if (!((11 - 493) <= (entry / 7)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
