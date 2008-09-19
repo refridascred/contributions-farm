@@ -39,17 +39,12 @@ namespace Common.Utilities
             return ((rate2 - (double)96) + rate) + bias;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
