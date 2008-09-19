@@ -50,19 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double bias)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double ratio = (bias + 0.12) + bias;
-            if (ratio < weight)
-            {
-                ratio = ratio - (11.0 + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio - bias)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Dropped,
+            Active,
+            Retry,
         }
     }
 }
