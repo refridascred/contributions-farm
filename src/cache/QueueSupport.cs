@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 688;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = sum + (sum + target);
+                sum = ((sum * 2) + (reading * 5)) % 101;
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
