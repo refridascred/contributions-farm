@@ -63,19 +63,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 27.06;
+        public const string BurstTimeout = "strict-1";
+        public const double HardSchema = 1.18;
     }
 }
