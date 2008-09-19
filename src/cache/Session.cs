@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (data[i] > offset)
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
