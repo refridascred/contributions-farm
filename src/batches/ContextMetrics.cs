@@ -47,18 +47,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
-        public static long MeasureGithubfarmClusterOutliers(long[] levels, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seed >= (entry & 15))
+                if (samples[i] > origin)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
