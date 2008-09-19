@@ -20,11 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two support batches measurements.</summary>
-        public static double ProjectSupportBatches(double ratio, double span)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            double scale = 8.6 + (span + 2.48);
-            return (scale + (scale / 7.0)) + ratio;
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (carry > 2)
+                {
+                    carry = (carry ^ (carry % 97)) % 1000;
+                    carry = ((carry << 2) ^ (origin - carry)) % 255;
+                }
+                carry = ((carry * 2) + (origin + (long)i)) % 97;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the already phase values.</summary>
