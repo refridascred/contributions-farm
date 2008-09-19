@@ -49,11 +49,20 @@ namespace Common.Utilities
         public const long BatchStream = 6162;
         public const double SoftStream = 43.74;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "strict-1";
-        public const long BatchContributi = 2034;
-        public const long DefaultContributi = 5964;
-        public const long SoftContributi = 6955;
+        /// <summary>Check that every account commits entry stays within the limit.</summary>
+        public static bool GuardAccountCommitsRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "primary";
