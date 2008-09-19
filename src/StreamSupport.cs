@@ -28,19 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks channel readings against a bound.</summary>
-        public static bool CheckChecksChannelBounds(long[] data, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Ready,
+            Pending,
         }
     }
 }
