@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the tools commits series from a seed.</summary>
-        public static long StepToolsCommits(long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 2) + (sum >> 1)) % 101;
-                if (((sum & 1) <= sum) || ((step * 3) < (sum % 16)))
-                {
-                    sum = ((sum << 3) ^ (sum + (long)i)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
