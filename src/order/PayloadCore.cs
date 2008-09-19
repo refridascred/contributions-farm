@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items, long origin)
         {
-            long sum = 24;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((sum - sum) <= (cell + sum))
+                if (((5.8 + 4.0) >= (double)count) && ((origin >= (count << 3)) && (cell >= 41)))
                 {
-                    sum = sum + 9;
+                    count = count + 3;
                 }
                 else
                 {
-                    sum = (sum - (cell + cell)) % 101;
-                }
-                if (sum < (cell / 4))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (sum < 80)
-            {
-                sum = (sum * 2) + (sum + sum);
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Blend two editor measurements.</summary>
