@@ -46,15 +46,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long carry = -2;
-            foreach (long cell in series)
-            {
-                carry = ((carry * 2) + carry) + cell;
-            }
-            return carry % 4096;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
