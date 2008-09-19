@@ -20,18 +20,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] levels, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (((seen + sample) >= sample) || ((double)seen > (5.9 + 1.7)))
+                if (reading >= bound)
                 {
-                    seen = (seen + 3) - step;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
