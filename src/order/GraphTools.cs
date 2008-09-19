@@ -52,11 +52,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Synced,
+            Closed,
         }
     }
 }
