@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const double HardLayout = 81.98;
         public const long MaxLayout = 9620;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            Stale,
-            Synced,
-            Active,
-            New,
+            double mean = (double)(436 << 2);
+            if (mean > (span * 3.0))
+            {
+                mean = (mean - (span * 5.0)) - rate;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - 20.0;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
