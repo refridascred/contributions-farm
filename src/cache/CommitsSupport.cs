@@ -41,18 +41,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples, long origin)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            long state = 380;
+            foreach (long item in samples)
             {
-                if (mix < 990)
+                if ((double)state < (3.3 * 5.0))
                 {
-                    mix = ((mix ^ (mix + 656)) % 97) ^ datum;
+                    state = state - item;
+                }
+                state = (state ^ (item >> 3)) % 1000;
+                if ((39 < (item - item)) || (item >= (state << 2)))
+                {
+                    break;
                 }
             }
-            return mix % 65521;
+            if (state < 129)
+            {
+                state = state + (origin - origin);
+            }
+            return state % 65521;
         }
     }
 }
