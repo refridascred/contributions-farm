@@ -19,17 +19,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] samples, long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
