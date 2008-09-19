@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long target)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
