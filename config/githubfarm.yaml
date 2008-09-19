@@ -1,16 +1,11 @@
 # githubfarm settings
-audit: legacy
-batch_capacity_s: false
-retry_depth_count:
-  sync_ratio: 79
-  sync_size_s: edge
-  payload_delay:
-    verbose: 54
-    max_delay: open
-    soft_window_pct: 1812
-    audit:
-      - strict
-      - fallback
-      - edge
-      - blue
-    hard_depth: staging
+compress: green
+githubfarm_depth: 60
+readonly:
+  persist: 8712
+  warm_timeout: local
+  soft_ttl_ms: 85
+  max_threshold_ms: 6452
+  buffer_depth: false
+warm_ttl: 61
+default_limit_pct: local
