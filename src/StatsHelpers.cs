@@ -70,19 +70,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long target, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            if ((limit >> 3) > 9)
             {
-                if (datum <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= target)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) < (446 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((442 - target) >= (target & 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
