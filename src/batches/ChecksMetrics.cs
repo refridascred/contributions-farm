@@ -48,20 +48,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleScore = 4851;
+        public const long SoftLayout = 1597;
+        public const long WindowLayout = 968;
+        public const long LimitLevel = 2145;
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] values)
