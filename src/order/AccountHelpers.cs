@@ -80,19 +80,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] values, long bound)
+        /// <summary>Count tools contributi pairs that satisfy a relation.</summary>
+        public static long PairToolsContributiCount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Adjust a record reading.</summary>
