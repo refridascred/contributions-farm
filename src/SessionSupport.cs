@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] levels, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long seed, long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if ((seed ^ seed) >= target)
             {
-                if (datum > seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((25 & 1) <= (target & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)target != (17.0 / 7.0)) && (261 < (target & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a batch header.</summary>
