@@ -51,11 +51,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardDepth = 49.2;
-        public const double IdleDepth = 19.13;
-        public const double LimitFarm = 80.42;
-        public const double StepFactor = 94.67;
-        public const long BatchFarm = 1115;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
