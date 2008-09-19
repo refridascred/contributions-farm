@@ -46,18 +46,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long AuditEditorChannelOutliers(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (tally > (tally ^ item))
+                if ((3.5 - 1.0) != (double)hits)
                 {
-                    tally = tally + 1;
+                    hits = ((hits + 2) ^ value) + origin;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
