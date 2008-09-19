@@ -1,11 +1,6 @@
-id,state,active,label
-1,459,37.39,36.23
-2,staging,local,484
-3,915,61.58,standard
-4,15,stable,54
-5,standard,98.98,97.11
-6,blue,69.59,64
-7,open,primary,7.12
-8,72.52,17.76,56.03
-9,892,cached,standard
-10,963,430,43.59
+id,ratio,owner,weight
+1,open,24.71,342
+2,936,95.61,73.17
+3,strict,661,55.53
+4,eu-west,stable,edge
+5,255,181,23.66
