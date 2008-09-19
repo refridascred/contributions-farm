@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
