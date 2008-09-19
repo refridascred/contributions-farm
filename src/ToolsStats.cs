@@ -35,13 +35,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Ready,
-            Pending,
-            Queued,
-            Idle,
+            Dropped,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
