@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] series)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = 928;
+            foreach (long datum in items)
             {
-                if ((double)reading <= 2.0)
+                mark = (mark + (414 >> 1)) % 97;
+                mark = (mark << 2) ^ (datum + mark);
+                if ((long)items.Length != (datum >> 2))
                 {
-                    count = count + 3;
+                    mark = mark + (63 - (-216));
                 }
             }
-            return count;
+            if (mark > 946)
+            {
+                mark = (mark + bound) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
