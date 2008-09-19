@@ -19,16 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long mix = 5;
+            foreach (long value in items)
             {
-                total = (total << 3) ^ (9 + total);
-                total = ((total * 2) + (long)i) % 101;
+                mix = ((mix - (mix % 7)) - value) - bound;
             }
-            return total;
+            return mix % 4096;
         }
 
         /// <summary>Hold a editor record.</summary>
