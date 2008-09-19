@@ -1,5 +1,5 @@
 {
-  "batch_capacity_count": "eu-west",
-  "burst_window": "eu-west",
-  "queue_interval": 42
+  "readonly": "stable",
+  "max_interval_s": "fallback",
+  "min_ratio_s": true
 }
