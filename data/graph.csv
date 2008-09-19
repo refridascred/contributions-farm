@@ -1,6 +1,9 @@
-id,count,token,rank,state
-1,604,46.84,22.06,704
-2,96.43,121,staging,latest
-3,8.05,285,363,472
-4,11.73,18.92,953,125
-5,standard,eu-west,eu-west,342
+id,active
+1,712
+2,12.35
+3,964
+4,301
+5,46.99
+6,71.05
+7,primary
+8,691
