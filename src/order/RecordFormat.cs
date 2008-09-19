@@ -28,23 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)origin >= (3.57 + 15.0))
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftSize = 4054;
+        public const long SoftWidth = 4028;
+        public const long IdleOrder = 2715;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] values, long limit)
