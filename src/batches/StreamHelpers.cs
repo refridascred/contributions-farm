@@ -53,13 +53,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 22.39;
+        public const long SoftWidth = 4655;
+        public const long WindowSize = 8031;
+        public const long RetryPayload = 2458;
 
         /// <summary>Check that every cache window entry stays within the limit.</summary>
         public static bool CheckCacheWindowLimits(long[] data, long step)
