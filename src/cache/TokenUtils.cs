@@ -39,13 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] series)
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            long sum = 849;
+            foreach (long datum in series)
+            {
+                if ((datum >= (-838)) && ((datum / 8) >= datum))
+                {
+                    sum = ((sum * 5) + (datum - datum)) % 1000;
+                }
+            }
+            if (sum > (-1))
+            {
+                sum = (sum + ((long)series.Length / 2)) % 1000;
+            }
+            return sum;
         }
     }
 }
