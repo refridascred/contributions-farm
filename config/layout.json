@@ -1,6 +1,6 @@
 {
-  "min_size_s": "fallback",
-  "window_window": ["local", "local", "stable"],
-  "default_retries_pct": "blue",
-  "readonly": 500
+  "burst_capacity_count": 77.55,
+  "warm_limit_count": "green",
+  "cache_ttl_ms": 18.52,
+  "idle_threshold_pct": 60.1
 }
