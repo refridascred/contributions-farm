@@ -1,11 +1,7 @@
 {
-  "min_capacity": {
-    "enabled": 53,
-    "batch_depth": "open",
-    "retry_ttl_s": "legacy",
-    "batch_retries_pct": 30.43
-  },
-  "flush_depth": 42.44,
-  "burst_delay_ms": 89.58,
-  "readonly": "stable"
+  "commits_delay": 4.93,
+  "base_timeout_pct": 36,
+  "stats_threshold": [442, 276, 457, 149],
+  "checks_window": [63, 477, 197, 175],
+  "poll_delay_s": "primary"
 }
