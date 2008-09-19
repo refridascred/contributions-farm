@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardRatio = 2435;
-        public const string BaseFarm = "staging-1";
-        public const long MinDepth = 6289;
-        public const double RetryBudget = 63.92;
-        public const long WindowFarm = 6259;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] values)
