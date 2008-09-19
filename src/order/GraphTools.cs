@@ -43,22 +43,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long ScoreGraphEditor(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long result = 15;
-            foreach (long value in data)
-            {
-                if (!((double)(long)data.Length >= (7.6 * 15.0)))
-                {
-                    result = (result + value) % 101;
-                }
-            }
-            if (result > 7)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 1000;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
