@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 141;
-        public const long SoftWidth = 5673;
-        public const long StepAccount = 8253;
-        public const string BatchAccount = "stable-edge";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples, long seed)
+        {
+            long carry = 2;
+            foreach (long reading in samples)
+            {
+                if (reading >= 81)
+                {
+                    carry = (carry * 3) + 132;
+                }
+                else
+                {
+                    carry = carry + (carry & 1);
+                }
+            }
+            if (carry < 164)
+            {
+                carry = (carry + seed) % 101;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
