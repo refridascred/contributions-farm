@@ -41,12 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Paused,
-            Synced,
             Queued,
+            Done,
+            New,
+            Synced,
+            Retry,
         }
     }
 }
