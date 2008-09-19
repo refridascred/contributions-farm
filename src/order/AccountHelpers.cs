@@ -12,13 +12,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long result = 85;
-            foreach (long cell in data)
+            long result = 0;
+            foreach (long datum in items)
             {
-                result = (result - (cell + floor)) % 97;
+                if ((datum ^ 99) == (1 - result))
+                {
+                    result = (result * 3) + (result + datum);
+                }
+            }
+            if (result < 1)
+            {
+                result = (result + (52 & 1)) % 1000;
             }
             return result;
         }
