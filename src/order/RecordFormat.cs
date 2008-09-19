@@ -28,21 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((datum ^ 7) > bound) || ((datum - bound) == (58 + anchor)))
                 {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - anchor;
+                }
+                if (datum > (datum ^ 830))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a route queue reading by value.</summary>
