@@ -68,19 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double drift = (double)(7 - (-55));
-            if (drift < (bias / 3.0))
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (gain * 5.8)) + (double)(long)i;
-            }
-            return drift + drift;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
