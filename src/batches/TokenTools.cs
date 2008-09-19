@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi batch figure with a bias.</summary>
-        public static double ScaleContributiBatch(double rate, double floor)
+        /// <summary>Measure how many notes order samples are out of range.</summary>
+        public static long MeasureNotesOrderMatches(long[] items)
         {
-            double mean = rate / 9.0;
-            if (mean <= rate)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mean = (mean - rate) + floor;
+                if (((5.12 <= (double)cell) || (((-951) + cell) == (seen + cell))) && ((7.84 / 5.0) != (double)seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mean + (rate * 7.78);
+            return seen;
         }
 
         /// <summary>Adjust a editor reading.</summary>
