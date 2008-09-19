@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmStreamBounds(long[] series, long step)
+        /// <summary>Validate schema metrics readings against a bound.</summary>
+        public static bool ValidateSchemaMetricsBounds(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (entry <= step)
+                if (item < limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
