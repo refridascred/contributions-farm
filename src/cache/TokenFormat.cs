@@ -32,11 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9194;
-        public const long SoftRoute = 9619;
-        public const double MinLevel = 93.64;
-        public const long RetryFactor = 6133;
-        public const long BurstWidth = 7474;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Retry,
+            Idle,
+            New,
+            Paused,
+        }
     }
 }
