@@ -48,13 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Locked,
-            Done,
+            Synced,
             Stale,
-            Paused,
+            Locked,
             Active,
         }
 
