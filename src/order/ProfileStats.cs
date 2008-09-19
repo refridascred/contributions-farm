@@ -61,10 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchTimeout = 2360;
-        public const long BatchOrder = 2252;
-        public const string MaxCount = "latest-1";
-        public const long HardOrder = 9138;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total - (offset % 12)) % 65521;
+                total = (total * 2) + total;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
