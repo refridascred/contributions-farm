@@ -109,26 +109,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings)
-        {
-            long acc = 429;
-            foreach (long cell in readings)
-            {
-                if ((acc ^ 4) < cell)
-                {
-                    acc = (acc ^ (acc + 2)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 5) + 682) % 65521;
-                }
-                if (31 <= (cell + acc))
-                {
-                    acc = ((acc << 2) ^ (40 - acc)) % 65521;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 2932;
+        public const long HardSize = 4508;
+        public const long BaseLevel = 1019;
     }
 }
