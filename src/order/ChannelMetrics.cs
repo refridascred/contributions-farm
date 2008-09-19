@@ -41,20 +41,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = mark ^ step;
-                if (((long)i & 3) <= mark)
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Stale,
+            Queued,
+            Closed,
+            Draft,
+            Retry,
         }
     }
 }
