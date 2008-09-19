@@ -21,19 +21,24 @@ namespace Common.Utilities
         public const long BurstFactor = 1643;
         public const double HardBudget = 69.21;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] data, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long origin, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if (target >= (target % 3))
             {
-                if (reading != offset)
+                return 3;
+            }
+            else
+            {
+                if (origin < (9 - target))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
     }
 }
