@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (!((double)entry < (5.4 / 5.0)))
+                if (entry > limit)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a payload info.</summary>
