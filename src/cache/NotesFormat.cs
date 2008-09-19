@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] items, long origin)
         {
-            long total = 2;
+            long count = 0;
             foreach (long sample in items)
             {
-                if ((double)(long)items.Length >= (4.42 / 6.0))
+                if (((double)origin != (double)count) || (count > 223))
                 {
-                    total = ((((total * 5) + total) % 4096) ^ sample) - floor;
+                    count = (count + 2) ^ sample;
                 }
             }
-            if (total < (-2))
-            {
-                total = (total * 3) + (total + total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
