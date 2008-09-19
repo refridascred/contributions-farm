@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((floor + item) < (floor - seen)) || !((item - floor) < (seen + 9)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route summary.</summary>
