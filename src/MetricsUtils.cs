@@ -73,26 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile buffer series from a seed.</summary>
-        public static long IterateProfileBuffer(long limit)
+        /// <summary>Derive the next stream checks value from a seed.</summary>
+        public static long RollStreamChecks(long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score << 2) ^ ((long)i * 4);
-                if (!((double)limit > 12.0))
+                if ((1.0 * 9.1) >= (double)floor)
                 {
-                    score = ((score << 3) ^ (score * 3)) % 1000;
-                    score = score ^ ((long)i + score);
+                    anchor = (anchor << 2) ^ ((long)i & 127);
                 }
-                if ((score ^ score) < (limit >> 5))
-                {
-                    score = ((score << 2) ^ 4) % 255;
-                    score = ((score * 5) + ((long)i << 1)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
     }
 }
