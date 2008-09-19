@@ -61,17 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
