@@ -57,15 +57,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long step, long step2)
         {
-            double weight = 7.3;
-            if (weight <= ratio)
+            if ((step - step) != (step >> 1))
             {
-                weight = (weight + 6.67) - offset;
+                return 1;
             }
-            return weight - weight;
+            else
+            {
+                if ((step2 * 2) <= (418 - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step + step2) != (822 % 2)) && (step2 < (step + step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.53 < (double)step) || ((step << 3) < (step & 255)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
