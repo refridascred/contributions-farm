@@ -50,18 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.5 - 1.0) != (double)hits)
+                if (readings[i] <= origin)
                 {
-                    hits = ((hits + 2) ^ value) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
