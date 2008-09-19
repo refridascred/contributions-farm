@@ -55,15 +55,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double bias, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] data, long limit)
         {
-            double scale = bias - (floor * 1.92);
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                scale = (scale - (bias * 6.0)) - (double)(long)i;
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + floor;
+            return ready;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
