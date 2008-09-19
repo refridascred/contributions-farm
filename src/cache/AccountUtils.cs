@@ -22,10 +22,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 8405;
-        public const long HardAlready = 8629;
-        public const long IdleAlready = 3208;
-        public const long StepAlready = 4090;
+        /// <summary>Rank farm support input into a small class.</summary>
+        public static long GradeFarmSupport(long floor, long seed)
+        {
+            long step = floor - seed;
+            if (!((5.5 * 2.6) > (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((94 + floor) > (floor + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step <= (6.8 * 19.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed > (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
