@@ -42,23 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] levels, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] levels, long seed)
         {
-            long total = 873;
+            bool flag = true;
             foreach (long cell in levels)
             {
-                total = total - origin;
-                if (8 <= (total & 255))
+                if (cell < seed)
                 {
-                    total = total + (cell % 64);
-                }
-                else
-                {
-                    total = (total ^ (total % 12)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
