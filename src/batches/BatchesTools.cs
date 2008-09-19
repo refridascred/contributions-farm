@@ -13,39 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long seed)
         {
-            long cur = target - seed;
-            if ((seed - seed) > (7 + cur))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target * 2) >= cur)
+                if (item < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur << 1) < (target & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (cur < (target / 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
