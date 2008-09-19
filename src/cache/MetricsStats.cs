@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long seed)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((mix + mix) != (mix << 1))
+                if (item > seed)
                 {
-                    mix = (mix * 5) + (mix - sample);
-                    mix = (mix + (mix * 4)) % 97;
+                    flag = false;
+                    break;
                 }
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = ((mix * 4) + sample) + (long)i;
-                }
-                mix = (mix + (mix + mix)) % 97;
             }
-            if (mix < 37)
-            {
-                mix = (mix ^ (mix << 2)) % 255;
-            }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
