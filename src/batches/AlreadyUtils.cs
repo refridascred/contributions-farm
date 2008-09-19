@@ -52,18 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue tools readings against a rule.</summary>
-        public static long MeasureQueueToolsOutliers(long[] data, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((item & 1) >= (target + item))
+                if ((reading > (seed - seed)) || ((double)seed <= (1.0 - 8.9)))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
