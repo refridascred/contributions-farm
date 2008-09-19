@@ -35,12 +35,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 96.33;
-        public const double StepReport = 79.24;
-        public const string BaseCount = "standard-v2";
-        public const long SoftReport = 2717;
-        public const double LimitReport = 28.24;
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] series)
