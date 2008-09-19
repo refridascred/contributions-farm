@@ -34,22 +34,11 @@ namespace Common.Utilities
         public const double DefaultCounter = 88.97;
         public const long MaxCount = 8530;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values)
-        {
-            long result = 38;
-            foreach (long sample in values)
-            {
-                if ((sample << 1) != (result + sample))
-                {
-                    result = (result * 5) + (326 + sample);
-                }
-            }
-            if (result > 88)
-            {
-                result = ((result << 3) ^ result) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 18.88;
+        public const long SoftAlready = 8822;
+        public const string WindowAlready = "latest-v2";
+        public const long HardAlready = 1077;
+        public const string CacheAlready = "staging-edge";
     }
 }
