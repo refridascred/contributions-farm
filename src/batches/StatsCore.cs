@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseFactor = "alpha";
-        public const double StepSpan = 15.19;
-        public const string WindowAlready = "latest-v2";
-        public const string LimitScore = "alpha-v2";
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long limit)
+        {
+            if (!((2.6 * 6.3) >= (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.1 + 15.0) != (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
