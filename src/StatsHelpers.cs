@@ -48,19 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long origin)
         {
-            double scale = rate / 8.0;
-            if (scale <= (7.0 / 7.0))
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                scale = (scale - rate) - span;
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + (rate * 13.0);
+            return valid;
         }
     }
 }
