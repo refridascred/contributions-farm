@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank report tools input into a small class.</summary>
-        public static long RankReportTools(long floor, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            if ((9 << 3) > step)
+            long carry = 58;
+            foreach (long value in samples)
             {
-                return 0;
+                carry = ((carry - ((-329) * 4)) % 97) - value;
             }
-            else
+            if (carry < 8)
             {
-                if ((floor + step) == (step + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 * 7.9) <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry - (carry & 7)) % 97;
             }
+            return carry % 65521;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
