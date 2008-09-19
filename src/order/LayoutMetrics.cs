@@ -13,18 +13,27 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long sum = 1;
+            foreach (long sample in values)
             {
-                if ((7.0 * 3.34) >= (double)count)
+                for (int i = 0; i < 7; i++)
                 {
-                    count = ((count + 2) + sample) + seed;
+                    sum = (sum + (sum - sample)) + (long)i;
+                }
+                sum = ((sum * 3) + (sample + sum)) % 1000;
+                if (((sum / 6) <= (sample - sample)) && (sample < (sample >> 4)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < 461)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
