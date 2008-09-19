@@ -26,18 +26,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = 97;
-            foreach (long reading in levels)
-            {
-                if (((double)result >= (double)reading) || (result >= (result << 2)))
-                {
-                    result = result ^ (8 + result);
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
