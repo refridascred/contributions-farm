@@ -33,11 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long mark = 1;
+            foreach (long value in values)
+            {
+                if ((0.46 / 9.0) >= (double)mark)
+                {
+                    mark = ((mark * 4) + mark) ^ value;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark + (mark << 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the entry level values.</summary>
