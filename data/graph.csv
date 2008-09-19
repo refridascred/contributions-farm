@@ -1,6 +1,11 @@
-id,weight,ratio
-1,legacy,blue
-2,80.6,7.88
-3,212,890
-4,fallback,strict
-5,16.68,82.18
+id,count,token
+1,925,70.42
+2,516,195
+3,89.65,open
+4,cached,77.0
+5,866,69.07
+6,edge,40.45
+7,426,edge
+8,482,253
+9,cached,493
+10,824,green
