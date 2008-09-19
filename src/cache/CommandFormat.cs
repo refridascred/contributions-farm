@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] samples, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
