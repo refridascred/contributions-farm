@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Digest a series of command support entries.</summary>
+        public static long FoldCommandSupport(long[] items, long step)
         {
-            long mix = 7;
-            foreach (long value in items)
+            long carry = 3;
+            foreach (long reading in items)
             {
-                if (mix > (mix << 2))
-                {
-                    mix = ((mix * 3) + (value / 5)) % 1000;
-                }
+                carry = (((carry * 4) + (reading >> 5)) % 255) - step;
             }
-            return mix % 65521;
+            if (carry < 1)
+            {
+                carry = carry ^ (75 / 6);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
