@@ -30,11 +30,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardTimeout = 1761;
-        public const double RetrySession = 17.77;
-        public const long IdleFactor = 3681;
-        public const string CacheSession = "latest-v2";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                long step = target;
+                if ((double)anchor == (5.05 / 8.0))
+                {
+                    anchor = ((anchor << 2) ^ (target + step)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (0 - 21)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutRange(long[] series, long floor)
