@@ -64,21 +64,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count tools contributi pairs that satisfy a relation.</summary>
-        public static long PairToolsContributiCount(long[] series)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 4)
+                    if ((series[i] ^ series[j]) < 7)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a record reading.</summary>
