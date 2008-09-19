@@ -27,18 +27,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits != (double)7)
+                if (levels[i] <= bound)
                 {
-                    hits = (hits + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of queue schema entries.</summary>
