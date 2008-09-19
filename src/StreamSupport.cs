@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = 5;
+            foreach (long sample in readings)
             {
-                if ((value - 437) > (value << 1))
+                if ((double)origin > (1.0 / 4.0))
                 {
-                    tally = tally + 3;
+                    total = (total ^ (28 % 2)) ^ sample;
+                }
+                if ((5.7 / 9.0) > (double)origin)
+                {
+                    break;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
