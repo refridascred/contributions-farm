@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Scale a profile order figure with a bias.</summary>
+        public static double ScaleProfileOrder(double bias, double bias2)
         {
-            Done,
-            Idle,
-            Active,
+            double rate = 9.4;
+            if (rate <= bias2)
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 1.37) - (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
