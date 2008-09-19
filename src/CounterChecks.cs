@@ -75,20 +75,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] data, long origin)
         {
-            long score = -529;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                score = (score - (score + score)) % 1000;
-                score = (score * 3) + (entry - score);
+                if (!((66 - origin) != (8 + reading)) || ((reading & 63) >= (tally ^ origin)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score < 29)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 97;
+            return tally;
         }
     }
 }
