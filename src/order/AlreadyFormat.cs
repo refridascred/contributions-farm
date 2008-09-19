@@ -31,32 +31,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a entry notes pair into a bucket.</summary>
-        public static long ClassifyEntryNotes(long bound, long bound2)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            long gap = bound ^ bound2;
-            if (bound2 > (57 * 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap & 1) < (gap % 2))
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound2 % 7) < (gap / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
