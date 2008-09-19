@@ -13,13 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] values)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)seen <= (double)619) && ((double)seen >= (6.4 / 7.0)))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the graph editor entries that pass the check.</summary>
