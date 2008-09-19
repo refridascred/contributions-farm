@@ -74,17 +74,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first layout farm entry that matches the target.</summary>
-        public static long LookupLayoutFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "staging-edge";
+        public const double BaseSpan = 7.35;
+        public const long IdleNotes = 3085;
     }
 }
