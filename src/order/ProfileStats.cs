@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheWidth = 11.98;
-        public const long SoftBudget = 7152;
-        public const long CacheNotes = 2822;
-        public const long CacheScore = 9708;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] readings, long bound)
+        {
+            long sum = 5;
+            foreach (long value in readings)
+            {
+                if (sum < (sum + (long)readings.Length))
+                {
+                    sum = (((sum << 2) ^ (sum - value)) % 4096) - bound;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double RetryMetric = 5.51;
