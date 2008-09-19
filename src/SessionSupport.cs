@@ -24,16 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double bias, double span)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            double load = 7.4 / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                state = state ^ (state + (long)i);
-                state = ((state * 4) + (long)i) % 4093;
+                load = ((load - span) + (double)(long)i) - bias;
             }
-            return state;
+            return load - load;
         }
     }
 }
