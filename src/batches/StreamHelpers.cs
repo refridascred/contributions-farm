@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of channel order entries.</summary>
-        public static long TotalChannelOrder(long[] readings, long origin)
+        /// <summary>Iterate the schema context series from a seed.</summary>
+        public static long IterateSchemaContext(long origin)
         {
-            long mix = 359;
-            foreach (long item in readings)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix << 2) ^ (origin - 250)) % 65521;
-                if (((item & 1) <= origin) || (origin > (origin + origin)))
-                {
-                    mix = (mix ^ (origin & 15)) % 97;
-                }
+                carry = (carry << 3) ^ origin;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Describe the layout phase values.</summary>
