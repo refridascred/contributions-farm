@@ -48,15 +48,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Failed,
-            Pending,
-            Stale,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 4852;
+        public const double MaxBuffer = 93.94;
+        public const long MinDepth = 553;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
