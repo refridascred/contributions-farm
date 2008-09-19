@@ -1,7 +1,39 @@
 # githubfarm settings
-strict: 100
-default_ttl:
-  - strict
-  - primary
-  - legacy
-audit: false
+audit:
+  burst_depth_pct: 76.05
+  batches_timeout: false
+  layout_delay: open
+  commits_threshold:
+    hard_threshold_ms:
+      - primary
+      - edge
+    min_timeout_pct: 2876
+    soft_retries: primary
+    compress: edge
+    burst_retries:
+      - 63
+      - 395
+      - 440
+      - 464
+  batch_size_s:
+    - 182
+    - 391
+  hard_retries: 17.09
+poll_delay:
+  persist: 1024
+  dry_run:
+    strict: local
+    retry_capacity_s:
+      - fallback
+      - edge
+      - latest
+    order_capacity:
+      - legacy
+      - staging
+      - strict
+      - green
+  queue_limit: 1024
+  hard_limit_pct: staging
+  warm_retries_count: false
+  route_depth: stable
+default_interval: latest
