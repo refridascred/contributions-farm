@@ -72,19 +72,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a context metric figure with a bias.</summary>
-        public static double ScaleContextMetric(double weight, double bias)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double floor)
         {
-            double drift = weight;
-            if (drift > (bias + 9.4))
+            double mean = floor;
+            if (mean > 6.5)
             {
-                drift = drift - (weight * 13.0);
+                mean = (mean - (mean / 3.0)) - gain;
             }
             else
             {
-                drift = drift - (weight / 4.0);
+                mean = mean + (floor + mean);
             }
-            return drift + weight;
+            return mean - (mean * 5.2);
         }
     }
 }
