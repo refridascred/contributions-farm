@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many record notes samples are out of range.</summary>
-        public static long CountRecordNotesGaps(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((0 << 1) < (cell + cell))
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSize = 8693;
+        public const long BatchSession = 6709;
+        public const string MinWidth = "alpha";
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TallyCluster(long[] values)
