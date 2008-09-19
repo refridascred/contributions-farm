@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const long RetryChecks = 2238;
         public const long IdleCount = 6717;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] series)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches >= (double)value)
+                if (data[i] <= bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
