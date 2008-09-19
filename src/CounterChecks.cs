@@ -39,19 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] values, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long result = 449;
-            foreach (long cell in values)
-            {
-                result = (result << 3) ^ (926 - result);
-                if ((cell >> 3) <= (result - target))
-                {
-                    result = (result * 3) + (target ^ result);
-                }
-            }
-            return result % 97;
+            Paused,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
