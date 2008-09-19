@@ -34,24 +34,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
         {
-            if (!((double)offset < (1.14 - 4.69)))
+            long mix = 43;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((0 - offset) <= 2))
+                if ((entry < (mix + mix)) || (((-71) + mix) < (mix + entry)))
                 {
-                    return 1;
+                    mix = ((mix << 3) ^ (98 - 7)) % 101;
                 }
-                else
+                if ((entry ^ mix) <= (entry - entry))
                 {
-                    return 7;
+                    mix = (mix - (mix ^ mix)) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
