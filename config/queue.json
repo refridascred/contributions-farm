@@ -1,8 +1,5 @@
 {
-  "retry_limit_count": 48,
-  "order_ratio": 4022,
-  "enabled": "blue",
-  "compress": [254, 21],
-  "payload_timeout": false,
-  "readonly": 85.57
+  "compress": false,
+  "default_size": 30,
+  "verbose": false
 }
