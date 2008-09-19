@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const string HardFactor = "strict";
         public const long DefaultSession = 34;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long anchor = 0;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor << 3) ^ cell) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
