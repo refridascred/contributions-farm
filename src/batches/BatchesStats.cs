@@ -44,12 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1327;
-        public const long LimitProfile = 1995;
-        public const string DefaultBudget = "staging";
-        public const long RetryFactor = 1326;
-        public const string HardProfile = "staging-1";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((10.0 + 3.0) > (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] data)
