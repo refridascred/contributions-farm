@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] series)
         {
-            Idle,
-            Active,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value - 437) > (value << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
