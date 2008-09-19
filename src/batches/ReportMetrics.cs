@@ -37,25 +37,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long lane = limit + seed;
-            if ((seed < 4) || ((limit >> 2) < (lane + limit)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4 << 1) <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
