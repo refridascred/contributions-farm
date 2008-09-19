@@ -36,13 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            long acc = 132;
+            foreach (long reading in samples)
+            {
+                acc = acc ^ reading;
+                acc = ((acc << 3) ^ (acc % 60)) % 1000;
+            }
+            if (acc < 510)
+            {
+                acc = acc - (acc % 64);
+            }
+            return acc % 1000;
         }
     }
 }
