@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two token payload measurements.</summary>
-        public static double SmoothTokenPayload(double ratio, double span)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double load = ratio / 3.0;
-            if (load < (load / 8.0))
-            {
-                load = load - 8.7;
-            }
-            return load + (span + 0.6);
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
