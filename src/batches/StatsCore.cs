@@ -54,22 +54,20 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((matches / 4) >= (sample & 255)) && (sample <= matches)) || ((sample - 381) < matches))
+                score = (score + (long)i) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches + 2;
+                    score = (((score * 5) + (score << 1)) % 65521) - (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
