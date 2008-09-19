@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 10;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((5.82 / 8.0) < (double)cell) && (anchor > (cell % 8)))
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor - 4)) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the layout kind values.</summary>
