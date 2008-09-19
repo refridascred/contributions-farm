@@ -15,21 +15,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count channel order pairs that satisfy a relation.</summary>
-        public static long OverlapChannelOrderCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = step ^ bound;
+            if ((cur / 7) == (cur ^ bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (751 >= (bound ^ 5))
                 {
-                    if ((levels[i] + levels[j]) > 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound < (10.0 - 2.56))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound > (double)cur)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
