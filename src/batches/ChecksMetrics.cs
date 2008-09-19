@@ -47,12 +47,14 @@ namespace Common.Utilities
         public const string CacheLevel = "primary-v2";
         public const long BaseCount = 5234;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            Closed,
+            Dropped,
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
