@@ -1,5 +1,12 @@
 {
-  "persist": "strict",
-  "farm_window": 100,
-  "dry_run": 26.37
+  "batch_delay": 250,
+  "base_limit": ["open", "fallback"],
+  "contributi_ratio": true,
+  "command_ratio": {
+    "soft_timeout_pct": 76,
+    "idle_window_pct": true,
+    "soft_ratio": true
+  },
+  "cache_size": 30,
+  "command_timeout": 8919
 }
