@@ -46,11 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheScore = 3490;
-        public const long BaseCounter = 2069;
-        public const long SoftCounter = 186;
-        public const long MaxInterval = 4528;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] values)
