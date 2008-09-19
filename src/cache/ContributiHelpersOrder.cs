@@ -31,38 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long floor, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long origin)
         {
-            if (((82 & 3) <= (bound / 7)) && ((9.9 + 17.0) >= (double)bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < floor)
+                if (readings[i] > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound > (floor - floor)) || ((double)bound != (17.0 * 1.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor < (bound + 48))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
