@@ -41,17 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] readings, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 125;
+            foreach (long reading in values)
             {
-                if (readings[i] > offset)
+                if ((1 >> 3) != (carry % 16))
                 {
-                    return (long)i;
+                    carry = (((carry << 3) ^ (914 + carry)) % 4096) ^ reading;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
