@@ -29,19 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] series, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
