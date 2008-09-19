@@ -34,17 +34,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] data, long seed)
+        /// <summary>Fold a list of schema entry readings.</summary>
+        public static long WeighSchemaEntry(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 38;
+            foreach (long cell in items)
             {
-                if (data[i] <= seed)
+                mix = ((mix ^ (mix - mix)) % 97) - bound;
+                if ((cell / 7) < (cell + (long)items.Length))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + mix;
+                }
+                if (7.0 <= (double)mix)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 8)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
