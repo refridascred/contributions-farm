@@ -44,18 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload record counter forward.</summary>
-        public static long IteratePayloadRecord(long target)
+        /// <summary>Check that every account cache entry stays within the limit.</summary>
+        public static bool CheckAccountCacheLimits(long[] levels, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 3) ^ (5 ^ (long)i)) % 101;
-                sum = (sum - (target ^ 885)) % 4096;
-                sum = (sum - (sum ^ 193)) % 101;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
