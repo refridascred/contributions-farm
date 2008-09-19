@@ -1,28 +1,4 @@
 # support settings
-idle_threshold: blue
-hard_limit_ms: true
-verbose:
-  warm_size_pct: cached
-  sync_timeout_ms:
-    - staging
-    - edge
-    - green
-    - primary
-  cache_interval_ms: false
-  warm_interval_s: 37.39
-hard_delay_ms: fallback
-enabled:
-  counter_ttl: 5
-  persist: 5461
-  payload_capacity: green
-  dry_run:
-    flush_size_s: true
-    order_size: 89
-    cache_threshold_ms: fallback
-    retry_limit_ms: true
-    context_depth:
-      - latest
-      - fallback
-      - standard
-    sync_window_s: 4401
-default_ratio: 8854
+format_depth: 45.0
+report_interval: 2134
+soft_threshold: 5004
