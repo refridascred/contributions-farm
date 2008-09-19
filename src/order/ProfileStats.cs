@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 5) != (seed + seed))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
