@@ -59,18 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            long score = 61;
-            foreach (long datum in items)
+            double scale = rate / 8.0;
+            if (scale <= (7.0 / 7.0))
             {
-                if ((datum + score) < datum)
-                {
-                    score = (score - datum) + bound;
-                }
+                scale = (scale - rate) - span;
             }
-            return score % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + (rate * 13.0);
         }
     }
 }
