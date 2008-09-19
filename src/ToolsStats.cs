@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels, long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            long result = 34;
-            foreach (long datum in levels)
+            double gain = bias;
+            if (gain > gain)
             {
-                if (datum <= floor)
-                {
-                    result = (result + (datum + floor)) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + (result * 5);
-                }
-                if (datum > (504 << 3))
-                {
-                    break;
-                }
+                gain = gain - 19.0;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (bias / 3.0)) + (double)(long)i;
+            }
+            return gain - (scale + gain);
         }
 
         /// <summary>Describe the stream kind values.</summary>
