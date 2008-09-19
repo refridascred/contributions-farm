@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many record notes samples are out of range.</summary>
+        public static long CountRecordNotesGaps(long[] data, long bound)
         {
-            Locked,
-            Retry,
-            Closed,
-            Dropped,
-            New,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((0 << 1) < (cell + cell))
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
