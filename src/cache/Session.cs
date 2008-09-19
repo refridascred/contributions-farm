@@ -48,11 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Idle,
+            Synced,
         }
     }
 }
