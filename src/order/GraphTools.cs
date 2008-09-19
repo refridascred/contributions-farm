@@ -53,17 +53,13 @@ namespace Common.Utilities
         public const double MaxRatio = 10.88;
         public const long BaseCount = 1667;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
