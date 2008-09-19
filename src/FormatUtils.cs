@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] items)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum != (1.4 * 3.2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate payload profile readings against a bound.</summary>
