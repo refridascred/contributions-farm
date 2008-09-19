@@ -54,13 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Queued,
-            Done,
-            New,
-            Synced,
+            Stale,
+            Ready,
+            Failed,
+            Active,
             Retry,
         }
     }
