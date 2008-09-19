@@ -1,4 +1,5 @@
 # support settings
-burst_window_count: 95.17
-enabled: 7174
-persist: 42
+readonly: green
+stream_depth: fallback
+hard_window: legacy
+strict: eu-west
