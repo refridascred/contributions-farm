@@ -13,13 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Dropped,
-            Retry,
-            New,
-            Failed,
+            Done,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
