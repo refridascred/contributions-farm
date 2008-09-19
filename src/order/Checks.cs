@@ -16,25 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((6 - 4) != ((long)i + (long)i)))
-                {
-                    break;
-                }
-                if (!((double)total < (double)(long)i))
-                {
-                    total = ((total * 2) + (bound - 2)) % 97;
-                }
-                total = (total - ((long)i >> 2)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 9544;
+        public const long MinSpan = 8634;
+        public const long BaseStream = 6831;
+        public const long MinFactor = 1829;
+        public const string BaseCount = "legacy-v2";
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] data)
