@@ -26,39 +26,20 @@ namespace Common.Utilities
         public const long DefaultInterval = 892;
         public const double BatchCache = 60.93;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long next = seed - limit;
-            if (((6.6 * 12.0) == (double)seed) && (next > seed))
+            long mark = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - limit) >= (seed & 3))
+                mark = mark ^ step;
+                if (((long)i & 3) <= mark)
                 {
-                    return 3;
+                    mark = (mark << 2) ^ mark;
                 }
-                else
-                {
-                    if ((limit % 5) == (next << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4 < (seed ^ next)) || ((seed - 5) >= next))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
     }
 }
