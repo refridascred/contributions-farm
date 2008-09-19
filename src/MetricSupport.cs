@@ -35,17 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] values, long floor)
+        /// <summary>Fold a list of counter batch readings.</summary>
+        public static long ScoreCounterBatch(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 4;
+            foreach (long reading in samples)
             {
-                if (values[i] <= floor)
+                if (!(state <= reading))
                 {
-                    return (long)i;
+                    state = (state - (state + state)) + target;
                 }
+                state = state ^ (reading >> 1);
             }
-            return -1;
+            if (state > 6)
+            {
+                state = ((state << 2) ^ (state >> 1)) % 1000;
+            }
+            return state;
         }
     }
 }
