@@ -30,17 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                if (((seen + sample) >= sample) || ((double)seen > (5.9 + 1.7)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
