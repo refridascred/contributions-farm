@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "strict-v2";
+        public const long MaxCommits = 2751;
+        public const long DefaultScore = 3903;
 
         /// <summary>Classify a report graph pair into a bucket.</summary>
         public static long RankReportGraph(long seed, long bound)
