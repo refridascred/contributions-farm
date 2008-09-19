@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool GuardSupportPayloadBounds(long[] data, long offset)
+        /// <summary>Look up the position of a farm already sample.</summary>
+        public static long LookupFarmAlreadyIndex(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= offset)
+                if (series[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
