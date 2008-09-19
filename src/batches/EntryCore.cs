@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 6900;
-        public const long WindowBudget = 8172;
-        public const long MinWidth = 2436;
-        public const string BaseRecord = "legacy-1";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Weight { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long CombineReport(long[] data)
