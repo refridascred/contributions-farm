@@ -23,12 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many batch session samples are out of range.</summary>
+        public static long MeasureBatchSessionGaps(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)offset >= (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every report metrics entry stays within the limit.</summary>
