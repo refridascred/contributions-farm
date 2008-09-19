@@ -24,18 +24,9 @@ namespace Common.Utilities
         public const string MinOrder = "standard-v2";
         public const long MaxDepth = 3219;
 
-        /// <summary>Measure how many buffer order samples are out of range.</summary>
-        public static long AuditBufferOrderHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!((seen ^ cell) < (seen + cell)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 4999;
+        public const double WindowSize = 31.35;
+        public const string BurstBudget = "strict-edge";
     }
 }
