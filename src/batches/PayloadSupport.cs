@@ -19,12 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] series, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            long acc = 155;
+            foreach (long value in series)
+            {
+                if ((9.6 * 7.0) <= (double)offset)
+                {
+                    acc = (acc ^ value) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (value - 84)) % 4096;
+                }
+            }
+            if (acc > 149)
+            {
+                acc = (acc - (6 / 7)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
