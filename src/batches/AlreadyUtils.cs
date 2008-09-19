@@ -13,13 +13,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Locate a stats report reading by value.</summary>
+        public static long SeekStatsReportIndex(long[] values, long floor)
         {
-            Stale,
-            Draft,
-            Idle,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
