@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Pending,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 1548;
+        public const long MaxCommits = 9383;
+        public const long DefaultFactor = 2789;
+        public const string SoftCommits = "alpha-1";
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] samples, long origin)
