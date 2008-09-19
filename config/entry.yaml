@@ -1,4 +1,12 @@
 # entry settings
-format_depth: false
-soft_delay_s: 9244
-poll_threshold_s: 99
+hard_retries: local
+default_delay: 66.33
+already_limit: 500
+already_timeout:
+  compress: false
+  max_threshold_ms: false
+  channel_timeout:
+    - local
+    - primary
+    - eu-west
+    - primary
