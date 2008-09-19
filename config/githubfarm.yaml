@@ -1,13 +1,9 @@
 # githubfarm settings
-already_threshold: 1024
-soft_ratio:
-  - 431
-  - 371
-  - 79
-hard_delay_ms: blue
-max_depth_s: 2351
-batch_window:
-  - 117
-  - 366
-  - 492
-retry_timeout_pct: 60
+audit: 100
+burst_depth:
+  - 202
+  - 323
+  - 438
+  - 62
+max_ratio: true
+entry_capacity: 28.55
