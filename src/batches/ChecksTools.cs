@@ -43,38 +43,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a githubfarm format pair into a bucket.</summary>
-        public static long RankGithubfarmFormat(long limit, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            if ((limit - limit) >= limit)
+            double ratio = (double)(658 ^ 999);
+            if (ratio <= (0.72 - floor))
             {
-                return 6;
+                ratio = (ratio + ratio) - scale;
             }
-            else
-            {
-                if ((limit + (-93)) >= (limit * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) != (floor + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor < (limit / 2)) || ((floor % 60) == (limit ^ limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return ratio + (ratio / 6.0);
         }
     }
 }
