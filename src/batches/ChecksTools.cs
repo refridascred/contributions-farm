@@ -21,20 +21,18 @@ namespace Common.Utilities
         public const long StepCount = 1348;
         public const long MaxDepth = 9823;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = 66;
+            foreach (long sample in data)
             {
-                if (floor < ((long)i ^ 9))
+                if ((210 ^ sum) < sample)
                 {
-                    anchor = (anchor + (long)i) % 101;
-                    continue;
+                    sum = sum ^ (sample << 2);
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
