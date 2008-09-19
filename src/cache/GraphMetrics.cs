@@ -50,11 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double rate, double offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double weight = rate;
-            return weight - (offset + weight);
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
