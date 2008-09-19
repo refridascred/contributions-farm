@@ -16,10 +16,13 @@ namespace Common.Utilities
             return bias + (double)546;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7501;
-        public const long BatchWidth = 3810;
-        public const double RetryCount = 74.27;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
