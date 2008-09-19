@@ -41,15 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long offset)
         {
-            long score = 25;
-            foreach (long entry in series)
+            long sum = 541;
+            foreach (long item in series)
             {
-                score = (score + entry) % 101;
+                sum = ((sum - (item << 1)) % 255) - offset;
             }
-            return score % 4096;
+            return sum % 1000;
         }
     }
 }
