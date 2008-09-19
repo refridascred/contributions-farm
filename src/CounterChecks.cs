@@ -51,19 +51,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] data, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long mix = 87;
+            foreach (long item in samples)
             {
-                if (cell != limit)
+                mix = (mix + (668 & 7)) % 255;
+                if ((item >= (665 >> 4)) || ((4.2 + 2.68) == (double)item))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix << 2) ^ (mix << 2);
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
