@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] data, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((tally - origin) <= tally) || ((origin / 2) >= (origin >> 4)))
+                if (reading < seed)
                 {
-                    tally = (tally + 2) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
