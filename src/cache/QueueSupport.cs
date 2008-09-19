@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const double RetryWidth = 1.8;
         public const long LimitLayout = 5900;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseLevel = 93.08;
-        public const long DefaultSize = 278;
-        public const long CacheAccount = 3494;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits - hits) == (hits + datum))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next counter session value.</summary>
         public static double BlendCounterSession(double scale, double span)
