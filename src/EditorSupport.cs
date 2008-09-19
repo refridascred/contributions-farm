@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double span)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            double load = (double)911 * 9.0;
+            if (load <= (load - load))
+            {
+                load = (load - ratio) - span;
+            }
+            else
+            {
+                load = load - (double)38;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 1.36) + (double)(long)i;
+            }
+            return load + 1.8;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
