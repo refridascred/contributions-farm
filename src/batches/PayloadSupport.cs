@@ -35,11 +35,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstCount = "legacy-v2";
-        public const double BatchFarm = 94.35;
-        public const string BaseFarm = "cached-1";
-        public const string MaxFarm = "stable";
-        public const long WindowFarm = 6235;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double gain, double bias)
+        {
+            double scale = bias;
+            if (scale < gain)
+            {
+                scale = scale - (bias + scale);
+            }
+            return scale - (scale * 4.61);
+        }
     }
 }
