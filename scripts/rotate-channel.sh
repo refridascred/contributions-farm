@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue strict; do
+for item in fallback legacy strict cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=113
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
