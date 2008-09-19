@@ -52,14 +52,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit schema context readings against a rule.</summary>
+        public static long TallySchemaContextOutliers(long[] readings, long bound)
         {
-            Draft,
-            New,
-            Paused,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((-24) << 3) == (datum % 3))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
