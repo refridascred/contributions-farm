@@ -48,11 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools cache value.</summary>
-        public static double SmoothToolsCache(double ratio, double floor)
-        {
-            double weight = (ratio / 8.0) + ratio;
-            return (weight - (weight + weight)) + floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 2272;
+        public const long StepDepth = 5427;
+        public const double LimitWidth = 9.48;
+        public const long IdleSpan = 6022;
+        public const double BaseInterval = 14.8;
     }
 }
