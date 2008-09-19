@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "cached-edge";
-        public const long StepCache = 7859;
-        public const long StepLevel = 7435;
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long FoldClusterEntry(long[] levels)
+        {
+            long result = 991;
+            foreach (long entry in levels)
+            {
+                if ((131 <= (entry & 127)) || (entry < (90 << 2)))
+                {
+                    result = ((result * 3) + 878) % 101;
+                }
+            }
+            if (result > 2)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long target, long bound)
