@@ -36,19 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session support readings against a bound.</summary>
-        public static bool GuardSessionSupportBounds(long[] levels, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Queued,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Compare every pair of report cluster readings.</summary>
