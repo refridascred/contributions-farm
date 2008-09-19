@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Project the next stats notes value.</summary>
+        public static double ScaleStatsNotes(double gain, double floor)
         {
-            double scale = (rate * 2.1) + rate;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + (4.0 - scale)) - (double)(long)i) - span;
-            }
-            return scale + rate;
+            double scale = (double)(106 ^ 5);
+            return (scale + floor) + gain;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
