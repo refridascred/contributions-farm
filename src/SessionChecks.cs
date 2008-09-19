@@ -6,14 +6,18 @@ namespace Common.Utilities
     public static class SessionChecks
     {
         /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] readings, long offset)
+        public static long TallyClusterHits(long[] readings)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long sample in readings)
             {
-                if (cell > (offset + offset))
+                if (((28 + matches) >= ((-260) ^ sample)) || ((double)sample > (double)54))
                 {
                     matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
