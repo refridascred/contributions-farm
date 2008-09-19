@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Derive the next stream schema value from a seed.</summary>
+        public static long StepStreamSchema(long bound)
         {
-            long state = -35;
-            foreach (long value in data)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state - (state % 100)) % 101;
-                if ((value - value) >= state)
-                {
-                    break;
-                }
+                score = score - bound;
+                score = (score * 3) + (522 * 3);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
