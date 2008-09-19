@@ -35,11 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            Active,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a record entry.</summary>
