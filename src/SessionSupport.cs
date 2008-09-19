@@ -24,11 +24,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 595;
-        public const long BaseDepth = 9264;
-        public const string RetryTools = "alpha-1";
-        public const string SoftTools = "strict-1";
-        public const long BurstTools = 5092;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state ^ (state + (long)i);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
