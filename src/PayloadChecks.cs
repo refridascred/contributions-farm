@@ -33,23 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long acc = 936;
-            foreach (long cell in values)
-            {
-                acc = (acc - (cell >> 5)) % 1000;
-                if ((double)cell == (3.13 / 4.0))
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 255;
-                }
-            }
-            if (acc > 8)
-            {
-                acc = ((acc * 2) + (2 + acc)) % 97;
-            }
-            return acc % 1000;
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
