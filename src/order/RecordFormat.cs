@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long limit)
         {
-            Retry,
-            Active,
-            Dropped,
+            long mix = 24;
+            foreach (long datum in samples)
+            {
+                if (datum > mix)
+                {
+                    mix = (mix ^ (mix + limit)) % 97;
+                }
+                if (limit < (limit << 1))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the session kind values.</summary>
