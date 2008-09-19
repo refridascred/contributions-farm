@@ -1,15 +1,5 @@
 {
-  "idle_ratio_count": "eu-west",
-  "already_retries": 84.39,
-  "sync_timeout": {
-    "hard_size": 86.24,
-    "buffer_size": "primary",
-    "readonly": "cached",
-    "retry_depth_ms": true,
-    "sync_interval_count": 489,
-    "batch_limit": "edge"
-  },
-  "audit": 30,
-  "readonly": "local",
-  "batch_capacity": "latest"
+  "batches_ratio": "staging",
+  "enabled": [152, 104, 191],
+  "poll_size_s": 3396
 }
