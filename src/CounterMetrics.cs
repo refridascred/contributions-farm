@@ -20,30 +20,23 @@ namespace Common.Utilities
             return gain - (gain / 5.0);
         }
 
-        /// <summary>Rank payload session input into a small class.</summary>
-        public static long BucketPayloadSession(long limit, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long origin, long seed)
         {
-            long slot = limit + floor;
-            if ((slot + limit) <= (679 - floor))
+            long lane = origin - seed;
+            if ((seed - lane) <= (seed + 511))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((slot << 1) >= floor)
+                if (!((7.0 / 2.0) != (double)seed))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor << 2) != (612 + 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 8;
                 }
             }
         }
