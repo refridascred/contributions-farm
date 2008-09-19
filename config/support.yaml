@@ -1,13 +1,5 @@
 # support settings
-batch_threshold:
-  soft_ttl: strict
-  burst_window_s: fallback
-  cluster_interval: 6908
-  max_timeout_ms: 98
-  contributi_depth: 65
-poll_delay_s:
-  - 41
-  - 497
-  - 439
-  - 381
-warm_window: 1.23
+sync_depth_s: cached
+audit: 250
+window_depth: staging
+batch_timeout: 734
