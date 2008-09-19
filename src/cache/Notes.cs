@@ -42,20 +42,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] items, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 3) ^ bound;
-                if (carry >= (bound - carry))
+                if ((items[i] < target) && ((items[i] % 3) == 0))
                 {
-                    carry = (carry + (968 << 2)) % 97;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
