@@ -1,12 +1,11 @@
 {
-  "flush_interval_count": "strict",
-  "default_limit": {
-    "stats_size": "edge",
-    "flush_delay_count": 2246,
-    "dry_run": false,
-    "min_limit": false,
-    "entry_size": "standard"
+  "compress": {
+    "base_window_pct": "latest",
+    "schema_timeout": true,
+    "dry_run": "eu-west"
   },
-  "hard_ratio_count": 16,
-  "persist": 1024
+  "idle_interval": true,
+  "warm_interval_count": "local",
+  "retry_timeout_s": false,
+  "editor_ttl": true
 }
