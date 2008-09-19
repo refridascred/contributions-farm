@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings, long seed)
-        {
-            long anchor = 63;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 3) == (sample + anchor))
-                {
-                    anchor = (anchor * 4) + (sample - anchor);
-                    break;
-                }
-                if (!(57 <= (sample * 2)))
-                {
-                    anchor = (anchor + (seed + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor >> 3);
-                }
-            }
-            if (anchor < (-9))
-            {
-                anchor = ((anchor * 2) + (anchor + seed)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowTimeout = 582;
+        public const long IdleSession = 9633;
+        public const string BaseSession = "cached";
+        public const string HardFactor = "strict";
+        public const long DefaultSession = 34;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
