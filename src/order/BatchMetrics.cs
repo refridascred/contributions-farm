@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long target, long target2)
+        /// <summary>Accumulate metrics cluster samples.</summary>
+        public static long ScoreMetricsCluster(long[] values, long offset)
         {
-            if (target < (target % 2))
+            long carry = 3;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target != (5.9 / 5.0))
+                if (8 < (offset % 64))
                 {
-                    return 4;
+                    carry = (carry ^ offset) % 101;
                 }
-                else
+                if ((offset / 3) > (offset ^ entry))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
