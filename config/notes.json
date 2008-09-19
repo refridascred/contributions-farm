@@ -1,15 +1,5 @@
 {
-  "min_window_ms": {
-    "min_ratio_s": true,
-    "max_window": 8706,
-    "default_limit_pct": 60,
-    "max_ratio": "legacy",
-    "max_delay": 9740,
-    "persist": "stable"
-  },
-  "githubfarm_depth": 299,
-  "cache_timeout": 250,
-  "strict": ["open", "primary", "local", "stable"],
-  "cache_ttl_s": 1024,
-  "batch_retries": "stable"
+  "metrics_window": 3151,
+  "hard_delay_pct": "standard",
+  "max_delay": "fallback"
 }
