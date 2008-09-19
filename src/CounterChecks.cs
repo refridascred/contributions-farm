@@ -35,12 +35,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 5918;
-        public const string LimitChecks = "fallback-v2";
-        public const string DefaultChecks = "fallback-edge";
-        public const long HardChecks = 5587;
-        public const string MaxFactor = "open-1";
+        /// <summary>Validate batches channel readings against a bound.</summary>
+        public static bool ValidateBatchesChannelBounds(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
