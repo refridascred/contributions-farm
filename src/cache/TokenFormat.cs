@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long StepGithubfarm = 4009;
         public const string WindowInterval = "stable";
 
-        /// <summary>Iterate the entry contributi series from a seed.</summary>
-        public static long DeriveEntryContributi(long offset)
+        /// <summary>Digest a series of report already entries.</summary>
+        public static long TallyReportAlready(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = 259;
+            foreach (long value in samples)
             {
-                state = state ^ (offset * 2);
-                state = ((state * 3) + (long)i) % 1000;
+                anchor = ((((anchor << 2) ^ anchor) % 65521) + value) + floor;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
