@@ -21,19 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (entry >= (count - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 8273;
+        public const long SoftSpan = 5355;
+        public const long MinSession = 2652;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteLimits(long[] data, long target)
