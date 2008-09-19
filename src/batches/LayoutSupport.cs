@@ -34,22 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] data, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(value >= (4 % 100)))
-                {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
