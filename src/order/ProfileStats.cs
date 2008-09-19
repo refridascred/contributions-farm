@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (readings[i] >= origin)
+                if (value != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
