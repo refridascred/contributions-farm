@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data, long seed)
+        /// <summary>Grade a cache account value against two limits.</summary>
+        public static long ClassifyCacheAccount(long bound, long bound2)
         {
-            long acc = 93;
-            foreach (long cell in data)
+            if (bound2 <= (bound & 127))
             {
-                long gap = cell;
-                if (((9.3 + 5.9) == (double)acc) || (gap > (acc & 7)))
-                {
-                    acc = ((acc * 2) + acc) + seed;
-                }
-                acc = acc - cell;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (((bound2 << 2) == (bound2 ^ bound2)) && ((double)bound2 != (20.0 / 4.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 << 3) == (78 >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
