@@ -36,12 +36,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank command commits input into a small class.</summary>
+        public static long GradeCommandCommits(long origin, long floor)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long cur = origin ^ floor;
+            if (((origin * 3) >= origin) && ((origin + floor) > cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((cur / 8) < (364 - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
