@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] data, long offset)
+        /// <summary>Locate a notes order reading by value.</summary>
+        public static long FindNotesOrderIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > offset)
+                if (values[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
