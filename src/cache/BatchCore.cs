@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((8.29 - 7.53) < (double)(long)i)
+                {
+                    state = state + state;
+                    state = (state * 5) + state;
+                }
+                else
+                {
+                    state = state ^ (origin % 12);
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first batches session entry that matches the target.</summary>
