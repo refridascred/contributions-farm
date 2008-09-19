@@ -48,15 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric commits samples.</summary>
-        public static long TallyMetricCommits(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data)
         {
-            long total = 964;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                total = ((total << 2) ^ value) % 101;
+                if (!(reading <= (reading & 15)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total % 65521;
+            return tally;
         }
     }
 }
