@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long WeighContextBuffer(long[] readings, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long score = 155;
+            foreach (long reading in readings)
             {
-                if ((83 << 2) < anchor)
-                {
-                    anchor = (anchor << 2) ^ (target & 127);
-                    continue;
-                }
-                anchor = anchor ^ anchor;
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                score = (((score ^ (score >> 5)) % 101) + reading) + step;
             }
-            return anchor;
+            if (score > (-5))
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Measure how many batch session samples are out of range.</summary>
