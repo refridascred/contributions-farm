@@ -43,15 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Dropped,
-            Done,
-            Ready,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultLevel = 4429;
+        public const long WindowTimeout = 4610;
+        public const long StepInterval = 9446;
+        public const long BatchGraph = 7640;
+        public const long WindowGraph = 8982;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] readings)
