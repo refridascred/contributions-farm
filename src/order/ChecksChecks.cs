@@ -32,22 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch graph samples are out of range.</summary>
-        public static long MeasureBatchGraphMatches(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seen >= 0.4)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
