@@ -26,13 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            Pending,
+            Stale,
+            Dropped,
+            Active,
+            Draft,
         }
 
         /// <summary>Match up already samples.</summary>
