@@ -28,23 +28,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] data, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long carry = 4;
-            foreach (long cell in data)
-            {
-                carry = (((carry << 3) ^ (origin << 3)) % 97) - cell;
-                if (carry < (origin & 255))
-                {
-                    break;
-                }
-            }
-            if (carry > 887)
-            {
-                carry = (carry ^ (19 + carry)) % 1000;
-            }
-            return carry % 65521;
+            Idle,
+            Ready,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
