@@ -22,17 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] values, long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
