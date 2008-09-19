@@ -25,24 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = 2;
+            foreach (long value in levels)
             {
-                if ((double)seed <= (1.82 - 9.03))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - seed) % 97;
-                    mark = (mark << 2) ^ seed;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                anchor = (anchor ^ (2 << 3)) + value;
             }
-            return mark;
+            if (anchor < 721)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
