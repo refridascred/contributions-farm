@@ -29,18 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (((0.26 - 5.28) < (double)sample) && ((sample < (sample * 2)) || ((6 - matches) != (sample + sample))))
+                if (item >= floor)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
