@@ -1,4 +1,11 @@
 # githubfarm settings
-verbose: 65.15
-strict: 45.61
-hard_limit: 89
+warm_timeout_count:
+  - 142
+  - 233
+  - 368
+  - 222
+strict: 68.62
+hard_ttl: blue
+retry_timeout_count: 8478
+buffer_timeout: latest
+channel_capacity: true
