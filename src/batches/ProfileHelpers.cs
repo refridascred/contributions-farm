@@ -45,23 +45,12 @@ namespace Common.Utilities
         public const long IdleBatches = 6612;
         public const double CacheBatches = 90.72;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((6.2 - 4.0) > (double)matches)
-                {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchFactor = 94.77;
+        public const double BurstScore = 68.23;
+        public const long StepInterval = 1212;
+        public const long RetryCount = 947;
+        public const long WindowGithubfarm = 2537;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] readings)
