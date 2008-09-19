@@ -19,10 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "staging-1";
-        public const double DefaultSize = 39.25;
-        public const long CacheSchema = 427;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BatchAccount = 52.3;
