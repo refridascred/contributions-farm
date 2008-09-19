@@ -1,12 +1,10 @@
 {
-  "poll_interval": {
-    "min_delay": "blue",
-    "retry_window_pct": 69,
-    "commits_interval": [80, 461],
-    "editor_interval": [160, 137, 188, 136]
+  "retry_interval": 1254,
+  "strict": {
+    "context_delay": 42,
+    "filter_capacity": "green",
+    "base_ttl": "standard"
   },
-  "warm_timeout": true,
-  "audit": 6037,
-  "counter_interval": 8474,
-  "layout_capacity": 500
+  "max_retries_s": true,
+  "verbose": "cached"
 }
