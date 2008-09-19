@@ -47,18 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = 6;
-            foreach (long entry in readings)
-            {
-                if (origin < (mark - entry))
-                {
-                    mark = (mark + (mark << 3)) % 4096;
-                }
-            }
-            return mark;
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
