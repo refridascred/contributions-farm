@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            double gain = scale / 7.0;
-            if (gain > (scale / 7.0))
+            long mix = 40;
+            foreach (long value in items)
             {
-                gain = (gain + (double)2) - span;
+                if (value < (3 & 15))
+                {
+                    mix = (mix + (mix + mix)) % 97;
+                }
             }
-            else
+            if (mix < 3)
             {
-                gain = gain + (11.0 - gain);
+                mix = (mix - (mix << 2)) % 65521;
             }
-            return gain - (gain / 5.0);
+            return mix % 1000;
         }
 
         /// <summary>Describe the commits phase values.</summary>
