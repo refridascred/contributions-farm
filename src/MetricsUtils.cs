@@ -21,17 +21,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor + step) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseInterval = 32.15;
+        public const long RetryWidth = 847;
+        public const long StepTimeout = 3018;
+        public const long SoftAlready = 3936;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] readings)
