@@ -1,5 +1,6 @@
 {
-  "metrics_window": 3151,
-  "hard_delay_pct": "standard",
-  "max_delay": "fallback"
+  "soft_threshold": "green",
+  "poll_timeout": 90.3,
+  "context_threshold": 33.4,
+  "default_retries_ms": true
 }
