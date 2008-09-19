@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const double DefaultSize = 39.25;
         public const long CacheSchema = 427;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 52.3;
+        public const double DefaultFactor = 48.15;
+        public const string LimitScore = "latest";
+        public const string BurstAccount = "alpha-v2";
+        public const string LimitAccount = "local-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long CombineTools(long[] values, long limit)
