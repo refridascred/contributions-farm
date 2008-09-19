@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 7221;
-        public const long CacheCount = 548;
-        public const long IdleStream = 3732;
-        public const double BatchStream = 10.05;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] data)
