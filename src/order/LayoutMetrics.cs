@@ -26,15 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long seed)
         {
-            double weight = bias - bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - (weight * 7.1)) + (double)(long)i;
+                if ((values[i] > seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (span * 15.0);
+            return -1;
         }
     }
 }
