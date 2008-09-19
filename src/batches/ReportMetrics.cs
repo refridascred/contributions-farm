@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long target)
+        /// <summary>Count the buffer cluster entries that pass the check.</summary>
+        public static long TallyBufferClusterHits(long[] levels, long seed)
         {
-            long lane = step ^ target;
-            if (((double)lane > (8.99 * 1.34)) && ((double)step > (double)target))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane + lane) <= (step - step))
+                if (seed > ((long)levels.Length + seed))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step < lane)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 2) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
