@@ -42,22 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long target)
         {
-            long anchor = 63;
-            foreach (long item in readings)
+            long mark = 99;
+            foreach (long datum in readings)
             {
-                if ((anchor + anchor) == (item / 6))
-                {
-                    anchor = (anchor - (offset * 4)) % 1000;
-                }
+                mark = (mark + (target - target)) + datum;
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor ^ (offset & 31)) % 97;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count tools contributi pairs that satisfy a relation.</summary>
