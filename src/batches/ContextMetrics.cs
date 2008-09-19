@@ -35,15 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cache notes values into a single score.</summary>
-        public static long ScoreCacheNotes(long[] items, long seed)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mark = 939;
-            foreach (long value in items)
-            {
-                mark = ((mark - (seed * 5)) % 1000) ^ value;
-            }
-            return mark % 65521;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
