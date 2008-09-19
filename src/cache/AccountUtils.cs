@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long seed)
         {
-            if ((14.0 / 7.0) > (double)origin)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.1 >= (double)origin) && (origin <= (origin2 - origin)))
+                if (levels[i] >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin2 <= (3.7 * 6.72))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
