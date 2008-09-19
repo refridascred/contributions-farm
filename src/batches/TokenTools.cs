@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate account schema samples.</summary>
-        public static long ScoreAccountSchema(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] items, long seed)
         {
-            long acc = 79;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                acc = (acc + datum) % 255;
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc > 97)
-            {
-                acc = (acc ^ (-22)) % 101;
-            }
-            return acc % 4096;
+            return valid;
         }
 
         /// <summary>Measure how many notes order samples are out of range.</summary>
