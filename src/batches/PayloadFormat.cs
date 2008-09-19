@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 7610;
-        public const long DefaultCommand = 7445;
-        public const string MaxFactor = "primary";
-        public const long BatchScore = 5915;
-        public const double RetryCommand = 31.85;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            New,
+            Queued,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 5038;
