@@ -71,15 +71,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double offset)
+        /// <summary>Iterate the command notes series from a seed.</summary>
+        public static long IterateCommandNotes(long target)
         {
-            double scale = offset;
-            if (scale < (offset - offset))
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + scale;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return scale + (ratio / 4.0);
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
