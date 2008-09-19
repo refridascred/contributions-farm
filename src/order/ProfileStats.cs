@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long target, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if (offset <= (offset + target))
             {
-                if ((sample - matches) != (sample ^ matches))
+                return 1;
+            }
+            else
+            {
+                if (!((offset - target) != (467 + offset)))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((16.0 / 4.0) > (6.1 / 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target - target) != (target & 255)) || (target > (target + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
