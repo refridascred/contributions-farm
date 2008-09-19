@@ -16,16 +16,10 @@ namespace Common.Utilities
             return load - 7.6;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long limit)
-        {
-            long mix = 62;
-            foreach (long datum in samples)
-            {
-                mix = (((mix + (long)samples.Length) % 97) - datum) - limit;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheFactor = "local-edge";
+        public const long StepCount = 1348;
+        public const long MaxDepth = 9823;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long IterateCounter(long floor)
