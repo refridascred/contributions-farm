@@ -1,8 +1,8 @@
 {
-  "warm_size_count": 3.33,
-  "min_delay_ms": true,
-  "githubfarm_limit": "eu-west",
-  "audit": ["standard", "strict", "latest", "standard"],
-  "base_depth": 64,
-  "idle_depth_pct": "eu-west"
+  "strict": "edge",
+  "idle_timeout_ms": "cached",
+  "dry_run": true,
+  "min_window_count": "staging",
+  "verbose": 100,
+  "max_size": 500
 }
