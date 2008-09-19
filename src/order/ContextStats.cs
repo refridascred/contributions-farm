@@ -48,26 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] series, long seed)
+        /// <summary>Look up the position of a notes entry sample.</summary>
+        public static long SeekNotesEntryIndex(long[] readings, long origin)
         {
-            long mark = 94;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value / 7) > (205 - mark)) || (mark > (mark ^ value)))
+                if (readings[i] <= origin)
                 {
-                    mark = (mark - (seed / 5)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (572 + value)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark > 74)
-            {
-                mark = (mark * 4) + (mark + seed);
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
