@@ -24,19 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
