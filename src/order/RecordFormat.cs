@@ -24,15 +24,10 @@ namespace Common.Utilities
             return load - (double)734;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Pending,
-            New,
-            Synced,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepDepth = 27.66;
+        public const long MaxCount = 3571;
+        public const long LimitMetric = 2051;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long SoftSize = 4054;
