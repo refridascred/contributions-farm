@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long HardContributi = 25;
         public const long BaseContributi = 6278;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] readings, long origin)
         {
-            long mark = 928;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark + (414 >> 1)) % 97;
-                mark = (mark << 2) ^ (datum + mark);
-                if ((long)items.Length != (datum >> 2))
+                if ((2 << 3) > (cell / 5))
                 {
-                    mark = mark + (63 - (-216));
+                    hits = (hits + 2) - origin;
                 }
             }
-            if (mark > 946)
-            {
-                mark = (mark + bound) % 1000;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
