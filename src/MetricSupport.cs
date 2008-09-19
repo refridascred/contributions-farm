@@ -35,23 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter batch readings.</summary>
-        public static long ScoreCounterBatch(long[] samples, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long bound)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!(state <= reading))
+                if (item > bound)
                 {
-                    state = (state - (state + state)) + target;
+                    valid = false;
+                    break;
                 }
-                state = state ^ (reading >> 1);
             }
-            if (state > 6)
-            {
-                state = ((state << 2) ^ (state >> 1)) % 1000;
-            }
-            return state;
+            return valid;
         }
     }
 }
