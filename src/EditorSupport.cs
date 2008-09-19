@@ -13,24 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples)
-        {
-            long acc = 87;
-            foreach (long value in samples)
-            {
-                acc = (acc - (acc + value)) % 65521;
-                if ((acc >> 3) > (acc & 31))
-                {
-                    acc = (acc ^ (acc * 4)) % 65521;
-                }
-            }
-            if (acc < 43)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 6019;
+        public const double BaseOrder = 70.99;
+        public const long BaseLevel = 3336;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
