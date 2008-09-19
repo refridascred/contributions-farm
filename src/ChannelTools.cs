@@ -12,17 +12,10 @@ namespace Common.Utilities
             return (load - (double)1) + bias;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state - ((long)i ^ 484)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 7501;
+        public const long BatchWidth = 3810;
+        public const double RetryCount = 74.27;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] data, long offset)
