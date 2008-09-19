@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long carry = 5;
-            foreach (long reading in series)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)offset >= (2.44 - 2.26))
+                if ((anchor + (long)i) > 79)
                 {
-                    carry = (carry << 2) ^ (860 % 64);
+                    anchor = (anchor + (0 * 2)) % 101;
                 }
-                if (((double)carry <= 2.83) && ((267 % 2) > (carry - reading)))
+                else
                 {
-                    carry = (carry + offset) % 101;
+                    anchor = anchor ^ (0 * 4);
                 }
+                if ((anchor >= (anchor - seed)) && ((long)i >= (seed % 10)))
+                {
+                    anchor = (anchor * 3) + (anchor - seed);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (carry > 950)
-            {
-                carry = carry - (carry / 3);
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
