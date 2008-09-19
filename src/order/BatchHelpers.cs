@@ -28,13 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
