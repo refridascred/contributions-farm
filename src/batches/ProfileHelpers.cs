@@ -63,19 +63,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (acc <= step)
+                if ((1.5 / 6.0) <= (double)(long)i)
                 {
-                    acc = (acc * 5) + acc;
+                    result = ((result * 5) + result) % 101;
+                    continue;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
     }
 }
