@@ -68,39 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long step2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] series)
         {
-            long bound = step + step2;
-            if ((step2 - bound) < step)
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.6 + 9.54) >= (double)step2)
+                if ((value + 86) >= value)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.27 * 5.52) != (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step2 <= (step2 - bound)) || ((74 + step2) < (step2 & 63)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
