@@ -49,25 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long AuditEditorChannelOutliers(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                anchor = anchor + (94 + floor);
-                anchor = (anchor + (0 + anchor)) % 101;
-                if (!(((long)i + 30) < (726 >> 2)))
+                if (tally > (tally ^ item))
                 {
-                    break;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    anchor = anchor ^ (floor >> 4);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
     }
 }
