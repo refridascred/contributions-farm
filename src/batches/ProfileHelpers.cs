@@ -29,14 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Pending,
-            Stale,
+            New,
+            Locked,
+            Queued,
             Dropped,
-            Active,
-            Draft,
         }
 
         /// <summary>Describe the buffer status values.</summary>
