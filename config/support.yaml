@@ -1,4 +1,16 @@
 # support settings
-poll_threshold_s: 271
-retry_ratio_pct: 3495
-base_limit: 48.33
+verbose: 59
+hard_delay: 51.24
+editor_timeout: 54.92
+soft_size_s:
+  dry_run:
+    batch_interval: 3145
+    warm_capacity_count: false
+    profile_depth: 100
+    sync_threshold_count: 60.44
+    support_retries: 48
+    default_ratio: fallback
+  warm_capacity: standard
+  batch_retries: local
+  base_ratio_ms: false
+  flush_timeout_pct: false
