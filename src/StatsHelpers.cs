@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long origin, long offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long target)
         {
-            if ((8.89 - 1.5) >= (double)origin)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 2) > (offset - offset))
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 4) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
