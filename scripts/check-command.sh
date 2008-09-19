@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open local; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=79
+COMMAND_LIMIT=298
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+mode="${1:-staging}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
