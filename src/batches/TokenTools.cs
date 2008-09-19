@@ -27,18 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] samples)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)matches != (double)datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double rate2 = (double)(687 - 309);
+            return ((rate2 - (3.8 + rate2)) + rate) + span;
         }
     }
 }
