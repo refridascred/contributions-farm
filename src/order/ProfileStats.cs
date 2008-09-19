@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "standard";
-        public const long IdleFactor = 6619;
-        public const double IdleRatio = 75.22;
-        public const long HardEntry = 8779;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Draft,
+            Queued,
+            Synced,
+            Active,
+            Pending,
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] data, long step)
