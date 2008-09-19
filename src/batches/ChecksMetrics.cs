@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
