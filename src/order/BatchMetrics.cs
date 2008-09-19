@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long target, long target2)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            if (target < (target % 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target != (5.9 / 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
