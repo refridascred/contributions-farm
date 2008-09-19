@@ -47,17 +47,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (values[i] >= limit)
+                if ((value % 5) <= (value & 63))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer window readings.</summary>
