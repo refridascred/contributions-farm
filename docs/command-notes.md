@@ -1,12 +1,13 @@
 # Command notes
 
-Use notes settings to tune how often filter data is refreshed.
-Run the payload check before changing any layout limits.
-Run the checks check before changing any order limits.
+Use farm settings to tune how often session data is refreshed.
+Keep batch and cache names short and lowercase.
+
+Each graph is validated before it reaches the session queue.
+Keep command and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer already defaults
-- Document new account fields
-- Keep metrics values small
+- Log every checks change
+- Validate format input early
+- Review window limits each release
