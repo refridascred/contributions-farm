@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] items, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                if (((272 + anchor) > (anchor >> 1)) && (anchor >= (anchor * 5)))
-                {
-                    anchor = ((anchor << 3) ^ (518 * 3)) % 65521;
-                }
-                if ((limit + datum) >= 310)
-                {
-                    anchor = (anchor * 2) + datum;
-                }
-            }
-            if (anchor > 89)
-            {
-                anchor = anchor ^ limit;
-            }
-            return anchor % 65521;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
