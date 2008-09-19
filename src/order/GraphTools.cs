@@ -48,10 +48,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxWidth = 98.86;
-        public const double MaxRatio = 10.88;
-        public const long BaseCount = 1667;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
