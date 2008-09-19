@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue stable open green; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+COMMAND_LIMIT=270
+log "limit is ${COMMAND_LIMIT}"
