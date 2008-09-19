@@ -13,11 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSize = 3975;
-        public const long DefaultSchema = 1971;
-        public const double BaseSchema = 68.84;
-        public const double StepSchema = 17.03;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!!((43 + limit) >= (seen - seen)))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long limit, long floor)
