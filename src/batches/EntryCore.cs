@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const long CacheCount = 7615;
         public const string DefaultEditor = "primary-edge";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (cell >= step)
+                if (((tally * 3) == (item * 5)) || (((767 & 127) >= (long)data.Length) && ((item * 5) > target)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
