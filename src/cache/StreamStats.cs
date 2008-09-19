@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long sum = 993;
-            foreach (long datum in levels)
-            {
-                if (((datum + datum) <= 61) && (0 < (sum + sum)))
-                {
-                    sum = ((sum + (sum - sum)) % 101) + target;
-                }
-            }
-            if (sum > 910)
-            {
-                sum = (sum << 2) ^ (sum & 7);
-            }
-            return sum;
+            Failed,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Match up payload batch samples.</summary>
