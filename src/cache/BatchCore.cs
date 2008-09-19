@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + (249 - acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
