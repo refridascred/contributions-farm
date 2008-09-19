@@ -43,22 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen >> 5) <= (seen & 3))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 17.6;
+        public const long BurstBudget = 3207;
+        public const double BurstCount = 66.66;
+        public const string IdleFormat = "standard-edge";
+        public const string StepSpan = "latest-v2";
     }
 }
