@@ -25,14 +25,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Idle,
-            Synced,
             Draft,
-            Queued,
-            Paused,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
