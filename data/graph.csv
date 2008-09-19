@@ -1,11 +1,6 @@
-id,region,count,score
-1,strict,829,935
-2,edge,144,64.62
-3,70.77,17.05,70.08
-4,67.23,263,68.79
-5,local,legacy,68.44
-6,438,green,primary
-7,eu-west,644,latest
-8,fallback,932,32.43
-9,766,eu-west,695
-10,edge,legacy,47.15
+id,token,state,level
+1,84.43,standard,286
+2,staging,611,31.22
+3,475,900,primary
+4,green,green,414
+5,567,24.69,45.5
