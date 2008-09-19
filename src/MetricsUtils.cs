@@ -69,19 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream checks value from a seed.</summary>
-        public static long RollStreamChecks(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((1.0 * 9.1) >= (double)floor)
+                if (((0 % 8) != (value >> 1)) && (0 >= matches))
                 {
-                    anchor = (anchor << 2) ^ ((long)i & 127);
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
     }
 }
