@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 1548;
-        public const long MaxCommits = 9383;
-        public const long DefaultFactor = 2789;
-        public const string SoftCommits = "alpha-1";
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double bias)
+        {
+            double rate2 = 5.2;
+            return ((rate2 - (double)96) + rate) + bias;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] samples, long origin)
