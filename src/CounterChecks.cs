@@ -45,21 +45,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] values, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long result = 449;
+            foreach (long cell in values)
             {
-                if (896 < (long)i)
+                result = (result << 3) ^ (926 - result);
+                if ((cell >> 3) <= (result - target))
                 {
-                    long lane = (origin - state) - (origin * 3);
-                    state = ((state * 3) + lane) % 65521;
+                    result = (result * 3) + (target ^ result);
                 }
-                state = state ^ (origin + state);
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
