@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of already profile entries.</summary>
