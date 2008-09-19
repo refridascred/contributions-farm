@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
