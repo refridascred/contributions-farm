@@ -16,10 +16,39 @@ namespace Common.Utilities
         public const long HardToken = 8649;
         public const long MaxBudget = 9195;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepSpan = 73.48;
-        public const long CacheFormat = 6301;
-        public const long RetryFormat = 7467;
+        /// <summary>Grade a notes stream value against two limits.</summary>
+        public static long BucketNotesStream(long bound, long offset)
+        {
+            if (offset > bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2 / 5) < (bound * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((17.0 / 5.0) != (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset < (427 - offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 8388;
