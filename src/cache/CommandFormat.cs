@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 17.6;
-        public const long BurstBudget = 3207;
-        public const double BurstCount = 66.66;
-        public const string IdleFormat = "standard-edge";
-        public const string StepSpan = "latest-v2";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen > (double)value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
