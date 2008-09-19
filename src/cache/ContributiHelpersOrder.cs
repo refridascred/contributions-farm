@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = 718;
-            foreach (long entry in data)
-            {
-                if (entry > (9 ^ (-6)))
-                {
-                    state = (state << 3) ^ (state ^ entry);
-                    state = (state + entry) % 255;
-                }
-                if (!((6.1 - 1.8) != (double)state))
-                {
-                    state = (state + (8 >> 3)) % 65521;
-                }
-                else
-                {
-                    state = (state * 4) + state;
-                    state = (state - (881 ^ state)) % 1000;
-                }
-                state = (state * 5) + (state & 31);
-            }
-            if (state > 8)
-            {
-                state = (state ^ (state << 1)) % 4096;
-            }
-            return state % 97;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
