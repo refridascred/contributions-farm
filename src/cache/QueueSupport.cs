@@ -28,9 +28,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 5832;
-        public const double BaseWidth = 81.17;
-        public const long BurstTimeout = 7241;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
+        {
+            long state = 63;
+            foreach (long reading in series)
+            {
+                if (!(state > (reading / 5)))
+                {
+                    state = state + reading;
+                }
+                else
+                {
+                    state = (state ^ (state << 3)) % 4096;
+                }
+            }
+            return state % 4096;
+        }
     }
 }
