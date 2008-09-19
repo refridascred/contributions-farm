@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Scale a entry route figure with a bias.</summary>
+        public static double AdjustEntryRoute(double weight, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            double gain = bias;
+            if (gain <= weight)
+            {
+                gain = gain - (gain * 1.0);
+            }
+            return gain - (weight / 9.0);
         }
 
         /// <summary>Describe the notes phase values.</summary>
