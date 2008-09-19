@@ -1,10 +1,12 @@
 {
-  "contributi_window": {
-    "min_timeout_s": "local",
-    "already_threshold": ["cached", "open"],
-    "base_window_ms": ["edge", "standard", "strict", "stable"]
+  "persist": 84.43,
+  "schema_ttl": 47.73,
+  "notes_interval": ["latest", "staging", "primary", "staging"],
+  "poll_interval_ms": {
+    "verbose": "open",
+    "flush_size_ms": 16.35,
+    "enabled": 71.86
   },
-  "sync_size": "primary",
-  "base_depth_ms": [60, 9, 330, 435],
-  "idle_delay_ms": 46.04
+  "retry_threshold": "edge",
+  "base_delay_count": "green"
 }
