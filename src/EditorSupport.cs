@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Retry,
-            Failed,
-            Closed,
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
