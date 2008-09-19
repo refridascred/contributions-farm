@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstRatio = 52.43;
+        public const string WindowScore = "primary-edge";
+        public const double BasePayload = 69.51;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] items, long floor)
