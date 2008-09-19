@@ -48,10 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitTimeout = 8638;
-        public const string CacheScore = "open-1";
-        public const long HardLevel = 2864;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "primary-v2";
+        public const long BaseInterval = 8880;
+        public const double BatchSession = 56.06;
+        public const long MinCount = 8255;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double DefaultSchema = 27.06;
