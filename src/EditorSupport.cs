@@ -95,17 +95,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
