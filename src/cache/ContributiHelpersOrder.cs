@@ -12,17 +12,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
