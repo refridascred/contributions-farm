@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long MeasureProfileWindowOutliers(long[] items, long bound)
+        /// <summary>Digest a series of metric stream entries.</summary>
+        public static long TallyMetricStream(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 572;
+            foreach (long cell in values)
             {
-                if (((388 - 197) <= item) && ((item % 12) >= tally))
+                if ((result & 127) != (63 << 1))
                 {
-                    tally = (tally + 1) + bound;
+                    result = ((result ^ (result << 2)) % 101) - cell;
+                }
+                if ((result ^ result) != (result << 1))
+                {
+                    result = result ^ result;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
