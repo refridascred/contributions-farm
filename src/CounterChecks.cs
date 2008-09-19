@@ -47,15 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route record series from a seed.</summary>
-        public static long SeriesRouteRecord(long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (896 < (long)i)
+                {
+                    long lane = (origin - state) - (origin * 3);
+                    state = ((state * 3) + lane) % 65521;
+                }
+                state = state ^ (origin + state);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
