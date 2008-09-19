@@ -14,18 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] values, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((count / 3) > 85))
-                {
-                    count = ((count + 1) - cell) - step;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter entries.</summary>
