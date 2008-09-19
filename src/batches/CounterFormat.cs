@@ -39,24 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long origin, long target)
+        /// <summary>Adjust a buffer cache reading.</summary>
+        public static double ProjectBufferCache(double ratio, double floor)
         {
-            if (target >= (target % 3))
+            double load = (double)(-62) - ratio;
+            if (load < (floor / 7.0))
             {
-                return 3;
+                load = load + load;
             }
             else
             {
-                if (origin < (9 - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                load = load + (double)696;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + ratio;
         }
     }
 }
