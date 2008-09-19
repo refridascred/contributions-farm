@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] items, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Draft,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a command header.</summary>
