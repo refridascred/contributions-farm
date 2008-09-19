@@ -1,12 +1,5 @@
 {
-  "persist": 84.43,
-  "schema_ttl": 47.73,
-  "notes_interval": ["latest", "staging", "primary", "staging"],
-  "poll_interval_ms": {
-    "verbose": "open",
-    "flush_size_ms": 16.35,
-    "enabled": 71.86
-  },
-  "retry_threshold": "edge",
-  "base_delay_count": "green"
+  "order_size": "legacy",
+  "max_size_pct": "legacy",
+  "readonly": 93.62
 }
