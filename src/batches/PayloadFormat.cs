@@ -52,19 +52,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchLevel = 45.33;
+        public const long StepMetrics = 6527;
+        public const long MinTimeout = 2349;
     }
 }
