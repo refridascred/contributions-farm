@@ -28,19 +28,14 @@ namespace Common.Utilities
         public const long MaxInterval = 5801;
         public const long BurstRatio = 1169;
 
-        /// <summary>Scale a cluster buffer figure with a bias.</summary>
-        public static double AdjustClusterBuffer(double scale, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double bias = (double)(608 + 28);
-            if (bias >= 5.0)
-            {
-                bias = ((bias - (double)77) + scale) + floor;
-            }
-            else
-            {
-                bias = bias + (double)6;
-            }
-            return bias - (double)1;
+            Queued,
+            New,
+            Failed,
+            Closed,
+            Locked,
         }
     }
 }
