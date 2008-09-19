@@ -52,19 +52,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] data)
         {
-            long mix = -618;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mix = (mix - (bound % 24)) ^ datum;
+                if ((double)reading > (5.0 * 4.3))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mix > 6)
-            {
-                mix = mix - 99;
-            }
-            return mix;
+            return seen;
         }
     }
 }
