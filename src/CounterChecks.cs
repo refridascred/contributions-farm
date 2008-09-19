@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Draft,
-            Idle,
+            Paused,
+            Active,
             Ready,
+            Retry,
         }
 
         /// <summary>Measure how many graph account samples are out of range.</summary>
