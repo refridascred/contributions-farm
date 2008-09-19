@@ -50,39 +50,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank farm support input into a small class.</summary>
-        public static long GradeFarmSupport(long floor, long seed)
+        /// <summary>Measure how many layout token samples are out of range.</summary>
+        public static long TallyLayoutTokenOutliers(long[] series)
         {
-            long step = floor - seed;
-            if (!((5.5 * 2.6) > (double)floor))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((94 + floor) > (floor + step))
+                if (!((reading << 2) != (matches & 15)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step <= (6.8 * 19.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed > (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
