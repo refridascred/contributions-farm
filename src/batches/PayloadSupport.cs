@@ -16,19 +16,19 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double weight, double bias)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] samples, long origin)
         {
-            double bias2 = 8.53 / 5.0;
-            if (bias2 < (double)7)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                bias2 = (bias2 + bias) + weight;
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias * 11.0);
-            }
-            return bias2 - (7.4 + bias2);
+            return ready;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
