@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const long BatchSession = 6709;
         public const string MinWidth = "alpha";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long floor, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            if ((floor - origin) >= floor)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (0 > (floor - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor < 0.15)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Count report buffer pairs that satisfy a relation.</summary>
