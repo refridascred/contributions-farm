@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
