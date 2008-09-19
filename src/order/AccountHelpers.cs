@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
