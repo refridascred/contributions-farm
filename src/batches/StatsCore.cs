@@ -77,11 +77,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            New,
+            Dropped,
+            Stale,
+            Failed,
+            Idle,
         }
     }
 }
