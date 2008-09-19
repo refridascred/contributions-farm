@@ -1,11 +1,10 @@
 {
-  "max_ratio_count": true,
-  "max_capacity_count": "stable",
-  "audit": true,
-  "idle_timeout": {
-    "batches_interval": true,
-    "cache_limit": false,
-    "persist": 20.01
+  "contributi_window": {
+    "min_timeout_s": "local",
+    "already_threshold": ["cached", "open"],
+    "base_window_ms": ["edge", "standard", "strict", "stable"]
   },
-  "poll_ttl": [214, 218, 34, 246]
+  "sync_size": "primary",
+  "base_depth_ms": [60, 9, 330, 435],
+  "idle_delay_ms": 46.04
 }
