@@ -1,19 +1,7 @@
 {
-  "retry_ratio_count": "local",
-  "channel_timeout": {
-    "compress": 60,
-    "batch_limit_s": true,
-    "batch_ratio_pct": {
-      "enabled": 30,
-      "readonly": 15,
-      "retry_delay_pct": "edge",
-      "strict": true,
-      "dry_run": [113, 350, 116]
-    },
-    "strict": [471, 163],
-    "counter_timeout": 250,
-    "cache_interval_s": "eu-west"
-  },
-  "base_ratio": "standard",
-  "entry_delay": ["blue", "primary"]
+  "dry_run": [75, 94, 368],
+  "sync_window_count": 1445,
+  "enabled": 37.75,
+  "profile_depth": 250,
+  "sync_window": ["standard", "fallback"]
 }
