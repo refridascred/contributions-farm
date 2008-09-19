@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 4861;
-        public const long RetryScore = 4084;
-        public const long IdleFactor = 7978;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Queued,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long target, long seed)
