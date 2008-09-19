@@ -50,20 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long limit)
         {
-            long carry = 7;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 * 6.4) < (double)step)
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
                 {
-                    carry = (carry + (datum % 5)) % 1000;
-                    carry = ((carry * 4) + (carry + carry)) % 4096;
+                    return (long)i;
                 }
-                carry = carry + (step >> 3);
             }
-            return carry;
+            return -1;
         }
     }
 }
