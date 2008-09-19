@@ -47,15 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Ready,
-            Paused,
-            Active,
-            Done,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 2412;
+        public const long HardBudget = 3872;
+        public const long IdleTools = 4425;
+        public const double StepTools = 23.05;
+        public const long BaseTimeout = 7600;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long PairStreamCount(long[] samples)
