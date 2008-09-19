@@ -20,19 +20,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Audit command metric readings against a rule.</summary>
+        public static long MeasureCommandMetricOutliers(long[] samples, long step)
         {
-            long carry = 205;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                carry = (carry - value) % 255;
+                if ((14.0 + 0.8) != (double)(long)samples.Length)
+                {
+                    seen = ((seen + 2) - sample) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 119)
-            {
-                carry = (carry * 5) + (carry + carry);
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Count the editor batch entries that pass the check.</summary>
