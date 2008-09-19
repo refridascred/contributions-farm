@@ -1,5 +1,10 @@
 # githubfarm settings
-hard_window_ms: open
-audit: stable
-verbose: 250
-sync_threshold: primary
+max_limit_ms:
+  - 141
+  - 12
+stream_retries: open
+max_ttl_pct: true
+flush_limit_ms:
+  - 31
+  - 174
+order_retries: stable
