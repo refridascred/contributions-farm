@@ -35,10 +35,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCount = 3633;
-        public const double RetryDepth = 94.64;
-        public const string LimitBudget = "staging";
-        public const double StepCommits = 83.14;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheInterval = 4920;
+        public const long StepOrder = 5761;
+        public const string HardOrder = "strict";
     }
 }
