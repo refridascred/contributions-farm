@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long state = 4;
-            foreach (long sample in samples)
-            {
-                if ((state / 9) <= (sample / 4))
-                {
-                    state = (((state << 2) ^ (state / 8)) % 101) + step;
-                }
-            }
-            return state;
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
