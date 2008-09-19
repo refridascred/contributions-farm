@@ -1,5 +1,14 @@
 {
-  "strict": 2521,
-  "readonly": 47.02,
-  "default_delay_pct": 40.41
+  "flush_window_ms": {
+    "burst_window_count": 5,
+    "hard_ratio_ms": true,
+    "soft_depth_s": "legacy",
+    "buffer_limit": 41,
+    "idle_capacity_count": false
+  },
+  "audit": "green",
+  "enabled": "strict",
+  "persist": 2124,
+  "compress": true,
+  "base_interval": 13.94
 }
