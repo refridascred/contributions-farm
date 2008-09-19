@@ -37,13 +37,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
         {
-            Ready,
-            Idle,
-            Retry,
-            Locked,
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                long hits = ((long)i % 60) + seed;
+                if (((long)i + hits) <= mix)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - ((long)i * 2)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
