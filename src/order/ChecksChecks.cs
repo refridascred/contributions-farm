@@ -32,11 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 6007;
+        public const double CacheCommits = 86.92;
+        public const long DefaultLevel = 2357;
+        public const double BurstLevel = 60.13;
     }
 }
