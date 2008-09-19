@@ -33,11 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleSpan = 5299;
-        public const long BurstStats = 9486;
-        public const long CacheStats = 8022;
-        public const string StepScore = "alpha-1";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
