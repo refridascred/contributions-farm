@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const long RetryScore = 4084;
         public const long IdleFactor = 7978;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long seed)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long cur = target - seed;
+            if ((seed - seed) > (7 + cur))
             {
-                if (item >= floor)
+                return 6;
+            }
+            else
+            {
+                if ((target * 2) >= cur)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((cur << 1) < (target & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (cur < (target / 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
