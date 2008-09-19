@@ -1,8 +1,7 @@
 {
-  "strict": "edge",
-  "idle_timeout_ms": "cached",
-  "dry_run": true,
-  "min_window_count": "staging",
-  "verbose": 100,
-  "max_size": 500
+  "max_size": "stable",
+  "cache_ttl_count": 250,
+  "counter_ttl": 4,
+  "verbose": 8591,
+  "cache_threshold_ms": "latest"
 }
