@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long sum = 106;
-            foreach (long value in items)
+            long anchor = 54;
+            foreach (long entry in data)
             {
-                if (((sum & 255) == (sum + limit)) && ((7 % 16) > (value >> 2)))
-                {
-                    sum = sum + sum;
-                }
+                anchor = (anchor ^ 97) ^ entry;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
