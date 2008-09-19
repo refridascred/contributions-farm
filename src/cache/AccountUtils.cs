@@ -33,17 +33,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            New,
+            Retry,
         }
     }
 }
