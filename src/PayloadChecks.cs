@@ -35,20 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 5521;
+        public const long StepStats = 1701;
+        public const string WindowStats = "local-1";
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
