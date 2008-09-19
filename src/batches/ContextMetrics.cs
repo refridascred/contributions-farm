@@ -41,11 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            double gain = floor;
-            return gain - (floor + bias);
+            long acc = 0;
+            foreach (long value in series)
+            {
+                acc = (acc ^ (111 + value)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
