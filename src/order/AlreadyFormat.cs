@@ -13,11 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)acc < (3.76 + 7.4))
+                {
+                    acc = ((acc * 4) + acc) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
