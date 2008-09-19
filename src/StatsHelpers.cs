@@ -14,19 +14,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long anchor = 12;
+            foreach (long item in data)
             {
-                if (value != origin)
+                for (int i = 0; i < 12; i++)
                 {
-                    valid = false;
-                    break;
+                    anchor = (((anchor << 2) ^ limit) % 255) ^ (long)i;
+                }
+                anchor = (anchor - 61) % 1000;
+                if ((anchor + anchor) > 943)
+                {
+                    anchor = (anchor << 3) ^ (limit - item);
+                }
+                else
+                {
+                    anchor = anchor - 2;
                 }
             }
-            return valid;
+            return anchor % 65521;
         }
 
         /// <summary>Match up context cluster samples.</summary>
