@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long IdleStream = 3732;
         public const double BatchStream = 10.05;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            long total = -733;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 4) + (total - 72)) + value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total > 0)
-            {
-                total = total - total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate checks channel readings against a bound.</summary>
