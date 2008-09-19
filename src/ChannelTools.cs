@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            if (!((double)limit >= 8.0))
+            double bias = span;
+            if (bias >= (bias - bias))
             {
-                return 3;
+                bias = (bias + 9.0) - weight;
             }
-            else
-            {
-                if ((limit ^ target) < limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias + (double)546;
         }
 
         /// <summary>Define token limits and defaults.</summary>
