@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long TotalSupportCommand(long[] data)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long total = 33;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total - sample) <= total)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total + sample;
-                }
-                if (3.2 >= (double)total)
-                {
-                    total = ((total * 2) + (sample << 2)) % 4096;
-                }
-                else
-                {
-                    total = (total << 2) ^ (sample / 9);
-                }
-                if (((sample - 670) > (total % 3)) && (total <= (sample - total)))
-                {
-                    total = (total - (total - sample)) % 97;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 850)
-            {
-                total = (total + (total + total)) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
