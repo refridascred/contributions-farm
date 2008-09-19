@@ -35,20 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long anchor = 607;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor - anchor) % 1000) ^ (long)i;
-                }
-                anchor = anchor - 45;
-                anchor = anchor ^ (value + anchor);
-            }
-            return anchor;
+            New,
+            Idle,
+            Pending,
         }
     }
 }
