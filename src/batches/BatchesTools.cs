@@ -16,15 +16,10 @@ namespace Common.Utilities
         public const double HardDepth = 36.3;
         public const long SoftSize = 2273;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 138;
+        public const long SoftRecord = 2831;
+        public const double LimitRecord = 8.16;
+        public const long BaseRecord = 7184;
     }
 }
