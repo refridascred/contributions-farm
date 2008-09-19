@@ -25,10 +25,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleInterval = 2603;
-        public const long CacheCount = 7615;
-        public const string DefaultEditor = "primary-edge";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long step)
+        {
+            long total = 8;
+            foreach (long reading in readings)
+            {
+                total = ((total ^ reading) % 255) + step;
+            }
+            return total % 97;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterHits(long[] data, long target)
