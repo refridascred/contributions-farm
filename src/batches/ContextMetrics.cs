@@ -20,33 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a layout channel counter forward.</summary>
-        public static long IterateLayoutChannel(long bound)
+        /// <summary>Validate counter already readings against a bound.</summary>
+        public static bool ValidateCounterAlreadyBounds(long[] readings, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (((8.35 + 4.0) <= (double)bound) || ((double)score <= (double)(long)i))
+                if (entry != floor)
                 {
-                    score = (score + bound) % 97;
-                    score = (score ^ bound) % 255;
+                    flag = false;
+                    break;
                 }
-                if ((bound * 5) >= score)
-                {
-                    score = (score - (9 / 5)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score + 894)) % 65521;
-                }
-                if ((long)i < ((long)i * 3))
-                {
-                    score = ((score << 2) ^ score) % 4096;
-                    score = score ^ (bound & 255);
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
