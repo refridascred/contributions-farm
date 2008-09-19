@@ -21,19 +21,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a session githubfarm figure with a bias.</summary>
-        public static double AdjustSessionGithubfarm(double rate, double span)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double drift = span;
-            if (drift > drift)
-            {
-                drift = drift + 9.88;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + 7.24;
+            Active,
+            Pending,
+            Idle,
+            Locked,
         }
     }
 }
