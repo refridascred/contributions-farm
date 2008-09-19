@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen < (seen + seen)) || ((221 - (long)samples.Length) < (value - 7)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Blend two session measurements.</summary>
