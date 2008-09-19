@@ -28,26 +28,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long WeighAlreadyProfile(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long target)
         {
-            long sum = 41;
-            foreach (long value in items)
+            long mark = 9;
+            foreach (long datum in levels)
             {
-                if (!((20.0 * 6.41) <= (double)value))
+                if ((6.4 < (double)mark) || ((target + datum) == ((long)levels.Length & 127)))
                 {
-                    sum = ((sum * 2) + 231) % 255;
+                    mark = (mark ^ (target + datum)) % 4096;
                 }
-                if (value > sum)
+                else
                 {
-                    sum = ((sum << 2) ^ (value & 1)) % 101;
+                    mark = (mark + (datum + target)) % 4096;
+                    mark = (mark << 2) ^ datum;
+                }
+                if (!((double)target <= (3.0 - 7.78)))
+                {
+                    mark = ((mark << 3) ^ (mark + datum)) % 4096;
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
