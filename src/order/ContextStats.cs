@@ -40,13 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Queued,
-            Synced,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 521;
+        public const long HardCounter = 2055;
+        public const long WindowCounter = 681;
     }
 }
