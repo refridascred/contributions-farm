@@ -41,11 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSpan = 9236;
-        public const long LimitSize = 8169;
-        public const long HardSize = 7583;
-        public const long HardScore = 5716;
-        public const long DefaultCounter = 8325;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
+        {
+            long score = 25;
+            foreach (long entry in series)
+            {
+                score = (score + entry) % 101;
+            }
+            return score % 4096;
+        }
     }
 }
