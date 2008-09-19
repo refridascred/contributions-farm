@@ -1,6 +1,5 @@
 # entry settings
-flush_capacity_count: cached
-min_depth: eu-west
-cache_retries: staging
-route_depth: 37.07
-readonly: legacy
+default_depth: 62
+window_ttl: 2804
+batches_depth: 74.33
+min_ttl_s: 60
