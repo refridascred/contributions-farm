@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate buffer token readings against a bound.</summary>
-        public static bool GuardBufferTokenLimits(long[] readings, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long seed)
         {
             bool flag = true;
-            foreach (long sample in readings)
+            foreach (long datum in levels)
             {
-                if (sample > offset)
+                if (datum > seed)
                 {
                     flag = false;
                     break;
