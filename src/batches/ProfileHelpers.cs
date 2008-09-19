@@ -62,14 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings)
         {
-            Done,
-            Idle,
-            Dropped,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((2.25 + 1.3) > (double)hits)
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metric channel samples are out of range.</summary>
