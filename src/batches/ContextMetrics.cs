@@ -20,19 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate counter already readings against a bound.</summary>
-        public static bool ValidateCounterAlreadyBounds(long[] readings, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long diff = bound + origin;
+            if (4.64 <= (double)bound)
             {
-                if (entry != floor)
+                return 8;
+            }
+            else
+            {
+                if ((double)diff < (2.5 - 0.83))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next contributi value.</summary>
