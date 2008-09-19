@@ -59,18 +59,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits + 8) == (hits ^ 4))
-                {
-                    hits = ((hits + 2) + datum) + step;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
