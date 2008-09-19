@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((1.0 / 6.0) >= (double)entry) || (((entry * 3) < (entry - seen)) || ((861 + entry) != (entry + seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of already profile entries.</summary>
