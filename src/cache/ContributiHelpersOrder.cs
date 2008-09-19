@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 7279;
-        public const long BatchFactor = 9594;
-        public const long RetryTimeout = 477;
-        public const long BatchCluster = 2040;
-        public const long CacheSize = 7849;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Locked,
+            Active,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] items)
