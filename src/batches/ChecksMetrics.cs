@@ -64,15 +64,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] readings, long limit)
         {
-            double load = 6.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                load = ((load + (5.7 - bias)) + (double)(long)i) - scale;
+                if ((entry + entry) <= (3 % 100))
+                {
+                    tally = (tally + 2) + limit;
+                }
             }
-            return load - (load + bias);
+            return tally;
         }
     }
 }
