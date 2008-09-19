@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            New,
-            Failed,
-            Ready,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardBudget = 80.84;
+        public const long LimitMetric = 7322;
+        public const double MinSize = 37.77;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long seed)
