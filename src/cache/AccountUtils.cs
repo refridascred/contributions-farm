@@ -33,12 +33,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] >= step)
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
