@@ -1,8 +1,6 @@
 {
-  "compress": "green",
-  "command_timeout": "open",
-  "min_window_ms": 31,
-  "cache_limit": "strict",
-  "enabled": 2.28,
-  "max_depth_count": "cached"
+  "filter_timeout": "stable",
+  "strict": 5643,
+  "poll_capacity_count": 32.12,
+  "idle_limit_pct": ["green", "blue", "open", "open"]
 }
