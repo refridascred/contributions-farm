@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (weight - weight) + gain;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] levels, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (item != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
