@@ -39,16 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Digest a series of batch context entries.</summary>
+        public static long TallyBatchContext(long[] items, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long acc = 4;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + (anchor % 2)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                acc = (((acc << 2) ^ (acc & 127)) % 255) - seed;
+                if (!((reading % 97) >= (reading / 9)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return acc % 97;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
