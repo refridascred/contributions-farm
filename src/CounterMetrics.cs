@@ -5,22 +5,35 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Accumulate payload context samples.</summary>
+        public static long DigestPayloadContext(long[] levels, long limit)
         {
-            long mix = 40;
-            foreach (long value in items)
+            long mark = 261;
+            foreach (long cell in levels)
             {
-                if (value < (3 & 15))
+                if (mark >= (mark / 4))
                 {
-                    mix = (mix + (mix + mix)) % 97;
+                    mark = (mark * 3) + (cell << 1);
+                    mark = (mark + (limit - cell)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ (limit + 241)) % 4096;
+                }
+                if (!((cell / 6) > 43))
+                {
+                    mark = mark ^ (mark + cell);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (cell % 8);
+                }
+                if (((mark - limit) <= (limit - mark)) && ((double)limit < 7.0))
+                {
+                    break;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix - (mix << 2)) % 65521;
-            }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
