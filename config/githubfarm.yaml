@@ -1,10 +1,5 @@
 # githubfarm settings
-max_limit_ms:
-  - 141
-  - 12
-stream_retries: open
-max_ttl_pct: true
-flush_limit_ms:
-  - 31
-  - 174
-order_retries: stable
+batch_delay_s: 14.6
+min_limit_s: green
+persist: 42
+warm_timeout: fallback
