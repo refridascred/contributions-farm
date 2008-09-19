@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long TallyBatchAccountOutliers(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mix = 982;
+            foreach (long datum in readings)
             {
-                if ((double)reading >= (double)13)
+                mix = (((mix * 4) + (mix + mix)) % 65521) + datum;
+                if (mix > (mix - mix))
                 {
-                    matches = matches + 3;
+                    break;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Describe the contributi level values.</summary>
