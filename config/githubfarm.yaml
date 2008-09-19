@@ -1,10 +1,14 @@
 # githubfarm settings
-max_capacity_ms: fallback
-sync_ttl:
-  - legacy
-  - eu-west
-  - legacy
+sync_ratio_s:
+  - 254
+  - 119
+  - 112
+  - 38
+poll_limit_s: 56.83
+retry_timeout_pct:
+  - primary
+  - blue
   - latest
-contributi_window: green
-max_window_count: 1024
-profile_retries: false
+  - strict
+idle_limit: eu-west
+soft_threshold_pct: green
