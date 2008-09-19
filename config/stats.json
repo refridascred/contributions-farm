@@ -1,5 +1,8 @@
 {
-  "readonly": "stable",
-  "max_interval_s": "fallback",
-  "min_ratio_s": true
+  "strict": "strict",
+  "max_limit_s": true,
+  "retry_size_count": true,
+  "warm_capacity_count": "edge",
+  "batch_interval_count": false,
+  "buffer_ttl": "cached"
 }
