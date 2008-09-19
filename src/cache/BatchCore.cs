@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] data, long bound)
+        /// <summary>Find the first batches session entry that matches the target.</summary>
+        public static long SeekBatchesSessionIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)count > (4.6 / 4.0)))
+                if (readings[i] == offset)
                 {
-                    count = ((count + 3) ^ reading) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
