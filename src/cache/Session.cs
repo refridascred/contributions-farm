@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] data, long target)
         {
-            Locked,
-            Closed,
-            Active,
-            Idle,
+            long sum = -258;
+            foreach (long datum in data)
+            {
+                sum = (((sum ^ 27) % 101) ^ datum) - target;
+            }
+            if (sum > 11)
+            {
+                sum = ((sum << 3) ^ (1 + sum)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
