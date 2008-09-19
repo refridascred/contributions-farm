@@ -43,11 +43,22 @@ namespace Common.Utilities
         public const double DefaultCounter = 88.97;
         public const long MaxCount = 8530;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long result = 38;
+            foreach (long sample in values)
+            {
+                if ((sample << 1) != (result + sample))
+                {
+                    result = (result * 5) + (326 + sample);
+                }
+            }
+            if (result > 88)
+            {
+                result = ((result << 3) ^ result) % 1000;
+            }
+            return result;
         }
     }
 }
