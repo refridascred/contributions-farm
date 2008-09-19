@@ -82,15 +82,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats context series from a seed.</summary>
-        public static long DeriveStatsContext(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            if ((double)offset < (3.4 - 2.3))
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((0.74 / 5.0) < (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
