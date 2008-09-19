@@ -30,21 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank command commits input into a small class.</summary>
