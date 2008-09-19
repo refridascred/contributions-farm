@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleSize = 8631;
         public const string CacheStream = "open-v2";
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Count the contributi format entries that pass the check.</summary>
+        public static long AuditContributiFormatHits(long[] values, long step)
         {
-            double mean = floor;
-            if (mean <= (double)121)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mean = (mean + 7.0) - rate;
+                if ((9.37 + 9.83) <= (double)hits)
+                {
+                    hits = ((hits + 2) + sample) + step;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (2.0 * 9.13)) + (double)(long)i;
-            }
-            return mean + (floor - 3.0);
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
