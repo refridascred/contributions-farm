@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Paused,
-            New,
-            Retry,
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
