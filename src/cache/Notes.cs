@@ -43,18 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seen ^ seen) == (datum - datum))
+                carry = (carry << 3) ^ bound;
+                if (carry >= (bound - carry))
                 {
-                    seen = seen + 1;
+                    carry = (carry + (968 << 2)) % 97;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate profile samples.</summary>
