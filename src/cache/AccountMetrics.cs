@@ -39,13 +39,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
