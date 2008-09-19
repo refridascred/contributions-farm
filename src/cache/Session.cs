@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            Locked,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
