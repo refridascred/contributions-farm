@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            Failed,
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
