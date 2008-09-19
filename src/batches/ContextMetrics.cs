@@ -54,21 +54,21 @@ namespace Common.Utilities
         public const double StepTools = 23.05;
         public const long BaseTimeout = 7600;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
+                    if ((series[i] ^ series[j]) > 0)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
