@@ -12,25 +12,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a channel batches pair into a bucket.</summary>
-        public static long SortChannelBatches(long target, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long prev = target ^ seed;
-            if ((prev >> 2) <= (seed - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (prev < (seed - prev))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
