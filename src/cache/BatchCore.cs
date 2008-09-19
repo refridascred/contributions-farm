@@ -51,10 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinRatio = 2158;
-        public const long SoftTimeout = 928;
-        public const string RetryQueue = "latest";
-        public const long RetryFactor = 8717;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((sample * 3) >= ((-2) ^ seen)) && (((limit & 127) != (limit & 1)) || (limit > sample)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
