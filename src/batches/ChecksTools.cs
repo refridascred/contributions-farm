@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            double load = bias;
+            if (load <= (19.0 / 5.0))
             {
-                result = result - step;
-                result = (result ^ (long)i) % 4096;
-                result = ((result * 5) + (long)i) % 101;
+                load = (load - (bias * 2.7)) + rate;
             }
-            return result;
+            return load - 7.6;
         }
 
         /// <summary>Match up context samples.</summary>
