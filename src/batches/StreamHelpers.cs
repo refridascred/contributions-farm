@@ -53,11 +53,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 22.39;
-        public const long SoftWidth = 4655;
-        public const long WindowSize = 8031;
-        public const long RetryPayload = 2458;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every cache window entry stays within the limit.</summary>
         public static bool CheckCacheWindowLimits(long[] data, long step)
