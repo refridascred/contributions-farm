@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 4)
+                    if ((values[i] - values[j]) != 5)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
