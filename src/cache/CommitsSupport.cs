@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchCount = 8887;
-        public const long HardSize = 8141;
-        public const long DefaultPayload = 1030;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 70.29;
+        public const string MinRatio = "open";
+        public const long HardRecord = 8047;
+        public const double MinRecord = 64.78;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinBatch = 3175;
