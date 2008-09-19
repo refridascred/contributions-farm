@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double bias = weight;
-            if (bias < 3.0)
-            {
-                bias = bias + (0.38 * 2.1);
-            }
-            else
-            {
-                bias = bias - (double)(-98);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + weight) - (double)(long)i;
-            }
-            return bias + offset;
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
