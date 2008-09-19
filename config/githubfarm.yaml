@@ -1,4 +1,6 @@
 # githubfarm settings
-order_ratio: fallback
-token_capacity: legacy
-payload_depth: latest
+batch_capacity: strict
+cache_limit: 92.93
+batches_ratio: 100
+min_interval_count: cached
+burst_window_s: blue
