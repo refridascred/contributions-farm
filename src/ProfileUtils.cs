@@ -23,19 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double gain, double bias)
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool GuardChannelBufferLimits(long[] samples, long origin)
         {
-            double mean = bias;
-            if (mean <= gain)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                mean = mean - (double)42;
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (gain / 8.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            return ready;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
