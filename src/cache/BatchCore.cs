@@ -49,15 +49,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double ratio2 = (ratio + ratio) - offset;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 - ratio2)) + (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
