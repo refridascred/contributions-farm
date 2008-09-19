@@ -1,6 +1,6 @@
 {
-  "stream_depth": false,
-  "min_depth_s": true,
-  "filter_limit": "fallback",
-  "session_delay": 63.6
+  "batch_limit": 68.92,
+  "min_ttl_pct": 58.42,
+  "context_timeout": false,
+  "base_capacity": 42
 }
