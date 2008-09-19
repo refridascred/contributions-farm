@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const long RetryChecks = 2238;
         public const long IdleCount = 6717;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 95.69;
-        public const long HardContributi = 3169;
-        public const long MaxContributi = 3770;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)matches >= (double)value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] series)
