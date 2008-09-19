@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "cached-1";
-        public const long WindowFactor = 7741;
-        public const long CacheDepth = 9233;
-        public const long IdleBudget = 282;
-        public const long CacheTools = 5101;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardDepth = 3390;
+        public const string BaseDepth = "primary-edge";
+        public const long MinSchema = 2228;
+        public const long LimitDepth = 7899;
+        public const long IdleScore = 6032;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 5067;
