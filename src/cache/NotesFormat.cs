@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] data, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long reading in series)
             {
-                if (data[i] < step)
+                if ((double)offset >= (2.44 - 2.26))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (860 % 64);
+                }
+                if (((double)carry <= 2.83) && ((267 % 2) > (carry - reading)))
+                {
+                    carry = (carry + offset) % 101;
                 }
             }
-            return -1;
+            if (carry > 950)
+            {
+                carry = carry - (carry / 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
