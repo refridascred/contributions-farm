@@ -27,23 +27,22 @@ namespace Common.Utilities
         public const long StepTimeout = 3018;
         public const long SoftAlready = 3936;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long target)
         {
-            long carry = 281;
-            foreach (long value in readings)
+            long state = -1;
+            foreach (long reading in samples)
             {
-                carry = (carry - (carry % 100)) % 97;
-                if ((value / 6) < (carry % 3))
+                if ((state ^ 871) <= target)
                 {
-                    carry = carry - value;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (value + value)) % 1000;
+                    state = (state * 4) + (reading % 64);
                 }
             }
-            return carry;
+            if (state < 1)
+            {
+                state = (state ^ 5) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
