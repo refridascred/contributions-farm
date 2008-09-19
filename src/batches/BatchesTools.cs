@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const long MaxRecord = 6786;
         public const double RetryFactor = 48.06;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen - 408) <= 228)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Synced,
+            Closed,
+            Pending,
         }
     }
 }
