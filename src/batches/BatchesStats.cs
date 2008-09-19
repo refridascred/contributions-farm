@@ -77,16 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double offset)
         {
-            long mark = 85;
-            foreach (long datum in readings)
+            double drift = (9.81 / 6.0) + 10.0;
+            if (drift > drift)
             {
-                mark = ((mark + (mark >> 3)) % 101) + datum;
-                mark = mark + 66;
+                drift = (drift - offset) + gain;
             }
-            return mark % 65521;
+            return drift - (double)7;
         }
     }
 }
