@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels, long seed)
+        /// <summary>Blend two githubfarm window measurements.</summary>
+        public static double ProjectGithubfarmWindow(double gain, double bias)
         {
-            long total = -308;
-            foreach (long value in levels)
+            double scale = (double)(97 ^ 32);
+            if (scale > (4.5 + bias))
             {
-                if (((seed + total) != (total ^ seed)) || ((4 >> 2) > value))
-                {
-                    total = ((total << 2) ^ total) % 65521;
-                }
-                else
-                {
-                    total = (total - (value + total)) % 1000;
-                    total = total + total;
-                }
-                total = total ^ (value >> 4);
-                total = ((total << 2) ^ ((long)levels.Length / 7)) % 101;
-                if (!(value > (value >> 3)))
-                {
-                    break;
-                }
+                scale = (scale + scale) - gain;
             }
-            return total % 4096;
+            return scale + 2.0;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
