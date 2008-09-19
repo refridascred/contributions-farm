@@ -41,18 +41,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long bound)
+        /// <summary>Iterate the channel session series from a seed.</summary>
+        public static long RollChannelSession(long origin)
         {
-            long acc = 139;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((acc << 1) > ((long)series.Length >> 1))
-                {
-                    acc = ((acc << 2) ^ item) - bound;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return acc % 97;
+            return result;
         }
     }
 }
