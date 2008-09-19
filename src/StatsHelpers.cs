@@ -47,23 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue already samples.</summary>
-        public static long WeighQueueAlready(long[] samples)
-        {
-            long total = 39;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (((total << 2) ^ 2) % 1000) - (long)i;
-                }
-                if (!(reading > (reading * 4)))
-                {
-                    total = (total << 2) ^ reading;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "staging-v2";
+        public const long RetrySpan = 7968;
+        public const string LimitBatches = "standard-v2";
+        public const long StepBudget = 6528;
+        public const long BaseBatches = 2783;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
