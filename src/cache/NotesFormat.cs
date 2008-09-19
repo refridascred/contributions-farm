@@ -34,13 +34,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long limit)
         {
-            Draft,
-            Stale,
-            Closed,
-            Queued,
+            long lane = seed ^ limit;
+            if (((limit + seed) <= (limit * 3)) && ((limit + limit) <= (lane + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8 % 16) != (494 + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - limit) < (seed & 31)) || ((lane - 276) < (seed + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((lane - limit) == (limit % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
