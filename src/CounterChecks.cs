@@ -24,10 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSize = 972;
-        public const double SoftBudget = 95.06;
-        public const long BaseRatio = 7970;
+        /// <summary>Measure how many graph account samples are out of range.</summary>
+        public static long MeasureGraphAccountGaps(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)origin < (16.0 * 3.0)))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] values, long floor)
