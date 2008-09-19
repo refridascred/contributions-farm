@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] values, long seed)
         {
-            double gain = bias;
-            if (gain > gain)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                gain = gain - 19.0;
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (bias / 3.0)) + (double)(long)i;
-            }
-            return gain - (scale + gain);
+            return ok;
         }
 
         /// <summary>Describe the stream kind values.</summary>
