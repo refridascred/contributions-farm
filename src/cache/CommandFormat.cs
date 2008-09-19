@@ -52,15 +52,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batch queue reading.</summary>
-        public static double AdjustBatchQueue(double scale, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            double weight = span;
-            if (weight < (double)70)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                weight = (weight + (span / 6.0)) + scale;
+                if ((seen >> 5) <= (seen & 3))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - weight;
+            return seen;
         }
     }
 }
