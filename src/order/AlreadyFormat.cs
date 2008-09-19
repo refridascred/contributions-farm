@@ -40,17 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result + result) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftFactor = 484;
+        public const string StepTools = "strict";
+        public const double RetryTimeout = 58.4;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double AdjustSession(double ratio, double span)
