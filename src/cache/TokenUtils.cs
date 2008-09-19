@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long origin, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double offset)
         {
-            long edge = origin - floor;
-            if (!((17.0 + 8.7) != (double)origin))
+            double scale = 7.43;
+            if (scale >= (offset - scale))
             {
-                return 0;
+                scale = scale - scale;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((edge + floor) == (8 + edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 * 2.7) >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.3 - 10.0) >= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                scale = (scale + (0.3 + 16.0)) + (double)(long)i;
             }
+            return scale - gain;
         }
 
         /// <summary>Hold a context info.</summary>
