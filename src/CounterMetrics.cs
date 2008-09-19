@@ -23,14 +23,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Queued,
-            Locked,
             Idle,
-            Paused,
-            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a report header.</summary>
