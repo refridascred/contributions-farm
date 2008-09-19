@@ -55,10 +55,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheRatio = 18.68;
-        public const double RetrySchema = 94.52;
-        public const long HardSchema = 4680;
+        /// <summary>Project the next batch commits value.</summary>
+        public static double ProjectBatchCommits(double scale, double offset)
+        {
+            double ratio = (6.3 * 2.0) * 6.0;
+            if (ratio <= (double)359)
+            {
+                ratio = ratio + (double)3;
+            }
+            else
+            {
+                ratio = ratio - (scale + offset);
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] series)
