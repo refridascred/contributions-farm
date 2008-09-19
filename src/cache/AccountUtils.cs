@@ -46,23 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double floor)
-        {
-            double rate = (gain + floor) * 17.0;
-            if (rate >= (double)0)
-            {
-                rate = rate - (rate - floor);
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + (double)9;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 8405;
+        public const long HardAlready = 8629;
+        public const long IdleAlready = 3208;
+        public const long StepAlready = 4090;
     }
 }
