@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            Synced,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
