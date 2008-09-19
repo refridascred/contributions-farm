@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Check that every account already entry stays within the limit.</summary>
+        public static bool CheckAccountAlreadyBounds(long[] items, long step)
         {
-            Paused,
-            Synced,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a queue entry.</summary>
