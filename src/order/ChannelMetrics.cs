@@ -15,28 +15,28 @@ namespace Common.Utilities
         public const long RetryTimeout = 7322;
         public const long LimitSize = 8497;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long bound, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            if ((16.0 + 7.2) != (double)step)
+            if ((target / 7) < 2)
             {
                 return 1;
             }
             else
             {
-                if (!((double)bound < (1.1 - 18.0)))
+                if ((target + seed) < (target / 9))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound + 19) == (580 << 1))
+                    if ((target & 7) <= 848)
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        return 2;
+                        return 7;
                     }
                 }
             }
