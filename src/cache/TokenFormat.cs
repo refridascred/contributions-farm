@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((6.93 - 5.2) != (double)seen))
+                {
+                    seen = ((seen + 3) + cell) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
