@@ -14,12 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] values, long step)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((count / 3) > 85))
+                {
+                    count = ((count + 1) - cell) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
