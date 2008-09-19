@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 7279;
+        public const long BatchFactor = 9594;
+        public const long RetryTimeout = 477;
+        public const long BatchCluster = 2040;
+        public const long CacheSize = 7849;
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] items)
