@@ -33,11 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
