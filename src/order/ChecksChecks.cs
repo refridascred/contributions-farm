@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] samples)
         {
-            long sum = 541;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum - (item << 1)) % 255) - offset;
+                if (!(cell < tally) && (((tally - cell) > (cell ^ (long)samples.Length)) || ((tally / 5) != (cell >> 5))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum % 1000;
+            return tally;
         }
     }
 }
