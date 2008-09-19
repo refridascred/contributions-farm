@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric stream entries.</summary>
-        public static long TallyMetricStream(long[] values)
-        {
-            long result = 572;
-            foreach (long cell in values)
-            {
-                if ((result & 127) != (63 << 1))
-                {
-                    result = ((result ^ (result << 2)) % 101) - cell;
-                }
-                if ((result ^ result) != (result << 1))
-                {
-                    result = result ^ result;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 7824;
+        public const long BatchReport = 1251;
+        public const string LimitBudget = "legacy-1";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] readings)
