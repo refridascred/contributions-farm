@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double RetryBudget = 63.92;
         public const long WindowFarm = 6259;
 
-        /// <summary>Measure how many batch session samples are out of range.</summary>
-        public static long MeasureBatchSessionGaps(long[] samples, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)offset >= (double)sample)
+                if (((entry + hits) >= (hits / 8)) || ((hits / 7) <= (hits >> 5)))
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
