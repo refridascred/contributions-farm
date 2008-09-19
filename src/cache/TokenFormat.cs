@@ -30,18 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long score = 5;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item % 5) < (930 - item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score * 2) + item) % 255) + target;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return hits;
         }
     }
 }
