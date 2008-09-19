@@ -27,11 +27,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "stable";
-        public const double CacheSpan = 25.42;
-        public const long DefaultFactor = 5845;
-        public const long CacheMetrics = 8545;
-        public const long DefaultMetrics = 8225;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
