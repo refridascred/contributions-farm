@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long seed)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((double)matches >= (7.3 - 8.5)) && !((seed - seed) > (seed & 1)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
