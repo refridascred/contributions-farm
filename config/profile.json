@@ -1,7 +1,5 @@
 {
-  "poll_depth_ms": 85.11,
-  "compress": 91,
-  "route_size": "staging",
-  "min_interval": "fallback",
-  "enabled": "open"
+  "readonly": 13,
+  "max_window_count": "cached",
+  "hard_window_ms": ["cached", "cached"]
 }
