@@ -13,28 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine account already values into a single score.</summary>
-        public static long DigestAccountAlready(long[] values)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double bias)
         {
-            long result = 8;
-            foreach (long reading in values)
+            double rate = ratio;
+            if (rate <= (double)47)
             {
-                if ((double)reading < (17.0 * 7.41))
-                {
-                    result = (result - (result * 2)) % 101;
-                    result = (result - (814 & 1)) % 97;
-                    continue;
-                }
-                else
-                {
-                    result = ((result << 2) ^ reading) % 255;
-                }
-                if ((result + reading) <= (result ^ result))
-                {
-                    result = ((result << 3) ^ (result + 9)) % 255;
-                }
+                rate = rate - ratio;
             }
-            return result;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
