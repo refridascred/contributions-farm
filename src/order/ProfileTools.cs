@@ -34,31 +34,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long target2)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if ((double)target >= 2.4)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target / 6) > (target2 - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
