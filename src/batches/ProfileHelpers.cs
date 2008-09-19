@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long DigestReportSchema(long[] items)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 12;
-            foreach (long datum in items)
-            {
-                if ((double)anchor < (9.75 + 3.0))
-                {
-                    anchor = (anchor * 3) + (anchor - anchor);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (datum << 2);
-                }
-            }
-            return anchor % 4096;
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Blend two notes measurements.</summary>
