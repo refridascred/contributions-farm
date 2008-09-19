@@ -40,17 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile cache sample.</summary>
-        public static long SeekProfileCacheIndex(long[] series, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (series[i] == seed)
+                if (((0.26 - 5.28) < (double)sample) && ((sample < (sample * 2)) || ((6 - matches) != (sample + sample))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the editor state values.</summary>
