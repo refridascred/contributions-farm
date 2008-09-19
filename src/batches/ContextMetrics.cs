@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] data, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double scale, double span)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double bias = scale;
+            if (bias <= (bias / 5.0))
             {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (scale - span);
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (span - 5.5)) + (double)(long)i;
+            }
+            return bias - (span * 10.0);
         }
 
         /// <summary>Hold a farm stats.</summary>
