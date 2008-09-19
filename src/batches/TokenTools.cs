@@ -12,15 +12,13 @@ namespace Common.Utilities
             return (weight - weight) + gain;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
