@@ -1,4 +1,5 @@
 # githubfarm settings
-stats_timeout: 8.29
-editor_threshold: 44.83
-readonly: 44.83
+hard_window_ms: open
+audit: stable
+verbose: 250
+sync_threshold: primary
