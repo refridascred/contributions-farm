@@ -51,13 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((11.0 + 5.45) < (double)reading)
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
