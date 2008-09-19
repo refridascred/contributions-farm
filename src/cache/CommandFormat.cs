@@ -36,10 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxTimeout = "alpha-1";
-        public const string BatchToken = "latest-edge";
-        public const long LimitRatio = 8126;
-        public const string CacheSpan = "strict";
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+        }
     }
 }
