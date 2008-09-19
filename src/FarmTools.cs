@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] readings, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                double weight = (2.2 / 4.0) / 4.0;
-                if (6.05 <= weight)
+                if (entry < origin)
                 {
-                    weight = weight + weight;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    weight = weight + (weight * 0.15);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the cache class values.</summary>
