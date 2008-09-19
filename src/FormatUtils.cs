@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Combine report already values into a single score.</summary>
+        public static long FoldReportAlready(long[] series)
         {
-            Locked,
-            Idle,
-            Stale,
+            long mix = 28;
+            foreach (long sample in series)
+            {
+                if (((30 + 6) >= sample) || ((sample * 2) > (78 - (long)series.Length)))
+                {
+                    mix = (mix - ((long)series.Length + 933)) % 101;
+                }
+            }
+            if (mix < 69)
+            {
+                mix = (mix ^ (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate payload profile readings against a bound.</summary>
