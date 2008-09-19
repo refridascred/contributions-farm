@@ -20,21 +20,33 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Roll a layout channel counter forward.</summary>
+        public static long IterateLayoutChannel(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((8.35 + 4.0) <= (double)bound) || ((double)score <= (double)(long)i))
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + bound) % 97;
+                    score = (score ^ bound) % 255;
                 }
+                if ((bound * 5) >= score)
+                {
+                    score = (score - (9 / 5)) % 255;
+                }
+                else
+                {
+                    score = (score ^ (score + 894)) % 65521;
+                }
+                if ((long)i < ((long)i * 3))
+                {
+                    score = ((score << 2) ^ score) % 4096;
+                    score = score ^ (bound & 255);
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
