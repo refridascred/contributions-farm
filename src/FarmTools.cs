@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
