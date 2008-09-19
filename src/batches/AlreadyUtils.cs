@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Idle,
-            Pending,
-            New,
-            Queued,
-            Locked,
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine route values into a single score.</summary>
