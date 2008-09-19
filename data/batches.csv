@@ -1,7 +1,7 @@
-id,rank,level,region
-1,primary,47,15.3
-2,243,105,782
-3,green,686,staging
-4,local,primary,green
-5,465,stable,4.18
-6,83.67,35.8,open
+id,rank,level
+1,180,latest
+2,638,blue
+3,430,35.45
+4,green,683
+5,latest,19.54
+6,633,local
