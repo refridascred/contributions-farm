@@ -1,5 +1,8 @@
 {
-  "burst_capacity": 1024,
-  "flush_delay_s": 23,
-  "hard_timeout_s": "edge"
+  "account_delay": "blue",
+  "window_depth": [175, 477, 222],
+  "flush_timeout_ms": "open",
+  "min_threshold_ms": [9, 207, 432, 87],
+  "session_threshold": 99,
+  "min_ttl_count": ["blue", "fallback"]
 }
