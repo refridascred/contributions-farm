@@ -16,15 +16,32 @@ namespace Common.Utilities
             return mean + (double)27;
         }
 
-        /// <summary>Iterate the tools order series from a seed.</summary>
-        public static long StepToolsOrder(long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            long gap = offset + floor;
+            if (offset < (gap % 8))
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((double)floor == (5.0 - 5.0)) && ((offset >> 2) == (890 ^ floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap % 3) != (offset / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
