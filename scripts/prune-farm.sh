@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=143
-log "limit is ${FARM_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-mode="${1:-standard}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
