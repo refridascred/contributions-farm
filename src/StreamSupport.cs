@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] values, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
