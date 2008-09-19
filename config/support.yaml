@@ -1,9 +1,11 @@
 # support settings
-support_window:
-  - standard
-  - edge
-  - fallback
-  - strict
-counter_ratio: 250
-flush_window_ms: local
-farm_ttl: cached
+poll_depth_pct: false
+idle_depth:
+  base_limit_ms: 4.35
+  burst_capacity:
+    flush_threshold: 5046
+    default_limit: 48
+    flush_ratio_s: 500
+  contributi_delay: 6624
+poll_retries_s: 100
+soft_threshold_count: 92.07
