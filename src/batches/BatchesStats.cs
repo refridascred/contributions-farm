@@ -18,21 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context already readings.</summary>
-        public static long MatchContextAlreadyCount(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor - target) >= (target & 31))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target > (90 % 16))
                 {
-                    if ((values[i] - values[j]) != 15)
+                    return 7;
+                }
+                else
+                {
+                    if (((0.3 / 4.0) > (double)target) && ((double)target == (4.1 * 16.0)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - floor) < floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two batches measurements.</summary>
