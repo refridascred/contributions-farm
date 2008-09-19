@@ -1,10 +1,9 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    label TEXT,
+    rank INTEGER,
     weight REAL,
-    ratio REAL,
-    rank INTEGER
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
