@@ -24,32 +24,14 @@ namespace Common.Utilities
         public const long MinLevel = 6461;
         public const double CacheSchema = 56.63;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long target, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long cur = target + offset;
-            if ((cur % 16) <= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target + offset) >= 446) && ((15 + cur) == (cur + 18)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)cur > (double)5) || (((-68) >> 5) >= (offset ^ offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Paused,
+            Dropped,
+            Closed,
         }
     }
 }
