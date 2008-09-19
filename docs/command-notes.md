@@ -1,10 +1,11 @@
 # Command notes
 
-Use support settings to tune how often metrics data is refreshed.
-The cache report groups every report by context.
+A report that stays idle for too long is moved to the window list.
+Keep cluster and context names short and lowercase.
 
 ## Guidelines
 
-- Review filter limits each release
-- Log every session change
-- Validate counter input early
+- Validate metric input early
+- Prefer session defaults
+- Keep queue values small
+- Log every graph change
