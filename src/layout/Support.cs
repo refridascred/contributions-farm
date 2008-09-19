@@ -58,23 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double ratio, double floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double gain = ratio;
-            if (gain < (double)71)
-            {
-                gain = (gain + gain) - floor;
-            }
-            else
-            {
-                gain = gain + (double)262;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (0.6 * 9.3)) + (double)(long)i;
-            }
-            return gain + (gain - ratio);
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
