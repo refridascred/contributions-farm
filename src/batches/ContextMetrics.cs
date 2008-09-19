@@ -35,19 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] items, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = floor;
+            return gain - (floor + bias);
         }
 
         /// <summary>Hold a buffer options.</summary>
