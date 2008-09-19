@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "alpha-1";
-        public const long MaxContext = 7557;
-        public const long RetryScore = 9516;
-        public const string CacheBudget = "cached-v2";
-        public const long IdleScore = 4230;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 1206;
+        public const long LimitScore = 3584;
+        public const string IdleBudget = "alpha-edge";
 
         /// <summary>Compare every pair of context already readings.</summary>
         public static long MatchContextAlreadyCount(long[] values)
