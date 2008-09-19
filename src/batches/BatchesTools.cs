@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            double ratio = offset;
+            if (ratio <= (scale + offset))
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                ratio = ratio - scale;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + 9.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
