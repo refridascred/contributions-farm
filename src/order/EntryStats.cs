@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Dropped,
-            New,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
