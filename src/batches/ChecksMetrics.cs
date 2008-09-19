@@ -48,13 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] data, long bound)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
