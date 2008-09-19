@@ -1,6 +1,10 @@
-id,label,state,ratio,level
-1,848,87.01,strict,319
-2,406,50.79,98.19,903
-3,205,stable,21.1,152
-4,legacy,745,282,primary
-5,91.85,cached,61.27,52.53
+id,region,score,rank
+1,325,475,85.69
+2,green,9.73,stable
+3,557,local,24.91
+4,blue,744,2.02
+5,strict,35.42,418
+6,eu-west,78.65,567
+7,69.93,849,69.62
+8,225,blue,95.03
+9,131,184,14.88
