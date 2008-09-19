@@ -34,21 +34,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long bound2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (9.7 < (6.0 * 15.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((1.0 + 8.1) != (double)bound2)
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
