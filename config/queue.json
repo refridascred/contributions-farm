@@ -1,6 +1,6 @@
 {
-  "persist": false,
-  "burst_ratio_pct": true,
-  "sync_retries": "eu-west",
-  "metrics_interval": 26.88
+  "default_timeout_pct": 89,
+  "readonly": "primary",
+  "soft_window_pct": false,
+  "profile_capacity": ["standard", "stable", "blue", "local"]
 }
