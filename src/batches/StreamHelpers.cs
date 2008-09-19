@@ -87,19 +87,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Active,
+            Draft,
+            Pending,
         }
     }
 }
