@@ -24,11 +24,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 90;
+            foreach (long cell in values)
+            {
+                if ((cell + carry) >= (carry ^ cell))
+                {
+                    carry = (carry * 2) + cell;
+                }
+            }
+            if (carry < 52)
+            {
+                carry = carry - (91 << 2);
+            }
+            return carry;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
