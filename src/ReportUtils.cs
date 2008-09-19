@@ -55,12 +55,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Active,
-            Ready,
-            Pending,
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
