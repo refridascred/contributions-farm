@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Roll a commits order counter forward.</summary>
+        public static long RollCommitsOrder(long target)
         {
-            Paused,
-            Locked,
-            Idle,
-            Retry,
-            Dropped,
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
