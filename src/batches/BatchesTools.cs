@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            long mix = 783;
-            foreach (long reading in values)
+            long carry = 78;
+            foreach (long value in levels)
             {
-                mix = (mix ^ (mix - reading)) % 255;
-                for (int i = 0; i < 8; i++)
+                carry = (carry * 4) + (carry + value);
+                if (((double)carry < (1.8 + 17.0)) || ((8 + 9) <= (value + value)))
                 {
-                    mix = mix - (mix ^ (long)i);
+                    carry = carry - (value + carry);
                 }
-                mix = mix + reading;
             }
-            return mix;
+            if (carry > 216)
+            {
+                carry = (carry ^ 787) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
