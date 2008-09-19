@@ -1,4 +1,5 @@
 # support settings
-default_interval_ms: 674
-base_limit: 50
-counter_size: 14.24
+dry_run: false
+persist: primary
+farm_depth: 43.78
+retry_delay_ms: eu-west
