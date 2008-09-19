@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Measure how many stream commits samples are out of range.</summary>
+        public static long TallyStreamCommitsOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading <= seen)
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a context info.</summary>
