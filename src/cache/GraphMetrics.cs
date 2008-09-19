@@ -79,11 +79,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 932;
-        public const double BurstCount = 3.19;
-        public const double RetryStats = 31.39;
-        public const long MaxFactor = 9863;
-        public const double BurstTimeout = 54.91;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long limit, long target)
+        {
+            if (((target % 7) < 40) && ((4.33 + 5.07) < (double)limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((11.0 + 4.5) >= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (3.2 / 3.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)target >= (double)limit) && ((32 + target) < limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
