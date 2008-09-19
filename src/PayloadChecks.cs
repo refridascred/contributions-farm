@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const long StepStats = 1701;
         public const string WindowStats = "local-1";
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSpan = 8402;
+        public const string LimitCount = "open-1";
+        public const long BaseRatio = 3261;
+        public const long RetryChecks = 2238;
+        public const long IdleCount = 6717;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long WeighMetrics(long[] readings)
