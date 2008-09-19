@@ -33,15 +33,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Idle,
-            Closed,
-            Synced,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 5.51;
+        public const long BatchWidth = 6724;
+        public const long SoftSize = 1047;
+        public const double HardMetric = 54.76;
+        public const long BaseTimeout = 7815;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long offset)
