@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string HardCluster = "alpha-edge";
         public const double HardWidth = 18.66;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long AuditBatchProfileMatches(long[] values, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((double)hits != (6.6 + 9.2)) && ((bound << 1) < (bound + 1)))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
