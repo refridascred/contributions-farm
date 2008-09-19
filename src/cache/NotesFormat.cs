@@ -18,11 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSpan = 8136;
-        public const long StepOrder = 6597;
-        public const string MinOrder = "standard-v2";
-        public const long MaxDepth = 3219;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long offset)
+        {
+            long offset2 = floor + offset;
+            if ((951 + offset2) != (floor - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset2 - offset) > offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < (0.64 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWindow = 4999;
