@@ -64,18 +64,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long acc = -31;
-            foreach (long datum in items)
-            {
-                if ((datum >> 3) >= (373 >> 3))
-                {
-                    acc = (acc << 3) ^ (bound & 255);
-                }
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
