@@ -34,11 +34,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] items, long origin)
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cache header.</summary>
