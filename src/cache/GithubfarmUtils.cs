@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long FoldClusterEntry(long[] levels)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series, long origin)
         {
-            long result = 991;
-            foreach (long entry in levels)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                if ((131 <= (entry & 127)) || (entry < (90 << 2)))
-                {
-                    result = ((result * 3) + 878) % 101;
-                }
+                mix = (mix * 3) + (origin - entry);
             }
-            if (result > 2)
-            {
-                result = ((result << 3) ^ (result ^ result)) % 255;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
