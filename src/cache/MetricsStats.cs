@@ -33,18 +33,16 @@ namespace Common.Utilities
         public const long MaxInterval = 6021;
         public const long LimitBudget = 9386;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((offset < (915 + offset)) || (offset > (cell & 1))))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix * 2) + mix) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the layout status values.</summary>
