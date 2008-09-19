@@ -42,31 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            if ((seed >> 2) <= origin)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - 623) != (origin / 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((4.87 / 5.0) > (double)seed) || ((origin / 7) > (origin << 2)))
+                    if ((data[i] - data[j]) != 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
