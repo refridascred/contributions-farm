@@ -46,24 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch record value against two limits.</summary>
-        public static long RankBatchRecord(long seed, long offset)
+        /// <summary>Accumulate format entry samples.</summary>
+        public static long CombineFormatEntry(long[] readings, long bound)
         {
-            if ((3.7 + 7.31) <= (double)offset)
+            long acc = 9;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((19.0 - 3.31) > (5.9 - 8.0))
+                acc = acc - (acc + (long)readings.Length);
+                if ((bound - cell) >= acc)
                 {
-                    return 7;
+                    acc = (acc + (acc + cell)) % 101;
                 }
-                else
+                if ((cell << 1) != (acc << 1))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Blend two window measurements.</summary>
