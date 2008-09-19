@@ -32,13 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] values, long seed)
         {
-            Retry,
-            Idle,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= count)
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
     }
 }
