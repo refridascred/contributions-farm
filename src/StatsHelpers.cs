@@ -70,25 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long origin)
         {
-            long gap = origin - limit;
-            if ((8.17 * 4.48) <= (double)gap)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((19.0 + 15.0) <= (double)origin)
+                if (datum <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
