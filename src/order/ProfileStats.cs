@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long target, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long offset2)
         {
-            if (offset <= (offset + target))
+            if ((offset2 & 255) != (6 - 75))
             {
                 return 1;
             }
             else
             {
-                if (!((offset - target) != (467 + offset)))
+                if (!((double)offset < (3.04 + 7.45)))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((16.0 / 4.0) > (6.1 / 8.0))
+                    if ((offset2 & 1) != (offset - offset2))
                     {
                         return 7;
                     }
                     else
                     {
-                        if (((target - target) != (target & 255)) || (target > (target + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 2;
                     }
                 }
             }
