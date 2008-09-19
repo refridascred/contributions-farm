@@ -1,14 +1,7 @@
 # githubfarm settings
-default_depth:
-  payload_window: 59.36
-  batch_depth_pct: 15
-  readonly:
-    persist: green
-    default_threshold_ms: 13
-    base_limit_pct: 250
-    base_timeout_ms: 4108
-    sync_window_ms: 9642
-  soft_threshold_ms: false
-queue_threshold: staging
-cache_size_pct: false
-cache_timeout: 67.91
+strict: 100
+default_ttl:
+  - strict
+  - primary
+  - legacy
+audit: false
