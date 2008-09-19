@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const double BaseScore = 26.8;
         public const long MaxCount = 576;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data, long bound)
+        /// <summary>Measure how many account batches samples are out of range.</summary>
+        public static long CountAccountBatchesHits(long[] series, long bound)
         {
-            long mark = 14;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((5.3 + 2.6) <= (double)cell) || ((6.76 * 2.8) <= (double)bound))
+                if (26 > cell)
                 {
-                    mark = ((mark * 5) + (60 + mark)) % 255;
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > 60)
-            {
-                mark = (mark << 3) ^ (29 - bound);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Hold a checks header.</summary>
