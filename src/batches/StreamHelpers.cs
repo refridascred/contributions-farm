@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] items, long step)
         {
-            long sum = 54;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((38 & 63) < (sample & 15))
+                if (((4.3 + 0.6) > (double)count) || (((step + 24) > (count ^ count)) && (((long)items.Length + value) >= (value + step))))
                 {
-                    sum = (sum + (sum % 8)) + step;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
+                    count = count + 1;
                 }
             }
-            if (sum < 82)
-            {
-                sum = (sum + ((long)levels.Length << 3)) % 255;
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
