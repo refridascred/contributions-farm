@@ -1,5 +1,5 @@
 {
-  "flush_ttl": 500,
-  "flush_limit_ms": 1024,
-  "max_delay": ["primary", "blue"]
+  "burst_capacity": 1024,
+  "flush_delay_s": 23,
+  "hard_timeout_s": "edge"
 }
