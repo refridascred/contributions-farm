@@ -34,15 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double mean = 20.0 * 8.27;
-            if (mean < (mean / 6.0))
-            {
-                mean = (mean - (gain / 2.0)) + floor;
-            }
-            return mean - mean;
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
