@@ -37,21 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 701;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((81 - offset) == (datum ^ datum)) || ((datum - offset) == (datum << 1)))
                 {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor / 8)) % 101;
                 }
+                anchor = anchor ^ (6 & 63);
             }
-            return count;
+            return anchor;
         }
     }
 }
