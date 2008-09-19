@@ -44,13 +44,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate metric commits samples.</summary>
+        public static long TallyMetricCommits(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long total = 964;
+            foreach (long value in samples)
+            {
+                total = ((total << 2) ^ value) % 101;
+            }
+            return total % 65521;
         }
     }
 }
