@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch cache readings against a rule.</summary>
-        public static long CountBatchCacheOutliers(long[] readings)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample % 97) <= (sample + sample))
+                if ((0 & 7) < (origin >> 3))
                 {
-                    count = count + 1;
+                    carry = (carry ^ (origin + carry)) % 97;
                 }
+                carry = (carry ^ ((long)i + origin)) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
