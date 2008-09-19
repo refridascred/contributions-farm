@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format farm pairs that satisfy a relation.</summary>
-        public static long MatchFormatFarmCount(long[] levels)
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long DigestSessionSchema(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 7;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total * 4) + (total << 2)) % 97) + cell;
             }
-            return matches;
+            if (total < 985)
+            {
+                total = (total + limit) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the notes state values.</summary>
