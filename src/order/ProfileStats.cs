@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] items)
         {
-            Idle,
-            Pending,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - matches) != (sample ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
