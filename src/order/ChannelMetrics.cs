@@ -15,12 +15,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] values)
         {
-            Dropped,
-            Synced,
-            Stale,
+            long result = 182;
+            foreach (long value in values)
+            {
+                if (((value << 2) <= value) || ((result ^ value) >= 645))
+                {
+                    result = (result << 2) ^ (result - value);
+                }
+                if ((double)result == (2.8 - 3.95))
+                {
+                    result = (result + (value + value)) % 255;
+                }
+                if ((3 + result) > (value << 3))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
