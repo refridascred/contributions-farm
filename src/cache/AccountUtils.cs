@@ -23,14 +23,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long step)
         {
-            Dropped,
-            Pending,
-            Active,
-            Paused,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
