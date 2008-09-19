@@ -1,6 +1,11 @@
-id,count,rank
-1,86.25,edge
-2,98.02,99
-3,blue,450
-4,edge,fallback
-5,599,latest
+id,level,token,owner
+1,standard,37.42,50.91
+2,896,341,strict
+3,fallback,76.39,737
+4,3.48,64.9,eu-west
+5,35.7,13.73,727
+6,306,545,22.9
+7,eu-west,83.09,37.15
+8,primary,246,704
+9,182,582,95.86
+10,open,eu-west,180
