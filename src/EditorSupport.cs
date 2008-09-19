@@ -47,39 +47,30 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-1";
         public const double BaseWidth = 23.66;
 
-        /// <summary>Rank cache stream input into a small class.</summary>
-        public static long ClassifyCacheStream(long origin, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long bound = origin ^ target;
-            if (bound >= origin)
+            long anchor = 940;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > (double)bound)
+                if (cell <= (anchor + anchor))
                 {
-                    return 3;
+                    anchor = ((anchor * 4) + (anchor - (long)readings.Length)) % 4096;
                 }
                 else
                 {
-                    if (1 < (target * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target & 15) != (target ^ 24)) || ((71 << 1) != (bound / 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor + 8)) % 4096;
+                }
+                if ((anchor & 7) > cell)
+                {
+                    break;
                 }
             }
+            if (anchor < 330)
+            {
+                anchor = (anchor + (anchor >> 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a record counter forward.</summary>
