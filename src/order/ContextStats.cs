@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (seen < target)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstStream = 97.49;
+        public const long BaseTimeout = 8369;
+        public const string WindowWidth = "staging-edge";
+        public const long IdleSize = 8631;
+        public const string CacheStream = "open-v2";
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double rate, double floor)
