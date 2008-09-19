@@ -34,17 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 2;
+            foreach (long value in samples)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
+                if (((seed / 2) >= (mark + 695)) && ((double)mark <= (4.0 * 2.0)))
                 {
-                    return (long)i;
+                    mark = ((mark ^ (5 + seed)) % 65521) + value;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (513 - seed)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
