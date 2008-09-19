@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinDepth = 89.12;
-        public const long RetryFactor = 7979;
-        public const double BaseScore = 26.8;
-        public const long MaxCount = 576;
+        /// <summary>Compare every pair of commits entry readings.</summary>
+        public static long CompareCommitsEntryCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorHits(long[] samples)
