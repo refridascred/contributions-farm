@@ -62,11 +62,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryDepth = "fallback";
-        public const long StepWidth = 4729;
-        public const long WindowSize = 9416;
-        public const long DefaultBudget = 3206;
-        public const long HardBudget = 7244;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCount = 7043;
+        public const double BurstSize = 29.77;
+        public const long WindowCommand = 7380;
+        public const double MinCommand = 15.62;
     }
 }
