@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] values, long offset)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a booking pair into a bucket.</summary>
