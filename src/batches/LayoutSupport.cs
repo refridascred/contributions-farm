@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] items, long seed)
+        /// <summary>Count the buffer session entries that pass the check.</summary>
+        public static long TallyBufferSessionMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (cell > seed)
+                if ((double)cell > (double)count)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
