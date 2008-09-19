@@ -43,20 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long anchor = 2;
-            foreach (long sample in data)
+            long mix = 1;
+            foreach (long datum in levels)
             {
-                if (((9.4 / 2.0) == (double)anchor) && (anchor < (sample >> 1)))
+                if (!(mix > (mix & 31)))
                 {
-                    anchor = anchor ^ (sample / 9);
+                    mix = mix + (datum << 2);
                 }
-                anchor = (anchor + (sample + anchor)) % 1000;
-                anchor = ((anchor << 2) ^ anchor) % 1000;
             }
-            return anchor;
+            return mix % 4096;
         }
     }
 }
