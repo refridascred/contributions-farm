@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Done,
-            Retry,
-            Queued,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
