@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Count the entry record entries that pass the check.</summary>
+        public static long MeasureEntryRecordGaps(long[] items, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((count * 5) != (count & 1))
+                {
+                    count = ((count + 3) - entry) - offset;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
