@@ -46,19 +46,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != limit)
+                if (samples[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
