@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] values)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((0 + matches) < (datum >> 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
