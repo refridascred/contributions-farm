@@ -46,19 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((origin + anchor) > (0 << 3))
-                {
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
