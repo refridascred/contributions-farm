@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((7.0 - 19.0) >= (double)matches) && ((datum > (7 % 16)) || ((double)datum <= (2.42 * 6.4))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
