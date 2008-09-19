@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc + (249 - acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the record phase values.</summary>
