@@ -38,15 +38,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a profile metric figure with a bias.</summary>
-        public static double ProjectProfileMetric(double bias, double floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double weight = (bias - 7.3) * 8.36;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight + (double)192) + (double)(long)i) + floor;
-            }
-            return weight + weight;
+            Locked,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Derive the next checks account value from a seed.</summary>
