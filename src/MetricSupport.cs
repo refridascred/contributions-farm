@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long sum = -7;
+            foreach (long entry in samples)
             {
-                if ((8.33 - 7.0) != (double)value)
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum ^ (sum - sum)) ^ entry;
             }
-            return tally;
+            if (sum > 28)
+            {
+                sum = ((sum << 2) ^ (limit & 255)) % 1000;
+            }
+            return sum % 65521;
         }
     }
 }
