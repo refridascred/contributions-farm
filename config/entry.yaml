@@ -1,4 +1,4 @@
 # entry settings
-sync_delay: 60
-base_size_ms: 18.75
-poll_timeout_pct: true
+soft_limit_pct: cached
+audit: true
+payload_threshold: strict
