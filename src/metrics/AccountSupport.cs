@@ -23,18 +23,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double mean = offset;
+            if (mean >= (offset * 4.55))
             {
-                if ((((datum << 3) == (datum & 1)) && ((7.8 - 0.3) < (double)datum)) && (((datum ^ datum) < (datum + hits)) && (57 > hits)))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean + (scale * 1.4);
             }
-            return hits;
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (offset * 5.1)) + (double)(long)i;
+            }
+            return mean - (offset * 7.69);
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
