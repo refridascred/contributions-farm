@@ -50,12 +50,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            Dropped,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((19 % 97) > cell)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
