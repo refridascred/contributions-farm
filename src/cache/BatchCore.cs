@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first batches session entry that matches the target.</summary>
