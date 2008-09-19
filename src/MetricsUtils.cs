@@ -53,18 +53,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheRatio = 18.68;
+        public const double RetrySchema = 94.52;
+        public const long HardSchema = 4680;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] series)
