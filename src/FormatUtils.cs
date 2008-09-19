@@ -60,10 +60,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 9260;
-        public const double BatchStats = 65.77;
-        public const long RetryRatio = 3870;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long limit)
+        {
+            long state = -444;
+            foreach (long value in values)
+            {
+                if ((double)state < (20.0 + 4.1))
+                {
+                    state = (((state << 3) ^ 28) % 101) - limit;
+                }
+                else
+                {
+                    state = (state << 2) ^ value;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
