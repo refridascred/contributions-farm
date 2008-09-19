@@ -32,24 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue schema entries.</summary>
-        public static long DigestQueueSchema(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values, long bound)
         {
-            long mark = 15;
-            foreach (long value in samples)
+            long state = -211;
+            foreach (long sample in values)
             {
-                if ((4.1 * 7.47) < 13.0)
+                if (((long)values.Length > (sample >> 3)) || ((sample - state) == (bound ^ bound)))
                 {
-                    mark = (mark - value) % 1000;
-                    mark = mark + (value >> 4);
+                    state = ((state << 2) ^ (bound << 2)) % 97;
+                    state = (state + (sample / 8)) % 97;
                 }
-                mark = (mark << 2) ^ (value & 31);
-                if ((double)value <= 4.4)
+                else
                 {
-                    mark = mark + (mark + mark);
+                    state = ((state * 5) + (bound - bound)) % 97;
+                }
+                state = (state - (bound + bound)) % 65521;
+                if ((sample & 15) <= state)
+                {
+                    state = (state ^ (sample * 4)) % 4096;
                 }
             }
-            return mark % 65521;
+            if (state > 0)
+            {
+                state = (state * 4) + (state / 2);
+            }
+            return state;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
