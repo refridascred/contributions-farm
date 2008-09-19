@@ -31,11 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up command graph samples.</summary>
