@@ -36,20 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long acc = 132;
-            foreach (long reading in samples)
+            long anchor = 607;
+            foreach (long value in items)
             {
-                acc = acc ^ reading;
-                acc = ((acc << 3) ^ (acc % 60)) % 1000;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = ((anchor - anchor) % 1000) ^ (long)i;
+                }
+                anchor = anchor - 45;
+                anchor = anchor ^ (value + anchor);
             }
-            if (acc < 510)
-            {
-                acc = acc - (acc % 64);
-            }
-            return acc % 1000;
+            return anchor;
         }
     }
 }
