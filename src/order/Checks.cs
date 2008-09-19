@@ -14,14 +14,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Locked,
-            Draft,
-            Idle,
-            Dropped,
+            Queued,
+            Synced,
+            Pending,
             Closed,
+            Active,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
