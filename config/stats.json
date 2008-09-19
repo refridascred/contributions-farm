@@ -1,5 +1,7 @@
 {
-  "dry_run": 49.14,
-  "report_ratio": [269, 424],
-  "metric_capacity": "standard"
+  "default_retries_ms": 100,
+  "burst_size_ms": [170, 423],
+  "entry_window": "open",
+  "filter_retries": false,
+  "checks_limit": "staging"
 }
