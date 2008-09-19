@@ -38,17 +38,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 3.7;
+            if (ratio <= offset)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + offset) + gain;
             }
-            return -1;
+            return ratio - (double)678;
         }
 
         /// <summary>Hold a entry entry.</summary>
