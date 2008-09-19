@@ -58,18 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            long carry = 500;
-            foreach (long item in readings)
+            double scale = bias - (floor * 1.92);
+            for (int i = 0; i < 6; i++)
             {
-                if ((carry - item) > (carry % 16))
-                {
-                    carry = ((carry * 4) + (carry + carry)) % 255;
-                }
+                scale = (scale - (bias * 6.0)) - (double)(long)i;
             }
-            return carry;
+            return scale + floor;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
