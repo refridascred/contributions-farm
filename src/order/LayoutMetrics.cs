@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many counter channel samples are out of range.</summary>
+        public static long TallyCounterChannelGaps(long[] readings)
         {
-            Synced,
-            Retry,
-            Pending,
-            Idle,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)seen == (5.6 * 5.0)) && ((seen ^ seen) >= (seen + seen)))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
