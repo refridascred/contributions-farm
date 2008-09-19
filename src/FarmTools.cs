@@ -30,18 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mix = 57;
-            foreach (long entry in values)
-            {
-                if ((5.5 - 1.9) == (double)entry)
-                {
-                    mix = ((mix * 4) + (entry * 2)) % 255;
-                }
-            }
-            return mix % 65521;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
