@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Check that every command token entry stays within the limit.</summary>
-        public static bool VerifyCommandTokenRange(long[] samples, long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
