@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 6.57;
-        public const long MaxQueue = 6039;
-        public const double BurstQueue = 34.9;
-        public const long HardQueue = 4685;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public bool Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] data)
