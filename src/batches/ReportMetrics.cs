@@ -38,32 +38,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long floor)
-        {
-            long diff = limit + floor;
-            if (((limit ^ 553) > 38) && ((double)diff <= (4.82 + 6.27)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + diff) < (905 - floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit < (1.0 / 4.0)) || ((floor + 3) > diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardInterval = "legacy-v2";
+        public const long IdleCounter = 9860;
+        public const double HardCount = 67.49;
+        public const long BurstCounter = 5299;
+        public const long CacheCounter = 8229;
     }
 }
