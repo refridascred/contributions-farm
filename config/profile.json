@@ -1,5 +1,11 @@
 {
-  "readonly": 13,
-  "max_window_count": "cached",
-  "hard_window_ms": ["cached", "cached"]
+  "persist": {
+    "max_retries": [324, 1],
+    "cache_capacity": "open",
+    "batches_capacity": 60.33
+  },
+  "session_window": 23.46,
+  "soft_depth_count": true,
+  "batch_ratio": 2876,
+  "poll_delay_ms": "staging"
 }
