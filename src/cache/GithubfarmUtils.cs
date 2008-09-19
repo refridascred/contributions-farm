@@ -52,18 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mix = -618;
+            foreach (long datum in levels)
             {
-                if (!((target + cell) <= target))
-                {
-                    tally = tally + 3;
-                }
+                mix = (mix - (bound % 24)) ^ datum;
             }
-            return tally;
+            if (mix > 6)
+            {
+                mix = mix - 99;
+            }
+            return mix;
         }
     }
 }
