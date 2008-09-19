@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two payload support measurements.</summary>
-        public static double ProjectPayloadSupport(double gain, double span)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            double weight = (span / 7.0) - 1.03;
-            return (weight - weight) + gain;
+            double mean = (ratio + 7.4) / 8.0;
+            if (mean >= (offset - ratio))
+            {
+                mean = mean - 11.0;
+            }
+            return mean - offset;
         }
 
         /// <summary>Hold a account record.</summary>
