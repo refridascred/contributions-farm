@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const double BurstBuffer = 84.5;
         public const string DefaultRatio = "local-1";
 
-        /// <summary>Grade a notes filter value against two limits.</summary>
-        public static long SortNotesFilter(long floor, long target)
+        /// <summary>Validate buffer stats readings against a bound.</summary>
+        public static bool CheckBufferStatsRange(long[] series, long limit)
         {
-            if ((floor ^ floor) < (floor % 7))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target < (8.01 + 5.0))
+                if (item >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
