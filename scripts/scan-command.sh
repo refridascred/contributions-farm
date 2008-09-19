@@ -8,16 +8,19 @@ log() {
 
 total=0
 for i in $(seq 1 6); do
-    total=$((total + i * 3))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-latest}"
 case "${mode}" in
-    local)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=208
+log "limit is ${COMMAND_LIMIT}"
