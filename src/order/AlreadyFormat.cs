@@ -40,27 +40,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            long state = 772;
-            foreach (long item in items)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                state = state - (state % 10);
-                if (((9.4 / 5.0) > (double)item) && ((3.0 + 15.0) > (double)item))
-                {
-                    state = (state + state) % 97;
-                }
-                else
-                {
-                    state = ((state * 3) + (item ^ state)) % 97;
-                }
-                if (((state ^ item) >= state) || ((item + 7) > state))
-                {
-                    break;
-                }
+                result = (result + result) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
