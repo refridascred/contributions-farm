@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long StepAccount = 8253;
         public const string BatchAccount = "stable-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseFactor = "standard-edge";
-        public const long HardToken = 8649;
-        public const long MaxBudget = 9195;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Grade a notes stream value against two limits.</summary>
         public static long BucketNotesStream(long bound, long offset)
