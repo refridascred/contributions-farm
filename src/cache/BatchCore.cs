@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] levels, long origin)
+        /// <summary>Count the command format entries that pass the check.</summary>
+        public static long TallyCommandFormatMatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (!((0 * 5) == (origin & 63)))
+                if (73 > target)
                 {
-                    hits = (hits + 2) ^ cell;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first batches session entry that matches the target.</summary>
