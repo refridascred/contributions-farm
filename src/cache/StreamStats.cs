@@ -40,24 +40,13 @@ namespace Common.Utilities
             return drift - (drift + 6.8);
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                long hits = ((long)i % 60) + seed;
-                if (((long)i + hits) <= mix)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - ((long)i * 2)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
