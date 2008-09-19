@@ -1,11 +1,13 @@
 # githubfarm settings
-warm_timeout_count:
-  - 142
-  - 233
-  - 368
-  - 222
-strict: 68.62
-hard_ttl: blue
-retry_timeout_count: 8478
-buffer_timeout: latest
-channel_capacity: true
+already_threshold: 1024
+soft_ratio:
+  - 431
+  - 371
+  - 79
+hard_delay_ms: blue
+max_depth_s: 2351
+batch_window:
+  - 117
+  - 366
+  - 492
+retry_timeout_pct: 60
