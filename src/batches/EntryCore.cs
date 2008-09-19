@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first command notes entry that matches the target.</summary>
-        public static long LocateCommandNotesIndex(long[] data, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
