@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 1.02;
-        public const string LimitWidth = "cached-v2";
-        public const long RetryRatio = 5488;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 6456;
+        public const double DefaultFilter = 9.32;
+        public const long MaxRatio = 5835;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
