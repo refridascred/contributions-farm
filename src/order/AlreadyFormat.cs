@@ -24,17 +24,11 @@ namespace Common.Utilities
             return drift - (offset - drift);
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a entry notes pair into a bucket.</summary>
