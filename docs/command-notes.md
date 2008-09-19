@@ -1,11 +1,11 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the report list.
-A window that stays idle for too long is moved to the order list.
+Defaults for editor live in the config folder and can be overridden per environment.
+The entry report groups every layout by record.
 
 ## Guidelines
 
-- Keep metric values small
-- Prefer format defaults
-- Review schema limits each release
-- Document new farm fields
+- Log every window change
+- Validate stats input early
+- Keep session values small
+- Document new filter fields
