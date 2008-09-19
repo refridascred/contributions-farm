@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 881;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ (508 >> 3)) % 65521) ^ value;
             }
-            return hits;
+            if (carry < 2)
+            {
+                carry = (carry + (carry ^ carry)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a channel batches pair into a bucket.</summary>
