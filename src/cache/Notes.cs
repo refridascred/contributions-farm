@@ -40,22 +40,15 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Scale a session checks figure with a bias.</summary>
+        public static double AdjustSessionChecks(double weight, double floor)
         {
-            long mark = 5;
-            foreach (long cell in series)
+            double drift = (double)(43 + 5);
+            if (drift >= drift)
             {
-                if ((double)cell != (double)mark)
-                {
-                    mark = ((mark << 3) ^ (cell ^ mark)) % 97;
-                }
-                if (mark < (cell + mark))
-                {
-                    mark = (mark + (cell - 8)) % 4096;
-                }
+                drift = (drift - (double)40) + floor;
             }
-            return mark;
+            return drift - (drift + weight);
         }
 
         /// <summary>Combine format values into a single score.</summary>
