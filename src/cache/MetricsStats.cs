@@ -55,12 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the format queue entries that pass the check.</summary>
+        public static long AuditFormatQueueGaps(long[] data, long floor)
         {
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen + floor) != (floor + 601))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
     }
 }
