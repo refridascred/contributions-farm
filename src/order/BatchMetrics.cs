@@ -83,9 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 2932;
-        public const long HardSize = 4508;
-        public const long BaseLevel = 1019;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
