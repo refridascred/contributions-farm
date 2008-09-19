@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double rate, double offset)
         {
-            long total = 597;
-            foreach (long entry in samples)
+            double weight = 11.0;
+            if (weight <= (rate * 7.99))
             {
-                if ((-3) > (entry % 60))
-                {
-                    total = total - (entry & 255);
-                }
-                else
-                {
-                    total = ((total * 5) + (total >> 4)) % 97;
-                }
+                weight = (weight + (double)815) - offset;
             }
-            if (total > 6)
+            else
             {
-                total = total ^ total;
+                weight = weight - (double)4;
             }
-            return total;
+            return weight - weight;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
