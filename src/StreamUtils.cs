@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepSize = 3834;
-        public const long WindowLayout = 323;
-        public const long BaseRatio = 7939;
-        public const double HardLayout = 81.98;
-        public const long MaxLayout = 9620;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((814 + 605) < (matches + 49))
+                {
+                    matches = ((matches + 2) + cell) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] samples)
