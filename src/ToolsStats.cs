@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate entry channel readings against a bound.</summary>
+        public static bool GuardEntryChannelLimits(long[] series, long floor)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
