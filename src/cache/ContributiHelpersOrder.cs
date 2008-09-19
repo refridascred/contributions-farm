@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long step, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            long gap = step + bound;
-            if (((bound - bound) == (bound * 5)) || ((step % 7) >= gap))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - 8) < (bound & 255))
+                if (((value & 31) > (matches % 7)) && ((value + value) > (376 ^ value)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - (-495)) == (39 ^ gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
