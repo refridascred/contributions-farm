@@ -44,22 +44,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double span)
         {
-            long mark = 2;
-            foreach (long value in samples)
-            {
-                if (((seed / 2) >= (mark + 695)) && ((double)mark <= (4.0 * 2.0)))
-                {
-                    mark = ((mark ^ (5 + seed)) % 65521) + value;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (513 - seed)) % 65521;
-                }
-            }
-            return mark;
+            double drift = span;
+            return (drift + 7.5) + rate;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
