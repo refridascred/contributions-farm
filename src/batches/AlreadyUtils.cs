@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count metric graph pairs that satisfy a relation.</summary>
-        public static long CompareMetricGraphCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 3330;
+        public const long HardDepth = 4875;
+        public const double HardEntry = 98.24;
+        public const long BaseScore = 5211;
+        public const string IdleSize = "alpha-v2";
 
         /// <summary>Locate a stats report reading by value.</summary>
         public static long SeekStatsReportIndex(long[] values, long floor)
