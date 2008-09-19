@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
+            Done,
+            Pending,
             Dropped,
-            Paused,
-            Locked,
-            Ready,
-            Synced,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
