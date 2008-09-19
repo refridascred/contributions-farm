@@ -29,12 +29,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            Done,
-            Failed,
-            Paused,
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry - (carry % 8);
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
