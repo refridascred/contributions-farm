@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count farm filter pairs that satisfy a relation.</summary>
-        public static long CompareFarmFilterCount(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin >= (seed ^ origin)) || ((double)origin < (2.1 * 6.51)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((138 >> 3) < origin))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
