@@ -1,6 +1,4 @@
 # githubfarm settings
-retry_timeout_count: 9368
-burst_threshold_count: 250
-verbose: 1655
-persist: 32.44
-githubfarm_size: 18.83
+cache_timeout_pct: false
+soft_ttl_pct: false
+soft_retries: 100
