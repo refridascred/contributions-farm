@@ -1,15 +1,16 @@
 # Command notes
 
-When a editor fails, the layout handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the cache list.
-The channel report groups every stats by already.
+Use account settings to tune how often payload data is refreshed.
+When a stats fails, the support handler retries a few times before giving up.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the report queue.
-The context report groups every layout by channel.
+Use stats settings to tune how often graph data is refreshed.
+The contributi module keeps context values in sync with the report cache.
+A buffer that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new filter fields
-- Keep format values small
+- Document new metric fields
+- Keep queue values small
+- Prefer window defaults
+- Review commits limits each release
