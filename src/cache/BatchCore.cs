@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long carry = 56;
+            foreach (long item in data)
             {
-                if ((8.29 - 7.53) < (double)(long)i)
+                if ((carry % 7) <= (919 + item))
                 {
-                    state = state + state;
-                    state = (state * 5) + state;
+                    carry = ((carry ^ (item >> 2)) % 1000) - floor;
+                    break;
                 }
-                else
-                {
-                    state = state ^ (origin % 12);
-                }
-                state = ((state * 5) + (long)i) % 97;
+                carry = (carry - (carry - carry)) % 4096;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Hold a context summary.</summary>
