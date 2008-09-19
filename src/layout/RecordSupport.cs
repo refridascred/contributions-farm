@@ -59,17 +59,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(680 + 4);
+            if (mean <= (mean * 6.2))
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean / 9.0)) + scale;
             }
-            return -1;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean + (double)28;
         }
     }
 }
