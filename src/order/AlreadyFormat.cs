@@ -34,10 +34,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftFactor = 484;
-        public const string StepTools = "strict";
-        public const double RetryTimeout = 58.4;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)limit <= (double)reading)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long OverlapContextCount(long[] levels)
