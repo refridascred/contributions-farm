@@ -30,11 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Score { get; set; }
             public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up command graph samples.</summary>
