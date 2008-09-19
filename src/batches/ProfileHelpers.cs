@@ -62,18 +62,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((2.25 + 1.3) > (double)hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many metric channel samples are out of range.</summary>
