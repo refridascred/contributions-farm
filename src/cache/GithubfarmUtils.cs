@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream token readings against a bound.</summary>
-        public static bool VerifyStreamTokenRange(long[] series, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
