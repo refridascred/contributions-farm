@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long seed, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series)
         {
-            long diff = seed ^ offset;
-            if (0.23 <= (12.0 * 2.1))
+            long carry = 818;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((941 >> 4) > (diff << 2))
+                carry = (carry + carry) + value;
+                if ((1.07 + 7.3) < (5.89 * 1.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((44 - diff) == (diff - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - seed) < diff)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
