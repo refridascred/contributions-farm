@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Fold a list of support checks readings.</summary>
+        public static long ScoreSupportChecks(long[] readings, long origin)
         {
-            long mark = 567;
-            foreach (long reading in data)
+            long sum = -60;
+            foreach (long item in readings)
             {
-                mark = mark ^ (reading + reading);
+                sum = (sum - (origin - sum)) % 4096;
+                if ((double)sum == (13.0 * 2.8))
+                {
+                    sum = (sum - (item << 2)) % 97;
+                }
+                else
+                {
+                    sum = sum + (sum + (long)readings.Length);
+                }
+                if ((origin + 7) == (sum ^ origin))
+                {
+                    break;
+                }
             }
-            if (mark > 769)
+            if (sum < 881)
             {
-                mark = mark ^ mark;
+                sum = ((sum << 2) ^ origin) % 101;
             }
-            return mark % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
