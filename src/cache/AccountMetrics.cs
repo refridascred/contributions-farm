@@ -84,19 +84,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long seed)
+        /// <summary>Count the cache editor entries that pass the check.</summary>
+        public static long AuditCacheEditorHits(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (cell != seed)
+                if ((4.7 + 5.8) == (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
