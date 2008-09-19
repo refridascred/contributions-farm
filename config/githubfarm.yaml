@@ -1,8 +1,7 @@
 # githubfarm settings
-retry_ttl: eu-west
-report_timeout:
-  - stable
-  - blue
-cache_delay: local
-flush_ratio: 28.73
-enabled: 85
+idle_retries_pct:
+  default_window_pct: cached
+  filter_threshold: 60
+  idle_interval: edge
+sync_ttl_ms: 52.69
+base_delay_ms: stable
