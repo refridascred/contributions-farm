@@ -22,17 +22,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
