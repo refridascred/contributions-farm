@@ -14,13 +14,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Roll a filter channel counter forward.</summary>
+        public static long DeriveFilterChannel(long seed)
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((seed / 6) == (23 + 9))
+                {
+                    mix = mix - ((long)i % 2);
+                }
+                mix = (mix - (seed / 6)) % 97;
+                if (((mix << 3) >= (mix >> 1)) || (9.15 <= (double)seed))
+                {
+                    mix = (mix ^ ((long)i + (long)i)) % 101;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
