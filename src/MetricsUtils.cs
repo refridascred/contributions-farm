@@ -38,26 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm metrics samples.</summary>
-        public static long WeighGithubfarmMetrics(long[] levels, long bound)
+        /// <summary>Count the layout token entries that pass the check.</summary>
+        public static long AuditLayoutTokenHits(long[] samples)
         {
-            long score = 7;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((bound & 127) >= entry)
+                if (99 > (reading + (-228)))
                 {
-                    score = ((score * 3) + (score - bound)) % 255;
+                    hits = hits + 3;
                 }
-                if (1.0 < (double)(long)levels.Length)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (score < 5)
-            {
-                score = ((score * 2) + (bound ^ score)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
