@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] items, long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading + reading) > (418 + tally)) || (7.5 < (double)floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a batch entry.</summary>
