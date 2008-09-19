@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((3.44 / 2.0) == (double)reading) || ((0.5 >= (double)hits) && ((double)reading == (9.1 + 4.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up contributi support samples.</summary>
