@@ -27,11 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
+            long mix = -902;
+            foreach (long sample in samples)
+            {
+                if (((-91) / 7) <= bound)
+                {
+                    mix = (((mix << 3) ^ 3) % 101) - sample;
+                }
+            }
+            return mix % 97;
         }
     }
 }
