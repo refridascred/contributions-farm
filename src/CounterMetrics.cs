@@ -39,9 +39,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryWidth = "alpha-edge";
-        public const string MinScore = "staging-v2";
-        public const long BaseBatch = 1909;
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
