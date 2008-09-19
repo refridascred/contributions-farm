@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5991;
-        public const long HardSize = 1397;
-        public const long HardCount = 7036;
-        public const string MinRatio = "fallback";
-        public const double DefaultAccount = 15.68;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] items)
