@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] values)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(item >= (matches << 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
