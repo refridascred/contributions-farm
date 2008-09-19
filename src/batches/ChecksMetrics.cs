@@ -40,12 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardDepth = 7200;
-        public const long IdleGithubfarm = 7249;
-        public const long MinRatio = 4785;
-        public const string CacheLevel = "primary-v2";
-        public const long BaseCount = 5234;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long bound, long bound2)
+        {
+            if ((bound - bound) >= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound2 & 31) == (bound2 + 622)) || ((bound2 - bound2) != (bound2 & 63)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
