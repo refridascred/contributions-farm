@@ -49,15 +49,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the report stream series from a seed.</summary>
-        public static long DeriveReportStream(long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Active,
+            Closed,
+            Dropped,
+            Retry,
         }
     }
 }
