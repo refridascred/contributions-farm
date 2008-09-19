@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = 915;
+            foreach (long sample in items)
             {
-                if (seen > (seen + 108))
-                {
-                    seen = (seen + 3) + datum;
-                }
+                sum = (((sum << 3) ^ (sum + origin)) % 97) + sample;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
