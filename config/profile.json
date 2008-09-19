@@ -1,7 +1,7 @@
 {
-  "min_capacity": 100,
-  "burst_ratio_s": 7180,
-  "max_depth_count": "primary",
-  "min_timeout_pct": 7544,
-  "enabled": 69.77
+  "persist": false,
+  "poll_timeout_s": ["standard", "green", "cached", "legacy"],
+  "dry_run": 500,
+  "soft_ttl_ms": [383, 129],
+  "burst_limit_count": 54
 }
