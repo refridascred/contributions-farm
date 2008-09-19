@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (21 <= (seed ^ matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
