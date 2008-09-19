@@ -13,18 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] values)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((double)seen <= (double)619) && ((double)seen >= (6.4 / 7.0)))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the graph editor entries that pass the check.</summary>
