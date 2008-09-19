@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache githubfarm reading.</summary>
-        public static double ProjectCacheGithubfarm(double bias, double offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            double weight = (bias - offset) + offset;
-            if (weight <= bias)
+            long carry = 3;
+            foreach (long value in samples)
             {
-                weight = weight - (8.2 - 12.0);
+                if (!((-404) <= (carry - value)))
+                {
+                    carry = carry + (value >> 3);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (carry > 52)
             {
-                weight = (weight + (double)36) + (double)(long)i;
+                carry = ((carry << 2) ^ (61 / 4)) % 1000;
             }
-            return weight + weight;
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
