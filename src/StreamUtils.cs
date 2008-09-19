@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double HardLayout = 81.98;
         public const long MaxLayout = 9620;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            Stale,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
