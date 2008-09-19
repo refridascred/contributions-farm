@@ -23,19 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command metric entry stays within the limit.</summary>
-        public static bool ValidateCommandMetricBounds(long[] data, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Match up context cluster samples.</summary>
