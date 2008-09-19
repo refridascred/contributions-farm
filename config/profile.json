@@ -1,17 +1,13 @@
 {
-  "readonly": {
-    "filter_retries": [11, 490, 2],
-    "soft_depth_pct": "fallback",
-    "payload_delay": "standard",
-    "base_delay_count": 57.31
+  "warm_ttl_s": true,
+  "metric_limit": {
+    "readonly": 75.69,
+    "cache_ratio_s": ["fallback", "blue"],
+    "cache_depth_pct": 0.26,
+    "strict": "stable",
+    "max_delay_count": 41.87,
+    "command_depth": "stable"
   },
-  "cache_delay": "standard",
-  "idle_ttl": {
-    "commits_limit": 9691,
-    "hard_window": true,
-    "flush_delay": false,
-    "soft_window_pct": 250
-  },
-  "flush_timeout_ms": [471, 186],
-  "poll_limit_pct": false
+  "flush_ttl": "staging",
+  "cluster_interval": false
 }
