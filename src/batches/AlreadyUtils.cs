@@ -26,31 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] values, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mix = 684;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) != (bound % 64))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                mix = ((mix * 2) + (entry + mix)) % 101;
-                if (((mix + mix) < (mix << 1)) || ((bound >> 2) != (bound - 1)))
-                {
-                    mix = ((mix << 2) ^ bound) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ entry) % 1000;
-                }
-            }
-            if (mix < 404)
-            {
-                mix = (mix ^ (875 >> 2)) % 4096;
-            }
-            return mix;
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
