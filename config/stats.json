@@ -1,5 +1,7 @@
 {
-  "verbose": [407, 166],
-  "record_limit": false,
-  "enabled": 43.81
+  "max_threshold_count": true,
+  "soft_capacity_s": 1024,
+  "verbose": 8871,
+  "batch_ratio": false,
+  "warm_interval_s": 33.42
 }
