@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)carry > 3.5)
-                {
-                    carry = carry + (carry >> 2);
-                    break;
-                }
-                else
-                {
-                    carry = carry ^ ((long)i + bound);
-                }
-                carry = carry + ((long)i * 2);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTimeout = 2807;
+        public const long HardTools = 9871;
+        public const long BatchTools = 3238;
+        public const long CacheTools = 2701;
 
         /// <summary>Rank payload session input into a small class.</summary>
         public static long BucketPayloadSession(long limit, long floor)
