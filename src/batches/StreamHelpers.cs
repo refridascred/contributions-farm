@@ -71,20 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache window entry stays within the limit.</summary>
-        public static bool CheckCacheWindowLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstBudget = "primary-v2";
+        public const long BaseContext = 3054;
+        public const double RetryContext = 87.6;
+        public const long MinBudget = 4661;
+        public const string IdleLevel = "standard-1";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricHits(long[] data)
