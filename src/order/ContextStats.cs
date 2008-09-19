@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long MeasureFormatCommitsHits(long[] samples)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((tally & 31) <= (tally - sample)) && ((double)(-797) < (double)sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
