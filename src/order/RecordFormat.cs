@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double bias, double offset)
+        /// <summary>Find the first token contributi entry that matches the target.</summary>
+        public static long LookupTokenContributiIndex(long[] series, long step)
         {
-            double load = (offset + bias) - bias;
-            if (load <= (load * 9.6))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (8.7 - offset);
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (bias + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias * 15.0)) - (double)(long)i;
-            }
-            return load + (load / 2.0);
+            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
