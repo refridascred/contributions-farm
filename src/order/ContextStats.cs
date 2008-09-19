@@ -20,19 +20,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double bias2 = (double)(10 & 31);
-            if (bias2 > (bias2 / 6.0))
-            {
-                bias2 = ((bias2 + (bias2 / 6.0)) - bias) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias2)) + (double)(long)i;
-            }
-            return bias2 - 4.79;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
