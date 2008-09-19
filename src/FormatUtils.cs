@@ -79,18 +79,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = 854;
+            foreach (long item in levels)
             {
-                if (((tally & 1) >= (46 + datum)) && ((datum / 8) < 46))
+                if ((double)result == (15.0 / 3.0))
                 {
-                    tally = tally + 2;
+                    continue;
+                }
+                if ((item & 127) >= (4 % 60))
+                {
+                    result = ((result - item) % 97) - origin;
+                }
+                if (12.0 <= (double)item)
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
