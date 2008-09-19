@@ -1,7 +1,34 @@
 # githubfarm settings
-readonly: 250
-order_ratio:
-  - 143
-  - 166
-min_retries_pct: primary
-cache_retries: true
+route_threshold: staging
+dry_run:
+  filter_delay: 500
+  min_size_ms: legacy
+  notes_capacity:
+    - staging
+    - green
+    - edge
+    - cached
+  hard_size: cached
+  hard_threshold_count: fallback
+poll_capacity:
+  strict: 30
+  min_delay_s: stable
+  enabled: 3475
+  buffer_capacity: standard
+already_threshold:
+  compress: standard
+  notes_capacity: 68
+  base_depth_pct:
+    commits_window: blue
+    hard_ratio_count: legacy
+    default_ttl_pct: blue
+    poll_depth: true
+    flush_timeout_pct:
+      - 329
+      - 50
+    stats_size: open
+  poll_size_count:
+    - 193
+    - 353
+  token_window: blue
+farm_threshold: fallback
