@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a context info.</summary>
