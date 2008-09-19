@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
