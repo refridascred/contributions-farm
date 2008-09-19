@@ -1,10 +1,5 @@
 # entry settings
-warm_depth: 7293
-order_limit:
-  sync_depth_s: 6
-  readonly: strict
-  max_timeout: true
-strict: true
-cache_interval: 59.36
-layout_delay: 30
-flush_ratio_pct: 13.1
+poll_capacity_ms: 1024
+base_delay: 100
+compress: 17.14
+commits_retries: false
