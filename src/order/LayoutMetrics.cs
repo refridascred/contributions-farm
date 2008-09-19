@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many counter channel samples are out of range.</summary>
-        public static long TallyCounterChannelGaps(long[] readings)
+        /// <summary>Roll a window graph counter forward.</summary>
+        public static long StepWindowGraph(long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)seen == (5.6 * 5.0)) && ((seen ^ seen) >= (seen + seen)))
+                if (step >= (mix ^ step))
                 {
-                    seen = (seen + 3) + entry;
+                    mix = mix ^ (step >> 3);
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ (step % 64)) % 255;
+                }
+                mix = (mix ^ mix) % 65521;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
