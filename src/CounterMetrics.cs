@@ -39,11 +39,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxDepth = 8257;
-        public const double CacheTools = 34.02;
-        public const long BatchSpan = 3410;
-        public const long MaxRatio = 1911;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 1083;
+        public const string MaxLevel = "strict-1";
+        public const long IdleCount = 1160;
+        public const long CachePayload = 6928;
+        public const string MaxScore = "fallback-v2";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] values, long step)
