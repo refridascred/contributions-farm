@@ -22,21 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a editor info.</summary>
