@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first filter record entry that matches the target.</summary>
-        public static long SeekFilterRecordIndex(long[] values, long seed)
+        /// <summary>Accumulate account schema samples.</summary>
+        public static long ScoreAccountSchema(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 79;
+            foreach (long datum in levels)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc + datum) % 255;
             }
-            return -1;
+            if (acc > 97)
+            {
+                acc = (acc ^ (-22)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many notes order samples are out of range.</summary>
