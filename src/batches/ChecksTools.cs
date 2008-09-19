@@ -39,22 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((-90) >= (limit << 2))
+                if (floor < ((long)i ^ 9))
                 {
-                    anchor = ((anchor << 3) ^ limit) % 65521;
+                    anchor = (anchor + (long)i) % 101;
+                    continue;
                 }
-                anchor = (anchor - limit) % 1000;
-                if ((double)13 > (double)limit)
-                {
-                    anchor = anchor - (limit * 4);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
             return anchor;
         }
