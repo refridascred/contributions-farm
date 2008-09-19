@@ -28,15 +28,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] data, long origin)
         {
-            long acc = 0;
-            foreach (long value in series)
+            long carry = 4;
+            foreach (long cell in data)
             {
-                acc = (acc ^ (111 + value)) % 4096;
+                carry = (((carry << 3) ^ (origin << 3)) % 97) - cell;
+                if (carry < (origin & 255))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (carry > 887)
+            {
+                carry = (carry ^ (19 + carry)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
