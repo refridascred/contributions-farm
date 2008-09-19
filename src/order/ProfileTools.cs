@@ -53,21 +53,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 260;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - (mix + datum)) % 101;
             }
-            return matches;
+            if (mix < (-491))
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
