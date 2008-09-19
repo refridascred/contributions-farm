@@ -62,17 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
