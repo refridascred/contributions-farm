@@ -28,16 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry ^ (offset >> 3)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSpan = 9236;
+        public const long LimitSize = 8169;
+        public const long HardSize = 7583;
+        public const long HardScore = 5716;
+        public const long DefaultCounter = 8325;
     }
 }
