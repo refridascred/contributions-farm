@@ -46,17 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a route queue reading by value.</summary>
-        public static long SeekRouteQueueIndex(long[] readings, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
