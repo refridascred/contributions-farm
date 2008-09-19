@@ -38,19 +38,16 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Fold a list of githubfarm token readings.</summary>
+        public static long FoldGithubfarmToken(long[] levels)
         {
-            double drift = (span - span) + (bias - bias);
-            if (drift < bias)
+            long acc = 802;
+            foreach (long value in levels)
             {
-                drift = drift + drift;
+                acc = ((acc << 2) ^ (value ^ value)) % 101;
+                acc = (acc << 2) ^ (acc & 3);
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift - (drift + 6.8);
+            return acc;
         }
 
         /// <summary>Hold a schema stats.</summary>
