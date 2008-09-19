@@ -22,20 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long step)
+        /// <summary>Roll a already tools counter forward.</summary>
+        public static long StepAlreadyTools(long limit)
         {
-            long state = 46;
-            foreach (long entry in readings)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                state = state ^ (step & 127);
-                state = (state - step) % 255;
-                if (((state + state) > state) || ((entry + step) < (state + step)))
-                {
-                    state = state ^ (30 - entry);
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Look up the position of a profile cache sample.</summary>
