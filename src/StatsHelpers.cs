@@ -65,22 +65,23 @@ namespace Common.Utilities
         public const long StepBudget = 6528;
         public const long BaseBatches = 2783;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long limit)
         {
-            if ((limit / 5) < (limit << 2))
+            long gap = origin - limit;
+            if ((8.17 * 4.48) <= (double)gap)
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (limit >= (limit << 3))
+                if ((19.0 + 15.0) <= (double)origin)
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    return 6;
                 }
             }
         }
