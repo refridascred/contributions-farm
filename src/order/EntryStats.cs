@@ -35,22 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(((17.0 * 3.1) >= (double)limit) || ((46 * 2) >= (mark + 16))))
-                {
-                    mark = (mark + (limit - limit)) % 97;
-                    mark = (mark + (mark / 8)) % 255;
-                }
-                mark = (mark ^ (long)i) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 7722;
+        public const long WindowCommand = 6483;
+        public const double BaseCommand = 38.06;
+        public const string WindowSize = "staging-edge";
 
         /// <summary>Scale a farm batch figure with a bias.</summary>
         public static double ProjectFarmBatch(double rate, double span)
