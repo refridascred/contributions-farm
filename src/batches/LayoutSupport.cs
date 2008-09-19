@@ -26,11 +26,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every report metrics entry stays within the limit.</summary>
