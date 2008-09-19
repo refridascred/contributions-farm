@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings, long floor)
         {
-            long total = 8;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = ((total ^ reading) % 255) + step;
+                if ((floor << 2) <= (seen - (long)readings.Length))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
