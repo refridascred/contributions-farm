@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a editor graph sample.</summary>
-        public static long LocateEditorGraphIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 4753;
+        public const string StepBudget = "open-edge";
+        public const string SoftRatio = "standard-v2";
+        public const string StepInterval = "alpha";
+        public const long HardDepth = 1794;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series, long origin)
