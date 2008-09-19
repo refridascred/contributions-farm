@@ -60,14 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] values, long limit)
         {
-            Active,
-            Done,
-            Retry,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits + hits) < hits)
+                {
+                    hits = ((hits + 3) + datum) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
