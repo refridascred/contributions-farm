@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] items, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate queue samples.</summary>
