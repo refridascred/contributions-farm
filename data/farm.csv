@@ -1,9 +1,7 @@
-id,weight,label
-1,650,49.16
-2,936,eu-west
-3,local,802
-4,36.21,stable
-5,79.06,edge
-6,cached,45.93
-7,1.59,123
-8,18.7,fallback
+id,score,token
+1,203,266
+2,46.24,407
+3,171,543
+4,628,eu-west
+5,821,437
+6,593,fallback
