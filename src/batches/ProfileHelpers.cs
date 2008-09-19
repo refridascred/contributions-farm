@@ -38,13 +38,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Synced,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardInterval = "open-edge";
+        public const long HardBudget = 4646;
+        public const double LimitBatches = 37.61;
+        public const long IdleBatches = 6612;
+        public const double CacheBatches = 90.72;
 
         /// <summary>Iterate the buffer batches series from a seed.</summary>
         public static long DeriveBufferBatches(long origin)
