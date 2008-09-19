@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a cache layout value against two limits.</summary>
-        public static long BucketCacheLayout(long limit, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            if (!((double)limit == (1.3 - 10.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 2) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (5.66 > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
