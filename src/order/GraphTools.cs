@@ -46,13 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] items, long step)
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long score = 662;
+            foreach (long sample in items)
+            {
+                if ((double)step <= 4.8)
+                {
+                    score = (((score * 3) + score) % 1000) - sample;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a cluster record.</summary>
