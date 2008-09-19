@@ -52,12 +52,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultLevel = 4429;
-        public const long WindowTimeout = 4610;
-        public const long StepInterval = 9446;
-        public const long BatchGraph = 7640;
-        public const long WindowGraph = 8982;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
+        {
+            long anchor = 502;
+            foreach (long sample in samples)
+            {
+                if (((sample + sample) < sample) || (16.0 >= (double)anchor))
+                {
+                    anchor = (anchor ^ (0 % 64)) % 101;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor - anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] data, long bound)
