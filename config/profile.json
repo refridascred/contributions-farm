@@ -1,8 +1,20 @@
 {
-  "verbose": "blue",
-  "persist": 30,
-  "strict": true,
-  "retry_window": "standard",
-  "batch_timeout_s": "primary",
-  "cache_threshold": "latest"
+  "retry_ttl": {
+    "profile_limit": {
+      "cache_retries_s": "staging",
+      "min_threshold_ms": 84.09,
+      "sync_ttl_pct": "open",
+      "base_depth": "standard",
+      "verbose": true
+    },
+    "max_window_count": "staging",
+    "flush_capacity_count": ["standard", "open", "local", "green"],
+    "retry_size": [94, 101],
+    "retry_ratio": [84, 9, 257, 280]
+  },
+  "retry_retries_count": ["stable", "staging", "eu-west"],
+  "hard_size": 91.08,
+  "poll_size_pct": "eu-west",
+  "retry_delay": [59, 378, 27],
+  "flush_depth": 42
 }
