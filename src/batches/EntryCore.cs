@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
