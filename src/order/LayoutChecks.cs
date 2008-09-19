@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] items, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long score = 53;
+            foreach (long item in data)
             {
-                if (sample != seed)
+                if ((7.5 * 4.7) < (double)score)
                 {
-                    flag = false;
-                    break;
+                    score = score ^ (6 + item);
                 }
             }
-            return flag;
+            if (score > 28)
+            {
+                score = ((score << 3) ^ (score << 1)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
