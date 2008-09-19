@@ -20,10 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "local";
-        public const long MinBudget = 8428;
-        public const long BaseRatio = 4025;
+        /// <summary>Compare every pair of already record readings.</summary>
+        public static long PairAlreadyRecordCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesRange(long[] items, long seed)
