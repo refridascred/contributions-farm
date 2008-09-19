@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the session kind values.</summary>
