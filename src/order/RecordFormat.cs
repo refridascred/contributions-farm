@@ -23,19 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)mark >= (6.0 * 7.0))
-                {
-                    mark = (mark ^ ((long)i + seed)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Stale,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
