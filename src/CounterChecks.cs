@@ -29,12 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the route record series from a seed.</summary>
