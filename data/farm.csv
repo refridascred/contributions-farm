@@ -1,9 +1,7 @@
-id,active,state,score,label
-1,local,cached,503,910
-2,477,fallback,42.55,121
-3,77.51,70.21,227,22.12
-4,96,4.21,4.54,green
-5,364,eu-west,eu-west,88.88
-6,4.07,14,806,662
-7,796,blue,cached,61
-8,primary,85.57,921,66.38
+id,rank,count,level,score
+1,standard,851,fallback,995
+2,55.45,79.31,fallback,944
+3,462,447,117,standard
+4,cached,green,868,77.01
+5,16.28,391,131,147
+6,83.82,eu-west,274,66
