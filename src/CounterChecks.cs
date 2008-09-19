@@ -30,21 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 308;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 5) + (result << 3)) ^ value;
             }
-            return tally;
+            if (result > 6)
+            {
+                result = (result - (result - 37)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
