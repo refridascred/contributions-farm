@@ -39,12 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 2412;
-        public const long HardBudget = 3872;
-        public const long IdleTools = 4425;
-        public const double StepTools = 23.05;
-        public const long BaseTimeout = 7600;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 96.33;
+        public const double StepReport = 79.24;
+        public const string BaseCount = "standard-v2";
+        public const long SoftReport = 2717;
+        public const double LimitReport = 28.24;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] series)
