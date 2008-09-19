@@ -67,13 +67,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 81.17;
+        public const string CacheSize = "local-edge";
+        public const long CacheDepth = 5650;
+        public const long BurstChannel = 4737;
+        public const double MinSpan = 68.42;
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] levels, long origin)
