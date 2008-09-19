@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleInterval = 18.4;
-        public const long BurstNotes = 1503;
-        public const double IdleNotes = 48.31;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long seed2)
+        {
+            if (((5.0 - 5.1) == (double)seed2) && (seed2 <= (seed2 << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed2 >= 142)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed2 <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(953 >= (seed << 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long floor, long target)
