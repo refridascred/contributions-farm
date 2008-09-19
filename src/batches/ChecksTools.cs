@@ -44,18 +44,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Classify a githubfarm format pair into a bucket.</summary>
+        public static long RankGithubfarmFormat(long limit, long floor)
         {
-            long mix = 1;
-            foreach (long datum in levels)
+            if ((limit - limit) >= limit)
             {
-                if (!(mix > (mix & 31)))
+                return 6;
+            }
+            else
+            {
+                if ((limit + (-93)) >= (limit * 5))
                 {
-                    mix = mix + (datum << 2);
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) != (floor + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor < (limit / 2)) || ((floor % 60) == (limit ^ limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
     }
 }
