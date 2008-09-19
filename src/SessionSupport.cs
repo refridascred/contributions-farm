@@ -46,19 +46,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 595;
+        public const long BaseDepth = 9264;
+        public const string RetryTools = "alpha-1";
+        public const string SoftTools = "strict-1";
+        public const long BurstTools = 5092;
     }
 }
