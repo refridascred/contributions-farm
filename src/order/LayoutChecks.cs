@@ -44,21 +44,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((state * 3) == (state / 5))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    long lane = (item + 0) >> 2;
+                    state = (state << 3) ^ (seed - lane);
+                }
+                if (seed <= (item + state))
+                {
+                    state = (state + (55 % 60)) % 97;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a format header.</summary>
