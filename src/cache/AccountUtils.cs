@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long BaseCache = 2849;
         public const string IdleTimeout = "primary-v2";
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double mean = (double)(899 >> 5);
-            if (mean > (double)424)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean + (3.6 + floor);
-            }
-            return mean + (rate * 11.0);
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
