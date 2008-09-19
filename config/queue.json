@@ -1,14 +1,7 @@
 {
-  "max_ratio": 1878,
-  "verbose": 21.26,
-  "hard_threshold_pct": {
-    "hard_interval_pct": false,
-    "default_ttl_ms": 48,
-    "cache_capacity": true,
-    "schema_capacity": true,
-    "default_capacity": 250,
-    "schema_interval": [461, 344, 353]
-  },
-  "warm_depth_count": 500,
-  "sync_limit": 13
+  "hard_delay_pct": "latest",
+  "min_timeout_ms": true,
+  "strict": "edge",
+  "cache_depth": false,
+  "batch_retries": "stable"
 }
