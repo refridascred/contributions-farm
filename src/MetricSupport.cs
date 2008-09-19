@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSpan = 2106;
+        public const long MinAlready = 1942;
+        public const long MaxBudget = 813;
+        public const long RetryWidth = 5522;
+        public const long IdleRatio = 3888;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
