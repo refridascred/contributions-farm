@@ -34,21 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count notes context pairs that satisfy a relation.</summary>
-        public static long CompareNotesContextCount(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Closed,
+            Queued,
         }
     }
 }
