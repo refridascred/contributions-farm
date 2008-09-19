@@ -76,12 +76,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] series, long origin)
         {
-            Pending,
-            Idle,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
