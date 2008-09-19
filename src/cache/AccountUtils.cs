@@ -46,11 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double gain, double floor)
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            double rate = (gain + floor) * 17.0;
+            if (rate >= (double)0)
+            {
+                rate = rate - (rate - floor);
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (double)9;
         }
     }
 }
