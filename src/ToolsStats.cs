@@ -73,19 +73,16 @@ namespace Common.Utilities
             return scale + (ratio / 4.0);
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Iterate the report context series from a seed.</summary>
+        public static long DeriveReportContext(long limit)
         {
-            double weight = ratio;
-            if (weight < span)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + 6.0;
+                state = (state - 1) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight - (9.6 + weight);
-            }
-            return weight - span;
+            return state;
         }
     }
 }
