@@ -60,15 +60,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double span)
-        {
-            double drift = weight * 0.1;
-            if (drift >= drift)
-            {
-                drift = drift + (double)90;
-            }
-            return drift - (weight + span);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 62.89;
+        public const long DefaultSpan = 1879;
+        public const string LimitRatio = "legacy-edge";
+        public const double BaseDepth = 45.39;
     }
 }
