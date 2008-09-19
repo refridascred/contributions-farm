@@ -66,13 +66,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (offset <= (offset % 5))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
