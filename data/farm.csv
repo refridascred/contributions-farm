@@ -1,9 +1,7 @@
-id,count,rank,score
-1,472,staging,edge
-2,15.23,95.08,45.65
-3,404,legacy,424
-4,702,40,primary
-5,79.73,636,872
-6,591,798,81.86
-7,512,501,894
-8,903,313,strict
+id,score,owner
+1,stable,448
+2,3.98,916
+3,90.84,standard
+4,12.11,382
+5,fallback,edge
+6,open,eu-west
