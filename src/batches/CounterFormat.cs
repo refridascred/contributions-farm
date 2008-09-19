@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long step)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long total = 20;
-            foreach (long entry in series)
-            {
-                total = (((total * 3) + step) % 1000) + entry;
-                if ((step >> 4) >= (total + step))
-                {
-                    total = (total ^ total) % 255;
-                }
-            }
-            if (total < 312)
-            {
-                total = total - 9;
-            }
-            return total % 1000;
+            Synced,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
