@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long limit, long offset)
+        /// <summary>Accumulate context contributi samples.</summary>
+        public static long TotalContextContributi(long[] readings, long limit)
         {
-            if ((offset >> 4) > (limit / 8))
+            long carry = 15;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit * 2) != (25 + 808)) || ((double)limit >= 8.34))
+                if ((limit ^ carry) > (5 >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit < 4.6) || ((offset + limit) > (limit % 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = carry + (limit + entry);
                 }
             }
+            if (carry > 560)
+            {
+                carry = (carry - (498 - limit)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
