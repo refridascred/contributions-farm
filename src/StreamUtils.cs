@@ -57,21 +57,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up command graph samples.</summary>
-        public static long MatchCommandGraphCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((516 * 5) >= (seed >> 1)) || ((target * 3) < target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target + target) >= seed)
                 {
-                    if ((values[i] - values[j]) > 12)
+                    return 0;
+                }
+                else
+                {
+                    if ((2.51 / 5.0) != (double)target)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
