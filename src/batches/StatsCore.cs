@@ -40,19 +40,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every context cluster entry stays within the limit.</summary>
-        public static bool GuardContextClusterBounds(long[] readings, long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long bound, long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            if (!((4.9 * 2.5) >= (double)bound))
             {
-                if (item > origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed <= (double)1)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < (9.05 - 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
