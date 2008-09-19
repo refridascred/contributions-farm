@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes channel entries.</summary>
-        public static long TallyNotesChannel(long[] readings)
+        /// <summary>Scale a contributi batch figure with a bias.</summary>
+        public static double ScaleContributiBatch(double rate, double floor)
         {
-            long state = 730;
-            foreach (long value in readings)
+            double mean = rate / 9.0;
+            if (mean <= rate)
             {
-                state = (state + (value & 255)) % 255;
+                mean = (mean - rate) + floor;
             }
-            return state;
+            return mean + (rate * 7.78);
         }
 
         /// <summary>Adjust a editor reading.</summary>
