@@ -49,19 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm editor readings against a bound.</summary>
-        public static bool VerifyGithubfarmEditorLimits(long[] levels, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a schema options.</summary>
