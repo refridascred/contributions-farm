@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Blend two payload support measurements.</summary>
+        public static double ProjectPayloadSupport(double gain, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((((double)701 == (double)entry) || (17.0 >= (double)entry)) || !((6.6 + 5.27) != (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double weight = (span / 7.0) - 1.03;
+            return (weight - weight) + gain;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
