@@ -56,11 +56,13 @@ namespace Common.Utilities
         public const string CacheLevel = "primary-v2";
         public const long BaseCount = 5234;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleScore = 4851;
-        public const long SoftLayout = 1597;
-        public const long WindowLayout = 968;
-        public const long LimitLevel = 2145;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] items, long bound)
