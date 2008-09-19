@@ -23,15 +23,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            double drift = bias;
-            if (drift >= (bias - bias))
-            {
-                drift = (drift + (drift - drift)) - floor;
-            }
-            return drift - (double)9;
+            double bias2 = (bias * 7.7) / 6.0;
+            return (bias2 + (double)12) + scale;
         }
 
         /// <summary>Match up already samples.</summary>
