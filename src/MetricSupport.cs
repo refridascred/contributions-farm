@@ -46,15 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a command metric counter forward.</summary>
-        public static long StepCommandMetric(long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
