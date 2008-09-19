@@ -79,38 +79,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long limit, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if (((target % 7) < 40) && ((4.33 + 5.07) < (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 + 4.5) >= (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (3.2 / 3.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)target >= (double)limit) && ((32 + target) < limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
