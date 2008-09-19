@@ -38,25 +38,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long cur = origin - floor;
-            if (((double)origin >= (9.99 + 7.0)) && ((5 ^ floor) >= (cur + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-2) != (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the format kind values.</summary>
