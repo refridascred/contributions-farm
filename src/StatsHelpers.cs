@@ -14,27 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] readings, long floor)
         {
-            long anchor = 12;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((double)tally < (double)reading))
                 {
-                    anchor = (((anchor << 2) ^ limit) % 255) ^ (long)i;
-                }
-                anchor = (anchor - 61) % 1000;
-                if ((anchor + anchor) > 943)
-                {
-                    anchor = (anchor << 3) ^ (limit - item);
-                }
-                else
-                {
-                    anchor = anchor - 2;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
