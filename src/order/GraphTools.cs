@@ -43,20 +43,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings, long limit)
-        {
-            long carry = 7;
-            foreach (long reading in readings)
-            {
-                if ((carry + carry) > (long)readings.Length)
-                {
-                    carry = (carry - ((long)readings.Length / 4)) + reading;
-                }
-                carry = (carry - (limit % 7)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxWidth = 98.86;
+        public const double MaxRatio = 10.88;
+        public const long BaseCount = 1667;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
