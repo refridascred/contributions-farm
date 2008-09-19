@@ -69,24 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long limit)
+        /// <summary>Iterate the buffer schema series from a seed.</summary>
+        public static long RollBufferSchema(long step)
         {
-            if (((-8) > limit) || ((limit + 268) >= floor))
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)floor <= (9.9 - 3.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
