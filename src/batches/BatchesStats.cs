@@ -62,22 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long total = 711;
-            foreach (long sample in data)
-            {
-                if (((double)sample > (4.72 / 6.0)) && ((sample >> 4) >= (total >> 2)))
-                {
-                    total = total ^ (sample << 1);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total * 2)) % 65521;
-                }
-            }
-            return total % 97;
+            Stale,
+            Queued,
+            Failed,
         }
     }
 }
