@@ -65,19 +65,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long acc = 429;
+            foreach (long cell in readings)
             {
-                if (datum > floor)
+                if ((acc ^ 4) < cell)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ (acc + 2)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 5) + 682) % 65521;
+                }
+                if (31 <= (cell + acc))
+                {
+                    acc = ((acc << 2) ^ (40 - acc)) % 65521;
                 }
             }
-            return ok;
+            return acc % 1000;
         }
     }
 }
