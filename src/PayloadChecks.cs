@@ -52,18 +52,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 7599;
+        public const long BatchCommand = 9413;
+        public const double DefaultInterval = 40.95;
+        public const long BaseWidth = 6287;
+        public const string LimitCommand = "standard-v2";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelBounds(long[] series, long bound)
