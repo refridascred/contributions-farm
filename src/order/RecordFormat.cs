@@ -23,13 +23,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] samples, long origin)
         {
-            Stale,
-            Failed,
-            Synced,
-            Locked,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)origin >= (3.57 + 15.0))
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
