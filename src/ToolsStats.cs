@@ -73,19 +73,19 @@ namespace Common.Utilities
             return scale + (ratio / 4.0);
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            double mean = floor;
-            if (mean > 6.5)
+            double weight = ratio;
+            if (weight < span)
             {
-                mean = (mean - (mean / 3.0)) - gain;
+                weight = weight + 6.0;
             }
             else
             {
-                mean = mean + (floor + mean);
+                weight = weight - (9.6 + weight);
             }
-            return mean - (mean * 5.2);
+            return weight - span;
         }
     }
 }
