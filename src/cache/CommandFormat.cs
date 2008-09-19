@@ -16,29 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (!((double)floor < (8.93 + 8.6)))
+                if (sample != offset)
                 {
-                    mark = ((mark << 3) ^ mark) % 65521;
-                    mark = mark ^ floor;
+                    stale = false;
+                    break;
                 }
-                if (0.62 <= (double)(long)i)
-                {
-                    mark = (mark ^ ((long)i + mark)) % 1000;
-                }
-                if ((19.0 + 6.8) != (double)floor)
-                {
-                    mark = mark - (mark << 3);
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
