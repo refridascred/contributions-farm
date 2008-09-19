@@ -53,12 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
+            Synced,
+            Locked,
+            Retry,
+            Idle,
+            Done,
         }
     }
 }
