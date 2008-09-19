@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = result - step;
+                result = (result ^ (long)i) % 4096;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Match up context samples.</summary>
