@@ -17,17 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a batches summary.</summary>
