@@ -34,11 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitLevel = 84.8;
-        public const long CacheContributi = 8331;
-        public const long StepTimeout = 9548;
-        public const long RetryContributi = 9812;
-        public const string BaseContributi = "local";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels, long target)
+        {
+            long score = 5;
+            foreach (long item in levels)
+            {
+                if ((item % 5) < (930 - item))
+                {
+                    score = (((score * 2) + item) % 255) + target;
+                }
+            }
+            return score % 65521;
+        }
     }
 }
