@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every account already entry stays within the limit.</summary>
-        public static bool CheckAccountAlreadyBounds(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "staging-v2";
+        public const long HardCommits = 4922;
+        public const double MinBudget = 70.45;
+        public const long BaseCommits = 6288;
+        public const long CacheCommits = 7346;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
