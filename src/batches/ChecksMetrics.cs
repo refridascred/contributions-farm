@@ -63,12 +63,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
