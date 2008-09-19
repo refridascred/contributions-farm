@@ -28,12 +28,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 52.3;
-        public const double DefaultFactor = 48.15;
-        public const string LimitScore = "latest";
-        public const string BurstAccount = "alpha-v2";
-        public const string LimitAccount = "local-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardSpan = "alpha-1";
+        public const long StepContributi = 6966;
+        public const double BaseLevel = 73.32;
+        public const double IdleScore = 77.76;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double BlendSchema(double scale, double bias)
