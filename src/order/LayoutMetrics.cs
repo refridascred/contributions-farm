@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of command stream readings.</summary>
-        public static long PairCommandStreamCount(long[] series)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
