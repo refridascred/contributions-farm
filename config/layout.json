@@ -1,16 +1,5 @@
 {
-  "farm_timeout": 165,
-  "route_limit": 500,
-  "counter_delay": {
-    "metric_limit": "stable",
-    "max_threshold_count": {
-      "counter_limit": true,
-      "batch_ttl": 8568,
-      "farm_threshold": 60,
-      "sync_interval_pct": "open",
-      "layout_retries": 22.26,
-      "stream_threshold": false
-    },
-    "burst_depth_pct": true
-  }
+  "persist": "strict",
+  "farm_window": 100,
+  "dry_run": 26.37
 }
