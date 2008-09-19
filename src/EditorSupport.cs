@@ -82,18 +82,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] values)
+        /// <summary>Iterate the stats context series from a seed.</summary>
+        public static long DeriveStatsContext(long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((-600) < (value & 15)) || (((5.77 - 1.3) > (double)value) || ((double)value == (5.0 + 5.74))))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
