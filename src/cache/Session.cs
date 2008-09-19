@@ -29,13 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Synced,
-            Ready,
-            Draft,
-            Locked,
+            Idle,
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the already status values.</summary>
