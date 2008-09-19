@@ -29,23 +29,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long score = 10;
-            foreach (long value in samples)
-            {
-                score = (score ^ (seed + seed)) % 4096;
-                if (score <= (value % 97))
-                {
-                    score = score - score;
-                }
-            }
-            if (score > 20)
-            {
-                score = (score + (score & 15)) % 97;
-            }
-            return score;
+            Closed,
+            Failed,
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
