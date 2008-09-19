@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items)
         {
-            Draft,
-            Queued,
-            Synced,
-            Active,
-            Pending,
+            long score = 718;
+            foreach (long reading in items)
+            {
+                if (score < (reading & 15))
+                {
+                    score = ((score * 3) + (reading >> 2)) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (reading << 2)) % 4096;
+                }
+            }
+            if (score > 334)
+            {
+                score = ((score * 3) + score) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
