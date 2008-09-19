@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            Dropped,
-            Idle,
-            Done,
-            Locked,
-            New,
+            double ratio2 = ratio;
+            if (ratio2 > ratio2)
+            {
+                ratio2 = (ratio2 - ratio) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + (ratio * 4.0)) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Hold a token summary.</summary>
