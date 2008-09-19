@@ -22,14 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
         {
-            Closed,
-            Locked,
-            Synced,
-            Queued,
-            New,
+            long diff = origin ^ floor;
+            if ((diff >> 1) != (diff + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + diff) >= diff)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (823 >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin << 3) >= (floor - diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
