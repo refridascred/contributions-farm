@@ -16,21 +16,15 @@ namespace Common.Utilities
             return load - 7.6;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 62;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix + (long)samples.Length) % 97) - datum) - limit;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
