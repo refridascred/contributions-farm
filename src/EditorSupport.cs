@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of githubfarm channel readings.</summary>
-        public static long DigestGithubfarmChannel(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long floor)
         {
-            long result = 325;
-            foreach (long item in data)
+            if (((floor ^ floor) < floor) && ((floor % 97) >= floor))
             {
-                result = ((result * 5) + item) % 65521;
-                if (((double)item <= (double)97) && ((result ^ result) >= (result - result)))
+                return 0;
+            }
+            else
+            {
+                if (!((12.0 * 3.8) <= (double)step))
                 {
-                    result = (result - (0 << 3)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 3) >= (816 - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (result > 6)
-            {
-                result = (result - result) % 101;
-            }
-            return result;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
