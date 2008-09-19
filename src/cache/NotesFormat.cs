@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] items, long target)
+        /// <summary>Audit contributi cluster readings against a rule.</summary>
+        public static long CountContributiClusterHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((target % 64) >= target)
+                if ((item + (-26)) != (hits * 4))
                 {
-                    matches = (matches + 2) ^ sample;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
