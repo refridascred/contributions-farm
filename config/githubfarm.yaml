@@ -1,19 +1,10 @@
 # githubfarm settings
-poll_ratio_pct: fallback
-burst_timeout: staging
-warm_retries_pct:
-  compress:
-    order_window: 100
-    buffer_capacity: cached
-    enabled: 89.3
-  idle_size_s:
-    - staging
-    - eu-west
-  max_timeout_count: 4076
-  idle_depth_count: 74.73
-  idle_capacity_s:
-    sync_capacity_count: eu-west
-    batch_threshold_count: 71
-    retry_retries_pct: 0.67
-  idle_size: 4873
-readonly: 500
+sync_threshold_ms: staging
+dry_run: 3420
+persist:
+  - 416
+  - 435
+  - 455
+metrics_ttl: edge
+batch_interval: 100
+checks_interval: eu-west
