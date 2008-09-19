@@ -15,22 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats route entries that pass the check.</summary>
-        public static long AuditStatsRouteGaps(long[] readings, long bound)
+        /// <summary>Combine payload stream values into a single score.</summary>
+        public static long WeighPayloadStream(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long score = 568;
+            foreach (long sample in samples)
             {
-                if ((matches & 3) <= bound)
+                if (((4.0 / 3.0) != (double)sample) && ((20.0 - 1.53) >= (double)sample))
                 {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = score ^ (step ^ score);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
