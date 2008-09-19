@@ -36,22 +36,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count queue checks pairs that satisfy a relation.</summary>
-        public static long MatchQueueChecksCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 5918;
+        public const string LimitChecks = "fallback-v2";
+        public const string DefaultChecks = "fallback-edge";
+        public const long HardChecks = 5587;
+        public const string MaxFactor = "open-1";
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
