@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items, long floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((floor << 1) == (matches + matches))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
