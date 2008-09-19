@@ -41,12 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit format profile readings against a rule.</summary>
+        public static long TallyFormatProfileOutliers(long[] samples, long floor)
         {
-            Locked,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((80 * 4) <= (matches + 1))
+                {
+                    matches = ((matches + 3) - entry) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
