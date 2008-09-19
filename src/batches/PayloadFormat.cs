@@ -48,22 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] items, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((count * 3) == (item * 4)))
-                {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
