@@ -36,20 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data, long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] values, long floor)
         {
-            long anchor = -130;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((37 / 3) < anchor)
+                if (values[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = (anchor - datum) - limit;
-                anchor = anchor - (datum + (-4));
             }
-            return anchor;
+            return -1;
         }
     }
 }
