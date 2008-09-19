@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const long HardMetrics = 979;
         public const long WindowSize = 5010;
 
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long DigestGithubfarmBatch(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long result = 991;
-            foreach (long reading in samples)
-            {
-                if ((result + result) <= result)
-                {
-                    result = (result ^ reading) % 4096;
-                }
-                if ((double)reading <= 0.63)
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
