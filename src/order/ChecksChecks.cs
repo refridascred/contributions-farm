@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a cache account value against two limits.</summary>
-        public static long ClassifyCacheAccount(long bound, long bound2)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            if (bound2 <= (bound & 127))
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 << 2) == (bound2 ^ bound2)) && ((double)bound2 != (20.0 / 4.0)))
+                if (9.48 < (double)bound)
                 {
-                    return 0;
+                    total = total ^ (bound * 4);
+                    total = total ^ (3 & 63);
                 }
                 else
                 {
-                    if ((bound2 << 3) == (78 >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total - bound) % 255;
+                    total = ((total * 5) + ((long)i + total)) % 101;
                 }
+                total = (total + (total * 5)) % 1000;
+                total = (total - (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
