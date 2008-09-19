@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchBudget = 5137;
+        public const string CacheAlready = "open-v2";
+        public const long DefaultAlready = 4004;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] items, long floor)
