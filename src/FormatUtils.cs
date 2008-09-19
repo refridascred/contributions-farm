@@ -53,12 +53,9 @@ namespace Common.Utilities
         public const long DefaultContributi = 5964;
         public const long SoftContributi = 6955;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "primary";
+        public const long BaseCommand = 7881;
+        public const double BatchFactor = 45.33;
     }
 }
