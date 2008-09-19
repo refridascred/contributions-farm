@@ -1,10 +1,16 @@
 # githubfarm settings
-sync_threshold_ms: staging
-dry_run: 3420
-persist:
-  - 416
-  - 435
-  - 455
-metrics_ttl: edge
-batch_interval: 100
-checks_interval: eu-west
+audit: legacy
+batch_capacity_s: false
+retry_depth_count:
+  sync_ratio: 79
+  sync_size_s: edge
+  payload_delay:
+    verbose: 54
+    max_delay: open
+    soft_window_pct: 1812
+    audit:
+      - strict
+      - fallback
+      - edge
+      - blue
+    hard_depth: staging
