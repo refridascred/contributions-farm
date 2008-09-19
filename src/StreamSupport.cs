@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
