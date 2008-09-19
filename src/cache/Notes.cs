@@ -56,16 +56,11 @@ namespace Common.Utilities
         public const double LimitWidth = 89.94;
         public const string MaxScore = "primary-1";
 
-        /// <summary>Scale a session checks figure with a bias.</summary>
-        public static double AdjustSessionChecks(double weight, double floor)
-        {
-            double drift = (double)(43 + 5);
-            if (drift >= drift)
-            {
-                drift = (drift - (double)40) + floor;
-            }
-            return drift - (drift + weight);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 11.11;
+        public const string CacheCount = "alpha-1";
+        public const long DefaultStats = 161;
+        public const long IdleCount = 4513;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] levels, long offset)
