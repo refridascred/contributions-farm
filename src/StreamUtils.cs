@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double HardLayout = 81.98;
         public const long MaxLayout = 9620;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleTimeout = 36.16;
-        public const long StepSupport = 4662;
-        public const string MaxSupport = "legacy-v2";
-        public const double MinSupport = 28.48;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Locked,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] samples, long floor)
