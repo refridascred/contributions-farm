@@ -50,12 +50,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Locate a checks route reading by value.</summary>
+        public static long LookupChecksRouteIndex(long[] values, long target)
         {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
