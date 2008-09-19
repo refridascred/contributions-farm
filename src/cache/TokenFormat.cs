@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double load = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
+                load = ((load + floor) - (double)(long)i) - scale;
             }
-            return flag;
+            return load - (double)(-812);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
