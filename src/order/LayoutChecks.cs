@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if (((origin + floor) != (origin - floor)) && ((origin - origin) < (origin << 3)))
             {
-                if ((double)sample < (4.6 * 9.86))
+                return 0;
+            }
+            else
+            {
+                if (((52 + origin) < origin) && ((7.0 + 5.58) > (double)floor))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
