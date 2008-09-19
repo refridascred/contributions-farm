@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum + count) >= datum)
+                if ((83 << 2) < anchor)
                 {
-                    count = count + 2;
+                    anchor = (anchor << 2) ^ (target & 127);
+                    continue;
                 }
+                anchor = anchor ^ anchor;
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
