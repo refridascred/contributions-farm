@@ -52,10 +52,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftSize = 59.45;
-        public const long WindowInterval = 9201;
-        public const long SoftBudget = 9248;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] data, long origin)
