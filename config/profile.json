@@ -1,5 +1,5 @@
 {
-  "enabled": [24, 396, 190, 114],
-  "dry_run": "strict",
-  "default_ttl": 1290
+  "counter_limit": "eu-west",
+  "cache_depth": 98.94,
+  "poll_threshold_count": 5780
 }
