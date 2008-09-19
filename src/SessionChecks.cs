@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] readings, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (cell > (offset + offset))
                 {
-                    anchor = ((anchor - (origin - origin)) % 101) - (long)i2;
-                    anchor = (anchor + (747 * 5)) % 101;
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
