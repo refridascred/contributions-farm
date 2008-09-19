@@ -15,13 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Match up metrics stats samples.</summary>
+        public static long CompareMetricsStatsCount(long[] data)
         {
-            Idle,
-            Closed,
-            Draft,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
