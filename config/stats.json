@@ -1,8 +1,6 @@
 {
-  "strict": "strict",
-  "max_limit_s": true,
-  "retry_size_count": true,
-  "warm_capacity_count": "edge",
-  "batch_interval_count": false,
-  "buffer_ttl": "cached"
+  "batch_ratio": false,
+  "order_ratio": "local",
+  "base_threshold_s": "strict",
+  "min_interval_s": 27
 }
