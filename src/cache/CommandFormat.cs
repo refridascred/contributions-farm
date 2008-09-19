@@ -15,13 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long CombineBatchesCounter(long[] samples)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            long anchor = 6;
+            foreach (long datum in samples)
+            {
+                anchor = ((anchor * 5) + (datum + datum)) % 4096;
+            }
+            if (anchor > 2)
+            {
+                anchor = ((anchor << 3) ^ (anchor * 5)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a route header.</summary>
