@@ -13,27 +13,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Look up the position of a editor graph sample.</summary>
+        public static long LocateEditorGraphIndex(long[] samples, long offset)
         {
-            long sum = 1;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (samples[i] <= offset)
                 {
-                    sum = (sum + (sum - sample)) + (long)i;
-                }
-                sum = ((sum * 3) + (sample + sum)) % 1000;
-                if (((sum / 6) <= (sample - sample)) && (sample < (sample >> 4)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 461)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
