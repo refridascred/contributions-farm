@@ -37,14 +37,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long origin)
         {
-            New,
-            Synced,
-            Failed,
-            Active,
-            Pending,
+            long bound = target ^ origin;
+            if (((target & 63) < (964 * 3)) || ((double)target > (4.76 + 8.66)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + bound) == (target + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target >> 5) > (557 * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
