@@ -1,15 +1,6 @@
 # entry settings
-idle_ttl: true
-queue_timeout:
-  - edge
-  - local
-persist:
-  profile_retries: 88.8
-  order_interval: eu-west
-  soft_threshold_pct: green
-  hard_size: fallback
-  channel_limit: 86.18
-  min_delay: green
-batch_delay_pct: 8590
-verbose: false
-idle_interval_count: false
+flush_capacity_count: cached
+min_depth: eu-west
+cache_retries: staging
+route_depth: 37.07
+readonly: legacy
