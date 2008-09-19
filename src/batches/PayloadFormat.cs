@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            New,
-            Queued,
-            Retry,
-            Stale,
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
