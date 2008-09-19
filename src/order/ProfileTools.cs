@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long limit)
+        /// <summary>Digest a series of metric support entries.</summary>
+        public static long FoldMetricSupport(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 7;
+            foreach (long entry in values)
             {
-                if (samples[i] < limit)
+                if ((1 / 9) > (mix % 64))
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + (mix / 4)) % 1000) + entry;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a record stats.</summary>
