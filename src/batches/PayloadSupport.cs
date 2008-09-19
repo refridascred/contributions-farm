@@ -25,31 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a tools context pair into a bucket.</summary>
-        public static long RankToolsContext(long step, long offset)
-        {
-            if ((10 % 3) >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 4) > (step - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >> 2) == (597 + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstCount = "legacy-v2";
+        public const double BatchFarm = 94.35;
+        public const string BaseFarm = "cached-1";
+        public const string MaxFarm = "stable";
+        public const long WindowFarm = 6235;
     }
 }
