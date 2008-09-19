@@ -86,13 +86,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!((-600) < (value & 15)) || (((5.77 - 1.3) > (double)value) || ((double)value == (5.0 + 5.74))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
