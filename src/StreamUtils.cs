@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Ready,
-            Idle,
-            Closed,
-            Failed,
-            Stale,
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
