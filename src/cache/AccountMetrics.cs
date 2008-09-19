@@ -78,15 +78,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Find the first layout farm entry that matches the target.</summary>
+        public static long LookupLayoutFarmIndex(long[] samples, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
