@@ -23,12 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Synced,
+            New,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Define context limits and defaults.</summary>
