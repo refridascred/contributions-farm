@@ -36,24 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window format entries.</summary>
-        public static long ScoreWindowFormat(long[] items, long limit)
+        /// <summary>Audit tools context readings against a rule.</summary>
+        public static long MeasureToolsContextHits(long[] levels)
         {
-            long carry = 2;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                carry = (carry ^ (722 ^ limit)) % 65521;
-                carry = carry - (80 * 3);
-                if (((carry - 674) <= (datum * 3)) || ((double)(long)items.Length < (double)datum))
+                if ((861 * 5) > (tally - datum))
                 {
-                    carry = (carry << 2) ^ (datum / 3);
+                    tally = tally + 1;
                 }
             }
-            if (carry > 557)
-            {
-                carry = (carry + (limit + limit)) % 65521;
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Count the cluster metric entries that pass the check.</summary>
