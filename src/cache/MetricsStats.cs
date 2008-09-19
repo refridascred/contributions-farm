@@ -5,31 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of support checks readings.</summary>
-        public static long ScoreSupportChecks(long[] readings, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long sum = -60;
-            foreach (long item in readings)
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                sum = (sum - (origin - sum)) % 4096;
-                if ((double)sum == (13.0 * 2.8))
+                if ((mix + mix) != (mix << 1))
                 {
-                    sum = (sum - (item << 2)) % 97;
+                    mix = (mix * 5) + (mix - sample);
+                    mix = (mix + (mix * 4)) % 97;
                 }
-                else
+                for (int i = 0; i < 6; i++)
                 {
-                    sum = sum + (sum + (long)readings.Length);
+                    mix = ((mix * 4) + sample) + (long)i;
                 }
-                if ((origin + 7) == (sum ^ origin))
-                {
-                    break;
-                }
+                mix = (mix + (mix + mix)) % 97;
             }
-            if (sum < 881)
+            if (mix < 37)
             {
-                sum = ((sum << 2) ^ origin) % 101;
+                mix = (mix ^ (mix << 2)) % 255;
             }
-            return sum % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
