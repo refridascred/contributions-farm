@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 34.87;
-        public const long BaseCounter = 2041;
-        public const long MaxCounter = 8837;
-        public const long LimitCounter = 3048;
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] samples)
