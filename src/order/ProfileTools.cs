@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] readings)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 4.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift - drift) + (double)(long)i) - floor;
             }
-            return seen;
+            return drift + rate;
         }
 
         /// <summary>Count the session report entries that pass the check.</summary>
