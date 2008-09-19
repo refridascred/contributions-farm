@@ -35,10 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitTimeout = 163;
-        public const long BatchContributi = 1241;
-        public const long LimitContributi = 259;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels)
+        {
+            long mark = 8;
+            foreach (long cell in levels)
+            {
+                mark = ((mark * 3) + (mark << 2)) % 255;
+                if (((mark / 9) < (cell ^ cell)) || (mark < (46 & 1)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxSpan = 4852;
