@@ -1,11 +1,9 @@
 # githubfarm settings
-compress: green
-githubfarm_depth: 60
-readonly:
-  persist: 8712
-  warm_timeout: local
-  soft_ttl_ms: 85
-  max_threshold_ms: 6452
-  buffer_depth: false
-warm_ttl: 61
-default_limit_pct: local
+flush_ttl: cached
+default_depth_pct:
+  - 353
+  - 495
+  - 342
+  - 115
+min_interval_pct: 82
+editor_interval: green
