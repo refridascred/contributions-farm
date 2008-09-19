@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Pending,
-            Queued,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 7627;
+        public const double LimitScore = 51.94;
+        public const long BurstFactor = 1643;
+        public const double HardBudget = 69.21;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] data, long offset)
