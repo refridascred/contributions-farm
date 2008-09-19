@@ -68,13 +68,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double weight, double offset)
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            double ratio = offset;
+            if (ratio >= offset)
+            {
+                ratio = ratio + offset;
+            }
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (weight * 3.13)) + (double)(long)i;
+            }
+            return ratio + (double)523;
         }
     }
 }
