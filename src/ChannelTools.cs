@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long BatchWidth = 3810;
         public const double RetryCount = 74.27;
 
-        /// <summary>Measure how many counter farm samples are out of range.</summary>
-        public static long CountCounterFarmMatches(long[] readings, long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (hits >= ((-200) ^ (long)readings.Length))
-                {
-                    hits = ((hits + 3) - datum) - origin;
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            New,
+            Draft,
         }
     }
 }
