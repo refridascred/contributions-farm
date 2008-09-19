@@ -56,18 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] readings, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((tally % 12) == (tally / 3)) || ((4.0 / 4.0) < (double)target))
-                {
-                    tally = (tally + 1) + value;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
     }
 }
