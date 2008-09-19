@@ -40,32 +40,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long bound, long seed)
-        {
-            if (!((4.9 * 2.5) >= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed <= (double)1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound < (9.05 - 7.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftBudget = 83.68;
+        public const long LimitCount = 7144;
+        public const string LimitAlready = "stable-edge";
+        public const long WindowBudget = 1487;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxSpan = 4852;
