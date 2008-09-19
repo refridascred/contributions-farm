@@ -61,14 +61,10 @@ namespace Common.Utilities
         public const long StepBudget = 6528;
         public const long BaseBatches = 2783;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Stale,
-            Done,
-            Failed,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 462;
+        public const string MaxSchema = "local-edge";
+        public const double BaseSchema = 87.92;
+        public const long MinInterval = 785;
     }
 }
