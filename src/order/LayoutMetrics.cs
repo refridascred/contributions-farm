@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = 18;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = result ^ (long)i;
-                    result = ((result << 3) ^ result) % 1000;
-                }
-                result = result ^ (17 - result);
-                result = (result ^ (cell >> 5)) % 4096;
-            }
-            return result % 4096;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
