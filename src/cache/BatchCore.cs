@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleWidth = "cached-1";
-        public const long SoftRatio = 2993;
-        public const long HardGithubfarm = 3103;
-        public const double LimitGithubfarm = 7.08;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)count > (4.6 / 4.0)))
+                {
+                    count = ((count + 3) ^ reading) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] items)
