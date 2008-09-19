@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstRatio = 52.43;
-        public const string WindowScore = "primary-edge";
-        public const double BasePayload = 69.51;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] samples, long floor)
