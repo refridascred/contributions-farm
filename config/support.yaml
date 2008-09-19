@@ -1,4 +1,12 @@
 # support settings
-format_depth: 45.0
-report_interval: 2134
-soft_threshold: 5004
+max_interval_s: strict
+payload_threshold:
+  - edge
+  - latest
+support_delay: legacy
+sync_interval_ms: cached
+entry_retries:
+  - open
+  - stable
+  - fallback
+  - blue
