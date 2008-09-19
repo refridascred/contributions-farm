@@ -77,21 +77,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up contributi support samples.</summary>
-        public static long OverlapContributiSupportCount(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 7;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((total - total) == ((long)levels.Length + cell))
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + total) - floor;
                 }
             }
-            return tally;
+            if (total > 83)
+            {
+                total = (total + (total >> 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of command entries.</summary>
