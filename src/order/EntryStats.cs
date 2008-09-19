@@ -58,12 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Synced,
-            Closed,
-            Idle,
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
