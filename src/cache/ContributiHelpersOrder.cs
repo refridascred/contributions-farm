@@ -18,12 +18,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
