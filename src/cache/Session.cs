@@ -37,25 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long target)
+        /// <summary>Look up the position of a profile cache sample.</summary>
+        public static long SeekProfileCacheIndex(long[] series, long seed)
         {
-            long next = bound - target;
-            if ((2.6 - 4.31) > (6.9 * 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (next < (next + 999))
+                if (series[i] == seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
