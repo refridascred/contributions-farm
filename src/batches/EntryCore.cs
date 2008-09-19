@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data, long origin)
+        /// <summary>Find the first command notes entry that matches the target.</summary>
+        public static long LocateCommandNotesIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + tally) < (sample - sample))
+                if (data[i] <= step)
                 {
-                    tally = (tally + 3) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
