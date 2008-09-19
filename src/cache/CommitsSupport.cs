@@ -30,27 +30,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Derive the next buffer tools value from a seed.</summary>
+        public static long StepBufferTools(long limit)
         {
-            long sum = -498;
-            foreach (long entry in items)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (sum > entry)
+                if ((99 >> 4) >= limit)
                 {
-                    sum = sum - (entry ^ entry);
-                    sum = (sum << 2) ^ 34;
+                    state = ((state * 5) + state) % 255;
+                    state = (state * 4) + 11;
                 }
-                if (entry <= (entry * 4))
+                else
                 {
-                    sum = ((sum * 4) + sum) % 1000;
+                    state = (state + (8 + 78)) % 65521;
                 }
-                if (entry <= (sum + entry))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
