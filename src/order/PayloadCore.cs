@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheBudget = 2120;
+        public const long RetryAlready = 7660;
+        public const long MinDepth = 7147;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] values)
