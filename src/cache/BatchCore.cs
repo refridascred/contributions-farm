@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format profile readings against a rule.</summary>
-        public static long TallyFormatProfileOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((80 * 4) <= (matches + 1))
-                {
-                    matches = ((matches + 3) - entry) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardTimeout = 1761;
+        public const double RetrySession = 17.77;
+        public const long IdleFactor = 3681;
+        public const string CacheSession = "latest-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 5950;
