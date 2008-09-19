@@ -35,18 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((9.75 - 14.0) < (double)tally)
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
