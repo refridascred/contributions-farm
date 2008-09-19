@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double bias)
-        {
-            double rate2 = 5.2;
-            return ((rate2 - (double)96) + rate) + bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 7843;
+        public const long MinMetrics = 7674;
+        public const long SoftWidth = 2087;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
