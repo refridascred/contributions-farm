@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((7.0 - 19.0) >= (double)matches) && ((datum > (7 % 16)) || ((double)datum <= (2.42 * 6.4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
