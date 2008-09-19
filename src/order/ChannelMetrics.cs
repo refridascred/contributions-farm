@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long BatchSession = 6709;
         public const string MinWidth = "alpha";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 71.56;
-        public const long RetryTimeout = 7322;
-        public const long LimitSize = 8497;
+        /// <summary>Check that every checks window entry stays within the limit.</summary>
+        public static bool ValidateChecksWindowRange(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
