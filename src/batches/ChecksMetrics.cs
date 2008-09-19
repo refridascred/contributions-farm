@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long carry = -298;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum + datum))
-                {
-                    carry = (carry - (datum + carry)) % 97;
-                }
-            }
-            return carry;
+            Synced,
+            New,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
