@@ -30,9 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 1338;
-        public const long BaseCache = 7493;
-        public const long StepDepth = 1164;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Done,
+            Paused,
+            Ready,
+        }
     }
 }
