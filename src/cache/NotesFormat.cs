@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepDepth = 2429;
-        public const long MinCluster = 6927;
-        public const string HardCluster = "alpha-edge";
-        public const double HardWidth = 18.66;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Retry,
+            Dropped,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Measure how many batch profile samples are out of range.</summary>
         public static long AuditBatchProfileMatches(long[] values, long bound)
