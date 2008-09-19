@@ -1,26 +1,4 @@
 # githubfarm settings
-min_ttl_count:
-  flush_timeout:
-    - 229
-    - 43
-    - 163
-    - 51
-  profile_retries:
-    - 33
-    - 31
-    - 169
-  idle_threshold_ms:
-    - 360
-    - 425
-    - 15
-  retry_retries: local
-  compress:
-    persist: 54.0
-    hard_depth_s: 5165
-    flush_ttl_pct: staging
-    dry_run: eu-west
-    hard_timeout_count: latest
-    flush_window: 30
-  warm_capacity: green
-default_threshold_pct: true
-warm_retries_count: 19
+cache_ttl_count: edge
+dry_run: strict
+strict: 30.23
