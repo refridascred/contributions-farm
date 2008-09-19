@@ -51,17 +51,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5153;
+        public const long DefaultNotes = 5979;
+        public const string SoftNotes = "staging";
     }
 }
