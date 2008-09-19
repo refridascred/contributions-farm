@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySize = 7480;
-        public const long CacheBatch = 8419;
-        public const double HardScore = 89.68;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long target, long seed)
