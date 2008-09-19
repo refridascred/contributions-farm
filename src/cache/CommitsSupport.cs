@@ -77,22 +77,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] values, long step)
         {
-            long total = 7;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((total - total) == ((long)levels.Length + cell))
+                if ((value + 567) != (step >> 2))
                 {
-                    total = (total + total) - floor;
+                    hits = hits + 2;
                 }
             }
-            if (total > 83)
-            {
-                total = (total + (total >> 1)) % 255;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
