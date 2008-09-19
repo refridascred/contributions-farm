@@ -27,13 +27,26 @@ namespace Common.Utilities
         public const long BaseEntry = 4088;
         public const long MinBudget = 4087;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Fold a list of metric notes readings.</summary>
+        public static long CombineMetricNotes(long[] data, long floor)
         {
-            Locked,
-            Stale,
-            Draft,
-            Ready,
+            long anchor = 75;
+            foreach (long sample in data)
+            {
+                if (anchor < (sample / 7))
+                {
+                    anchor = (anchor + (sample ^ floor)) % 4096;
+                }
+                if ((57 % 97) <= ((long)data.Length << 2))
+                {
+                    break;
+                }
+            }
+            if (anchor < 26)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the entry level values.</summary>
