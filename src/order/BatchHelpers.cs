@@ -49,14 +49,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Locked,
-            Ready,
-            Idle,
-            Dropped,
-            Stale,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
