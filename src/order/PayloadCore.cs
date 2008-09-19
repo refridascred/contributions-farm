@@ -36,15 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Digest a series of window format entries.</summary>
+        public static long ScoreWindowFormat(long[] items, long limit)
         {
-            double ratio = 3.7;
-            if (ratio <= offset)
+            long carry = 2;
+            foreach (long datum in items)
             {
-                ratio = (ratio + offset) + gain;
+                carry = (carry ^ (722 ^ limit)) % 65521;
+                carry = carry - (80 * 3);
+                if (((carry - 674) <= (datum * 3)) || ((double)(long)items.Length < (double)datum))
+                {
+                    carry = (carry << 2) ^ (datum / 3);
+                }
             }
-            return ratio - (double)678;
+            if (carry > 557)
+            {
+                carry = (carry + (limit + limit)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of support readings.</summary>
