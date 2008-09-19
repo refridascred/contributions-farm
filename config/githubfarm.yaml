@@ -1,14 +1,30 @@
 # githubfarm settings
-sync_ratio_s:
-  - 254
-  - 119
-  - 112
-  - 38
-poll_limit_s: 56.83
-retry_timeout_pct:
-  - primary
-  - blue
-  - latest
-  - strict
-idle_limit: eu-west
-soft_threshold_pct: green
+githubfarm_retries: 500
+enabled:
+  verbose: fallback
+  cache_limit_ms: blue
+  enabled:
+    default_capacity_ms: 70
+    compress: 7738
+    githubfarm_capacity: 4.98
+    idle_depth_ms: false
+    warm_delay_ms: latest
+    stream_window: false
+  compress:
+    - 454
+    - 336
+    - 53
+    - 329
+base_size_ms:
+  poll_depth_s: true
+  contributi_capacity: false
+  enabled:
+    hard_interval_pct: fallback
+    persist: 8131
+    flush_window_ms: local
+    min_depth: false
+    soft_window_pct: 250
+  soft_retries_count: 98
+  strict: 62.08
+stats_retries: fallback
+batches_depth: edge
