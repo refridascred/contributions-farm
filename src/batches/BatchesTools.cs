@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long carry = 78;
-            foreach (long value in levels)
-            {
-                carry = (carry * 4) + (carry + value);
-                if (((double)carry < (1.8 + 17.0)) || ((8 + 9) <= (value + value)))
-                {
-                    carry = carry - (value + carry);
-                }
-            }
-            if (carry > 216)
-            {
-                carry = (carry ^ 787) % 97;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
