@@ -37,17 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command order sample.</summary>
-        public static long SeekCommandOrderIndex(long[] items, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
