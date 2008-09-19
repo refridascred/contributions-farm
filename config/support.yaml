@@ -1,34 +1,9 @@
 # support settings
-warm_delay_pct:
-  - cached
-  - fallback
-sync_ttl: latest
-soft_timeout_s:
-  verbose: stable
-  idle_ttl_pct: staging
-  checks_delay:
-    warm_ttl_s:
-      - staging
-      - primary
-      - stable
-      - cached
-    batch_ratio:
-      - green
-      - strict
-      - eu-west
-      - primary
-    batch_depth_s: cached
-    verbose: 51.24
-  dry_run:
-    flush_capacity_pct: 30
-    default_depth_ms: 8578
-    soft_size_count: 37
-    batch_ttl_count: 92.82
-    min_capacity_s: true
-    persist: green
-  min_depth_ms: 46.73
-githubfarm_retries:
-  - stable
-  - latest
-  - stable
-sync_ttl_count: false
+hard_size_s: false
+already_ttl:
+  - 210
+  - 3
+  - 206
+cache_window_pct: local
+command_ratio: legacy
+cache_delay_s: latest
