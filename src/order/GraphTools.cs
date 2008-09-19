@@ -45,23 +45,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long state = 298;
-            foreach (long value in readings)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (((state * 5) + (state & 1)) % 4096) ^ (long)i;
-                }
-                state = (state * 2) + ((long)readings.Length & 15);
-                if ((value >= (state << 1)) || ((4 - offset) >= state))
-                {
-                    state = (state - (33 / 3)) % 255;
-                }
+                acc = acc + (long)i;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
     }
 }
