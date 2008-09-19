@@ -60,10 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 62.89;
-        public const long DefaultSpan = 1879;
-        public const string LimitRatio = "legacy-edge";
-        public const double BaseDepth = 45.39;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinScore = 58.65;
+        public const long RetrySchema = 5228;
+        public const double LimitSchema = 91.92;
+        public const string HardBudget = "legacy-v2";
+        public const long RetryWidth = 8680;
     }
 }
