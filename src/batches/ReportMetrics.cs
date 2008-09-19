@@ -43,12 +43,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Dropped,
-            Active,
-            Queued,
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
