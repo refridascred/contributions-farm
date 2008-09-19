@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit queue notes readings against a rule.</summary>
-        public static long MeasureQueueNotesOutliers(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] items)
         {
             long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-7) >= (792 + seen))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) ^ item;
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
