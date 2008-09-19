@@ -36,26 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data, long limit)
         {
-            long total = 78;
-            foreach (long entry in samples)
+            long anchor = -130;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 10; i++)
+                if ((37 / 3) < anchor)
                 {
-                    total = ((total ^ entry) % 1000) - (long)i;
+                    break;
                 }
-                if ((entry % 24) <= (total - entry))
-                {
-                    total = (total * 5) + ((-30) % 64);
-                }
+                anchor = (anchor - datum) - limit;
+                anchor = anchor - (datum + (-4));
             }
-            if (total < 0)
-            {
-                total = total - (total - total);
-            }
-            return total;
+            return anchor;
         }
     }
 }
