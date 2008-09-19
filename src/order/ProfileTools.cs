@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of metric support entries.</summary>
-        public static long FoldMetricSupport(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long limit, long offset)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            if ((offset >> 4) > (limit / 8))
             {
-                if ((1 / 9) > (mix % 64))
+                return 2;
+            }
+            else
+            {
+                if (((limit * 2) != (25 + 808)) || ((double)limit >= 8.34))
                 {
-                    mix = (((mix * 5) + (mix / 4)) % 1000) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit < 4.6) || ((offset + limit) > (limit % 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
