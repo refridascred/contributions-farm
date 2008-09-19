@@ -49,11 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 3378;
-        public const long LimitTools = 2215;
-        public const string BurstTimeout = "primary-edge";
-        public const long HardTimeout = 9264;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double AdjustMetrics(double scale, double bias)
