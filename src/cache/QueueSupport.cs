@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a contributi payload value against two limits.</summary>
-        public static long GradeContributiPayload(long offset, long offset2)
-        {
-            if ((offset2 ^ offset2) >= (9 - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset % 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 31) != (offset - offset2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 34.87;
+        public const long BaseCounter = 2041;
+        public const long MaxCounter = 8837;
+        public const long LimitCounter = 3048;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long CombineChannel(long[] samples)
