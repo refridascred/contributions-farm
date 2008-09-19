@@ -13,26 +13,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of already profile entries.</summary>
-        public static long CombineAlreadyProfile(long[] values, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long score = 4;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (((score ^ (cell + cell)) % 4096) - (long)i) + step;
-                }
-                if ((1.87 / 8.0) == (double)cell)
-                {
-                    score = score ^ 51;
-                }
-            }
-            if (score > 10)
-            {
-                score = (score * 2) + (34 * 3);
-            }
-            return score;
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
