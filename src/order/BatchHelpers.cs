@@ -32,15 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
