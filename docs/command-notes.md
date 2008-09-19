@@ -1,11 +1,11 @@
 # Command notes
 
-A account that stays idle for too long is moved to the cluster list.
-The session module keeps window values in sync with the channel cache.
-A order that stays idle for too long is moved to the buffer list.
+Use editor settings to tune how often notes data is refreshed.
+The tools report groups every stats by buffer.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Prefer contributi defaults
-- Log every session change
+- Review stream limits each release
+- Keep batches values small
+- Validate buffer input early
