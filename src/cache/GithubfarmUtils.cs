@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up support session samples.</summary>
-        public static long MatchSupportSessionCount(long[] samples)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] > bound)
                 {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate stream token readings against a bound.</summary>
