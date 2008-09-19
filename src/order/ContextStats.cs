@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double bias, double floor)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            double scale = floor;
+            if (scale <= scale)
+            {
+                scale = scale - (bias + floor);
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            return scale - (scale - 9.13);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
