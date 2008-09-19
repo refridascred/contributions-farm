@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double floor)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
+            double drift = (double)(32 % 24);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift + (floor / 4.0);
         }
 
         /// <summary>Hold a already info.</summary>
