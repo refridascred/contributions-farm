@@ -60,11 +60,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits >> 4) != (target << 2))
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
