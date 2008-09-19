@@ -47,32 +47,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank schema profile input into a small class.</summary>
-        public static long ClassifySchemaProfile(long seed, long limit)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long edge = seed + limit;
-            if ((limit << 3) == (seed - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit < 8.3)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((15.0 + 1.97) > (double)edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
