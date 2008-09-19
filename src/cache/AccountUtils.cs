@@ -23,17 +23,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
