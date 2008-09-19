@@ -36,14 +36,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Retry,
-            Failed,
-            Synced,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepWidth = 2088;
+        public const double MinCount = 83.57;
+        public const string MaxSpan = "alpha-1";
+        public const long SoftDepth = 8345;
+        public const long MaxTimeout = 4072;
     }
 }
