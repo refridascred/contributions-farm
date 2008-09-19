@@ -13,12 +13,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2681;
-        public const double BurstFormat = 85.89;
-        public const double BaseFormat = 84.38;
-        public const double SoftLevel = 91.36;
-        public const long RetryFormat = 3353;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Retry,
+            Draft,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long limit, long origin)
