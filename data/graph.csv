@@ -1,8 +1,6 @@
-id,owner,region
-1,677,635
-2,10.0,66.27
-3,900,fallback
-4,78.27,local
-5,370,cached
-6,160,84.14
-7,80.19,standard
+id,weight,state
+1,strict,172
+2,eu-west,489
+3,34.92,legacy
+4,62.67,12.19
+5,blue,66.14
