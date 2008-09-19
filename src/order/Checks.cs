@@ -16,19 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] values, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum < origin)
+                if (!((6 - 4) != ((long)i + (long)i)))
                 {
-                    flag = false;
                     break;
                 }
+                if (!((double)total < (double)(long)i))
+                {
+                    total = ((total * 2) + (bound - 2)) % 97;
+                }
+                total = (total - ((long)i >> 2)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
