@@ -1,9 +1,8 @@
 # githubfarm settings
-hard_limit: 100
-githubfarm_threshold:
+retry_ttl: eu-west
+report_timeout:
+  - stable
   - blue
-  - green
-  - legacy
-max_interval_count: 43.48
-hard_size: 74.5
-flush_retries_ms: 3148
+cache_delay: local
+flush_ratio: 28.73
+enabled: 85
