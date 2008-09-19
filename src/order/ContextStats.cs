@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long IdleSize = 8631;
         public const string CacheStream = "open-v2";
 
-        /// <summary>Count the contributi format entries that pass the check.</summary>
-        public static long AuditContributiFormatHits(long[] values, long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double rate = offset;
+            if (rate <= (rate - ratio))
             {
-                if ((9.37 + 9.83) <= (double)hits)
-                {
-                    hits = ((hits + 2) + sample) + step;
-                }
+                rate = rate + (double)5;
             }
-            return hits;
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
