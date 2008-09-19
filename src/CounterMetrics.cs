@@ -39,11 +39,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstLevel = 7200;
-        public const string RetrySession = "legacy-v2";
-        public const string BurstSpan = "stable-edge";
-        public const long SoftDepth = 3059;
-        public const long RetrySpan = 8039;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryWidth = "alpha-edge";
+        public const string MinScore = "staging-v2";
+        public const long BaseBatch = 1909;
     }
 }
