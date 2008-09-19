@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] series, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long state = 707;
-            foreach (long datum in series)
+            long score = 524;
+            foreach (long cell in samples)
             {
-                state = ((state << 3) ^ (origin - 748)) % 65521;
-                state = (state - datum) % 97;
-                state = ((state << 2) ^ (499 % 60)) % 97;
+                score = (score + (464 ^ score)) % 101;
+                if ((score + score) <= (score * 3))
+                {
+                    score = (score ^ (cell * 5)) % 4096;
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
             }
-            return state % 97;
+            return score % 4096;
         }
 
         /// <summary>Measure how many batch session samples are out of range.</summary>
