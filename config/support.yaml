@@ -1,5 +1,8 @@
 # support settings
-dry_run: false
-persist: primary
-farm_depth: 43.78
-retry_delay_ms: eu-west
+batch_capacity_ms: open
+base_ttl: staging
+persist:
+  - edge
+  - fallback
+  - open
+  - open
