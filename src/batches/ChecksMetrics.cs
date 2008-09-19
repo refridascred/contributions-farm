@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((0 & 7) < (origin >> 3))
-                {
-                    carry = (carry ^ (origin + carry)) % 97;
-                }
-                carry = (carry ^ ((long)i + origin)) % 97;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
