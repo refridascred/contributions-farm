@@ -52,13 +52,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long offset, long seed)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((offset >> 4) >= (0 + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5 - offset) != (seed + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (seed + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
