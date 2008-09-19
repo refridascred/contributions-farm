@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const string BurstAccount = "alpha-v2";
         public const string LimitAccount = "local-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double bias)
         {
-            long sum = 20;
-            foreach (long datum in values)
+            double drift = (bias / 7.0) + (double)(-426);
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum + (3 - sum)) % 65521) ^ datum;
-                if ((970 + (long)values.Length) >= (limit * 3))
-                {
-                    sum = sum + (sum ^ sum);
-                }
+                drift = (drift - (bias - scale)) + (double)(long)i;
             }
-            return sum % 1000;
+            return drift - (scale - bias);
         }
     }
 }
