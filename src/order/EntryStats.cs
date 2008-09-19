@@ -37,11 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 7722;
-        public const long WindowCommand = 6483;
-        public const double BaseCommand = 38.06;
-        public const string WindowSize = "staging-edge";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double floor)
+        {
+            double mean = rate;
+            if (mean > (double)84)
+            {
+                mean = mean - (rate - rate);
+            }
+            return mean - floor;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] data, long seed)
