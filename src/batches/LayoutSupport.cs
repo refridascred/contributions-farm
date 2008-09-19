@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long anchor = 12;
+            foreach (long item in levels)
+            {
+                anchor = anchor ^ (item % 16);
+            }
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
