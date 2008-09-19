@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] data, long offset)
         {
-            if (!((2.6 * 6.3) >= (double)limit))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.1 + 15.0) != (double)limit)
+                if (cell > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
