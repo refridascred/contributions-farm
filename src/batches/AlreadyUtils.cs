@@ -15,39 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] values)
         {
-            long cur = step ^ bound;
-            if ((cur / 7) == (cur ^ bound))
+            long total = 251;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (751 >= (bound ^ 5))
+                if ((total >= (total & 3)) || (item <= 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound < (10.0 - 2.56))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound > (double)cur)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total ^ (total - item)) % 97;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
