@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate context contributi samples.</summary>
-        public static long TotalContextContributi(long[] readings, long limit)
-        {
-            long carry = 15;
-            foreach (long entry in readings)
-            {
-                if ((limit ^ carry) > (5 >> 3))
-                {
-                    carry = carry + (limit + entry);
-                }
-            }
-            if (carry > 560)
-            {
-                carry = (carry - (498 - limit)) % 101;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 6322;
+        public const long LimitInterval = 1822;
+        public const long StepSession = 6316;
+        public const long BaseSession = 7669;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] readings)
