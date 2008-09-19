@@ -18,25 +18,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long step, long seed)
-        {
-            if ((seed >> 1) > (step - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step - step) <= step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepSpan = 73.48;
+        public const long CacheFormat = 6301;
+        public const long RetryFormat = 7467;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 4737;
