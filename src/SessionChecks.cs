@@ -37,17 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] levels, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (bias + 0.12) + bias;
+            if (ratio < weight)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (11.0 + bias);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (ratio - bias)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
