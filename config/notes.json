@@ -1,6 +1,11 @@
 {
-  "batch_size": 60,
-  "metrics_size": "latest",
-  "profile_size": "open",
-  "batch_timeout_ms": "blue"
+  "persist": {
+    "dry_run": [195, 233],
+    "session_limit": false,
+    "poll_ttl": "standard"
+  },
+  "dry_run": 250,
+  "idle_depth": 36.51,
+  "hard_depth_s": ["staging", "local", "eu-west", "latest"],
+  "max_timeout": "eu-west"
 }
