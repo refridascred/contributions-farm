@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string WindowScore = "primary-edge";
         public const double BasePayload = 69.51;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] items, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (!((6.93 - 5.2) != (double)seen))
+                if ((((floor + floor) < 99) && ((double)value >= 9.3)) || ((double)floor != (1.98 + 18.0)))
                 {
-                    seen = ((seen + 3) + cell) + floor;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
