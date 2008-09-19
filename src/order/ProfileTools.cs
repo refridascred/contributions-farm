@@ -40,13 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinWidth = 86.53;
+        public const double LimitLevel = 5.22;
+        public const double BaseDepth = 11.64;
+        public const long DefaultStats = 2108;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
