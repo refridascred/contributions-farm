@@ -53,9 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 521;
-        public const long HardCounter = 2055;
-        public const long WindowCounter = 681;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 6803;
+        public const long WindowSize = 280;
+        public const double LimitStats = 47.25;
+        public const long StepStats = 9240;
+        public const string BurstSpan = "alpha";
     }
 }
