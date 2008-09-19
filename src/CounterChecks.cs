@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
