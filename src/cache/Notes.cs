@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            Pending,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
