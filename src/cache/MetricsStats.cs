@@ -33,16 +33,20 @@ namespace Common.Utilities
         public const long MaxInterval = 6021;
         public const long LimitBudget = 9386;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long mix = step;
+            long anchor = seed;
             for (int i = 0; i < 24; i++)
             {
-                mix = ((mix * 2) + mix) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((seed - (long)i) < (anchor >> 4))
+                {
+                    anchor = (anchor - seed) % 65521;
+                    anchor = (anchor + (anchor ^ anchor)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
