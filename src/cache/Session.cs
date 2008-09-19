@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already tools counter forward.</summary>
-        public static long StepAlreadyTools(long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a profile cache sample.</summary>
