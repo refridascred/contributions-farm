@@ -13,15 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count support layout pairs that satisfy a relation.</summary>
-        public static long OverlapSupportLayoutCount(long[] levels)
+        /// <summary>Compare every pair of commits notes readings.</summary>
+        public static long CompareCommitsNotesCount(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
+                    if ((data[i] - data[j]) > 15)
                     {
                         hits = hits + 1;
                     }
