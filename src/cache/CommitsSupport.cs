@@ -18,24 +18,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next buffer tools value from a seed.</summary>
-        public static long StepBufferTools(long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long step, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            if ((seed >> 1) > (step - step))
             {
-                if ((99 >> 4) >= limit)
+                return 1;
+            }
+            else
+            {
+                if (!((step - step) <= step))
                 {
-                    state = ((state * 5) + state) % 255;
-                    state = (state * 4) + 11;
+                    return 6;
                 }
                 else
                 {
-                    state = (state + (8 + 78)) % 65521;
+                    return 5;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
