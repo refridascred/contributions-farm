@@ -19,18 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long step, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((11.0 + 1.0) == (double)step)
             {
-                if ((hits - hits) == (hits + datum))
+                return 4;
+            }
+            else
+            {
+                if (((double)step > 1.06) || ((offset + step) == (step * 5)))
                 {
-                    hits = (hits + 1) + floor;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset <= 3.94)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next counter session value.</summary>
