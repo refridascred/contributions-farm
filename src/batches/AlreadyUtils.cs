@@ -32,18 +32,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] series, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = 684;
+            foreach (long entry in values)
             {
-                if (((-6) * 3) == (limit * 2))
+                if ((entry + entry) != (bound % 64))
                 {
-                    count = (count + 1) - item;
+                    mix = (mix << 3) ^ mix;
+                }
+                mix = ((mix * 2) + (entry + mix)) % 101;
+                if (((mix + mix) < (mix << 1)) || ((bound >> 2) != (bound - 1)))
+                {
+                    mix = ((mix << 2) ^ bound) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ entry) % 1000;
                 }
             }
-            return count;
+            if (mix < 404)
+            {
+                mix = (mix ^ (875 >> 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
