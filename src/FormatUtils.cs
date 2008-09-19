@@ -79,13 +79,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            Done,
-            Closed,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally & 1) >= (46 + datum)) && ((datum / 8) < 46))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
