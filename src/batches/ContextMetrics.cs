@@ -42,13 +42,14 @@ namespace Common.Utilities
             return gain - (floor + bias);
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            Dropped,
+            Locked,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Match up farm counter samples.</summary>
