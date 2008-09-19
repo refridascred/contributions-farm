@@ -21,11 +21,10 @@ namespace Common.Utilities
         public const long CacheFormat = 6301;
         public const long RetryFormat = 7467;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 4737;
-        public const long RetryScore = 6420;
-        public const double CacheFactor = 71.69;
-        public const long BaseProfile = 3575;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 8388;
+        public const long RetryAlready = 4025;
+        public const long CacheAlready = 507;
 
         /// <summary>Audit contributi counter readings against a rule.</summary>
         public static long MeasureContributiCounterOutliers(long[] data, long bound)
