@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next report token value.</summary>
-        public static double SmoothReportToken(double gain, double offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double drift = gain;
-            if (drift > (8.0 + drift))
-            {
-                drift = drift - offset;
-            }
-            else
-            {
-                drift = drift + 6.59;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (double)20) + (double)(long)i;
-            }
-            return drift + (gain * 18.0);
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a support info.</summary>
