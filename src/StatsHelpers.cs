@@ -30,19 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] series, long seed)
+        /// <summary>Match up context cluster samples.</summary>
+        public static long MatchContextClusterCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
