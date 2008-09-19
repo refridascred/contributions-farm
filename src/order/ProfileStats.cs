@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] data, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value != origin)
+                if (((item * 2) != (item << 2)) && ((item + matches) == (5 ^ matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
