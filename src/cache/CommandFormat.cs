@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double weight, double floor)
+        /// <summary>Adjust a batch queue reading.</summary>
+        public static double AdjustBatchQueue(double scale, double span)
         {
-            double weight2 = floor;
-            if (weight2 <= floor)
+            double weight = span;
+            if (weight < (double)70)
             {
-                weight2 = (weight2 + (double)618) - weight;
+                weight = (weight + (span / 6.0)) + scale;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (double)9) + (double)(long)i;
-            }
-            return weight2 - 3.81;
+            return weight - weight;
         }
     }
 }
