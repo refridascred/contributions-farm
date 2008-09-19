@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((11 - 493) <= (entry / 7)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 6465;
+        public const long IdleCommits = 2006;
+        public const double BaseCommits = 90.86;
+        public const string BatchCommits = "local-edge";
+        public const long RetryLevel = 3553;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleSpan = 9236;
