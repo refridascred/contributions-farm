@@ -29,17 +29,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Look up the position of a stats command sample.</summary>
-        public static long LocateStatsCommandIndex(long[] values, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a profile info.</summary>
