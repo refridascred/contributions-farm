@@ -30,13 +30,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            Idle,
-            Retry,
-            Pending,
-            Queued,
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)seed <= (1.82 - 9.03))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - seed) % 97;
+                    mark = (mark << 2) ^ seed;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Match up context samples.</summary>
