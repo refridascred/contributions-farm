@@ -1,11 +1,15 @@
 # entry settings
-sync_capacity_count: true
-farm_ttl:
-  - 317
-  - 404
-  - 356
-  - 114
-audit: 63
-sync_threshold_pct: strict
-idle_limit_count: true
-dry_run: staging
+idle_ttl: true
+queue_timeout:
+  - edge
+  - local
+persist:
+  profile_retries: 88.8
+  order_interval: eu-west
+  soft_threshold_pct: green
+  hard_size: fallback
+  channel_limit: 86.18
+  min_delay: green
+batch_delay_pct: 8590
+verbose: false
+idle_interval_count: false
