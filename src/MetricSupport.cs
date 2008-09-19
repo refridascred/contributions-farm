@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSpan = 2106;
-        public const long MinAlready = 1942;
-        public const long MaxBudget = 813;
-        public const long RetryWidth = 5522;
-        public const long IdleRatio = 3888;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Roll a command metric counter forward.</summary>
         public static long StepCommandMetric(long bound)
