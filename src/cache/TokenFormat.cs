@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many schema farm samples are out of range.</summary>
-        public static long CountSchemaFarmHits(long[] readings, long limit)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (item >= (8 % 97))
-                {
-                    seen = (seen + 1) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
