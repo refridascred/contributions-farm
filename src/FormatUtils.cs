@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Failed,
-            Locked,
-            Draft,
-            New,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitWidth = 507;
+        public const string MaxOrder = "latest-edge";
+        public const long SoftOrder = 7319;
+        public const long BaseScore = 4093;
+        public const long BatchOrder = 5027;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
