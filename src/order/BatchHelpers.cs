@@ -49,11 +49,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchDepth = 6681;
-        public const long IdleSpan = 6456;
-        public const long WindowDepth = 5423;
-        public const long BatchQueue = 360;
-        public const long StepBudget = 4779;
+        /// <summary>Iterate the report stream series from a seed.</summary>
+        public static long DeriveReportStream(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
