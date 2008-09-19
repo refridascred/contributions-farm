@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const long BaseNotes = 945;
         public const double BurstNotes = 26.59;
 
-        /// <summary>Check that every account cache entry stays within the limit.</summary>
-        public static bool CheckAccountCacheLimits(long[] levels, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < origin)
+                if (series[i] >= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
