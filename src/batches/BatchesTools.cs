@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double ratio = offset;
-            if (ratio <= (scale + offset))
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + 9.0;
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
