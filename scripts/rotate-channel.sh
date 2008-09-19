@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
