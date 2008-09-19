@@ -14,14 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long origin)
         {
-            Queued,
-            New,
-            Closed,
-            Idle,
-            Synced,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a editor reading.</summary>
