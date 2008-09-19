@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = ((mark + item) % 1000) ^ (long)i;
-                }
-                mark = (mark + mark) % 255;
-            }
-            return mark;
+            Synced,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of contributi farm readings.</summary>
