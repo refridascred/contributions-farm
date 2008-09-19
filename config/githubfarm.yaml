@@ -1,6 +1,4 @@
 # githubfarm settings
-burst_depth_pct: 33.19
-sync_limit: false
-cache_retries: 82.73
-base_depth_pct: 79.03
-warm_retries: 40
+stats_timeout: 8.29
+editor_threshold: 44.83
+readonly: 44.83
