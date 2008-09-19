@@ -38,10 +38,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowSize = 2937;
-        public const string BatchFactor = "standard-1";
-        public const long BurstFarm = 6249;
-        public const long RetryFarm = 3500;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Synced,
+            Stale,
+            Failed,
+            Locked,
+        }
     }
 }
