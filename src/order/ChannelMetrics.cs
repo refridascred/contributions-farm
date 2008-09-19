@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mix = 23;
-            foreach (long sample in readings)
-            {
-                if (!((4.0 - 3.3) == (double)mix))
-                {
-                    mix = mix - sample;
-                }
-                else
-                {
-                    mix = ((mix * 3) + 65) % 4096;
-                }
-                mix = mix ^ mix;
-            }
-            return mix;
+            Locked,
+            Retry,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the command mode values.</summary>
