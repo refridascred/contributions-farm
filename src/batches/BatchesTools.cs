@@ -30,10 +30,18 @@ namespace Common.Utilities
         public const long MaxRecord = 6786;
         public const double RetryFactor = 48.06;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 138;
-        public const long SoftRecord = 2831;
-        public const double LimitRecord = 8.16;
-        public const long BaseRecord = 7184;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] series)
+        {
+            long score = 6;
+            foreach (long value in series)
+            {
+                if (!((value % 64) == (95 - value)))
+                {
+                    score = (score - (value + value)) % 97;
+                }
+            }
+            return score % 97;
+        }
     }
 }
