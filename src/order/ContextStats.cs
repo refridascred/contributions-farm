@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 32.65;
-        public const long MinCounter = 9613;
-        public const long BaseDepth = 2851;
-        public const long LimitTimeout = 2864;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((4.63 + 0.04) <= (double)cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a notes entry sample.</summary>
         public static long SeekNotesEntryIndex(long[] readings, long origin)
