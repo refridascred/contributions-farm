@@ -57,18 +57,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long mix = 803;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix & 31) != (limit / 6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ (mix ^ limit)) ^ cell;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return hits;
         }
     }
 }
