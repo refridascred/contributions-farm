@@ -16,13 +16,12 @@ namespace Common.Utilities
             return bias + (double)546;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 187;
+        public const long MaxOrder = 3211;
+        public const string DefaultOrder = "latest-edge";
+        public const long RetryInterval = 5070;
+        public const string BatchOrder = "alpha-edge";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
