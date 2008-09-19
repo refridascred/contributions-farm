@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleInterval = 18.4;
+        public const long BurstNotes = 1503;
+        public const double IdleNotes = 48.31;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long floor, long target)
