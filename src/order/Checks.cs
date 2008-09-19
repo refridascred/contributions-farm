@@ -16,12 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 9544;
-        public const long MinSpan = 8634;
-        public const long BaseStream = 6831;
-        public const long MinFactor = 1829;
-        public const string BaseCount = "legacy-v2";
+        /// <summary>Compare every pair of tools record readings.</summary>
+        public static long MatchToolsRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] data)
