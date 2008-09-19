@@ -33,13 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Digest a series of queue schema entries.</summary>
+        public static long DigestQueueSchema(long[] samples)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long mark = 15;
+            foreach (long value in samples)
+            {
+                if ((4.1 * 7.47) < 13.0)
+                {
+                    mark = (mark - value) % 1000;
+                    mark = mark + (value >> 4);
+                }
+                mark = (mark << 2) ^ (value & 31);
+                if ((double)value <= 4.4)
+                {
+                    mark = mark + (mark + mark);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a stats summary.</summary>
