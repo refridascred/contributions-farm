@@ -23,22 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples, long seed)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((seed / 5) < (seed / 3)) || (tally <= (8 & 15))) || ((tally & 31) < (seed - seed)))
+                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
