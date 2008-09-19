@@ -34,27 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema entry readings.</summary>
-        public static long WeighSchemaEntry(long[] items, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] data, long floor)
         {
-            long mix = 38;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mix = ((mix ^ (mix - mix)) % 97) - bound;
-                if ((cell / 7) < (cell + (long)items.Length))
+                if (!(value >= (4 % 100)))
                 {
-                    mix = (mix * 4) + mix;
+                    seen = (seen + 3) - floor;
                 }
-                if (7.0 <= (double)mix)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
