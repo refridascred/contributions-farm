@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 3330;
-        public const long HardDepth = 4875;
-        public const double HardEntry = 98.24;
-        public const long BaseScore = 5211;
-        public const string IdleSize = "alpha-v2";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series)
+        {
+            long acc = 81;
+            foreach (long cell in series)
+            {
+                if (cell < (cell + acc))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+            }
+            if (acc > 37)
+            {
+                acc = acc - (acc % 8);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Locate a stats report reading by value.</summary>
         public static long SeekStatsReportIndex(long[] values, long floor)
