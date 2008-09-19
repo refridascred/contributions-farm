@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the buffer session entries that pass the check.</summary>
-        public static long TallyBufferSessionMatches(long[] levels)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell > (double)count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
