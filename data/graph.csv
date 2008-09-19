@@ -1,11 +1,6 @@
-id,ratio,level,owner,active
-1,16.68,554,463,59.33
-2,eu-west,476,31.54,62.45
-3,open,470,92.18,92.54
-4,669,68.05,eu-west,open
-5,247,standard,12.22,471
-6,704,latest,fallback,95.15
-7,15.62,stable,20.32,local
-8,738,271,890,50.68
-9,368,28.73,cached,green
-10,164,805,936,611
+id,count,rank
+1,86.25,edge
+2,98.02,99
+3,blue,450
+4,edge,fallback
+5,599,latest
