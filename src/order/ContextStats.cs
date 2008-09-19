@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long mark = 39;
+            foreach (long value in levels)
+            {
+                if (((double)305 >= (double)value) && ((value * 2) < (5 + value)))
+                {
+                    mark = mark + value;
+                }
+            }
+            if (mark > 867)
+            {
+                mark = mark ^ ((-706) + mark);
+            }
+            return mark;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
