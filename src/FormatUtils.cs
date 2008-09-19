@@ -33,13 +33,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Dropped,
             Paused,
-            Pending,
-            Draft,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
