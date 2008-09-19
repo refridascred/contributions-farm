@@ -1,14 +1,7 @@
 {
-  "report_ttl": "eu-west",
-  "min_limit_count": true,
-  "hard_window": 74,
-  "max_ttl": "edge",
-  "warm_size": "legacy",
-  "profile_depth": {
-    "max_depth_pct": "local",
-    "burst_ratio_count": 40.74,
-    "layout_depth": [394, 144, 425, 464],
-    "strict": ["blue", "eu-west", "latest", "standard"],
-    "channel_limit": 55
-  }
+  "layout_retries": "stable",
+  "burst_window_s": "edge",
+  "contributi_retries": ["primary", "fallback", "primary"],
+  "enabled": "edge",
+  "poll_timeout_s": 44.23
 }
