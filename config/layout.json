@@ -1,12 +1,13 @@
 {
-  "base_ttl_pct": 6.51,
-  "flush_window": {
-    "burst_ttl": 1024,
-    "default_ttl_pct": 1961,
-    "max_limit_count": false,
-    "payload_delay": "open",
-    "flush_ratio": 39.89
+  "min_timeout": "standard",
+  "support_retries": 40.82,
+  "retry_ttl": {
+    "persist": 3099,
+    "sync_delay_pct": ["eu-west", "cached"],
+    "compress": 67,
+    "warm_capacity_pct": 90.19,
+    "hard_interval_ms": false
   },
-  "editor_size": "primary",
-  "default_capacity_ms": 92.4
+  "batch_timeout": 100,
+  "min_size_ms": [457, 166, 440, 386]
 }
