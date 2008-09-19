@@ -70,18 +70,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long carry = 829;
+            foreach (long datum in series)
             {
-                if (offset <= (offset % 5))
+                if ((carry / 2) > (datum - datum))
                 {
-                    tally = (tally + 3) + reading;
+                    carry = carry ^ (carry + datum);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ datum) % 101;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
