@@ -44,25 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long limit, long offset)
-        {
-            if ((offset % 5) == (limit * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (6.66 - 4.26))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1327;
+        public const long LimitProfile = 1995;
+        public const string DefaultBudget = "staging";
+        public const long RetryFactor = 1326;
+        public const string HardProfile = "staging-1";
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] data)
