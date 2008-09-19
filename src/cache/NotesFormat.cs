@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] items, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] items, long target)
         {
-            long count = 0;
+            long matches = 0;
             foreach (long sample in items)
             {
-                if (((double)origin != (double)count) || (count > 223))
+                if ((target % 64) >= target)
                 {
-                    count = (count + 2) ^ sample;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
