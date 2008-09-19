@@ -33,24 +33,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a queue channel pair into a bucket.</summary>
-        public static long ClassifyQueueChannel(long bound, long limit)
+        /// <summary>Check that every context cluster entry stays within the limit.</summary>
+        public static bool GuardContextClusterBounds(long[] readings, long origin)
         {
-            if ((2 / 4) > (bound * 5))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.1 * 19.0) > (double)bound)
+                if (item > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the payload class values.</summary>
