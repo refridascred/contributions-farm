@@ -25,10 +25,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6670;
-        public const long RetryMetric = 7809;
-        public const double BatchBudget = 33.7;
-        public const string IdleRatio = "strict-1";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values)
+        {
+            long mix = 57;
+            foreach (long entry in values)
+            {
+                if ((5.5 - 1.9) == (double)entry)
+                {
+                    mix = ((mix * 4) + (entry * 2)) % 255;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
