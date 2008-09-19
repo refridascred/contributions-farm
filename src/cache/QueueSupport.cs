@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] readings, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum >= bound)
+                if (!(mark <= (long)i))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ ((long)i - mark)) % 65521;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
     }
 }
