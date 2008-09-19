@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data)
-        {
-            long result = -7;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result * 5) + (result & 31)) % 97) + (long)i;
-                }
-                result = result - (3 + datum);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleBudget = 4421;
+        public const long RetryGithubfarm = 7413;
+        public const string MaxGithubfarm = "alpha-v2";
+        public const long CacheInterval = 7951;
+        public const double LimitGithubfarm = 68.45;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaRange(long[] readings, long offset)
