@@ -29,12 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryLevel = 8557;
-        public const string HardStats = "local";
-        public const double BaseSpan = 70.82;
-        public const long LimitStats = 2234;
-        public const double MinStats = 73.45;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsHits(long[] levels, long offset)
