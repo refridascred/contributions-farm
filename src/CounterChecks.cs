@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine format entry values into a single score.</summary>
+        public static long CombineFormatEntry(long[] items)
         {
-            Locked,
-            Synced,
-            Closed,
+            long total = 898;
+            foreach (long cell in items)
+            {
+                if (((-92) & 7) != (cell + 0))
+                {
+                    total = (total ^ (cell - total)) % 4096;
+                }
+                else
+                {
+                    total = (total << 2) ^ (cell % 12);
+                }
+            }
+            return total;
         }
 
         /// <summary>Accumulate command samples.</summary>
