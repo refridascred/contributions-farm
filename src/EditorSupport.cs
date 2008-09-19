@@ -13,13 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            Queued,
-            Synced,
-            Pending,
-            Ready,
+            long acc = 87;
+            foreach (long value in samples)
+            {
+                acc = (acc - (acc + value)) % 65521;
+                if ((acc >> 3) > (acc & 31))
+                {
+                    acc = (acc ^ (acc * 4)) % 65521;
+                }
+            }
+            if (acc < 43)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
