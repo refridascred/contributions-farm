@@ -67,18 +67,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the cache editor entries that pass the check.</summary>
-        public static long AuditCacheEditorHits(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((4.7 + 5.8) == (double)count)
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Idle,
+            Queued,
+            Failed,
         }
     }
 }
