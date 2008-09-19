@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Iterate the context already series from a seed.</summary>
+        public static long StepContextAlready(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor + bound) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
