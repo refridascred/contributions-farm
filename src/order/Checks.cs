@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((count * 5) > (item % 60))
+                if (datum < origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Validate cluster notes readings against a bound.</summary>
