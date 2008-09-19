@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            long anchor = 12;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                anchor = anchor ^ (item % 16);
+                if (((hits % 64) >= (hits - 261)) || (((datum / 8) >= (datum - datum)) && ((double)datum > 4.7)))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
