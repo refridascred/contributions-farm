@@ -30,12 +30,21 @@ namespace Common.Utilities
         public const long IdleStream = 2507;
         public const long DefaultLevel = 7551;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Compare every pair of report cluster readings.</summary>
+        public static long OverlapReportClusterCount(long[] data)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
