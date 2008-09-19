@@ -52,17 +52,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] > origin)
+                if ((double)datum >= 5.32)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
