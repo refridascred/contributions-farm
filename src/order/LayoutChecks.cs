@@ -70,17 +70,11 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] readings, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = ratio;
+            return (rate + ratio) + bias;
         }
     }
 }
