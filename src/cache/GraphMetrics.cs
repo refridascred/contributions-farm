@@ -24,26 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long seed)
         {
-            long anchor = 7;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((datum - target) > (55 + 0))
+                if (item != seed)
                 {
-                    anchor = (anchor - (-547)) % 4096;
-                }
-                if (datum <= (datum + datum))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor < (-4))
-            {
-                anchor = ((anchor << 3) ^ (anchor - target)) % 1000;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
