@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank support metrics input into a small class.</summary>
-        public static long ClassifySupportMetrics(long limit, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            if ((249 - seed) < limit)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + limit) <= (limit + limit))
+                if ((2 ^ matches) < (matches / 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.69 + 0.87) == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed <= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
