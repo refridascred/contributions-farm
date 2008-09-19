@@ -55,18 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples)
-        {
-            long result = 99;
-            foreach (long value in samples)
-            {
-                if ((value >> 3) != (value + value))
-                {
-                    result = result - (value * 4);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardDepth = 49.2;
+        public const double IdleDepth = 19.13;
+        public const double LimitFarm = 80.42;
+        public const double StepFactor = 94.67;
+        public const long BatchFarm = 1115;
     }
 }
