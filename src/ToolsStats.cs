@@ -57,19 +57,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] data, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double scale = offset;
+            if (scale < (offset - offset))
             {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return ok;
+            return scale + (ratio / 4.0);
         }
 
         /// <summary>Adjust a batch reading.</summary>
