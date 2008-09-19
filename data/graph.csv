@@ -1,6 +1,6 @@
-id,rank,score,active
-1,363,latest,76.0
-2,552,44,779
-3,65,937,51
-4,80.83,standard,5.19
-5,blue,cached,3.88
+id,weight,ratio
+1,legacy,blue
+2,80.6,7.88
+3,212,890
+4,fallback,strict
+5,16.68,82.18
