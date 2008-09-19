@@ -1,6 +1,23 @@
 {
-  "min_interval_pct": 5.44,
-  "hard_size": 2.99,
-  "idle_ttl_pct": "cached",
-  "enabled": ["latest", "blue", "staging", "standard"]
+  "min_depth_count": "standard",
+  "cache_retries": {
+    "warm_ttl_s": 13.44,
+    "persist": 500,
+    "min_threshold": 5192,
+    "cache_ratio": 64.88,
+    "min_ttl": true
+  },
+  "stats_threshold": 1024,
+  "command_timeout": {
+    "warm_ratio_pct": {
+      "burst_window_ms": 61.55,
+      "enabled": ["primary", "fallback", "strict", "local"],
+      "hard_timeout_ms": "green",
+      "strict": 100
+    },
+    "readonly": false,
+    "warm_threshold_pct": 100,
+    "soft_ratio_count": 16
+  },
+  "batch_capacity": false
 }
