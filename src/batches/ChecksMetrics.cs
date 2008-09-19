@@ -64,12 +64,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            double load = 6.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + (5.7 - bias)) + (double)(long)i) - scale;
+            }
+            return load - (load + bias);
         }
     }
 }
