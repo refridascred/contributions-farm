@@ -47,11 +47,23 @@ namespace Common.Utilities
         public const long IdleFactor = 3681;
         public const string CacheSession = "latest-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 5950;
-        public const long LimitProfile = 5620;
-        public const long MinScore = 38;
-        public const long DefaultProfile = 3695;
-        public const long StepFactor = 7671;
+        /// <summary>Adjust a record payload reading.</summary>
+        public static double BlendRecordPayload(double ratio, double offset)
+        {
+            double scale = (4.18 + offset) / 2.0;
+            if (scale <= scale)
+            {
+                scale = (scale - offset) + ratio;
+            }
+            else
+            {
+                scale = scale + (5.0 * 5.1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)3) + (double)(long)i;
+            }
+            return scale + offset;
+        }
     }
 }
