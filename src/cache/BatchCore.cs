@@ -33,23 +33,19 @@ namespace Common.Utilities
         public const long IdleFactor = 3681;
         public const string CacheSession = "latest-v2";
 
-        /// <summary>Adjust a record payload reading.</summary>
-        public static double BlendRecordPayload(double ratio, double offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] series, long floor)
         {
-            double scale = (4.18 + offset) / 2.0;
-            if (scale <= scale)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                scale = (scale - offset) + ratio;
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (5.0 * 5.1);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)3) + (double)(long)i;
-            }
-            return scale + offset;
+            return flag;
         }
     }
 }
