@@ -85,21 +85,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stats metric samples.</summary>
-        public static long MatchStatsMetricCount(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Active,
+            Locked,
         }
     }
 }
