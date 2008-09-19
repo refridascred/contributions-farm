@@ -49,22 +49,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 550;
+            foreach (long item in levels)
             {
-                if ((matches - reading) != (reading % 97))
+                if ((double)item > 8.7)
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor * 4) + (1 % 2)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = ((anchor * 5) + (offset + offset)) % 65521;
                 }
             }
-            return matches;
+            if (anchor > 251)
+            {
+                anchor = (anchor + (offset + anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
