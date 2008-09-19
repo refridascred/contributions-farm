@@ -16,12 +16,11 @@ namespace Common.Utilities
         public const double HardDepth = 36.3;
         public const long SoftSize = 2273;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
