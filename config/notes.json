@@ -1,6 +1,15 @@
 {
-  "batch_limit": 68.92,
-  "min_ttl_pct": 58.42,
-  "context_timeout": false,
-  "base_capacity": 42
+  "min_window_ms": {
+    "min_ratio_s": true,
+    "max_window": 8706,
+    "default_limit_pct": 60,
+    "max_ratio": "legacy",
+    "max_delay": 9740,
+    "persist": "stable"
+  },
+  "githubfarm_depth": 299,
+  "cache_timeout": 250,
+  "strict": ["open", "primary", "local", "stable"],
+  "cache_ttl_s": 1024,
+  "batch_retries": "stable"
 }
