@@ -25,13 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Derive the next route contributi value from a seed.</summary>
+        public static long StepRouteContributi(long seed)
         {
-            Active,
-            Synced,
-            Closed,
-            Pending,
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the command status values.</summary>
