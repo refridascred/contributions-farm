@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double bias2 = (bias * 7.7) / 6.0;
-            return (bias2 + (double)12) + scale;
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
