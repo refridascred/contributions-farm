@@ -21,11 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 2527;
-        public const long SoftProfile = 4149;
-        public const long IdleProfile = 2553;
-        public const double MinDepth = 47.69;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (entry >= (count - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchCache = 7753;
