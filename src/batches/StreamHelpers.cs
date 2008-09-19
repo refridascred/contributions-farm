@@ -33,13 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] data)
         {
-            Done,
-            Locked,
-            Paused,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
