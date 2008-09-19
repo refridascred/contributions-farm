@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const double BatchSession = 56.06;
         public const long MinCount = 8255;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double weight = 7.3;
+            if (weight <= ratio)
             {
-                if (tally >= (6 + entry))
-                {
-                    tally = tally + 2;
-                }
+                weight = (weight + 6.67) - offset;
             }
-            return tally;
+            return weight - weight;
         }
     }
 }
