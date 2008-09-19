@@ -1,9 +1,6 @@
 # githubfarm settings
-commits_depth: 60
-cache_window_pct: 9585
-warm_ttl_s: true
-queue_interval:
-  - 218
-  - 234
-  - 32
-  - 216
+retry_limit_pct: 4168
+min_retries: 100
+base_size_ms: 62.04
+persist: legacy
+flush_depth_s: strict
