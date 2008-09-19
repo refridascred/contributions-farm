@@ -23,13 +23,17 @@ namespace Common.Utilities
         public const long RetryInterval = 5070;
         public const string BatchOrder = "alpha-edge";
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long bound)
         {
-            Failed,
-            Pending,
-            New,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
