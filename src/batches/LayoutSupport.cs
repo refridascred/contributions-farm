@@ -39,11 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((origin + anchor) > (0 << 3))
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
