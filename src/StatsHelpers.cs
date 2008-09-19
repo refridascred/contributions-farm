@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long origin, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            if ((8.89 - 1.5) >= (double)origin)
             {
-                sum = ((sum * 2) + (limit + sum)) % 97;
-                if (((sum & 1) >= (sum % 8)) && ((sum & 3) > (limit + sum)))
-                {
-                    sum = (sum * 3) + ((long)i + (long)i);
-                    sum = sum ^ sum;
-                }
-                sum = sum + (627 + (long)i);
-                sum = ((sum * 3) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((origin << 2) > (offset - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 4) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph phase values.</summary>
