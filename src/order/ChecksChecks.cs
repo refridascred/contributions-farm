@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first schema session entry that matches the target.</summary>
-        public static long FindSchemaSessionIndex(long[] series, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 93;
+            foreach (long cell in data)
             {
-                if (series[i] < origin)
+                long gap = cell;
+                if (((9.3 + 5.9) == (double)acc) || (gap > (acc & 7)))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + acc) + seed;
                 }
+                acc = acc - cell;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
