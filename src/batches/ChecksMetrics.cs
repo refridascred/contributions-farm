@@ -51,15 +51,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] levels, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((7.0 + 2.0) >= (double)bound) || ((bound ^ reading) >= bound))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
