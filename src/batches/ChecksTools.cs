@@ -28,19 +28,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long sum = 60;
+            foreach (long entry in readings)
             {
-                if (value > seed)
+                if ((9.22 * 6.3) > (double)sum)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 3) + (sum * 4)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum - entry)) % 97;
                 }
             }
-            return found;
+            if (sum > 172)
+            {
+                sum = (sum ^ (707 % 16)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a account reading.</summary>
