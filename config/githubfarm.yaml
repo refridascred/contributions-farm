@@ -1,6 +1,10 @@
 # githubfarm settings
-retry_limit_pct: 4168
-min_retries: 100
-base_size_ms: 62.04
-persist: legacy
-flush_depth_s: strict
+max_capacity_ms: fallback
+sync_ttl:
+  - legacy
+  - eu-west
+  - legacy
+  - latest
+contributi_window: green
+max_window_count: 1024
+profile_retries: false
