@@ -72,19 +72,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] data, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if ((8.85 / 6.0) < (double)limit2)
             {
-                if (entry >= limit)
+                return 8;
+            }
+            else
+            {
+                if (!(limit2 >= (-4)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit <= 1.74)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
