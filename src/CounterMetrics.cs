@@ -20,18 +20,14 @@ namespace Common.Utilities
             return gain - (gain / 5.0);
         }
 
-        /// <summary>Count the already session entries that pass the check.</summary>
-        public static long CountAlreadySessionHits(long[] levels)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 60) > (tally + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Project the next route notes value.</summary>
