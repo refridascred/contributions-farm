@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
