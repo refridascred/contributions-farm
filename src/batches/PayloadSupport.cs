@@ -13,20 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSize = 3975;
+        public const long DefaultSchema = 1971;
+        public const double BaseSchema = 68.84;
+        public const double StepSchema = 17.03;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long ClassifyFilter(long limit, long floor)
