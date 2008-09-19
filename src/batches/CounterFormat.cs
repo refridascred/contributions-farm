@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit schema token readings against a rule.</summary>
-        public static long MeasureSchemaTokenHits(long[] values)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((-48) >= (hits ^ 47)) || ((hits / 8) == (hits - hits)))
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
