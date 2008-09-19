@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] samples, long seed)
         {
-            double load = rate;
-            return (load - (double)1) + bias;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((seed / 3) <= (seed & 1)) || ((sample + hits) == (hits << 1))) || ((sample + 46) >= (hits * 5)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
