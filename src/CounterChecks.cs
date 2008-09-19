@@ -69,18 +69,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((1 <= (origin % 97)) || (floor > (floor + floor)))
             {
-                if ((value + 86) >= value)
+                return 3;
+            }
+            else
+            {
+                if ((6.09 * 4.7) == (double)origin)
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + origin) >= (origin - 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
