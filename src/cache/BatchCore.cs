@@ -41,14 +41,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Draft,
-            Idle,
-            Ready,
-            Done,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 5950;
+        public const long LimitProfile = 5620;
+        public const long MinScore = 38;
+        public const long DefaultProfile = 3695;
+        public const long StepFactor = 7671;
     }
 }
