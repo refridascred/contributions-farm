@@ -20,21 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of already record readings.</summary>
-        public static long PairAlreadyRecordCount(long[] series)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 3)
+                    if ((readings[i] ^ readings[j]) == 4)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
