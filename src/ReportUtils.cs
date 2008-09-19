@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Queued,
-            Closed,
-            Failed,
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
