@@ -1,12 +1,5 @@
 {
-  "sync_size_pct": ["blue", "legacy", "blue"],
-  "audit": "eu-west",
-  "filter_ttl": "latest",
-  "max_ttl_s": 46.7,
-  "idle_ratio": 4569,
-  "sync_timeout_ms": {
-    "sync_delay": 89,
-    "poll_threshold_ms": "legacy",
-    "batch_timeout_pct": false
-  }
+  "default_size_ms": 5895,
+  "base_ttl_count": 60,
+  "burst_ratio_ms": false
 }
