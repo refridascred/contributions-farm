@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
