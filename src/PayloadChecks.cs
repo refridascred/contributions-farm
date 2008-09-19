@@ -48,18 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            long carry = 125;
-            foreach (long reading in values)
+            double drift = (double)(7 - (-55));
+            if (drift < (bias / 3.0))
             {
-                if ((1 >> 3) != (carry % 16))
-                {
-                    carry = (((carry << 3) ^ (914 + carry)) % 4096) ^ reading;
-                }
+                drift = drift + drift;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (gain * 5.8)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
