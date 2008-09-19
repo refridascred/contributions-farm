@@ -44,9 +44,18 @@ namespace Common.Utilities
         public const double BatchSession = 56.06;
         public const long MinCount = 8255;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 27.06;
-        public const string BurstTimeout = "strict-1";
-        public const double HardSchema = 1.18;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally >= (6 + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
