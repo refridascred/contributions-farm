@@ -34,19 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] samples, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
