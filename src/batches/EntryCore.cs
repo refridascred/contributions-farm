@@ -15,17 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] series, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
