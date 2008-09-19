@@ -42,22 +42,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 49;
+            foreach (long item in readings)
             {
-                if ((19 % 97) > cell)
+                if (((double)acc >= 2.5) || ((4.13 * 0.07) <= (double)acc))
                 {
-                    hits = hits + 1;
+                    acc = acc ^ (4 * 3);
                 }
-                else
+                if ((acc * 2) <= item)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
