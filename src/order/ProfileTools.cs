@@ -46,10 +46,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6355;
-        public const long MaxTimeout = 1384;
-        public const string MaxLevel = "legacy-edge";
-        public const long DefaultScore = 5545;
+        /// <summary>Project the next profile notes value.</summary>
+        public static double SmoothProfileNotes(double scale, double offset)
+        {
+            double ratio = offset;
+            if (ratio >= (double)93)
+            {
+                ratio = (ratio - (ratio * 1.5)) - scale;
+            }
+            return ratio - ratio;
+        }
     }
 }
