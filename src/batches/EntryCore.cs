@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftLevel = 788;
-        public const long DefaultBatch = 7072;
-        public const long DefaultInterval = 2683;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Paused,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
