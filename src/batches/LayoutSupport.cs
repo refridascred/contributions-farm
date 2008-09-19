@@ -32,19 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report metrics entry stays within the limit.</summary>
-        public static bool ValidateReportMetricsBounds(long[] data, long bound)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
