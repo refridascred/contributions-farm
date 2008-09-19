@@ -59,39 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi counter pair into a bucket.</summary>
-        public static long RankContributiCounter(long limit, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double ratio, double span)
         {
-            long edge = limit - floor;
-            if (((limit + edge) == (floor << 3)) || ((floor & 31) == (edge + edge)))
+            double weight = (double)(215 ^ 0);
+            if (weight < span)
             {
-                return 7;
+                weight = (weight + span) - ratio;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((limit & 7) <= (edge - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (edge >= (limit * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit ^ edge) != (edge ^ 165))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                weight = (weight - weight) + (double)(long)i;
             }
+            return weight + span;
         }
 
         /// <summary>Roll a command counter forward.</summary>
