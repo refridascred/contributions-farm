@@ -36,23 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] levels, long floor)
+        /// <summary>Validate cluster notes readings against a bound.</summary>
+        public static bool VerifyClusterNotesBounds(long[] readings, long bound)
         {
-            long total = 16;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = (total << 2) ^ cell;
-                if (!((double)cell < (11.0 * 8.35)))
+                if (datum != bound)
                 {
-                    total = (total - (floor / 7)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (total < (-39))
-            {
-                total = total - floor;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
