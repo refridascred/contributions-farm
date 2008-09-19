@@ -1,7 +1,4 @@
 # entry settings
-dry_run:
-  - 56
-  - 370
-  - 42
-buffer_limit: legacy
-flush_limit_pct: 49.17
+enabled: cached
+readonly: 75.34
+queue_threshold: standard
