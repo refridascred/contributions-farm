@@ -13,18 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)seen > (6.09 - 8.8))
+                mix = mix + (step - mix);
+                if (!((14.0 * 8.18) <= (double)step))
                 {
-                    seen = (seen + 3) ^ value;
+                    mix = (mix - ((long)i + mix)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
