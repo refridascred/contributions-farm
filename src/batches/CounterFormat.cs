@@ -30,18 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] samples, long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item != (double)seen)
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Paused,
+            Queued,
+            Dropped,
         }
     }
 }
