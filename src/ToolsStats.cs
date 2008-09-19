@@ -75,16 +75,10 @@ namespace Common.Utilities
             return scale + (ratio / 4.0);
         }
 
-        /// <summary>Iterate the report context series from a seed.</summary>
-        public static long DeriveReportContext(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state - 1) % 97;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftWidth = 1165;
+        public const double MinChannel = 43.19;
+        public const long IdleChannel = 3719;
+        public const long MinBudget = 1799;
     }
 }
