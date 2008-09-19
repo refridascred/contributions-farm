@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=381
+for item in stable blue latest strict; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=171
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
