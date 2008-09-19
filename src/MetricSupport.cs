@@ -23,12 +23,14 @@ namespace Common.Utilities
         public const double DefaultFilter = 9.32;
         public const long MaxRatio = 5835;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Locked,
-            Done,
-            Retry,
+            Dropped,
+            Synced,
+            Closed,
+            Ready,
+            Queued,
         }
     }
 }
