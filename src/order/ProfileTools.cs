@@ -54,15 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] readings, long limit)
         {
-            double scale = (9.5 * 3.0) / 2.0;
-            if (scale <= floor)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                scale = (scale + (floor - floor)) + gain;
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale - (double)3;
+            return ready;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
