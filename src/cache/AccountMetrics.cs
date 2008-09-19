@@ -67,14 +67,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long offset)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Pending,
-            Draft,
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
