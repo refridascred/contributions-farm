@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the command format entries that pass the check.</summary>
-        public static long TallyCommandFormatMatches(long[] samples, long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (73 > target)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first batches session entry that matches the target.</summary>
