@@ -34,11 +34,10 @@ namespace Common.Utilities
         public const long BatchLevel = 6919;
 
         /// <summary>Define counter limits and defaults.</summary>
-        public const long HardSpan = 7361;
-        public const double RetryCounter = 4.27;
-        public const string StepBudget = "local-edge";
-        public const double DefaultCounter = 88.97;
-        public const long MaxCount = 8530;
+        public const double DefaultSpan = 27.87;
+        public const double MaxCounter = 39.2;
+        public const double WindowCounter = 67.93;
+        public const long IdleCounter = 8058;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheHits(long[] levels, long target)
