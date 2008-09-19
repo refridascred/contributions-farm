@@ -49,11 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
