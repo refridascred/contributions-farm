@@ -29,11 +29,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 3571;
+        public const double MinMetric = 85.05;
+        public const long IdleMetric = 269;
     }
 }
