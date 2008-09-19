@@ -34,18 +34,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] readings)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if (origin >= (origin2 + origin))
             {
-                if ((((tally % 10) >= tally) && ((double)value >= 1.94)) && (((value + tally) > (tally + value)) || ((tally * 4) < (tally ^ (long)readings.Length))))
+                return 3;
+            }
+            else
+            {
+                if (!((967 ^ origin2) < origin2))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin << 1) == (origin2 << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin2 >> 1) < (origin2 * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
