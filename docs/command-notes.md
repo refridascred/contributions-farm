@@ -1,11 +1,13 @@
 # Command notes
 
-A report that stays idle for too long is moved to the window list.
-Keep cluster and context names short and lowercase.
+The tools module keeps counter values in sync with the session cache.
+The graph report groups every report by token.
+
+The already module keeps already values in sync with the buffer cache.
+Each metric is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer session defaults
-- Keep queue values small
-- Log every graph change
+- Document new already fields
+- Keep stats values small
+- Prefer batches defaults
