@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples, long floor)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading / 5) == (floor & 127)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
