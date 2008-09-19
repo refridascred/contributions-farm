@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] items)
+        /// <summary>Look up the position of a command order sample.</summary>
+        public static long SeekCommandOrderIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry != (3.55 - 6.1))
+                if (items[i] >= floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
