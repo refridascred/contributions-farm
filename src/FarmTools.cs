@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue report entries.</summary>
-        public static long TallyQueueReport(long[] data, long step)
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long AuditCounterOrderHits(long[] samples, long bound)
         {
-            long sum = 921;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum << 2) ^ (step * 3);
-                if ((step << 2) <= (sample * 4))
+                if (((double)seen != (7.27 / 4.0)) || !((19 * 3) >= (entry << 1)))
                 {
-                    sum = (sum + 627) % 97;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return sum % 97;
+            return seen;
         }
     }
 }
