@@ -1,6 +1,5 @@
 {
-  "batch_ratio": false,
-  "order_ratio": "local",
-  "base_threshold_s": "strict",
-  "min_interval_s": 27
+  "batch_retries_pct": "open",
+  "enabled": "edge",
+  "editor_limit": 41.16
 }
