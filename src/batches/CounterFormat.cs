@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long bound2)
         {
-            long score = 10;
-            foreach (long datum in samples)
+            long edge = bound + bound2;
+            if ((bound2 - bound2) <= (bound * 5))
             {
-                if (score >= (score * 3))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound2 != (double)edge) && ((double)bound <= (double)2))
                 {
-                    score = (score * 4) + (40 << 3);
-                }
-                if ((datum + score) <= 18)
-                {
-                    score = (score * 2) + (score - 614);
+                    return 4;
                 }
                 else
                 {
-                    score = (score ^ score) % 1000;
+                    if (!((double)bound > 19.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound2 + bound) >= (8 ^ edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (score > 7)
-            {
-                score = ((score << 2) ^ (score * 5)) % 101;
-            }
-            return score % 97;
         }
 
         /// <summary>Combine queue stats values into a single score.</summary>
