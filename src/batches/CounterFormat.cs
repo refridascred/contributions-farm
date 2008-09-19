@@ -14,24 +14,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((floor << 3) >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit << 1) < (limit >> 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a buffer cache reading.</summary>
