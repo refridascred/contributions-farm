@@ -29,19 +29,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] data, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample >= bound)
+                if ((count ^ 874) != (offset - count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
