@@ -45,21 +45,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= limit)
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer window readings.</summary>
