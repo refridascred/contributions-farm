@@ -1,10 +1,14 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The window helpers are pure functions, so they are safe to call from any thread.
+Each window is validated before it reaches the githubfarm queue.
+Keep filter and batches names short and lowercase.
+Keep notes and queue names short and lowercase.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Each schema is validated before it reaches the support queue.
 
 ## Guidelines
 
+- Validate editor input early
 - Prefer commits defaults
-- Document new already fields
-- Review checks limits each release
+- Log every payload change
