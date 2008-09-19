@@ -54,20 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardScore = 7910;
+        public const double WindowAccount = 41.32;
+        public const long DefaultAccount = 9175;
+        public const double IdleRatio = 14.69;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutBounds(long[] data, long limit)
