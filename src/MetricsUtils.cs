@@ -38,22 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout token entries that pass the check.</summary>
-        public static long AuditLayoutTokenHits(long[] samples)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (99 > (reading + (-228)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a window reading by value.</summary>
