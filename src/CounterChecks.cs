@@ -16,13 +16,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Locate a support format reading by value.</summary>
+        public static long FindSupportFormatIndex(long[] readings, long target)
         {
-            Paused,
-            Active,
-            Ready,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many graph account samples are out of range.</summary>
