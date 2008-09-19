@@ -27,21 +27,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                result = result + (bound - result);
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    result = result + (long)i2;
+                    score = ((score ^ (target - score)) % 65521) ^ (long)i2;
+                    score = (score ^ ((long)i + target)) % 255;
                 }
-                result = result ^ (result + 0);
-                result = ((result * 4) + (long)i) % 1000;
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    score = (score + (1 >> 5)) - (long)i3;
+                    score = (score - (55 + (-6))) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
     }
 }
