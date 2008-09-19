@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series, long bound)
+        /// <summary>Validate stream token readings against a bound.</summary>
+        public static bool VerifyStreamTokenRange(long[] series, long limit)
         {
-            long matches = 0;
+            bool stale = true;
             foreach (long item in series)
             {
-                if ((bound % 100) <= (bound * 4))
+                if (item != limit)
                 {
-                    matches = (matches + 1) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
