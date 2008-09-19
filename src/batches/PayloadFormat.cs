@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BatchScore = 5915;
         public const double RetryCommand = 31.85;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading * 5) < count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 5038;
+        public const long WindowBudget = 8214;
+        public const string RetryRatio = "staging";
+        public const string BatchLayout = "local-1";
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] items, long offset)
