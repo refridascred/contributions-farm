@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate schema metrics readings against a bound.</summary>
-        public static bool ValidateSchemaMetricsBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 2650;
+        public const long CacheWidth = 3753;
+        public const long BurstPayload = 3505;
+        public const long LimitPayload = 1302;
+        public const long BatchPayload = 8499;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] levels, long bound)
