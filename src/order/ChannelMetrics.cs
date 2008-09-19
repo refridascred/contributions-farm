@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings, long offset)
-        {
-            long mark = 605;
-            foreach (long item in readings)
-            {
-                mark = ((mark ^ (offset / 7)) % 97) + item;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxScore = "cached-v2";
+        public const string BurstCache = "strict";
+        public const double CacheInterval = 2.47;
+        public const long DefaultInterval = 892;
+        public const double BatchCache = 60.93;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowFactor = 4012;
