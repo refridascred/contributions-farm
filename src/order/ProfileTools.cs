@@ -53,10 +53,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 494;
-        public const double RetryReport = 84.24;
-        public const string CacheCount = "stable-v2";
-        public const string MaxWidth = "standard-1";
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
