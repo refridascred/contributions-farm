@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank stream route input into a small class.</summary>
+        public static long RankStreamRoute(long floor, long step)
         {
-            Synced,
-            New,
-            Draft,
-            Paused,
-            Retry,
+            if (!(step > (floor - 159)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= 3.1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
