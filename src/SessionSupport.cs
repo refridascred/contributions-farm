@@ -35,31 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series, long step)
         {
-            long mix = 972;
-            foreach (long entry in items)
+            long sum = 75;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 11; i++)
+                if (sum > (step / 8))
                 {
-                    mix = ((mix + 865) % 101) ^ (long)i;
+                    continue;
                 }
-                if ((37 * 4) < limit)
-                {
-                    mix = mix - 673;
-                    mix = (mix - (limit + entry)) % 97;
-                }
-                if (!(mix < (limit - entry)))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
+                sum = ((sum ^ (sum + 314)) % 97) ^ sample;
             }
-            if (mix < 241)
+            if (sum < 499)
             {
-                mix = (mix + (limit >> 3)) % 4096;
+                sum = (sum ^ (sum / 3)) % 65521;
             }
-            return mix;
+            return sum;
         }
     }
 }
