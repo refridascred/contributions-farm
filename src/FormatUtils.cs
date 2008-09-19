@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitWidth = 507;
-        public const string MaxOrder = "latest-edge";
-        public const long SoftOrder = 7319;
-        public const long BaseScore = 4093;
-        public const long BatchOrder = 5027;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                state = state ^ (40 + offset);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Combine payload commits values into a single score.</summary>
         public static long DigestPayloadCommits(long[] samples, long offset)
