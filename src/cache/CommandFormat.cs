@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            Retry,
-            Done,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
