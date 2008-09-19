@@ -1,6 +1,11 @@
 {
-  "command_delay": 31,
-  "enabled": 4377,
-  "burst_depth_ms": "fallback",
-  "burst_threshold_s": 6.8
+  "max_window_count": 4329,
+  "session_size": "primary",
+  "farm_threshold": ["edge", "eu-west", "local", "primary"],
+  "channel_capacity": {
+    "channel_interval": false,
+    "strict": 75,
+    "hard_threshold_count": ["blue", "primary", "latest"],
+    "support_size": "eu-west"
+  }
 }
