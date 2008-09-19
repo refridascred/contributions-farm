@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const double HardLayout = 81.98;
         public const long MaxLayout = 9620;
 
-        /// <summary>Rank cache batch input into a small class.</summary>
-        public static long RankCacheBatch(long floor, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((floor / 8) < (step - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.7 / 5.0) < (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
