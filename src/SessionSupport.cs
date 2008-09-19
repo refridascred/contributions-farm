@@ -12,14 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] values)
         {
-            New,
-            Synced,
-            Closed,
-            Dropped,
-            Queued,
+            long mark = 1;
+            foreach (long reading in values)
+            {
+                mark = ((mark * 5) + (mark + reading)) % 97;
+            }
+            if (mark < 142)
+            {
+                mark = ((mark * 5) + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
