@@ -1,9 +1,40 @@
 # githubfarm settings
-audit: 100
-burst_depth:
-  - 202
-  - 323
-  - 438
-  - 62
-max_ratio: true
-entry_capacity: 28.55
+report_threshold:
+  report_limit:
+    max_timeout:
+      - 444
+      - 282
+    report_window:
+      - 447
+      - 101
+      - 57
+      - 446
+    default_window_count: 2830
+    warm_delay:
+      - 152
+      - 70
+      - 389
+      - 438
+    profile_ttl: edge
+    flush_depth_count: false
+  burst_ttl: strict
+  strict: 250
+  compress: 48
+entry_timeout: primary
+max_limit: 71.83
+idle_timeout_pct: blue
+sync_interval_s: open
+base_delay_s:
+  warm_ratio_count:
+    flush_delay_ms:
+      - 14
+      - 119
+    strict:
+      - 443
+      - 408
+    verbose: edge
+    poll_ttl_count: 1013
+    min_interval: 45.83
+    hard_capacity: edge
+  checks_ttl: 65.43
+  sync_depth_pct: 36.58
