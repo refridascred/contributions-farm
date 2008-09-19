@@ -39,18 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Digest a series of batches checks entries.</summary>
+        public static long FoldBatchesChecks(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long carry = 421;
+            foreach (long item in items)
             {
-                if (reading > (tally * 3))
+                if ((double)origin <= (7.0 / 2.0))
                 {
-                    tally = tally + 2;
+                    carry = (((carry * 3) + (carry % 64)) % 101) + item;
                 }
+                carry = ((carry << 2) ^ carry) % 97;
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
