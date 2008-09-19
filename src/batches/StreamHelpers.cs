@@ -33,19 +33,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits + hits) < hits)
-                {
-                    hits = ((hits + 3) + datum) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchWidth = "local-1";
+        public const long MaxQueue = 3707;
+        public const long StepDepth = 9881;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] levels, long limit)
