@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first token contributi entry that matches the target.</summary>
-        public static long LookupTokenContributiIndex(long[] series, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = weight;
+            if (load > (double)7)
             {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
+                load = (load + (load - weight)) + bias;
             }
-            return -1;
+            else
+            {
+                load = load + (double)59;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (weight / 6.0)) + (double)(long)i;
+            }
+            return load - (double)734;
         }
 
         /// <summary>Describe the session kind values.</summary>
