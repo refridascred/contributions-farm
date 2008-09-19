@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            double bias = (double)(0 / 9);
-            if (bias <= offset)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (offset + ratio);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (offset * 2.3)) + (double)(long)i;
-            }
-            return bias + (ratio - 1.0);
+            return tally;
         }
 
         /// <summary>Audit profile window readings against a rule.</summary>
