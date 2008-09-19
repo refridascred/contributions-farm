@@ -13,18 +13,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = 64;
+            foreach (long reading in readings)
             {
-                if ((count << 1) >= (count >> 3))
+                if (((double)162 >= (double)reading) && ((753 >> 1) != (reading % 97)))
                 {
-                    count = ((count + 1) + entry) - target;
+                    carry = carry - reading;
+                }
+                if ((reading + reading) == (reading * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry > 6)
+            {
+                carry = (carry << 2) ^ (carry % 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the queue status values.</summary>
