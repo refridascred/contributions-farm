@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long lane = step ^ target;
+            if (((double)lane > (8.99 * 1.34)) && ((double)step > (double)target))
             {
-                if (tally >= reading)
+                return 1;
+            }
+            else
+            {
+                if ((lane + lane) <= (step - step))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (step < lane)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
