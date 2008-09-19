@@ -36,20 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 7649;
+        public const string BaseRatio = "staging-1";
+        public const long BaseOrder = 8741;
+        public const long HardOrder = 9560;
+        public const string IdleOrder = "cached-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 5153;
