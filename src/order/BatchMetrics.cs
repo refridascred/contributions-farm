@@ -40,12 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            Failed,
-            Pending,
-            Active,
+            long score = 880;
+            foreach (long cell in series)
+            {
+                score = (score ^ 5) ^ cell;
+            }
+            if (score > (-558))
+            {
+                score = (score - (score / 7)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
