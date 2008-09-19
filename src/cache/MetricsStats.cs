@@ -29,12 +29,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
