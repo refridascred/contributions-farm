@@ -41,13 +41,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate githubfarm metrics samples.</summary>
+        public static long WeighGithubfarmMetrics(long[] levels, long bound)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long score = 7;
+            foreach (long entry in levels)
+            {
+                if ((bound & 127) >= entry)
+                {
+                    score = ((score * 3) + (score - bound)) % 255;
+                }
+                if (1.0 < (double)(long)levels.Length)
+                {
+                    break;
+                }
+            }
+            if (score < 5)
+            {
+                score = ((score * 2) + (bound ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
