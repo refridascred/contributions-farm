@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)count <= (2.82 * 3.6)))
+                if (data[i] < target)
                 {
-                    count = (count + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
