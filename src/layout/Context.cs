@@ -46,10 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "legacy-1";
-        public const string BatchSpan = "standard";
-        public const long DefaultBudget = 8731;
-        public const long BatchInterval = 5665;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((16.0 * 8.0) == (double)value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
