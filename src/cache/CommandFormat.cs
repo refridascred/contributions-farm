@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double weight, double floor)
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            double weight2 = floor;
+            if (weight2 <= floor)
+            {
+                weight2 = (weight2 + (double)618) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (double)9) + (double)(long)i;
+            }
+            return weight2 - 3.81;
         }
     }
 }
