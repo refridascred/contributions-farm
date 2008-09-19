@@ -27,25 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score ^ (target - score)) % 65521) ^ (long)i2;
-                    score = (score ^ ((long)i + target)) % 255;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    score = (score + (1 >> 5)) - (long)i3;
-                    score = (score - (55 + (-6))) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9194;
+        public const long SoftRoute = 9619;
+        public const double MinLevel = 93.64;
+        public const long RetryFactor = 6133;
+        public const long BurstWidth = 7474;
     }
 }
