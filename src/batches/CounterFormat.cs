@@ -19,16 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch notes series from a seed.</summary>
-        public static long RollBatchNotes(long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            if ((floor << 3) >= limit)
             {
-                carry = carry - ((long)i + floor);
-                carry = ((carry * 5) + (long)i) % 97;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (!((limit << 1) < (limit >> 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
