@@ -77,10 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheInterval = 20.79;
-        public const long BatchSupport = 6288;
-        public const double HardFactor = 1.02;
-        public const long BurstSupport = 7251;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
