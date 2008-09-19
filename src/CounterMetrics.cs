@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTimeout = 2807;
-        public const long HardTools = 9871;
-        public const long BatchTools = 3238;
-        public const long CacheTools = 2701;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double span)
+        {
+            double gain = scale / 7.0;
+            if (gain > (scale / 7.0))
+            {
+                gain = (gain + (double)2) - span;
+            }
+            else
+            {
+                gain = gain + (11.0 - gain);
+            }
+            return gain - (gain / 5.0);
+        }
 
         /// <summary>Rank payload session input into a small class.</summary>
         public static long BucketPayloadSession(long limit, long floor)
