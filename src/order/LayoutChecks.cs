@@ -66,19 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != limit)
+                if (readings[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
