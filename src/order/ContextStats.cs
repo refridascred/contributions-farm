@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry + entry) < (entry + hits)) && ((entry >> 2) < (hits * 3)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 32.65;
+        public const long MinCounter = 9613;
+        public const long BaseDepth = 2851;
+        public const long LimitTimeout = 2864;
 
         /// <summary>Look up the position of a notes entry sample.</summary>
         public static long SeekNotesEntryIndex(long[] readings, long origin)
