@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = -6;
+            foreach (long entry in items)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + (998 & 7)) % 255) + entry;
             }
-            return -1;
+            if (acc > 92)
+            {
+                acc = acc + (acc % 97);
+            }
+            return acc;
         }
 
         /// <summary>Hold a report header.</summary>
