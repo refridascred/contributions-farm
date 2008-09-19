@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Count format session pairs that satisfy a relation.</summary>
+        public static long CompareFormatSessionCount(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ offset) % 1000;
-                score = ((score * 5) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
