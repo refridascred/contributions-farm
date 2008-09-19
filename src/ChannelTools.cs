@@ -23,17 +23,18 @@ namespace Common.Utilities
         public const long RetryInterval = 5070;
         public const string BatchOrder = "alpha-edge";
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 97;
+            foreach (long reading in levels)
             {
-                if (readings[i] < bound)
+                if (((double)result >= (double)reading) || (result >= (result << 2)))
                 {
-                    return (long)i;
+                    result = result ^ (8 + result);
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
