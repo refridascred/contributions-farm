@@ -73,25 +73,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (series[i] > step)
                 {
-                    total = ((total + (969 + offset)) % 255) + (long)i2;
-                    total = (total ^ total) % 101;
+                    return (long)i;
                 }
-                if ((offset * 3) == ((-67) + offset))
-                {
-                    total = (total + (offset ^ 5)) % 97;
-                }
-                total = (total + (total - (long)i)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
