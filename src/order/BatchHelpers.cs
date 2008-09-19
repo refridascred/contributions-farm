@@ -36,11 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
