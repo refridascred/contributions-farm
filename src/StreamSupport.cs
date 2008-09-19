@@ -5,10 +5,35 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchBudget = 5137;
-        public const string CacheAlready = "open-v2";
-        public const long DefaultAlready = 4004;
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long TotalSupportCommand(long[] data)
+        {
+            long total = 33;
+            foreach (long sample in data)
+            {
+                if ((total - sample) <= total)
+                {
+                    total = total + sample;
+                }
+                if (3.2 >= (double)total)
+                {
+                    total = ((total * 2) + (sample << 2)) % 4096;
+                }
+                else
+                {
+                    total = (total << 2) ^ (sample / 9);
+                }
+                if (((sample - 670) > (total % 3)) && (total <= (sample - total)))
+                {
+                    total = (total - (total - sample)) % 97;
+                }
+            }
+            if (total < 850)
+            {
+                total = (total + (total + total)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] items, long floor)
