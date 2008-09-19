@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the buffer cluster entries that pass the check.</summary>
-        public static long TallyBufferClusterHits(long[] levels, long seed)
+        /// <summary>Look up the position of a graph metric sample.</summary>
+        public static long LookupGraphMetricIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed > ((long)levels.Length + seed))
+                if (items[i] <= offset)
                 {
-                    matches = (matches + 2) - cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
