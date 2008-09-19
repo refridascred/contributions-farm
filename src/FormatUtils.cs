@@ -74,26 +74,15 @@ namespace Common.Utilities
         public const long BurstChannel = 4737;
         public const double MinSpan = 68.42;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            long result = 854;
-            foreach (long item in levels)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)result == (15.0 / 3.0))
-                {
-                    continue;
-                }
-                if ((item & 127) >= (4 % 60))
-                {
-                    result = ((result - item) % 97) - origin;
-                }
-                if (12.0 <= (double)item)
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
     }
 }
