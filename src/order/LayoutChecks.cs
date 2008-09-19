@@ -71,31 +71,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long limit, long limit2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items, long step)
         {
-            if ((8.85 / 6.0) < (double)limit2)
+            long result = 9;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(limit2 >= (-4)))
+                if ((step << 2) < 92)
                 {
-                    return 6;
+                    result = result ^ (entry / 2);
                 }
-                else
+                if (entry <= (entry - result))
                 {
-                    if ((double)limit <= 1.74)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
