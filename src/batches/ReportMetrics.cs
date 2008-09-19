@@ -52,16 +52,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Measure how many metric filter samples are out of range.</summary>
+        public static long TallyMetricFilterHits(long[] items, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (acc >> 3)) % 101;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (((cell << 1) == (94 % 64)) && ((bound ^ bound) >= (bound << 1)))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
