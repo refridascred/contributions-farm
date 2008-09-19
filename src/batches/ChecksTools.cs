@@ -13,13 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] values, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long entry in values)
+            foreach (long value in series)
             {
-                if (entry != origin)
+                if (value >= offset)
                 {
                     valid = false;
                     break;
