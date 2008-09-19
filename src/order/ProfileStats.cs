@@ -33,13 +33,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleSpan = 5299;
+        public const long BurstStats = 9486;
+        public const long CacheStats = 8022;
+        public const string StepScore = "alpha-1";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
