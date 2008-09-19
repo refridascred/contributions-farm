@@ -25,24 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if (offset >= (92 % 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (9.8 + 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
