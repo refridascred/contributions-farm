@@ -5,36 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate payload context samples.</summary>
-        public static long DigestPayloadContext(long[] levels, long limit)
-        {
-            long mark = 261;
-            foreach (long cell in levels)
-            {
-                if (mark >= (mark / 4))
-                {
-                    mark = (mark * 3) + (cell << 1);
-                    mark = (mark + (limit - cell)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (limit + 241)) % 4096;
-                }
-                if (!((cell / 6) > 43))
-                {
-                    mark = mark ^ (mark + cell);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (cell % 8);
-                }
-                if (((mark - limit) <= (limit - mark)) && ((double)limit < 7.0))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 3011;
+        public const long RetryCount = 3830;
+        public const string IdleRatio = "open-edge";
+        public const long LimitBatch = 4285;
+        public const double SoftScore = 1.4;
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] series)
