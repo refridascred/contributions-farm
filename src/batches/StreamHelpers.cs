@@ -28,32 +28,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long state = -211;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length > (sample >> 3)) || ((sample - state) == (bound ^ bound)))
-                {
-                    state = ((state << 2) ^ (bound << 2)) % 97;
-                    state = (state + (sample / 8)) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + (bound - bound)) % 97;
-                }
-                state = (state - (bound + bound)) % 65521;
-                if ((sample & 15) <= state)
-                {
-                    state = (state ^ (sample * 4)) % 4096;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state * 4) + (state / 2);
-            }
-            return state;
+            Idle,
+            Synced,
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
