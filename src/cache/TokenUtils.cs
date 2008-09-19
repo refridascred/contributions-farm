@@ -19,20 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((offset + score) > (long)i))
-                {
-                    score = (score ^ (long)i) % 65521;
-                }
-                score = (score + offset) % 65521;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Queued,
+            Idle,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
