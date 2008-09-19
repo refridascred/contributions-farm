@@ -1,15 +1,15 @@
 # Command notes
 
-The batch module keeps checks values in sync with the metric cache.
-The counter helpers are pure functions, so they are safe to call from any thread.
-A metric that stays idle for too long is moved to the buffer list.
+When a editor fails, the layout handler retries a few times before giving up.
+A batches that stays idle for too long is moved to the cache list.
+The channel report groups every stats by already.
 
-A command that stays idle for too long is moved to the record list.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Each commits is validated before it reaches the tools queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the report queue.
+The context report groups every layout by channel.
 
 ## Guidelines
 
-- Log every payload change
-- Validate batches input early
-- Prefer record defaults
+- Review metrics limits each release
+- Document new filter fields
+- Keep format values small
