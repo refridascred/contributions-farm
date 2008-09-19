@@ -24,39 +24,27 @@ namespace Common.Utilities
         public const long IdleFactor = 2095;
         public const long BaseWidth = 7281;
 
-        /// <summary>Grade a context session value against two limits.</summary>
-        public static long ClassifyContextSession(long seed, long floor)
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long FoldContributiFarm(long[] items)
         {
-            long gap = seed - floor;
-            if ((seed >> 1) != (seed * 5))
+            long score = 5;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap > (4.0 - 5.76))
+                score = score + (score & 1);
+                if ((double)value < 17.0)
                 {
-                    return 7;
+                    continue;
                 }
                 else
                 {
-                    if (!((floor / 7) != (floor << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor >= 8.3)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = score ^ (value >> 2);
+                }
+                if (((score % 10) <= value) || ((score >> 4) <= (score >> 1)))
+                {
+                    score = ((score << 2) ^ (score >> 1)) % 101;
                 }
             }
+            return score;
         }
     }
 }
