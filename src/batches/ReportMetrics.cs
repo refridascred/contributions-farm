@@ -19,19 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] readings, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if (limit <= (seed >> 1))
             {
-                if (reading < origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (5.72 + 9.6))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) != (limit >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a payload info.</summary>
