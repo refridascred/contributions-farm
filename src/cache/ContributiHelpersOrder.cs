@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] items, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
