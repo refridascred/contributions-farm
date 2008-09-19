@@ -28,16 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] samples, long target)
+        /// <summary>Accumulate context githubfarm samples.</summary>
+        public static long TotalContextGithubfarm(long[] data)
         {
-            long result = 59;
-            foreach (long entry in samples)
+            long score = 673;
+            foreach (long datum in data)
             {
-                result = (((result + (result - result)) % 101) ^ entry) - target;
-                result = ((result * 3) + (result << 3)) % 255;
+                score = (score * 5) + (datum / 3);
             }
-            return result;
+            if (score < 71)
+            {
+                score = ((score * 4) + score) % 101;
+            }
+            return score;
         }
     }
 }
