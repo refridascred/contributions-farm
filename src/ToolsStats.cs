@@ -83,10 +83,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxLevel = 9824;
-        public const long BurstWidth = 8662;
-        public const long BatchInterval = 635;
-        public const long HardFarm = 4210;
+        /// <summary>Match up stats metric samples.</summary>
+        public static long MatchStatsMetricCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
