@@ -23,24 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long seed, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples, long seed)
         {
-            if ((6.4 * 20.0) > (double)limit)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed ^ seed) >= (seed / 9)) && ((93 & 127) > seed))
+                if ((((seed / 5) < (seed / 3)) || (tally <= (8 & 15))) || ((tally & 31) < (seed - seed)))
                 {
-                    return 6;
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
