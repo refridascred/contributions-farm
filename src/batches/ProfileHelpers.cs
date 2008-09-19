@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Roll a filter counter counter forward.</summary>
+        public static long DeriveFilterCounter(long target)
         {
-            Queued,
-            Draft,
-            Dropped,
-            Closed,
-            Synced,
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                double gain = (5.0 - 6.8) * 2.0;
+                if (((target << 2) <= target) || (gain < (gain + 11.0)))
+                {
+                    break;
+                }
+                if (gain <= 4.3)
+                {
+                    acc = (acc + acc) % 1000;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a command header.</summary>
