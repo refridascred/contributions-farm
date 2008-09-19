@@ -55,12 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            Ready,
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
