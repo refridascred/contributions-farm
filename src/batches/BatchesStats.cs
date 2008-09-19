@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long seed2)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            if (((5.0 - 5.1) == (double)seed2) && (seed2 <= (seed2 << 3)))
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                acc = (acc - (long)i) % 97;
+                acc = ((acc * 5) + acc) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (seed2 >= 142)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed2 <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(953 >= (seed << 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
