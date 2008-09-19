@@ -29,12 +29,32 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long bound)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            long bound2 = origin + bound;
+            if ((double)bound >= (2.7 / 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((282 + 3) <= (origin % 100))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound * 2) >= bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph mode values.</summary>
