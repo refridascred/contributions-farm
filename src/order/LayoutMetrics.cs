@@ -26,17 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSpan = 8317;
+        public const long HardNotes = 1805;
+        public const long WindowSpan = 586;
+        public const long SoftSpan = 4805;
+        public const double IdleNotes = 22.16;
     }
 }
