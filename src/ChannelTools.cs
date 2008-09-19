@@ -29,19 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] data, long bound)
         {
-            double bias = (double)(7 >> 4);
-            if (bias <= bias)
+            long count = 0;
+            foreach (long datum in data)
             {
-                bias = (bias + (bias - span)) + rate;
+                if (count > (bound / 3))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            else
-            {
-                bias = bias - (bias * 15.0);
-            }
-            return bias - span;
+            return count;
         }
     }
 }
