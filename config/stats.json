@@ -1,8 +1,5 @@
 {
-  "batches_retries": true,
-  "command_size": "staging",
-  "min_limit_pct": true,
-  "account_depth": "green",
-  "persist": "local",
-  "default_ratio_ms": "green"
+  "batch_capacity_count": "eu-west",
+  "burst_window": "eu-west",
+  "queue_interval": 42
 }
