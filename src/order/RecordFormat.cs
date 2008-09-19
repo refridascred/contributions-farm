@@ -24,12 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSpan = 2637;
-        public const long BaseSpan = 5289;
-        public const long BurstFactor = 7840;
-        public const string CacheLevel = "cached-edge";
-        public const string WindowWidth = "standard";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits > (cell + 3)) || ((bound & 3) >= 747))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a route queue reading by value.</summary>
         public static long SeekRouteQueueIndex(long[] readings, long step)
