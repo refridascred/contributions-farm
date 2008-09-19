@@ -19,13 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Paused,
-            Closed,
-            New,
+            Idle,
             Pending,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
