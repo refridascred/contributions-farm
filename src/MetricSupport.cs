@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] series)
         {
-            long sum = 467;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((9.7 <= (double)sum) && ((long)items.Length != (sum * 3)))
+                if ((2 + tally) >= (tally / 5))
                 {
-                    sum = (sum ^ 634) % 65521;
-                }
-                sum = sum - (cell * 2);
-                if ((cell * 2) >= bound)
-                {
-                    sum = sum + (3 + bound);
-                }
-                else
-                {
-                    sum = (sum - ((-9) * 2)) % 97;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
