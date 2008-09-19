@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 42.85;
-        public const string RetryLayout = "legacy-edge";
-        public const long BaseSpan = 5608;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((((double)701 == (double)entry) || (17.0 >= (double)entry)) || !((6.6 + 5.27) != (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
