@@ -92,14 +92,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Classify a githubfarm entry pair into a bucket.</summary>
+        public static long RankGithubfarmEntry(long step, long origin)
         {
-            Stale,
-            Queued,
-            Failed,
-            Ready,
-            Paused,
+            long delta = step ^ origin;
+            if (delta < (delta ^ origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (delta <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (delta > (delta / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
