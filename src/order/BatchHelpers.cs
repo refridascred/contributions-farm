@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long carry = 881;
-            foreach (long value in values)
-            {
-                carry = (((carry << 3) ^ (508 >> 3)) % 65521) ^ value;
-            }
-            if (carry < 2)
-            {
-                carry = (carry + (carry ^ carry)) % 65521;
-            }
-            return carry % 1000;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a channel batches pair into a bucket.</summary>
