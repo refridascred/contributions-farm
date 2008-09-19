@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Count format farm pairs that satisfy a relation.</summary>
+        public static long MatchFormatFarmCount(long[] levels)
         {
-            long mix = 770;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix <= 7.0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ (sample - mix)) % 1000;
-                    continue;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
