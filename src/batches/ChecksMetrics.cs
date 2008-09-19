@@ -57,11 +57,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitScore = "fallback-1";
-        public const long SoftSession = 7756;
-        public const double MinInterval = 3.13;
-        public const double BaseSession = 46.98;
-        public const double WindowLevel = 90.92;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Stale,
+            Done,
+            Draft,
+            Active,
+        }
     }
 }
