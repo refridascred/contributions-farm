@@ -24,19 +24,21 @@ namespace Common.Utilities
             return load + 1.8;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
