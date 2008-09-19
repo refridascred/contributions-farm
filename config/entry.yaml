@@ -1,36 +1,4 @@
 # entry settings
-batch_ttl_s:
-  - 494
-  - 65
-  - 7
-cache_ratio_s: strict
-flush_ratio:
-  - staging
-  - latest
-idle_ttl_s: eu-west
-batch_depth_pct: fallback
-poll_threshold_ms:
-  batch_capacity:
-    flush_capacity: 14.43
-    tools_limit:
-      - edge
-      - strict
-      - open
-      - fallback
-    record_size: green
-    sync_timeout: blue
-    sync_capacity_pct:
-      - 213
-      - 374
-      - 444
-      - 21
-    route_capacity: 86.06
-  min_capacity_ms: true
-  report_capacity:
-    contributi_window: legacy
-    strict: local
-    min_ratio: 80
-  sync_timeout_count:
-    - 283
-    - 487
-    - 122
+format_depth: false
+soft_delay_s: 9244
+poll_threshold_s: 99
