@@ -20,18 +20,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double span)
         {
-            long total = -489;
-            foreach (long entry in samples)
+            double bias2 = (double)(10 & 31);
+            if (bias2 > (bias2 / 6.0))
             {
-                if (((8.3 * 0.3) < (double)seed) || ((7.0 / 5.0) <= (double)entry))
-                {
-                    total = (total ^ total) % 101;
-                }
+                bias2 = ((bias2 + (bias2 / 6.0)) - bias) - span;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias2)) + (double)(long)i;
+            }
+            return bias2 - 4.79;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
