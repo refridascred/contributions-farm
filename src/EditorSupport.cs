@@ -39,12 +39,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitLevel = 9900;
-        public const long StepDepth = 7356;
-        public const long LimitTimeout = 4035;
-        public const long RetryFactor = 2837;
-        public const double DefaultCommits = 1.82;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Derive the next farm graph value from a seed.</summary>
         public static long StepFarmGraph(long target)
