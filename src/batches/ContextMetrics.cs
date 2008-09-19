@@ -60,21 +60,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up farm counter samples.</summary>
-        public static long CompareFarmCounterCount(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = weight * 0.1;
+            if (drift >= drift)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (double)90;
             }
-            return hits;
+            return drift - (weight + span);
         }
     }
 }
