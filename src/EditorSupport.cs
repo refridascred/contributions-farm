@@ -56,15 +56,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] series, long step)
         {
-            double load = (double)(-83) / 2.0;
-            if (load >= bias)
+            bool ready = true;
+            foreach (long value in series)
             {
-                load = (load - bias) - floor;
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - (12.0 - load);
+            return ready;
         }
     }
 }
