@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const double IdleRatio = 75.22;
         public const long HardEntry = 8779;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] values, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long score = 2;
+            foreach (long entry in data)
             {
-                if (cell >= step)
+                if ((entry % 100) >= (59 / 5))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                score = score - 725;
             }
-            return ready;
+            if (score < 21)
+            {
+                score = (score ^ step) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
