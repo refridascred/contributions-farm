@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of commits entry readings.</summary>
-        public static long CompareCommitsEntryCount(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 993;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((datum + datum) <= 61) && (0 < (sum + sum)))
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum + (sum - sum)) % 101) + target;
                 }
             }
-            return tally;
+            if (sum > 910)
+            {
+                sum = (sum << 2) ^ (sum & 7);
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel kind values.</summary>
