@@ -36,15 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route contributi value from a seed.</summary>
-        public static long StepRouteContributi(long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
