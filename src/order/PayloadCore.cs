@@ -56,22 +56,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values, long floor)
+        /// <summary>Count the cluster metric entries that pass the check.</summary>
+        public static long CountClusterMetricMatches(long[] samples, long target)
         {
-            long result = 2;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if (target < (target + (-121)))
                 {
-                    result = ((result ^ (long)i) % 1000) + floor;
+                    matches = (matches + 3) - cell;
                 }
-                if ((double)datum > (3.33 * 8.34))
+                else
                 {
-                    result = ((result * 5) + result) % 101;
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
