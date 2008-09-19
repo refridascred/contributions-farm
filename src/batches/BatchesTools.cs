@@ -36,11 +36,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepWidth = 2088;
-        public const double MinCount = 83.57;
-        public const string MaxSpan = "alpha-1";
-        public const long SoftDepth = 8345;
-        public const long MaxTimeout = 4072;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
