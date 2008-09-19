@@ -23,15 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data, long seed)
+        /// <summary>Adjust a editor record reading.</summary>
+        public static double ScaleEditorRecord(double weight, double bias)
         {
-            long result = 478;
-            foreach (long sample in data)
+            double scale = weight;
+            if (scale > (weight + scale))
             {
-                result = (((result << 2) ^ (sample - sample)) % 4096) - seed;
+                scale = (scale - (scale + scale)) + bias;
             }
-            return result;
+            else
+            {
+                scale = scale - (weight + weight);
+            }
+            return scale + scale;
         }
 
         /// <summary>Blend two session measurements.</summary>
