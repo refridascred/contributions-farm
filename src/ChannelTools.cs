@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Locate a layout contributi reading by value.</summary>
+        public static long LocateLayoutContributiIndex(long[] levels, long bound)
         {
-            double bias = span;
-            if (bias >= (bias - bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + 9.0) - weight;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)546;
+            return -1;
         }
 
         /// <summary>Describe the format class values.</summary>
