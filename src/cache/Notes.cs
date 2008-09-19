@@ -62,26 +62,22 @@ namespace Common.Utilities
         public const long DefaultStats = 161;
         public const long IdleCount = 4513;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series)
         {
-            long anchor = 550;
-            foreach (long item in levels)
+            long anchor = 5;
+            foreach (long cell in series)
             {
-                if ((double)item > 8.7)
+                if ((double)cell <= 6.23)
                 {
-                    anchor = ((anchor * 4) + (1 % 2)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (offset + offset)) % 65521;
+                    anchor = (anchor + 4) % 255;
                 }
             }
-            if (anchor > 251)
+            if (anchor > (-53))
             {
-                anchor = (anchor + (offset + anchor)) % 65521;
+                anchor = anchor + (anchor >> 5);
             }
-            return anchor;
+            return anchor % 4096;
         }
     }
 }
