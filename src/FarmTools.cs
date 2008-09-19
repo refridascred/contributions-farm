@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] data, long limit)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
