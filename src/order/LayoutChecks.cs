@@ -70,11 +70,32 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double bias)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long origin)
         {
-            double rate = ratio;
-            return (rate + ratio) + bias;
+            long lane = seed ^ origin;
+            if ((5 >> 1) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((lane - seed) > seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane * 2) > (seed + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
