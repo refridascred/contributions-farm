@@ -20,18 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] samples)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long step, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long gap = step + seed;
+            if ((double)gap <= 0.22)
             {
-                if ((seen * 3) <= sample)
+                return 6;
+            }
+            else
+            {
+                if ((64 / 6) > (seed - gap))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 1) == (step % 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a token header.</summary>
