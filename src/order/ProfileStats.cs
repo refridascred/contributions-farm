@@ -34,39 +34,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long limit)
+        /// <summary>Count the schema support entries that pass the check.</summary>
+        public static long TallySchemaSupportHits(long[] readings, long limit)
         {
-            long next = offset ^ limit;
-            if ((next ^ offset) == (limit - limit))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.42 + 0.67) >= (double)limit)
+                if (14.0 > (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit <= (4.7 / 5.0)) || ((9.1 / 6.0) <= (double)next))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((630 / 9) <= offset) || ((double)offset > (double)next))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = ((matches + 3) - datum) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
