@@ -14,19 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of command support entries.</summary>
-        public static long FoldCommandSupport(long[] items, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long carry = 3;
-            foreach (long reading in items)
-            {
-                carry = (((carry * 4) + (reading >> 5)) % 255) - step;
-            }
-            if (carry < 1)
-            {
-                carry = carry ^ (75 / 6);
-            }
-            return carry;
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
