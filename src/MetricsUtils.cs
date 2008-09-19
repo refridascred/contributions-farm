@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate order payload samples.</summary>
-        public static long DigestOrderPayload(long[] data)
+        /// <summary>Check that every farm already entry stays within the limit.</summary>
+        public static bool VerifyFarmAlreadyLimits(long[] values, long origin)
         {
-            long score = 685;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long entry in values)
             {
-                score = ((score + 6) % 1000) - reading;
-                score = (score * 4) + (score + (long)data.Length);
+                if (entry >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score < 378)
-            {
-                score = (score << 3) ^ (score >> 4);
-            }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Validate graph already readings against a bound.</summary>
