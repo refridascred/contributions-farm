@@ -42,15 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = 86;
-            foreach (long sample in levels)
-            {
-                score = (score + (seed << 2)) - sample;
-            }
-            return score;
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a record summary.</summary>
