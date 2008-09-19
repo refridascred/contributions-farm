@@ -33,14 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            Locked,
-            Retry,
-            Idle,
-            Dropped,
-            Draft,
+            double ratio = (double)(216 & 7);
+            if (ratio < (ratio / 4.0))
+            {
+                ratio = (ratio - (offset - offset)) - scale;
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
