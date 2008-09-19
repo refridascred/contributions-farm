@@ -58,16 +58,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            if ((double)limit > (1.0 - 3.11))
             {
-                mix = ((mix * 2) + ((long)i + 512)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (target >= (target / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
