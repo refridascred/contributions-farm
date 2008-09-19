@@ -42,13 +42,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            double mean = (1.4 / 4.0) / 7.0;
+            if (mean >= (double)4)
+            {
+                mean = ((mean + (6.6 + mean)) + weight) - offset;
+            }
+            else
+            {
+                mean = mean + (6.0 / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - 1.11;
         }
     }
 }
