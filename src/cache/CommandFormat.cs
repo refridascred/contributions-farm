@@ -19,19 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((2.1 * 20.0) <= (double)matches) && (((cell + matches) != (0 ^ floor)) && ((2.56 / 4.0) < (double)cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "staging-1";
+        public const double DefaultSize = 39.25;
+        public const long CacheSchema = 427;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
