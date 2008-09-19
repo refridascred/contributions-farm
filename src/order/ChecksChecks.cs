@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Find the first schema session entry that matches the target.</summary>
+        public static long FindSchemaSessionIndex(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
