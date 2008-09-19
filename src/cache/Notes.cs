@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long IdleProfile = 2553;
         public const double MinDepth = 47.69;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 7753;
+        public const long LimitTimeout = 8384;
+        public const long BaseSize = 5353;
+        public const long CacheInterval = 7602;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] items, long target)
