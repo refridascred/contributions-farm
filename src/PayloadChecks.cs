@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheBudget = 909;
-        public const long MaxSupport = 3911;
-        public const long CacheSupport = 1942;
-        public const double MinSupport = 89.16;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (value < (15 / 9))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] readings, long offset)
