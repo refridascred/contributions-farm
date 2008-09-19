@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const long BatchSession = 6709;
         public const string MinWidth = "alpha";
 
-        /// <summary>Check that every checks window entry stays within the limit.</summary>
-        public static bool ValidateChecksWindowRange(long[] readings, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long floor, long origin)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((floor - origin) >= floor)
             {
-                if (datum < origin)
+                return 6;
+            }
+            else
+            {
+                if (0 > (floor - floor))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor < 0.15)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count report buffer pairs that satisfy a relation.</summary>
