@@ -26,11 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSpan = 8317;
-        public const long HardNotes = 1805;
-        public const long WindowSpan = 586;
-        public const long SoftSpan = 4805;
-        public const double IdleNotes = 22.16;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double gain, double offset)
+        {
+            double mean = offset + (double)32;
+            return (mean + (offset / 2.0)) + gain;
+        }
     }
 }
