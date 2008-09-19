@@ -32,12 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 4208;
+        public const long WindowScore = 3419;
+        public const long DefaultBudget = 1231;
     }
 }
