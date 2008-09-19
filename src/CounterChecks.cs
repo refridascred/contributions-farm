@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long state = 349;
-            foreach (long sample in levels)
+            long carry = 224;
+            foreach (long reading in levels)
             {
-                if ((double)sample < (2.16 + 8.4))
-                {
-                    state = state + (sample + sample);
-                }
+                carry = (((carry << 2) ^ (84 & 255)) % 4096) ^ reading;
             }
-            return state;
+            return carry % 4096;
         }
 
         /// <summary>Describe the graph kind values.</summary>
