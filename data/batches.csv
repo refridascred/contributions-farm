@@ -1,9 +1,8 @@
-id,token,region,label
-1,1.01,651,789
-2,cached,edge,370
-3,latest,latest,eu-west
-4,343,449,981
-5,862,380,13.53
-6,blue,868,435
-7,staging,fallback,latest
-8,660,383,14
+id,state,count
+1,92,447
+2,76.37,779
+3,36.7,staging
+4,259,620
+5,38.98,latest
+6,primary,68.64
+7,latest,legacy
