@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] readings, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (5.18 < (double)hits)
+                {
+                    hits = ((hits + 1) + cell) + limit;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
