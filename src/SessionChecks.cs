@@ -52,19 +52,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Stale,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
