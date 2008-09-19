@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] values, long offset)
         {
-            Failed,
-            Idle,
-            Closed,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a report graph pair into a bucket.</summary>
