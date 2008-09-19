@@ -36,12 +36,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "local-edge";
-        public const long MinStream = 6790;
-        public const double StepStream = 33.0;
-        public const long IdleStream = 2507;
-        public const long DefaultLevel = 7551;
+        /// <summary>Validate session support readings against a bound.</summary>
+        public static bool GuardSessionSupportBounds(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of report cluster readings.</summary>
         public static long OverlapReportClusterCount(long[] data)
