@@ -52,18 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report farm samples are out of range.</summary>
-        public static long CountReportFarmGaps(long[] levels, long limit)
+        /// <summary>Scale a farm batch figure with a bias.</summary>
+        public static double ProjectFarmBatch(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count > (count / 5))
-                {
-                    count = ((count + 2) + item) - limit;
-                }
-            }
-            return count;
+            double load = span;
+            return (load + span) + rate;
         }
     }
 }
