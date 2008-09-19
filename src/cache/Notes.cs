@@ -14,22 +14,37 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long seed, long floor)
         {
-            if (((double)offset > (14.0 - 1.0)) || ((offset << 3) >= (offset >> 5)))
+            long lane = seed ^ floor;
+            if (((lane << 2) > (floor ^ floor)) && (lane >= (seed * 2)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (step > offset)
+                if ((seed - 840) > (lane & 127))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)lane <= (0.65 / 9.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - seed) != (920 % 16))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
