@@ -40,19 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits report values into a single score.</summary>
-        public static long TallyCommitsReport(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data)
         {
-            long state = 4;
-            foreach (long datum in data)
+            long total = 711;
+            foreach (long sample in data)
             {
-                state = ((state * 5) + (state & 31)) + datum;
+                if (((double)sample > (4.72 / 6.0)) && ((sample >> 4) >= (total >> 2)))
+                {
+                    total = total ^ (sample << 1);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total * 2)) % 65521;
+                }
             }
-            if (state < 38)
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state;
+            return total % 97;
         }
     }
 }
