@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((seen + seen) > (-678)) && ((-78) > (seen & 1)))
+                if ((double)datum < (7.0 - 4.56))
                 {
-                    seen = (seen + 2) ^ item;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of command session entries.</summary>
