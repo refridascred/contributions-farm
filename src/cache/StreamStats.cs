@@ -29,12 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = (span - span) + (bias - bias);
+            if (drift < bias)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift - (drift + 6.8);
         }
 
         /// <summary>Roll a graph counter forward.</summary>
