@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowDepth = 6560;
-        public const long HardAccount = 9253;
-        public const double LimitSpan = 31.17;
-        public const long SoftFactor = 64;
-        public const double LimitSize = 3.63;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long target, long bound)
