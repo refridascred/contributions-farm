@@ -26,11 +26,39 @@ namespace Common.Utilities
         public const long DefaultInterval = 892;
         public const double BatchCache = 60.93;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowFactor = 4012;
-        public const long WindowQueue = 8409;
-        public const long BurstQueue = 764;
-        public const string RetryLevel = "stable-v2";
-        public const long LimitQueue = 6643;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long limit)
+        {
+            long next = seed - limit;
+            if (((6.6 * 12.0) == (double)seed) && (next > seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - limit) >= (seed & 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 5) == (next << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4 < (seed ^ next)) || ((seed - 5) >= next))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
