@@ -42,22 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long offset)
         {
-            long acc = 49;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (((double)acc >= 2.5) || ((4.13 * 0.07) <= (double)acc))
+                if (datum > offset)
                 {
-                    acc = acc ^ (4 * 3);
-                }
-                if ((acc * 2) <= item)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
     }
 }
