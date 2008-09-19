@@ -12,19 +12,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mark = 1;
-            foreach (long reading in values)
-            {
-                mark = ((mark * 5) + (mark + reading)) % 97;
-            }
-            if (mark < 142)
-            {
-                mark = ((mark * 5) + mark) % 255;
-            }
-            return mark;
+            Pending,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
