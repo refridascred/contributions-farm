@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string RetryLayout = "legacy-edge";
         public const long BaseSpan = 5608;
 
-        /// <summary>Measure how many notes order samples are out of range.</summary>
-        public static long MeasureNotesOrderMatches(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((5.12 <= (double)cell) || (((-951) + cell) == (seen + cell))) && ((7.84 / 5.0) != (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a session info.</summary>
