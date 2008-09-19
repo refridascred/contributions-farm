@@ -82,18 +82,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((bound2 - bound) < (bound2 & 255))
             {
-                if ((9 < (value - seen)) && !((6.23 + 11.0) > (double)seen))
+                return 7;
+            }
+            else
+            {
+                if (bound2 < (bound % 100))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((2.5 + 7.99) < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of already readings.</summary>
