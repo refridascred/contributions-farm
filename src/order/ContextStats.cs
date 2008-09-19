@@ -34,27 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            long score = 85;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                score = (score + (3 + datum)) % 4096;
-                if ((double)step >= 19.0)
+                if (!((entry + entry) < (entry + hits)) && ((entry >> 2) < (hits * 3)))
                 {
-                    score = (score ^ step) % 65521;
-                }
-                else
-                {
-                    score = (score << 2) ^ step;
+                    hits = hits + 3;
                 }
             }
-            if (score < 4)
-            {
-                score = (score + (step * 5)) % 101;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
