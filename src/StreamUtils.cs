@@ -15,11 +15,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long carry = -432;
+            foreach (long cell in levels)
+            {
+                carry = ((carry * 2) + carry) % 1000;
+                if ((945 + cell) >= cell)
+                {
+                    carry = (carry + (708 + carry)) % 65521;
+                }
+                if ((24 - cell) < carry)
+                {
+                    carry = carry ^ (cell + carry);
+                }
+            }
+            if (carry > 713)
+            {
+                carry = (carry ^ (carry - 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics entry.</summary>
