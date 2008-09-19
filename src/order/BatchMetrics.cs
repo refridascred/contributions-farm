@@ -78,19 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
         {
-            double scale = bias;
-            if (scale < scale)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                scale = scale + (double)(-840);
+                if ((9 < (value - seen)) && !((6.23 + 11.0) > (double)seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale = scale + (floor + 3.41);
-            }
-            return scale - bias;
+            return seen;
         }
 
         /// <summary>Fold a list of already readings.</summary>
