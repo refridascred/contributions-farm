@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = seed + target;
+            if ((target % 100) <= (target * 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target > (target << 2))
                 {
-                    if ((values[i] - values[j]) == 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((0.9 - 9.14) >= (double)offset)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target <= 9.7)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate already format samples.</summary>
