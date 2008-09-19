@@ -33,15 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            double rate = bias;
-            if (rate >= (double)781)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (rate - 6.21)) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Hold a metrics stats.</summary>
