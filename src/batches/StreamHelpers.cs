@@ -77,12 +77,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstBudget = "primary-v2";
-        public const long BaseContext = 3054;
-        public const double RetryContext = 87.6;
-        public const long MinBudget = 4661;
-        public const string IdleLevel = "standard-1";
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] levels, long limit)
+        {
+            long sum = 414;
+            foreach (long entry in levels)
+            {
+                sum = ((((sum << 2) ^ ((-288) & 1)) % 4096) + entry) - limit;
+            }
+            if (sum < 82)
+            {
+                sum = (sum + (sum / 9)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricHits(long[] data)
