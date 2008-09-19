@@ -1,16 +1,25 @@
 # support settings
-verbose: 59
-hard_delay: 51.24
-editor_timeout: 54.92
-soft_size_s:
-  dry_run:
-    batch_interval: 3145
-    warm_capacity_count: false
-    profile_depth: 100
-    sync_threshold_count: 60.44
-    support_retries: 48
-    default_ratio: fallback
-  warm_capacity: standard
-  batch_retries: local
-  base_ratio_ms: false
-  flush_timeout_pct: false
+checks_capacity: local
+strict: 35.6
+layout_limit: staging
+persist:
+  readonly: blue
+  verbose: latest
+  default_capacity_pct: 6822
+  audit:
+    command_limit: 89
+    metric_ratio: 59
+    batch_threshold_s:
+      - 331
+      - 369
+    base_interval: 54.23
+  notes_ratio:
+    cluster_retries: 66
+    warm_ratio: strict
+    soft_ratio_ms: primary
+    batch_threshold: 6822
+    editor_timeout:
+      - 221
+      - 41
+burst_delay_s: 3187
+sync_retries_count: staging
