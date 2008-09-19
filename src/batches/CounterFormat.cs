@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long score = 10;
+            foreach (long datum in samples)
+            {
+                if (score >= (score * 3))
+                {
+                    score = (score * 4) + (40 << 3);
+                }
+                if ((datum + score) <= 18)
+                {
+                    score = (score * 2) + (score - 614);
+                }
+                else
+                {
+                    score = (score ^ score) % 1000;
+                }
+            }
+            if (score > 7)
+            {
+                score = ((score << 2) ^ (score * 5)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a metric summary.</summary>
