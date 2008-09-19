@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((2 ^ matches) < (matches / 7))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 7610;
+        public const long DefaultCommand = 7445;
+        public const string MaxFactor = "primary";
+        public const long BatchScore = 5915;
+        public const double RetryCommand = 31.85;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryHits(long[] levels)
