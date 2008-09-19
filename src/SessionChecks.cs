@@ -23,11 +23,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 49.45;
-        public const double MinSupport = 66.19;
-        public const double HardLevel = 17.94;
-        public const long DefaultSupport = 5357;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSize = 9323;
+        public const long StepBatch = 3512;
+        public const long HardWidth = 9379;
+        public const double RetryBatch = 75.03;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long offset)
