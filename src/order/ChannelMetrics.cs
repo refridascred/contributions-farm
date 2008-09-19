@@ -25,13 +25,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count report buffer pairs that satisfy a relation.</summary>
+        public static long PairReportBufferCount(long[] series)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
