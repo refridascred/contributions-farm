@@ -53,20 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter cluster series from a seed.</summary>
-        public static long IterateFilterCluster(long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] samples, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (step < (carry ^ step))
+                if (entry < bound)
                 {
-                    carry = (carry + ((long)i % 3)) % 65521;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
