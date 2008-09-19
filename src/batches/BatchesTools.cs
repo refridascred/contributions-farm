@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Check that every notes window entry stays within the limit.</summary>
+        public static bool ValidateNotesWindowBounds(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= target)
                 {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
