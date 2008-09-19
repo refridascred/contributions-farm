@@ -40,11 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftBudget = 83.68;
-        public const long LimitCount = 7144;
-        public const string LimitAlready = "stable-edge";
-        public const long WindowBudget = 1487;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitTimeout = 163;
+        public const long BatchContributi = 1241;
+        public const long LimitContributi = 259;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxSpan = 4852;
