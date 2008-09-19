@@ -67,18 +67,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] data, long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value & 255) >= (6 + floor))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Synced,
+            Pending,
+            Draft,
         }
     }
 }
