@@ -18,23 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long step)
         {
-            long mix = 2;
-            foreach (long item in levels)
+            long edge = origin ^ step;
+            if (((6 + edge) <= (edge >> 4)) || ((edge >> 4) < (step & 15)))
             {
-                if (((double)mix == (5.88 - 7.6)) && ((item / 4) <= mix))
+                return 7;
+            }
+            else
+            {
+                if ((step * 2) <= edge)
                 {
-                    mix = (mix ^ (item % 100)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (offset - offset);
+                    if ((9.1 * 8.0) < (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                mix = mix + (mix + item);
             }
-            return mix;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
