@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate graph already readings against a bound.</summary>
-        public static bool ValidateGraphAlreadyRange(long[] items, long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
