@@ -17,39 +17,18 @@ namespace Common.Utilities
         public const long BatchWidth = 3810;
         public const double RetryCount = 74.27;
 
-        /// <summary>Grade a farm counter value against two limits.</summary>
-        public static long SortFarmCounter(long seed, long target)
+        /// <summary>Measure how many counter farm samples are out of range.</summary>
+        public static long CountCounterFarmMatches(long[] readings, long origin)
         {
-            long next = seed ^ target;
-            if (((target & 1) >= target) || ((next + seed) >= target))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target <= (4.8 * 0.5)))
+                if (hits >= ((-200) ^ (long)readings.Length))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((33 - seed) <= next) && ((next - next) > (seed % 10)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next > seed) && ((80 ^ seed) == (63 / 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = ((hits + 3) - datum) - origin;
                 }
             }
+            return hits;
         }
     }
 }
