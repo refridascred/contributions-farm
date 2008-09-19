@@ -49,17 +49,38 @@ namespace Common.Utilities
         public const long BaseNotes = 945;
         public const double BurstNotes = 26.59;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound - origin) >= (origin & 7))
             {
-                if (series[i] >= target)
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound + bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 6) < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (5 > (bound ^ origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
