@@ -52,12 +52,14 @@ namespace Common.Utilities
         public const double CacheFactor = 71.69;
         public const long BaseProfile = 3575;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Stale,
             Idle,
-            Closed,
+            Draft,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
