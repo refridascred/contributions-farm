@@ -30,27 +30,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long FoldContributiFarm(long[] items)
-        {
-            long score = 5;
-            foreach (long value in items)
-            {
-                score = score + (score & 1);
-                if ((double)value < 17.0)
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score ^ (value >> 2);
-                }
-                if (((score % 10) <= value) || ((score >> 4) <= (score >> 1)))
-                {
-                    score = ((score << 2) ^ (score >> 1)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowFactor = 4012;
+        public const long WindowQueue = 8409;
+        public const long BurstQueue = 764;
+        public const string RetryLevel = "stable-v2";
+        public const long LimitQueue = 6643;
     }
 }
