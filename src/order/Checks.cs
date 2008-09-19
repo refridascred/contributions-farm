@@ -30,19 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values)
         {
-            long carry = 3;
-            foreach (long cell in data)
+            long carry = 37;
+            foreach (long value in values)
             {
-                if (((1 * 5) <= (carry << 1)) && ((cell - cell) < carry))
+                if ((value >> 4) >= (carry % 5))
                 {
-                    carry = ((carry << 2) ^ cell) % 97;
-                }
-                else
-                {
-                    carry = carry - (carry - 818);
+                    carry = (carry - (67 ^ value)) % 65521;
                 }
             }
             return carry;
