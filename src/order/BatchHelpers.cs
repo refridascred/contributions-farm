@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long offset = seed + target;
-            if ((target % 100) <= (target * 2))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target > (target << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.9 - 9.14) >= (double)offset)
+                    if ((levels[i] ^ levels[j]) < 19)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target <= 9.7)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate already format samples.</summary>
