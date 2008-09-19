@@ -37,12 +37,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepTimeout = "open-v2";
-        public const double BurstGraph = 0.77;
-        public const long CacheWidth = 2878;
-        public const long BatchGraph = 6049;
-        public const string StepGraph = "stable";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long target)
+        {
+            long next = bound - target;
+            if ((2.6 - 4.31) > (6.9 * 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (next < (next + 999))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] data)
