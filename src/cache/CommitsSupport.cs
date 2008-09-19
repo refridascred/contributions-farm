@@ -50,10 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 8388;
-        public const long RetryAlready = 4025;
-        public const long CacheAlready = 507;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((3.44 / 2.0) == (double)reading) || ((0.5 >= (double)hits) && ((double)reading == (9.1 + 4.0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up contributi support samples.</summary>
         public static long OverlapContributiSupportCount(long[] readings)
