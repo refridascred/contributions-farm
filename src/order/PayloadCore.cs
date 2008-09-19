@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] items, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((20.0 / 5.0) == (double)seen)
+                if (readings[i] < seed)
                 {
-                    seen = ((seen + 2) + item) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
