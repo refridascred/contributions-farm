@@ -27,13 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long target)
         {
-            Synced,
-            Done,
-            Ready,
-            Paused,
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
