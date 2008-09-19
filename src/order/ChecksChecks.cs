@@ -26,16 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Project the next support account value.</summary>
+        public static double AdjustSupportAccount(double bias, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            double drift = 6.2 * 1.0;
+            if (drift >= (double)1)
             {
-                sum = ((sum << 3) ^ (sum + origin)) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
+                drift = ((drift - 5.71) - bias) + offset;
             }
-            return sum;
+            return drift - (double)159;
         }
     }
 }
