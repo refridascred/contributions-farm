@@ -1,7 +1,9 @@
 # githubfarm settings
-idle_retries_pct:
-  default_window_pct: cached
-  filter_threshold: 60
-  idle_interval: edge
-sync_ttl_ms: 52.69
-base_delay_ms: stable
+commits_depth: 60
+cache_window_pct: 9585
+warm_ttl_s: true
+queue_interval:
+  - 218
+  - 234
+  - 32
+  - 216
