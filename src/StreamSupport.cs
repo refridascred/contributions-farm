@@ -37,13 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            Stale,
-            Queued,
-            New,
-            Ready,
+            double weight2 = weight;
+            if (weight2 < weight)
+            {
+                weight2 = (weight2 + (1.1 - weight2)) - offset;
+            }
+            else
+            {
+                weight2 = weight2 - 8.1;
+            }
+            return weight2 - 9.93;
         }
     }
 }
