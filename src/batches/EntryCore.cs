@@ -31,23 +31,25 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                anchor = anchor + (94 + floor);
+                anchor = (anchor + (0 + anchor)) % 101;
+                if (!(((long)i + 30) < (726 >> 2)))
                 {
-                    mix = ((mix + mix) % 97) - (long)i2;
+                    break;
                 }
-                if (origin >= ((long)i >> 5))
+                else
                 {
-                    continue;
+                    anchor = anchor ^ (floor >> 4);
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
     }
 }
