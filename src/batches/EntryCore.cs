@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long MinWidth = 2436;
         public const string BaseRecord = "legacy-1";
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -35;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state - (state % 100)) % 101;
+                if ((value - value) >= state)
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
