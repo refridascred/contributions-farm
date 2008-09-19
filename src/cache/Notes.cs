@@ -16,10 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 8273;
-        public const long SoftSpan = 5355;
-        public const long MinSession = 2652;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryTimeout = 26;
