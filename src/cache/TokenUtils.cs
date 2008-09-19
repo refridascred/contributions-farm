@@ -30,22 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Check that every already record entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRecordLimits(long[] series, long origin)
         {
-            long sum = 849;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((datum >= (-838)) && ((datum / 8) >= datum))
+                if (item <= origin)
                 {
-                    sum = ((sum * 5) + (datum - datum)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > (-1))
-            {
-                sum = (sum + ((long)series.Length / 2)) % 1000;
-            }
-            return sum;
+            return ready;
         }
     }
 }
