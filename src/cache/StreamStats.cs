@@ -23,19 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a editor record reading.</summary>
-        public static double ScaleEditorRecord(double weight, double bias)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double scale = weight;
-            if (scale > (weight + scale))
-            {
-                scale = (scale - (scale + scale)) + bias;
-            }
-            else
-            {
-                scale = scale - (weight + weight);
-            }
-            return scale + scale;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm token readings.</summary>
