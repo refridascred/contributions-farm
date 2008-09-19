@@ -54,23 +54,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((7.0 + 2.0) >= (double)bound) || ((bound ^ reading) >= bound))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardDepth = 7200;
+        public const long IdleGithubfarm = 7249;
+        public const long MinRatio = 4785;
+        public const string CacheLevel = "primary-v2";
+        public const long BaseCount = 5234;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleScore = 4851;
