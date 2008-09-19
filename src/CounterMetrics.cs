@@ -49,17 +49,22 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Locate a farm entry reading by value.</summary>
-        public static long LocateFarmEntryIndex(long[] samples, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                if (matches < (sample % 24))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
