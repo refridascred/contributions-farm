@@ -15,11 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
