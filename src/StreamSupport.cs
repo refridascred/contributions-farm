@@ -29,18 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] readings)
+        /// <summary>Scale a cluster buffer figure with a bias.</summary>
+        public static double AdjustClusterBuffer(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double bias = (double)(608 + 28);
+            if (bias >= 5.0)
             {
-                if (tally < (reading / 2))
-                {
-                    tally = tally + 3;
-                }
+                bias = ((bias - (double)77) + scale) + floor;
             }
-            return tally;
+            else
+            {
+                bias = bias + (double)6;
+            }
+            return bias - (double)1;
         }
     }
 }
