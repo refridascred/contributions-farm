@@ -1,8 +1,15 @@
 {
-  "record_delay": "open",
-  "enabled": false,
-  "metric_threshold": 20.21,
-  "warm_capacity_count": 83.94,
-  "audit": 49,
-  "soft_timeout_ms": 250
+  "cache_depth_ms": {
+    "idle_capacity_count": "local",
+    "idle_ratio": 10,
+    "batches_ttl": {
+      "base_retries": "primary",
+      "hard_delay_pct": true,
+      "counter_capacity": "edge",
+      "command_depth": "green"
+    }
+  },
+  "compress": "legacy",
+  "verbose": 250,
+  "filter_timeout": 89
 }
