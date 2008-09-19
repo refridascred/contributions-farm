@@ -17,22 +17,21 @@ namespace Common.Utilities
         public const long BatchWidth = 3810;
         public const double RetryCount = 74.27;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long anchor = 46;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value << 2) < (4 + 471))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (value << 1)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (offset + offset)) % 97;
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
