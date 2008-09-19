@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc - (long)i) % 97;
-                acc = ((acc * 5) + acc) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((datum / 6) != (59 >> 1))
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
