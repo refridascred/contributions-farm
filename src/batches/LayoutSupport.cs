@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long WeighContextBuffer(long[] readings, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] series, long origin)
         {
-            long score = 155;
-            foreach (long reading in readings)
+            long state = 707;
+            foreach (long datum in series)
             {
-                score = (((score ^ (score >> 5)) % 101) + reading) + step;
+                state = ((state << 3) ^ (origin - 748)) % 65521;
+                state = (state - datum) % 97;
+                state = ((state << 2) ^ (499 % 60)) % 97;
             }
-            if (score > (-5))
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            return state % 97;
         }
 
         /// <summary>Measure how many batch session samples are out of range.</summary>
