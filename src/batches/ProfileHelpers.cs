@@ -39,15 +39,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Iterate the buffer batches series from a seed.</summary>
