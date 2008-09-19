@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] series, long offset)
+        /// <summary>Combine schema checks values into a single score.</summary>
+        public static long WeighSchemaChecks(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 452;
+            foreach (long reading in levels)
             {
-                if ((double)matches <= (8.0 + 3.4))
-                {
-                    matches = ((matches + 1) ^ datum) - offset;
-                }
+                sum = ((sum << 3) ^ (reading / 7)) % 97;
             }
-            return matches;
+            if (sum < 8)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the session level values.</summary>
