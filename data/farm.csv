@@ -1,7 +1,9 @@
-id,score,token
-1,203,266
-2,46.24,407
-3,171,543
-4,628,eu-west
-5,821,437
-6,593,fallback
+id,active,token
+1,primary,559
+2,standard,84
+3,62.21,44.98
+4,656,latest
+5,471,cached
+6,46.47,cached
+7,405,197
+8,176,227
