@@ -13,16 +13,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Count support layout pairs that satisfy a relation.</summary>
+        public static long OverlapSupportLayoutCount(long[] levels)
         {
-            long total = 780;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 3) ^ (total / 7)) + value;
-                total = total ^ (total ^ total);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
