@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const long CacheCount = 7615;
         public const string DefaultEditor = "primary-edge";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items, long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (!(count < (cell ^ count)))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
