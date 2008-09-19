@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of session record readings.</summary>
-        public static long TallySessionRecord(long[] values)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long sum = 163;
-            foreach (long reading in values)
-            {
-                if (((reading + reading) > (sum - reading)) && (((long)values.Length % 3) != (reading >> 1)))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (reading << 2);
-                }
-                sum = (sum * 2) + reading;
-            }
-            return sum % 1000;
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of metric entries.</summary>
