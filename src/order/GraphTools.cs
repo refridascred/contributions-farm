@@ -46,16 +46,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long state = 298;
+            foreach (long value in readings)
             {
-                carry = carry ^ carry;
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (((state * 5) + (state & 1)) % 4096) ^ (long)i;
+                }
+                state = (state * 2) + ((long)readings.Length & 15);
+                if ((value >= (state << 1)) || ((4 - offset) >= state))
+                {
+                    state = (state - (33 / 3)) % 255;
+                }
             }
-            return carry;
+            return state;
         }
     }
 }
