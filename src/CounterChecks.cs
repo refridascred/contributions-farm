@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Blend two token payload measurements.</summary>
+        public static double SmoothTokenPayload(double ratio, double span)
         {
-            long carry = 224;
-            foreach (long reading in levels)
+            double load = ratio / 3.0;
+            if (load < (load / 8.0))
             {
-                carry = (((carry << 2) ^ (84 & 255)) % 4096) ^ reading;
+                load = load - 8.7;
             }
-            return carry % 4096;
+            return load + (span + 0.6);
         }
 
         /// <summary>Locate a support format reading by value.</summary>
