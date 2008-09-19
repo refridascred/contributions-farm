@@ -13,12 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
