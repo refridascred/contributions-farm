@@ -26,24 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if (((-71) << 3) >= limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) >= (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
