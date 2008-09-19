@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            Failed,
-            Done,
-            Ready,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ (long)values.Length) == (sample * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools state values.</summary>
