@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every farm already entry stays within the limit.</summary>
-        public static bool VerifyFarmAlreadyLimits(long[] values, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long state = 8;
+            foreach (long sample in items)
             {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state + (state - sample)) % 97) - target;
             }
-            return found;
+            return state % 4096;
         }
 
         /// <summary>Hold a route summary.</summary>
