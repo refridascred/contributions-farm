@@ -35,11 +35,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstRatio = 2928;
-        public const long StepWidth = 8499;
-        public const long IdleCommand = 3364;
-        public const long BurstCommand = 6869;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphLimits(long[] readings, long limit)
