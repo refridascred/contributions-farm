@@ -13,21 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of commits notes readings.</summary>
-        public static long CompareCommitsNotesCount(long[] data)
+        /// <summary>Blend two support batches measurements.</summary>
+        public static double ProjectSupportBatches(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double scale = 8.6 + (span + 2.48);
+            return (scale + (scale / 7.0)) + ratio;
         }
 
         /// <summary>Describe the already phase values.</summary>
