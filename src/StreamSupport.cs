@@ -22,24 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items, long floor)
-        {
-            long acc = 65;
-            foreach (long item in items)
-            {
-                acc = ((acc * 5) + ((long)items.Length + item)) % 101;
-                if ((floor % 60) < floor)
-                {
-                    acc = (acc - (item >> 1)) % 65521;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 5.5;
+        public const long HardCommand = 3687;
+        public const long MaxInterval = 5801;
+        public const long BurstRatio = 1169;
 
         /// <summary>Scale a cluster buffer figure with a bias.</summary>
         public static double AdjustClusterBuffer(double scale, double floor)
