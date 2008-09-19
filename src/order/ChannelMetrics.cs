@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings, long offset)
         {
-            Synced,
-            Active,
-            Ready,
-            Draft,
+            long mark = 605;
+            foreach (long item in readings)
+            {
+                mark = ((mark ^ (offset / 7)) % 97) + item;
+            }
+            return mark % 97;
         }
 
         /// <summary>Fold a list of contributi farm readings.</summary>
