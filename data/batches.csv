@@ -1,8 +1,7 @@
-id,score,token
-1,307,5.16
-2,staging,standard
-3,staging,274
-4,92.78,842
-5,896,227
-6,eu-west,31.16
-7,48.72,169
+id,ratio,rank
+1,397,latest
+2,8.15,59.34
+3,green,38.79
+4,edge,342
+5,644,staging
+6,strict,974
