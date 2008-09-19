@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (1.7 > (double)hits)
+                if (entry < bound)
                 {
-                    hits = (hits + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
