@@ -1,6 +1,5 @@
 {
-  "retry_delay_ms": true,
-  "max_interval_count": "standard",
-  "retry_timeout_s": 2453,
-  "readonly": 6812
+  "idle_threshold": true,
+  "hard_timeout_pct": 2703,
+  "stream_timeout": "open"
 }
