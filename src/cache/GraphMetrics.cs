@@ -74,18 +74,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long limit)
+        /// <summary>Classify a notes cluster pair into a bucket.</summary>
+        public static long RankNotesCluster(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if (!(4.3 > (double)seed))
             {
-                if ((-815) < (hits + limit))
+                return 4;
+            }
+            else
+            {
+                if ((bound > seed) || ((31 % 7) > (bound + bound)))
                 {
-                    hits = (hits + 2) + sample;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.8 / 3.0) >= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
