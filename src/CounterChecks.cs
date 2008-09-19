@@ -35,19 +35,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate batches channel readings against a bound.</summary>
-        public static bool ValidateBatchesChannelBounds(long[] items, long offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = (bias * 2.3) - (5.3 / 7.0);
+            return (scale - (double)99) + offset;
         }
 
         /// <summary>Describe the support status values.</summary>
