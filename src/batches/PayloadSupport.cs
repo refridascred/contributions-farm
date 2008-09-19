@@ -19,26 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] series, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] data)
         {
-            long acc = 155;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.6 * 7.0) <= (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ value) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (value - 84)) % 4096;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 149)
-            {
-                acc = (acc - (6 / 7)) % 1000;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
