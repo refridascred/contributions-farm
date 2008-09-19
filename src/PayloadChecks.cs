@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long LimitPayload = 1302;
         public const long BatchPayload = 8499;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] levels, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((bound & 1) <= (bound - entry))
+                if ((matches + reading) < (1 - reading))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
