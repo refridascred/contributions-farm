@@ -1,8 +1,7 @@
-id,owner,count,ratio
-1,blue,96.34,local
-2,38.45,5,standard
-3,open,24.09,494
-4,55.81,990,6.12
-5,52,557,54.58
-6,strict,stable,latest
-7,43.32,263,cached
+id,state,count,rank
+1,standard,125,green
+2,304,stable,edge
+3,870,latest,blue
+4,46.84,547,eu-west
+5,594,cached,349
+6,eu-west,927,standard
