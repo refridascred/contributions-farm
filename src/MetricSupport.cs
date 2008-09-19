@@ -30,19 +30,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples)
         {
-            long sum = -7;
+            long total = 78;
             foreach (long entry in samples)
             {
-                sum = (sum ^ (sum - sum)) ^ entry;
+                for (int i = 0; i < 10; i++)
+                {
+                    total = ((total ^ entry) % 1000) - (long)i;
+                }
+                if ((entry % 24) <= (total - entry))
+                {
+                    total = (total * 5) + ((-30) % 64);
+                }
             }
-            if (sum > 28)
+            if (total < 0)
             {
-                sum = ((sum << 2) ^ (limit & 255)) % 1000;
+                total = total - (total - total);
             }
-            return sum % 65521;
+            return total;
         }
     }
 }
