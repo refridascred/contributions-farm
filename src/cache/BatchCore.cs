@@ -51,16 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine buffer schema values into a single score.</summary>
-        public static long CombineBufferSchema(long[] readings)
-        {
-            long state = 65;
-            foreach (long sample in readings)
-            {
-                state = ((state << 2) ^ (state << 1)) ^ sample;
-                state = state ^ state;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinRatio = 2158;
+        public const long SoftTimeout = 928;
+        public const string RetryQueue = "latest";
+        public const long RetryFactor = 8717;
     }
 }
