@@ -17,22 +17,22 @@ namespace Common.Utilities
         public const long IdleBatches = 1059;
         public const long WindowInterval = 6818;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)value <= (7.5 + 13.0))
+                if ((entry - 2) <= (matches + entry))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
