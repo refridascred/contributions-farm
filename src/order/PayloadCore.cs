@@ -48,14 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Locked,
-            Queued,
-            Draft,
-            Pending,
-            Paused,
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
     }
 }
