@@ -52,22 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] values, long bound)
+        /// <summary>Measure how many report farm samples are out of range.</summary>
+        public static long CountReportFarmGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((bound < value) && ((matches * 2) == (matches + bound)))
+                if (count > (count / 5))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 2) + item) - limit;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
