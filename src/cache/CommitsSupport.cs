@@ -55,18 +55,21 @@ namespace Common.Utilities
         public const long RetryAlready = 4025;
         public const long CacheAlready = 507;
 
-        /// <summary>Audit contributi counter readings against a rule.</summary>
-        public static long MeasureContributiCounterOutliers(long[] data, long bound)
+        /// <summary>Match up contributi support samples.</summary>
+        public static long OverlapContributiSupportCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)value != (5.3 / 5.0)) && ((count > value) && ((value + count) >= value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + bound;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
