@@ -46,10 +46,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 4295;
-        public const long BatchStream = 6162;
-        public const double SoftStream = 43.74;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values, long offset)
+        {
+            long total = 9;
+            foreach (long cell in values)
+            {
+                total = (total - (total - total)) % 4096;
+                if (((offset + cell) > 7) && (total <= (offset << 1)))
+                {
+                    total = (total + (cell + offset)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (cell & 63)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every account commits entry stays within the limit.</summary>
         public static bool GuardAccountCommitsRange(long[] values, long origin)
