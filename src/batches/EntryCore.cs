@@ -20,21 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up record cluster samples.</summary>
-        public static long OverlapRecordClusterCount(long[] data)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] > floor)
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
