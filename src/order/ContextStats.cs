@@ -57,21 +57,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 94;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value / 7) > (205 - mark)) || (mark > (mark ^ value)))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (seed / 5)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (572 + value)) % 4096;
                 }
             }
-            return tally;
+            if (mark > 74)
+            {
+                mark = (mark * 4) + (mark + seed);
+            }
+            return mark % 1000;
         }
     }
 }
