@@ -71,38 +71,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long target, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items, long bound)
         {
-            if ((limit >> 3) > 9)
+            long score = 61;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) <= target)
+                if ((datum + score) < datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target) < (446 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((442 - target) >= (target & 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score - datum) + bound;
                 }
             }
+            return score % 65521;
         }
     }
 }
