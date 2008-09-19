@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine payload stream values into a single score.</summary>
-        public static long WeighPayloadStream(long[] samples, long step)
+        /// <summary>Rank cache batch input into a small class.</summary>
+        public static long RankCacheBatch(long floor, long step)
         {
-            long score = 568;
-            foreach (long sample in samples)
+            if ((floor / 8) < (step - step))
             {
-                if (((4.0 / 3.0) != (double)sample) && ((20.0 - 1.53) >= (double)sample))
+                return 7;
+            }
+            else
+            {
+                if ((3.7 / 5.0) < (double)floor)
                 {
-                    score = score ^ (step ^ score);
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return score;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
