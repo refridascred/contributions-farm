@@ -55,18 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format queue entries that pass the check.</summary>
-        public static long AuditFormatQueueGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen + floor) != (floor + 601))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1343;
+        public const string SoftContributi = "strict-edge";
+        public const long IdleTimeout = 1292;
+        public const long LimitContributi = 9327;
     }
 }
