@@ -13,22 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long result = 0;
-            foreach (long datum in items)
-            {
-                if ((datum ^ 99) == (1 - result))
-                {
-                    result = (result * 3) + (result + datum);
-                }
-            }
-            if (result < 1)
-            {
-                result = (result + (52 & 1)) % 1000;
-            }
-            return result;
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
