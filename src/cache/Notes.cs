@@ -21,20 +21,12 @@ namespace Common.Utilities
         public const long SoftSpan = 5355;
         public const long MinSession = 2652;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 26;
+        public const long MaxSize = 1607;
+        public const long WindowLevel = 3317;
+        public const double LimitWidth = 89.94;
+        public const string MaxScore = "primary-1";
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
