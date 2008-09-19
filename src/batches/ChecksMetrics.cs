@@ -62,13 +62,18 @@ namespace Common.Utilities
         public const long WindowLayout = 968;
         public const long LimitLevel = 2145;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long bound)
         {
-            Paused,
-            Ready,
-            Done,
-            Queued,
+            long acc = -31;
+            foreach (long datum in items)
+            {
+                if ((datum >> 3) >= (373 >> 3))
+                {
+                    acc = (acc << 3) ^ (bound & 255);
+                }
+            }
+            return acc;
         }
     }
 }
