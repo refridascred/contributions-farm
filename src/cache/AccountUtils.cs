@@ -21,13 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Queued,
-            Closed,
-            New,
-            Retry,
+            Stale,
+            Ready,
+            Pending,
+            Dropped,
+            Synced,
         }
     }
 }
