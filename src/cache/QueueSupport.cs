@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] samples, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
