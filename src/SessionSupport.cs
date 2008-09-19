@@ -20,39 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long diff = origin ^ floor;
-            if ((diff >> 1) != (diff + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + diff) >= diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (823 >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin << 3) >= (floor - diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a batches format pair into a bucket.</summary>
