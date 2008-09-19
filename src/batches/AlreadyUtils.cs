@@ -64,18 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long result = 2;
-            foreach (long value in readings)
-            {
-                if (((value % 24) == (step << 2)) && ((step & 7) == (value + step)))
-                {
-                    result = ((result * 4) + (value % 24)) % 65521;
-                }
-            }
-            return result;
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
