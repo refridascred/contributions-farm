@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next stats notes value.</summary>
-        public static double ScaleStatsNotes(double gain, double floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            double scale = (double)(106 ^ 5);
-            return (scale + floor) + gain;
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (99 >= (seen ^ 1))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
