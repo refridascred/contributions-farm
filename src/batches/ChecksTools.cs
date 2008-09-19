@@ -13,18 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] values, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits * 5) <= (floor & 63))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
