@@ -14,24 +14,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long offset)
+        public static long TallyContributi(long[] data, long bound)
         {
-            long total = 9;
-            foreach (long datum in values)
+            long mark = 14;
+            foreach (long cell in data)
             {
-                if ((double)total < (1.91 + 7.2))
+                if (((5.3 + 2.6) <= (double)cell) || ((6.76 * 2.8) <= (double)bound))
                 {
-                    total = total ^ (total << 2);
-                    total = total - datum;
-                    continue;
+                    mark = ((mark * 5) + (60 + mark)) % 255;
                 }
-                total = (total ^ datum) % 4096;
             }
-            if (total > 206)
+            if (mark > 60)
             {
-                total = (total * 5) + (offset + 878);
+                mark = (mark << 3) ^ (29 - bound);
             }
-            return total;
+            return mark % 1000;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
