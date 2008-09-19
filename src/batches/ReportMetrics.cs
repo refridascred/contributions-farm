@@ -53,14 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Synced,
-            Locked,
-            Retry,
-            Idle,
-            Done,
+            Active,
+            Closed,
+            Dropped,
         }
     }
 }
