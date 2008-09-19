@@ -23,22 +23,26 @@ namespace Common.Utilities
         public const long MaxRecord = 6786;
         public const double RetryFactor = 48.06;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] series, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 63;
+            foreach (long entry in data)
             {
-                if ((8.12 / 4.0) == (double)seed)
+                if (!((double)entry <= (double)anchor))
                 {
-                    count = (count + 1) ^ value;
+                    anchor = ((anchor * 4) + anchor) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = anchor + (649 & 127);
                 }
             }
-            return count;
+            if (anchor < 2)
+            {
+                anchor = anchor + 16;
+            }
+            return anchor % 4096;
         }
     }
 }
