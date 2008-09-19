@@ -1,7 +1,8 @@
-id,owner
-1,382
-2,541
-3,blue
-4,strict
-5,313
-6,fallback
+id,score,token
+1,307,5.16
+2,staging,standard
+3,staging,274
+4,92.78,842
+5,896,227
+6,eu-west,31.16
+7,48.72,169
