@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            if (((offset << 3) < (offset & 63)) || ((seed ^ offset) == (seed + seed)))
             {
-                if ((anchor + (long)i) > 79)
+                return 1;
+            }
+            else
+            {
+                if ((4 + seed) < (4 << 1))
                 {
-                    anchor = (anchor + (0 * 2)) % 101;
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor ^ (0 * 4);
+                    return 6;
                 }
-                if ((anchor >= (anchor - seed)) && ((long)i >= (seed % 10)))
-                {
-                    anchor = (anchor * 3) + (anchor - seed);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
