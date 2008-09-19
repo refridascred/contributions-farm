@@ -50,18 +50,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Check that every cache window entry stays within the limit.</summary>
+        public static bool CheckCacheWindowLimits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (((matches < (matches & 15)) && ((double)item != (double)(-5))) && (((90 * 4) != (matches >> 1)) || ((item + 552) == (item >> 4))))
+                if (item > step)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
