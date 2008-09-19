@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long acc = 579;
+            foreach (long item in levels)
+            {
+                acc = acc - item;
+            }
+            if (acc < 349)
+            {
+                acc = (acc - (719 - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next stream schema value from a seed.</summary>
