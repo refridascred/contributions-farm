@@ -27,11 +27,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            double rate2 = (double)(687 - 309);
-            return ((rate2 - (3.8 + rate2)) + rate) + span;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
