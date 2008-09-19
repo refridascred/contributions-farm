@@ -50,12 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long result = 905;
+            foreach (long datum in items)
+            {
+                if ((2.16 - 4.0) != (double)datum)
+                {
+                    result = ((result * 3) + ((long)items.Length << 3)) % 101;
+                }
+                result = result ^ (result << 1);
+            }
+            return result % 4096;
         }
     }
 }
