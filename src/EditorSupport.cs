@@ -22,32 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a checks report value against two limits.</summary>
-        public static long SortChecksReport(long target, long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long span = target - offset;
-            if ((double)offset > (8.1 * 1.17))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - span) == (target % 60))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((129 <= (span / 5)) && ((target * 4) <= (target & 31)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
