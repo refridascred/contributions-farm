@@ -1,14 +1,12 @@
 {
-  "flush_window_ms": {
-    "burst_window_count": 5,
-    "hard_ratio_ms": true,
-    "soft_depth_s": "legacy",
-    "buffer_limit": 41,
-    "idle_capacity_count": false
+  "flush_interval_count": "strict",
+  "default_limit": {
+    "stats_size": "edge",
+    "flush_delay_count": 2246,
+    "dry_run": false,
+    "min_limit": false,
+    "entry_size": "standard"
   },
-  "audit": "green",
-  "enabled": "strict",
-  "persist": 2124,
-  "compress": true,
-  "base_interval": 13.94
+  "hard_ratio_count": 16,
+  "persist": 1024
 }
