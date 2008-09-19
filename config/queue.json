@@ -1,9 +1,15 @@
 {
-  "hard_capacity_ms": 100,
-  "soft_interval": {
-    "idle_ratio_ms": 89.44,
-    "flush_threshold": 534,
-    "verbose": 78.14
+  "metric_ttl": true,
+  "verbose": {
+    "compress": ["open", "staging", "stable"],
+    "max_size_count": {
+      "idle_capacity_pct": 60,
+      "max_timeout": 1024,
+      "audit": 11.32,
+      "route_retries": [468, 55, 11, 135],
+      "enabled": "fallback"
+    },
+    "idle_depth_count": [482, 393]
   },
-  "compress": 68.16
+  "compress": "green"
 }
