@@ -1,6 +1,6 @@
 {
-  "hard_interval": "legacy",
-  "warm_capacity_pct": 90,
-  "enabled": 84.32,
-  "dry_run": "stable"
+  "command_delay": 31,
+  "enabled": 4377,
+  "burst_depth_ms": "fallback",
+  "burst_threshold_s": 6.8
 }
