@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] values, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                result = (result ^ (offset + 8)) % 1000;
-                result = ((result * 5) + (long)i) % 97;
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a counter entry.</summary>
