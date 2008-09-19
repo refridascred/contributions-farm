@@ -1,13 +1,18 @@
 {
-  "batch_delay_pct": "edge",
-  "cache_delay": ["staging", "cached", "eu-west"],
-  "poll_ttl": 1024,
-  "burst_window": {
-    "strict": "latest",
-    "dry_run": ["staging", "blue", "local", "latest"],
-    "poll_retries_ms": ["strict", "standard", "strict"],
-    "flush_ratio": "eu-west",
-    "base_ratio": "legacy"
+  "max_depth": {
+    "strict": [31, 345],
+    "base_window_s": "open",
+    "stats_threshold": "open",
+    "max_capacity_ms": 55.11
   },
-  "account_window": ["edge", "staging", "strict"]
+  "hard_ratio": {
+    "command_window": 250,
+    "readonly": 1024,
+    "hard_window_ms": 2459,
+    "base_threshold_count": 250,
+    "warm_interval_pct": "staging",
+    "batch_delay": 100
+  },
+  "token_capacity": "local",
+  "max_ratio_pct": false
 }
