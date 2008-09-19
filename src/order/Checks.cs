@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up metric record samples.</summary>
-        public static long CompareMetricRecordCount(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (seen > (seen + 108))
                 {
-                    if ((data[i] + data[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
