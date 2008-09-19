@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long IdleStream = 3732;
         public const double BatchStream = 10.05;
 
-        /// <summary>Validate command counter readings against a bound.</summary>
-        public static bool CheckCommandCounterBounds(long[] readings, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long total = -733;
+            foreach (long value in data)
             {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 4) + (total - 72)) + value;
             }
-            return stale;
+            if (total > 0)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
