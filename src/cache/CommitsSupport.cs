@@ -37,13 +37,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            Done,
-            Retry,
-            Paused,
-            Draft,
+            long sum = -498;
+            foreach (long entry in items)
+            {
+                if (sum > entry)
+                {
+                    sum = sum - (entry ^ entry);
+                    sum = (sum << 2) ^ 34;
+                }
+                if (entry <= (entry * 4))
+                {
+                    sum = ((sum * 4) + sum) % 1000;
+                }
+                if (entry <= (sum + entry))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
