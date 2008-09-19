@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double drift = (double)(750 - 152);
-            if (drift <= (double)3)
-            {
-                drift = drift + gain;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)(-8)) + (double)(long)i;
-            }
-            return drift - (offset - drift);
+            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a token options.</summary>
