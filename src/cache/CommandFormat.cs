@@ -30,19 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor buffer readings against a bound.</summary>
-        public static bool GuardEditorBufferBounds(long[] samples, long bound)
+        /// <summary>Look up the position of a window commits sample.</summary>
+        public static long LookupWindowCommitsIndex(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < bound)
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
