@@ -39,12 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Failed,
-            Closed,
-            Idle,
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
