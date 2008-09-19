@@ -29,19 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Classify a githubfarm format pair into a bucket.</summary>
