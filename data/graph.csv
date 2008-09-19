@@ -1,7 +1,6 @@
-id,level,rank,region,state
-1,196,legacy,67.21,222
-2,27.33,208,24.43,92.72
-3,629,standard,edge,15.6
-4,strict,blue,80.6,260
-5,staging,71.58,653,458
-6,440,fallback,16,blue
+id,count,token,rank,state
+1,604,46.84,22.06,704
+2,96.43,121,staging,latest
+3,8.05,285,363,472
+4,11.73,18.92,953,125
+5,standard,eu-west,eu-west,342
