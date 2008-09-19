@@ -11,39 +11,10 @@ namespace Common.Utilities
         public const double MaxFilter = 56.71;
         public const double RetryFilter = 91.88;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long seed, long limit)
-        {
-            if (limit <= (seed >> 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (5.72 + 9.6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed < (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) != (limit >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 8606;
+        public const long MinLevel = 6461;
+        public const double CacheSchema = 56.63;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
