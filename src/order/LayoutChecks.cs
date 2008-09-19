@@ -58,11 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 81.13;
-        public const long MaxLevel = 1719;
-        public const string WindowDepth = "alpha";
-        public const long CacheProfile = 9776;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryInterval = 9859;
+        public const long DefaultCounter = 6819;
+        public const double BurstCounter = 91.28;
+        public const long StepDepth = 285;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] readings, long step)
