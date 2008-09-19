@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a report route pair into a bucket.</summary>
-        public static long GradeReportRoute(long seed, long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if (origin <= (origin / 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9.0 + 9.14) >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
