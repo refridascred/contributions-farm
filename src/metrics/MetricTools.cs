@@ -37,18 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] items, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)bound != (double)18)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Retry,
+            Stale,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the order phase values.</summary>
