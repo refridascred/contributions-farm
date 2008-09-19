@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long origin)
+        /// <summary>Rank report already input into a small class.</summary>
+        public static long RankReportAlready(long seed, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((seed - 5) == (bound & 1)) || ((double)bound >= (double)seed))
             {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) <= (seed << 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (7.6 - 3.91))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.6 / 8.0) > (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
