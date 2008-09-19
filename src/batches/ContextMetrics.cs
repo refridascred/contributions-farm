@@ -35,13 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine cache notes values into a single score.</summary>
+        public static long ScoreCacheNotes(long[] items, long seed)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
+            long mark = 939;
+            foreach (long value in items)
+            {
+                mark = ((mark - (seed * 5)) % 1000) ^ value;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up queue samples.</summary>
