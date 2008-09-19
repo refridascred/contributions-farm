@@ -35,19 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series, long bound)
         {
-            double drift = floor;
-            if (drift >= (floor / 5.0))
+            long matches = 0;
+            foreach (long item in series)
             {
-                drift = drift - 0.9;
+                if ((bound % 100) <= (bound * 4))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (rate + drift);
+            return matches;
         }
 
         /// <summary>Count already checks pairs that satisfy a relation.</summary>
