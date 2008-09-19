@@ -37,19 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cluster notes readings against a bound.</summary>
-        public static bool VerifyClusterNotesBounds(long[] readings, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
