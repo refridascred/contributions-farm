@@ -48,14 +48,12 @@ namespace Common.Utilities
             return gain - (floor + bias);
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Dropped,
-            Locked,
-            Idle,
-            Pending,
-            Stale,
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up farm counter samples.</summary>
