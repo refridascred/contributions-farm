@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] values, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (entry > limit)
+                if (reading < origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Hold a payload info.</summary>
