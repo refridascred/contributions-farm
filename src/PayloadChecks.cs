@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long LimitPayload = 1302;
         public const long BatchPayload = 8499;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches + reading) < (1 - reading))
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
