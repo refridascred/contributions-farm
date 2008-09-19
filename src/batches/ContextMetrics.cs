@@ -20,25 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long origin)
+        /// <summary>Compare every pair of metric stream readings.</summary>
+        public static long PairMetricStreamCount(long[] items)
         {
-            long diff = bound + origin;
-            if (4.64 <= (double)bound)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)diff < (2.5 - 0.83))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
