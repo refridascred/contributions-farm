@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double drift = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - 7.5) - (double)(long)i) - gain;
-            }
-            return drift + 5.0;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
