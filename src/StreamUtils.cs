@@ -15,27 +15,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long step)
         {
-            long carry = -432;
-            foreach (long cell in levels)
+            long step2 = floor - step;
+            if (floor <= ((-41) & 7))
             {
-                carry = ((carry * 2) + carry) % 1000;
-                if ((945 + cell) >= cell)
+                return 0;
+            }
+            else
+            {
+                if ((floor & 31) > (24 - floor))
                 {
-                    carry = (carry + (708 + carry)) % 65521;
+                    return 2;
                 }
-                if ((24 - cell) < carry)
+                else
                 {
-                    carry = carry ^ (cell + carry);
+                    if ((step & 31) <= (floor / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - step2) <= step2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (carry > 713)
-            {
-                carry = (carry ^ (carry - 2)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Adjust a window reading.</summary>
