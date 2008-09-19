@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values)
         {
-            if (((floor ^ floor) < floor) && ((floor % 97) >= floor))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((12.0 * 3.8) <= (double)step))
+                if (!((20.0 <= (double)count) && ((2.71 / 9.0) == (double)count)))
                 {
-                    return 1;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    if ((step & 3) >= (816 - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
