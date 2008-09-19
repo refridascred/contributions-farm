@@ -35,17 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] data, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = span;
+            return (weight + (weight / 9.0)) + rate;
         }
 
         /// <summary>Accumulate report samples.</summary>
