@@ -26,19 +26,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (cell <= seed)
+                if (((-57) - count) > (count + datum))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
