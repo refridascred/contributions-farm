@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] data, long origin)
         {
-            Synced,
-            Paused,
-            Retry,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every context cluster entry stays within the limit.</summary>
