@@ -32,10 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 6007;
-        public const double CacheCommits = 86.92;
-        public const long DefaultLevel = 2357;
-        public const double BurstLevel = 60.13;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum << 3) ^ (sum + origin)) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
