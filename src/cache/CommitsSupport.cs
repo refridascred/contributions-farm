@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const double CacheFactor = 71.69;
         public const long BaseProfile = 3575;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit contributi counter readings against a rule.</summary>
+        public static long MeasureContributiCounterOutliers(long[] data, long bound)
         {
-            Idle,
-            Draft,
-            Paused,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((double)value != (5.3 / 5.0)) && ((count > value) && ((value + count) >= value)))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
