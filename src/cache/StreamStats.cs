@@ -23,14 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data, long seed)
         {
-            Failed,
-            Synced,
-            Draft,
-            Done,
-            Stale,
+            long result = 478;
+            foreach (long sample in data)
+            {
+                result = (((result << 2) ^ (sample - sample)) % 4096) - seed;
+            }
+            return result;
         }
 
         /// <summary>Blend two session measurements.</summary>
