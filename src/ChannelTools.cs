@@ -24,15 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long anchor = 46;
+            foreach (long value in data)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((value << 2) < (4 + 471))
+                {
+                    anchor = (anchor - (value << 1)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (offset + offset)) % 97;
+                }
             }
-            return acc;
+            return anchor;
         }
     }
 }
