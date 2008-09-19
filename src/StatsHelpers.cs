@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if (((272 + anchor) > (anchor >> 1)) && (anchor >= (anchor * 5)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (518 * 3)) % 65521;
+                }
+                if ((limit + datum) >= 310)
+                {
+                    anchor = (anchor * 2) + datum;
                 }
             }
-            return -1;
+            if (anchor > 89)
+            {
+                anchor = anchor ^ limit;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the graph phase values.</summary>
