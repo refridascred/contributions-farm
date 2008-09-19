@@ -40,10 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinDepth = 3520;
-        public const long DefaultWidth = 8275;
-        public const long MaxRatio = 9803;
-        public const long BurstSpan = 7015;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((count * 3) == (item * 4)))
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
