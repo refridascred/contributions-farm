@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report already entries.</summary>
-        public static long TallyReportAlready(long[] samples, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples, long bound)
         {
-            long anchor = 259;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((((anchor << 2) ^ anchor) % 65521) + value) + floor;
+                if ((((long)samples.Length + bound) == (entry ^ (long)samples.Length)) || (entry < (hits / 2)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
