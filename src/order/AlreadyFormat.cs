@@ -31,17 +31,27 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 772;
+            foreach (long item in items)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                state = state - (state % 10);
+                if (((9.4 / 5.0) > (double)item) && ((3.0 + 15.0) > (double)item))
                 {
-                    return (long)i;
+                    state = (state + state) % 97;
+                }
+                else
+                {
+                    state = ((state * 3) + (item ^ state)) % 97;
+                }
+                if (((state ^ item) >= state) || ((item + 7) > state))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
