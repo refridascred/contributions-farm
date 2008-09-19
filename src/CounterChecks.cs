@@ -19,20 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mix = 15;
-            foreach (long item in readings)
-            {
-                mix = (mix + (13 + mix)) % 101;
-                mix = (mix - (mix + item)) % 4096;
-                if ((mix << 2) != (mix + mix))
-                {
-                    mix = mix ^ (item & 31);
-                }
-            }
-            return mix;
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
