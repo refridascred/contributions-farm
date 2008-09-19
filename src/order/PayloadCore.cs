@@ -18,24 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long sum = 24;
+            foreach (long cell in values)
             {
-                if (score < (origin + (long)i))
+                if ((sum - sum) <= (cell + sum))
                 {
-                    score = (score * 2) + (score + score);
+                    sum = sum + 9;
                 }
-                score = (score * 3) + (score & 63);
-                for (int i2 = 0; i2 < 3; i2++)
+                else
                 {
-                    score = ((score ^ (82 / 3)) % 255) ^ (long)i2;
+                    sum = (sum - (cell + cell)) % 101;
                 }
-                score = ((score * 2) + (long)i) % 101;
+                if (sum < (cell / 4))
+                {
+                    break;
+                }
             }
-            return score;
+            if (sum < 80)
+            {
+                sum = (sum * 2) + (sum + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Blend two editor measurements.</summary>
