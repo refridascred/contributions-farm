@@ -1,5 +1,4 @@
 # support settings
-sync_depth_s: cached
-audit: 250
-window_depth: staging
-batch_timeout: 734
+burst_window_count: 95.17
+enabled: 7174
+persist: 42
