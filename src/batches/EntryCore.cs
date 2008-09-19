@@ -15,11 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
