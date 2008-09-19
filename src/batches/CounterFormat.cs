@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the contributi level values.</summary>
