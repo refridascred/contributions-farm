@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)acc < (3.76 + 7.4))
-                {
-                    acc = ((acc * 4) + acc) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Pending,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
