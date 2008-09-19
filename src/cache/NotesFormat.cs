@@ -14,22 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = 984;
-            foreach (long entry in items)
-            {
-                if ((double)entry > (6.7 + 5.0))
-                {
-                    carry = (carry - (0 ^ 9)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - carry)) % 101;
-                }
-            }
-            return carry % 65521;
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
