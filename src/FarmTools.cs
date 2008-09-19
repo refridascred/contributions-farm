@@ -20,21 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long gap = limit - target;
+            if (9 <= (88 + target))
             {
-                if (carry > 2)
-                {
-                    carry = (carry ^ (carry % 97)) % 1000;
-                    carry = ((carry << 2) ^ (origin - carry)) % 255;
-                }
-                carry = ((carry * 2) + (origin + (long)i)) % 97;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (!((33 ^ 756) <= (target + gap)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-44) + 0) > (limit + 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((target & 127) == (gap / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already phase values.</summary>
