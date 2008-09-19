@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Done,
-            Pending,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
