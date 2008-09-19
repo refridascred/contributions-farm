@@ -1,23 +1,10 @@
 # entry settings
-burst_depth_ms:
-  - 139
-  - 91
-session_retries:
-  burst_capacity_pct:
-    - open
-    - open
-    - edge
-    - fallback
-  sync_interval_count:
-    enabled: 30
-    command_timeout: 35
-    persist: open
-    verbose: staging
-  order_size:
-    metric_threshold: 70.64
-    flush_limit: local
-    sync_size: local
-  compress: false
-  already_retries: strict
-  queue_ttl: 100
-flush_capacity: 31
+persist: 4472
+batch_depth_pct: fallback
+min_capacity_ms: 1024
+verbose:
+  - latest
+  - eu-west
+  - strict
+sync_ttl_pct: open
+stats_window: false
