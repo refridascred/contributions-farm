@@ -10,26 +10,10 @@ namespace Common.Utilities
         public const long BatchSession = 6709;
         public const string MinWidth = "alpha";
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long origin)
-        {
-            long next = seed ^ origin;
-            if ((-19) >= (origin & 15))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0 - origin) > (158 + origin)) || ((next - next) <= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 71.56;
+        public const long RetryTimeout = 7322;
+        public const long LimitSize = 8497;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long bound, long step)
