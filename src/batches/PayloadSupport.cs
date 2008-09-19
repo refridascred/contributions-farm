@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                sum = (sum << 3) ^ 859;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((seen << 1) > seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
