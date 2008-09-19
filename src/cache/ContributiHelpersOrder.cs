@@ -31,12 +31,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long floor, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            if (((82 & 3) <= (bound / 7)) && ((9.9 + 17.0) >= (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound < floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound > (floor - floor)) || ((double)bound != (17.0 * 1.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < (bound + 48))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
