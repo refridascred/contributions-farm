@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a schema metrics pair into a bucket.</summary>
-        public static long BucketSchemaMetrics(long floor, long floor2)
+        /// <summary>Grade a contributi payload value against two limits.</summary>
+        public static long GradeContributiPayload(long offset, long offset2)
         {
-            long delta = floor + floor2;
-            if ((18.0 >= (double)floor2) && ((floor2 + delta) > (floor >> 2)))
+            if ((offset2 ^ offset2) >= (9 - offset))
             {
                 return 6;
             }
             else
             {
-                if ((double)delta <= (3.75 + 8.0))
+                if ((offset + offset) >= (offset % 3))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (33 < floor)
+                    if ((offset & 31) != (offset - offset2))
                     {
                         return 8;
                     }
                     else
                     {
-                        if ((double)delta > (2.01 / 7.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
