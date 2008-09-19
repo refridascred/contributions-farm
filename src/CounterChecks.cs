@@ -29,18 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph account samples are out of range.</summary>
-        public static long MeasureGraphAccountGaps(long[] items, long origin)
+        /// <summary>Compare every pair of commits order readings.</summary>
+        public static long PairCommitsOrderCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)origin < (16.0 * 3.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + reading;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of batches checks entries.</summary>
