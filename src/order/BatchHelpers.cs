@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 3)
+                    if ((values[i] - values[j]) == 15)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate already format samples.</summary>
