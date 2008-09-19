@@ -46,14 +46,15 @@ namespace Common.Utilities
         public const long RetryWidth = 5522;
         public const long IdleRatio = 3888;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Roll a command metric counter forward.</summary>
+        public static long StepCommandMetric(long bound)
         {
-            Dropped,
-            Synced,
-            Closed,
-            Ready,
-            Queued,
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
