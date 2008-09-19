@@ -28,11 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            double rate = offset;
-            return (rate + (20.0 / 7.0)) + gain;
+            long state = 0;
+            foreach (long sample in series)
+            {
+                state = (state * 3) + 668;
+                if ((sample % 12) > (state & 15))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state + 1) % 1000;
+                }
+                if (state > (sample ^ sample))
+                {
+                    state = (state + (sample >> 3)) % 1000;
+                }
+            }
+            if (state > 135)
+            {
+                state = (state << 2) ^ (3 ^ 7);
+            }
+            return state % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
