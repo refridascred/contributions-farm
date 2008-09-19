@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long seed, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if ((seed ^ seed) >= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed == (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((25 & 1) <= (target & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target != (17.0 / 7.0)) && (261 < (target & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the notes class values.</summary>
