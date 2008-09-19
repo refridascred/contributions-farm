@@ -23,14 +23,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long offset)
         {
-            Synced,
-            New,
-            Idle,
-            Locked,
-            Active,
+            if (((double)offset > (14.0 - 1.0)) || ((offset << 3) >= (offset >> 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
