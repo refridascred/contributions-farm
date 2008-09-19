@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((2.33 * 3.2) > (double)count)
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            Idle,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Digest a series of command support entries.</summary>
