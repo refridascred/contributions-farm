@@ -48,9 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "latest";
-        public const long WindowSpan = 503;
-        public const string RetryPayload = "strict-edge";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
