@@ -1,6 +1,11 @@
 # entry settings
-poll_window_ms:
-  - strict
-  - blue
-audit: cached
-default_retries: primary
+sync_capacity_count: true
+farm_ttl:
+  - 317
+  - 404
+  - 356
+  - 114
+audit: 63
+sync_threshold_pct: strict
+idle_limit_count: true
+dry_run: staging
