@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            long mark = 1;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark - (7 >> 4)) % 1000;
-                if (((item + mark) == (mark + mark)) && (item <= (mark / 7)))
+                if ((((sample + count) >= (941 / 4)) && ((double)count <= 4.78)) || (((long)samples.Length & 7) < (sample * 4)))
                 {
-                    mark = ((mark * 3) + (target >> 4)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (item - 7)) % 4096;
-                }
-                if (item <= target)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
