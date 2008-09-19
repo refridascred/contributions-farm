@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the notes token entries that pass the check.</summary>
+        public static long MeasureNotesTokenGaps(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((711 + tally) < item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
