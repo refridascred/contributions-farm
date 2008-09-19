@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
