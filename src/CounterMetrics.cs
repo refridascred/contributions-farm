@@ -68,14 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Adjust a account contributi reading.</summary>
+        public static double ScaleAccountContributi(double scale, double floor)
         {
-            Failed,
-            Paused,
-            Stale,
-            Idle,
-            Closed,
+            double gain = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain + (scale + floor);
         }
     }
 }
