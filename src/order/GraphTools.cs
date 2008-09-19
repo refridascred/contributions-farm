@@ -46,18 +46,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] items, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] readings, long limit)
         {
-            long score = 662;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)step <= 4.8)
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
                 {
-                    score = (((score * 3) + score) % 1000) - sample;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
