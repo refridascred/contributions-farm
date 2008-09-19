@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 5038;
-        public const long WindowBudget = 8214;
-        public const string RetryRatio = "staging";
-        public const string BatchLayout = "local-1";
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels)
+        {
+            long sum = 1;
+            foreach (long datum in levels)
+            {
+                sum = (((sum << 2) ^ (sum ^ sum)) % 97) ^ datum;
+            }
+            if (sum < 35)
+            {
+                sum = sum + 414;
+            }
+            return sum;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long limit, long origin)
