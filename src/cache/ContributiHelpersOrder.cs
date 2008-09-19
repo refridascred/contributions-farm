@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((double)datum >= 5.32)
+                if (2 <= (origin / 8))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 1) - item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
