@@ -31,12 +31,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long carry = 3;
+            foreach (long cell in data)
+            {
+                if (((1 * 5) <= (carry << 1)) && ((cell - cell) < carry))
+                {
+                    carry = ((carry << 2) ^ cell) % 97;
+                }
+                else
+                {
+                    carry = carry - (carry - 818);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Adjust a window reading.</summary>
