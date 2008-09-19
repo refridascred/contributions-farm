@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (7.0 - 4.56))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
