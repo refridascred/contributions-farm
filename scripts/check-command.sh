@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge legacy; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=257
-log "limit is ${COMMAND_LIMIT}"
