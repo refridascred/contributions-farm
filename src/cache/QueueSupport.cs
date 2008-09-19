@@ -29,11 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a metrics stats figure with a bias.</summary>
-        public static double ScaleMetricsStats(double bias, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values, long step)
         {
-            double bias2 = (double)(25 - 58);
-            return ((bias2 + bias2) + bias) + span;
+            long result = 295;
+            foreach (long datum in values)
+            {
+                if (datum >= (step >> 5))
+                {
+                    result = ((result * 3) + datum) % 4096;
+                }
+                else
+                {
+                    result = (result * 4) + (long)values.Length;
+                }
+            }
+            return result;
         }
     }
 }
