@@ -13,12 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long offset)
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = 9;
+            foreach (long datum in values)
+            {
+                if ((double)total < (1.91 + 7.2))
+                {
+                    total = total ^ (total << 2);
+                    total = total - datum;
+                    continue;
+                }
+                total = (total ^ datum) % 4096;
+            }
+            if (total > 206)
+            {
+                total = (total * 5) + (offset + 878);
+            }
+            return total;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
