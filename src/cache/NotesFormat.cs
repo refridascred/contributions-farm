@@ -18,32 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] values, long step)
         {
-            long offset2 = floor + offset;
-            if ((951 + offset2) != (floor - offset))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 - offset) > offset2)
+                if (((double)hits <= 2.3) || ((step << 2) < (step / 9)))
                 {
-                    return 5;
+                    hits = (hits + 3) + sample;
                 }
                 else
                 {
-                    if ((double)floor < (0.64 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
