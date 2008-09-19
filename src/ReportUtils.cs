@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long limit)
         {
-            Synced,
-            Idle,
-            Queued,
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((4.9 / 6.0) > (double)limit))
+                {
+                    acc = (acc * 3) + (long)i;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema options.</summary>
