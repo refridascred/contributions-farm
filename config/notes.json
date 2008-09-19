@@ -1,7 +1,6 @@
 {
-  "dry_run": [75, 94, 368],
-  "sync_window_count": 1445,
-  "enabled": 37.75,
-  "profile_depth": 250,
-  "sync_window": ["standard", "fallback"]
+  "stream_depth": false,
+  "min_depth_s": true,
+  "filter_limit": "fallback",
+  "session_delay": 63.6
 }
