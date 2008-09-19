@@ -79,11 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
