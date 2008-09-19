@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            Done,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
