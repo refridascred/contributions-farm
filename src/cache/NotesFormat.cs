@@ -34,18 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] samples, long bound)
+        /// <summary>Count notes context pairs that satisfy a relation.</summary>
+        public static long CompareNotesContextCount(long[] samples)
         {
-            long mix = -902;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-91) / 7) <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (((mix << 3) ^ 3) % 101) - sample;
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return tally;
         }
     }
 }
