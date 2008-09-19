@@ -56,20 +56,10 @@ namespace Common.Utilities
         public const long RetryChecks = 2238;
         public const long IdleCount = 6717;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 95.69;
+        public const long HardContributi = 3169;
+        public const long MaxContributi = 3770;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] series)
