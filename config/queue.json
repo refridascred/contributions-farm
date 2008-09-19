@@ -1,10 +1,9 @@
 {
-  "audit": [367, 328, 242, 281],
-  "persist": {
-    "min_ratio": ["blue", "standard", "strict", "latest"],
-    "token_delay": 3.2,
-    "window_window": 66.82,
-    "cache_window_count": 1981
+  "default_ratio_pct": {
+    "cache_threshold": 30.55,
+    "readonly": 2,
+    "strict": "green"
   },
-  "warm_limit_s": [490, 382, 202, 403]
+  "retry_ttl_count": ["stable", "strict", "latest"],
+  "enabled": 1024
 }
