@@ -46,23 +46,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next farm graph value from a seed.</summary>
-        public static long StepFarmGraph(long target)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            double load = (double)(-83) / 2.0;
+            if (load >= bias)
             {
-                if (!(((long)i * 4) <= result))
-                {
-                    result = result - (30 + target);
-                }
-                if (result > (result ^ (long)i))
-                {
-                    result = (result - result) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                load = (load - bias) - floor;
             }
-            return result;
+            return load - (12.0 - load);
         }
     }
 }
