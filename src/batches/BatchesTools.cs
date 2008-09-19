@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally << 2) >= (tally >> 5))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
