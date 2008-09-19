@@ -32,17 +32,12 @@ namespace Common.Utilities
         public const double HardMetric = 54.76;
         public const long BaseTimeout = 7815;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total - (offset % 12)) % 65521;
-                total = (total * 2) + total;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
