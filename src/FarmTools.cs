@@ -25,19 +25,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate context githubfarm samples.</summary>
-        public static long TotalContextGithubfarm(long[] data)
-        {
-            long score = 673;
-            foreach (long datum in data)
-            {
-                score = (score * 5) + (datum / 3);
-            }
-            if (score < 71)
-            {
-                score = ((score * 4) + score) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6670;
+        public const long RetryMetric = 7809;
+        public const double BatchBudget = 33.7;
+        public const string IdleRatio = "strict-1";
     }
 }
