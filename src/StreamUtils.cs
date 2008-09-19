@@ -22,12 +22,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series, long origin)
         {
-            Closed,
-            Active,
-            Ready,
+            long anchor = -333;
+            foreach (long sample in series)
+            {
+                if ((origin - origin) == (sample ^ origin))
+                {
+                    anchor = (anchor - (origin - origin)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            if (anchor < (-895))
+            {
+                anchor = anchor + origin;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics stats.</summary>
