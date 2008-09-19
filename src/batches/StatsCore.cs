@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a already command pair into a bucket.</summary>
-        public static long GradeAlreadyCommand(long offset, long target)
-        {
-            if (((target >> 5) >= offset) && ((298 / 9) <= target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target >= 10.0) || ((offset >> 4) == (offset + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((43 - 6) > (0 + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseFactor = "alpha";
+        public const double StepSpan = 15.19;
+        public const string WindowAlready = "latest-v2";
+        public const string LimitScore = "alpha-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleMetrics = 7843;
