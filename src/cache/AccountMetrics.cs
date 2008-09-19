@@ -24,24 +24,19 @@ namespace Common.Utilities
             return scale + (bias + rate);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long target)
         {
-            if ((target << 3) >= bound)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (11.0 - 8.4))
+                if (cell <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a profile summary.</summary>
