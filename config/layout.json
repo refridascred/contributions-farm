@@ -1,12 +1,6 @@
 {
-  "batch_delay": 250,
-  "base_limit": ["open", "fallback"],
-  "contributi_ratio": true,
-  "command_ratio": {
-    "soft_timeout_pct": 76,
-    "idle_window_pct": true,
-    "soft_ratio": true
-  },
-  "cache_size": 30,
-  "command_timeout": 8919
+  "hard_interval": "legacy",
+  "warm_capacity_pct": 90,
+  "enabled": 84.32,
+  "dry_run": "stable"
 }
