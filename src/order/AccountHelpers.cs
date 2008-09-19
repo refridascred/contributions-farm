@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Classify a queue payload pair into a bucket.</summary>
+        public static long BucketQueuePayload(long offset, long floor)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public double Region { get; set; }
+            if ((floor + floor) != (floor ^ offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (double)5)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
