@@ -1,21 +1,7 @@
 {
-  "idle_window_count": "eu-west",
-  "buffer_window": "green",
-  "flush_timeout": 70,
-  "cache_retries_s": "local",
-  "commits_delay": {
-    "enabled": 30,
-    "soft_window": "standard",
-    "strict": true,
-    "base_interval_pct": {
-      "session_size": 250,
-      "already_timeout": ["fallback", "local", "strict", "eu-west"],
-      "poll_window_s": 30,
-      "window_ratio": 60,
-      "idle_timeout": 60
-    },
-    "profile_limit": "stable",
-    "cache_delay": [169, 211]
-  },
-  "soft_capacity": true
+  "already_retries": "local",
+  "flush_size_pct": 57,
+  "schema_limit": "fallback",
+  "channel_size": 76.4,
+  "contributi_depth": "strict"
 }
