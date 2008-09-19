@@ -54,12 +54,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long bound)
         {
-            Closed,
-            Idle,
-            Synced,
+            long anchor = -4;
+            foreach (long entry in series)
+            {
+                long prev = (entry * 3) ^ entry;
+                if (!((entry - bound) < (bound + entry)))
+                {
+                    anchor = ((anchor * 5) + (prev + anchor)) % 101;
+                }
+                if (((entry * 4) == (anchor & 7)) && ((anchor + anchor) < (bound + entry)))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (8 >> 1);
+                }
+            }
+            return anchor;
         }
     }
 }
