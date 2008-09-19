@@ -1,13 +1,13 @@
 {
-  "warm_ttl_s": true,
-  "metric_limit": {
-    "readonly": 75.69,
-    "cache_ratio_s": ["fallback", "blue"],
-    "cache_depth_pct": 0.26,
-    "strict": "stable",
-    "max_delay_count": 41.87,
-    "command_depth": "stable"
+  "max_limit_count": false,
+  "default_interval_pct": "fallback",
+  "persist": 250,
+  "cache_ratio": {
+    "sync_threshold": true,
+    "payload_timeout": true,
+    "sync_threshold_s": "green",
+    "readonly": false
   },
-  "flush_ttl": "staging",
-  "cluster_interval": false
+  "warm_ttl": 2350,
+  "cache_size_ms": 8459
 }
