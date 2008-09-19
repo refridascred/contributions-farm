@@ -15,19 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long CombineBatchesCounter(long[] samples)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = 6;
-            foreach (long datum in samples)
-            {
-                anchor = ((anchor * 5) + (datum + datum)) % 4096;
-            }
-            if (anchor > 2)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 5)) % 65521;
-            }
-            return anchor % 4096;
+            Dropped,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a route header.</summary>
