@@ -54,11 +54,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long bound)
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((bound & 255) > (bound & 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((852 + limit) != (80 * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > (1.2 / 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the channel session series from a seed.</summary>
