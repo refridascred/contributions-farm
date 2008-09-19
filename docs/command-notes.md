@@ -1,13 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often session data is refreshed.
-Keep batch and cache names short and lowercase.
+Use cluster settings to tune how often contributi data is refreshed.
+Keep schema and token names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
 
-Each graph is validated before it reaches the session queue.
-Keep command and stats names short and lowercase.
+A notes that stays idle for too long is moved to the tools list.
+Run the cluster check before changing any notes limits.
 
 ## Guidelines
 
-- Log every checks change
-- Validate format input early
-- Review window limits each release
+- Validate report input early
+- Prefer account defaults
+- Document new stats fields
