@@ -15,13 +15,13 @@ namespace Common.Utilities
         public const long RetryTimeout = 7322;
         public const long LimitSize = 8497;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
             public long Size { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
         }
     }
 }
