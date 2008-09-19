@@ -1,8 +1,12 @@
 {
-  "dry_run": "eu-west",
-  "retry_window": [41, 11, 492],
-  "batch_interval_pct": 91.19,
-  "channel_depth": false,
-  "cache_limit": "edge",
-  "route_interval": 70
+  "strict": 88,
+  "enabled": {
+    "poll_ttl": false,
+    "batch_ratio_s": 92,
+    "min_delay_ms": "strict"
+  },
+  "default_ttl": 25,
+  "base_ratio": "strict",
+  "batch_capacity_ms": 7366,
+  "base_threshold_s": "standard"
 }
