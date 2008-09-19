@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const long RetryScore = 689;
         public const long IdleBatch = 9647;
 
-        /// <summary>Measure how many layout profile samples are out of range.</summary>
-        public static long TallyLayoutProfileHits(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double rate = (gain + offset) * 10.0;
+            if (rate > gain)
             {
-                if ((sample & 3) > (seen / 9))
-                {
-                    seen = seen + 3;
-                }
+                rate = rate - (double)38;
             }
-            return seen;
+            return rate + (gain - gain);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
