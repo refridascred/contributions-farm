@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long offset, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((offset * 2) >= (floor + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset + (-129)) == (floor << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
