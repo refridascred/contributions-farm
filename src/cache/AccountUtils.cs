@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((14.0 / 7.0) > (double)origin)
             {
-                if (levels[i] > offset)
+                return 1;
+            }
+            else
+            {
+                if ((7.1 >= (double)origin) && (origin <= (origin2 - origin)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin2 <= (3.7 * 6.72))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
