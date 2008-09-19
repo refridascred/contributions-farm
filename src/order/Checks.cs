@@ -48,11 +48,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardScore = 7910;
-        public const double WindowAccount = 41.32;
-        public const long DefaultAccount = 9175;
-        public const double IdleRatio = 14.69;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool VerifyLayoutBounds(long[] data, long limit)
