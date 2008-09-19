@@ -47,19 +47,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] samples, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long bound)
         {
-            long mix = 44;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                mix = mix + (reading << 2);
-                if (((mix * 3) <= (target - reading)) || ((8.92 + 5.3) == (double)mix))
+                if (cell > bound)
                 {
-                    mix = (mix + ((long)samples.Length * 4)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return ok;
         }
     }
 }
