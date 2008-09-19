@@ -1,57 +1,27 @@
 # entry settings
-burst_delay_s:
-  audit: 58
-  queue_ttl:
-    dry_run: false
-    verbose: false
-    burst_size: 38.88
-    burst_ratio: strict
-    filter_limit: true
-  burst_delay_ms:
-    cache_ttl: 100
-    warm_window_ms: 42.38
-    compress: 84.12
-    payload_retries: green
-    flush_interval:
-      - stable
-      - stable
-      - blue
-  poll_size_pct: standard
-  notes_limit:
-    farm_ttl: blue
-    flush_retries:
-      - primary
-      - eu-west
-      - edge
-      - latest
-    cache_threshold: cached
-    channel_ratio: local
-    batches_retries:
-      - 78
-      - 24
-    max_timeout_count: false
-  enabled:
-    default_timeout: 2642
-    counter_interval: false
-    record_retries: 60
-    warm_limit_s:
-      - latest
-      - fallback
-      - cached
-    base_timeout_ms:
-      - strict
-      - local
-      - open
-    audit: open
-sync_threshold: 69
-burst_interval:
-  cache_interval_count: false
-  commits_size: 35
-  cache_ttl_pct: 57.33
-  batch_capacity: 7
-  verbose: latest
-base_limit_count: 19
-base_interval_ms:
-  - latest
-  - cached
-graph_delay: 60
+retry_capacity:
+  max_retries_s: 80.41
+  githubfarm_retries: 4260
+  default_capacity_count: true
+  enabled: 250
+verbose:
+  poll_retries_pct: staging
+  hard_window_s: strict
+  base_capacity_count: blue
+  default_depth_pct: true
+  queue_delay: 3735
+  idle_limit: 62.75
+context_window: 80.04
+hard_depth:
+  token_delay: 72.73
+  batch_capacity_count: standard
+  soft_size: 34
+  warm_depth_count: 36.11
+  graph_retries:
+    batch_window_ms: 54.46
+    compress: latest
+    hard_interval_count: stable
+    idle_retries_s: 953
+    max_threshold_count: 43.64
+  warm_interval_ms: true
+min_ratio: strict
