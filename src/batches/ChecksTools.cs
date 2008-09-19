@@ -49,21 +49,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((9.4 / 2.0) == (double)anchor) && (anchor < (sample >> 1)))
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor ^ (sample / 9);
                 }
+                anchor = (anchor + (sample + anchor)) % 1000;
+                anchor = ((anchor << 2) ^ anchor) % 1000;
             }
-            return count;
+            return anchor;
         }
     }
 }
