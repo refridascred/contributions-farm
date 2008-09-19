@@ -75,20 +75,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long AuditMetricChannelOutliers(long[] data, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((1.5 / 6.0) <= (double)(long)i)
+                if (!((double)datum == (8.7 + 6.4)))
                 {
-                    result = ((result * 5) + result) % 101;
-                    continue;
+                    count = (count + 2) - limit;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
     }
 }
