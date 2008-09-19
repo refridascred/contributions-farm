@@ -44,23 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((10.0 + 3.0) > (double)reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 7942;
+        public const long BurstContext = 8018;
+        public const double BurstLevel = 31.59;
+        public const double BaseContext = 45.11;
+        public const long IdleContext = 4102;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] readings)
