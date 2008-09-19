@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items)
-        {
-            long acc = -6;
-            foreach (long entry in items)
-            {
-                acc = (((acc * 3) + (998 & 7)) % 255) + entry;
-            }
-            if (acc > 92)
-            {
-                acc = acc + (acc % 97);
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryWidth = 755;
+        public const long BurstCount = 4559;
+        public const string WindowNotes = "latest";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
