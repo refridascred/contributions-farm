@@ -23,16 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                state = state ^ (40 + offset);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine payload commits values into a single score.</summary>
