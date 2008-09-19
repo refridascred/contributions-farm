@@ -60,22 +60,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings, long target)
         {
-            long state = -444;
-            foreach (long value in values)
+            long mark = 6;
+            foreach (long reading in readings)
             {
-                if ((double)state < (20.0 + 4.1))
-                {
-                    state = (((state << 3) ^ 28) % 101) - limit;
-                }
-                else
-                {
-                    state = (state << 2) ^ value;
-                }
+                mark = ((((mark * 5) + (100 & 255)) % 4096) ^ reading) - target;
+                mark = ((mark << 2) ^ mark) % 4096;
             }
-            return state % 1000;
+            return mark;
         }
 
         /// <summary>Describe the account class values.</summary>
