@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series, long origin)
+        /// <summary>Count entry counter pairs that satisfy a relation.</summary>
+        public static long PairEntryCounterCount(long[] items)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix * 3) + (origin - entry);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
