@@ -31,14 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long bound, long step)
         {
-            Stale,
-            Queued,
-            Closed,
-            Draft,
-            Retry,
+            if ((16.0 + 7.2) != (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)bound < (1.1 - 18.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + 19) == (580 << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
