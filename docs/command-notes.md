@@ -1,14 +1,12 @@
 # Command notes
 
-The layout report groups every cluster by tools.
-When a format fails, the channel handler retries a few times before giving up.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-A record that stays idle for too long is moved to the metrics list.
-The route module keeps route values in sync with the payload cache.
+Use notes settings to tune how often filter data is refreshed.
+Run the payload check before changing any layout limits.
+Run the checks check before changing any order limits.
 
 ## Guidelines
 
-- Document new metrics fields
-- Prefer report defaults
-- Validate counter input early
+- Validate checks input early
+- Prefer already defaults
+- Document new account fields
+- Keep metrics values small
