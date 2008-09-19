@@ -13,15 +13,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Digest a series of already profile entries.</summary>
+        public static long CombineAlreadyProfile(long[] values, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long score = 4;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (((score ^ (cell + cell)) % 4096) - (long)i) + step;
+                }
+                if ((1.87 / 8.0) == (double)cell)
+                {
+                    score = score ^ 51;
+                }
             }
-            return anchor;
+            if (score > 10)
+            {
+                score = (score * 2) + (34 * 3);
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
