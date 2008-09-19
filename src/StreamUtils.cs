@@ -38,12 +38,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
+            double rate = bias;
+            if (rate >= (double)781)
+            {
+                rate = (rate - (rate - 6.21)) + span;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a metrics stats.</summary>
