@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double offset)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            double rate = scale;
+            if (rate < (scale - offset))
             {
-                if (9.48 < (double)bound)
-                {
-                    total = total ^ (bound * 4);
-                    total = total ^ (3 & 63);
-                }
-                else
-                {
-                    total = (total - bound) % 255;
-                    total = ((total * 5) + ((long)i + total)) % 101;
-                }
-                total = (total + (total * 5)) % 1000;
-                total = (total - (long)i) % 65521;
-                total = ((total * 4) + (long)i) % 97;
+                rate = rate + (1.6 / 6.0);
             }
-            return total;
+            else
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (offset - scale);
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
