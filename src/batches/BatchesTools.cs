@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultSize = 89.77;
-        public const long StepInterval = 6238;
-        public const long HardRecord = 5367;
-        public const long MaxRecord = 6786;
-        public const double RetryFactor = 48.06;
+        /// <summary>Audit queue notes readings against a rule.</summary>
+        public static long MeasureQueueNotesOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((-7) >= (792 + seen))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
