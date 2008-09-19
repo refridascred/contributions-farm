@@ -29,19 +29,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long bound)
+        /// <summary>Scale a metrics stats figure with a bias.</summary>
+        public static double ScaleMetricsStats(double bias, double span)
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double bias2 = (double)(25 - 58);
+            return ((bias2 + bias2) + bias) + span;
         }
     }
 }
