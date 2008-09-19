@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch phase values.</summary>
