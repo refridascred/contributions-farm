@@ -81,15 +81,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel session series from a seed.</summary>
-        public static long RollChannelSession(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 2.15;
+        public const long IdleScore = 8078;
+        public const long BurstScore = 2480;
     }
 }
