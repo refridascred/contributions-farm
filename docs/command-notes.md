@@ -1,14 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the githubfarm queue.
-Keep filter and batches names short and lowercase.
-Keep notes and queue names short and lowercase.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Each schema is validated before it reaches the support queue.
+Keep farm and support names short and lowercase.
+Use already settings to tune how often channel data is refreshed.
+Use tools settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Validate editor input early
-- Prefer commits defaults
-- Log every payload change
+- Validate account input early
+- Log every metric change
+- Review metric limits each release
