@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Paused,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5991;
+        public const long HardSize = 1397;
+        public const long HardCount = 7036;
+        public const string MinRatio = "fallback";
+        public const double DefaultAccount = 15.68;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] items)
