@@ -20,19 +20,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] items, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double bias = 8.7;
+            if (bias < (double)2)
             {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - (bias - offset);
             }
-            return valid;
+            return bias + (bias - ratio);
         }
 
         /// <summary>Describe the cluster phase values.</summary>
