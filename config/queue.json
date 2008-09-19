@@ -1,24 +1,5 @@
 {
-  "batch_capacity_s": {
-    "persist": 39.39,
-    "token_depth": {
-      "strict": true,
-      "default_size_count": 500,
-      "editor_interval": "eu-west",
-      "cache_window_pct": 89,
-      "burst_interval_count": 57,
-      "warm_retries_ms": 83.74
-    },
-    "dry_run": false,
-    "githubfarm_ttl": {
-      "dry_run": "stable",
-      "audit": 46.53,
-      "poll_depth_ms": 30.47,
-      "cache_timeout_pct": "strict"
-    },
-    "enabled": [415, 345, 426, 359]
-  },
-  "warm_window_pct": [298, 411, 436],
-  "warm_ttl_pct": false,
-  "idle_window_count": "edge"
+  "tools_size": false,
+  "verbose": 100,
+  "burst_interval_count": "standard"
 }
