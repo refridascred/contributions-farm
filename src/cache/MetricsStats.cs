@@ -40,10 +40,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 15.44;
-        public const long MaxInterval = 6021;
-        public const long LimitBudget = 9386;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardSize = 1171;
+        public const double BurstRoute = 66.52;
+        public const double RetrySize = 50.22;
+        public const long LimitSpan = 9408;
+        public const long LimitLevel = 6117;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long seed)
