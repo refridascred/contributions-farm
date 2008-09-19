@@ -41,19 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values, long target)
-        {
-            long score = -604;
-            foreach (long cell in values)
-            {
-                score = (score * 3) + (cell * 5);
-            }
-            if (score < 89)
-            {
-                score = (score * 5) + (target << 3);
-            }
-            return score % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardSpan = 7621;
+        public const long BaseEntry = 2222;
+        public const double SoftEntry = 20.16;
+        public const long CacheEntry = 281;
     }
 }
