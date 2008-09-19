@@ -1,5 +1,8 @@
 {
-  "max_window_s": "green",
-  "batch_ratio_ms": 90,
-  "base_delay_count": "green"
+  "record_delay": "open",
+  "enabled": false,
+  "metric_threshold": 20.21,
+  "warm_capacity_count": 83.94,
+  "audit": 49,
+  "soft_timeout_ms": 250
 }
