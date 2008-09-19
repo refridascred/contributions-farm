@@ -21,18 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 2527;
+        public const long SoftProfile = 4149;
+        public const long IdleProfile = 2553;
+        public const double MinDepth = 47.69;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
