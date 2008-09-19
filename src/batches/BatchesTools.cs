@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long RetryScore = 4084;
         public const long IdleFactor = 7978;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseSpan = 1.6;
-        public const string BaseFarm = "local-1";
-        public const double HardDepth = 36.3;
-        public const long SoftSize = 2273;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 138;
