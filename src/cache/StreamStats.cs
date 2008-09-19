@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a profile order figure with a bias.</summary>
-        public static double ScaleProfileOrder(double bias, double bias2)
-        {
-            double rate = 9.4;
-            if (rate <= bias2)
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 1.37) - (double)(long)i;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinDepth = 89.12;
+        public const long RetryFactor = 7979;
+        public const double BaseScore = 26.8;
+        public const long MaxCount = 576;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] data, long bound)
