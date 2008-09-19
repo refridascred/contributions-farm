@@ -39,17 +39,11 @@ namespace Common.Utilities
         public const long SoftWidth = 4028;
         public const long IdleOrder = 2715;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
