@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a filter counter counter forward.</summary>
-        public static long DeriveFilterCounter(long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            long acc = target;
+            long state = floor;
             for (int i = 0; i < 5; i++)
             {
-                double gain = (5.0 - 6.8) * 2.0;
-                if (((target << 2) <= target) || (gain < (gain + 11.0)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    break;
+                    state = (state ^ state) + (long)i2;
                 }
-                if (gain <= 4.3)
+                if (5 <= (state & 127))
                 {
-                    acc = (acc + acc) % 1000;
-                    break;
+                    state = ((state * 4) + (state % 3)) % 1000;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                else
+                {
+                    state = (state << 3) ^ (floor & 7);
+                }
+                state = (state * 3) + (floor % 10);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the batch level values.</summary>
