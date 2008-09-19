@@ -28,13 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long seed)
         {
-            Stale,
-            Draft,
-            Closed,
-            Active,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a githubfarm format pair into a bucket.</summary>
