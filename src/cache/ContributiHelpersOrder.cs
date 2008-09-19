@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long step, long bound)
         {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            long gap = step + bound;
+            if (((bound - bound) == (bound * 5)) || ((step % 7) >= gap))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step - 8) < (bound & 255))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step - (-495)) == (39 ^ gap))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache level values.</summary>
