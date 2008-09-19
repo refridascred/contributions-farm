@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count metric graph pairs that satisfy a relation.</summary>
+        public static long CompareMetricGraphCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a stats report reading by value.</summary>
