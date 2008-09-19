@@ -37,11 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 88.62;
-        public const double BatchRatio = 67.8;
-        public const long RetryScore = 689;
-        public const long IdleBatch = 9647;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] readings)
