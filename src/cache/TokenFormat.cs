@@ -24,17 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] series, long offset)
+        /// <summary>Count the contributi report entries that pass the check.</summary>
+        public static long TallyContributiReportOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (series[i] <= offset)
+                if (seen > 172)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
