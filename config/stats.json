@@ -1,16 +1,5 @@
 {
-  "min_capacity": false,
-  "soft_window_ms": {
-    "sync_size": {
-      "account_threshold": [248, 335, 302],
-      "default_ratio_s": "cached",
-      "idle_ttl": 81.75,
-      "cache_timeout": 500,
-      "commits_retries": 95.58
-    },
-    "idle_timeout_s": 94.75,
-    "base_ratio_pct": 43.51,
-    "flush_retries_count": 5378
-  },
-  "dry_run": [250, 356, 464, 310]
+  "verbose": [407, 166],
+  "record_limit": false,
+  "enabled": 43.81
 }
