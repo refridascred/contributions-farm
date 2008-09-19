@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] levels, long bound)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - 7.5) - (double)(long)i) - gain;
             }
-            return -1;
+            return drift + 5.0;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
