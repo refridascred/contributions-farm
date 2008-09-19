@@ -28,27 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long offset)
         {
-            long mark = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.4 < (double)mark) || ((target + datum) == ((long)levels.Length & 127)))
+                if (readings[i] > offset)
                 {
-                    mark = (mark ^ (target + datum)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (datum + target)) % 4096;
-                    mark = (mark << 2) ^ datum;
-                }
-                if (!((double)target <= (3.0 - 7.78)))
-                {
-                    mark = ((mark << 3) ^ (mark + datum)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
