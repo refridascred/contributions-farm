@@ -19,32 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long step, long offset)
-        {
-            if ((11.0 + 1.0) == (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step > 1.06) || ((offset + step) == (step * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset <= 3.94)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstSize = 15.27;
+        public const long HardMetrics = 979;
+        public const long WindowSize = 5010;
 
         /// <summary>Fold a list of githubfarm batch readings.</summary>
         public static long DigestGithubfarmBatch(long[] samples)
