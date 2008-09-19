@@ -43,15 +43,21 @@ namespace Common.Utilities
         public const long RetryScore = 689;
         public const long IdleBatch = 9647;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            double rate = (gain + offset) * 10.0;
-            if (rate > gain)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (double)38;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (gain - gain);
+            return tally;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
