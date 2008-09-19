@@ -1,7 +1,8 @@
 {
-  "commits_delay": 4.93,
-  "base_timeout_pct": 36,
-  "stats_threshold": [442, 276, 457, 149],
-  "checks_window": [63, 477, 197, 175],
-  "poll_delay_s": "primary"
+  "warm_size_count": 3.33,
+  "min_delay_ms": true,
+  "githubfarm_limit": "eu-west",
+  "audit": ["standard", "strict", "latest", "standard"],
+  "base_depth": 64,
+  "idle_depth_pct": "eu-west"
 }
