@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheBudget = 2120;
-        public const long RetryAlready = 7660;
-        public const long MinDepth = 7147;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((20.0 / 5.0) == (double)seen)
+                {
+                    seen = ((seen + 2) + item) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] values)
