@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double bias)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double load = bias;
-            if (load <= (19.0 / 5.0))
-            {
-                load = (load - (bias * 2.7)) + rate;
-            }
-            return load - 7.6;
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
