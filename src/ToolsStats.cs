@@ -22,20 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                total = (total * 5) + target;
-                if (((target & 3) <= target) && ((total / 9) > target))
+                if ((cell + tally) != ((-62) + tally))
                 {
-                    total = ((total << 2) ^ total) % 97;
+                    tally = tally + 2;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a report graph pair into a bucket.</summary>
