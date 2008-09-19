@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] items, long step)
+        /// <summary>Digest a series of channel order entries.</summary>
+        public static long TotalChannelOrder(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 359;
+            foreach (long item in readings)
             {
-                if (((4.3 + 0.6) > (double)count) || (((step + 24) > (count ^ count)) && (((long)items.Length + value) >= (value + step))))
+                mix = ((mix << 2) ^ (origin - 250)) % 65521;
+                if (((item & 1) <= origin) || (origin > (origin + origin)))
                 {
-                    count = count + 1;
+                    mix = (mix ^ (origin & 15)) % 97;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Describe the layout phase values.</summary>
