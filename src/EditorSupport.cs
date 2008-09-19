@@ -29,18 +29,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] samples, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long score = 10;
+            foreach (long value in samples)
             {
-                if ((count ^ 874) != (offset - count))
+                score = (score ^ (seed + seed)) % 4096;
+                if (score <= (value % 97))
                 {
-                    count = (count + 1) + item;
+                    score = score - score;
                 }
             }
-            return count;
+            if (score > 20)
+            {
+                score = (score + (score & 15)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
