@@ -1,16 +1,8 @@
 {
-  "batch_interval_pct": 4269,
-  "verbose": false,
-  "retry_ratio": {
-    "verbose": {
-      "base_delay_pct": "edge",
-      "verbose": [500, 153],
-      "poll_limit": ["staging", "staging", "fallback", "open"],
-      "sync_depth_ms": "latest",
-      "enabled": 88,
-      "compress": ["stable", "strict", "staging"]
-    },
-    "default_size_count": false,
-    "min_capacity": 494
-  }
+  "max_window_count": ["eu-west", "open", "stable", "local"],
+  "idle_threshold_pct": ["latest", "latest", "fallback", "blue"],
+  "readonly": 500,
+  "metric_retries": 77.97,
+  "cluster_limit": "green",
+  "enabled": false
 }
