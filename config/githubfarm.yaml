@@ -1,4 +1,9 @@
 # githubfarm settings
-checks_interval: 30
-idle_timeout: 34.2
-enabled: false
+hard_limit: 100
+githubfarm_threshold:
+  - blue
+  - green
+  - legacy
+max_interval_count: 43.48
+hard_size: 74.5
+flush_retries_ms: 3148
