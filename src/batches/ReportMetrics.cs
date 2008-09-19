@@ -37,11 +37,25 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardInterval = "legacy-v2";
-        public const long IdleCounter = 9860;
-        public const double HardCount = 67.49;
-        public const long BurstCounter = 5299;
-        public const long CacheCounter = 8229;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long seed)
+        {
+            long lane = limit + seed;
+            if ((seed < 4) || ((limit >> 2) < (lane + limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4 << 1) <= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
