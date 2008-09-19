@@ -47,18 +47,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((value % 5) <= (value & 63))
+                if ((-815) < (hits + limit))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer window readings.</summary>
