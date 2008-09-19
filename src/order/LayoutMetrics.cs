@@ -36,12 +36,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long seed)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long slot = floor - seed;
+            if (slot > (3 + slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((2.0 * 2.39) <= (double)slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 5) < (floor ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((51 - seed) < floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
