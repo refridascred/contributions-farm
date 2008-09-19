@@ -1,8 +1,12 @@
 {
-  "metrics_timeout": ["standard", "eu-west"],
-  "base_capacity": 500,
-  "queue_depth": true,
-  "record_size": "open",
-  "editor_ttl": 91,
-  "default_delay_s": 2651
+  "graph_window": [122, 385, 214],
+  "readonly": 96.48,
+  "already_threshold": true,
+  "cache_ttl": "latest",
+  "burst_threshold_pct": {
+    "soft_interval_count": 3.45,
+    "cluster_limit": 222,
+    "payload_delay": 54.55,
+    "metrics_capacity": "stable"
+  }
 }
