@@ -58,11 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryInterval = 9859;
-        public const long DefaultCounter = 6819;
-        public const double BurstCounter = 91.28;
-        public const long StepDepth = 285;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
+        {
+            long carry = 500;
+            foreach (long item in readings)
+            {
+                if ((carry - item) > (carry % 16))
+                {
+                    carry = ((carry * 4) + (carry + carry)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] readings, long step)
