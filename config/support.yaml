@@ -1,5 +1,4 @@
 # support settings
-readonly: green
-stream_depth: fallback
-hard_window: legacy
-strict: eu-west
+default_interval_ms: 674
+base_limit: 50
+counter_size: 14.24
