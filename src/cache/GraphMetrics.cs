@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] readings, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 2;
+            foreach (long item in levels)
             {
-                if (readings[i] > seed)
+                if (((double)mix == (5.88 - 7.6)) && ((item / 4) <= mix))
                 {
-                    return (long)i;
+                    mix = (mix ^ (item % 100)) % 97;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (offset - offset);
+                }
+                mix = mix + (mix + item);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the notes state values.</summary>
