@@ -52,11 +52,19 @@ namespace Common.Utilities
         public const long SoftCounter = 186;
         public const long MaxInterval = 4528;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 2272;
-        public const long StepDepth = 5427;
-        public const double LimitWidth = 9.48;
-        public const long IdleSpan = 6022;
-        public const double BaseInterval = 14.8;
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values)
+        {
+            long acc = 36;
+            foreach (long cell in values)
+            {
+                if ((cell + acc) < acc)
+                {
+                    acc = (acc ^ (0 / 2)) % 101;
+                }
+                acc = (acc ^ (acc >> 4)) % 97;
+            }
+            return acc;
+        }
     }
 }
