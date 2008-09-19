@@ -28,12 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 6465;
-        public const long IdleCommits = 2006;
-        public const double BaseCommits = 90.86;
-        public const string BatchCommits = "local-edge";
-        public const long RetryLevel = 3553;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleSpan = 9236;
