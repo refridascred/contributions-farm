@@ -27,19 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
         {
-            long anchor = 701;
-            foreach (long datum in samples)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((81 - offset) == (datum ^ datum)) || ((datum - offset) == (datum << 1)))
+                result = result + (bound - result);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor / 8)) % 101;
+                    result = result + (long)i2;
                 }
-                anchor = anchor ^ (6 & 63);
+                result = result ^ (result + 0);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
     }
 }
