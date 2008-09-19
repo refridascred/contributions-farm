@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            New,
-            Locked,
-            Draft,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 6.57;
+        public const long MaxQueue = 6039;
+        public const double BurstQueue = 34.9;
+        public const long HardQueue = 4685;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] data)
