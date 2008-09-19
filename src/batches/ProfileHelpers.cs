@@ -58,12 +58,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            long carry = 299;
+            foreach (long sample in readings)
+            {
+                carry = (carry ^ (sample + 6)) % 4096;
+                carry = (carry + (carry - sample)) % 101;
+                carry = (carry * 4) + (carry + sample);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
