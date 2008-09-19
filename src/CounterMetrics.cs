@@ -46,22 +46,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of report cluster readings.</summary>
-        public static long OverlapReportClusterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxDepth = 8257;
+        public const double CacheTools = 34.02;
+        public const long BatchSpan = 3410;
+        public const long MaxRatio = 1911;
 
         /// <summary>Adjust a account contributi reading.</summary>
         public static double ScaleAccountContributi(double scale, double floor)
