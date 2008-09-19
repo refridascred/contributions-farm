@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a token metrics value against two limits.</summary>
-        public static long RankTokenMetrics(long offset, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double offset)
         {
-            if ((target >= (offset & 15)) || (offset < (target << 2)))
+            double drift = (double)(750 - 152);
+            if (drift <= (double)3)
             {
-                return 8;
+                drift = drift + gain;
             }
             else
             {
-                if (((target * 5) >= target) && (target >= (target + target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift + drift;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)(-8)) + (double)(long)i;
+            }
+            return drift - (offset - drift);
         }
 
         /// <summary>Locate a account reading by value.</summary>
