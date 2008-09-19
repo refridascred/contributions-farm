@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const long LimitPayload = 1302;
         public const long BatchPayload = 8499;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
