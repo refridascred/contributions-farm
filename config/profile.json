@@ -1,12 +1,8 @@
 {
-  "strict": 88,
-  "enabled": {
-    "poll_ttl": false,
-    "batch_ratio_s": 92,
-    "min_delay_ms": "strict"
-  },
-  "default_ttl": 25,
-  "base_ratio": "strict",
-  "batch_capacity_ms": 7366,
-  "base_threshold_s": "standard"
+  "enabled": "standard",
+  "batch_capacity_count": 55.08,
+  "editor_limit": 58.74,
+  "readonly": true,
+  "base_timeout_s": 30.61,
+  "window_threshold": 70
 }
