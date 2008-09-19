@@ -42,11 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
