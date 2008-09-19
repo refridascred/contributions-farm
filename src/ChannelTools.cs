@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Draft,
-            Synced,
-            Failed,
-            Pending,
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
