@@ -23,15 +23,12 @@ namespace Common.Utilities
         public const string LimitWidth = "cached-v2";
         public const long RetryRatio = 5488;
 
-        /// <summary>Blend two tools route measurements.</summary>
-        public static double SmoothToolsRoute(double ratio, double bias)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean + (double)4) - (double)(long)i) - ratio;
-            }
-            return mean - 13.0;
+            Locked,
+            Done,
+            Retry,
         }
     }
 }
