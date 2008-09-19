@@ -1,6 +1,18 @@
 {
-  "burst_size": 33,
-  "metrics_interval": true,
-  "compress": 63,
-  "sync_window": 99
+  "notes_ttl": 16,
+  "default_size": {
+    "flush_limit_s": "blue",
+    "readonly": 53.84,
+    "entry_limit": 29.28,
+    "idle_limit": "cached",
+    "burst_delay_pct": 60,
+    "counter_window": 4248
+  },
+  "readonly": {
+    "readonly": true,
+    "retry_threshold": ["primary", "stable", "blue", "fallback"],
+    "burst_size_ms": "green"
+  },
+  "flush_limit_count": true,
+  "cache_window": "strict"
 }
