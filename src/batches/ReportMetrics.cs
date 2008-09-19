@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            double mean = offset;
-            if (mean >= (offset + 9.2))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                mean = mean - bias;
+                if (!((double)entry < (5.4 / 5.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                mean = mean + (4.2 * 6.2);
-            }
-            return mean + mean;
+            return matches;
         }
 
         /// <summary>Hold a payload info.</summary>
