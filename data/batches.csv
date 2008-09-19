@@ -1,8 +1,8 @@
-id,state,count
-1,92,447
-2,76.37,779
-3,36.7,staging
-4,259,620
-5,38.98,latest
-6,primary,68.64
-7,latest,legacy
+id,label,weight,state
+1,local,21,6.03
+2,green,578,792
+3,13.88,1.85,24.19
+4,76.15,615,858
+5,57.63,227,66.67
+6,802,659,staging
+7,53.76,primary,cached
