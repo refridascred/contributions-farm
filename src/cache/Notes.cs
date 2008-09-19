@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowTimeout = 582;
-        public const long IdleSession = 9633;
-        public const string BaseSession = "cached";
-        public const string HardFactor = "strict";
-        public const long DefaultSession = 34;
+        /// <summary>Iterate the tools commits series from a seed.</summary>
+        public static long StepToolsCommits(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 2) + (sum >> 1)) % 101;
+                if (((sum & 1) <= sum) || ((step * 3) < (sum % 16)))
+                {
+                    sum = ((sum << 3) ^ (sum + (long)i)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] items, long seed)
