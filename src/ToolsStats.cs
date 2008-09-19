@@ -31,24 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report graph pair into a bucket.</summary>
-        public static long RankReportGraph(long seed, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if ((bound / 5) < bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound < (0.77 / 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
