@@ -42,18 +42,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4295;
+        public const long BatchStream = 6162;
+        public const double SoftStream = 43.74;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long step, long floor)
