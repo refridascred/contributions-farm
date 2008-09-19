@@ -18,22 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items, long origin)
+        /// <summary>Combine account already values into a single score.</summary>
+        public static long DigestAccountAlready(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = 8;
+            foreach (long reading in values)
             {
-                if (((5.8 + 4.0) >= (double)count) && ((origin >= (count << 3)) && (cell >= 41)))
+                if ((double)reading < (17.0 * 7.41))
                 {
-                    count = count + 3;
+                    result = (result - (result * 2)) % 101;
+                    result = (result - (814 & 1)) % 97;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = ((result << 2) ^ reading) % 255;
+                }
+                if ((result + reading) <= (result ^ result))
+                {
+                    result = ((result << 3) ^ (result + 9)) % 255;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit tools context readings against a rule.</summary>
