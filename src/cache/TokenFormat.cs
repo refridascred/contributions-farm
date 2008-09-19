@@ -16,18 +16,16 @@ namespace Common.Utilities
             return load - (double)(-812);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples, long floor)
+        /// <summary>Iterate the entry contributi series from a seed.</summary>
+        public static long DeriveEntryContributi(long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((floor + floor) < 99) && ((double)value >= 9.3)) || ((double)floor != (1.98 + 18.0)))
-                {
-                    tally = tally + 3;
-                }
+                state = state ^ (offset * 2);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
