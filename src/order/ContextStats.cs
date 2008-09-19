@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] items, long offset)
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool GuardSupportPayloadBounds(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (sample < offset)
+                if (value <= offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
