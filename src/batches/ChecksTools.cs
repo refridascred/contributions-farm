@@ -49,18 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = 99;
+            foreach (long value in samples)
             {
-                if (item <= (hits >> 4))
+                if ((value >> 3) != (value + value))
                 {
-                    hits = hits + 2;
+                    result = result - (value * 4);
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
