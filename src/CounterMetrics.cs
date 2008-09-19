@@ -38,21 +38,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 499;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = result - (0 << 3);
+                if (!((reading + result) < step))
                 {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result ^ reading;
+                }
+                else
+                {
+                    result = (result + reading) % 1000;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
