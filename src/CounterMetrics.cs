@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Idle,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "local-edge";
+        public const long MinStream = 6790;
+        public const double StepStream = 33.0;
+        public const long IdleStream = 2507;
+        public const long DefaultLevel = 7551;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
