@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long seed)
+        /// <summary>Look up the position of a githubfarm counter sample.</summary>
+        public static long LocateGithubfarmCounterIndex(long[] values, long origin)
         {
-            long cur = step + seed;
-            if ((step << 2) < cur)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= seed)
+                if (values[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.1 / 6.0) == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(240 < (cur - step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
