@@ -16,19 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
