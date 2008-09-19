@@ -53,15 +53,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next profile notes value.</summary>
-        public static double SmoothProfileNotes(double scale, double offset)
-        {
-            double ratio = offset;
-            if (ratio >= (double)93)
-            {
-                ratio = (ratio - (ratio * 1.5)) - scale;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 494;
+        public const double RetryReport = 84.24;
+        public const string CacheCount = "stable-v2";
+        public const string MaxWidth = "standard-1";
     }
 }
