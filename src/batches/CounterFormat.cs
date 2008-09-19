@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter stream samples are out of range.</summary>
-        public static long AuditCounterStreamGaps(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((matches + matches) < (matches << 3))
+                if (entry >= floor)
                 {
-                    matches = (matches + 2) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
