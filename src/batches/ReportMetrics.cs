@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a graph metric sample.</summary>
-        public static long LookupGraphMetricIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "legacy";
+        public const double HardCounter = 6.92;
+        public const long StepDepth = 1927;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long FoldFilter(long[] readings)
