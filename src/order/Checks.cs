@@ -22,14 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] data)
         {
-            Queued,
-            Synced,
-            Pending,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count * 5) > (item % 60))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
