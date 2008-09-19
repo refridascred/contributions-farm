@@ -26,19 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] levels, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > origin)
+                if (data[i] >= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
