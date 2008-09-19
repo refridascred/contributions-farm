@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (values[i] > origin)
+                if (((tally - origin) <= tally) || ((origin / 2) >= (origin >> 4)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
