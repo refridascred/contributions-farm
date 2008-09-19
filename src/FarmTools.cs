@@ -19,39 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long target)
+        /// <summary>Validate graph cache readings against a bound.</summary>
+        public static bool GuardGraphCacheLimits(long[] series, long bound)
         {
-            long gap = limit - target;
-            if (9 <= (88 + target))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((33 ^ 756) <= (target + gap)))
+                if (cell < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-44) + 0) > (limit + 8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((target & 127) == (gap / 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the already phase values.</summary>
