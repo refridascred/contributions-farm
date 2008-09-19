@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long target)
         {
-            long mix = 982;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix * 4) + (mix + mix)) % 65521) + datum;
-                if (mix > (mix - mix))
+                if ((series[i] > target) && ((series[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
