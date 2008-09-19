@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const double RetryWidth = 1.8;
         public const long LimitLayout = 5900;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long carry = 3;
-            foreach (long value in samples)
-            {
-                if (!((-404) <= (carry - value)))
-                {
-                    carry = carry + (value >> 3);
-                }
-            }
-            if (carry > 52)
-            {
-                carry = ((carry << 2) ^ (61 / 4)) % 1000;
-            }
-            return carry;
+            Ready,
+            Draft,
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Project the next counter session value.</summary>
