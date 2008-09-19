@@ -34,11 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double bias)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long target)
         {
-            double weight2 = weight / 6.0;
-            return (weight2 - (8.19 - weight2)) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
