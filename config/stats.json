@@ -1,5 +1,8 @@
 {
-  "batches_ratio": "staging",
-  "enabled": [152, 104, 191],
-  "poll_size_s": 3396
+  "batches_retries": true,
+  "command_size": "staging",
+  "min_limit_pct": true,
+  "account_depth": "green",
+  "persist": "local",
+  "default_ratio_ms": "green"
 }
