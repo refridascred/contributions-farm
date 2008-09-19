@@ -87,9 +87,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "primary";
-        public const long BaseCommand = 7881;
-        public const double BatchFactor = 45.33;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Done,
+            Closed,
+            Draft,
+            Paused,
+        }
     }
 }
