@@ -16,19 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (sample != offset)
+                if (((2.1 * 20.0) <= (double)matches) && (((cell + matches) != (0 ^ floor)) && ((2.56 / 4.0) < (double)cell)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
