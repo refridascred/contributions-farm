@@ -24,12 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxScore = "cached-v2";
-        public const string BurstCache = "strict";
-        public const double CacheInterval = 2.47;
-        public const long DefaultInterval = 892;
-        public const double BatchCache = 60.93;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Dropped,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long DeriveGithubfarm(long step)
