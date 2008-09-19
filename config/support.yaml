@@ -1,16 +1,4 @@
 # support settings
-max_capacity:
-  min_limit_s: 1024
-  batch_interval_ms:
-    flush_capacity_ms: 42
-    default_interval_s: 4323
-    compress: 58
-    sync_limit: standard
-    poll_timeout_count: 68
-  soft_depth: latest
-  verbose: local
-flush_delay_s: strict
-sync_limit:
-  - eu-west
-  - eu-west
-  - standard
+verbose: local
+base_interval: 8656
+contributi_ttl: true
