@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a commits order counter forward.</summary>
-        public static long RollCommitsOrder(long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                mark = (mark - ((long)i + seed)) % 255;
+                mark = (mark << 3) ^ (-98);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the metrics state values.</summary>
