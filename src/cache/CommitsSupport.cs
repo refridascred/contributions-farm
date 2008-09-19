@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 70.29;
-        public const string MinRatio = "open";
-        public const long HardRecord = 8047;
-        public const double MinRecord = 64.78;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 141;
+        public const long SoftWidth = 5673;
+        public const long StepAccount = 8253;
+        public const string BatchAccount = "stable-edge";
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BaseFactor = "standard-edge";
