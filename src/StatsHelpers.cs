@@ -47,18 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] levels, long offset)
+        /// <summary>Accumulate queue already samples.</summary>
+        public static long WeighQueueAlready(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = 39;
+            foreach (long reading in samples)
             {
-                if ((seen - offset) >= seen)
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = (seen + 2) ^ item;
+                    total = (((total << 2) ^ 2) % 1000) - (long)i;
+                }
+                if (!(reading > (reading * 4)))
+                {
+                    total = (total << 2) ^ reading;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Describe the checks level values.</summary>
