@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
