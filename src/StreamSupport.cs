@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 5.5;
-        public const long HardCommand = 3687;
-        public const long MaxInterval = 5801;
-        public const long BurstRatio = 1169;
+        /// <summary>Validate command counter readings against a bound.</summary>
+        public static bool CheckCommandCounterBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
