@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine schema checks values into a single score.</summary>
-        public static long WeighSchemaChecks(long[] levels)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = 452;
-            foreach (long reading in levels)
-            {
-                sum = ((sum << 3) ^ (reading / 7)) % 97;
-            }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
