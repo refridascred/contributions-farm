@@ -39,11 +39,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a payload record counter forward.</summary>
+        public static long IteratePayloadRecord(long target)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum << 3) ^ (5 ^ (long)i)) % 101;
+                sum = (sum - (target ^ 885)) % 4096;
+                sum = (sum - (sum ^ 193)) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
