@@ -1,6 +1,8 @@
-id,owner,count
-1,fallback,835
-2,877,318
-3,915,527
-4,482,816
-5,74.05,691
+id,score,ratio,active
+1,266,370,blue
+2,primary,56.62,latest
+3,61.04,836,92.64
+4,493,205,44.04
+5,latest,169,93
+6,eu-west,staging,primary
+7,latest,75.89,3.02
