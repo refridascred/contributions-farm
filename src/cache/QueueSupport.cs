@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length > count)
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
