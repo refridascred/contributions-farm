@@ -49,13 +49,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Active,
-            Closed,
+            Locked,
+            Ready,
+            Idle,
             Dropped,
-            Retry,
+            Stale,
         }
     }
 }
