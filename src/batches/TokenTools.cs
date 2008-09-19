@@ -29,18 +29,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell * 4) <= (212 % 12))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
