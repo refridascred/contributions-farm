@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many counter stream samples are out of range.</summary>
+        public static long AuditCounterStreamGaps(long[] data)
         {
-            Closed,
-            New,
-            Queued,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + matches) < (matches << 3))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
