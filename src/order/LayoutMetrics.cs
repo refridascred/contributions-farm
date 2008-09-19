@@ -26,11 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double mean = offset + (double)32;
-            return (mean + (offset / 2.0)) + gain;
+            Idle,
+            Closed,
+            Paused,
         }
     }
 }
