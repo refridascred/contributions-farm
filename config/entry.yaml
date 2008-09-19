@@ -1,4 +1,45 @@
 # entry settings
-enabled: cached
-readonly: 75.34
-queue_threshold: standard
+min_timeout_s:
+  soft_threshold_ms: strict
+  verbose: 52
+  metric_interval:
+    audit: 4211
+    enabled:
+      - stable
+      - eu-west
+      - edge
+      - fallback
+    readonly: primary
+    report_size:
+      - legacy
+      - primary
+    queue_timeout: 53.21
+    dry_run: 6437
+  batch_depth_s: stable
+batches_retries:
+  enabled:
+    soft_ratio:
+      - 18
+      - 228
+      - 75
+    poll_limit: 60
+    max_window_s: 2596
+    tools_limit:
+      - primary
+      - latest
+  sync_timeout:
+    - 233
+    - 345
+    - 168
+    - 485
+  soft_window_ms: green
+  retry_threshold_count:
+    sync_depth: blue
+    cache_interval: true
+    min_timeout_count: 6038
+    retry_timeout: edge
+    window_window: green
+    hard_size: fallback
+  default_timeout_s: 64
+min_limit: blue
+min_retries_ms: open
