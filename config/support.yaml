@@ -1,27 +1,5 @@
 # support settings
-compress:
-  poll_size: standard
-  poll_window_ms:
-    - latest
-    - eu-west
-    - standard
-  already_limit:
-    - latest
-    - legacy
-    - green
-    - blue
-  min_ttl: 92.09
-  flush_capacity:
-    support_window: blue
-    entry_size:
-      - open
-      - cached
-    retry_size_count: legacy
-    idle_delay_pct: 17.38
-    enabled:
-      - eu-west
-      - latest
-      - standard
-      - fallback
-checks_capacity: 500
-token_capacity: green
+compress: 7
+base_delay: standard
+poll_threshold: 100
+account_window: blue
