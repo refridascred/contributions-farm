@@ -1,10 +1,8 @@
 # entry settings
-persist: 4472
-batch_depth_pct: fallback
-min_capacity_ms: 1024
-verbose:
+compress:
   - latest
-  - eu-west
-  - strict
-sync_ttl_pct: open
-stats_window: false
+  - green
+  - local
+hard_timeout_s: 56.7
+tools_window: 8744
+queue_limit: staging
