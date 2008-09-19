@@ -41,25 +41,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command commits input into a small class.</summary>
-        public static long GradeCommandCommits(long origin, long floor)
-        {
-            long cur = origin ^ floor;
-            if (((origin * 3) >= origin) && ((origin + floor) > cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((cur / 8) < (364 - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 5832;
+        public const double BaseWidth = 81.17;
+        public const long BurstTimeout = 7241;
     }
 }
