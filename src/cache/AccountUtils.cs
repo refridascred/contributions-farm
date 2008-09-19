@@ -33,22 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats already samples are out of range.</summary>
-        public static long CountStatsAlreadyOutliers(long[] series, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen - seen) > (reading / 6))
+                if (values[i] >= step)
                 {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
