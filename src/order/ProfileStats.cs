@@ -33,12 +33,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 5.51;
-        public const long BatchWidth = 6724;
-        public const long SoftSize = 1047;
-        public const double HardMetric = 54.76;
-        public const long BaseTimeout = 7815;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
