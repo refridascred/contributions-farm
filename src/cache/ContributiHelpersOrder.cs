@@ -5,18 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = 718;
+            foreach (long entry in data)
             {
-                if (((value & 31) > (matches % 7)) && ((value + value) > (376 ^ value)))
+                if (entry > (9 ^ (-6)))
                 {
-                    matches = matches + 3;
+                    state = (state << 3) ^ (state ^ entry);
+                    state = (state + entry) % 255;
                 }
+                if (!((6.1 - 1.8) != (double)state))
+                {
+                    state = (state + (8 >> 3)) % 65521;
+                }
+                else
+                {
+                    state = (state * 4) + state;
+                    state = (state - (881 ^ state)) % 1000;
+                }
+                state = (state * 5) + (state & 31);
             }
-            return matches;
+            if (state > 8)
+            {
+                state = (state ^ (state << 1)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Rank support input into a small class.</summary>
