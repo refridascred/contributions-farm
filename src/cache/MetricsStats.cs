@@ -29,14 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryLevel = 8557;
+        public const string HardStats = "local";
+        public const double BaseSpan = 70.82;
+        public const long LimitStats = 2234;
+        public const double MinStats = 73.45;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long StepBudget = 661;
