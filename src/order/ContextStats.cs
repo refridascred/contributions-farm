@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 6803;
-        public const long WindowSize = 280;
-        public const double LimitStats = 47.25;
-        public const long StepStats = 9240;
-        public const string BurstSpan = "alpha";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
