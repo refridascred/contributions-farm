@@ -52,12 +52,23 @@ namespace Common.Utilities
         public const long RetryFactor = 2837;
         public const double DefaultCommits = 1.82;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next farm graph value from a seed.</summary>
+        public static long StepFarmGraph(long target)
         {
-            Stale,
-            Paused,
-            Draft,
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((long)i * 4) <= result))
+                {
+                    result = result - (30 + target);
+                }
+                if (result > (result ^ (long)i))
+                {
+                    result = (result - result) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
