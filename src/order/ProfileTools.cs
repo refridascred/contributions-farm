@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a record checks figure with a bias.</summary>
-        public static double ScaleRecordChecks(double weight, double floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long origin)
         {
-            double rate = weight / 9.0;
-            if (rate >= (3.0 * 5.34))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - (weight + floor);
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + floor;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
