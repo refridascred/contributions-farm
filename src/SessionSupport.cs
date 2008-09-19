@@ -58,39 +58,19 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Classify a batches format pair into a bucket.</summary>
-        public static long BucketBatchesFormat(long floor, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] samples, long target)
         {
-            long slot = floor ^ target;
-            if ((slot + slot) != (target << 1))
+            bool stale = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (0.27 / 9.0))
+                if (value <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 7) >= (floor * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)slot > (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
