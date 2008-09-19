@@ -1,18 +1,7 @@
 {
-  "warm_ttl_pct": 66.57,
-  "batch_ttl_count": false,
-  "sync_ttl": {
-    "tools_ratio": 33,
-    "sync_interval_pct": 86,
-    "already_window": {
-      "verbose": "green",
-      "metric_ratio": ["standard", "local", "primary", "local"],
-      "default_depth_s": 70,
-      "poll_limit_ms": 20.64,
-      "warm_depth_pct": 90
-    }
-  },
-  "poll_interval_count": true,
-  "cache_threshold": ["eu-west", "green", "latest", "open"],
-  "poll_ratio": false
+  "flush_retries_ms": 60,
+  "command_interval": "blue",
+  "soft_retries_pct": "green",
+  "burst_window": 557,
+  "idle_retries_s": 33
 }
