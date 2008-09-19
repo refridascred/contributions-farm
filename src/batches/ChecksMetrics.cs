@@ -23,18 +23,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-57) - count) > (count + datum))
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
