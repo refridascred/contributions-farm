@@ -61,21 +61,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Match up farm counter samples.</summary>
+        public static long CompareFarmCounterCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 0)
+                    if ((samples[i] + samples[j]) > 0)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
