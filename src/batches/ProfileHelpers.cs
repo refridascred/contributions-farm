@@ -69,39 +69,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long floor, long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            long delta = floor - target;
-            if ((floor >= ((-18) - delta)) || ((floor >> 3) <= delta))
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (4.9 + 8.3))
+                if (acc <= step)
                 {
-                    return 6;
+                    acc = (acc * 5) + acc;
                 }
-                else
-                {
-                    if ((floor >> 5) == (floor - delta))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target > 0.17)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
     }
 }
