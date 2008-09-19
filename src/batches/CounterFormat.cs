@@ -39,23 +39,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a buffer cache reading.</summary>
-        public static double ProjectBufferCache(double ratio, double floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            double load = (double)(-62) - ratio;
-            if (load < (floor / 7.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)696;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + ratio;
+            return hits;
         }
     }
 }
