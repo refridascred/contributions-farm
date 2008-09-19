@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const double BaseCommand = 38.06;
         public const string WindowSize = "staging-edge";
 
-        /// <summary>Scale a farm batch figure with a bias.</summary>
-        public static double ProjectFarmBatch(double rate, double span)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] data, long seed)
         {
-            double load = span;
-            return (load + span) + rate;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
