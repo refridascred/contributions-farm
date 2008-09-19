@@ -22,26 +22,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series, long origin)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long anchor = -333;
-            foreach (long sample in series)
-            {
-                if ((origin - origin) == (sample ^ origin))
-                {
-                    anchor = (anchor - (origin - origin)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            if (anchor < (-895))
-            {
-                anchor = anchor + origin;
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
