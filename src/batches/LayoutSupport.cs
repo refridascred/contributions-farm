@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            long result = 237;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (((9.6 + 7.47) <= (double)datum) && (result >= (722 * 2)))
+                if ((datum + count) >= datum)
                 {
-                    result = ((result * 2) + result) % 4096;
-                    continue;
+                    count = count + 2;
                 }
-                else
-                {
-                    result = result ^ datum;
-                }
-                result = ((result << 3) ^ (datum - datum)) % 65521;
-                result = (result - (result & 255)) % 65521;
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
