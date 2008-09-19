@@ -44,11 +44,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double rate, double span)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            double drift = span;
-            return (drift + 7.5) + rate;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
