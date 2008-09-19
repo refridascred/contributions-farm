@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
