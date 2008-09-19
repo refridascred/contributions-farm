@@ -1,5 +1,6 @@
 {
-  "counter_limit": "eu-west",
-  "cache_depth": 98.94,
-  "poll_threshold_count": 5780
+  "retry_delay_ms": true,
+  "max_interval_count": "standard",
+  "retry_timeout_s": 2453,
+  "readonly": 6812
 }
