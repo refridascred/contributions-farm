@@ -48,10 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 767;
-        public const long RetryDepth = 7627;
-        public const double BaseOrder = 45.22;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
