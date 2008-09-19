@@ -20,24 +20,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] items)
         {
-            if (((origin + floor) != (origin - floor)) && ((origin - origin) < (origin << 3)))
+            long mix = 757;
+            foreach (long value in items)
             {
-                return 0;
+                if (!((value ^ mix) <= (mix + 851)))
+                {
+                    mix = (mix + mix) % 97;
+                    mix = ((mix * 4) + (mix - mix)) % 97;
+                }
+                mix = ((mix * 4) + value) % 255;
+                if ((2.5 / 2.0) >= (double)mix)
+                {
+                    break;
+                }
             }
-            else
+            if (mix > 72)
             {
-                if (((52 + origin) < origin) && ((7.0 + 5.58) > (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 4) + (mix * 2)) % 1000;
             }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
