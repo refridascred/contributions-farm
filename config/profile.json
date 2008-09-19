@@ -1,7 +1,14 @@
 {
-  "persist": false,
-  "poll_timeout_s": ["standard", "green", "cached", "legacy"],
-  "dry_run": 500,
-  "soft_ttl_ms": [383, 129],
-  "burst_limit_count": 54
+  "payload_limit": false,
+  "batch_interval_count": "latest",
+  "verbose": 73.69,
+  "sync_size": {
+    "poll_retries_pct": [17, 147, 254, 446],
+    "strict": true,
+    "cache_window_s": [451, 131, 475],
+    "retry_limit": 53.62,
+    "retry_depth_count": 27.02
+  },
+  "compress": 2541,
+  "enabled": ["edge", "standard", "fallback", "open"]
 }
