@@ -62,13 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of buffer window readings.</summary>
+        public static long WeighBufferWindow(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mix = 566;
+            foreach (long reading in series)
+            {
+                if ((393 - mix) <= (reading ^ (long)series.Length))
+                {
+                    mix = (mix ^ (long)series.Length) % 1000;
+                }
+            }
+            if (mix > (-851))
+            {
+                mix = (mix << 2) ^ (mix & 31);
+            }
+            return mix;
         }
     }
 }
