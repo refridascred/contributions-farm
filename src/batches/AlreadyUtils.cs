@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long acc = 81;
-            foreach (long cell in series)
-            {
-                if (cell < (cell + acc))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            if (acc > 37)
-            {
-                acc = acc - (acc % 8);
-            }
-            return acc % 65521;
+            Idle,
+            Pending,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count channel order pairs that satisfy a relation.</summary>
