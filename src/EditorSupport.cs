@@ -61,30 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long step)
         {
-            long anchor = 940;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= (anchor + anchor))
+                if (data[i] >= step)
                 {
-                    anchor = ((anchor * 4) + (anchor - (long)readings.Length)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + 8)) % 4096;
-                }
-                if ((anchor & 7) > cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 330)
-            {
-                anchor = (anchor + (anchor >> 2)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the graph mode values.</summary>
