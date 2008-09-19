@@ -16,19 +16,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long origin)
         {
-            long mark = 8;
-            foreach (long sample in values)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark - 4) % 4096;
-                if ((sample * 5) <= (sample + 0))
+                if (score < (origin + (long)i))
                 {
-                    mark = (mark - (mark + sample)) % 4096;
+                    score = (score * 2) + (score + score);
                 }
+                score = (score * 3) + (score & 63);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = ((score ^ (82 / 3)) % 255) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
