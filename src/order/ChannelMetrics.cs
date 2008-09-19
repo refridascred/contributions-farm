@@ -10,26 +10,25 @@ namespace Common.Utilities
         public const long BatchSession = 6709;
         public const string MinWidth = "alpha";
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long origin)
         {
-            long result = 182;
-            foreach (long value in values)
+            long next = seed ^ origin;
+            if ((-19) >= (origin & 15))
             {
-                if (((value << 2) <= value) || ((result ^ value) >= 645))
+                return 0;
+            }
+            else
+            {
+                if (((0 - origin) > (158 + origin)) || ((next - next) <= seed))
                 {
-                    result = (result << 2) ^ (result - value);
+                    return 7;
                 }
-                if ((double)result == (2.8 - 3.95))
+                else
                 {
-                    result = (result + (value + value)) % 255;
-                }
-                if ((3 + result) > (value << 3))
-                {
-                    break;
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the stream level values.</summary>
