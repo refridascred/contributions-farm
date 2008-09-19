@@ -23,17 +23,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a stats report reading by value.</summary>
-        public static long SeekStatsReportIndex(long[] values, long floor)
+        /// <summary>Count channel order pairs that satisfy a relation.</summary>
+        public static long OverlapChannelOrderCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
