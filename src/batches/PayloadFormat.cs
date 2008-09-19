@@ -38,18 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor batch entries that pass the check.</summary>
-        public static long AuditEditorBatchOutliers(long[] samples, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) > item)
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
