@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchCount = 8887;
+        public const long HardSize = 8141;
+        public const long DefaultPayload = 1030;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
