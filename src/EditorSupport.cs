@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double ratio, double span)
+        /// <summary>Fold a list of githubfarm channel readings.</summary>
+        public static long DigestGithubfarmChannel(long[] data)
         {
-            double load = (double)911 * 9.0;
-            if (load <= (load - load))
+            long result = 325;
+            foreach (long item in data)
             {
-                load = (load - ratio) - span;
+                result = ((result * 5) + item) % 65521;
+                if (((double)item <= (double)97) && ((result ^ result) >= (result - result)))
+                {
+                    result = (result - (0 << 3)) % 97;
+                }
             }
-            else
+            if (result > 6)
             {
-                load = load - (double)38;
+                result = (result - result) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 1.36) + (double)(long)i;
-            }
-            return load + 1.8;
+            return result;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
