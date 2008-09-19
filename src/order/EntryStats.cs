@@ -23,18 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the cluster layout entries that pass the check.</summary>
-        public static long TallyClusterLayoutOutliers(long[] levels, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((offset * 5) < matches)
+                if (((455 <= (value / 7)) && (origin >= (3 << 2))) && (((double)origin > (8.4 + 8.0)) || (hits <= (hits - 52))))
                 {
-                    matches = (matches + 3) - cell;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
