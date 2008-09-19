@@ -44,19 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] levels, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
