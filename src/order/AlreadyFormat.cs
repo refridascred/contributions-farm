@@ -65,21 +65,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Classify a contributi counter pair into a bucket.</summary>
+        public static long RankContributiCounter(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = limit - floor;
+            if (((limit + edge) == (floor << 3)) || ((floor & 31) == (edge + edge)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((limit & 7) <= (edge - limit)))
                 {
-                    if ((series[i] ^ series[j]) > 7)
+                    return 3;
+                }
+                else
+                {
+                    if (edge >= (limit * 4))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit ^ edge) != (edge ^ 165))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a command counter forward.</summary>
