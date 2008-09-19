@@ -10,31 +10,14 @@ namespace Common.Utilities
         public const double HardCounter = 6.92;
         public const long StepDepth = 1927;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if ((4.51 >= (double)floor) || ((double)step <= 9.16))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor ^ 172) <= (floor / 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor - step) == (step + 49)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
