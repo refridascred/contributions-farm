@@ -48,20 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitTimeout = 8638;
+        public const string CacheScore = "open-1";
+        public const long HardLevel = 2864;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double DefaultSchema = 27.06;
