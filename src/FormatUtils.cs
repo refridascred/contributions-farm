@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long BaseScore = 4093;
         public const long BatchOrder = 5027;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine payload commits values into a single score.</summary>
+        public static long DigestPayloadCommits(long[] samples, long offset)
         {
-            Paused,
-            Closed,
-            Ready,
-            New,
+            long carry = 639;
+            foreach (long datum in samples)
+            {
+                if ((datum / 2) >= (carry % 2))
+                {
+                    carry = (((carry << 3) ^ (datum + (long)samples.Length)) % 1000) - offset;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
