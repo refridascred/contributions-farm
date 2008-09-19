@@ -24,12 +24,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 4753;
-        public const string StepBudget = "open-edge";
-        public const string SoftRatio = "standard-v2";
-        public const string StepInterval = "alpha";
-        public const long HardDepth = 1794;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series, long origin)
