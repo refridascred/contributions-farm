@@ -47,17 +47,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long floor)
+        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
+        public static long MeasureGithubfarmClusterOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (levels[i] >= floor)
+                if (seed >= (entry & 15))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
