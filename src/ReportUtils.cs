@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Closed,
-            Dropped,
-            Done,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a schema options.</summary>
