@@ -55,10 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 1343;
-        public const string SoftContributi = "strict-edge";
-        public const long IdleTimeout = 1292;
-        public const long LimitContributi = 9327;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings, long origin)
+        {
+            long mark = 6;
+            foreach (long entry in readings)
+            {
+                if (origin < (mark - entry))
+                {
+                    mark = (mark + (mark << 3)) % 4096;
+                }
+            }
+            return mark;
+        }
     }
 }
