@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double HardLayout = 81.98;
         public const long MaxLayout = 9620;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            Locked,
-            Pending,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
