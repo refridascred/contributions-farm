@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series, long target)
         {
-            long total = 371;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                total = (((total << 3) ^ (1 * 5)) % 4096) + item;
+                if (seen < target)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            if (total < 455)
-            {
-                total = total ^ (total ^ limit);
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Hold a counter stats.</summary>
