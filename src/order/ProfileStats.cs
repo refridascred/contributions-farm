@@ -14,24 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data, long step)
-        {
-            long score = 2;
-            foreach (long entry in data)
-            {
-                if ((entry % 100) >= (59 / 5))
-                {
-                    continue;
-                }
-                score = score - 725;
-            }
-            if (score < 21)
-            {
-                score = (score ^ step) % 4096;
-            }
-            return score % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheWidth = 11.98;
+        public const long SoftBudget = 7152;
+        public const long CacheNotes = 2822;
+        public const long CacheScore = 9708;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double RetryMetric = 5.51;
