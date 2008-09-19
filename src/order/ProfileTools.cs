@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Scale a record checks figure with a bias.</summary>
+        public static double ScaleRecordChecks(double weight, double floor)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            double rate = weight / 9.0;
+            if (rate >= (3.0 * 5.34))
+            {
+                rate = rate - (weight + floor);
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + floor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
