@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double bias, double floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            double scale = floor;
-            if (scale <= scale)
+            double mean = floor;
+            if (mean <= (double)121)
             {
-                scale = scale - (bias + floor);
+                mean = (mean + 7.0) - rate;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + floor;
+                mean = (mean + (2.0 * 9.13)) + (double)(long)i;
             }
-            return scale - (scale - 9.13);
+            return mean + (floor - 3.0);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
