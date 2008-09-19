@@ -46,13 +46,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheScore = 3490;
+        public const long BaseCounter = 2069;
+        public const long SoftCounter = 186;
+        public const long MaxInterval = 4528;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinMetrics = 2272;
