@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double scale = rate;
-            if (scale >= (0.84 * 8.4))
-            {
-                scale = scale - (scale + rate);
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (bias + rate);
+            Paused,
+            Locked,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
