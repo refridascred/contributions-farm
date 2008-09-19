@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long seed)
         {
-            Pending,
-            New,
-            Dropped,
-            Ready,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
