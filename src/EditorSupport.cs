@@ -103,11 +103,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 3495;
-        public const long MinWidth = 2289;
-        public const long LimitWindow = 3415;
-        public const string IdleRatio = "local-v2";
-        public const long BurstWindow = 2622;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
