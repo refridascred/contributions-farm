@@ -74,17 +74,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] samples, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((-8) > limit) || ((limit + 268) >= floor))
             {
-                if (samples[i] < offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= (9.9 - 3.9))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
