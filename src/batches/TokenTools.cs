@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            Active,
-            Pending,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell * 4) <= (212 % 12))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
