@@ -57,24 +57,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long limit)
-        {
-            if ((double)limit > (1.0 - 3.11))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target >= (target / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitScore = "fallback-1";
+        public const long SoftSession = 7756;
+        public const double MinInterval = 3.13;
+        public const double BaseSession = 46.98;
+        public const double WindowLevel = 90.92;
     }
 }
