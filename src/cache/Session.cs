@@ -42,27 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long bound)
-        {
-            long anchor = -4;
-            foreach (long entry in series)
-            {
-                long prev = (entry * 3) ^ entry;
-                if (!((entry - bound) < (bound + entry)))
-                {
-                    anchor = ((anchor * 5) + (prev + anchor)) % 101;
-                }
-                if (((entry * 4) == (anchor & 7)) && ((anchor + anchor) < (bound + entry)))
-                {
-                    anchor = (anchor + anchor) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + (8 >> 1);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowSize = 2937;
+        public const string BatchFactor = "standard-1";
+        public const long BurstFarm = 6249;
+        public const long RetryFarm = 3500;
     }
 }
