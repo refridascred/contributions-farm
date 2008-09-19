@@ -35,11 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 7753;
-        public const long LimitTimeout = 8384;
-        public const long BaseSize = 5353;
-        public const long CacheInterval = 7602;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
