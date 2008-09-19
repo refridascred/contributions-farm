@@ -1,7 +1,7 @@
-id,ratio,rank
-1,397,latest
-2,8.15,59.34
-3,green,38.79
-4,edge,342
-5,644,staging
-6,strict,974
+id,level,active,state,label
+1,57.73,20.67,776,61.92
+2,134,edge,edge,61.89
+3,521,129,42.68,strict
+4,360,74.48,standard,331
+5,latest,904,620,616
+6,44.25,eu-west,cached,legacy
