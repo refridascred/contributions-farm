@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] readings, long seed)
         {
-            long score = 53;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((7.5 * 4.7) < (double)score)
+                if ((double)datum > (8.98 + 20.0))
                 {
-                    score = score ^ (6 + item);
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 28)
-            {
-                score = ((score << 3) ^ (score << 1)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a tools record.</summary>
