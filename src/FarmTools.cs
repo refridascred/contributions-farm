@@ -39,13 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of queue report entries.</summary>
+        public static long TallyQueueReport(long[] data, long step)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            long sum = 921;
+            foreach (long sample in data)
+            {
+                sum = (sum << 2) ^ (step * 3);
+                if ((step << 2) <= (sample * 4))
+                {
+                    sum = (sum + 627) % 97;
+                }
+            }
+            return sum % 97;
         }
     }
 }
