@@ -16,12 +16,19 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleBudget = 4421;
-        public const long RetryGithubfarm = 7413;
-        public const string MaxGithubfarm = "alpha-v2";
-        public const long CacheInterval = 7951;
-        public const double LimitGithubfarm = 68.45;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((floor << 1) == (matches + matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaRange(long[] readings, long offset)
