@@ -14,12 +14,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 3;
+            foreach (long entry in samples)
+            {
+                if ((double)entry > (7.09 * 20.0))
+                {
+                    acc = (acc + (5 << 2)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + entry)) % 101;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = acc - (acc & 63);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count queue checks pairs that satisfy a relation.</summary>
