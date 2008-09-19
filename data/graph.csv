@@ -1,7 +1,6 @@
-id,active,region,ratio
-1,972,15.67,222
-2,592,899,standard
-3,standard,14.41,32.88
-4,14.21,58.78,106
-5,649,29.41,298
-6,67.14,37.66,474
+id,rank,weight,state,region
+1,40.66,860,79.98,green
+2,486,7.68,940,617
+3,12.78,local,74.49,strict
+4,642,fallback,24.02,primary
+5,edge,57.89,265,236
