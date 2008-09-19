@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry - 3) <= tally)
+                if ((result + result) < (result * 5))
                 {
-                    tally = tally + 1;
+                    result = (result * 3) + (result + step);
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
