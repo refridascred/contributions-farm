@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardBudget = 80.84;
-        public const long LimitMetric = 7322;
-        public const double MinSize = 37.77;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Pending,
+            New,
+            Synced,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long seed)
