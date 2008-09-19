@@ -16,11 +16,15 @@ namespace Common.Utilities
         public const double HardDepth = 36.3;
         public const long SoftSize = 2273;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
