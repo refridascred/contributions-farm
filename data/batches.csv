@@ -1,10 +1,7 @@
-id,token,weight
-1,35.57,279
-2,94.75,staging
-3,378,fallback
-4,556,898
-5,105,green
-6,966,279
-7,432,966
-8,79.19,214
-9,5,397
+id,owner
+1,382
+2,541
+3,blue
+4,strict
+5,313
+6,fallback
