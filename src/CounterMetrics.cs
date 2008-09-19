@@ -30,19 +30,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next route notes value.</summary>
-        public static double SmoothRouteNotes(double ratio, double floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double weight = (double)(5 & 255);
-            if (weight >= (double)517)
-            {
-                weight = weight - (double)759;
-            }
-            else
-            {
-                weight = weight + (ratio - floor);
-            }
-            return weight + ratio;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
